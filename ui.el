@@ -1,6 +1,7 @@
 (load "~/.emacs.d/config/config.el")
 (load-config "parameters")
 
+(print "Configuring UI")
 (cond
  ((or  (cygwin-p) (windows-p))  
   ;;font configuration
@@ -11,29 +12,21 @@
   (progn
     (set-language-environment 'UTF-8)
     (set-locale-environment "UTF-8"))))
-
-(if (window-system)
-    (progn
-      (setq default-frame-alist
-	    (append
-	     '((font . "WenQuanYi Micro Hei Mono 10")) default-frame-alist))
-      (set-default-font "WenQuanYi Micro Hei Mono 10")
-      ;; Setting English Font
-      (set-face-attribute
-       'default nil :font "WenQuanYi Micro Hei Mono 10")
-      ;; Chinese Font
-      (dolist (charset '(kana han symbol cjk-misc bopomofo))
-	(set-fontset-font
-	 (frame-parameter nil 'font)
-	 charset
-	 (font-spec :family "WenQuanYi Micro Hei Mono" :size 12)))
-      ;; remove tool bar.
-      (tool-bar-mode nil)
-      ;; keep the scroll bar.
-      (scroll-bar-mode t)))
-
-;; UI configuration
-(menu-bar-mode nil) ;remove menu bar.
+(cond 
+ ((not (eq nil window-system))
+  (setq default-frame-alist
+	(append
+	 '((font . "WenQuanYi Micro Hei Mono 10")) default-frame-alist))
+  (set-default-font "WenQuanYi Micro Hei Mono 10")
+  ;; Setting English Font
+  (set-face-attribute
+   'default nil :font "WenQuanYi Micro Hei Mono 10")
+  ;; Chinese Font
+  (dolist (charset '(kana han symbol cjk-misc bopomofo))
+    (set-fontset-font
+     (frame-parameter nil 'font)
+     charset
+     (font-spec :family "WenQuanYi Micro Hei Mono" :size 12)))))
 
 (setq ansi-color-for-comint-mode t) ;emacs shell font confusion
 
@@ -64,3 +57,19 @@
        (string-match "exited abnormally with code.*" state)
        (string-match "finished" state))
       (kill-buffer (current-buffer))))
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(session-use-package t nil (session))
+ '(tool-bar-mode nil)
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
