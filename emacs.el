@@ -3,7 +3,6 @@
 (load-config "ui")
 (load-config "linum")
 (load-config "session")
-(load-config "desktop")
 (load-config "eshell")
 (load-config "color-theme")
 (load-config "global-set-key")
