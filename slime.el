@@ -5,6 +5,7 @@
 ;; there is not sbcl for cygwin,but clisp is also an excellent interpreter.
 (cond
  ((cygwin-p) (setq inferior-lisp-program "clisp"))
+ ((windows-p) (setq inferior-lisp-program "wx86cl64"))
  (t (setq inferior-lisp-program "sbcl")))
 
 (require 'slime)
