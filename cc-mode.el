@@ -10,9 +10,6 @@
 (defun c-mode-cedet-hook ()
        (local-set-key "." 'semantic-complete-self-insert)
        (local-set-key ">" 'semantic-complete-self-insert)
-       (local-set-key "\C-c t" 'eassist-switch-h-cpp)
-       (local-set-key "\C-x t" 'eassist-switch-h-cpp)
-       (local-set-key "\C-c e" 'eassist-list-methods)
        (local-set-key "\C-c \C-r" 'semantic-symref))
 
 ;;indent strategy

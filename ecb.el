@@ -6,4 +6,3 @@
       inhibit-startup-message t
       ecb-auto-compatibility-check nil
       ecb-version-check t)
-(enable-visual-studio-bookmarks)

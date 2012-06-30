@@ -1,8 +1,8 @@
-(load "~/.emacs.d/config/parameters.el")
-
+(load "~/.emacs.d/config/config.el")
+(load-config "parameters")
 
 (cond
- ((cygwin-p)  
+ ((or  (cygwin-p) (windows-p))  
   ;;font configuration
   (progn
     (set-language-environment 'Chinese-GB)
@@ -35,8 +35,7 @@
 ;; UI configuration
 (menu-bar-mode nil) ;remove menu bar.
 
-;emacs shell font confusion
-(setq ansi-color-for-comint-mode t)
+(setq ansi-color-for-comint-mode t) ;emacs shell font confusion
 
 (setq inhibit-startup-message t);close startup slash
 (setq visible-bell t);close close-bell

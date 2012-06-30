@@ -3,22 +3,12 @@
 
 ;; cedet setting.
 (require 'cedet)
-(require 'eassist)
-;; enable linemark
-(enable-visual-studio-bookmarks)
 
 (global-ede-mode t)
-(semantic-load-enable-code-helpers)
-(global-srecode-minor-mode 1)
-(semantic-load-enable-excessive-code-helpers)
-(semantic-load-enable-semantic-debugging-helpers)
-(global-semantic-tag-folding-mode 1)
 
 (setq senator-minor-mode-name "SN")
 (setq semantic-imenu-auto-rebuild-directory-indexes nil)
-(global-semantic-mru-bookmark-mode 1)
 
-(require 'semantic-decorate-include)
 ;; gcc setup
 (require 'semantic-c nil 'noerror)
 (let ((include-dirs *cedet-user-include-dirs*))
@@ -26,13 +16,6 @@
 	  (semantic-add-system-include dir 'c++-mode)
 	  (semantic-add-system-include dir 'c-mode))
 	include-dirs))
-
-(setq-mode-local c-mode semanticdb-find-default-throttle
-		 '(project unloaded system recursive))
-(setq-mode-local c++-mode semanticdb-find-default-throttle
-		 '(project unloaded system recursive))
-(setq-mode-local erlang-mode semanticdb-find-default-throttle
-		 '(project unloaded system recursive))
 
 
 (defun recur-list-files (dir re)

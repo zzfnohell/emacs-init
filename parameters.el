@@ -3,7 +3,7 @@
 (cond
  ((cygwin-p) (defconst *workspace* "~/workspace"))
  ((linux-p) (defconst *workspace* "~/workspace"))
- ((windows-p) (defconst *workspace* "C:/workspace")))
+ ((windows-p) (defconst *workspace* "C:/Users/Public/Documents/workspace")))
 
 (defvar *org-root-directory* (concat *workspace* "/language/org/src"))
 (defvar *org-publish-directory* (concat *workspace* "/language/org/publish"))
