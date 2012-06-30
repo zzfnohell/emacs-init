@@ -1,2 +1,5 @@
 ;; set dired mode format,put it before the desktop load
-(setq dired-listing-switches "--time-style=long-iso -l")
+
+(cond 
+ ((windows-p) nil)
+ (t (setq dired-listing-switches "--time-style=long-iso -l")))
