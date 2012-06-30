@@ -1,3 +1,6 @@
+(load "~/.emacs.d/config/config.el")
+(load-config "parameters")
+
 ;;enable quicklisp in slime mode.
 (defvar *slime-helper-path*
   (concat *workspace* "/libs/quicklisp/slime-helper.el"))
