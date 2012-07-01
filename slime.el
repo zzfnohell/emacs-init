@@ -19,7 +19,7 @@
    slime-backend 
    "C:/MinGW/local/Emacs/emacs-24.1/site-lisp/libs/slime/swank-loader.lisp")
   (load-file "C:/MinGW/local/Emacs/emacs-24.1/site-lisp/libs/slime/slime.el")
-  (slime-setup '(slime-fancy)))
+  (slime-setup '(slime-fancy slime-asdf)))
  (t 
   (require 'slime)
   (slime-setup)))
