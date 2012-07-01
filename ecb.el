@@ -14,6 +14,4 @@
       ecb-version-check t)
 
 
-(custom-set-variables
- '(ecb-source-path (quote ((*workspace* "default")))))
-
+(add-to-list 'ecb-source-path (list *workspace* "default"))
