@@ -1,3 +1,6 @@
+(load "~/.emacs.d/config/config.el")
+(load-config "parameters")
+
 (require 'ecb)
 (require 'ecb-autoloads)
 
@@ -9,3 +12,8 @@
       inhibit-startup-message t
       ecb-auto-compatibility-check nil
       ecb-version-check t)
+
+
+(custom-set-variables
+ '(ecb-source-path (quote ((*workspace* "default")))))
+
