@@ -2,7 +2,7 @@
 (load-config "parameters")
 
 (require 'ecb)
-(require 'ecb-autoloads)
+;(require 'ecb-autoloads)
 
 (setq stack-trace-on-error t)
 ;(ecb-byte-compile)

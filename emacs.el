@@ -4,7 +4,7 @@
 (load-config "linum")
 (load-config "session")
 (load-config "eshell")
-(load-config "color-theme")
+(load-config "theme")
 (load-config "global-set-key")
 
 (load-config "ediff")

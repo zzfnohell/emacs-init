@@ -6,6 +6,8 @@
 (require 'semantic)
 (require 'srecode)
 
+(semantic-load-enable-code-helpers)
+
 ;(semantic-mode 1)
 (global-ede-mode t)
 
