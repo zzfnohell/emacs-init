@@ -5,7 +5,7 @@
 (require 'ecb-autoloads)
 
 (setq stack-trace-on-error t)
-(ecb-byte-compile)
+;(ecb-byte-compile)
 
 (setq ecb-auto-activate nil
       ecb-tip-of-the-day nil

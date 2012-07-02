@@ -6,7 +6,7 @@
 (require 'semantic)
 (require 'srecode)
 
-(semantic-mode 1)
+;(semantic-mode 1)
 (global-ede-mode t)
 
 (autoload 'senator-try-expand-semantic "senator")
