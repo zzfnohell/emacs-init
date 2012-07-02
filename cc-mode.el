@@ -49,11 +49,11 @@
 (add-hook 'c-mode-common-hook 'c-mode-cedet-hook)
 (add-hook 'c-mode-common-hook 'c-mode-edit-hook)
 (add-hook 'c-mode-common-hook (lambda() (c-set-style "k&r")))
-(add-hook 'c-mode-common-hook 'doxymacs-mode) ;; init doxymacs-mode
+;(add-hook 'c-mode-common-hook 'doxymacs-mode) ;; init doxymacs-mode
 
 (add-hook 'c++-mode-hook 'c++-mode-edit-hook)
 (add-hook 'c++-mode-common-hook (lambda() (c-set-style "k&r")))
-(add-hook 'c++-mode-common-hook 'doxymacs-mode) ;;init doxymacs-mode
+;(add-hook 'c++-mode-common-hook 'doxymacs-mode) ;;init doxymacs-mode
 
 (setq auto-mode-alist
       (append '(("\\.h$" . c-mode)) auto-mode-alist))
