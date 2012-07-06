@@ -22,6 +22,7 @@
 (load-config "cedet")
 (load-config "ecb")
 (load-config "compile")
+(load-config "powershell")
 
 (load-config "cc-mode")
 (load-config "interactive-mode")
