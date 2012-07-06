@@ -1,6 +1,7 @@
 (load "~/.emacs.d/config/config.el")
 (load-config "parameters")
 (load-config "ui")
+(load-config "sr-speedbar")
 (load-config "linum")
 (load-config "session")
 (load-config "eshell")

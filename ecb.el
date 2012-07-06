@@ -7,7 +7,7 @@
 (setq stack-trace-on-error t)
 ;(ecb-byte-compile)
 
-(setq ecb-auto-activate nil
+(setq ecb-auto-activate t
       ecb-tip-of-the-day nil
       inhibit-startup-message t
       ecb-auto-compatibility-check nil
