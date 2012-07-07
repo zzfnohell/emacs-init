@@ -24,6 +24,7 @@
 (load-config "compile")
 (load-config "powershell")
 
+(load-config "emacs-lisp-mode")
 (load-config "cc-mode")
 (load-config "interactive-mode")
 (load-config "python-mode")
@@ -32,3 +33,7 @@
 ;; xcscope
 ;(require 'xcscope)
 
+;; for file in *
+;; do
+;;     mv $file ${file/%el/econf}
+;; done
