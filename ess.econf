@@ -1,0 +1,2 @@
+(load "~/.emacs.d/config/config.econf")
+(require 'ess-site)

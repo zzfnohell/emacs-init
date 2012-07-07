@@ -1,0 +1,6 @@
+(load "~/.emacs.d/config/config.econf")
+(load-config "parameters")
+
+(cond
+ ((>= emacs-major-version 24)
+  (load-theme 'tango-dark)))

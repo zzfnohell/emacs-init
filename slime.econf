@@ -1,4 +1,4 @@
-(load "~/.emacs.d/config/config.el")
+(load "~/.emacs.d/config/config.econf")
 (load-config "parameters")
 
 ;;enable quicklisp in slime mode.
@@ -14,12 +14,15 @@
 
 ;; slime bugs
 (cond 
- ((windows-p) 
+ ((windows-p)
   (setq
    slime-backend 
    "C:/MinGW/local/Emacs/emacs-24.1/site-lisp/libs/slime/swank-loader.lisp")
   (load-file "C:/MinGW/local/Emacs/emacs-24.1/site-lisp/libs/slime/slime.el")
   (slime-setup '(slime-fancy slime-asdf)))
- (t 
-  (require 'slime)
-  (slime-setup)))
+ (t
+  (setq
+   slime-backend 
+   "/usr/share/emacs/site-lisp/libs/slime/swank-loader.lisp")
+  (load-file "/usr/share/emacs/site-lisp/libs/slime/slime.el")
+  (slime-setup '(slime-fancy slime-asdf))))
