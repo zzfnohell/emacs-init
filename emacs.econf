@@ -1,5 +1,7 @@
 (load "~/.emacs.d/config/config.econf")
 (load-config "parameters")
+(load-config "emacs-lisp-mode")
+
 (load-config "ui")
 (load-config "sr-speedbar")
 (load-config "linum")
@@ -23,8 +25,10 @@
 (load-config "ecb")
 (load-config "compile")
 (load-config "powershell")
+(load-config "octave-mod")
 
-(load-config "emacs-lisp-mode")
+(load-config "whitespace")
+(load-config "indent-tabs-mode")
 (load-config "cc-mode")
 (load-config "interactive-mode")
 (load-config "python-mode")
