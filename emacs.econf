@@ -1,8 +1,10 @@
 (load "~/.emacs.d/config/config.econf")
 (load-config "parameters")
 (load-config "emacs-lisp-mode")
-
 (load-config "ui")
+
+(load-config "coding")
+
 (load-config "sr-speedbar")
 (load-config "linum")
 (load-config "session")
