@@ -1,7 +1,7 @@
 (load "~/.emacs.d/config/config.econf")
 (load-config "parameters")
 
-;;enable quicklisp in slime mode.
+;; enable quicklisp in slime mode.
 (defvar *slime-helper-path*
   (concat *workspace* "/libs/quicklisp/slime-helper.el"))
 (load (expand-file-name *slime-helper-path*))
@@ -16,13 +16,13 @@
 (cond 
  ((windows-p)
   (setq
-   slime-backend 
+   slime-backend
    "C:/MinGW/local/Emacs/emacs-24.1/site-lisp/libs/slime/swank-loader.lisp")
   (load-file "C:/MinGW/local/Emacs/emacs-24.1/site-lisp/libs/slime/slime.el")
   (slime-setup '(slime-fancy slime-asdf)))
  (t
   (setq
-   slime-backend 
+   slime-backend
    "/usr/share/emacs/site-lisp/libs/slime/swank-loader.lisp")
   (load-file "/usr/share/emacs/site-lisp/libs/slime/slime.el")
   (slime-setup '(slime-fancy slime-asdf))))
