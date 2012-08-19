@@ -3,7 +3,7 @@
 
 (print "Configuring UI")
 (cond
- ((or  (cygwin-p) (windows-p))  
+ ((or (cygwin-p) (windows-p))  
   ;;font configuration
   (progn
     (set-language-environment 'Chinese-GB)
