@@ -1,6 +1,7 @@
 (cond 
  ((or (cygwin-p) (linux-p))
   (require 'maxima)
-  (require 'imaxima)))
+  (require 'imaxima))
+ ((windows-p) (require 'maxima)))
 
 (setq auto-mode-alist (cons '("\\.mac" . maxima-mode) auto-mode-alist))
