@@ -2,16 +2,7 @@
 (load-config "parameters")
 
 (print "Configuring UI")
-(cond
- ((or (cygwin-p) (windows-p))  
-  ;;font configuration
-  (progn
-    (set-language-environment 'Chinese-GB)
-    (set-locale-environment "GBK")))
- (t
-  (progn
-    (set-language-environment 'UTF-8)
-    (set-locale-environment "UTF-8"))))
+
 (cond 
  ((not (eq nil window-system))
   (setq default-frame-alist

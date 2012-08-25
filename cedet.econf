@@ -6,7 +6,9 @@
 (require 'semantic)
 (require 'srecode)
 
-(semantic-load-enable-code-helpers)
+;; (semantic-load-enable-code-helpers)
+(semantic-load-enable-excessive-code-helpers)
+(global-semantic-tag-folding-mode 1)
 
 ;(semantic-mode 1)
 (global-ede-mode t)
