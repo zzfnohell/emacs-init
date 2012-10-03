@@ -1,0 +1,6 @@
+(load "~/.emacs.d/config/system.econf")
+
+(cond
+ ((cygwin-p) (progn (require 'cygwin-mount)
+                    (cygwin-mount-activate))))
+
