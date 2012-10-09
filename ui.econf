@@ -1,6 +1,3 @@
-(load "~/.emacs.d/config/config.econf")
-(load-config "parameters")
-
 (print "Configuring UI")
 
 (cond 

@@ -1,6 +1,3 @@
-(load "~/.emacs.d/config/config.econf")
-(load-config "parameters")
-
 (cond 
  ((windows-p) 
   (require 'powershell) 

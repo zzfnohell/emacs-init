@@ -1,4 +1,3 @@
-
 (defun eshell/emacs (&rest args)
   "Open a file in emacs. Some habits die hard."
   (if (null args)

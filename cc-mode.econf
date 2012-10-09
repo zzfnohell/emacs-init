@@ -1,6 +1,4 @@
-(load "~/.emacs.d/config/config.econf")
-(load-config "cedet")
-
+;; depends on cedet.econf
 ;;;; CC-mode  http://cc-mode.sourceforge.net/
 (require 'cc-mode)
 (c-set-offset 'inline-open 0)

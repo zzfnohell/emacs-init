@@ -1,8 +1,10 @@
+;; Base configuration
 (load "~/.emacs.d/config/config.econf")
+(load "~/.emacs.d/config/system.econf")
 (load-config "parameters")
 (load-config "emacs-lisp-mode")
-(load-config "ui")
 
+(load-config "ui")
 (load-config "coding")
 
 (load-config "sr-speedbar")

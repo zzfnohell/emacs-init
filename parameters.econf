@@ -1,4 +1,4 @@
-(load "~/.emacs.d/config/system.econf")
+
 
 (cond
  ((cygwin-p) (defconst *workspace* "~/workspace"))
