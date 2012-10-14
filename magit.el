@@ -1,4 +1,1 @@
-(load "~/.emacs.d/config/config.econf")
-(load-config "parameters")
-
 (require 'magit)

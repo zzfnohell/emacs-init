@@ -1,6 +1,6 @@
 ;; Base configuration
-(load "~/.emacs.d/config/config.econf")
-(load "~/.emacs.d/config/system.econf")
+(load "~/.emacs.d/config/config.el")
+(load "~/.emacs.d/config/system.el")
 (load-config "parameters")
 (load-config "emacs-lisp-mode")
 

@@ -1,2 +1,1 @@
-
-(setq auto-mode-alist (cons '("\\.econf" . emacs-lisp-mode) auto-mode-alist))
+;(setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))

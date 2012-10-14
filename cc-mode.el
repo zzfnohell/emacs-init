@@ -1,4 +1,4 @@
-;; depends on cedet.econf
+;; depends on cedet.el
 ;;;; CC-mode  http://cc-mode.sourceforge.net/
 (require 'cc-mode)
 (c-set-offset 'inline-open 0)
