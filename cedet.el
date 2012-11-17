@@ -1,5 +1,8 @@
 ;; cedet setting.
 (require 'cedet)
+
+(enable-visual-studio-bookmarks)
+
 (require 'semantic)
 (require 'srecode)
 
