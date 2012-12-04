@@ -1,5 +1,9 @@
 (require 'org-install)
-(require 'org-publish) 
+(require 'org-publish)
+
+(setq org-agenda-files 
+      (list "~/workspace/org/agenda.org"))
+
 (setq org-publish-project-alist 
       `(("org-main"
 	 :base-directory ,*org-root-directory* 
