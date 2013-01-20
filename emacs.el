@@ -37,6 +37,7 @@
 (load-config "whitespace")
 (load-config "indent-tabs-mode")
 (load-config "cc-mode")
+(load-config "csharp")
 (load-config "interactive-mode")
 (load-config "python-mode")
 (load-config "texinfo-mode")
