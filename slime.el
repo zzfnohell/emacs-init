@@ -20,6 +20,6 @@
  (t
   (setq
    slime-backend
-   "/usr/share/emacs/site-lisp/libs/slime/swank-loader.lisp")
-  (load-file "/usr/share/emacs/site-lisp/libs/slime/slime.el")
+   "/usr/local/src/site-lisp-libs/slime/swank-loader.lisp")
+  (load-file "/usr/local/src/site-lisp-libs/slime/slime.el")
   (slime-setup '(slime-fancy slime-asdf))))
