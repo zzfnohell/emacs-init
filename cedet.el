@@ -1,20 +1,58 @@
 ;; cedet setting.
 (require 'cedet)
-
-(enable-visual-studio-bookmarks)
+(global-ede-mode t)
 
 (require 'semantic)
-(require 'srecode)
 
-;; (semantic-load-enable-code-helpers)
-(semantic-load-enable-excessive-code-helpers)
-(global-semantic-tag-folding-mode 1)
-(global-semantic-decoration-mode 1)
+(custom-set-variables
+ '(semantic-default-submodes 
+   (quote 
+    (global-semantic-decoration-mode 
+     global-semantic-idle-completions-mode
+     global-semantic-idle-scheduler-mode
+     global-semanticdb-minor-mode
+     global-semantic-idle-summary-mode
+     global-semantic-mru-bookmark-mode)))
+ '(semantic-idle-scheduler-idle-time 3))
+
+(semantic-mode)
+
+;; smart complitions
+(require 'semantic/ia)
+(setq-mode-local 
+ c-mode 
+ semanticdb-find-default-throttle
+ '(project unloaded system recursive))
+(setq-mode-local 
+ c++-mode
+ semanticdb-find-default-throttle
+ '(project unloaded system recursive))
+
+;;;; TAGS Menu
+(defun my-semantic-hook ()
+(imenu-add-to-menubar "TAGS"))
+
+(add-hook 'semantic-init-hooks 'my-semantic-hook)
+
+;;;; Semantic DataBase directory
+;;(setq semanticdb-default-save-directory
+;;      (expand-file-name "~/.emacs.d/semanticdb"))
+
+;; gnu global TAGS。
+(require 'semantic/db-global)
+(semanticdb-enable-gnu-global-databases 'c-mode)
+(semanticdb-enable-gnu-global-databases 'c++-mode)
+
+;;(enable-visual-studio-bookmarks)
+
+;;(semantic-load-enable-code-helpers)
+;;(semantic-load-enable-excessive-code-helpers)
+;;(global-semantic-tag-folding-mode 1)
+;;(global-semantic-decoration-mode 1)
 (require 'semantic-decorate-include nil 'noerror)
 (semantic-toggle-decoration-style "semantic-tag-boundary" -1)
 
 ;(semantic-mode 1)
-(global-ede-mode t)
 
 (autoload 'senator-try-expand-semantic "senator")
 
@@ -32,13 +70,43 @@
         try-complete-file-name
         try-expand-whole-kill))
 
+(defun indent-or-complete ()
+  "Complete if point is at end of a word, otherwise indent line."
+  (interactive)
+  (if (looking-at "\\>")
+      (hippie-expand nil)
+    (indent-for-tab-command)))
+
+(defun indent-key-setup ()
+  "Set tab as key for indent-or-complete"
+  (local-set-key [(tab)] 'indent-or-complete))
 
 (setq senator-minor-mode-name "SN")
 (setq semantic-imenu-auto-rebuild-directory-indexes nil)
 
+;;;; Include settings
+(require 'semantic/bovine/gcc)
+(require 'semantic/bovine/c)
+
 ;; gcc setup
 (require 'semantic-c nil 'noerror)
+(setq 
+ cedet-sys-include-dirs 
+ (list
+  "/usr/include"
+  "/usr/include/bits"
+  "/usr/include/glib-2.0"
+  "/usr/include/gnu"
+  "/usr/include/gtk-2.0"
+  "/usr/include/gtk-2.0/gdk-pixbuf"
+  "/usr/include/gtk-2.0/gtk"
+  "/usr/local/include"
+  "/usr/local/include"))
+
+(setq semantic-c-dependency-system-include-path "/usr/include/")
+
 (let ((include-dirs *cedet-user-include-dirs*))
+  (setq include-dirs (append include-dirs cedet-sys-include-dirs))
   (mapc (lambda (dir)
 	  (semantic-add-system-include dir 'c++-mode)
 	  (semantic-add-system-include dir 'c-mode))
@@ -89,3 +157,9 @@
 (add-hook 'scheme-mode-hook 'cedet-semantic-hook)
 (add-hook 'emacs-lisp-mode-hook 'cedet-semantic-hook)
 (add-hook 'erlang-mode-hook 'cedet-semantic-hook)
+
+(require 'srecode)
+;;;; Custom template for srecode
+;;(setq srecode-map-load-path
+;;      (list (srecode-map-base-template-dir)
+;;	    (expand-file-name "~/.emacs.d/templates/srecode")))
