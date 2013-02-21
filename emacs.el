@@ -24,6 +24,7 @@
 (load-config "slime")
 (load-config "emms")
 (load-config "ess")
+(load-config "julia")
 (load-config "maxima")
 (load-config "cedet")
 (load-config "ecb")
@@ -41,6 +42,7 @@
 (load-config "interactive-mode")
 (load-config "python-mode")
 (load-config "texinfo-mode")
+(load-config "markdown-mode")
 
 (load-config "cygwin-mount")
 ;; xcscope
