@@ -4,19 +4,19 @@
  ((not (eq nil window-system))
   (setq default-frame-alist
         (append
-         '((font . "WenQuanYi Micro Hei Mono 12")) default-frame-alist))
-  (set-frame-font "WenQuanYi Micro Hei Mono 12")
+         '((font . "WenQuanYi Micro Hei Mono 10")) default-frame-alist))
+  (set-frame-font "WenQuanYi Micro Hei Mono 10")
   
   ;; Setting English Font
   (set-face-attribute
-   'default nil :font "WenQuanYi Micro Hei Mono 12")
+   'default nil :font "WenQuanYi Micro Hei Mono 10")
   
   ;; Chinese Font
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font
      (frame-parameter nil 'font)
      charset
-     (font-spec :family "WenQuanYi Micro Hei Mono" :size 12)))))
+     (font-spec :family "WenQuanYi Micro Hei Mono" :size 10)))))
 
 (setq ansi-color-for-comint-mode t) ;emacs shell font confusion
 
