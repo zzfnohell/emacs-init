@@ -1,3 +1,3 @@
 ;; require ess-site
-
-(setq inferior-julia-program-name "julia")
+(require 'ess-julia)
+(setq inferior-julia-program-name "julia-release-basic")
