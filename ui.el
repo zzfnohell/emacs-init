@@ -28,6 +28,7 @@
 (fset 'yes-or-no-p 'y-or-n-p);use y/n replace yes/no
 (column-number-mode t);display column number
 (show-paren-mode t) ;match parentheses.
+
 (display-time-mode 1);display date time,format as below:
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
