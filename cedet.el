@@ -1,6 +1,8 @@
 ;; cedet setting.
 (require 'cedet)
-(global-ede-mode t)
+
+;; disable global ede mode, it conflicts with ecb
+;;(global-ede-mode t)
 
 (require 'semantic)
 
