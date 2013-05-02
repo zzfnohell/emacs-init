@@ -43,7 +43,7 @@
 (load-config "python-mode")
 (load-config "texinfo-mode")
 (load-config "markdown-mode")
-
+(load-config "sage-mode")
 (load-config "cygwin-mount")
 ;; xcscope
 ;(require 'xcscope)
