@@ -29,8 +29,7 @@
 (load-config "cedet")
 (load-config "ecb")
 (load-config "compile")
-(load-config "egg")
-;;(load-config "magit")
+(load-config "magit")
 
 (load-config "powershell")
 (load-config "octave-mod")

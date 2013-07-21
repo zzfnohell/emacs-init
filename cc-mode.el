@@ -49,7 +49,6 @@
 (add-hook 'c-mode-common-hook (lambda() (c-set-style "k&r")))
 (add-hook 'c-mode-common-hook 'c-toggle-hungry-state)
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
-
 ;(add-hook 'c-mode-common-hook 'doxymacs-mode) ;; init doxymacs-mode
 
 (add-hook 'c++-mode-hook 'c++-mode-edit-hook)
