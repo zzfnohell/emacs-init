@@ -1,15 +1,20 @@
 ;; cedet setting.
 (require 'cedet)
+(require 'cedet-cscope)
+(require 'cedet-files)
+(require 'cedet-global)
+(require 'cedet-idutils)
+(require 'ede)
 
 ;; disable global ede mode, it conflicts with ecb
-;;(global-ede-mode t)
+(global-ede-mode t)
 
 (require 'semantic)
 
 (custom-set-variables
- '(semantic-default-submodes 
-   (quote 
-    (global-semantic-decoration-mode 
+ '(semantic-default-submodes
+   (quote
+    (global-semantic-decoration-mode
      global-semantic-idle-completions-mode
      global-semantic-idle-scheduler-mode
      global-semanticdb-minor-mode
@@ -17,15 +22,28 @@
      global-semantic-mru-bookmark-mode)))
  '(semantic-idle-scheduler-idle-time 3))
 
-(semantic-mode)
+(semantic-mode 1)
+;; (global-semanticdb-minor-mode 1)
+;; (global-semantic-idle-scheduler-mode 1)
+;; (global-semantic-idle-summary-mode 1)
+;; (global-semantic-idle-completions-mode 1)
+;; (global-semantic-decoration-mode 1)
+;; (global-semantic-highlight-func-mode 1)
+(global-semantic-highlight-edits-mode 1)
+;; (global-semantic-stickyfunc-mode 1)
+;; (global-semantic-mru-bookmark-mode 1)
+(global-semantic-show-unmatched-syntax-mode 1)
+(global-semantic-show-parser-state-mode 1)
 
 ;; smart complitions
 (require 'semantic/ia)
-(setq-mode-local 
- c-mode 
+
+(setq-mode-local
+ c-mode
  semanticdb-find-default-throttle
  '(project unloaded system recursive))
-(setq-mode-local 
+
+(setq-mode-local
  c++-mode
  semanticdb-find-default-throttle
  '(project unloaded system recursive))
@@ -53,8 +71,6 @@
 ;;(global-semantic-decoration-mode 1)
 (require 'semantic-decorate-include nil 'noerror)
 (semantic-toggle-decoration-style "semantic-tag-boundary" -1)
-
-;(semantic-mode 1)
 
 (autoload 'senator-try-expand-semantic "senator")
 
@@ -110,9 +126,9 @@
 (let ((include-dirs *cedet-user-include-dirs*))
   (setq include-dirs (append include-dirs cedet-sys-include-dirs))
   (mapc (lambda (dir)
-	  (semantic-add-system-include dir 'c++-mode)
-	  (semantic-add-system-include dir 'c-mode))
-	include-dirs))
+          (semantic-add-system-include dir 'c++-mode)
+          (semantic-add-system-include dir 'c-mode))
+        include-dirs))
 
 
 (defun recur-list-files (dir re)

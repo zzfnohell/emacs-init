@@ -29,21 +29,22 @@
 (load-config "cedet")
 (load-config "ecb")
 (load-config "compile")
-(load-config "egg")
-;;(load-config "magit")
+(load-config "magit")
 
 (load-config "powershell")
 (load-config "octave-mod")
 
 (load-config "whitespace")
+(load-config "gtags")
 (load-config "indent-tabs-mode")
+(load-config "auto-complete")
 (load-config "cc-mode")
 (load-config "csharp")
 (load-config "interactive-mode")
 (load-config "python-mode")
 (load-config "texinfo-mode")
 (load-config "markdown-mode")
-
+(load-config "sage-mode")
 (load-config "cygwin-mount")
 ;; xcscope
 ;(require 'xcscope)

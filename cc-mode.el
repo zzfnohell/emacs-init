@@ -38,15 +38,17 @@
   (setq c-basic-offset 4)
   (c-set-style "stroustrup"))
 
-(c-set-offset 'inline-open 0)
-(c-set-offset 'friend '-)
-(c-set-offset 'substatement-open 0)
 (add-hook 'semantic-init-hooks 'cedet-semantic-hook)
 
+(add-hook 'c-mode-common-hook
+          '(lambda ()
+             (gtags-mode 1)))
 (add-hook 'c-mode-common-hook 'cedet-semantic-hook)
 (add-hook 'c-mode-common-hook 'c-mode-cedet-hook)
 (add-hook 'c-mode-common-hook 'c-mode-edit-hook)
 (add-hook 'c-mode-common-hook (lambda() (c-set-style "k&r")))
+(add-hook 'c-mode-common-hook 'c-toggle-hungry-state)
+(add-hook 'c-mode-common-hook 'hs-minor-mode)
 ;(add-hook 'c-mode-common-hook 'doxymacs-mode) ;; init doxymacs-mode
 
 (add-hook 'c++-mode-hook 'c++-mode-edit-hook)
