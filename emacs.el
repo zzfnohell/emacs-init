@@ -36,7 +36,9 @@
 (load-config "octave-mod")
 
 (load-config "whitespace")
+(load-config "gtags")
 (load-config "indent-tabs-mode")
+(load-config "auto-complete")
 (load-config "cc-mode")
 (load-config "csharp")
 (load-config "interactive-mode")

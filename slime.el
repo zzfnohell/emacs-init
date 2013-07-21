@@ -14,12 +14,12 @@
  ((windows-p)
   (setq
    slime-backend
-   "~/.emacs.d/libs/slime/swank-loader.lisp")
-  (load-file "~/.emacs.d/libs/slime/slime.el")
+   "~/.emacs.d/site-lisp/slime/swank-loader.lisp")
+  (load-file "~/.emacs.d/site-lisp/slime/slime.el")
   (slime-setup '(slime-fancy slime-asdf)))
  (t
   (setq
    slime-backend
-   "~/.emacs.d/libs/slime/swank-loader.lisp")
-  (load-file "~/.emacs.d/libs/slime/slime.el")
+   "~/.emacs.d/site-lisp/slime/swank-loader.lisp")
+  (load-file "~/.emacs.d/site-lisp/slime/slime.el")
   (slime-setup '(slime-fancy slime-asdf))))
