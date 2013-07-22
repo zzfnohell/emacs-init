@@ -12,7 +12,7 @@
 (defvar *cedet-user-include-dirs* nil)
 (defvar *cygwin-root* "c:/cygwin")
 (defvar *cygwin-bin* "c:/cygwin/bin")
-
+(defvar *rfc-directory* (concat *workspace* "/rfc-directory"))
 
 (defun add-subdirs-to-load-path 
   (dir)

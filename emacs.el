@@ -45,6 +45,9 @@
 (load-config "texinfo-mode")
 (load-config "markdown-mode")
 (load-config "sage-mode")
+
+(load-config "helm")
+(load-config "irfc")
 (load-config "cygwin-mount")
 ;; xcscope
 ;(require 'xcscope)
