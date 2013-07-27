@@ -68,7 +68,7 @@
 ;;(semantic-load-enable-code-helpers)
 ;;(semantic-load-enable-excessive-code-helpers)
 ;;(global-semantic-tag-folding-mode 1)
-;;(global-semantic-decoration-mode 1)
+(global-semantic-decoration-mode 1)
 (require 'semantic-decorate-include nil 'noerror)
 (semantic-toggle-decoration-style "semantic-tag-boundary" -1)
 
