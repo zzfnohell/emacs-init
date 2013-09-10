@@ -46,7 +46,7 @@
 (load-config "markdown-mode")
 (load-config "sage-mode")
 
-(load-config "helm")
+;; (load-config "helm")
 (load-config "rfcview")
 (load-config "irfc")
 (load-config "cygwin-mount")
