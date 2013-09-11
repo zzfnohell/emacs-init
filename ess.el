@@ -1,1 +1,2 @@
-(require 'ess-site)
+(cond
+ ((linux-p) (require 'ess-site)))
