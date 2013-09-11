@@ -46,13 +46,19 @@
 (load-config "markdown-mode")
 (load-config "sage-mode")
 
-;; (load-config "helm")
+(load-config "helm")
 (load-config "rfcview")
 (load-config "irfc")
 (load-config "cygwin-mount")
 ;; xcscope
-;(require 'xcscope)
+(require 'xcscope)
 
+(load-config "yasnippet")
+(load-config "csharpmode")
+(load-config "jdee")
+
+(load-config "highlight-line")
+(load-config "epy")
 ;; for file in *
 ;; do
 ;;     mv $file ${file/%el/econf}
