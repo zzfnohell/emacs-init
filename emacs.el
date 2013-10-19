@@ -3,7 +3,6 @@
 (load "~/.emacs.d/config/system.el")
 (load-config "parameters")
 (load-config "emacs-lisp-mode")
-
 (load-config "ui")
 (load-config "coding")
 
@@ -45,6 +44,8 @@
 (load-config "texinfo-mode")
 (load-config "markdown-mode")
 (load-config "sage-mode")
+;;(load-config "emacs.js")
+(load-config "js2mode")
 
 (load-config "helm")
 (load-config "rfcview")
@@ -63,3 +64,6 @@
 ;; do
 ;;     mv $file ${file/%el/econf}
 ;; done
+;; elpa pacakges
+(load-config "package")
+(load-config "multi-web-mode")
