@@ -8,14 +8,12 @@
 
 (load-config "sr-speedbar")
 (load-config "linum")
-(load-config "session")
 (load-config "eshell")
 (load-config "theme")
 (load-config "global-set-key")
 
 (load-config "ediff")
 
-(load-config "w3m")
 (load-config "erc")
 (load-config "dired")
 (load-config "org")
@@ -26,9 +24,8 @@
 (load-config "julia")
 (load-config "maxima")
 (load-config "cedet")
-(load-config "ecb")
+
 (load-config "compile")
-(load-config "magit")
 
 (load-config "powershell")
 (load-config "octave-mod")
@@ -72,3 +69,7 @@
 (load-config "helm")
 (load-config "helm-R")
 (load-config "helm-flymake")
+(load-config "ecb")
+(load-config "magit")
+(load-config "session")
+(load-config "w3m")
