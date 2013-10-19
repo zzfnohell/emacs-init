@@ -47,7 +47,6 @@
 ;;(load-config "emacs.js")
 (load-config "js2mode")
 
-(load-config "helm")
 (load-config "rfcview")
 (load-config "irfc")
 (load-config "cygwin-mount")
@@ -64,6 +63,12 @@
 ;; do
 ;;     mv $file ${file/%el/econf}
 ;; done
+
+(load-config "nxhtml")
+
 ;; elpa pacakges
 (load-config "package")
 (load-config "multi-web-mode")
+(load-config "helm")
+(load-config "helm-R")
+(load-config "helm-flymake")
