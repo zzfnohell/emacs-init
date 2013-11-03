@@ -51,9 +51,9 @@
 ;; elpa pacakges
 (load-config "package")
 (load-config "multi-web-mode")
-;;(load-config "helm")
-;;(load-config "helm-R")
-;;(load-config "helm-flymake")
+(load-config "helm")
+(load-config "helm-R")
+(load-config "helm-flymake")
 (load-config "ecb")
 (load-config "magit")
 (load-config "session")

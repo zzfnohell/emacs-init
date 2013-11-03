@@ -1,8 +1,8 @@
 
 
 (cond
- ((cygwin-p) (defconst *workspace* "~/workspace"))
- ((linux-p) (defconst *workspace* "~/workspace"))
+ ((cygwin-p) (defconst *workspace* "~"))
+ ((linux-p) (defconst *workspace* "~"))
  ((windows-p) (defconst *workspace* "C:/Users/zzfnohell/Documents/workspace")))
 
 (defvar *org-root-directory* (concat *workspace* "/language/org/src"))
