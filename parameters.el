@@ -20,8 +20,6 @@
     (setq load-path (cons dir load-path))
     (normal-top-level-add-subdirs-to-load-path)))
 
-(add-subdirs-to-load-path  "~/.emacs.d/site-lisp")
-
 (if (cygwin-p) (setq exec-path (cons *cygwin-bin* exec-path)))
 
 (setq default-fill-column 80)

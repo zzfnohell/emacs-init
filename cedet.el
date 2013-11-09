@@ -19,16 +19,24 @@
 
 (semantic-mode 1)
 
-(custom-set-variables
- '(semantic-default-submodes
-   (quote
-    (global-semantic-decoration-mode
-     global-semantic-idle-completions-mode
-     global-semantic-idle-scheduler-mode
-     global-semanticdb-minor-mode
-     global-semantic-idle-summary-mode
-     global-semantic-mru-bookmark-mode)))
- '(semantic-idle-scheduler-idle-time 3))
+(add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
+(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
+(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
+
+;;(custom-set-variables
+;; '(semantic-default-submodes
+;;   (quote
+;;    (global-semantic-decoration-mode
+;;     global-semantic-idle-completions-mode
+;;     global-semantic-idle-scheduler-mode
+;;     global-semanticdb-minor-mode
+;;     global-semantic-idle-summary-mode
+;;     global-semantic-mru-bookmark-mode)))
+;; '(semantic-idle-scheduler-idle-time 3))
 
 ;; (global-semanticdb-minor-mode 1)
 ;; (global-semantic-idle-scheduler-mode 1)
@@ -69,6 +77,7 @@
 ;; (semantic-load-enable-code-helpers)
 ;; (semantic-load-enable-excessive-code-helpers)
 ;; (global-semantic-tag-folding-mode 1)
+
 (global-semantic-decoration-mode 1)
 (semantic-toggle-decoration-style "semantic-tag-boundary" -1)
 

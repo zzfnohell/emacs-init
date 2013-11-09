@@ -1,1 +1,1 @@
-(require 'sr-speedbar)
+;;(require 'sr-speedbar)
