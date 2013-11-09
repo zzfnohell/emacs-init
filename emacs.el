@@ -12,17 +12,15 @@
 (load-config "theme")
 (load-config "global-set-key")
 
+(load-config "cedet")
 (load-config "org")
 (load-config "uniquify")
 (load-config "ess")
 (load-config "julia")
 (load-config "maxima")
-(load-config "cedet")
 
 (load-config "compile")
-
 (load-config "whitespace")
-
 (load-config "indent-tabs-mode")
 (load-config "csharp")
 (load-config "interactive-mode")
@@ -30,23 +28,12 @@
 (load-config "texinfo-mode")
 (load-config "markdown-mode")
 (load-config "sage-mode")
-;;(load-config "emacs.js")
-
 (load-config "rfcview")
 (load-config "cygwin-mount")
-;; xcscope
-(require 'xcscope)
-
+(load-config "xcscope")
 (load-config "jdee")
-
 (load-config "highlight-line")
 (load-config "epy")
-;; for file in *
-;; do
-;;     mv $file ${file/%el/econf}
-;; done
-
-(load-config "nxhtml")
 
 ;; elpa pacakges
 (load-config "package")
@@ -74,3 +61,4 @@
 (load-config "js2mode")
 (load-config "markdown")
 (load-config "javascript")
+(load-config "nxhtml")

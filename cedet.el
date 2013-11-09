@@ -8,8 +8,16 @@
 
 ;; disable global ede mode, it conflicts with ecb
 (global-ede-mode t)
+(ede-enable-generic-projects)
 
-(require 'semantic)
+(require 'semantic/ia)
+(require 'semantic/bovine/gcc)
+(require 'semantic/bovine/c)
+(require 'semantic/db-global)
+(require 'semantic-c nil 'noerror)
+(require 'semantic-decorate-include nil 'noerror)
+
+(semantic-mode 1)
 
 (custom-set-variables
  '(semantic-default-submodes
@@ -22,21 +30,17 @@
      global-semantic-mru-bookmark-mode)))
  '(semantic-idle-scheduler-idle-time 3))
 
-(semantic-mode 1)
 ;; (global-semanticdb-minor-mode 1)
 ;; (global-semantic-idle-scheduler-mode 1)
 ;; (global-semantic-idle-summary-mode 1)
 ;; (global-semantic-idle-completions-mode 1)
 ;; (global-semantic-decoration-mode 1)
 ;; (global-semantic-highlight-func-mode 1)
-(global-semantic-highlight-edits-mode 1)
+;; (global-semantic-highlight-edits-mode 1)
 ;; (global-semantic-stickyfunc-mode 1)
 ;; (global-semantic-mru-bookmark-mode 1)
-(global-semantic-show-unmatched-syntax-mode 1)
-(global-semantic-show-parser-state-mode 1)
-
-;; smart complitions
-(require 'semantic/ia)
+;; (global-semantic-show-unmatched-syntax-mode 1)
+;; (global-semantic-show-parser-state-mode 1)
 
 (setq-mode-local
  c-mode
@@ -48,9 +52,8 @@
  semanticdb-find-default-throttle
  '(project unloaded system recursive))
 
-;;;; TAGS Menu
 (defun my-semantic-hook ()
-(imenu-add-to-menubar "TAGS"))
+  (imenu-add-to-menubar "TAGS"))
 
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
 
@@ -58,18 +61,15 @@
 ;;(setq semanticdb-default-save-directory
 ;;      (expand-file-name "~/.emacs.d/semanticdb"))
 
-;; gnu global TAGS。
-(require 'semantic/db-global)
 (semanticdb-enable-gnu-global-databases 'c-mode)
 (semanticdb-enable-gnu-global-databases 'c++-mode)
 
-;;(enable-visual-studio-bookmarks)
-
-;;(semantic-load-enable-code-helpers)
-;;(semantic-load-enable-excessive-code-helpers)
-;;(global-semantic-tag-folding-mode 1)
+;; not existing in build in
+;; (enable-visual-studio-bookmarks)
+;; (semantic-load-enable-code-helpers)
+;; (semantic-load-enable-excessive-code-helpers)
+;; (global-semantic-tag-folding-mode 1)
 (global-semantic-decoration-mode 1)
-(require 'semantic-decorate-include nil 'noerror)
 (semantic-toggle-decoration-style "semantic-tag-boundary" -1)
 
 (autoload 'senator-try-expand-semantic "senator")
@@ -102,14 +102,8 @@
 (setq senator-minor-mode-name "SN")
 (setq semantic-imenu-auto-rebuild-directory-indexes nil)
 
-;;;; Include settings
-(require 'semantic/bovine/gcc)
-(require 'semantic/bovine/c)
-
-;; gcc setup
-(require 'semantic-c nil 'noerror)
-(setq 
- cedet-sys-include-dirs 
+(setq
+ cedet-sys-include-dirs
  (list
   "/usr/include"
   "/usr/include/bits"
@@ -136,22 +130,22 @@
   (when (file-accessible-directory-p dir)
     (let ((files (directory-files dir t)) matched)
       (dolist (file files matched)
-	(let ((fname (file-name-nondirectory file)))
-	  (cond
-	   ((or (string= fname ".")
-		(string= fname "..")) nil)
-	   ((and (file-regular-p file)
-		 (string-match re fname))
-	    (setq matched (cons file matched)) (message fname))
-	   ((file-directory-p file)
-	    (let ((tfiles (recur-list-files file re)))
-	      (when tfiles (setq matched (append matched tfiles)))))))))))
+        (let ((fname (file-name-nondirectory file)))
+          (cond
+           ((or (string= fname ".")
+                (string= fname "..")) nil)
+           ((and (file-regular-p file)
+                 (string-match re fname))
+            (setq matched (cons file matched)) (message fname))
+           ((file-directory-p file)
+            (let ((tfiles (recur-list-files file re)))
+              (when tfiles (setq matched (append matched tfiles)))))))))))
 
 (defun preprocess-symbol-directory (dir)
   (when (file-accessible-directory-p dir)
     (let ((cfiles (recur-list-files dir "(\\.h|\\.hpp)")))
       (dolist (file cfiles)
-	(add-to-list 'semantic-lex-c-preprocessor-symbol-file file)))))
+        (add-to-list 'semantic-lex-c-preprocessor-symbol-file file)))))
 
 (defun add-semantic-include-directory (dir)
   (semantic-add-system-include dir 'c++-mode)
@@ -177,6 +171,7 @@
 (add-hook 'erlang-mode-hook 'cedet-semantic-hook)
 
 (require 'srecode)
+(global-srecode-minor-mode 1)
 ;;;; Custom template for srecode
 ;;(setq srecode-map-load-path
 ;;      (list (srecode-map-base-template-dir)
