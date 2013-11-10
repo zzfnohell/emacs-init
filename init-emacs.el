@@ -65,6 +65,7 @@
 (require 'init-auto-complete)
 (require 'init-cc-mode)
 (require 'init-markdown)
+(require 'init-mmm)
 (require 'init-javascript)
 (require 'init-css)
 (require 'init-csv)
