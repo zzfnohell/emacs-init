@@ -8,6 +8,7 @@
 ;;
 
 (require 'init-benchmarking) ;; Measure startup time
+(require 'init-elpa)
 
 (require 'init-parameters)
 (require 'init-emacs-lisp-mode)
