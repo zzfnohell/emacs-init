@@ -2,7 +2,5 @@
 (add-to-list 'ac-dictionary-directories
              "~/.emacs.d/auto-complete/ac-dict")
 (ac-config-default)
-(provide \'init-auto-complete.el)
-
 
 (provide 'init-auto-complete)
