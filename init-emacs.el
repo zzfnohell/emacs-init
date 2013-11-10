@@ -12,7 +12,6 @@
 (require 'init-utils)
 
 (require 'init-parameters)
-(require 'init-emacs-lisp-mode)
 (require 'init-ui)
 (require 'init-coding)
 
@@ -54,6 +53,7 @@
 (require 'init-w3m)
 (require 'init-yasnippet)
 (require 'init-slime)
+(require 'init-lisp)
 (require 'init-emms)
 (require 'init-powershell)
 (require 'init-octave-mod)
@@ -74,6 +74,7 @@
 (require 'init-haml)
 (require 'init-python-mode)
 (require 'init-ruby-mode)
+(require 'init-haskell)
 (require 'init-nodejs)
 
 ;;; init-emacs.el ends here
