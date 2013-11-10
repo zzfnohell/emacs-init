@@ -33,7 +33,7 @@
 (require 'init-whitespace)
 (require 'init-indent-tabs-mode)
 (require 'init-interactive-mode)
-(require 'init-python-mode)
+;;(require 'init-python-mode)
 (require 'init-texinfo-mode)
 (require 'init-markdown-mode)
 (require 'init-sage-mode)
@@ -66,6 +66,13 @@
 (require 'init-cc-mode)
 (require 'init-markdown)
 (require 'init-javascript)
+(require 'init-css)
+(require 'init-csv)
+(require 'init-erlang)
+(require 'init-clojure)
+(require 'init-haml)
+(require 'init-python-mode)
+(require 'init-ruby-mode)
 (require 'init-nodejs)
 
 ;;; init-emacs.el ends here
