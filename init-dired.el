@@ -4,4 +4,5 @@
   (setq dired-listing-switches "-alk"))
  (t 
   (setq dired-listing-switches "-avl --time-style=long-iso")))
-\n(provide \'init-dired.el)
+
+(provide 'init-dired)

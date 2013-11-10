@@ -11,4 +11,7 @@
 
 ;; (require 'highlight-indentation)
 ;; (add-hook 'python-mode-hook 'highlight-indentation)
-\n(provide \'init-epy.el)
+
+
+
+(provide 'init-epy)

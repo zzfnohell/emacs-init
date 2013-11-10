@@ -61,3 +61,6 @@
 ;;opencl source file.
 (setq auto-mode-alist (cons '("\\.cl$" . c-mode) auto-mode-alist))
 (provide \'init-cc-mode.el)
+
+
+(provide 'init-cc-mode)

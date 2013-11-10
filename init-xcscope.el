@@ -1,3 +1,3 @@
 ;;;
 (require 'xcscope)
-\n(provide \'init-xcscope.el)
+(provide 'init-xcscope)

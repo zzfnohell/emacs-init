@@ -24,4 +24,7 @@
 ;;    "~/.emacs.d/site-lisp/slime/swank-loader.lisp")
 ;;   (load-file "~/.emacs.d/site-lisp/slime/slime.el")
 ;;   (slime-setup '(slime-fancy slime-asdf))))
-\n(provide \'init-slime.el)
+
+
+
+(provide 'init-slime)

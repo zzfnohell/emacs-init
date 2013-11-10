@@ -9,4 +9,7 @@
 	    (if (eq window-system 'x)
 		(font-lock-mode 1))))
 
-\n(provide \'init-octave-mod.el)
+
+
+
+(provide 'init-octave-mod)

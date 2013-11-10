@@ -21,4 +21,7 @@
 (custom-set-faces
  '(flymake-errline ((((class color)) (:underline "red"))))
  '(flymake-warnline ((((class color)) (:underline "yellow")))))
-\n(provide \'init-flymake.el)
+
+
+
+(provide 'init-flymake)

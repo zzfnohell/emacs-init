@@ -1,2 +1,5 @@
 (require 'helm-flymake)
-\n(provide \'init-helm-flymake.el)
+
+
+
+(provide 'init-helm-flymake)

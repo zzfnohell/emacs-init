@@ -4,4 +4,7 @@
 			#'kill-buffer-on-exit))
 (add-hook 'shell-mode-hook 'interactive-mode-exit-hook-func)
 (add-hook 'gdb-mode-hook 'interactive-mode-exit-hook-func)
-\n(provide \'init-interactive-mode.el)
+
+
+
+(provide 'init-interactive-mode)

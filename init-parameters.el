@@ -24,3 +24,6 @@
 
 (setq default-fill-column 80)
 (provide 'init-parameters.el)
+
+
+(provide 'init-parameters)

@@ -12,4 +12,7 @@
 ;; to enable some combination of features
 
 
-\n(provide \'init-sage-mode.el)
+
+
+
+(provide 'init-sage-mode)

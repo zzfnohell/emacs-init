@@ -3,4 +3,7 @@
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
 (require 'js2-refactor)
-\n(provide \'init-js2mode.el)
+
+
+
+(provide 'init-js2mode)

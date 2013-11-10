@@ -3,4 +3,7 @@
   (setq file-path (concat config-path name ".el"))
   (load file-path))
 
-\n(provide \'init-config.el)
+
+
+
+(provide 'init-config)

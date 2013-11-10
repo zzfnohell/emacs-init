@@ -1,3 +1,6 @@
 (require 'helm-R)
 
-\n(provide \'init-helm-R.el)
+
+
+
+(provide 'init-helm-R)

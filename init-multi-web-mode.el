@@ -7,4 +7,7 @@
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 (multi-web-global-mode 1)
 
-\n(provide \'init-multi-web-mode.el)
+
+
+
+(provide 'init-multi-web-mode)

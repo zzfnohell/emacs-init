@@ -4,4 +4,7 @@
       (emms-standard)
       (emms-default-players)))
   
-\n(provide \'init-emms.el)
+
+
+
+(provide 'init-emms)

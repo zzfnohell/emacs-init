@@ -7,4 +7,7 @@
   "function that runs when csharp-mode is initialized for a buffer.")
 
 (add-hook  'csharp-mode-hook 'my-csharp-mode-fn t)
-\n(provide \'init-csharp-mode.el)
+
+
+
+(provide 'init-csharp-mode)

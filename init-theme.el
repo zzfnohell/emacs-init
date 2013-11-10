@@ -6,4 +6,7 @@
 ;;   (color-theme-initialize)
 ;;   (color-theme-classic)))
 
-\n(provide \'init-theme.el)
+
+
+
+(provide 'init-theme)

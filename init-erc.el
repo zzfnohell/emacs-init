@@ -14,4 +14,7 @@
 
 (unless (file-exists-p erc-log-channels-directory)
   (mkdir erc-log-channels-directory t))
-\n(provide \'init-erc.el)
+
+
+
+(provide 'init-erc)

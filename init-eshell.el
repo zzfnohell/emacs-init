@@ -9,4 +9,7 @@
     ;; argument causes later arguments to be looked for in that directory,
     ;; not the starting directory
     (mapc #'find-file (mapcar #'expand-file-name (eshell-flatten-list (reverse args))))))
-\n(provide \'init-eshell.el)
+
+
+
+(provide 'init-eshell)

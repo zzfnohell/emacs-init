@@ -2,4 +2,7 @@
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-\n(provide \'init-markdown-mode.el)
+
+
+
+(provide 'init-markdown-mode)

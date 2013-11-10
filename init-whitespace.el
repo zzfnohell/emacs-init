@@ -1,3 +1,6 @@
 (require 'whitespace)
 
-\n(provide \'init-whitespace.el)
+
+
+
+(provide 'init-whitespace)

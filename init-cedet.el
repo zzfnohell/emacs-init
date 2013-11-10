@@ -185,4 +185,7 @@
 ;;(setq srecode-map-load-path
 ;;      (list (srecode-map-base-template-dir)
 ;;	    (expand-file-name "~/.emacs.d/templates/srecode")))
-\n(provide \'init-cedet.el)
+
+
+
+(provide 'init-cedet)

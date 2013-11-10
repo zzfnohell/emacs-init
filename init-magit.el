@@ -1,2 +1,5 @@
 ;;(require 'magit)
-\n(provide \'init-magit.el)
+
+
+
+(provide 'init-magit)

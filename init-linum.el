@@ -30,4 +30,7 @@
 (define-globalized-minor-mode global-linum-mode linum-mode turn-linum-on)
 
 (global-linum-mode 1)
-\n(provide \'init-linum.el)
+
+
+
+(provide 'init-linum)

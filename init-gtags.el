@@ -10,4 +10,7 @@
                    '((t (:bold t :foreground "blue" :weight extra-bold)
                         underline)))
              (hl-line-mode 1)))
-\n(provide \'init-gtags.el)
+
+
+
+(provide 'init-gtags)

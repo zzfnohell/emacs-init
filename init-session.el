@@ -2,4 +2,7 @@
 (require 'session)
 ;;hooks----------------------------------------------------------
 (add-hook 'after-init-hook 'session-initialize)
-\n(provide \'init-session.el)
+
+
+
+(provide 'init-session)

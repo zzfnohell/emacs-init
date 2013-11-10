@@ -12,4 +12,7 @@
 
 
 (add-to-list 'ecb-source-path (list *workspace* "default"))
-\n(provide \'init-ecb.el)
+
+
+
+(provide 'init-ecb)

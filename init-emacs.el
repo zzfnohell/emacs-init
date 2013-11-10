@@ -69,3 +69,6 @@
 (require 'nodejs)
 
 ;;; init-emacs.el ends here
+
+
+(provide 'init-emacs)

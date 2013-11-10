@@ -12,4 +12,7 @@
 	(setq w3m-home-page "https://www.google.com/ncr")
 	(setq w3m-default-display-inline-images t))))
   
-\n(provide \'init-w3m.el)
+
+
+
+(provide 'init-w3m)

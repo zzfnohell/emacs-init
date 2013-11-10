@@ -5,4 +5,7 @@
 
 (setq package-enable-at-startup nil)
 (package-initialize)
-\n(provide \'init-package.el)
+
+
+
+(provide 'init-package)

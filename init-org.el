@@ -22,4 +22,7 @@
 	 :base-extension "css//|js//|png//|jpg//|gif//|pdf//|mp3//|swf//|zip//|gz//|txt//|el"
 	publishing-function org-publish-attachment) 
 	("org" :components ("org-main" "org-static"))))
-\n(provide \'init-org.el)
+
+
+
+(provide 'init-org)

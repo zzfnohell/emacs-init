@@ -1,2 +1,5 @@
 (global-hl-line-mode t)
-\n(provide \'init-highlight-line.el)
+
+
+
+(provide 'init-highlight-line)
