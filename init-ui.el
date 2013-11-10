@@ -62,4 +62,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-\n(provide \'init-ui.el)
+(provide 'init-ui)
