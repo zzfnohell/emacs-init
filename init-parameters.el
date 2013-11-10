@@ -23,4 +23,4 @@
 (if (cygwin-p) (setq exec-path (cons *cygwin-bin* exec-path)))
 
 (setq default-fill-column 80)
-\n(provide \'init-parameters.el)
+(provide 'init-parameters.el)
