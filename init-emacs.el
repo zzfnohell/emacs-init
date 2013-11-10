@@ -36,14 +36,13 @@
 (require 'init-texinfo-mode)
 (require 'init-markdown-mode)
 (require 'init-sage-mode)
-;;(require 'init-rfcview)
 (require 'init-xcscope)
 (require 'init-jdee)
 (require 'init-highlight-line)
 (require 'init-epy)
 
 ;; elpa pacakges
-(require 'init-package)
+(require 'init-irfc)
 (require 'init-flymake)
 (require 'init-helm)
 (require 'init-helm-R)
