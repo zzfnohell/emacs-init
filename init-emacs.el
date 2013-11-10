@@ -36,7 +36,6 @@
 (require 'init-markdown-mode)
 (require 'init-sage-mode)
 ;;(require 'init-rfcview)
-(require 'init-cygwin-mount)
 (require 'init-xcscope)
 (require 'init-jdee)
 (require 'init-highlight-line)
