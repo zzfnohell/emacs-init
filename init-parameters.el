@@ -1,10 +1,4 @@
-
-
-(cond
- ((cygwin-p) (defconst *workspace* "~"))
- ((linux-p) (defconst *workspace* "~"))
- ((windows-p) (defconst *workspace* "C:/Users/zzfnohell/Documents/workspace")))
-
+(defconst *workspace* "~")
 (defvar *org-root-directory* (concat *workspace* "/language/org/src"))
 (defvar *org-publish-directory* (concat *workspace* "/language/org/publish"))
 (defvar *semantic-include-directories* nil)
@@ -23,7 +17,5 @@
 (if (cygwin-p) (setq exec-path (cons *cygwin-bin* exec-path)))
 
 (setq default-fill-column 80)
-(provide 'init-parameters.el)
-
 
 (provide 'init-parameters)
