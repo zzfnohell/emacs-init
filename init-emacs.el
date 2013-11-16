@@ -3,6 +3,7 @@
 ;;; Code:
 
 (add-to-list 'load-path (concat user-emacs-directory  "config"))
+(add-to-list 'load-path (concat user-emacs-directory  "site-lisp"))
 
 ;;; Commentary:
 ;;
@@ -32,9 +33,7 @@
 (require 'init-whitespace)
 (require 'init-indent-tabs-mode)
 (require 'init-interactive-mode)
-;;(require 'init-python-mode)
 (require 'init-texinfo-mode)
-(require 'init-markdown-mode)
 (require 'init-sage-mode)
 (require 'init-xcscope)
 (require 'init-jdee)
@@ -77,6 +76,10 @@
 (require 'init-haskell)
 (require 'init-nodejs)
 
+;; begin init-nxhtml
+;; nxhtml is not in elpa
+(require 'init-nxhtml)
+;; end init-nxhtml
 ;;; init-emacs.el ends here
 
 
