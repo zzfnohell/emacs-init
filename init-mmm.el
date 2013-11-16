@@ -1,6 +1,3 @@
-;;----------------------------------------------------------------------------
-;; Multiple major modes
-;;----------------------------------------------------------------------------
 (require-package 'mmm-mode)
 (require 'mmm-auto)
 (setq mmm-global-mode 'buffers-with-submode-classes)

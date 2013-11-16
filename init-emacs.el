@@ -75,12 +75,13 @@
 (require 'init-ruby-mode)
 (require 'init-haskell)
 (require 'init-nodejs)
+(require 'init-multi-web-mode)
+;;(require 'init-web-mode)
 
 ;; begin init-nxhtml
 ;; nxhtml is not in elpa
-(require 'init-nxhtml)
+;;(require 'init-nxhtml)
 ;; end init-nxhtml
 ;;; init-emacs.el ends here
-
 
 (provide 'init-emacs)
