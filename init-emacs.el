@@ -60,7 +60,7 @@
 (require 'init-ediff)
 (require 'init-erc)
 (require 'init-dired)
-(require 'init-gtags)
+(require 'init-tags)
 (require 'init-auto-complete)
 (require 'init-cc-mode)
 (require 'init-markdown)
@@ -71,11 +71,12 @@
 (require 'init-erlang)
 (require 'init-clojure)
 (require 'init-haml)
-(require 'init-python-mode)
+(require 'init-python)
 (require 'init-ruby-mode)
 (require 'init-haskell)
 (require 'init-nodejs)
 (require 'init-multi-web-mode)
+(require 'init-R)
 ;;(require 'init-web-mode)
 
 ;; begin init-nxhtml
