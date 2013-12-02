@@ -47,7 +47,7 @@
 (require 'init-helm-R)
 (require 'init-helm-flymake)
 (require 'init-ecb)
-(require 'init-magit)
+(require 'init-git)
 (require 'init-session)
 (require 'init-w3m)
 (require 'init-yasnippet)
