@@ -77,6 +77,7 @@
 (require 'init-nodejs)
 (require 'init-multi-web-mode)
 (require 'init-R)
+(require 'init-ack)
 ;;(require 'init-web-mode)
 
 ;; begin init-nxhtml
