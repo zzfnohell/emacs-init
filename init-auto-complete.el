@@ -1,4 +1,11 @@
+;;; init-auto-complete.el --- Auto Complete
+
+;;; Commentary:
+;; Auto Complete
+
+;;; Code:
 (require 'auto-complete-config)
+
 (add-to-list 'ac-dictionary-directories
              "~/.emacs.d/auto-complete/ac-dict")
 (ac-config-default)
@@ -16,8 +23,12 @@
   '(progn
      (ac-etags-setup)))
 
+(require-package 'auto-complete-nxml)
+
 (defun ac-etags-c-mode-common-hook ()
   (add-to-list 'ac-sources 'ac-source-etags))
 (add-hook 'c-mode-common-hook 'ac-etags-c-mode-common-hook)
 
 (provide 'init-auto-complete)
+
+;;; init-auto-complete.el ends here

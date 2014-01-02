@@ -1,5 +1,12 @@
+;;; init-cc-mode.el --- CC mode
 ;; depends on cedet.el
 ;;;; CC-mode  http://cc-mode.sourceforge.net/
+
+;;; Commentary:
+;; CC mode
+
+;;; Code:
+
 (require 'cc-mode)
 (c-set-offset 'inline-open 0)
 (c-set-offset 'friend '-)
@@ -63,4 +70,7 @@
 
 (require-package 'cmake-mode)
 (require-package 'cmake-project)
+
 (provide 'init-cc-mode)
+
+;;; init-cc-mode.el ends here

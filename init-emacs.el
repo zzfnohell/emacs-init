@@ -78,6 +78,10 @@
 (require 'init-multi-web-mode)
 (require 'init-R)
 (require 'init-ack)
+(require 'init-ant)
+(require 'init-multi-term)
+(require 'init-nav)
+(require 'init-prolog)
 ;;(require 'init-web-mode)
 
 ;; begin init-nxhtml
