@@ -1,3 +1,3 @@
-(require-package 'egg)
-(require 'egg)
+;;(require-package 'egg)
+;;(require 'egg)
 (provide 'init-git)

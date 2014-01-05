@@ -1,6 +1,4 @@
 (require-package 'mmm-mode)
-(require 'mmm-auto)
-
 (setq mmm-global-mode 'buffers-with-submode-classes)
 (setq mmm-submode-decoration-level 2)
 
@@ -29,8 +27,6 @@
   (dolist (mode (list 'html-mode 'nxml-mode))
     (mmm-add-mode-ext-class mode "\\.r?html\\(\\.erb\\)?\\'" 'html-css)))
 
-;;; ERB
-(require-package 'mmm-mode)
 (defun sanityinc/ensure-mmm-erb-loaded ()
   (require 'mmm-erb))
 
@@ -61,5 +57,7 @@
 
 (dolist (mode (list 'js-mode 'js2-mode 'js3-mode))
   (mmm-add-mode-ext-class mode "\\.js\\.erb\\'" 'erb))
+
+(require 'mmm-auto)
 
 (provide 'init-mmm)

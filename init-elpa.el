@@ -1,6 +1,7 @@
 ;;; Find and load the correct package.el
 
-;; When switching between Emacs 23 and 24, we always use the bundled package.el in Emacs 24
+;; When switching between Emacs 23 and 24,
+;; we always use the bundled package.el in Emacs 24
 (let ((package-el-site-lisp-dir
        (expand-file-name "site-lisp/package" user-emacs-directory)))
   (when (and (file-directory-p package-el-site-lisp-dir)
@@ -10,8 +11,6 @@
 
 (require 'package)
 
-
-
 ;;; Add support to package.el for pre-filtering available packages
 
 (defvar package-filter-function nil
@@ -25,17 +24,15 @@ ARCHIVE is the string name of the package archive.")
   (around filter-packages (package archive) activate)
   "Add filtering of available packages using `package-filter-function', if non-nil."
   (when (or (null package-filter-function)
-	    (funcall package-filter-function
-		     (car package)
-		     (funcall (if (fboundp 'package-desc-version)
-				  'package--ac-desc-version
-				'package-desc-vers)
-			      (cdr package))
-		     archive))
+            (funcall package-filter-function
+                     (car package)
+                     (funcall (if (fboundp 'package-desc-version)
+                                  'package--ac-desc-version
+                                'package-desc-vers)
+                              (cdr package))
+                     archive))
     ad-do-it))
 
-
-
 ;;; Standard package repositories
 
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -56,8 +53,6 @@ ARCHIVE is the string name of the package archive.")
         (or (not (string-equal archive "melpa"))
             (not (memq package '())))))
 
-
-
 ;;; On-demand installation of packages
 
 (defun require-package (package &optional min-version no-refresh)
@@ -66,17 +61,15 @@ If NO-REFRESH is non-nil, the available package lists will not be
 re-downloaded in order to locate PACKAGE."
   (if (package-installed-p package min-version)
       t
-    (if (or (assoc package package-archive-contents) no-refresh)
+    (if
+        (or (assoc package package-archive-contents) no-refresh)
         (package-install package)
       (progn
         (package-refresh-contents)
         (require-package package min-version t)))))
 
-
-
 ;;; Fire up package.el
 
 (package-initialize)
-
 
 (provide 'init-elpa)
