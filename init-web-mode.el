@@ -1,7 +1,7 @@
 ;;; init-web-mode.el --- web-mode
 
 ;;; Commentary:
-;; 
+;; Web mode
 
 ;;; Code:
 

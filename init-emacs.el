@@ -1,8 +1,8 @@
-;;; init-emacs.el --- init
-;; Base configuration
-;;; Code:
+;; ;;; init-emacs.el --- init
+;; ;; Base configuration
+;; ;;; Code:
 
-(add-to-list 'load-path (concat user-emacs-directory  "config"))
+(add-to-list 'load-path (concat user-emacs-directory  "init"))
 (add-to-list 'load-path (concat user-emacs-directory  "site-lisp"))
 
 ;;; Commentary:
@@ -67,25 +67,27 @@
 (require 'init-mmm)
 (require 'init-javascript)
 (require 'init-css)
+(require 'init-nxml)
+(require 'init-ruby-mode)
 (require 'init-csv)
 (require 'init-erlang)
 (require 'init-clojure)
 (require 'init-haml)
 (require 'init-python)
-(require 'init-ruby-mode)
 (require 'init-haskell)
 (require 'init-nodejs)
-(require 'init-multi-web-mode)
 (require 'init-R)
 (require 'init-ack)
 (require 'init-ant)
 (require 'init-multi-term)
 (require 'init-nav)
 (require 'init-prolog)
-;;(require 'init-web-mode)
 
 ;; begin init-nxhtml
 ;; nxhtml is not in elpa
+
+;;(require 'init-multi-web-mode)
+;;(require 'init-web-mode)
 ;;(require 'init-nxhtml)
 ;; end init-nxhtml
 ;;; init-emacs.el ends here

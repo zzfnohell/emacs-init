@@ -6,8 +6,9 @@
 ;;; Code:
 (require 'auto-complete-config)
 
-(add-to-list 'ac-dictionary-directories
-             "~/.emacs.d/auto-complete/ac-dict")
+(add-to-list
+ 'ac-dictionary-directories
+ "~/.emacs.d/auto-complete/ac-dict")
 (ac-config-default)
 
 (require-package 'ac-c-headers)
@@ -24,10 +25,22 @@
      (ac-etags-setup)))
 
 (require-package 'auto-complete-nxml)
-
+(require 'auto-complete-nxml)
+;; Keystroke for popup help about something at point.
+(setq auto-complete-nxml-popup-help-key "C-:")
+;; Keystroke for toggle on/off automatic completion.
+(setq auto-complete-nxml-toggle-automatic-key "C-c C-t")
+;; If you want to start completion manually from the beginning
+(setq auto-complete-nxml-automatic-p nil)
 (defun ac-etags-c-mode-common-hook ()
   (add-to-list 'ac-sources 'ac-source-etags))
 (add-hook 'c-mode-common-hook 'ac-etags-c-mode-common-hook)
+
+(require-package 'ac-slime)
+(require 'ac-slime)
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+(eval-after-load "auto-complete" '(add-to-list 'ac-modes 'slime-repl-mode))
 
 (provide 'init-auto-complete)
 
