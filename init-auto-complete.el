@@ -31,7 +31,6 @@
 ;; Keystroke for toggle on/off automatic completion.
 (setq auto-complete-nxml-toggle-automatic-key "C-c C-t")
 ;; If you want to start completion manually from the beginning
-(setq auto-complete-nxml-automatic-p nil)
 (defun ac-etags-c-mode-common-hook ()
   (add-to-list 'ac-sources 'ac-source-etags))
 (add-hook 'c-mode-common-hook 'ac-etags-c-mode-common-hook)

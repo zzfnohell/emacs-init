@@ -90,8 +90,4 @@
     (add-hook 'skewer-mode-hook
               (lambda () (inferior-js-keys-mode -1)))))
 
-(require-package 'flymake-jslint)
-(require 'flymake-jslint)
-(add-hook 'js-mode-hook 'flymake-jslint-load)
-
 (provide 'init-javascript)
