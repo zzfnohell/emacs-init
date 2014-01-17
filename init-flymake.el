@@ -12,8 +12,6 @@
 
 (require-package 'flycheck)
 
-;;(require-package 'flymake-checkers)
-
 (require-package 'flymake-jslint)
 (require 'flymake-jslint)
 (add-hook 'js-mode-hook 'flymake-jslint-load)
@@ -49,6 +47,12 @@
  '(flymake-errline ((((class color)) (:underline "red"))))
  '(flymake-warnline ((((class color)) (:underline "yellow")))))
 
-(provide 'init-flymake)
+(require-package 'flymake-css)
+(require 'flymake-css)
+(add-hook 'css-mode-hook 'flymake-css-load)
 
+(require-package 'flymake-easy)
+(require 'flymake-easy)
+
+(provide 'init-flymake)
 ;;; init-flymake.el ends here
