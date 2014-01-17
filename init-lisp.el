@@ -1,3 +1,8 @@
+;; packages required in hooks
+(require-package 'paredit)
+(require-package 'lispy)
+(require-package 'diminish)
+(require 'diminish)
 (require-package 'elisp-slime-nav)
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
   (add-hook hook 'elisp-slime-nav-mode))
@@ -124,8 +129,9 @@
 (define-key emacs-lisp-mode-map (kbd "C-x C-a") 'pp-macroexpand-last-sexp)
 (define-key emacs-lisp-mode-map (kbd "C-x C-e") 'pp-eval-last-sexp)
 
-(require-package 'cl-lib-highlight)
-(cl-lib-highlight-initialize)
+;;(require-package 'cl-lib)
+;;(require-package 'cl-lib-highlight)
+;;(cl-lib-highlight-initialize)
 
 ;; ----------------------------------------------------------------------------
 ;; Delete .elc files when reverting the .el from VC or magit

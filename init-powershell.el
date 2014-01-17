@@ -1,3 +1,4 @@
+(require-package 'diminish)
 (require-package 'powershell)
 (require-package 'powershell-mode)
 

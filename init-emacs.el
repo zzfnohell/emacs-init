@@ -41,6 +41,9 @@
 (require 'init-epy)
 
 ;; elpa pacakges
+(require 'init-dired)
+(require 'init-tags)
+(require 'init-auto-complete)
 (require 'init-irfc)
 (require 'init-flymake)
 (require 'init-helm)
@@ -59,9 +62,6 @@
 (require 'init-csharp-mode)
 (require 'init-ediff)
 (require 'init-erc)
-(require 'init-dired)
-(require 'init-tags)
-(require 'init-auto-complete)
 (require 'init-cc-mode)
 (require 'init-markdown)
 (require 'init-nxml)

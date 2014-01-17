@@ -35,6 +35,7 @@
   (add-to-list 'ac-sources 'ac-source-etags))
 (add-hook 'c-mode-common-hook 'ac-etags-c-mode-common-hook)
 
+(require-package 'slime)
 (require-package 'ac-slime)
 (require 'ac-slime)
 (add-hook 'slime-mode-hook 'set-up-slime-ac)

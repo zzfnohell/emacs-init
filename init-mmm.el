@@ -1,4 +1,7 @@
 (require-package 'mmm-mode)
+(require 'mmm-auto)
+
+(require-package 'nxml)
 (setq mmm-global-mode 'buffers-with-submode-classes)
 (setq mmm-submode-decoration-level 2)
 
@@ -58,6 +61,5 @@
 (dolist (mode (list 'js-mode 'js2-mode 'js3-mode))
   (mmm-add-mode-ext-class mode "\\.js\\.erb\\'" 'erb))
 
-(require 'mmm-auto)
 
 (provide 'init-mmm)

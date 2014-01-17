@@ -8,7 +8,7 @@
   
   ;; set lisp implements on different platforms.
   (setq inferior-lisp-program "sbcl"))
- (t (message "slime is disabled.")))
+ (t (message "quicklisp is not available.")))
 
 (provide 'init-slime)
 
