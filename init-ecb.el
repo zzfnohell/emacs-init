@@ -1,3 +1,4 @@
+(require-package 'ecb)
 (require 'ecb)
 ;(require 'ecb-autoloads)
 
