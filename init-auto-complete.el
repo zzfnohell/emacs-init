@@ -4,6 +4,7 @@
 ;; Auto Complete
 
 ;;; Code:
+(require-package 'auto-complete)
 (require 'auto-complete-config)
 
 (add-to-list

@@ -25,7 +25,7 @@
 (require 'init-cedet)
 (require 'init-org)
 (require 'init-uniquify)
-(require 'init-ess)
+;;(require 'init-ess)
 (require 'init-julia)
 (require 'init-maxima)
 

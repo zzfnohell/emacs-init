@@ -70,7 +70,7 @@
 (setq auto-mode-alist (cons '("\\.cl$" . c-mode) auto-mode-alist))
 
 (require-package 'cmake-mode)
-(require-package 'cmake-project)
+;;(require-package 'cmake-project)
 
 (provide 'init-cc-mode)
 

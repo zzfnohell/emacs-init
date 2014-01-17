@@ -12,7 +12,7 @@
 
 (require-package 'flycheck)
 
-(require-package 'flymake-checkers)
+;;(require-package 'flymake-checkers)
 
 (require-package 'flymake-jslint)
 (require 'flymake-jslint)

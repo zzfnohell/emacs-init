@@ -4,6 +4,7 @@
 ;; Nav
 
 ;;; Code:
+(require-package 'nav)
 (require 'nav)
 (nav-disable-overeager-window-splitting)
 
