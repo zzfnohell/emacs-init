@@ -1,3 +1,4 @@
+(require-package 'w3m)
 (require 'w3m)
 (setq w3m-command-arguments '("-cookie" "-F"))
 (setq w3m-use-cookies t)

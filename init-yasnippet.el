@@ -4,7 +4,7 @@
 ;; YASnippet
 
 ;;; Code:
-
+(require-package 'yasnippet)
 (require 'yasnippet)
 (setq
  yas-snippet-dirs
