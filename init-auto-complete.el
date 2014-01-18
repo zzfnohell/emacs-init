@@ -36,13 +36,6 @@
   (add-to-list 'ac-sources 'ac-source-etags))
 (add-hook 'c-mode-common-hook 'ac-etags-c-mode-common-hook)
 
-;;(require-package 'slime)
-;;(require-package 'ac-slime)
-;;(require 'ac-slime)
-;;(add-hook 'slime-mode-hook 'set-up-slime-ac)
-;;(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-;;(eval-after-load "auto-complete" '(add-to-list 'ac-modes 'slime-repl-mode))
-
 (provide 'init-auto-complete)
 
 ;;; init-auto-complete.el ends here
