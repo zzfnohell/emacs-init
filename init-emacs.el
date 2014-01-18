@@ -8,7 +8,7 @@
 ;;; Commentary:
 ;;
 
-(require 'init-benchmarking) ;; Measure startup time
+(require 'init-benchmarking)
 (require 'init-elpa)
 (require 'init-utils)
 
