@@ -31,7 +31,6 @@
 
 (require 'init-compile)
 (require 'init-whitespace)
-(require 'init-indent-tabs-mode)
 (require 'init-texinfo-mode)
 (require 'init-sage-mode)
 (require 'init-xcscope)
