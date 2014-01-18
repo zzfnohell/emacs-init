@@ -10,6 +10,4 @@
     ;; not the starting directory
     (mapc #'find-file (mapcar #'expand-file-name (eshell-flatten-list (reverse args))))))
 
-
-
 (provide 'init-eshell)

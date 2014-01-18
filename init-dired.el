@@ -4,20 +4,3 @@
 (toggle-diredp-find-file-reuse-dir 1)
 (provide 'init-dired)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
