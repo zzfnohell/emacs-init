@@ -9,7 +9,7 @@
   ;;Setting English Font
   (set-face-attribute
    'default nil :font "Ubuntu Mono 10")
-  
+
   ;; Chinese Font
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font
@@ -41,13 +41,8 @@
        '(:eval (buffer-name (current-buffer)))
        "  @emacs-zzfnohell" ))
 
-(defun kill-buffer-on-exit (process state)
-  (message "%s" state)
-  (if (or
-       (string-match "exited abnormally with code.*" state)
-       (string-match "finished" state))
-      (kill-buffer (current-buffer))))
-
+(setq-default truncate-lines t)
+(setq-default global-visual-line-mode t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
