@@ -4,11 +4,11 @@
  ((not (eq nil window-system))
   (setq default-frame-alist
         (append
-         '((font . "Ubuntu Mono 12")) default-frame-alist))
-  (set-frame-font "Ubuntu Mono 12")
+         '((font . "Ubuntu Mono 10")) default-frame-alist))
+  (set-frame-font "Ubuntu Mono 10")
   ;;Setting English Font
   (set-face-attribute
-   'default nil :font "Ubuntu Mono 12")
+   'default nil :font "Ubuntu Mono 10")
   
   ;; Chinese Font
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
