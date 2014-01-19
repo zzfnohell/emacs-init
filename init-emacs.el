@@ -1,3 +1,4 @@
+
 ;; ;;; init-emacs.el --- init
 ;; ;; Base configuration
 ;; ;;; Code:
@@ -88,5 +89,11 @@
 ;;(require 'init-nxhtml)
 ;; end init-nxhtml
 ;;; init-emacs.el ends here
+
+(dolist (var (file-expand-wildcards "~/.emacs.d/init/*.el"))
+  (let* ((file (expand-file-name var))
+         (elcfile  (concat (file-name-sans-extension file) ".elc")))
+    (if (file-exists-p elcfile) (byte-recompile-file file)
+      (byte-compile-file file))))
 
 (provide 'init-emacs)

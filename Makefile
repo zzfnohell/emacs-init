@@ -10,7 +10,7 @@ compile:$(ELC_FILES)
 	@echo 'done'
 
 %.elc:%.el
-	emacs --batch --eval '(byte-compile-file "$^")'
+	@echo $^
 
 clean:
 	rm -v *.elc
