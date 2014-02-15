@@ -3,16 +3,16 @@
 (cond
  ((not (eq nil window-system))
   (setq default-frame-alist
-        (append '((font . "Ubuntu Mono 10")) default-frame-alist))
-  (set-frame-font "Ubuntu Mono 10")
+        (append '((font . "Ubuntu Mono 11")) default-frame-alist))
+  (set-frame-font "Ubuntu Mono 11")
   ;;Setting English Font
-  (set-face-attribute 'default nil :font "Ubuntu Mono 10")
+  (set-face-attribute 'default nil :font "Ubuntu Mono 11")
   ;; Chinese Font
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font
      (frame-parameter nil 'font)
      charset
-     (font-spec :family "WenQuanYi Micro Hei Mono" :size 10)))))
+     (font-spec :family "WenQuanYi Micro Hei Mono" :size 11)))))
 
 (setq ansi-color-for-comint-mode t) ;emacs shell font confusion
 
