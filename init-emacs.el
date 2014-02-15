@@ -15,6 +15,7 @@
 
 (require 'init-parameters)
 (require 'init-ui)
+(require 'init-tabbar)
 (require 'init-coding)
 
 (require 'init-sr-speedbar)
@@ -29,6 +30,7 @@
 (require 'init-ess)
 (require 'init-julia)
 (require 'init-maxima)
+(require 'init-axiom)
 
 (require 'init-compile)
 (require 'init-whitespace)
