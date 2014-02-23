@@ -31,6 +31,7 @@
 (require 'init-julia)
 (require 'init-maxima)
 (require 'init-axiom)
+(require 'init-fricas)
 
 (require 'init-compile)
 (require 'init-whitespace)
