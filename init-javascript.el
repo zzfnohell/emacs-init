@@ -1,7 +1,7 @@
 (require-package 'json-mode)
-(when (>= emacs-major-version 24)
-  (require-package 'js2-mode)
-  (require-package 'ac-js2))
+
+(require-package 'js2-mode)
+(require-package 'ac-js2)
 (require-package 'js-comint)
 (require-package 'rainbow-delimiters)
 (require-package 'coffee-mode)
@@ -32,7 +32,11 @@
 
 ;; js2-mode
 (after-load 'js2-mode
-  (add-hook 'js2-mode-hook '(lambda () (setq mode-name "JS2"))))
+  (add-hook
+   'js2-mode-hook 
+   '(lambda () 
+      (setq mode-name "JS2")
+      (tern-mode t))))
 
 (setq js2-use-font-lock-faces t
       js2-mode-must-byte-compile nil
@@ -48,12 +52,9 @@
 ;; js-mode
 (setq js-indent-level preferred-javascript-indent-level)
 
-
 (add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
 
-
 ;;; Coffeescript
-
 (after-load 'coffee-mode
   (setq coffee-js-mode preferred-javascript-mode
         coffee-tab-width preferred-javascript-indent-level))
@@ -83,11 +84,16 @@
 ;; ---------------------------------------------------------------------------
 ;; Alternatively, use skewer-mode
 ;; ---------------------------------------------------------------------------
-
 (when (featurep 'js2-mode)
   (require-package 'skewer-mode)
   (after-load 'skewer-mode
     (add-hook 'skewer-mode-hook
               (lambda () (inferior-js-keys-mode -1)))))
 
+(require-package 'tern)
+(require-package 'tern-auto-complete)
+(eval-after-load 'tern
+  '(progn 
+     (require 'tern-auto-complete)
+     (tern-ac-setup)))
 (provide 'init-javascript)
