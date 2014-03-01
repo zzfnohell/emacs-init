@@ -14,11 +14,12 @@
      (tern-ac-setup)))
 
 (after-load 'js2-mode
-;;  (define-key js2-mode-map (kbd "TAB") 'indent-for-tab-command)
+  (define-key js2-mode-map (kbd "TAB") 'indent-for-tab-command)
   (add-hook 'js2-mode-hook
-            '(lambda () (setq mode-name "JS2")))
-  (js2-imenu-extras-setup)
-  (tern-mode t))
+            '(lambda ()
+               (setq mode-name "JS2")
+               (tern-mode t)))
+  (js2-imenu-extras-setup))
 
 (defcustom preferred-javascript-mode
   (first (remove-if-not #'fboundp '(js2-mode js-mode)))
