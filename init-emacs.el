@@ -59,7 +59,7 @@
 (require 'init-slime)
 (require 'init-lisp)
 (require 'init-emms)
-(require 'init-powershell)
+;;(require 'init-powershell)
 (require 'init-octave-mod)
 (require 'init-csharp-mode)
 (require 'init-ediff)
@@ -84,7 +84,6 @@
 (require 'init-multi-term)
 (require 'init-nav)
 (require 'init-prolog)
-;;(require 'init-web-mode)
 
 ;; begin init-nxhtml
 ;; nxhtml is not in elpa
