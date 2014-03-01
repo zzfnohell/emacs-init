@@ -2,15 +2,24 @@
 
 (require-package 'js2-mode)
 (require-package 'ac-js2)
-(require-package 'js-comint)
-(require-package 'rainbow-delimiters)
-(require-package 'coffee-mode)
-
 (require-package 'js2-refactor)
 (require 'js2-refactor)
 
+(require-package 'tern)
+(require-package 'tern-auto-complete)
+(require 'tern)
+(eval-after-load 'tern
+  '(progn
+     (require 'tern-auto-complete)
+     (tern-ac-setup)))
+
 (after-load 'js2-mode
-  (define-key js2-mode-map (kbd "TAB") 'indent-for-tab-command))
+  (define-key js2-mode-map (kbd "TAB") 'indent-for-tab-command)
+  (add-hook 'js2-mode-hook
+            '(lambda ()
+               (setq mode-name "JS2")
+               (tern-mode t)))
+  (js2-imenu-extras-setup))
 
 (defcustom preferred-javascript-mode
   (first (remove-if-not #'fboundp '(js2-mode js-mode)))
@@ -29,15 +38,6 @@
                   unless (eq preferred-javascript-mode (cdr entry))
                   collect entry)))
 
-
-;; js2-mode
-(after-load 'js2-mode
-  (add-hook
-   'js2-mode-hook 
-   '(lambda () 
-      (setq mode-name "JS2")
-      (tern-mode t))))
-
 (setq js2-use-font-lock-faces t
       js2-mode-must-byte-compile nil
       js2-basic-offset preferred-javascript-indent-level
@@ -46,13 +46,18 @@
       js2-bounce-indent-p t
       js2-basic-offset 2)
 
-(after-load 'js2-mode
-  (js2-imenu-extras-setup))
-
 ;; js-mode
 (setq js-indent-level preferred-javascript-indent-level)
-
 (add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
+
+(require-package 'js-comint)
+(require 'js-comint)
+(setq inferior-js-program-command "js")
+
+
+(require-package 'rainbow-delimiters)
+
+(require-package 'coffee-mode)
 
 ;;; Coffeescript
 (after-load 'coffee-mode
@@ -61,39 +66,10 @@
 
 (add-to-list 'auto-mode-alist '("\\.coffee\\.erb\\'" . coffee-mode))
 
-;; ---------------------------------------------------------------------------
-;; Run and interact with an inferior JS via js-comint.el
-;; ---------------------------------------------------------------------------
+(require-package 'skewer-mode)
+(require 'skewer-mode)
+(add-hook 'js2-mode-hook 'skewer-mode)
+(add-hook 'css-mode-hook 'skewer-css-mode)
+(add-hook 'html-mode-hook 'skewer-html-mode)
 
-(setq inferior-js-program-command "js")
-
-(defvar inferior-js-minor-mode-map (make-sparse-keymap))
-(define-key inferior-js-minor-mode-map "\C-x\C-e" 'js-send-last-sexp)
-(define-key inferior-js-minor-mode-map "\C-\M-x" 'js-send-last-sexp-and-go)
-(define-key inferior-js-minor-mode-map "\C-cb" 'js-send-buffer)
-(define-key inferior-js-minor-mode-map "\C-c\C-b" 'js-send-buffer-and-go)
-(define-key inferior-js-minor-mode-map "\C-cl" 'js-load-file-and-go)
-
-(define-minor-mode inferior-js-keys-mode
-  "Bindings for communicating with an inferior js interpreter."
-  nil " InfJS" inferior-js-minor-mode-map)
-
-(dolist (hook '(js2-mode-hook js-mode-hook))
-  (add-hook hook 'inferior-js-keys-mode))
-
-;; ---------------------------------------------------------------------------
-;; Alternatively, use skewer-mode
-;; ---------------------------------------------------------------------------
-(when (featurep 'js2-mode)
-  (require-package 'skewer-mode)
-  (after-load 'skewer-mode
-    (add-hook 'skewer-mode-hook
-              (lambda () (inferior-js-keys-mode -1)))))
-
-(require-package 'tern)
-(require-package 'tern-auto-complete)
-(eval-after-load 'tern
-  '(progn 
-     (require 'tern-auto-complete)
-     (tern-ac-setup)))
 (provide 'init-javascript)

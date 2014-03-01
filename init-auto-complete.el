@@ -25,13 +25,14 @@
   '(progn
      (ac-etags-setup)))
 
-(require-package 'auto-complete-nxml)
-(require 'auto-complete-nxml)
+;;(require-package 'auto-complete-nxml)
+;;(require 'auto-complete-nxml)
 ;; Keystroke for popup help about something at point.
-(setq auto-complete-nxml-popup-help-key "C-:")
+;;(setq auto-complete-nxml-popup-help-key "C-:")
 ;; Keystroke for toggle on/off automatic completion.
-(setq auto-complete-nxml-toggle-automatic-key "C-c C-t")
+;;(setq auto-complete-nxml-toggle-automatic-key "C-c C-t")
 ;; If you want to start completion manually from the beginning
+
 (defun ac-etags-c-mode-common-hook ()
   (add-to-list 'ac-sources 'ac-source-etags))
 (add-hook 'c-mode-common-hook 'ac-etags-c-mode-common-hook)
