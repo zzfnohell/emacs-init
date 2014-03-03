@@ -2,6 +2,8 @@
 
 (require-package 'js2-mode)
 (require-package 'ac-js2)
+(setq ac-js2-evaluate-calls t)
+;;(setq ac-js2-external-libraries '(/full/path/to/a/library.js))
 (require-package 'js2-refactor)
 (require 'js2-refactor)
 
@@ -18,7 +20,8 @@
   (add-hook 'js2-mode-hook
             '(lambda ()
                (setq mode-name "JS2")
-               (tern-mode t)))
+;;               (tern-mode t)
+               ))
   (js2-imenu-extras-setup))
 
 (defcustom preferred-javascript-mode
