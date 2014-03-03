@@ -37,12 +37,6 @@
 (require 'flymake-yaml) ;; Not necessary if using ELPA package
 (add-hook 'yaml-mode-hook 'flymake-yaml-load)
 
-(require-package 'flymake-python-pyflakes)
-(require 'flymake-python-pyflakes)
-(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
-(setq flymake-python-pyflakes-executable "flake8")
-(setq flymake-python-pyflakes-extra-arguments '("--ignore=W806"))
-
 (custom-set-faces
  '(flymake-errline ((((class color)) (:underline "red"))))
  '(flymake-warnline ((((class color)) (:underline "yellow")))))

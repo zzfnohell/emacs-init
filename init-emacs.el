@@ -68,9 +68,9 @@
 ;; elpa pacakges
 (require 'init-irfc)
 (require 'init-flymake)
+(require 'init-helm-flymake)
 (require 'init-helm)
 (require 'init-helm-R)
-(require 'init-helm-flymake)
 (require 'init-session)
 (require 'init-w3m)
 (require 'init-yasnippet)
