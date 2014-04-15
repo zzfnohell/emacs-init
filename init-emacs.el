@@ -64,6 +64,7 @@
 (require 'init-prolog)
 (require 'init-ack)
 (require 'init-ant)
+(require 'init-sql)
 
 ;; elpa pacakges
 (require 'init-irfc)
