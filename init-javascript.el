@@ -2,8 +2,10 @@
 
 (require-package 'js2-mode)
 (require-package 'ac-js2)
-(setq ac-js2-evaluate-calls t)
+;;(setq ac-js2-evaluate-calls t)
 ;;(setq ac-js2-external-libraries '(/full/path/to/a/library.js))
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+
 (require-package 'js2-refactor)
 (require 'js2-refactor)
 
