@@ -6,6 +6,9 @@
 ;;; Code:
 (require-package 'auto-complete)
 (require 'auto-complete-config)
+(global-auto-complete-mode)
+(setq ac-auto-start 1)
+(setq ac-ignore-case nil)
 
 (add-to-list
  'ac-dictionary-directories
