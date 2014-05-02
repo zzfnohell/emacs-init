@@ -6,13 +6,12 @@
 ;;; Code:
 (require-package 'yasnippet)
 (require 'yasnippet)
-(setq
- yas-snippet-dirs
- '("~/.emacs.d/yasnippet/snippets"
-   "~/.emacs.d/yasnippet/yasnippet-snippets"
-   "~/.emacs.d/yasnippet/yasmate/snippets"))
+(yas-global-mode 1)
 
-;;(yas-global-mode 1)
+(setq yas-snippet-dirs
+      '("~/.emacs.d/yasnippet/snippets"
+        "~/.emacs.d/yasnippet/yasnippet-snippets"
+        "~/.emacs.d/yasnippet/yasmate/snippets"))
 
 ;;; use popup menu for yas-choose-value
 (require 'popup)
@@ -41,6 +40,9 @@
 
 (setq yas-prompt-functions
       '(yas-popup-isearch-prompt yas-ido-prompt yas-no-prompt))
+
+
+(require-package 'angular-snippets)
 
 (provide 'init-yasnippet)
 ;;; init-yasnippet.el ends here
