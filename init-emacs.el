@@ -33,6 +33,7 @@
 (require 'init-maxima)
 ;;(require 'init-axiom)
 ;;(require 'init-fricas)
+(require 'init-regexp)
 
 (require 'init-compile)
 (require 'init-whitespace)
@@ -60,7 +61,7 @@
 (require 'init-haskell)
 (require 'init-javascript)
 (require 'init-css)
-(require 'init-ruby-mode)
+(require 'init-ruby)
 (require 'init-prolog)
 (require 'init-ack)
 (require 'init-ant)

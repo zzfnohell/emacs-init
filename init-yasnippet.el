@@ -5,6 +5,13 @@
 
 ;;; Code:
 (require-package 'yasnippet)
+
+(setq yas-minor-mode-map ;This MUST before (require 'yasnippet)
+      (let ((map (make-sparse-keymap)))
+        (define-key map (kbd "M-i") 'yas-expand)
+        (define-key map "\C-c&\C-s" 'yas-new-snippet)
+        map)) 
+
 (require 'yasnippet)
 (yas-global-mode 1)
 

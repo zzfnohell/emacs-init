@@ -6,6 +6,9 @@
 ;;; Code:
 (require-package 'auto-complete)
 (require 'auto-complete-config)
+(require-package 'auto-complete-clang)
+(require 'auto-complete-clang)
+
 (global-auto-complete-mode)
 (setq ac-auto-start 1)
 (setq ac-ignore-case nil)
@@ -39,6 +42,7 @@
 (defun ac-etags-c-mode-common-hook ()
   (add-to-list 'ac-sources 'ac-source-etags))
 (add-hook 'c-mode-common-hook 'ac-etags-c-mode-common-hook)
+
 
 (provide 'init-auto-complete)
 
