@@ -52,23 +52,17 @@
 ;;; Robe
 (require-package 'robe)
 (require 'robe)
-
-(after-load 'ruby-mode
-  (add-hook 'ruby-mode-hook 'robe-mode))
-(after-load 'robe
-  (add-hook 'robe-mode-hook
-            (lambda ()
-              (add-to-list 'ac-sources 'ac-source-robe)
-              (set-auto-complete-as-completion-at-point-function))))
+(add-hook 'ruby-mode-hook 'robe-mode)
+(add-hook 'robe-mode-hook 'ac-robe-setup)
 
 ;;; ri support
 (require-package 'yari)
 (defalias 'ri 'yari)
 
 (require-package 'rsense)
-(require 'rsense)
-(setq rsense-home "~/Application/rsense")
+(setq rsense-home (expand-file-name "~/Application/rsense"))
 (add-to-list 'load-path (concat rsense-home "/etc"))
+(require 'rsense)
 
 ;;; YAML
 (require-package 'yaml-mode)
