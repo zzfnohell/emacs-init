@@ -26,6 +26,7 @@
 
 (require 'init-cedet)
 (require 'init-auto-complete)
+(require 'init-company)
 (require 'init-org)
 (require 'init-uniquify)
 (require 'init-ess)
@@ -40,7 +41,7 @@
 (require 'init-texinfo-mode)
 (require 'init-sage-mode)
 (require 'init-xcscope)
-(require 'init-jdee)
+(require 'init-java)
 (require 'init-highlight-line)
 (require 'init-epy)
 

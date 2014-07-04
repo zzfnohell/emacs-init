@@ -59,10 +59,14 @@
 (require-package 'yari)
 (defalias 'ri 'yari)
 
-(require-package 'rsense)
+;;(require-package 'rsense)
 (setq rsense-home (expand-file-name "~/Application/rsense"))
 (add-to-list 'load-path (concat rsense-home "/etc"))
 (require 'rsense)
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (add-to-list 'ac-sources 'ac-source-rsense-method)
+            (add-to-list 'ac-sources 'ac-source-rsense-constant)))
 
 ;;; YAML
 (require-package 'yaml-mode)
