@@ -14,6 +14,7 @@
 (require 'init-utils)
 
 (require 'init-parameters)
+(require 'init-system)
 (require 'init-ui)
 (require 'init-tabbar)
 (require 'init-coding)

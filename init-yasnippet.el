@@ -15,10 +15,11 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-(setq yas-snippet-dirs
-      '("~/.emacs.d/yasnippet/snippets"
-        "~/.emacs.d/yasnippet/yasnippet-snippets"
-        "~/.emacs.d/yasnippet/yasmate/snippets"))
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"
+                         "~/.emacs.d/snippets/yasmate/snippets"))
+
+;;(add-to-list 'yas/root-directory "~/.emacs.d/snippets/yasnippet-snippets")
+;;(yas/initialize)
 
 ;;; use popup menu for yas-choose-value
 (require 'popup)
