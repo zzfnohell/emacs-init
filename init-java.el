@@ -16,6 +16,11 @@
 (require-package 'javadoc-lookup)
 (require 'javadoc-lookup)
 (javadoc-add-roots "/usr/share/doc/openjdk-7-jdk/api")
-(provide 'init-java)
 
+(require-package 'ant)
+(require 'ant)
+(require-package 'mvn)
+(require 'mvn)
+
+(provide 'init-java)
 ;;; init-java.el ends here
