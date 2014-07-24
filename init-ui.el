@@ -38,7 +38,7 @@
        '(:eval (buffer-name (current-buffer)))
        "  @emacs-zzfnohell" ))
 
-(setq-default truncate-lines t)
+(setq-default truncate-lines nil)
 (setq-default global-visual-line-mode t)
 
 
