@@ -7,6 +7,9 @@
   (setq gtags-pop-delete t)
   (setq gtags-suggested-key-mapping t)
   
+  (add-hook 'c-mode-common-hook
+            '(lambda ()
+               (gtags-mode 1)))
   ;; [Setting to make 'Gtags select mode' easy to see]
   (add-hook
    'gtags-select-mode-hook

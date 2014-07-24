@@ -48,9 +48,6 @@
 
 (add-hook 'semantic-init-hooks 'cedet-semantic-hook)
 
-(add-hook 'c-mode-common-hook
-          '(lambda ()
-             (gtags-mode 1)))
 (add-hook 'c-mode-common-hook 'cedet-semantic-hook)
 (add-hook 'c-mode-common-hook 'c-mode-cedet-hook)
 (add-hook 'c-mode-common-hook 'c-mode-edit-hook)
