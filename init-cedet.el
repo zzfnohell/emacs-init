@@ -6,7 +6,6 @@
 (require 'cedet-idutils)
 (require 'ede)
 
-;; disable global ede mode, it conflicts with ecb
 (global-ede-mode t)
 (ede-enable-generic-projects)
 
@@ -27,56 +26,38 @@
 (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
 
-;;(custom-set-variables
-;; '(semantic-default-submodes
-;;   (quote
-;;    (global-semantic-decoration-mode
-;;     global-semantic-idle-completions-mode
-;;     global-semantic-idle-scheduler-mode
-;;     global-semanticdb-minor-mode
-;;     global-semantic-idle-summary-mode
-;;     global-semantic-mru-bookmark-mode)))
-;; '(semantic-idle-scheduler-idle-time 3))
-
-;; (global-semanticdb-minor-mode 1)
-;; (global-semantic-idle-scheduler-mode 1)
-;; (global-semantic-idle-summary-mode 1)
-;; (global-semantic-idle-completions-mode 1)
-;; (global-semantic-decoration-mode 1)
-;; (global-semantic-highlight-func-mode 1)
-;; (global-semantic-highlight-edits-mode 1)
-;; (global-semantic-stickyfunc-mode 1)
-;; (global-semantic-mru-bookmark-mode 1)
-;; (global-semantic-show-unmatched-syntax-mode 1)
-;; (global-semantic-show-parser-state-mode 1)
-
-(setq-mode-local
- c-mode
- semanticdb-find-default-throttle
- '(project unloaded system recursive))
-
-(setq-mode-local
- c++-mode
- semanticdb-find-default-throttle
- '(project unloaded system recursive))
-
-(defun my-semantic-hook ()
-  (imenu-add-to-menubar "TAGS"))
-
-(add-hook 'semantic-init-hooks 'my-semantic-hook)
+(global-semanticdb-minor-mode 1)
+(global-semantic-idle-scheduler-mode 1)
+(global-semantic-idle-summary-mode 1)
+(global-semantic-idle-completions-mode 1)
+(global-semantic-decoration-mode 1)
+(global-semantic-highlight-func-mode 1)
+(global-semantic-highlight-edits-mode 1)
+(global-semantic-stickyfunc-mode 1)
+(global-semantic-mru-bookmark-mode 1)
+(global-semantic-show-unmatched-syntax-mode 1)
+(global-semantic-show-parser-state-mode 1)
 
 ;;;; Semantic DataBase directory
-;;(setq semanticdb-default-save-directory
-;;      (expand-file-name "~/.emacs.d/semanticdb"))
-
-(semanticdb-enable-gnu-global-databases 'c-mode)
-(semanticdb-enable-gnu-global-databases 'c++-mode)
+(setq semanticdb-default-save-directory
+     (expand-file-name "~/.emacs.d/semanticdb"))
 
 ;; not existing in build in
 ;; (enable-visual-studio-bookmarks)
 ;; (semantic-load-enable-code-helpers)
 ;; (semantic-load-enable-excessive-code-helpers)
 ;; (global-semantic-tag-folding-mode 1)
+
+(setq-mode-local c-mode semanticdb-find-default-throttle '(project unloaded system recursive))
+(setq-mode-local c++-mode semanticdb-find-default-throttle '(project unloaded system recursive))
+
+(defun my-semantic-hook ()
+  (imenu-add-to-menubar "TAGS"))
+
+(add-hook 'semantic-init-hooks 'my-semantic-hook)
+
+(semanticdb-enable-gnu-global-databases 'c-mode)
+(semanticdb-enable-gnu-global-databases 'c++-mode)
 
 (global-semantic-decoration-mode 1)
 (semantic-toggle-decoration-style "semantic-tag-boundary" -1)
