@@ -25,6 +25,7 @@
 (require 'init-theme)
 (require 'init-global-set-key)
 
+(require 'init-xcscope)
 (require 'init-cedet)
 (require 'init-auto-complete)
 (require 'init-company)
@@ -41,7 +42,6 @@
 (require 'init-whitespace)
 (require 'init-texinfo-mode)
 (require 'init-sage-mode)
-(require 'init-xcscope)
 (require 'init-java)
 (require 'init-highlight-line)
 (require 'init-epy)

@@ -1,6 +1,7 @@
 
 (cond
  ((eq system-type 'gnu/linux)
+  (require-package 'ggtags)
   (require 'gtags)
   (autoload 'gtags-mode "gtags" "" t)
   (setq gtags-pop-delete t)
@@ -15,8 +16,6 @@
                  underline)))
       (hl-line-mode 1))))
  (t t))
-
-(require-package 'ggtags)
 
 (require-package 'ctags)
 (require 'ctags)

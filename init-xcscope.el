@@ -8,6 +8,7 @@
 
 (require-package 'xcscope)
 (require 'xcscope)
+(cscope-setup)
 
 (require-package 'ascope)
 
