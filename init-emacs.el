@@ -48,6 +48,7 @@
 
 (require 'init-ecb)
 (require 'init-git)
+(require 'init-hg)
 (require 'init-slime)
 (require 'init-lisp)
 (require 'init-R)
