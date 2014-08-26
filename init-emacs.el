@@ -15,9 +15,9 @@
 
 (require 'init-parameters)
 (require 'init-system)
+(require 'init-coding)
 (require 'init-ui)
 (require 'init-tabbar)
-(require 'init-coding)
 
 (require 'init-sr-speedbar)
 (require 'init-linum)
