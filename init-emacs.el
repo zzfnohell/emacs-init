@@ -92,7 +92,7 @@
 (require 'init-nav)
 
 ;;(require 'init-web-mode)
-
+(require 'init-transparency)
 ;; begin init-nxhtml
 ;; nxhtml is not in elpa
 ;;(require 'init-multi-web-mode)
