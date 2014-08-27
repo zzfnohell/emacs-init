@@ -28,7 +28,7 @@
 (display-time-mode 1);display date time,format as below:
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
-(tool-bar-mode nil)
+(tool-bar-mode -1)
 
 (transient-mark-mode t)
 ;;enable clipboard.
