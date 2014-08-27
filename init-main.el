@@ -1,14 +1,6 @@
-
-;; ;;; init-emacs.el --- init
-;; ;; Base configuration
-;; ;;; Code:
-
 (add-to-list 'load-path (concat user-emacs-directory  "init"))
 (add-to-list 'load-path (concat user-emacs-directory  "site-lisp"))
-
-;;; Commentary:
-;;
-
+ 
 (require 'init-benchmarking)
 (require 'init-elpa)
 (require 'init-utils)
@@ -92,13 +84,13 @@
 (require 'init-nav)
 
 ;;(require 'init-web-mode)
-(require 'init-transparency)
+
 ;; begin init-nxhtml
 ;; nxhtml is not in elpa
 ;;(require 'init-multi-web-mode)
 ;;(require 'init-nxhtml)
 ;; end init-nxhtml
-;;; init-emacs.el ends here
+;; init-emacs.el ends here
 
 (dolist (var (file-expand-wildcards "~/.emacs.d/init/*.el"))
   (let* ((file (expand-file-name var))
@@ -107,3 +99,4 @@
       (byte-compile-file file))))
 
 (provide 'init-emacs)
+
