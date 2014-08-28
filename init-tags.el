@@ -4,8 +4,6 @@
   (require-package 'ggtags)
   (require 'gtags)
   (autoload 'gtags-mode "gtags" "" t)
-  (setq gtags-pop-delete t)
-  (setq gtags-suggested-key-mapping t)
   
   (add-hook 'c-mode-common-hook
             '(lambda ()

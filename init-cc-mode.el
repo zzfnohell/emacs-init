@@ -26,17 +26,12 @@
     (indent-for-tab-command)))
 
 (defun c-mode-edit-hook()
-  (setq default-tab-width 4 indent-tabs-mode nil)
   (setq tab-width 4 indent-tabs-mode nil)
   (setq c-basic-offset 4)
   ;; hungry-delete and auto-newline
   (c-toggle-auto-hungry-state 1)
   (define-key c-mode-base-map [(tab)] 'cpp-indent-or-complete)
   ;;preprocessors
-  (setq c-macro-shrink-window-flag t)
-  (setq c-macro-preprocessor "cpp")
-  (setq c-macro-cppflags " ")
-  (setq c-macro-prompt-flag t)
   (setq hs-minor-mode t)
   (setq abbrev-mode t))
 

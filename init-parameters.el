@@ -14,6 +14,6 @@
     (setq load-path (cons dir load-path))
     (normal-top-level-add-subdirs-to-load-path)))
 
-(setq default-fill-column 80)
+(setq fill-column 80)
 
 (provide 'init-parameters)

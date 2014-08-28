@@ -1,4 +1,4 @@
-(setq erc-default-coding-system '(utf-8 . utf-8))
+(setq erc-server-coding-system '(utf-8 . utf-8))
 (setq erc-encoding-coding-alist '(("#linuxfire" . chinese-iso-8bit)))
 
 (setq erc-nick "zzfnohell"

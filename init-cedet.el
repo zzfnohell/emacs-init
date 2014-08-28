@@ -141,8 +141,8 @@
   (semantic-add-system-include dir 'c++-mode)
   (semantic-add-system-include dir 'c-mode))
 
-(mapcar #'preprocess-symbol-directory *semantic-preprocessor-directories*)
-(mapcar #'add-semantic-include-directory *semantic-include-directories*)
+(mapc #'preprocess-symbol-directory *semantic-preprocessor-directories*)
+(mapc #'add-semantic-include-directory *semantic-include-directories*)
 
 ;; customisation of modes
 (defun cedet-semantic-hook ()
