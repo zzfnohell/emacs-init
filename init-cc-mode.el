@@ -25,9 +25,18 @@
       (hippie-expand nil)
     (indent-for-tab-command)))
 
+(setq c-default-style 
+      '(('c-mode . "bsd")
+        ('c++-mode . "bsd")
+        ('java-mode . "java")
+        ('awk-mode . "awk")
+        (other . "linux")))
+
+(setq-default c-basic-offset 4
+              tab-width 4
+              indent-tabs-mode t)
+
 (defun c-mode-edit-hook()
-  (setq tab-width 4 indent-tabs-mode nil)
-  (setq c-basic-offset 4)
   ;; hungry-delete and auto-newline
   (c-toggle-auto-hungry-state 1)
   (define-key c-mode-base-map [(tab)] 'cpp-indent-or-complete)
@@ -35,28 +44,18 @@
   (setq hs-minor-mode t)
   (setq abbrev-mode t))
 
-(defun c++-mode-edit-hook()
-  (setq default-tab-width 4 indent-tabs-mode nil)
-  (setq tab-width 4 indent-tabs-mode nil)
-  (setq c-basic-offset 4)
-  (c-set-style "stroustrup"))
 
 (add-hook 'semantic-init-hooks 'cedet-semantic-hook)
-
 (add-hook 'c-mode-common-hook 'cedet-semantic-hook)
 (add-hook 'c-mode-common-hook 'c-mode-cedet-hook)
 (add-hook 'c-mode-common-hook 'c-mode-edit-hook)
-(add-hook 'c-mode-common-hook (lambda() (c-set-style "k&r")))
-(add-hook 'c-mode-common-hook 'c-toggle-hungry-state)
-(add-hook 'c-mode-common-hook 'hs-minor-mode)
-;(add-hook 'c-mode-common-hook 'doxymacs-mode) ;; init doxymacs-mode
 
-(add-hook 'c++-mode-hook 'c++-mode-edit-hook)
-(add-hook 'c++-mode-common-hook (lambda() (c-set-style "k&r")))
+;(add-hook 'c-mode-common-hook 'doxymacs-mode) ;; init doxymacs-mode
 ;(add-hook 'c++-mode-common-hook 'doxymacs-mode) ;;init doxymacs-mode
 
 (setq auto-mode-alist
-      (append '(("\\.h$" . c-mode)) auto-mode-alist))
+      (append '(("\\.h$" . c-mode)) 
+			  auto-mode-alist))
 
 ;;opencl source file.
 (setq auto-mode-alist (cons '("\\.cl$" . c-mode) auto-mode-alist))
