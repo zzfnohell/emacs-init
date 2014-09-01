@@ -4,7 +4,6 @@
 ;; 
 
 ;;; Code:
-
 (provide 'init-coding)
 
 ;;; init-coding.el ends here
