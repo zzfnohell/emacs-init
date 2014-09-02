@@ -25,9 +25,34 @@
 (column-number-mode t);display column number
 (show-paren-mode t) ;match parentheses.
 ;;(setq-default cursor-type 'bar)
+
+(defface egoge-display-time
+   '((((type x w32 mac))
+      ;; #060525 is the background colour of my default face.
+      (:foreground "#060525" :inherit bold))
+     (((type tty))
+      (:foreground "blue")))
+   "Face used to display the time in the mode line.")
+
+(setq display-time-string-forms
+	  '((propertize 
+		 (concat " " 
+				 year 
+				 "-" 
+				 (format "%02d" (string-to-number month 10))
+				 "-" 
+				 (format "%02d" (string-to-number day 10)) 
+				 "." 
+				 (format "%02d" (string-to-number 24-hours 10)) 
+				 ":" 
+				 (format "%02d" (string-to-number minutes 10))
+				 " ")
+		 'face 'egoge-display-time)))
+
+
 (display-time-mode 1);display date time,format as below:
-(setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
+
 (tool-bar-mode -1)
 
 (transient-mark-mode t)
