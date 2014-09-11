@@ -38,6 +38,7 @@
 (require 'init-highlight-line)
 (require 'init-epy)
 
+(require 'init-mmm)
 (require 'init-ecb)
 (require 'init-git)
 (require 'init-hg)
@@ -78,7 +79,7 @@
 (require 'init-erc)
 (require 'init-markdown)
 (require 'init-nxml)
-(require 'init-mmm)
+
 (require 'init-csv)
 (require 'init-nodejs)
 (require 'init-nav)
