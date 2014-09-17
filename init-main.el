@@ -67,6 +67,7 @@
 (require 'init-irfc)
 (require 'init-flymake)
 (require 'init-helm-flymake)
+(require 'init-flycheck)
 (require 'init-helm)
 (require 'init-helm-R)
 (require 'init-session)
