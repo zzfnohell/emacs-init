@@ -15,16 +15,13 @@
 (require 'tern-auto-complete)
 
 (setq tern-command '("tern" "--no-port-file" "--persistent"))
-
-(eval-after-load 'tern
-  '(progn (tern-ac-setup)))
-
 (add-hook 'js2-mode-hook
     '(lambda ()
         (define-key js2-mode-map (kbd "TAB") 'indent-for-tab-command)
         (setq mode-name "JS2")
         (js2-imenu-extras-setup)
-        (tern-mode t)))
+        (tern-mode t)
+        (tern-ac-setup)))
 
 (defcustom preferred-javascript-mode
   (first (remove-if-not #'fboundp '(js2-mode js-mode)))
