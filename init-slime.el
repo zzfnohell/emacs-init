@@ -1,8 +1,13 @@
-(require-package 'slime)
-(require 'slime)
+;;; init-slime.el --- SLIME
+
+;; use slime from quicklisp
+;;; Code:
 
 (defvar slime-helper-path "~/quicklisp/slime-helper.el")
 (load (expand-file-name slime-helper-path))
+
+;; located in quicklisp install directory
+(require 'slime)
 (setq inferior-lisp-program "sbcl")
 (slime-setup)
 
@@ -15,3 +20,4 @@
 
 (provide 'init-slime)
 
+;;; init-slime.el ends here
