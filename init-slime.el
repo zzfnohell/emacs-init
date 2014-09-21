@@ -1,11 +1,9 @@
 (require-package 'slime)
 (require 'slime)
 
-(setq inferior-lisp-program "sbcl")
-
 (defvar slime-helper-path "~/quicklisp/slime-helper.el")
-(if (file-exists-p slime-helper-path)
-	(load (expand-file-name slime-helper-path)))
+(load (expand-file-name slime-helper-path))
+(setq inferior-lisp-program "sbcl")
 (slime-setup)
 
 (require-package 'ac-slime)
