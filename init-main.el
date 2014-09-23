@@ -36,7 +36,6 @@
 (require 'init-sage-mode)
 (require 'init-java)
 (require 'init-highlight-line)
-(require 'init-epy)
 
 (require 'init-mmm)
 (require 'init-ecb)
