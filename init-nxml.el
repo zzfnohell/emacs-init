@@ -5,20 +5,31 @@
 ;; nXMLn
 
 ;;; Code:
-(add-auto-mode
- 'nxml-mode
- (concat "\\."
-         (regexp-opt
-          '("xml" "xsd" "sch" "rng" "xslt" "svg" "rss"
-            "gpx" "tcx" "plist"))
-         "\\'"))
-(setq magic-mode-alist (cons '("<\\?xml " . nxml-mode) magic-mode-alist))
+(require 'nxml-mode)
 (fset 'xml-mode 'nxml-mode)
-(add-hook 'nxml-mode-hook 
-		  (lambda ()
-			(set (make-local-variable 'ido-use-filename-at-point) nil)))
-(setq nxml-slash-auto-complete-flag t)
+(require-package 'auto-complete-nxml)
 
+(add-to-list 'auto-mode-alist
+			 (cons 
+			  (concat "\\." 
+					  (regexp-opt '("xml" 
+									"xsd"
+									"sch"
+									"rng" 
+									"xslt" 
+									"svg"
+									"rss") t)
+					  "\\'")
+			  'nxml-mode))
+
+;;; Use nxml-mode instead of sgml, xml or html mode.
+(mapc (lambda (pair)
+		(if (or (eq (cdr pair) 'xml-mode)
+				(eq (cdr pair) 'sgml-mode)
+				(eq (cdr pair) 'html-mode)
+				)
+			(setcdr pair 'nxml-mode)))
+	  magic-mode-alist)
 
 ;; See: http://sinewalker.wordpress.com/2008/06/26/pretty-printing-xml-with-emacs-nxml-mode/
 (defun pp-xml-region (begin end)
