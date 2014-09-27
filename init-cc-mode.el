@@ -49,6 +49,9 @@
 (add-hook 'c-mode-common-hook 'cedet-semantic-hook)
 (add-hook 'c-mode-common-hook 'c-mode-cedet-hook)
 (add-hook 'c-mode-common-hook 'c-mode-edit-hook)
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'asm-mode-hook 'helm-gtags-mode)
 
 ;(add-hook 'c-mode-common-hook 'doxymacs-mode) ;; init doxymacs-mode
 ;(add-hook 'c++-mode-common-hook 'doxymacs-mode) ;;init doxymacs-mode

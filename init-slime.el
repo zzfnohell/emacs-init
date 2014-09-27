@@ -1,6 +1,10 @@
 ;;; init-slime.el --- SLIME
 
 ;; use slime from quicklisp
+
+;;; Commentary:
+;; 
+
 ;;; Code:
 
 (defvar slime-helper-path "~/quicklisp/slime-helper.el")
