@@ -78,10 +78,12 @@
 (require 'init-erc)
 (require 'init-markdown)
 
-(require 'init-nxml)
 (require 'init-csv)
 (require 'init-nodejs)
 (require 'init-nav)
+(require 'init-polymode)
+(require 'init-nxml)
+(require 'init-multi-web-mode)
 
 ;; (dolist (var (file-expand-wildcards "~/.emacs.d/init/*.el"))
 ;;   (let* ((file (expand-file-name var))
