@@ -5,8 +5,8 @@
 
 ;;; Code:
 (require-package 'elpy)
+(require 'elpy)
 (elpy-enable)
-(setq elpy-rpc-backend "native")
 
 (provide 'init-python)
 ;;; init-python.el ends here
