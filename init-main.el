@@ -1,5 +1,12 @@
+;;; init-main.el --- MAIN
+;;; Code:
+
 (add-to-list 'load-path (concat user-emacs-directory  "init"))
 (add-to-list 'load-path (concat user-emacs-directory  "site-lisp"))
+
+;;; Commentary:
+;; 
+
 (require 'init-benchmarking)
 (require 'init-elpa)
 (require 'init-utils)
@@ -85,11 +92,12 @@
 (require 'init-nxml)
 (require 'init-multi-web-mode)
 
-;; (dolist (var (file-expand-wildcards "~/.emacs.d/init/*.el"))
-;;   (let* ((file (expand-file-name var))
-;;          (elcfile  (concat (file-name-sans-extension file) ".elc")))
-;;     (if (file-exists-p elcfile) (byte-recompile-file file)
-;;       (byte-compile-file file))))
+(dolist (var (file-expand-wildcards "~/.emacs.d/init/*.el"))
+  (let* ((file (expand-file-name var))
+         (elcfile  (concat (file-name-sans-extension file) ".elc")))
+    (if (file-exists-p elcfile) (byte-recompile-file file)
+      (byte-compile-file file))))
 
-(provide 'init-emacs)
+(provide 'init-main)
 
+;;; init-main.el ends here

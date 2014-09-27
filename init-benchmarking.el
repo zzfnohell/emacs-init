@@ -1,3 +1,10 @@
+;;; init-benchmarking.el --- BENCHMARKING
+
+;;; Commentary:
+;; 
+
+;;; Code:
+
 (defun sanityinc/time-subtract-millis (b a)
   (* 1000.0 (float-time (time-subtract b a))))
 
@@ -20,8 +27,6 @@ LOAD-DURATION is the time taken in milliseconds to load FEATURE.")
                                                            require-start-time))
                      t)))))
 
-
-
 (provide 'init-benchmarking)
 
-
+;;; init-benchmarking.el ends here
