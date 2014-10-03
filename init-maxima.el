@@ -1,3 +1,10 @@
+;;; init-maxima.el --- MAXIMA
+
+;;; Commentary:
+;; 
+
+;;; Code:
+
 (cond
  ((eq system-type 'gnu/linux)
   (require 'maxima)
@@ -5,5 +12,7 @@
   (require 'imaxima)
   (setq auto-mode-alist (cons '("\\.mac" . maxima-mode) auto-mode-alist))
   (setq auto-mode-alist (cons '("\\.wxm" . maxima-mode) auto-mode-alist))))
- 
+
 (provide 'init-maxima)
+
+;;; init-maxima.el ends here
