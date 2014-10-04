@@ -95,10 +95,14 @@
 (require 'init-multi-web-mode)
 
 (dolist (var (file-expand-wildcards "~/.emacs.d/init/*.el"))
-  (let* ((file (expand-file-name var))
-         (elcfile  (concat (file-name-sans-extension file) ".elc")))
-    (if (file-exists-p elcfile) (byte-recompile-file file)
-      (byte-compile-file file))))
+  (let* ((elfile (expand-file-name var))
+         (elcfile  (concat (file-name-sans-extension elfile) ".elc")))
+	(if (not (file-exists-p elcfile))
+		(progn (message (concat "Compile " elfile))
+			   (byte-compile-file elfile))
+	  (if (file-newer-than-file-p elfile elcfile)
+		  (progn (message (concat "Recompile " elfile))
+				 (byte-recompile-file elfile))))))
 
 (provide 'init-main)
 

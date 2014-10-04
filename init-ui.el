@@ -1,3 +1,10 @@
+;;; init-ui.el --- UI
+
+;;; Commentary:
+;; 
+
+;;; Code:
+
 (print "Configuring UI")
 
 (cond
@@ -35,16 +42,16 @@
    "Face used to display the time in the mode line.")
 
 (setq display-time-string-forms
-	  '((propertize 
-		 (concat " " 
-				 year 
-				 "-" 
+	  '((propertize
+		 (concat " "
+				 year
+				 "-"
 				 (format "%02d" (string-to-number month 10))
-				 "-" 
-				 (format "%02d" (string-to-number day 10)) 
-				 "." 
-				 (format "%02d" (string-to-number 24-hours 10)) 
-				 ":" 
+				 "-"
+				 (format "%02d" (string-to-number day 10))
+				 "."
+				 (format "%02d" (string-to-number 24-hours 10))
+				 ":"
 				 (format "%02d" (string-to-number minutes 10))
 				 " ")
 		 'face 'egoge-display-time)))
@@ -70,7 +77,7 @@
 (defun set-transparency (alpha-level)
   (interactive "p")
   (message (format "Alpha level passed in: %s" alpha-level))
-  (let ((alpha-level 
+  (let ((alpha-level
          (if (< alpha-level 2)
              (read-number "Opacity percentage: " 85)
            alpha-level))
@@ -83,3 +90,4 @@
 
 (provide 'init-ui)
 
+;;; init-ui.el ends here
