@@ -4,14 +4,20 @@
 ;; YASnippet
 
 ;;; Code:
+
+(setq yas-minor-mode-map ;This MUST before (require 'yasnippet)
+	  (let ((map (make-sparse-keymap)))
+		map)) 
+
 (require-package 'yasnippet)
 (require 'yasnippet)
-
-(yas-global-mode 1)
 
 (add-to-list 'yas-snippet-dirs 
 			 "~/.emacs.d/snippets"
 			 "~/.emacs.d/snippets/yasmate/snippets")
+
+(yas-reload-all)
+(yas-global-mode 1)
 
 ;;; use popup menu for yas-choose-value
 (require 'popup)
