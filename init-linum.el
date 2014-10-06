@@ -1,10 +1,19 @@
+;;; init-linum.el --- LINENUM
 ;;display line numbers
+
+;;; Commentary:
+;; 
+
+;;; Code:
+
 (require 'linum)
 (defvar *linum-disable-major-mode-list*
-  '(rfcview-mode))
+  '(rfcview-mode
+    image-mode))
 
 ;;; linum-mode
 (defun turn-linum-on ()
+  "Turn linum mode on."
   (unless
       (or (minibufferp)
           ;;linum should turn off in non-editor buffer
@@ -31,6 +40,6 @@
 
 (global-linum-mode 1)
 
-
-
 (provide 'init-linum)
+
+;;; init-linum.el ends here
