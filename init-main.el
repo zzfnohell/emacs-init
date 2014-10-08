@@ -68,6 +68,7 @@
 (require 'init-R)
 (require 'init-octave-mod)
 (require 'init-cc-mode)
+(require 'init-sl)
 
 (require 'init-erlang)
 (require 'init-clojure)

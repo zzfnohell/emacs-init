@@ -1,4 +1,11 @@
+;;; init-lisp.el --- LISP
 ;; packages required in hooks
+
+;;; Commentary:
+;; 
+
+;;; Code:
+
 (require-package 'paredit)
 (require-package 'lispy)
 (require-package 'diminish)
@@ -8,22 +15,6 @@
 
 (require-package 'pretty-mode)
 (autoload 'turn-on-pretty-mode "pretty-mode")
-
-(setq-default initial-scratch-message
-              (concat ";; Happy hacking " (or user-login-name "") "!\n\n"))
-
-
-;; Make C-x C-e run 'eval-region if the region is active
-
-(defun sanityinc/eval-last-sexp-or-region (beg end prefix)
-  "Eval region from BEG to END if active, otherwise the last sexp."
-  (interactive "r\nP")
-  (if (use-region-p)
-      (eval-region beg end)
-    (eval-last-sexp prefix)))
-
-(after-load 'lisp-mode
-  (define-key emacs-lisp-mode-map (kbd "C-x C-e") 'sanityinc/eval-last-sexp-or-region))
 
 ;; ----------------------------------------------------------------------------
 ;; Hippie-expand
@@ -37,7 +28,6 @@
 ;; ----------------------------------------------------------------------------
 ;; Highlight current sexp
 ;; ----------------------------------------------------------------------------
-
 (require-package 'hl-sexp)
 
 ;; Prevent flickery behaviour due to hl-sexp-mode unhighlighting before each command
@@ -83,7 +73,6 @@
 (dolist (hook (mapcar #'derived-mode-hook-name sanityinc/elispy-modes))
   (add-hook hook 'sanityinc/emacs-lisp-setup))
 
-
 (require-package 'eldoc-eval)
 (require 'eldoc-eval)
 
@@ -92,3 +81,5 @@
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
 
 (provide 'init-lisp)
+
+;;; init-lisp.el ends here
