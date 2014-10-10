@@ -36,6 +36,7 @@
 (require 'init-w3m)
 (require 'init-multi-term)
 
+(require 'init-cvs)
 (require 'init-git)
 (require 'init-hg)
 
