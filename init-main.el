@@ -96,16 +96,6 @@
 (require 'init-nxml)
 (require 'init-multi-web-mode)
 
-(dolist (var (file-expand-wildcards "~/.emacs.d/init/*.el"))
-  (let* ((elfile (expand-file-name var))
-         (elcfile  (concat (file-name-sans-extension elfile) ".elc")))
-	(if (not (file-exists-p elcfile))
-		(progn (message (concat "Compile " elfile))
-			   (byte-compile-file elfile))
-	  (if (file-newer-than-file-p elfile elcfile)
-		  (progn (message (concat "Recompile " elfile))
-				 (byte-recompile-file elfile))))))
-
 (provide 'init-main)
 
 ;;; init-main.el ends here
