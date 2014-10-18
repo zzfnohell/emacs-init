@@ -4,17 +4,15 @@
 ;; YASnippet
 
 ;;; Code:
-
-(setq yas-minor-mode-map ;This MUST before (require 'yasnippet)
-	  (let ((map (make-sparse-keymap)))
-		map)) 
-
 (require-package 'yasnippet)
 (require 'yasnippet)
 
 (add-to-list 'yas-snippet-dirs 
 			 "~/.emacs.d/snippets"
 			 "~/.emacs.d/snippets/yasmate/snippets")
+
+(define-key yas-minor-mode-map [(tab)] nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
 
 (yas-reload-all)
 (yas-global-mode 1)
