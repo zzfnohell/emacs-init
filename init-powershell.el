@@ -1,10 +1,13 @@
-;;(require-package 'diminish)
-;;(require-package 'powershell)
-;;(require-package 'powershell-mode)
+;;; init-powershell.el --- Powershell
 
-;;(require 'powershell) 
-;;(require 'powershell-mode)
 
-;;(setq auto-mode-alist (cons '("\\.ps1" . powershell-mode) auto-mode-alist))
+;;; Commentary:
+;; 
+
+;;; Code:
+(require-package 'powershell)
+(require 'powershell)
 
 (provide 'init-powershell)
+
+;;; init-powershell.el ends here
