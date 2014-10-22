@@ -34,7 +34,7 @@
 (require-package 'helm-gtags)
 (require 'helm-gtags)
 
-(helm-mode 1)
+;; (helm-mode 1)
 
 (provide 'init-helm)
 
