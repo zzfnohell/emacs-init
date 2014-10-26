@@ -33,7 +33,6 @@
 (require 'init-irfc)
 (require 'init-tags)
 (require 'init-session)
-(require 'init-w3m)
 (require 'init-multi-term)
 
 (require 'init-cvs)
