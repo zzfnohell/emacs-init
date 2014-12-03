@@ -85,8 +85,8 @@
     (set-frame-parameter nil 'alpha alpha-level))
   (message (format "Alpha level is %d" (frame-parameter nil 'alpha))))
 
-(set-frame-parameter (selected-frame) 'alpha '(85 50))
-(add-to-list 'default-frame-alist '(alpha 85 50))
+;;(set-frame-parameter (selected-frame) 'alpha '(85 50))
+;;(add-to-list 'default-frame-alist '(alpha 85 50))
 
 (provide 'init-ui)
 
