@@ -9,10 +9,7 @@
 
 (require-package 'dired+)
 (require 'dired+)
-(customize-set-variable
- 'diredp-hide-details-initially-flag nil)
-
-
+(customize-variable diredp-hide-details-initially-flag nil)
 ;;; Commentary:
 ;; 
 

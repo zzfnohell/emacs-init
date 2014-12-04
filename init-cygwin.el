@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(if (cygwin-p)
+(if (windows-p)
 	(progn
 	  (require-package 'cygwin-mount)
 	  (require 'cygwin-mount)
