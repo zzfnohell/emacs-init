@@ -6,17 +6,11 @@
 ;;; Code:
 
 (if (windows-p)
-	(progn
-	  (require-package 'cygwin-mount)
-	  (require 'cygwin-mount)
-	  (cygwin-mount-activate)
-	  
-	  (require-package 'setup-cygwin)
-	  (require 'setup-cygwin)
-	  (customize-set-variable
-	   'cygwin-root-directory
-	   (getenv "CYGWIN_ROOT"))
-	  ))
+    (progn
+      (require-package 'cygwin-mount)
+      (require 'cygwin-mount)
+      (cygwin-mount-activate)))
+      
 
 (provide 'init-cygwin)
 
