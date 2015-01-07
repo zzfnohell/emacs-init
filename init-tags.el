@@ -2,7 +2,6 @@
 (cond
  ((eq system-type 'gnu/linux)
   (require-package 'ggtags)
-  (require 'gtags)
   (autoload 'gtags-mode "gtags" "" t)
   
   (add-hook 'c-mode-common-hook
