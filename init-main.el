@@ -94,7 +94,7 @@
 (require 'init-nav)
 (require 'init-polymode)
 (require 'init-nxml)
-(require 'init-multi-web-mode)
+(require 'init-web)
 
 (provide 'init-main)
 

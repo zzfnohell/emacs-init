@@ -17,7 +17,10 @@
 (require-package 'java-snippets)
 (require-package 'javadoc-lookup)
 (require 'javadoc-lookup)
-(javadoc-add-roots "/usr/share/doc/openjdk-7-jdk/api")
+
+(setq open-jdk-doc-path "/usr/share/doc/openjdk-7-jdk/api")
+(if (file-exists-p open-jdk-doc-path)
+    (javadoc-add-roots open-jdk-doc-path))
 
 (require-package 'ant)
 (require 'ant)

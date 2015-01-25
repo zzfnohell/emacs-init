@@ -9,6 +9,8 @@
 (require-package 'js2-refactor)
 (require 'js2-refactor)
 
+(require-package 'closure-lint-mode)
+
 (require-package 'tern)
 (require 'tern)
 (require-package 'tern-auto-complete)
