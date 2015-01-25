@@ -39,6 +39,8 @@
 (require 'ac-html-csswatcher)
 (ac-html-csswatcher-setup)
 
+(require-package 'web-beautify)
+
 (provide 'init-web)
 
 ;;; init-web.el ends here
