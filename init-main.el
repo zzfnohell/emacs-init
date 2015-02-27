@@ -90,6 +90,7 @@
 (require 'init-markdown)
 
 (require 'init-csv)
+(require 'init-php)
 (require 'init-nodejs)
 (require 'init-nav)
 (require 'init-polymode)
