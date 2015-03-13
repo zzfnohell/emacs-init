@@ -32,6 +32,7 @@
 (column-number-mode t);display column number
 (show-paren-mode t) ;match parentheses.
 ;;(setq-default cursor-type 'bar)
+(setq-default indent-tabs-mode nil)
 
 (defface egoge-display-time
    '((((type x w32 mac))
