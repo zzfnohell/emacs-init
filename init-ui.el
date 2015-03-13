@@ -31,7 +31,7 @@
 (fset 'yes-or-no-p 'y-or-n-p);use y/n replace yes/no
 (column-number-mode t);display column number
 (show-paren-mode t) ;match parentheses.
-;;(setq-default cursor-type 'bar)
+;; (setq-default cursor-type 'box)
 (setq-default indent-tabs-mode nil)
 
 (defface egoge-display-time
