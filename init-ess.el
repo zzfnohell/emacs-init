@@ -7,6 +7,7 @@
 ;; (defvar ess-microsoft-p  (eq system-type 'windows-nt)
 ;;   "Value is t if the OS is one of Microsoft's, nil otherwise.")
 ;;; Code:
+
 (require-package 'ess-R-data-view)
 (require-package 'ess-R-object-popup)
 (require 'ess-site)

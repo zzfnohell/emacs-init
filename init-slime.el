@@ -12,7 +12,9 @@
 
 ;; located in quicklisp install directory
 (require 'slime)
+
 (setq inferior-lisp-program "sbcl")
+
 (slime-setup)
 
 (require-package 'ac-slime)
