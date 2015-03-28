@@ -11,3 +11,8 @@ pip install flake8
 
 # and importmagic for automatic imports
 pip install importmagic
+
+pip install "ipython[all]"
+
+pip install cython
+
