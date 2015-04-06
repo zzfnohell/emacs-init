@@ -27,6 +27,8 @@
 
 (setq tabbar-buffer-groups-function 'tabbar-buffer-groups)
 
+(tabbar-mode t)
+
 (provide 'init-tabbar)
 
 ;;; init-tabbar.el ends here
