@@ -69,6 +69,7 @@
 (require 'init-R)
 (require 'init-octave-mod)
 (require 'init-cc-mode)
+(require 'init-lex)
 (require 'init-sl)
 
 (require 'init-erlang)
