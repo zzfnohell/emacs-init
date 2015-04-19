@@ -51,6 +51,7 @@
 (require 'init-regexp)
 (require 'init-helm)
 (require 'init-ecb)
+(require 'init-msvc)
 (require 'init-flycheck)
 (require 'init-yasnippet)
 
