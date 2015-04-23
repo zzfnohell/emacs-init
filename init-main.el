@@ -87,7 +87,7 @@
 
 (require 'init-powershell)
 (require 'init-dos)
-(require 'init-csharp-mode)
+(require 'init-csharp)
 (require 'init-erc)
 (require 'init-markdown)
 
