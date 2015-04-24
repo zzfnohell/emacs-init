@@ -68,7 +68,7 @@
 (require 'init-slime)
 (require 'init-lisp)
 (require 'init-R)
-(require 'init-octave-mod)
+(require 'init-octave)
 (require 'init-cc-mode)
 (require 'init-lex)
 (require 'init-sl)
