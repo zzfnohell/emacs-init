@@ -54,6 +54,7 @@
 (require 'init-ecb)
 (require 'init-msvc)
 (require 'init-flycheck)
+(require 'init-flymake)
 (require 'init-yasnippet)
 
 (require 'init-ess)
