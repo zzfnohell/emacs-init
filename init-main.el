@@ -35,6 +35,7 @@
 (require 'init-tags)
 (require 'init-session)
 (require 'init-multi-term)
+(require 'init-shell)
 
 (require 'init-cvs)
 (require 'init-git)

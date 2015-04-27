@@ -10,8 +10,6 @@
 (require 'xcscope)
 (cscope-setup)
 
-(require-package 'ascope)
-
 (provide 'init-xcscope)
 
 ;;; init-xcscope.el ends here
