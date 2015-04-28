@@ -9,7 +9,7 @@
 (require-package 'anyins)
 (require 'anyins)
 
-(require-pacakge 'browse-kill-ring+)
+(require-package 'browse-kill-ring+)
 (require 'browse-kill-ring+)
 (require-package 'popup-kill-ring)
 (require-package 'kill-ring-search)
