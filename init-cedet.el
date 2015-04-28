@@ -9,6 +9,7 @@
 
 (if (file-exists-p cedet-root-path)
     (load-file (concat cedet-root-path "cedet-devel-load.el"))
+	(load-file (concat cedet-root-path "contrib/cedet-contrib-load.el")))
 
 (require 'cedet)
 (require 'cedet-cscope)
