@@ -51,6 +51,7 @@
 
 (require 'init-regexp)
 (require 'init-helm)
+(require 'init-kill-ring)
 (require 'init-ecb)
 (require 'init-msvc)
 (require 'init-flycheck)
