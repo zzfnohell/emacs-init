@@ -1,4 +1,15 @@
+;;; init-cedet.el --- CEDET
 ;; cedet setting.
+
+;;; Commentary:
+;; 
+
+;;; Code:
+(setq cedet-root-path (concat  *user-site-lisp-path* "cedet/"))
+
+(if (file-exists-p cedet-root-path)
+    (load-file (concat cedet-root-path "cedet-devel-load.el"))
+
 (require 'cedet)
 (require 'cedet-cscope)
 (require 'cedet-files)
@@ -15,7 +26,6 @@
 (require 'semantic/db-global)
 (require 'semantic-c nil 'noerror)
 (require 'semantic-decorate-include nil 'noerror)
-
 (semantic-mode 1)
 
 (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
@@ -178,6 +188,6 @@
 ;;      (list (srecode-map-base-template-dir)
 ;;	    (expand-file-name "~/.emacs.d/templates/srecode")))
 
-
-
 (provide 'init-cedet)
+
+;;; init-cedet.el ends here
