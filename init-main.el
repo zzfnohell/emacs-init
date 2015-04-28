@@ -74,6 +74,7 @@
 (require 'init-cc-mode)
 (require 'init-lex)
 (require 'init-sl)
+(require 'init-pascal)
 
 (require 'init-erlang)
 (require 'init-clojure)

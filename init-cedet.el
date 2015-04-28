@@ -38,6 +38,7 @@
 (global-semantic-show-unmatched-syntax-mode 1)
 (global-semantic-show-parser-state-mode 1)
 
+
 ;;;; Semantic DataBase directory
 (setq semanticdb-default-save-directory
      (expand-file-name "~/.emacs.d/semanticdb"))
@@ -48,16 +49,26 @@
 ;; (semantic-load-enable-excessive-code-helpers)
 ;; (global-semantic-tag-folding-mode 1)
 
-(setq-mode-local c-mode semanticdb-find-default-throttle '(project unloaded system recursive))
-(setq-mode-local c++-mode semanticdb-find-default-throttle '(project unloaded system recursive))
+(setq-mode-local c-mode semanticdb-find-default-throttle
+				 '(project unloaded system recursive))
+(setq-mode-local c++-mode semanticdb-find-default-throttle
+				 '(project unloaded system recursive))
 
 (defun my-semantic-hook ()
   (imenu-add-to-menubar "TAGS"))
 
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
+(add-hook 'semantic-init-hooks 'cedet-semantic-hook)
 
-(semanticdb-enable-gnu-global-databases 'c-mode)
-(semanticdb-enable-gnu-global-databases 'c++-mode)
+;; enable support for gnu global
+(when (cedet-gnu-global-version-check t)
+  (semanticdb-enable-gnu-global-databases 'c-mode)
+  (semanticdb-enable-gnu-global-databases 'c++-mode))
+
+;; enable ctags for some languages:
+;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
+(when (cedet-ectag-version-check t)
+  (semantic-load-enable-primary-exuberent-ctags-support))
 
 (global-semantic-decoration-mode 1)
 (semantic-toggle-decoration-style "semantic-tag-boundary" -1)
