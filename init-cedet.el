@@ -21,44 +21,40 @@
 (global-ede-mode t)
 (ede-enable-generic-projects)
 
+(setq semantic-ectag-program "ctags")
+
+;;;; Semantic DataBase directory
+(setq semanticdb-default-save-directory
+     (expand-file-name "~/.emacs.d/semanticdb"))
+
+(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
+(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-local-symbol-highlight-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
+
+(semantic-mode 1)
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
 (require 'semantic/bovine/c)
 (require 'semantic/db-global)
 (require 'semantic-c nil 'noerror)
 (require 'semantic-decorate-include nil 'noerror)
-(semantic-mode 1)
 
-(add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
-(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
-(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
+;; enable support for gnu global
+(when (cedet-gnu-global-version-check t)
+  (semanticdb-enable-gnu-global-databases 'c-mode)
+  (semanticdb-enable-gnu-global-databases 'c++-mode))
 
-(global-semanticdb-minor-mode 1)
-(global-semantic-idle-scheduler-mode 1)
-(global-semantic-idle-summary-mode 1)
-(global-semantic-idle-completions-mode 1)
-(global-semantic-decoration-mode 1)
-(global-semantic-highlight-func-mode 1)
-(global-semantic-highlight-edits-mode 1)
-(global-semantic-stickyfunc-mode 1)
-(global-semantic-mru-bookmark-mode 1)
-(global-semantic-show-unmatched-syntax-mode 1)
-(global-semantic-show-parser-state-mode 1)
-
-
-;;;; Semantic DataBase directory
-(setq semanticdb-default-save-directory
-     (expand-file-name "~/.emacs.d/semanticdb"))
-
-;; not existing in build in
-;; (enable-visual-studio-bookmarks)
-;; (semantic-load-enable-code-helpers)
-;; (semantic-load-enable-excessive-code-helpers)
-;; (global-semantic-tag-folding-mode 1)
+;; enable ctags for some languages:
+;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
+(when (cedet-ectag-version-check t)
+  (semantic-load-enable-primary-ectags-support))
 
 (setq-mode-local c-mode semanticdb-find-default-throttle
 				 '(project unloaded system recursive))
@@ -70,16 +66,6 @@
 
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
 (add-hook 'semantic-init-hooks 'cedet-semantic-hook)
-
-;; enable support for gnu global
-(when (cedet-gnu-global-version-check t)
-  (semanticdb-enable-gnu-global-databases 'c-mode)
-  (semanticdb-enable-gnu-global-databases 'c++-mode))
-
-;; enable ctags for some languages:
-;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
-(when (cedet-ectag-version-check t)
-  (semantic-load-enable-primary-exuberent-ctags-support))
 
 (global-semantic-decoration-mode 1)
 (semantic-toggle-decoration-style "semantic-tag-boundary" -1)
@@ -108,7 +94,7 @@
     (indent-for-tab-command)))
 
 (defun indent-key-setup ()
-  "Set tab as key for indent-or-complete"
+  "Set tab as key for indent-or-complete."
   (local-set-key [(tab)] 'indent-or-complete))
 
 (setq senator-minor-mode-name "SN")
@@ -138,7 +124,7 @@
 
 
 (defun recur-list-files (dir re)
-  "Returns list of files in directory matching to given regex"
+  "Returns list of files in directory matching to given regex."
   (when (file-accessible-directory-p dir)
     (let ((files (directory-files dir t)) matched)
       (dolist (file files matched)
