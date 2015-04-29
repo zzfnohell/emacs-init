@@ -5,19 +5,19 @@
 ;; 
 
 ;;; Code:
-(setq cedet-root-path (concat  *user-site-lisp-path* "cedet/"))
 
-(if (file-exists-p cedet-root-path)
-    (load-file (concat cedet-root-path "cedet-devel-load.el"))
-	(load-file (concat cedet-root-path "contrib/cedet-contrib-load.el")))
+;; (setq cedet-root-path (concat  *user-site-lisp-path* "cedet/"))
+
+;; (if (file-exists-p cedet-root-path)
+;;     (load-file (concat cedet-root-path "cedet-devel-load.el"))
+;; 	(load-file (concat cedet-root-path "contrib/cedet-contrib-load.el")))
 
 (require 'cedet)
 (require 'ede)
 (global-ede-mode t)
 (ede-enable-generic-projects)
 
-(setq
- semantic-ectag-program "ctags")
+(setq semantic-ectag-program "ctags")
 
 ;;;; Semantic DataBase directory
 (setq semanticdb-default-save-directory
@@ -25,7 +25,7 @@
 
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
-(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
+;;(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
@@ -43,14 +43,13 @@
 (require 'semantic/decorate/include nil 'noerror)
 
 ;; enable support for gnu global
-(when (cedet-gnu-global-version-check t)
-  (semanticdb-enable-gnu-global-databases 'c-mode)
-  (semanticdb-enable-gnu-global-databases 'c++-mode))
+(semanticdb-enable-gnu-global-databases 'c-mode)
+(semanticdb-enable-gnu-global-databases 'c++-mode)
 
 ;; enable ctags for some languages:
 ;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
-(when (cedet-ectag-version-check t)
-  (semantic-load-enable-primary-ectags-support))
+;; 24.5 it is not supported in buildin cedet.
+;; (semantic-load-enable-primary-ectags-support)
 
 (setq-mode-local c-mode semanticdb-find-default-throttle
 				 '(project unloaded system recursive))
