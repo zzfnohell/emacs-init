@@ -12,16 +12,12 @@
 	(load-file (concat cedet-root-path "contrib/cedet-contrib-load.el")))
 
 (require 'cedet)
-(require 'cedet-cscope)
-(require 'cedet-files)
-(require 'cedet-global)
-(require 'cedet-idutils)
 (require 'ede)
-
 (global-ede-mode t)
 (ede-enable-generic-projects)
 
-(setq semantic-ectag-program "ctags")
+(setq
+ semantic-ectag-program "ctags")
 
 ;;;; Semantic DataBase directory
 (setq semanticdb-default-save-directory
@@ -42,9 +38,9 @@
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
 (require 'semantic/bovine/c)
-(require 'semantic/db-global)
-(require 'semantic-c nil 'noerror)
-(require 'semantic-decorate-include nil 'noerror)
+(require 'semantic/db)
+(require 'semantic/c nil 'noerror)
+(require 'semantic/decorate/include nil 'noerror)
 
 ;; enable support for gnu global
 (when (cedet-gnu-global-version-check t)
