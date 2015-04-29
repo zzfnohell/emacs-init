@@ -43,6 +43,9 @@
   (add-to-list 'ac-sources 'ac-source-etags))
 (add-hook 'c-mode-common-hook 'ac-etags-c-mode-common-hook)
 
+(require 'auto-complete-exuberant-ctags)
+(ac-exuberant-ctags-setup)
+
 
 (provide 'init-auto-complete)
 

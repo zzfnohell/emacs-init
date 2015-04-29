@@ -6,7 +6,6 @@
 ;; 
 
 ;;; Code:
-
 (require-package 'web-mode)
 (require 'web-mode)
 

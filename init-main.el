@@ -12,20 +12,21 @@
 (require 'init-elpa)
 (require 'init-utils)
 
+
 (require 'init-parameters)
 (require 'init-system)
 (require 'init-cygwin)
 (require 'init-coding)
 (require 'init-ui)
+(require 'init-remote)
+(require 'init-edit)
+
 (require 'init-tabbar)
 
 (require 'init-emms)
 
 (require 'init-ediff)
-(require 'init-highlight-line)
-(require 'init-whitespace)
 (require 'init-sr-speedbar)
-(require 'init-linum)
 (require 'init-eshell)
 (require 'init-theme)
 (require 'init-global-set-key)
