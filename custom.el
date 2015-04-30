@@ -12,7 +12,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ac-etags-requires 1)
- '(cygwin-root-directory "/"))
+ '(cygwin-root-directory "/")
+ '(minimap-window-location (quote right))
+ '(session-use-package t nil (session)))
  
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
