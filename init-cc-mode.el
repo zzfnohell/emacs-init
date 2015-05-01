@@ -44,8 +44,6 @@
   (setq hs-minor-mode t)
   (setq abbrev-mode t))
 
-
-(add-hook 'semantic-init-hooks 'cedet-semantic-hook)
 (add-hook 'c-mode-common-hook 'cedet-semantic-hook)
 (add-hook 'c-mode-common-hook 'c-mode-cedet-hook)
 (add-hook 'c-mode-common-hook 'c-mode-edit-hook)
@@ -56,12 +54,25 @@
 ;(add-hook 'c-mode-common-hook 'doxymacs-mode) ;; init doxymacs-mode
 ;(add-hook 'c++-mode-common-hook 'doxymacs-mode) ;;init doxymacs-mode
 
-(setq auto-mode-alist
-      (append '(("\\.h$" . c-mode)) 
-			  auto-mode-alist))
+(require-package 'clang-format)
+(require 'clang-format)
+
+(require-package 'ac-clang)
+(require 'ac-clang)
+
+(if (windows-p)
+	(setq w32-pipe-read-delay 0))
+
+
+(when (ac-clang-initialize)
+  (add-hook 'c-mode-common-hook 
+			'(lambda ()
+			   (ac-clang-activate-after-modify))))
+
 
 ;;opencl source file.
-(setq auto-mode-alist (cons '("\\.cl$" . c-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.cl$" . c-mode))
+(add-to-list 'auto-mode-alist '("\\.h$" . c-mode))
 
 (require-package 'cmake-mode)
 

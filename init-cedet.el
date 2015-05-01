@@ -1,63 +1,66 @@
+;;; init-cedet.el --- CEDET
 ;; cedet setting.
-(require 'cedet)
-(require 'cedet-cscope)
-(require 'cedet-files)
-(require 'cedet-global)
-(require 'cedet-idutils)
-(require 'ede)
 
+;;; Commentary:
+;; 
+
+;;; Code:
+
+;; (setq cedet-root-path (concat  *user-site-lisp-path* "cedet/"))
+
+;; (if (file-exists-p cedet-root-path)
+;;     (load-file (concat cedet-root-path "cedet-devel-load.el"))
+;; 	(load-file (concat cedet-root-path "contrib/cedet-contrib-load.el")))
+
+(require 'cedet)
+(require 'ede)
 (global-ede-mode t)
 (ede-enable-generic-projects)
 
-(require 'semantic/ia)
-(require 'semantic/bovine/gcc)
-(require 'semantic/bovine/c)
-(require 'semantic/db-global)
-(require 'semantic-c nil 'noerror)
-(require 'semantic-decorate-include nil 'noerror)
-
-(semantic-mode 1)
-
-(add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
-(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
-(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
-
-(global-semanticdb-minor-mode 1)
-(global-semantic-idle-scheduler-mode 1)
-(global-semantic-idle-summary-mode 1)
-(global-semantic-idle-completions-mode 1)
-(global-semantic-decoration-mode 1)
-(global-semantic-highlight-func-mode 1)
-(global-semantic-highlight-edits-mode 1)
-(global-semantic-stickyfunc-mode 1)
-(global-semantic-mru-bookmark-mode 1)
-(global-semantic-show-unmatched-syntax-mode 1)
-(global-semantic-show-parser-state-mode 1)
+(setq semantic-ectag-program "ctags")
 
 ;;;; Semantic DataBase directory
 (setq semanticdb-default-save-directory
      (expand-file-name "~/.emacs.d/semanticdb"))
 
-;; not existing in build in
-;; (enable-visual-studio-bookmarks)
-;; (semantic-load-enable-code-helpers)
-;; (semantic-load-enable-excessive-code-helpers)
-;; (global-semantic-tag-folding-mode 1)
+(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
+;;(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-local-symbol-highlight-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
 
-(setq-mode-local c-mode semanticdb-find-default-throttle '(project unloaded system recursive))
-(setq-mode-local c++-mode semanticdb-find-default-throttle '(project unloaded system recursive))
+(semantic-mode 1)
+(require 'semantic/ia)
+(require 'semantic/bovine/gcc)
+(require 'semantic/bovine/c)
+(require 'semantic/db)
+(require 'semantic/c nil 'noerror)
+(require 'semantic/decorate/include nil 'noerror)
+
+;; enable support for gnu global
+(semanticdb-enable-gnu-global-databases 'c-mode)
+(semanticdb-enable-gnu-global-databases 'c++-mode)
+
+;; enable ctags for some languages:
+;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
+;; 24.5 it is not supported in buildin cedet.
+;; (semantic-load-enable-primary-ectags-support)
+
+(setq-mode-local c-mode semanticdb-find-default-throttle
+				 '(project unloaded system recursive))
+(setq-mode-local c++-mode semanticdb-find-default-throttle
+				 '(project unloaded system recursive))
 
 (defun my-semantic-hook ()
   (imenu-add-to-menubar "TAGS"))
 
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
-
-(semanticdb-enable-gnu-global-databases 'c-mode)
-(semanticdb-enable-gnu-global-databases 'c++-mode)
+(add-hook 'semantic-init-hooks 'cedet-semantic-hook)
 
 (global-semantic-decoration-mode 1)
 (semantic-toggle-decoration-style "semantic-tag-boundary" -1)
@@ -86,7 +89,7 @@
     (indent-for-tab-command)))
 
 (defun indent-key-setup ()
-  "Set tab as key for indent-or-complete"
+  "Set tab as key for indent-or-complete."
   (local-set-key [(tab)] 'indent-or-complete))
 
 (setq senator-minor-mode-name "SN")
@@ -116,7 +119,7 @@
 
 
 (defun recur-list-files (dir re)
-  "Returns list of files in directory matching to given regex"
+  "Returns list of files in directory matching to given regex."
   (when (file-accessible-directory-p dir)
     (let ((files (directory-files dir t)) matched)
       (dolist (file files matched)
@@ -167,6 +170,6 @@
 ;;      (list (srecode-map-base-template-dir)
 ;;	    (expand-file-name "~/.emacs.d/templates/srecode")))
 
-
-
 (provide 'init-cedet)
+
+;;; init-cedet.el ends here

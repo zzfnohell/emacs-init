@@ -12,6 +12,7 @@
   (setq default-frame-alist
         (append '((font . "Ubuntu Mono 11")) default-frame-alist))
   (set-frame-font "Ubuntu Mono 11")
+  (set-default-font "Ubuntu Mono 11")
   ;;Setting English Font
   (set-face-attribute 'default nil :font "Ubuntu Mono 11")
   ;; Chinese Font
@@ -19,7 +20,7 @@
     (set-fontset-font
      (frame-parameter nil 'font)
      charset
-     (font-spec :family "WenQuanYi Micro Hei Mono" :size 11)))))
+     (font-spec :family "Ubuntu Mono" :size 11)))))
 
 (setq ansi-color-for-comint-mode t) ;emacs shell font confusion
 
@@ -89,8 +90,7 @@
 ;;(set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;;(add-to-list 'default-frame-alist '(alpha 85 50))
 
-(require-package 'take-off)
-(require 'take-off)
+(require-package 'minimap)
 
 (provide 'init-ui)
 

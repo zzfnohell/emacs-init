@@ -1,8 +1,9 @@
 ;;; init-main.el --- MAIN
 ;;; Code:
 
-(add-to-list 'load-path (concat user-emacs-directory  "init"))
-(add-to-list 'load-path (concat user-emacs-directory  "site-lisp"))
+(setq *user-site-lisp-path* (concat user-emacs-directory  "site-lisp/"))
+(add-to-list 'load-path (concat user-emacs-directory  "init/"))
+(add-to-list 'load-path (concat user-emacs-directory  *user-site-lisp-path*))
 
 ;;; Commentary:
 ;; 
@@ -11,20 +12,21 @@
 (require 'init-elpa)
 (require 'init-utils)
 
+
 (require 'init-parameters)
 (require 'init-system)
 (require 'init-cygwin)
 (require 'init-coding)
 (require 'init-ui)
+(require 'init-remote)
+(require 'init-edit)
+
 (require 'init-tabbar)
 
 (require 'init-emms)
 
 (require 'init-ediff)
-(require 'init-highlight-line)
-(require 'init-whitespace)
 (require 'init-sr-speedbar)
-(require 'init-linum)
 (require 'init-eshell)
 (require 'init-theme)
 (require 'init-global-set-key)
@@ -35,6 +37,7 @@
 (require 'init-tags)
 (require 'init-session)
 (require 'init-multi-term)
+(require 'init-shell)
 
 (require 'init-cvs)
 (require 'init-git)
@@ -50,8 +53,11 @@
 
 (require 'init-regexp)
 (require 'init-helm)
+(require 'init-kill-ring)
 (require 'init-ecb)
+(require 'init-msvc)
 (require 'init-flycheck)
+(require 'init-flymake)
 (require 'init-yasnippet)
 
 (require 'init-ess)
@@ -67,9 +73,11 @@
 (require 'init-slime)
 (require 'init-lisp)
 (require 'init-R)
-(require 'init-octave-mod)
+(require 'init-octave)
 (require 'init-cc-mode)
+(require 'init-lex)
 (require 'init-sl)
+(require 'init-pascal)
 
 (require 'init-erlang)
 (require 'init-clojure)
@@ -85,7 +93,7 @@
 
 (require 'init-powershell)
 (require 'init-dos)
-(require 'init-csharp-mode)
+(require 'init-csharp)
 (require 'init-erc)
 (require 'init-markdown)
 

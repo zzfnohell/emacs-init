@@ -1,4 +1,6 @@
 ;;; init-octave-mod.el --- Octave
+
+
 ;;; Code:
 
 (autoload 'octave-mode "octave-mod" nil t)
@@ -15,9 +17,13 @@
 
 ;;; Commentary:
 ;; require ac-octave
-
 (require-package 'ac-octave)
+(require 'ac-octave) 
+(defun ac-octave-mode-setup () 
+  (setq ac-sources '(ac-source-octave))) 
+(add-hook 'octave-mode-hook 
+		  '(lambda () (ac-octave-mode-setup))) 
 
-(provide 'init-octave-mod)
+(provide 'init-octave)
 
-;;; init-octave-mod.el ends here
+;;; init-octave.el ends here
