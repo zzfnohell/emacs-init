@@ -13,8 +13,7 @@
  ;; If there is more than one, they won't work right.
  '(ac-etags-requires 1)
  '(cygwin-root-directory "/")
- '(minimap-window-location (quote right))
- '(session-use-package t nil (session)))
+ '(minimap-window-location (quote right)))
  
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
