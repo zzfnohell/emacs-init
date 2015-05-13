@@ -34,6 +34,9 @@
 (require-package 'helm-gtags)
 (require 'helm-gtags)
 
+(require-package 'ac-helm)
+(require 'ac-helm)
+
 (helm-mode 1)
 
 (provide 'init-helm)
