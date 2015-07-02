@@ -37,6 +37,9 @@
 (require-package 'ac-helm)
 (require 'ac-helm)
 
+(require-package 'helm-fuzzy-find)
+(require 'helm-fuzzy-find)
+
 (helm-mode 1)
 
 (provide 'init-helm)
