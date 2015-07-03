@@ -21,9 +21,6 @@
 ;; If you would like to use git-gutter.el and linum-mode
 (git-gutter:linum-setup)
 
-(require-package 'magit-svn)
-(require 'magit-svn)
-
 (provide 'init-git)
 
 ;;; init-git.el ends here
