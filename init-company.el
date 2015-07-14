@@ -11,9 +11,6 @@
 
 (require-package 'company-jedi)
 
-(require-package 'company-ess)
-(require 'company-ess)
-
 (require-package 'company-coq)
 (require 'company-coq)
 
