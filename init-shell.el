@@ -1,7 +1,5 @@
 ;;; init-shell.el --- SHELL
 
-
-
 ;;; Commentary:
 ;; 
 
@@ -9,7 +7,10 @@
 
 (require-package 'bash-completion)
 (require 'bash-completion)
-(bash-completion-setup)
+;;(bash-completion-setup)
+
+(require-package 'shell-command)
+(shell-command-completion-mode)
 
 (provide 'init-shell)
 
