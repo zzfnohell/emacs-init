@@ -100,6 +100,9 @@
 (require-package 'kite)
 (require 'kite)
 
+(require-package 'impatient-mode)
+(require 'impatient-mode)
+
 (provide 'init-web)
 
 ;;; init-web.el ends here
