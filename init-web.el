@@ -7,8 +7,8 @@
 
 ;;; Code:
 
-(setq web-mode-enable-current-element-highlight t)
-(setq web-mode-enable-current-column-highlight t)
+(setq web-mode-enable-current-element-highlight nil)
+(setq web-mode-enable-current-column-highlight nil)
 
 (require-package 'web-mode)
 (require 'web-mode)
@@ -96,6 +96,9 @@
 (ac-html-csswatcher-setup)
 
 (require-package 'web-beautify)
+
+(require-package 'kite)
+(require 'kite)
 
 (provide 'init-web)
 

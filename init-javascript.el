@@ -70,8 +70,8 @@
 
 (add-to-list 'auto-mode-alist '("\\.coffee\\.erb\\'" . coffee-mode))
 
-(require-package 'skewer-mode)
-(require 'skewer-mode)
-(skewer-setup)
+;;(require-package 'skewer-mode)
+;;(require 'skewer-mode)
+;;(skewer-setup)
 
 (provide 'init-javascript)
