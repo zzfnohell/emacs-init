@@ -12,10 +12,10 @@
 
 (require-package 'yasnippet)
 (defun my-csharp-mode-fn ()
-     "function that runs when csharp-mode is initialized for a buffer."
-     (turn-on-auto-revert-mode)
-     (setq indent-tabs-mode nil)
-     (yas-minor-mode-on))
+  "function that runs when csharp-mode is initialized for a buffer."
+  (turn-on-auto-revert-mode)
+  (setq indent-tabs-mode nil)
+  (yas-minor-mode-on))
 
 (require 'json)
 (require 'cl-lib)
@@ -29,7 +29,18 @@
 (require 'etags)
 (require 'flycheck)
 
-(require-package 'omnisharp)
+(add-to-list
+ 'load-path
+ (expand-file-name
+  (concat
+   (file-name-directory (or load-file-name buffer-file-name)) "/src/")))
+
+(add-to-list
+ 'load-path
+ (expand-file-name
+  (concat
+   (file-name-directory (or load-file-name buffer-file-name)) "/src/actions")))
+
 (require 'omnisharp-utils)
 (require 'omnisharp-server-actions)
 (require 'omnisharp-auto-complete-actions)
@@ -42,10 +53,12 @@ instance that works in the background."
   :group 'external
   :group 'csharp)
 
-(add-hook  'csharp-mode-hook 'my-csharp-mode-fn t)
+
+(add-hook 'csharp-mode-hook 'my-csharp-mode-fn t)
 (add-hook 'csharp-mode-hook 'omnisharp-mode)
 
-(setq auto-mode-alist (cons '("\\.cs" . maxima-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.cs" . csharp-mode) auto-mode-alist))
+
 (provide 'init-csharp)
 
 ;;; init-csharp.el ends here
