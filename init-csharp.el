@@ -45,9 +45,7 @@ instance that works in the background."
 (add-hook  'csharp-mode-hook 'my-csharp-mode-fn t)
 (add-hook 'csharp-mode-hook 'omnisharp-mode)
 
-(setq auto-mode-alist
-      (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
-
+(setq auto-mode-alist (cons '("\\.cs" . maxima-mode) auto-mode-alist))
 (provide 'init-csharp)
 
 ;;; init-csharp.el ends here
