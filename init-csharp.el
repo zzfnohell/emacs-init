@@ -6,11 +6,11 @@
 
 ;;; Code:
 
-(require 'cc-mode)
 (require-package 'csharp-mode)
 (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
 
-(require-package 'yasnippet)
+(setq auto-mode-alist (cons '("\\.cs" . csharp-mode) auto-mode-alist))
+
 (defun my-csharp-mode-fn ()
   "function that runs when csharp-mode is initialized for a buffer."
   (turn-on-auto-revert-mode)
@@ -57,7 +57,6 @@ instance that works in the background."
 (add-hook 'csharp-mode-hook 'my-csharp-mode-fn t)
 (add-hook 'csharp-mode-hook 'omnisharp-mode)
 
-(setq auto-mode-alist (cons '("\\.cs" . csharp-mode) auto-mode-alist))
 
 (provide 'init-csharp)
 
