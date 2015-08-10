@@ -104,6 +104,7 @@
 (require 'init-polymode)
 (require 'init-nxml)
 (require 'init-web)
+(require 'init-vlf)
 
 (provide 'init-main)
 
