@@ -4,7 +4,8 @@
 ;; Axiom
 
 ;;; Code:
-;;(load-file "~/.emacs.d/site-lisp/axiom-environment/axiom.el")
+
+(require-package 'axiom-environment)
 
 ;; (custom-set-variables
 ;;  '(axiom-process-program "axiom -noht"))
