@@ -105,6 +105,7 @@
 (require 'init-nxml)
 (require 'init-web)
 (require 'init-vlf)
+(require 'init-format)
 
 (provide 'init-main)
 

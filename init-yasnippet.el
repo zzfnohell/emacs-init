@@ -40,6 +40,9 @@
 (require-package 'angular-snippets)
 (require 'angular-snippets)
 
+(require-package 'auto-yasnippet)
+(require 'auto-yasnippet)
+
 (provide 'init-yasnippet)
 
 ;;; init-yasnippet.el ends here
