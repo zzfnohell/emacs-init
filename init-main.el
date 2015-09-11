@@ -106,6 +106,9 @@
 (require 'init-web)
 (require 'init-vlf)
 (require 'init-format)
+(require 'init-view)
+
+(require 'init-evil)
 
 (provide 'init-main)
 
