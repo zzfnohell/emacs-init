@@ -20,6 +20,7 @@
 (require 'init-ui)
 (require 'init-remote)
 (require 'init-edit)
+(require 'init-search)
 
 (require 'init-tabbar)
 
