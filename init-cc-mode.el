@@ -59,16 +59,7 @@
 
 (require-package 'ac-clang)
 (require 'ac-clang)
-
-(if (windows-p)
-	(setq w32-pipe-read-delay 0))
-
-
-(when (ac-clang-initialize)
-  (add-hook 'c-mode-common-hook 
-			'(lambda ()
-			   (ac-clang-activate-after-modify))))
-
+(ac-clang-initialize)
 
 ;;opencl source file.
 (add-to-list 'auto-mode-alist '("\\.cl$" . c-mode))
