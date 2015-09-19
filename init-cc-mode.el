@@ -59,7 +59,7 @@
 
 (require-package 'ac-clang)
 (require 'ac-clang)
-(ac-clang-initialize)
+;; (ac-clang-initialize)
 
 ;;opencl source file.
 (add-to-list 'auto-mode-alist '("\\.cl$" . c-mode))

@@ -55,7 +55,7 @@ instance that works in the background."
 
 
 (add-hook 'csharp-mode-hook 'my-csharp-mode-fn t)
-(add-hook 'csharp-mode-hook 'omnisharp-mode)
+;; (add-hook 'csharp-mode-hook 'omnisharp-mode)
 
 
 (provide 'init-csharp)
