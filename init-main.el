@@ -56,7 +56,7 @@
 (require 'init-helm)
 (require 'init-kill-ring)
 (require 'init-ecb)
-(require 'init-msvc)
+;; (require 'init-msvc)
 (require 'init-flycheck)
 (require 'init-flymake)
 (require 'init-yasnippet)
@@ -64,8 +64,7 @@
 (require 'init-ess)
 (require 'init-julia)
 (require 'init-maxima)
-;;(require 'init-axiom)
-;;(require 'init-fricas)
+(require 'init-axiom)
 
 (require 'init-texinfo-mode)
 (require 'init-sage-mode)
