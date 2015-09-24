@@ -12,7 +12,8 @@
                            ; see `prolog-system' below for possible values
 (setq auto-mode-alist
       (append '(("\\.pl$" . prolog-mode)
-                ("\\.m$" . mercury-mode))
+               ;; ("\\.m$" . mercury-mode)
+                )
               auto-mode-alist))
 
 (provide 'init-prolog)
