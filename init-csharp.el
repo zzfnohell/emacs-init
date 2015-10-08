@@ -17,6 +17,8 @@
   (setq indent-tabs-mode nil)
   (yas-minor-mode-on))
 
+(require-package 'omnisharp)
+
 (require 'json)
 (require 'cl-lib)
 (require 'files)
