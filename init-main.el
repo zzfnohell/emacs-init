@@ -90,6 +90,7 @@
 (require 'init-prolog)
 (require 'init-ack)
 (require 'init-sql)
+(require 'init-go)
 
 (require 'init-powershell)
 (require 'init-dos)
