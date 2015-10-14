@@ -5,13 +5,12 @@
 
 ;;; Code:
 
-(if (windows-p)
-    (progn
-      (require-package 'cygwin-mount)
-      (require 'cygwin-mount)
-      (cygwin-mount-activate)))
 (cond
  ((cygwin-p)
+  (require-package 'cygwin-mount)
+  (require 'cygwin-mount)
+  (cygwin-mount-activate)
+  
   ;;; shell on win95 to bash
   ;;; shell on windows to bash
   (make-local-variable 'cygwin)
