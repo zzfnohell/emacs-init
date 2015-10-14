@@ -19,6 +19,11 @@
 
 (add-to-list 'ecb-source-path (list *workspace* "default"))
 
+(add-hook 'ecb-history-buffer-after-create-hook 'evil-emacs-state)
+(add-hook 'ecb-directories-buffer-after-create-hook 'evil-emacs-state)
+(add-hook 'ecb-methods-buffer-after-create-hook 'evil-emacs-state)
+(add-hook 'ecb-sources-buffer-after-create-hook 'evil-emacs-state)
+
 (provide 'init-ecb)
 
 ;;; init-ecb.el ends here

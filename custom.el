@@ -13,6 +13,7 @@
  ;; If there is more than one, they won't work right.
  '(ac-etags-requires 1)
  '(cygwin-root-directory "/")
+ '(ecb-windows-width 50)
  '(httpd-host "0.0.0.0")
  '(httpd-port 8088)
  '(minimap-window-location (quote right))
