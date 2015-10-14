@@ -36,3 +36,5 @@ TestResults
 .\#*
 *.elc
 
+
+flycheck_init-axiom.el
