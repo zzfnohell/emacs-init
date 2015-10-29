@@ -6,7 +6,7 @@
 ;;; Code:
 
 (print "Configuring UI")
-
+(setq redisplay-dont-pause t)
 (cond
  ((not (eq nil window-system))
   (setq default-frame-alist
