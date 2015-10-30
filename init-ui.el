@@ -63,6 +63,7 @@
 (setq display-time-day-and-date t)
 
 (tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 (transient-mark-mode t)
 ;;enable clipboard.
