@@ -7,7 +7,6 @@
 (require-package 'anaconda-mode)
 (require-package 'ein)
 (require-package 'jedi)
-(require-package 'python-info)
 
 (require-package 'elpy)
 (require 'elpy)

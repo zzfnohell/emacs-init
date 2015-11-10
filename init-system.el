@@ -12,6 +12,9 @@
 (defun windows-p ()
   (eq 'windows-nt system-type))
 
+(defun darwin-p ()
+  (eq 'darwin system-type))
+
 ;;; Commentary:
 ;; 
 (require-package 'vkill)

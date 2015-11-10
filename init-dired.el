@@ -4,7 +4,8 @@
 ;; set dired mode format,put it before the desktop load
 
 (cond 
- ((eq system-type 'windows-nt) nil)
+ ((windows-p) nil)
+ ((darwin-p) nil)
  (t (setq dired-listing-switches "-avl --time-style=long-iso")))
 
 (require-package 'dired+)
