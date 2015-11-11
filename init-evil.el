@@ -29,7 +29,7 @@
 ;; (loop for (mode . state) in init-evil-mode-state-list
 ;;       do (evil-set-initial-state mode state))
 
-(evil-mode 1)
+;; (evil-mode 1)
 
 (provide 'init-evil)
 
