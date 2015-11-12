@@ -9,8 +9,8 @@
 (require 'tabbar)
 
 (defun tabbar-buffer-groups ()
-   "Return the list of group names the current buffer belongs to.
-     Return a list of one element based on major mode."
+  "Return the list of group names the current buffer belongs to.
+   Return a list of one element based on major mode."
    (list
     (cond
      ;; ((or (get-buffer-process (current-buffer))
