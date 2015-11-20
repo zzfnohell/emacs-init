@@ -7,19 +7,26 @@
 
 (print "Configuring UI")
 
-(cond
- ((not (eq nil window-system))
-  (setq default-frame-alist
-        (append '((font . "Ubuntu Mono 11")) default-frame-alist))
-  (set-frame-font "Ubuntu Mono 11")
-  ;;Setting English Font
-  (set-face-attribute 'default nil :font "Ubuntu Mono 11")
-  ;; Chinese Font
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))
-    (set-fontset-font
-     (frame-parameter nil 'font)
-     charset
-     (font-spec :family "Ubuntu Mono" :size 11)))))
+(defun set-font (name size)
+  "Set font to NAME and SIZE."
+  (let ((style (format "%s %d" name size)))
+    (add-to-list 'default-frame-alist '((font . style)))
+    ;; (setq default-frame-alist
+    ;;       (append '((font . style))
+    ;;               default-frame-alist))
+    (set-frame-font style)
+    ;;Setting English Font
+    (set-face-attribute 'default nil :font style)
+    ;; Chinese Font
+    (dolist (charset '(kana han symbol cjk-misc bopomofo))
+      (set-fontset-font
+       (frame-parameter nil 'font)
+       charset
+       (font-spec :family name :size size)))))
+
+(if (not (eq nil window-system))
+    (cond ((darwin-p) (set-font "Monaco" 11))
+          (t (set-font "Ubuntu Mono" 11))))
 
 ;; emacs shell font confusion
 (defvar ansi-color-for-comint-mode t)
