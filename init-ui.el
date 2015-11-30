@@ -26,6 +26,7 @@
 
 (if (not (eq nil window-system))
     (cond ((darwin-p) (set-font "Monaco" 11))
+          ((linux-p) (set-font "Monaco" 11))
           (t (set-font "Ubuntu Mono" 11))))
 
 ;; emacs shell font confusion
