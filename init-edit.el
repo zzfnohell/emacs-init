@@ -51,6 +51,10 @@
 
 (global-linum-mode 1)
 
+(require-package 'undo-tree)
+(require 'undo-tree)
+(global-undo-tree-mode)
+
 (provide 'init-edit)
 
 ;;; init-edit.el ends here
