@@ -16,9 +16,6 @@
 (require-package 'helm-css-scss)
 (require 'helm-css-scss)
 
-(require-package 'helm-R)
-(require 'helm-R)
-
 (require-package 'helm-flycheck)
 (require 'helm-flycheck)
 
