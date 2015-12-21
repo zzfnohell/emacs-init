@@ -20,6 +20,7 @@
 (require 'linum)
 (defvar *linum-disable-major-mode-list*
   '(rfcview-mode
+	vlf-mode
     image-mode))
 
 ;;; linum-mode
