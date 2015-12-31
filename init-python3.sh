@@ -1,18 +1,18 @@
 #! /bin/bash
 
-pip install pyflakes
+pip3 install pyflakes
 
 # Either of these
-pip install rope_py3k
-pip install jedi
+pip3 install rope_py3k
+pip3 install jedi
 
 # flake8 for code checks
-pip install flake8
+pip3 install flake8
 
 # and importmagic for automatic imports
-pip install importmagic
+pip3 install importmagic
 
-pip install "ipython[all]"
+pip3 install "ipython[all]"
 
-pip install cython
+pip3 install cython
 
