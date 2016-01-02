@@ -114,6 +114,9 @@
 (require 'ac-html-csswatcher)
 (ac-html-csswatcher-setup)
 
+(require-package 'ac-html-angular)
+(require-package 'angular-mode)
+
 (require-package 'web-beautify)
 
 (require-package 'kite)
@@ -121,6 +124,9 @@
 
 (require-package 'impatient-mode)
 (require 'impatient-mode)
+
+(require-package 'react-snippets)
+
 
 (provide 'init-web)
 

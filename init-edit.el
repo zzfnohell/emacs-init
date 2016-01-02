@@ -56,6 +56,8 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
+(require-package 'regex-tool)
+
 (provide 'init-edit)
 
 ;;; init-edit.el ends here

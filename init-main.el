@@ -110,6 +110,7 @@
 (require 'init-view)
 
 (require 'init-evil)
+(require 'init-smart)
 
 (provide 'init-main)
 
