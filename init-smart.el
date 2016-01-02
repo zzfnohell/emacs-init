@@ -20,9 +20,9 @@
 
 (require-package 'smart-mode-line)
 (require 'smart-mode-line)
-;; (setq sml/theme 'dark)
-;; (setq sml/theme 'light)
-;; (setq sml/theme 'respectful)
+(setq sml/theme 'dark)
+(setq sml/theme 'light)
+(setq sml/theme 'respectful)
 (sml/setup)
 
 (require-package 'smart-mode-line-powerline-theme)

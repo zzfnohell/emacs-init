@@ -14,7 +14,7 @@
  '(ac-etags-requires 1)
  '(custom-safe-themes
    (quote
-	("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
+	("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
  '(cygwin-root-directory "/")
  '(diredp-hide-details-initially-flag nil)
  '(ecb-windows-width 30)
