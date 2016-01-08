@@ -18,15 +18,6 @@
 
 (require-package 'smart-mark)
 
-(require-package 'smart-mode-line)
-(require 'smart-mode-line)
-(setq sml/theme 'dark)
-(setq sml/theme 'light)
-(setq sml/theme 'respectful)
-(sml/setup)
-
-(require-package 'smart-mode-line-powerline-theme)
-
 (require-package 'smart-newline)
 
 (require-package 'smart-region)

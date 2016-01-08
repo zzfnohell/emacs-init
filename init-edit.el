@@ -20,7 +20,8 @@
 (require 'linum)
 (defvar *linum-disable-major-mode-list*
   '(rfcview-mode
-	vlf-mode
+    text-mode
+    vlf-mode
     image-mode))
 
 ;;; linum-mode
@@ -65,11 +66,15 @@
 (require 'visible-mark)
 (global-visible-mark-mode 1) ;; or add (visible-mark-mode) to specific hooks
 
-(defface visible-mark-active ;; put this before (require 'visible-mark)
+(defface visible-mark-active
+  ;; put this before (require 'visible-mark)
   '((((type tty) (class mono)))
     (t (:background "magenta"))) "")
 (setq visible-mark-max 2)
 (setq visible-mark-faces `(visible-mark-face1 visible-mark-face2))
+
+(require-package 'smartparens)
+(require 'smartparens-config)
 
 (provide 'init-edit)
 
