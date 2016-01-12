@@ -10,10 +10,7 @@
 (defun set-font (name size)
   "Set font to NAME and SIZE."
   (let ((style (format "%s %d" name size)))
-    (add-to-list 'default-frame-alist '((font . style)))
-    ;; (setq default-frame-alist
-    ;;       (append '((font . style))
-    ;;               default-frame-alist))
+    ;; (add-to-list 'default-frame-alist '(font . style))
     (set-frame-font style)
     ;;Setting English Font
     (set-face-attribute 'default nil :font style)
@@ -25,9 +22,9 @@
        (font-spec :family name :size size)))))
 
 (if (not (eq nil window-system))
-    (cond ((darwin-p) (set-font "Monaco" 9))
-          ((linux-p) (set-font "Monaco" 9))
-          (t (set-font "Ubuntu Mono" 9))))
+    (cond ((darwin-p) (set-font "Monaco" 10))
+          ((linux-p) (set-font "Monaco" 10))
+          (t (set-font "Ubuntu Mono" 10))))
 
 ;; emacs shell font confusion
 (defvar ansi-color-for-comint-mode t)

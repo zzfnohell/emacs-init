@@ -32,7 +32,6 @@
 
 (defun add-to-company-backend-list ()
   (progn
-    (add-to-list 'company-backends 'company-ess-backend)
     (add-to-list 'company-backends 'company-inf-ruby)
     (add-to-list 'company-backends 'company-math-symbols-unicode)
     (add-to-list 'company-backends 'company-tern)

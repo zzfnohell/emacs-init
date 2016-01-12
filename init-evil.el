@@ -7,7 +7,6 @@
 
 ;;; Code:
 (require-package 'evil)
-(require 'evil)
 
 ;; (setq init-evil-mode-state-list
 ;;       '((inferior-emacs-lisp-mode . emacs)

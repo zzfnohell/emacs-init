@@ -7,14 +7,11 @@
 ;;; Code:
 
 (require-package 'ahg)
-(require 'ahg)
+
 (require 'diff-mode)
 (require 'easymenu)
 (require 'log-edit)
 (require 'ewoc)
-(eval-when-compile (require 'cl))
-(require 'grep)
-(require 'dired)
 (require 'vc-annotate)
 
 (defvar ahg-version-string "1.0.0")

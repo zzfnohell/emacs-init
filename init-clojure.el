@@ -10,7 +10,6 @@
 (require-package 'elein)
 (require-package 'cider)
 (require-package 'ac-cider)
-(require-package 'clojure-snippets)
 
 (require 'ac-cider)
 (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
