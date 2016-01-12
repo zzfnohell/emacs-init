@@ -120,7 +120,6 @@
 (require-package 'web-beautify)
 
 (require-package 'kite)
-(require 'kite)
 
 (require-package 'impatient-mode)
 (require 'impatient-mode)

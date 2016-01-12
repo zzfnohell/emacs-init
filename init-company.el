@@ -13,7 +13,6 @@
 (require-package 'company-jedi)
 
 (require-package 'company-coq)
-(require 'company-coq)
 
 (require-package 'company-c-headers)
 
