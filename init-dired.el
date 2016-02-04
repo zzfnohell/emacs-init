@@ -8,12 +8,6 @@
  ((darwin-p) nil)
  (t (setq dired-listing-switches "-avl --time-style=long-iso")))
 
-(require-package 'dired+)
-(require 'dired+)
-(customize-set-variable
- 'diredp-hide-details-initially-flag nil)
-
-
 ;;; Commentary:
 ;; 
 

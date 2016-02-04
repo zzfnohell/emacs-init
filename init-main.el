@@ -1,9 +1,10 @@
 ;;; init-main.el --- MAIN
 ;;; Code:
 
-(setq *user-site-lisp-path* (concat user-emacs-directory  "site-lisp/"))
-(add-to-list 'load-path (concat user-emacs-directory  "init/"))
-(add-to-list 'load-path (concat user-emacs-directory  *user-site-lisp-path*))
+;; (setq *user-site-lisp-path* (concat user-emacs-directory  "site-lisp/"))
+(add-to-list 'load-path "~/.emacs.d/init/")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/")
+;;(add-to-list 'load-path (concat user-emacs-directory  *user-site-lisp-path*))
 
 ;;; Commentary:
 ;; 
