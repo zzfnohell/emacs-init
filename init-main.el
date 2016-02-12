@@ -23,10 +23,6 @@
 (require 'init-edit)
 (require 'init-search)
 
-;;(require 'init-tabbar)
-
-;;(require 'init-emms)
-
 (require 'init-ediff)
 (require 'init-sr-speedbar)
 (require 'init-eshell)
