@@ -10,11 +10,23 @@
 (setq auto-indent-on-visit-file t) 
 (require 'auto-indent-mode)
 
+(require-package 'hl-anything)
+(require-package 'hl-indent)
+(require 'hl-indent)
+
+(require-package 'highlight-parentheses)
+(require 'highlight-parentheses)
+
+(require-package 'highlight-chars)
+(require 'highlight-chars) 
+
+(require-package 'highlight-thing)
+(require 'highlight-thing)
+
 (require-package 'auto-highlight-symbol)
 (require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
 
-(require 'whitespace)
 (setq-default indent-tabs-mode nil)
 
 (require 'linum)
@@ -52,6 +64,11 @@
 (define-globalized-minor-mode global-linum-mode linum-mode turn-linum-on)
 
 (global-linum-mode 1)
+
+(require-package 'hlinum)
+(require 'hlinum)
+(hlinum-activate)
+
 
 (require-package 'undo-tree)
 (require 'undo-tree)
