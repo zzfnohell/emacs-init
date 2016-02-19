@@ -90,9 +90,6 @@
 (setq visible-mark-max 2)
 (setq visible-mark-faces `(visible-mark-face1 visible-mark-face2))
 
-(require-package 'smartparens)
-(require 'smartparens-config)
-
 (provide 'init-edit)
 
 ;;; init-edit.el ends here
