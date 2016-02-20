@@ -1,21 +1,24 @@
+;;; init-tags.el --- TAGS
 
-(cond
- ((eq system-type 'gnu/linux)
-  (require-package 'ggtags)
-  (autoload 'gtags-mode "gtags" "" t)
-  
-  (add-hook 'c-mode-common-hook
-            '(lambda ()
-               (gtags-mode 1)))
-  ;; [Setting to make 'Gtags select mode' easy to see]
-  (add-hook
-   'gtags-select-mode-hook
-   '(lambda ()
-      (setq hl-line-face
-            '((t (:bold t :foreground "blue" :weight extra-bold)
-                 underline)))
-      (hl-line-mode 1))))
- (t t))
+;;; Commentary:
+;; 
+
+;;; Code:
+
+(require-package 'ggtags)
+(autoload 'gtags-mode "gtags" "" t)
+
+(add-hook 'c-mode-common-hook
+          '(lambda ()
+             (gtags-mode 1)))
+;; [Setting to make 'Gtags select mode' easy to see]
+(add-hook
+ 'gtags-select-mode-hook
+ '(lambda ()
+    (setq hl-line-face
+          '((t (:bold t :foreground "blue" :weight extra-bold)
+               underline)))
+    (hl-line-mode 1)))
 
 (require-package 'ctags)
 (require 'ctags)
@@ -37,3 +40,5 @@
 (autoload 'ctags-update "ctags-update" "update TAGS using ctags" t)
 
 (provide 'init-tags)
+
+;;; init-tags.el ends here
