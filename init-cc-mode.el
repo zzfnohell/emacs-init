@@ -62,10 +62,15 @@
 ;; (ac-clang-initialize)
 
 ;;opencl source file.
-(add-to-list 'auto-mode-alist '("\\.cl$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.h$" . c-mode))
 
 (require-package 'cmake-mode)
+
+(require-package 'opencl-mode)
+(require 'opencl-mode)
+(add-to-list 'auto-mode-alist '("\\.cl\\'" . opencl-mode))
+
+(require-package 'shader-mode)
 
 (provide 'init-cc-mode)
 
