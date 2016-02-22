@@ -40,8 +40,6 @@ indentation rules."
         (backward-char) (insert "\n"))
       (indent-region begin end)))
 
-(require-package 'psgml)
-
 (require-package 'haml-mode)
 
 (provide 'init-ml)
