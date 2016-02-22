@@ -27,5 +27,9 @@
 (require-package 'mvn)
 (require 'mvn)
 
+(require-package 'ant)
+
+(require-package 'jdee)
+
 (provide 'init-java)
 ;;; init-java.el ends here

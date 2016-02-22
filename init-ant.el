@@ -2,7 +2,7 @@
 
 ;;; Commentary:
 ;; 
-(require-package 'ant)
+
 
 (provide 'init-ant)
 

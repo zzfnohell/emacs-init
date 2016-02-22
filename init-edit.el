@@ -90,6 +90,32 @@
 (setq visible-mark-max 2)
 (setq visible-mark-faces `(visible-mark-face1 visible-mark-face2))
 
+(add-hook 'texinfo-mode-hook (lambda () (require 'sb-texinfo)))
+
+;; CSV file
+(require-package 'csv-mode)
+(require-package 'csv-nav)
+(add-auto-mode 'csv-mode "\\.[Cc][Ss][Vv]\\'")
+(setq csv-separators '("," ";" "|" " "))
+
+;; irfc
+(require-package 'irfc)
+(require 'irfc)
+(setq irfc-directory *rfc-directory*)
+(setq irfc-assoc-mode t)
+
+(require-package 'anyins)
+(require 'anyins)
+
+(require-package 'browse-kill-ring+)
+(require 'browse-kill-ring+)
+(require-package 'popup-kill-ring)
+(require-package 'kill-ring-search)
+
+(autoload 'kill-ring-search "kill-ring-search"
+  "Search the kill ring in the minibuffer."
+  (interactive))
+
 (provide 'init-edit)
 
 ;;; init-edit.el ends here

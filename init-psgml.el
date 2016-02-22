@@ -6,7 +6,7 @@
 
 ;;; Code:
 
-(require-package 'psgml)
+
 
 (provide 'init-psgml)
 

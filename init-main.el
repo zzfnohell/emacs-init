@@ -31,18 +31,13 @@
 (require 'init-dired)
 (require 'init-uniquify)
 
-(require 'init-irfc)
 (require 'init-tags)
 (require 'init-session)
 (require 'init-multi-term)
 (require 'init-shell)
 
-(require 'init-cvs)
-(require 'init-git)
-(require 'init-hg)
-
+(require 'init-vc)
 (require 'init-compile)
-(require 'init-ant)
 (require 'init-xcscope)
 (require 'init-cedet)
 (require 'init-auto-complete)
@@ -51,7 +46,6 @@
 
 (require 'init-regexp)
 (require 'init-helm)
-(require 'init-kill-ring)
 ;; (require 'init-ecb)
 ;; (require 'init-msvc)
 (require 'init-projectile)
@@ -64,7 +58,6 @@
 (require 'init-maxima)
 (require 'init-axiom)
 
-(require 'init-texinfo-mode)
 (require 'init-sage-mode)
 (require 'init-java)
 
@@ -79,36 +72,32 @@
 
 (require 'init-erlang)
 (require 'init-clojure)
-(require 'init-haml)
 (require 'init-python)
 (require 'init-haskell)
-(require 'init-javascript)
-(require 'init-css)
 (require 'init-ruby)
 (require 'init-prolog)
 (require 'init-ack)
 (require 'init-sql)
 (require 'init-go)
+(require 'init-php)
 
 (require 'init-powershell)
 (require 'init-dos)
 (require 'init-csharp)
 (require 'init-erc)
 (require 'init-markdown)
+(require 'init-ml)
 
-(require 'init-csv)
-(require 'init-php)
-(require 'init-nodejs)
 (require 'init-nav)
-(require 'init-polymode)
-(require 'init-nxml)
-(require 'init-web)
-(require 'init-vlf)
-(require 'init-format)
-(require 'init-view)
 
+(require 'init-polymode)
+(require 'init-web)
+
+(require 'init-format)
+(require 'init-development)
+
+(require 'init-view)
 (require 'init-evil)
-(require 'init-smart)
 
 (provide 'init-main)
 
