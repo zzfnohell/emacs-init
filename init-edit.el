@@ -5,6 +5,10 @@
 
 ;;; Code:
 
+;; Access via Web
+;; (require-package 'take-off)
+;; (require 'take-off)
+
 (require-package 'auto-indent-mode)
 ;; If you want auto-indent on for files
 (setq auto-indent-on-visit-file t) 
