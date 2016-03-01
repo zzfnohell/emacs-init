@@ -21,6 +21,7 @@
 (require 'init-ui)
 (require 'init-edit)
 (require 'init-search)
+(require 'init-proxy)
 
 (require 'init-ediff)
 (require 'init-eshell)
