@@ -3,12 +3,14 @@
 ;;; Commentary:
 ;;
 (require-package 'projectile)
-(setq projectile-indexing-method 'native)
-(setq projectile-completion-system 'default)
 (projectile-global-mode)
+(setq projectile-indexing-method 'native)
+;; (setq projectile-completion-system 'default)
+(setq projectile-completion-system 'helm)
 
 (require-package 'helm-projectile)
 (require 'helm-projectile)
+
 (helm-projectile-on)
 
 (provide 'init-projectile)
