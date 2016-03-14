@@ -10,7 +10,7 @@ compile:$(ELC_FILES)
 	@echo 'done'
 
 %.elc:%.el
-	@echo $^
+	@echo $<
 
 clean:
 	rm -v *.elc

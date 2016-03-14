@@ -19,9 +19,9 @@
 (require 'init-cygwin)
 (require 'init-coding)
 (require 'init-ui)
-(require 'init-remote)
 (require 'init-edit)
 (require 'init-search)
+(require 'init-proxy)
 
 (require 'init-ediff)
 (require 'init-eshell)
@@ -75,7 +75,6 @@
 (require 'init-haskell)
 (require 'init-ruby)
 (require 'init-prolog)
-(require 'init-ack)
 (require 'init-sql)
 (require 'init-go)
 (require 'init-php)

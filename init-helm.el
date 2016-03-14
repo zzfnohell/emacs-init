@@ -37,8 +37,6 @@
 (require-package 'helm-fuzzy-find)
 (require 'helm-fuzzy-find)
 
-(require-package 'helm-projectile)
-
 (helm-mode 1)
 
 (provide 'init-helm)
