@@ -5,8 +5,8 @@
 
 ;;; Code:
 
-(require-package 'take-off)
-(require 'take-off)
+;;(require-package 'take-off)
+;;(require 'take-off)
 
 (provide 'init-remote)
 
