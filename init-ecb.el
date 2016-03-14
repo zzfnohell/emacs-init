@@ -11,11 +11,10 @@
 ;;(setq stack-trace-on-error t)
 (ecb-byte-compile)
 
-
-
 (defvar default-ecb-source-path
   (list
    '("~/" "~/")
+   '("/" "/")
    ))
 
 (add-hook 'ecb-basic-buffer-sync-hook
