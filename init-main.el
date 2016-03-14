@@ -45,8 +45,8 @@
 
 (require 'init-regexp)
 (require 'init-helm)
-;; (require 'init-ecb)
-;; (require 'init-msvc)
+(require 'init-ecb)
+(require 'init-msvc)
 (require 'init-projectile)
 (require 'init-flycheck)
 (require 'init-flymake)
