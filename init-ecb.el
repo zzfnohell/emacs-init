@@ -15,9 +15,8 @@
 
 (defvar default-ecb-source-path
   (list
-   '("~/local" "local")
    '("~/" "~/")
-   '("/" "/")))
+   ))
 
 (add-hook 'ecb-basic-buffer-sync-hook
 		  (lambda ()
