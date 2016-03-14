@@ -7,7 +7,6 @@
 
 ;;; Code:
 
-(require-package 'diminish)
 (require 'cc-mode)
 (c-set-offset 'inline-open 0)
 (c-set-offset 'friend '-)
