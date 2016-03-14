@@ -119,8 +119,6 @@
 
 (add-hook 'magit-mode-hook 'magit-svn-mode)
 
-(require-package 'psvn)
-
 (provide 'init-vc)
 
 ;;; init-vc.el ends here

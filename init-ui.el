@@ -22,9 +22,9 @@
        (font-spec :family name :size size)))))
 
 (if (not (eq nil window-system))
-    (cond ((darwin-p) (set-font "Monaco" 10))
-          ((linux-p) (set-font "Monaco" 10))
-          (t (set-font "Ubuntu Mono" 10))))
+    (cond ((darwin-p) (set-font "Monaco" 12))
+          ((linux-p) (set-font "Monaco" 12))
+          (t (set-font "Ubuntu Mono" 12))))
 
 ;; emacs shell font confusion
 (defvar ansi-color-for-comint-mode t)
