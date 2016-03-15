@@ -120,7 +120,15 @@
 ;;(set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;;(add-to-list 'default-frame-alist '(alpha 85 50))
 
-(require-package 'minimap)
+;; (require-package 'minimap)
+(require-package 'sublimity)
+(require 'sublimity)
+(require 'sublimity-scroll)
+(require 'sublimity-map)
+;; (require 'sublimity-attractive)
+(sublimity-map-set-delay nil)
+;; (setq sublimity-attractive-centering-width nil)
+(sublimity-mode 1)
 
 (provide 'init-ui)
 
