@@ -6,8 +6,6 @@
 ;;; Code:
 
 (defconst *workspace* "~")
-(defvar *org-root-directory* (concat *workspace* "/language/org/src"))
-(defvar *org-publish-directory* (concat *workspace* "/language/org/publish"))
 (defvar *semantic-include-directories* nil)
 (defvar *semantic-preprocessor-directories* nil)
 (defvar *cedet-user-include-dirs* nil)

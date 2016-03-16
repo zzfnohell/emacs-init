@@ -36,6 +36,7 @@
  '(minimap-window-location (quote right))
  '(ns-tool-bar-display-mode (quote both) t)
  '(ns-tool-bar-size-mode nil t)
+ '(org-agenda-files nil)
  '(scroll-bar-mode (quote right))
  '(session-use-package t nil (session))
  '(size-indication-mode t)
