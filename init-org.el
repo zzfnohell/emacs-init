@@ -5,7 +5,6 @@
 
 ;;; Code:
 (require 'org-install)
-(require 'org-publish)
 
 (defvar *org-root-directory* "~/OneDrive/Notes/")
 (defvar *org-publish-directory* "~/OneDrive/Note-Publishes/")
