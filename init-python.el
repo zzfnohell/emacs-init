@@ -20,6 +20,11 @@
 ;; (setq jedi:setup-keys t)                      ; optional
 ;; (setq jedi:complete-on-dot t)                 ; optional
 
+(require-package 'highlight-indentation)
+(require 'highlight-indentation)
+(set-face-background 'highlight-indentation-face "#e3e3d3")
+(set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+
 (require-package 'elpy)
 (elpy-enable)
 
