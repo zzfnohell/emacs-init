@@ -10,9 +10,9 @@
 ;; 
 
 (require 'init-benchmarking)
+(require 'init-proxy)
 (require 'init-elpa)
 (require 'init-utils)
-
 
 (require 'init-parameters)
 (require 'init-system)
@@ -21,7 +21,6 @@
 (require 'init-ui)
 (require 'init-edit)
 (require 'init-search)
-(require 'init-proxy)
 
 (require 'init-ediff)
 (require 'init-eshell)
