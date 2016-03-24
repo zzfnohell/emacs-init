@@ -23,7 +23,6 @@
 (require 'init-search)
 
 (require 'init-ediff)
-(require 'init-eshell)
 (require 'init-theme)
 (require 'init-global-set-key)
 (require 'init-dired)

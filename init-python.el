@@ -15,6 +15,9 @@
 ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/dependency")
 
 (require-package 'ein)
+(require 'ein)
+(setq ein:use-smartrep t)
+
 (require-package 'jedi)
 (add-hook 'python-mode-hook 'jedi:setup)
 ;; (setq jedi:setup-keys t)                      ; optional
