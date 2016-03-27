@@ -3,6 +3,7 @@
 pip install pyflakes
 
 # Either of these
+pip install epc
 pip install rope
 pip install jedi
 
@@ -12,7 +13,7 @@ pip install flake8
 # and importmagic for automatic imports
 pip install importmagic
 
-pip install "ipython[all]"
+pip install jupiter
 
 pip install cython
 
