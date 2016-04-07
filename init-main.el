@@ -93,7 +93,7 @@
 (require 'init-development)
 
 (require 'init-view)
-(require 'init-evil)
+;; (require 'init-evil)
 
 (provide 'init-main)
 
