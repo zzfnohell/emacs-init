@@ -21,6 +21,13 @@
 (require-package 'shell-command)
 (shell-command-completion-mode)
 
+(require-package 'fish-mode)
+(require 'fish-mode)
+(add-hook 'fish-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'fish_indent-before-save)))
+
+
 (defun clear-shell ()
   (interactive)
   (let ((old-max comint-buffer-maximum-size))
@@ -31,3 +38,4 @@
 (provide 'init-shell)
 
 ;;; init-shell.el ends here
+
