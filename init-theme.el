@@ -7,6 +7,8 @@
 
 (require-package 'color-theme)
 (color-theme-initialize)
+(setq color-theme-is-global t)
+(color-theme-classic)
 
 (provide 'init-theme)
 

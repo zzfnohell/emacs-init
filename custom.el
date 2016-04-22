@@ -16,18 +16,6 @@
  '(aquamacs-customization-version-id 307 t)
  '(aquamacs-tool-bar-user-customization nil t)
  '(cygwin-root-directory "/")
- '(default-frame-alist
-	(quote
-	 ((tool-bar-lines . 0)
-	  (menu-bar-lines . 1)
-	  (foreground-color . "Black")
-	  (background-color . "White")
-	  (cursor-type . box)
-	  (cursor-color . "Red")
-	  (internal-border-width . 0)
-	  (left-fringe . 1)
-	  (right-fringe)
-	  (fringe))))
  '(diredp-hide-details-initially-flag nil)
  '(ecb-windows-width 30)
  '(global-linum-mode t)
