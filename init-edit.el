@@ -120,12 +120,6 @@
   "Search the kill ring in the minibuffer."
   (interactive))
 
-
-(require-package 'indent-guide)
-(require 'indent-guide)
-(setq indent-guide-recursive t)
-(indent-guide-global-mode)
-
 (provide 'init-edit)
 
 ;;; init-edit.el ends here
