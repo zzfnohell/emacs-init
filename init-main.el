@@ -58,7 +58,6 @@
 (require 'init-sage-mode)
 (require 'init-java)
 
-(require 'init-slime)
 (require 'init-lisp)
 (require 'init-R)
 (require 'init-octave)
