@@ -71,6 +71,8 @@
 
 (require-package 'shader-mode)
 
+(require-package 'llvm-mode)
+
 (provide 'init-cc-mode)
 
 ;;; init-cc-mode.el ends here
