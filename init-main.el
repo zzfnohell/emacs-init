@@ -35,6 +35,7 @@
 
 (require 'init-vc)
 (require 'init-compile)
+(require 'init-debugger)
 (require 'init-xcscope)
 (require 'init-cedet)
 (require 'init-auto-complete)
