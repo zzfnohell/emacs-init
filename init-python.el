@@ -5,6 +5,9 @@
 
 ;;; Code:
 
+(setq python-shell-interpreter "ipython"
+		python-shell-interpreter-args "-i")
+
 (require-package 'ac-anaconda)
 (require-package 'anaconda-mode)
 
@@ -32,6 +35,7 @@
 
 ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/project")
 ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/dependency")
+
 
 (require-package 'ein)
 (require 'ein)

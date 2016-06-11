@@ -16,4 +16,4 @@ pip install importmagic
 pip install jupiter
 
 pip install cython
-
+pip install trepan

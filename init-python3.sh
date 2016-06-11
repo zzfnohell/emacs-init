@@ -15,4 +15,4 @@ pip3 install importmagic
 
 pip3 install jupyter
 pip3 install cython
-
+pip3 install trepan3k
