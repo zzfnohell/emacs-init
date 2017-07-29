@@ -17,7 +17,7 @@
 (package-initialize)
 
 (load "~/.emacs.d/init/init-main.el")
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+;; (setq custom-file "~/.emacs.d/custom.el")
+;; (load custom-file)
 
 ;;; init.el ends here
