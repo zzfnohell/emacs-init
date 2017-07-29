@@ -31,8 +31,7 @@
     (autoload
       'turn-on-ctags-auto-update-mode
       "ctags-update"
-      "turn on
- `ctags-auto-update-mode'." t)
+      "turn on `ctags-auto-update-mode'." t)
     (add-hook
      'c-mode-common-hook
      'turn-on-ctags-auto-update-mode)

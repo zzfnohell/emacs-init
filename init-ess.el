@@ -10,6 +10,14 @@
 
 (use-package ess-R-data-view :defer t)
 (use-package ess-R-object-popup :defer t)
+(require 'ess-site)
+
+(require 'ess-julia)
+
+(setq inferior-julia-program-name "julia")
+(use-package julia-mode)
+
+
 
 (provide 'init-ess)
 

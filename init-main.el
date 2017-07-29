@@ -51,7 +51,6 @@
 (require 'init-yasnippet)
 
 (require 'init-ess)
-(require 'init-julia)
 (require 'init-maxima)
 (require 'init-axiom)
 
@@ -59,7 +58,6 @@
 (require 'init-java)
 
 (require 'init-lisp)
-(require 'init-R)
 (require 'init-octave)
 (require 'init-cc-mode)
 (require 'init-lex)
