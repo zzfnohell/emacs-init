@@ -2,7 +2,6 @@
 
 ;;; Commentary:
 ;; 
-(require-package 'dos)
 
 (provide 'init-dos)
 

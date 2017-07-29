@@ -20,9 +20,6 @@
                underline)))
     (hl-line-mode 1)))
 
-(require-package 'ctags)
-(require 'ctags)
-
 (require-package 'ctags-update)
 (autoload
   'turn-on-ctags-auto-update-mode

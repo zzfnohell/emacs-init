@@ -66,6 +66,16 @@ re-downloaded in order to locate PACKAGE."
         (package-refresh-contents)
         (require-package package min-version t)))))
 
+
+
+(require-package 'use-package)
+(setq use-package-always-ensure t)
+
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
+
 ;;; Fire up package.el
 
 (package-initialize)
