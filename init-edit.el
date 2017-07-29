@@ -6,30 +6,25 @@
 ;;; Code:
 
 ;; Access via Web
-;; (require-package 'take-off)
-;; (require 'take-off)
+;; (use-package take-off :defer t)
 
-(require-package 'auto-indent-mode)
-;; If you want auto-indent on for files
-(setq auto-indent-on-visit-file t) 
-(require 'auto-indent-mode)
+(use-package auto-indent-mode
+  :defer t
+  :init
+  ;; If you want auto-indent on for files
+  (setq auto-indent-on-visit-file t) )
 
-(require-package 'hl-anything)
-(require-package 'hl-indent)
-(require 'hl-indent)
+(use-package hl-anything :defer t)
+(use-package hl-indent :defer t)
 
-(require-package 'highlight-parentheses)
-(require 'highlight-parentheses)
+(use-package highlight-parentheses :defer t)
+(use-package highlight-chars :defer t)
+(use-package highlight-thing :defer t)
 
-(require-package 'highlight-chars)
-(require 'highlight-chars) 
 
-(require-package 'highlight-thing)
-(require 'highlight-thing)
-
-(require-package 'auto-highlight-symbol)
-(require 'auto-highlight-symbol)
-(global-auto-highlight-symbol-mode t)
+(use-package auto-highlight-symbol
+  :defer t
+  :config (global-auto-highlight-symbol-mode t))
 
 (setq-default indent-tabs-mode nil)
 
@@ -69,56 +64,63 @@
 
 (global-linum-mode 1)
 
-(require-package 'hlinum)
-(require 'hlinum)
-(hlinum-activate)
+(use-package hlinum
+  :defer t
+  :config (hlinum-activate))
 
+(use-package undo-tree
+  :defer t
+  :config (global-undo-tree-mode))
 
-(require-package 'undo-tree)
-(require 'undo-tree)
-(global-undo-tree-mode)
+(use-package regex-tool :defer t)
+(use-package vline :defer t)
+(use-package visible-mark
+  :defer t
+  :init
+  (defface visible-mark-active
+    ;; put this before (require 'visible-mark)
+    '((((type tty) (class mono)))
+      (t (:background "magenta"))) "")
+  :config
+  (progn
+    ;; or add (visible-mark-mode) to specific hooks
+    (global-visible-mark-mode 1)
+    (setq visible-mark-max 2)
+    (setq visible-mark-faces `(visible-mark-face1 visible-mark-face2))))
 
-(require-package 'regex-tool)
-
-(require-package 'vline)
-(require 'vline)
-
-(require-package 'visible-mark)
-(require 'visible-mark)
-(global-visible-mark-mode 1) ;; or add (visible-mark-mode) to specific hooks
-
-(defface visible-mark-active
-  ;; put this before (require 'visible-mark)
-  '((((type tty) (class mono)))
-    (t (:background "magenta"))) "")
-(setq visible-mark-max 2)
-(setq visible-mark-faces `(visible-mark-face1 visible-mark-face2))
 
 (add-hook 'texinfo-mode-hook (lambda () (require 'sb-texinfo)))
 
 ;; CSV file
-(require-package 'csv-mode)
-(require-package 'csv-nav)
-(add-auto-mode 'csv-mode "\\.[Cc][Ss][Vv]\\'")
-(setq csv-separators '("," ";" "|" " "))
+(use-package csv-mode
+  :defer t
+  :config
+  (progn
+    (add-auto-mode 'csv-mode "\\.[Cc][Ss][Vv]\\'")
+    (setq csv-separators '("," ";" "|" " "))))
+
+(use-package csv-nav :defer t)
 
 ;; irfc
-(require-package 'irfc)
-(require 'irfc)
-(setq irfc-directory *rfc-directory*)
-(setq irfc-assoc-mode t)
+(use-package irfc
+  :defer t
+  :config
+  (progn
+    (setq irfc-directory *rfc-directory*)
+    (setq irfc-assoc-mode t)))
 
-(require-package 'anyins)
-(require 'anyins)
+(use-package anyins :defer t)
+(use-package browse-kill-ring+ :defer t)
 
-(require-package 'browse-kill-ring+)
-(require 'browse-kill-ring+)
-(require-package 'popup-kill-ring)
-(require-package 'kill-ring-search)
+(use-package popup-kill-ring :defer t)
+(use-package kill-ring-search
+  :defer t
+  :config
+  (progn
+    (autoload 'kill-ring-search "kill-ring-search"
+      "Search the kill ring in the minibuffer."
+      (interactive))))
 
-(autoload 'kill-ring-search "kill-ring-search"
-  "Search the kill ring in the minibuffer."
-  (interactive))
 
 (provide 'init-edit)
 
