@@ -13,9 +13,9 @@
 (c-set-offset 'substatement-open 0)
 
 (defun c-mode-cedet-hook ()
-       (local-set-key "." 'semantic-complete-self-insert)
-       (local-set-key ">" 'semantic-complete-self-insert)
-       (local-set-key "\C-c \C-r" 'semantic-symref))
+  (local-set-key "." 'semantic-complete-self-insert)
+  (local-set-key ">" 'semantic-complete-self-insert)
+  (local-set-key "\C-c \C-r" 'semantic-symref))
 
 ;;indent strategy
 (defun cpp-indent-or-complete ()
@@ -53,25 +53,22 @@
 ;(add-hook 'c-mode-common-hook 'doxymacs-mode) ;; init doxymacs-mode
 ;(add-hook 'c++-mode-common-hook 'doxymacs-mode) ;;init doxymacs-mode
 
-(require-package 'clang-format)
-(require 'clang-format)
-
-(require-package 'ac-clang)
-(require 'ac-clang)
-;; (ac-clang-initialize)
+(use-package clang-format :defer t)
+(use-package ac-clang
+  :defer t
+  :config (ac-clang-initialize))
 
 ;;opencl source file.
 (add-to-list 'auto-mode-alist '("\\.h$" . c-mode))
 
-(require-package 'cmake-mode)
+(use-package cmake-mode)
+(use-package opencl-mode
+  :defer t
+  :config (add-to-list 'auto-mode-alist '("\\.cl\\'" . opencl-mode))
+  )
 
-(require-package 'opencl-mode)
-(require 'opencl-mode)
-(add-to-list 'auto-mode-alist '("\\.cl\\'" . opencl-mode))
-
-(require-package 'shader-mode)
-
-(require-package 'llvm-mode)
+(use-package shader-mode)
+(use-package llvm-mode)
 
 (provide 'init-cc-mode)
 
