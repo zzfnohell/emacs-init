@@ -5,44 +5,32 @@
 
 ;;; Code:
 
-(require-package 'helm)
+(use-package helm
+  :defer t
+  :config
+  (progn
+    (require 'helm-config)
+    (helm-mode 1))
+  :bind
+  (("M-x" . undefined)
+   ("M-x" . helm-M-x)
+   ("C-x r b" . helm-filtered-bookmarks)
+   ("C-x C-f" . helm-find-files)))
 
-(require 'helm)
-(require 'helm-config)
 
-(require-package 'helm-c-yasnippet)
-(require 'helm-c-yasnippet)
 
-(require-package 'helm-css-scss)
-(require 'helm-css-scss)
+(use-package helm-c-yasnippet :defer t)
+(use-package helm-css-scss :defer t)
+(use-package helm-flycheck :defer t)
+(use-package helm-git-files :defer t)
+(use-package helm-git-grep :defer t)
+(use-package helm-make :defer t)
+(use-package helm-gtags :defer t)
+(use-package ac-helm :defer t)
+(use-package helm-fuzzy-find :defer t)
 
-(require-package 'helm-flycheck)
-(require 'helm-flycheck)
 
-(require-package 'helm-git-files)
-(require 'helm-git-files)
 
-(require-package 'helm-git-grep)
-(require 'helm-git-grep)
-
-(require-package 'helm-make)
-(require 'helm-make)
-
-(require-package 'helm-gtags)
-(require 'helm-gtags)
-
-(require-package 'ac-helm)
-(require 'ac-helm)
-
-(require-package 'helm-fuzzy-find)
-(require 'helm-fuzzy-find)
-
-(global-set-key (kbd "M-x") 'undefined)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x r b") 'helm-filtered-bookmarks)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-
-(helm-mode 1)
 
 (provide 'init-helm)
 
