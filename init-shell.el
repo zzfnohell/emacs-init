@@ -4,36 +4,37 @@
 ;; 
 
 ;;; Code:
-(require-package 'shell-switcher)
-(require 'shell-switcher)
-(setq shell-switcher-mode t)
+(use-package shell-switcher
+  :defer t
+  :config
+  (progn
+    (setq shell-switcher-mode t)))
+
 
 ;; (defun make-powershell ()
 ;;   "Create a new `powershell'."
 ;;   (powershell (generate-new-buffer-name "*PowerShell*")))
 ;; (setq-default shell-switcher-new-shell-function 'make-powershell)
 
-
-(require-package 'bash-completion)
-(require 'bash-completion)
-;;(bash-completion-setup)
-
-(require-package 'shell-command)
-(shell-command-completion-mode)
-
-(require-package 'fish-mode)
-(require 'fish-mode)
-(add-hook 'fish-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook 'fish_indent-before-save)))
+(use-package shell-command
+  :defer t
+  :config (shell-command-completion-mode))
 
 
-(defun clear-shell ()
-  (interactive)
-  (let ((old-max comint-buffer-maximum-size))
-    (setq comint-buffer-maximum-size 0)
-    (comint-truncate-buffer)
-    (setq comint-buffer-maximum-size old-max))) 
+(use-package fish-mode
+  :defer t
+  :config
+  (add-hook 'fish-mode-hook
+            (lambda ()
+              (add-hook 'before-save-hook 'fish_indent-before-save))))
+
+
+;; (defun clear-shell ()
+;;   (interactive)
+;;   (let ((old-max comint-buffer-maximum-size))
+;;     (setq comint-buffer-maximum-size 0)
+;;     (comint-truncate-buffer)
+;;     (setq comint-buffer-maximum-size old-max))) 
 
 (provide 'init-shell)
 
