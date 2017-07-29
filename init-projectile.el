@@ -1,17 +1,20 @@
 ;;; init-projectile.el --- Projectile
 
 ;;; Commentary:
-;;
-(require-package 'projectile)
-(projectile-global-mode)
-(setq projectile-indexing-method 'native)
-;; (setq projectile-completion-system 'default)
-(setq projectile-completion-system 'helm)
+;;;
 
-(require-package 'helm-projectile)
-(require 'helm-projectile)
+(use-package projectile
+  :defer t
+  :config
+  (progn
+    (projectile-global-mode)
+    (setq projectile-indexing-method 'native)
+    ;; (setq projectile-completion-system 'default)
+    (setq projectile-completion-system 'helm)))
 
-(helm-projectile-on)
+(use-package helm-projectile
+  :config (helm-projectile-on))
+
 
 (provide 'init-projectile)
 
