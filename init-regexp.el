@@ -2,8 +2,7 @@
 
 ;;; Commentary:
 ;; 
-(require-package 'visual-regexp)
-(require 'visual-regexp)
+(use-package visual-regexp)
 
 (provide 'init-regexp)
 

@@ -1,7 +1,15 @@
-(ignore-errors
-  (require-package 'erlang))
+;;; init-erlang.el --- Erlang
 
-(when (package-installed-p 'erlang)
-  (require 'erlang-start))
+
+;;; Commentary:
+;; 
+
+;;; Code:
+
+(use-package erlang
+  :config (require 'erlang-start))
+
 
 (provide 'init-erlang)
+
+;;; init-erlang.el ends here

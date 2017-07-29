@@ -5,14 +5,14 @@
 
 ;;; Code:
 
-(require-package 'bison-mode)
-(require 'bison-mode)
-(require-package 'lex)
-(require 'lex)
+(use-package bison-mode
+  :config
+  (progn
+    (add-to-list 'auto-mode-alist '("\\.lex\\'" . bison-mode))
+    (add-to-list 'auto-mode-alist '("\\.yy\\'" . bison-mode))
+    (add-to-list 'auto-mode-alist '("\\.y\\'" . bison-mode))))
 
-(add-to-list 'auto-mode-alist '("\\.lex\\'" . bison-mode))
-(add-to-list 'auto-mode-alist '("\\.yy\\'" . bison-mode))
-(add-to-list 'auto-mode-alist '("\\.y\\'" . bison-mode))
+(use-package lex)
 
 (provide 'init-lex)
 
