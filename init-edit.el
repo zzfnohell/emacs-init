@@ -121,6 +121,13 @@
       "Search the kill ring in the minibuffer."
       (interactive))))
 
+(use-package vkill
+  :config
+  (progn
+    (autoload 'vkill "vkill" nil t)
+    (autoload 'list-unix-processes "vkill" nil t)
+    )
+  )
 
 (provide 'init-edit)
 

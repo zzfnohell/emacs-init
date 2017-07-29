@@ -17,9 +17,6 @@
 
 ;;; Commentary:
 ;; 
-(require-package 'vkill)
-(autoload 'vkill "vkill" nil t)
-(autoload 'list-unix-processes "vkill" nil t)
 
 (provide 'init-system)
 
