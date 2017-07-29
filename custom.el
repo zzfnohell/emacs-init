@@ -15,7 +15,6 @@
  '(aquamacs-additional-fontsets nil t)
  '(aquamacs-customization-version-id 307 t)
  '(aquamacs-tool-bar-user-customization nil t)
- '(cygwin-root-directory "/")
  '(diredp-hide-details-initially-flag nil)
  '(ecb-windows-width 30)
  '(global-linum-mode t)
@@ -34,6 +33,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-)
+ )
 
 ;;; custom.el ends here
