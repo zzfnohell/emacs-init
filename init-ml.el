@@ -1,10 +1,11 @@
 ;;; init-ml.el --- Markup Language
 
 ;;; Commentary:
-;; 
+;;
+
 (require 'nxml-mode)
 (fset 'xml-mode 'nxml-mode)
-(require-package 'auto-complete-nxml)
+(use-package auto-complete-nxml)
 
 (add-to-list 'auto-mode-alist
 			 (cons 
@@ -40,7 +41,13 @@ indentation rules."
         (backward-char) (insert "\n"))
       (indent-region begin end)))
 
-(require-package 'haml-mode)
+
+(use-package haml-mode)
+
+;;; YAML
+(use-package yaml-mode
+  :config (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+  )
 
 (provide 'init-ml)
 

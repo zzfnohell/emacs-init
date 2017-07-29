@@ -1,12 +1,26 @@
+;;; init-ruby.el --- Ruby
 ;;; Basic ruby setup
-(require-package 'ruby-mode)
-(require 'ruby-mode)
 
-(require-package 'ruby-hash-syntax)
-(require 'ruby-hash-syntax)
+;;; Commentary:
+;; 
 
-(add-auto-mode 'ruby-mode
-               "Rakefile\\'" 
+;;; Code:
+
+(use-package ruby-hash-syntax)
+(use-package ruby-mode
+  :defer t
+  :init
+  (after-load 'ruby-mode
+  ;; Stupidly the non-bundled ruby-mode isn't a derived mode of
+  ;; prog-mode: we run the latter's hooks anyway in that case.
+  (add-hook 'ruby-mode-hook
+            (lambda ()
+              (unless (derived-mode-p 'prog-mode)
+                (run-hooks 'prog-mode-hook)))))
+  :config
+  (progn
+    (add-auto-mode 'ruby-mode
+               "Rakefile\\'"
                "\\.rake\\'"
                "\\.rxml\\'"
                "\\.rjs\\'"
@@ -18,61 +32,68 @@
                "Gemfile\\'"
                "Kirkfile\\'")
 
-(setq ruby-use-encoding-map nil)
+    (setq ruby-use-encoding-map nil)
+    (add-hook 'ruby-mode-hook 'subword-mode)
+    )
+  )
 
-(after-load 'ruby-mode
-  ;; Stupidly the non-bundled ruby-mode isn't a derived mode of
-  ;; prog-mode: we run the latter's hooks anyway in that case.
-  (add-hook 'ruby-mode-hook
-            (lambda ()
-              (unless (derived-mode-p 'prog-mode)
-                (run-hooks 'prog-mode-hook)))))
 
-(add-hook 'ruby-mode-hook 'subword-mode)
 
 
 ;;; Inferior ruby
-(require-package 'inf-ruby)
-(require 'inf-ruby)
-(require-package 'ac-inf-ruby)
-(require 'ac-inf-ruby)
+(use-package inf-ruby
+  :defer t
+  :config
+  (progn
+    (after-load 'auto-complete
+      (add-to-list 'ac-modes 'inf-ruby-mode))))
 
-(after-load 'auto-complete
-  (add-to-list 'ac-modes 'inf-ruby-mode))
+(use-package ac-inf-ruby
+  :defer t
+  :config
+  (progn
+    (add-hook 'inf-ruby-mode-hook 'ac-inf-ruby-enable)
+    (after-load 'inf-ruby
+      (define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
+    )
+  )
 
-(add-hook 'inf-ruby-mode-hook 'ac-inf-ruby-enable)
-
-(after-load 'inf-ruby
-  (define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
 
 ;;; Ruby compilation
-(require-package 'ruby-compilation)
-(require 'ruby-compilation)
+(use-package ruby-compilation)
 
 ;;; Robe
-(require-package 'robe)
-(require 'robe)
-(add-hook 'ruby-mode-hook 'robe-mode)
-(add-hook 'robe-mode-hook 'ac-robe-setup)
+(use-package robe
+  :defer t
+  :config
+  (progn
+    (add-hook 'ruby-mode-hook 'robe-mode)
+    (add-hook 'robe-mode-hook 'ac-robe-setup)
+    )
+  )
 
 ;;; ri support
-(require-package 'yari)
-(defalias 'ri 'yari)
+(use-package yari
+  :config (defalias 'ri 'yari)
+  )
 
-;;(require-package 'rsense)
-(setq rsense-home (expand-file-name "~/Application/rsense"))
-(if (file-accessible-directory-p rsense-home)
-    (progn 
-      (add-to-list 'load-path (concat rsense-home "/etc"))
-      (require 'rsense)
-      (add-hook 'ruby-mode-hook
-                (lambda ()
-                  (add-to-list 'ac-sources 'ac-source-rsense-method)
-                  (add-to-list 'ac-sources 'ac-source-rsense-constant)))))
 
-;;; YAML
-(require-package 'yaml-mode)
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(use-package rsense
+  :config
+  (progn
+    (setq rsense-home (expand-file-name "~/Application/rsense"))
+    (if (file-accessible-directory-p rsense-home)
+        (progn
+          (add-to-list 'load-path (concat rsense-home "/etc"))
+          (require 'rsense)
+          (add-hook 'ruby-mode-hook
+                    (lambda ()
+                      (add-to-list 'ac-sources 'ac-source-rsense-method)
+                      (add-to-list 'ac-sources 'ac-source-rsense-constant)))))
+    )
+  )
+
 
 (provide 'init-ruby)
+
+;;; init-ruby.el ends here
