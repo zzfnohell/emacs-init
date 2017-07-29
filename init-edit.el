@@ -125,9 +125,13 @@
   :config
   (progn
     (autoload 'vkill "vkill" nil t)
-    (autoload 'list-unix-processes "vkill" nil t)
-    )
-  )
+    (autoload 'list-unix-processes "vkill" nil t)))
+
+(setq abbrev-file-name "~/.emacs.d/abbrev_defs")  
+(setq-default abbrev-mode t)
+(if (file-exists-p abbrev-file-name)
+    (quietly-read-abbrev-file))
+(setq save-abbrevs t)
 
 (custom-set-variables
  '(httpd-host "0.0.0.0")

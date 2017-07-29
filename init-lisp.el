@@ -87,26 +87,24 @@
 
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
 
-;; Setup SLIME
 (defvar slime-helper-path "~/Applications/quicklisp/slime-helper.el")
-(load (expand-file-name slime-helper-path))
+(if (file-exists-p slime-helper-path)
+    (progn
+      ;; Setup SLIME
+      (load (expand-file-name slime-helper-path))
+      ;; located in quicklisp install directory
+      (require 'slime)
+      (setq inferior-lisp-program "sbcl")
+      (slime-setup)
 
-;; located in quicklisp install directory
-(require 'slime)
-
-(setq inferior-lisp-program "sbcl")
-
-(slime-setup)
-
-(use-package ac-slime
-  :defer t
-  :config
-  (progn
-    (add-hook 'slime-mode-hook 'set-up-slime-ac)
-    (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-    (eval-after-load "auto-complete"
-      '(add-to-list 'ac-modes 'slime-repl-mode))))
-
+      (use-package ac-slime
+        :defer t
+        :config
+        (progn
+          (add-hook 'slime-mode-hook 'set-up-slime-ac)
+          (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+          (eval-after-load "auto-complete"
+            '(add-to-list 'ac-modes 'slime-repl-mode))))))
 
 
 (provide 'init-lisp)
