@@ -1,31 +1,39 @@
-(require-package 'haskell-mode)
+;;; init-haskell.el --- Haskell
 
-(dolist (hook '(haskell-mode-hook inferior-haskell-mode-hook))
-  (add-hook hook 'turn-on-haskell-doc-mode))
+;;; Commentary:
+;; 
 
-(add-auto-mode 'haskell-mode "\\.ghci\\'")
+;;; Code:
 
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-(add-hook 'haskell-mode-hook (lambda () (subword-mode +1)))
+(use-package haskell-mode
+  :config
+  (progn
+    (dolist (hook '(haskell-mode-hook inferior-haskell-mode-hook))
+      (add-hook hook 'turn-on-haskell-doc-mode))
 
-(after-load 'haskell-mode
-  (define-key haskell-mode-map (kbd "C-c h") 'hoogle)
-  (define-key haskell-mode-map (kbd "C-o") 'open-line))
+    (add-auto-mode 'haskell-mode "\\.ghci\\'")
 
-(when (eval-when-compile (>= emacs-major-version 24))
-  (require-package 'ghci-completion)
-  (add-hook 'inferior-haskell-mode-hook 'turn-on-ghci-completion))
+    (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+    (add-hook 'haskell-mode-hook (lambda () (subword-mode +1)))
 
-(eval-after-load 'page-break-lines
-  '(push 'haskell-mode page-break-lines-modes))
+    (after-load 'haskell-mode
+      (define-key haskell-mode-map (kbd "C-c h") 'hoogle)
+      (define-key haskell-mode-map (kbd "C-o") 'open-line))
+    
+    (eval-after-load 'page-break-lines
+      '(push 'haskell-mode page-break-lines-modes))
+    ;; Make compilation-mode understand "at blah.hs:11:34-50" lines output by GHC
+    (after-load 'compile
+      (let ((alias 'ghc-at-regexp))
+        (add-to-list
+         'compilation-error-regexp-alist-alist
+         (list alias " at \\(.*\\.\\(?:l?[gh]hs\\|hi\\)\\):\\([0-9]+\\):\\([0-9]+\\)-[0-9]+$" 1 2 3 0 1))
+        (add-to-list
+         'compilation-error-regexp-alist alias)))))
 
-;; Make compilation-mode understand "at blah.hs:11:34-50" lines output by GHC
-(after-load 'compile
-  (let ((alias 'ghc-at-regexp))
-    (add-to-list
-     'compilation-error-regexp-alist-alist
-     (list alias " at \\(.*\\.\\(?:l?[gh]hs\\|hi\\)\\):\\([0-9]+\\):\\([0-9]+\\)-[0-9]+$" 1 2 3 0 1))
-    (add-to-list
-     'compilation-error-regexp-alist alias)))
+(use-package ghci-completion
+  :config (add-hook 'inferior-haskell-mode-hook 'turn-on-ghci-completion))
 
 (provide 'init-haskell)
+
+;;; init-haskell.el ends here
