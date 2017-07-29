@@ -6,7 +6,8 @@
 ;;; Code:
 
 (cond
- ((or (cygwin-p) (windows-p))
+ ((or (eq 'cygwin system-type)
+      (eq 'windows-nt system-type))
   (progn
 	(set-language-environment 'Chinese-GBK)
 	(setq locale-coding-system 'gbk)

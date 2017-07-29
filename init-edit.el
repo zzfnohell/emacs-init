@@ -129,6 +129,13 @@
     )
   )
 
+(custom-set-variables
+ '(httpd-host "0.0.0.0")
+ '(httpd-port 8088)
+ '(minimap-window-location (quote right))
+ '(size-indication-mode t)
+ '(visual-line-mode nil t))
+
 (provide 'init-edit)
 
 ;;; init-edit.el ends here

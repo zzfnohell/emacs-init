@@ -33,13 +33,13 @@
           inhibit-startup-message t
           ecb-auto-compatibility-check nil
           ecb-version-check t)
-
-    ;; (add-hook 'ecb-history-buffer-after-create-hook 'evil-emacs-state)
+	;; (add-hook 'ecb-history-buffer-after-create-hook 'evil-emacs-state)
     ;; (add-hook 'ecb-directories-buffer-after-create-hook 'evil-emacs-state)
     ;; (add-hook 'ecb-methods-buffer-after-create-hook 'evil-emacs-state)
     ;; (add-hook 'ecb-sources-buffer-after-create-hook 'evil-emacs-state)
-    )
-  )
+
+	(custom-set-variables'(ecb-windows-width 30)))
+)
 
 
 

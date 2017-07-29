@@ -22,8 +22,8 @@
        (font-spec :family name :size size)))))
 
 (if (not (eq nil window-system))
-    (cond ((darwin-p) (set-font "Monaco" 10))
-          ((linux-p) (set-font "Monaco" 10))
+    (cond ((eq 'darwin system-type) (set-font "Monaco" 10))
+          ((eq 'gnu/linux system-type) (set-font "Monaco" 10))
           (t (set-font "Ubuntu Mono" 10))))
 
 ;; emacs shell font confusion
