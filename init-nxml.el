@@ -7,7 +7,7 @@
 ;;; Code:
 (require 'nxml-mode)
 (fset 'xml-mode 'nxml-mode)
-(require-package 'auto-complete-nxml)
+(use-package auto-complete-nxml)
 
 (add-to-list 'auto-mode-alist
 			 (cons 

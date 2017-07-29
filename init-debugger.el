@@ -7,7 +7,7 @@
 
 ;;; Code:
 
-(require-package 'realgud)
+(use-package realgud)
 
 (provide 'init-debugger)
 
