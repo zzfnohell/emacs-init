@@ -16,7 +16,6 @@
 
 (require 'init-parameters)
 (require 'init-system)
-(require 'init-cygwin)
 (require 'init-coding)
 (require 'init-ui)
 (require 'init-edit)
