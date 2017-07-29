@@ -2,14 +2,16 @@
 
 ;;; Commentary:
 ;; 
-(require-package 'php-mode)
-(require 'php-mode)
-(require-package 'ac-php)
-(add-hook 'php-mode-hook '(lambda ()
+
+(use-package php-mode)
+(use-package ac-php
+  :defer t
+  :config
+  (add-hook 'php-mode-hook '(lambda ()
                            (auto-complete-mode t)
                            (require 'ac-php)
                            (setq ac-sources  '(ac-source-php ) )
-                           (yas-global-mode 1)))
+                           (yas-global-mode 1))))
 
 (provide 'init-php)
 
