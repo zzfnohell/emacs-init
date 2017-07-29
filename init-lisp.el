@@ -6,15 +6,16 @@
 
 ;;; Code:
 
-(require-package 'paredit)
-(require-package 'lispy)
-(require-package 'diminish)
-(require 'diminish)
+(use-package paredit)
+(use-package lispy)
+(use-package diminish)
+(use-package lively)
+(require 'derived)
 
-(require-package 'lively)
+(use-package pretty-mode
+  :defer t
+  :config (autoload 'turn-on-pretty-mode "pretty-mode"))
 
-(require-package 'pretty-mode)
-(autoload 'turn-on-pretty-mode "pretty-mode")
 
 ;; ----------------------------------------------------------------------------
 ;; Hippie-expand
@@ -28,55 +29,61 @@
 ;; ----------------------------------------------------------------------------
 ;; Highlight current sexp
 ;; ----------------------------------------------------------------------------
-(require-package 'hl-sexp)
+(use-package hl-sexp
+  :defer t
+  :init
+  ;; Prevent flickery behaviour due to hl-sexp-mode unhighlighting before each command
+  (after-load 'hl-sexp
+    (defadvice hl-sexp-mode (after unflicker (&optional turn-on) activate)
+      (when turn-on
+        (remove-hook 'pre-command-hook #'hl-sexp-unhighlight)))))
 
-;; Prevent flickery behaviour due to hl-sexp-mode unhighlighting before each command
-(after-load 'hl-sexp
-  (defadvice hl-sexp-mode (after unflicker (&optional turn-on) activate)
-    (when turn-on
-      (remove-hook 'pre-command-hook #'hl-sexp-unhighlight))))
 
 ;; ----------------------------------------------------------------------------
 ;; Enable desired features for all lisp modes
 ;; ----------------------------------------------------------------------------
-(require-package 'rainbow-delimiters)
-(require-package 'redshank)
-(after-load 'redshank
-  (diminish 'redshank-mode))
+(use-package rainbow-delimiters)
+(use-package redshank
+  :defer t
+  :after (diminish)
+  :init
+  (after-load 'redshank
+    (diminish 'redshank-mode))
+  :config
+  (progn
+    (defun init-lisp/lisp-setup ()
+      "Enable features useful in any Lisp mode."
+      (rainbow-delimiters-mode t)
+      (enable-paredit-mode)
+      (turn-on-eldoc-mode)
+      (redshank-mode))
 
-(defun sanityinc/lisp-setup ()
-  "Enable features useful in any Lisp mode."
-  (rainbow-delimiters-mode t)
-  (enable-paredit-mode)
-  (turn-on-eldoc-mode)
-  (redshank-mode))
+    (defun init-lisp/emacs-lisp-setup ()
+      "Enable features useful when working with elisp."
+      (set-up-hippie-expand-for-elisp)
+      (ac-emacs-lisp-mode-setup))
 
-(defun sanityinc/emacs-lisp-setup ()
-  "Enable features useful when working with elisp."
-  (set-up-hippie-expand-for-elisp)
-  (ac-emacs-lisp-mode-setup))
+    (defconst init-lisp/elispy-modes
+      '(emacs-lisp-mode ielm-mode)
+      "Major modes relating to elisp.")
 
-(defconst sanityinc/elispy-modes
-  '(emacs-lisp-mode ielm-mode)
-  "Major modes relating to elisp.")
+    (defconst init-lisp/lispy-modes
+      (append init-lisp/elispy-modes
+              '(lisp-mode inferior-lisp-mode lisp-interaction-mode))
+      "All lispy major modes.")
 
-(defconst sanityinc/lispy-modes
-  (append sanityinc/elispy-modes
-          '(lisp-mode inferior-lisp-mode lisp-interaction-mode))
-  "All lispy major modes.")
 
-(require 'derived)
+    (dolist (hook (mapcar #'derived-mode-hook-name init-lisp/lispy-modes))
+      (add-hook hook 'init-lisp/lisp-setup))
 
-(dolist (hook (mapcar #'derived-mode-hook-name sanityinc/lispy-modes))
-  (add-hook hook 'sanityinc/lisp-setup))
+    (dolist (hook (mapcar #'derived-mode-hook-name init-lisp/elispy-modes))
+      (add-hook hook 'init-lisp/emacs-lisp-setup))
+    )
+  )
 
-(dolist (hook (mapcar #'derived-mode-hook-name sanityinc/elispy-modes))
-  (add-hook hook 'sanityinc/emacs-lisp-setup))
 
-(require-package 'eldoc-eval)
-(require 'eldoc-eval)
-
-(require-package 'macrostep)
+(use-package eldoc-eval)
+(use-package macrostep)
 
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
 
@@ -91,12 +98,15 @@
 
 (slime-setup)
 
-(require-package 'ac-slime)
-(require 'ac-slime)
-(add-hook 'slime-mode-hook 'set-up-slime-ac)
-(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-(eval-after-load "auto-complete"
-  '(add-to-list 'ac-modes 'slime-repl-mode))
+(use-package ac-slime
+  :defer t
+  :config
+  (progn
+    (add-hook 'slime-mode-hook 'set-up-slime-ac)
+    (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+    (eval-after-load "auto-complete"
+      '(add-to-list 'ac-modes 'slime-repl-mode))))
+
 
 
 (provide 'init-lisp)
