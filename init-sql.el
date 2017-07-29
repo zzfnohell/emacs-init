@@ -4,12 +4,15 @@
 ;; 
 
 ;;; Code:
+
 (require 'sql)
 
-(require-package 'sql-indent)
+(use-package sql-indent
+  :defer t
+  :config
+  (eval-after-load "sql"
+    '(load-library "sql-indent")))
 
-(eval-after-load "sql"
-  '(load-library "sql-indent"))
 
 (provide 'init-sql)
 

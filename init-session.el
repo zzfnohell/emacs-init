@@ -1,6 +1,15 @@
+;;; init-session.el --- Session
 ;;add session function
-(require-package 'session)
-(require 'session)
 
-(add-hook 'after-init-hook 'session-initialize)
+;;; Commentary:
+;; 
+
+;;; Code:
+
+(use-package session
+  :defer t
+  :config (add-hook 'after-init-hook 'session-initialize))
+
 (provide 'init-session)
+
+;;; init-session.el ends here
