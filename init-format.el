@@ -5,10 +5,14 @@
 
 ;;; Code:
 
-(require-package 'fuzzy-format)
-(require 'fuzzy-format)
-(setq fuzzy-format-default-indent-tabs-mode nil)
-(global-fuzzy-format-mode t)
+(use-package fuzzy-format
+  :defer t
+  :config
+  (progn
+    (setq fuzzy-format-default-indent-tabs-mode nil)
+    (global-fuzzy-format-mode t)
+    )
+  )
 
 (provide 'init-format)
 
