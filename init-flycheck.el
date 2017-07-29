@@ -5,9 +5,9 @@
 
 ;;; Code:
 
-(require-package 'flycheck)
-(require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
+(use-package flycheck
+  :defer t
+  :config (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (provide 'init-flycheck)
 

@@ -8,10 +8,8 @@
 ;;   "Value is t if the OS is one of Microsoft's, nil otherwise.")
 ;;; Code:
 
-(require-package 'ess-R-data-view)
-(require-package 'ess-R-object-popup)
-(require 'ess-site)
-(require 'ess-R-object-popup)
+(use-package ess-R-data-view :defer t)
+(use-package ess-R-object-popup :defer t)
 
 (provide 'init-ess)
 
