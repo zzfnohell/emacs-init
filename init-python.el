@@ -47,7 +47,6 @@
 (use-package jedi
   :config
   (progn
-    (add-hook 'python-mode-hook 'jedi:setup)
     (setq jedi:setup-keys t)
     (setq jedi:complete-on-dot t)
     (add-hook 'python-mode-hook 'jedi:setup)
@@ -75,6 +74,10 @@
   (progn
     (setenv "WORKON_HOME" "/usr/local/Applications/anaconda3/envs/")
     (pyvenv-mode 1)))
+
+(use-package yapfify
+  :config (add-hook 'python-mode-hook 'yapf-mode)
+  )
 
 (provide 'init-python)
 ;;; init-python.el ends here
