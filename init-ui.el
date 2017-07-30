@@ -121,6 +121,7 @@
 ;;(add-to-list 'default-frame-alist '(alpha 85 50))
 
 (use-package minimap)
+(use-package sr-speedbar)
 
 (provide 'init-ui)
 

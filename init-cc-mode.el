@@ -31,8 +31,8 @@
         ('awk-mode . "awk")
         (other . "linux")))
 
-(setq-default c-basic-offset 4
-              tab-width 4
+(setq-default c-basic-offset 2
+              tab-width 2
               indent-tabs-mode t)
 
 (defun c-mode-edit-hook()
