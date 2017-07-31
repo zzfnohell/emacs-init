@@ -7,6 +7,7 @@
 
 ;;; Code:
 
+(setq gdb-many-windows t)
 (use-package realgud)
 
 (provide 'init-debugger)
