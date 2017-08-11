@@ -193,7 +193,6 @@
   )
 
 (use-package js2-refactor)
-(use-package closure-lint-mode)
 
 (use-package tern
   :config
