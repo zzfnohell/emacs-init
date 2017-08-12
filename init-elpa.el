@@ -14,12 +14,13 @@
 
 (package-initialize)
 
-(unless (package-installed-p 'use-package)
+(unless (package-installed-p 'req-package)
   (package-refresh-contents)
-  (package-install 'use-package))
+  (package-install 'req-package))
 
 (eval-when-compile
-  (require 'use-package))
+  (require 'use-package)
+	(require 'req-package))
 
 (setq use-package-always-ensure t)
 (require 'diminish)
