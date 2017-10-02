@@ -11,8 +11,8 @@
   (message (format "enable proxy."))
   (setq url-proxy-services
         '(("no_proxy" . "^\\(localhost\\|192.*\\)")
-          ("http" . "127.0.0.1:8087")
-          ("https" . "127.0.0.1:8087"))))
+          ("http" . "127.0.0.1:2001")
+          ("https" . "127.0.0.1:2001"))))
 
 (defun disable-proxy ()
   "Disable proxy."
