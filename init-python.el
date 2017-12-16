@@ -45,11 +45,10 @@
   :config (setq ein:use-smartrep t))
 
 (req-package jedi
-	:require exec-file-from-shell
+	:require exec-path-from-shell
 	:defer t
   :config
   (progn
-    (setq jedi:setup-keys t)
     (setq jedi:complete-on-dot t)
 		(when (memq window-system '(mac ns))
 			(exec-path-from-shell-initialize))

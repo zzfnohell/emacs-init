@@ -23,7 +23,7 @@
 	(require 'req-package))
 
 (setq use-package-always-ensure t)
-(require 'diminish)
+
 (require 'bind-key)
 
 (provide 'init-elpa)
