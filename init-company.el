@@ -74,7 +74,13 @@
   :defer t
   :config (add-to-list 'company-backends 'company-inf-ruby))
 
+(req-package company-lua
+	:defer t)
 
+(use-package company-glsl
+  :config
+  (when (executable-find "glslangValidator")
+    (add-to-list 'company-backends 'company-glsl)))
 
 (provide 'init-company)
 

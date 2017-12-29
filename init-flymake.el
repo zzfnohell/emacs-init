@@ -4,6 +4,9 @@
 ;; 
 
 ;;; Code:
+(req-package flymake-lua 
+  :defer t
+	:init (add-hook 'lua-mode-hook 'flymake-lua-load))
 
 (provide 'init-flymake)
 
