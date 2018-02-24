@@ -69,8 +69,7 @@
     (elpy-enable)
     (defalias 'workon 'pyvenv-workon)
     :config
-    (setq elpy-rpc-backend "jedi")
-    (elpy-use-ipython)))
+    (setq elpy-rpc-backend "jedi")))
 
 (use-package pyvenv
   :config
