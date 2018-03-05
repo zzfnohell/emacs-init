@@ -17,11 +17,14 @@
 (use-package python-mode
   :config
   (progn
-    (setq python-shell-interpreter "ipython"
-          python-shell-interpreter-args "-i")
-    ;; use IPython
+    (setq
+		 python-shell-interpreter "python"
+     python-shell-interpreter-args ""
+		 python-shell-interpreter-interactive-arg "-i")
+		
     (setq-default py-shell-name "ipython")
     (setq-default py-which-bufname "IPython")
+		
     ;; use the wx backend, for both mayavi and matplotlib
     (setq py-python-command-args
           '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
