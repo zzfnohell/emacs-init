@@ -59,28 +59,29 @@
     (add-hook 'python-mode-hook 'jedi:ac-setup)))
 
 (use-package highlight-indentation
+	:ensure t
   :config
-  (progn
-    (set-face-background 'highlight-indentation-face "#e3e3d3")
-    (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
-    )
+	(set-face-background 'highlight-indentation-face "#e3e3d3")
+	(set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
   )
 
 (use-package elpy
+	:ensure t
   :config
-  (progn
-    (elpy-enable)
-    (defalias 'workon 'pyvenv-workon)
-    :config
-    (setq elpy-rpc-backend "jedi")))
+	(elpy-enable)
+	(defalias 'workon 'pyvenv-workon)
+	(setq elpy-rpc-backend "jedi"))
 
 (use-package pyvenv
+	:ensure t
   :config
-  (progn
-    (setenv "WORKON_HOME" "/usr/local/Applications/anaconda3/envs/")
-    (pyvenv-mode 1)))
+	(setenv "WORKON_HOME" "/usr/local/Applications/anaconda3/envs/")
+	(pyvenv-mode 1)
+	(pyvenv-tracking-mode 1))
+
 
 (use-package yapfify
+	:ensure t
   :config (add-hook 'python-mode-hook 'yapf-mode)
   )
 
