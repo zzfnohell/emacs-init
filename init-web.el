@@ -120,7 +120,6 @@
 (use-package ac-html-bootstrap)
 (use-package ac-html-csswatcher :config (ac-html-csswatcher-setup))
 (use-package web-beautify)
-(use-package kite)
 (use-package impatient-mode)
 (use-package react-snippets)
 

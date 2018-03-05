@@ -54,9 +54,6 @@
 ;(add-hook 'c++-mode-common-hook 'doxymacs-mode) ;;init doxymacs-mode
 
 (use-package clang-format :defer t)
-(use-package ac-clang
-  :defer t
-  :config (ac-clang-initialize))
 
 ;;opencl source file.
 (add-to-list 'auto-mode-alist '("\\.h$" . c-mode))

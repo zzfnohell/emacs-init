@@ -43,7 +43,6 @@
 (require 'init-regexp)
 (require 'init-helm)
 (require 'init-ecb)
-(require 'init-msvc)
 (require 'init-projectile)
 (require 'init-flycheck)
 (require 'init-flymake)
@@ -72,6 +71,7 @@
 (require 'init-sql)
 (require 'init-go)
 (require 'init-php)
+(require 'init-lua)
 
 (require 'init-powershell)
 (require 'init-dos)
