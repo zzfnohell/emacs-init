@@ -13,9 +13,9 @@
     (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
     )
   )
-(use-package ac-anaconda)
-(use-package python-mode
-  :config
+
+(req-package python-mode
+  :init
   (progn
     (setq
 		 python-shell-interpreter "python"
@@ -49,7 +49,6 @@
 
 (req-package jedi
 	:require exec-path-from-shell
-	:defer t
   :config
   (progn
     (setq jedi:complete-on-dot t)

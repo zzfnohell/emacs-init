@@ -53,19 +53,17 @@
 ;(add-hook 'c-mode-common-hook 'doxymacs-mode) ;; init doxymacs-mode
 ;(add-hook 'c++-mode-common-hook 'doxymacs-mode) ;;init doxymacs-mode
 
-(use-package clang-format :defer t)
+(req-package clang-format)
 
 ;;opencl source file.
 (add-to-list 'auto-mode-alist '("\\.h$" . c-mode))
 
-(use-package cmake-mode)
-(use-package opencl-mode
-  :defer t
-  :config (add-to-list 'auto-mode-alist '("\\.cl\\'" . opencl-mode))
+(req-package cmake-mode)
+(req-package opencl-mode
+  :init (add-to-list 'auto-mode-alist '("\\.cl\\'" . opencl-mode))
   )
 
 (use-package shader-mode)
-(use-package llvm-mode)
 
 (provide 'init-cc-mode)
 
