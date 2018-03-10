@@ -5,7 +5,6 @@
 
 ;;; Code:
 
-
 (provide 'init-theme)
 
 ;;; init-theme.el ends here
