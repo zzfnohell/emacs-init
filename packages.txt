@@ -4,3 +4,7 @@ r-base
 octave
 axiom
 maxima
+golang
+llvm
+clang
+sbcl
