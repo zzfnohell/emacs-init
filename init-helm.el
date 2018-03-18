@@ -5,12 +5,10 @@
 
 ;;; Code:
 
-(use-package helm
-  :defer t
+(req-package helm
   :config
-  (progn
-    (require 'helm-config)
-    (helm-mode 1))
+  (require 'helm-config)
+  (helm-mode 1)
   :bind
   (("M-x" . undefined)
    ("M-x" . helm-M-x)
@@ -19,17 +17,26 @@
 
 
 
-(use-package helm-c-yasnippet :defer t)
-(use-package helm-css-scss :defer t)
-(use-package helm-flycheck :defer t)
-(use-package helm-git-files :defer t)
-(use-package helm-git-grep :defer t)
-(use-package helm-make :defer t)
-(use-package helm-gtags :defer t)
-(use-package ac-helm :defer t)
-(use-package helm-fuzzy-find :defer t)
+(req-package helm-c-yasnippet
+	:require helm yasnippet)
 
+(req-package helm-css-scss
+	:require helm)
 
+(req-package helm-flycheck
+	:require dash flycheck helm)
+(req-package helm-git-files
+	:require helm git)
+(req-package helm-git-grep
+	:require helm)
+(req-package helm-make
+	:require helm projectile)
+
+(req-package helm-gtags :require helm)
+(req-package ac-helm
+	:require helm auto-complete popup)
+
+(req-package helm-fuzzy-find :require helm)
 
 
 (provide 'init-helm)
