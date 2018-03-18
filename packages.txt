@@ -8,3 +8,5 @@ golang
 llvm
 clang
 sbcl
+lua5.3
+
