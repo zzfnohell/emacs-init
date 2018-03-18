@@ -1,2 +1,6 @@
 ctags
 global
+r-base
+octave
+axiom
+maxima
