@@ -130,6 +130,7 @@
 (setq save-abbrevs t)
 
 (custom-set-variables
+ '(custom-enabled-themes (quote (light-blue)))
  '(httpd-host "0.0.0.0")
  '(httpd-port 8088)
  '(minimap-window-location (quote right))
