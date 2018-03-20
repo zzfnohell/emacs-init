@@ -134,6 +134,7 @@
  '(httpd-port 8088)
  '(minimap-window-location (quote right))
  '(size-indication-mode t)
+ '(speedbar-show-unknown-files t)
  '(visual-line-mode nil t))
 
 (provide 'init-edit)

@@ -6,8 +6,7 @@
 
 ;;; Code:
 
-(use-package company
-  :defer t
+(req-package company
   :init
   (after-load 'company
     (add-hook 'prog-mode-hook 'enable-company-mode)
@@ -74,8 +73,6 @@
   :defer t
   :config (add-to-list 'company-backends 'company-inf-ruby))
 
-(req-package company-lua
-	:defer t)
 
 (use-package company-glsl
   :config
