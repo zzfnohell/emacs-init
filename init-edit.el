@@ -128,6 +128,7 @@
 (if (file-exists-p abbrev-file-name)
     (quietly-read-abbrev-file))
 (setq save-abbrevs t)
+(xterm-mouse-mode 1)
 
 (custom-set-variables
  '(custom-enabled-themes (quote (light-blue)))
