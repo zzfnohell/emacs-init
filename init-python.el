@@ -74,7 +74,7 @@
 (use-package pyvenv
 	:ensure t
   :config
-	(setenv "WORKON_HOME" "/usr/local/Applications/anaconda3/envs/")
+	(setenv "WORKON_HOME" (expand-file-name "~/Applications/anaconda3/envs/"))
 	(pyvenv-mode 1)
 	(pyvenv-tracking-mode 1))
 
@@ -83,6 +83,10 @@
 	:ensure t
   :config (add-hook 'python-mode-hook 'yapf-mode)
   )
+
+(req-package cython-mode)
+(req-package flycheck-cython)
+
 
 (provide 'init-python)
 ;;; init-python.el ends here

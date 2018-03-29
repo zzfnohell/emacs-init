@@ -33,9 +33,6 @@
 	:require helm projectile)
 
 (req-package helm-gtags :require helm)
-(req-package ac-helm
-	:require helm auto-complete popup)
-
 (req-package helm-fuzzy-find :require helm)
 
 

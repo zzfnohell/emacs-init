@@ -40,23 +40,6 @@
 
 
 
-;;; Inferior ruby
-(use-package inf-ruby
-  :defer t
-  :config
-  (progn
-    (after-load 'auto-complete
-      (add-to-list 'ac-modes 'inf-ruby-mode))))
-
-(use-package ac-inf-ruby
-  :defer t
-  :config
-  (progn
-    (add-hook 'inf-ruby-mode-hook 'ac-inf-ruby-enable)
-    (after-load 'inf-ruby
-      (define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
-    )
-  )
 
 
 ;;; Ruby compilation

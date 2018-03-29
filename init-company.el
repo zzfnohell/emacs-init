@@ -45,7 +45,6 @@
 
 
 (use-package company-jedi
-  :defer t
   :config (add-to-list 'company-backends 'company-jedi))
 
 (use-package company-coq :defer t)
