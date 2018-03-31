@@ -9,7 +9,6 @@
   :config
   (progn
     (require 'auto-complete-config)
-;;    (global-auto-complete-mode)
     (setq ac-auto-start 1)
     (setq ac-ignore-case nil)
     (add-to-list
