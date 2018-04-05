@@ -5,11 +5,10 @@
 
 ;;; Code:
 (use-package auto-complete
-  :defer t
+	:demand t
   :config
   (progn
     (require 'auto-complete-config)
-    (global-auto-complete-mode)
     (setq ac-auto-start 1)
     (setq ac-ignore-case nil)
     (add-to-list
@@ -18,10 +17,14 @@
     (ac-config-default)
     ))
 
-(use-package auto-complete-clang)
+(use-package auto-complete-clang
+	:after (:all auto-complete)
+	:demand t
+)
 
 (use-package ac-c-headers
-  :defer t
+	:after (:all auto-complete)
+	:demand t
   :config
   (add-hook 'c-mode-hook
           (lambda ()
@@ -29,7 +32,8 @@
             (add-to-list 'ac-sources 'ac-source-c-header-symbols t))))
 
 (use-package ac-etags
-  :defer t
+	:after (:all auto-complete)
+	:demand t
   :config
   (progn
     (custom-set-variables '(ac-etags-requires 1))
@@ -39,7 +43,8 @@
     (add-hook 'c-mode-common-hook 'ac-etags-c-mode-common-hook)))
 
 (use-package auto-complete-nxml
-  :defer t
+	:after (:all auto-complete)
+	:demand t
   :config
   (progn
     ;; Keystroke for popup help about something at point.
@@ -54,12 +59,33 @@
   )
 
 (use-package auto-complete-c-headers
-  :defer t
+	:after (:all auto-complete)
+	:demand t
   :config (add-to-list 'ac-sources 'ac-source-c-headers))
 
 (use-package auto-complete-exuberant-ctags
-  :defer t
+	:after (:all auto-complete)
+	:demand t
   :config (ac-exuberant-ctags-setup))
+
+;; Inferior ruby
+(use-package inf-ruby
+	:after (:all auto-complete)
+	:demand t
+  :config
+  (progn
+    (after-load 'auto-complete
+      (add-to-list 'ac-modes 'inf-ruby-mode))))
+
+(use-package ac-inf-ruby
+	:demand t
+  :config
+  (progn
+    (add-hook 'inf-ruby-mode-hook 'ac-inf-ruby-enable)
+    (after-load 'inf-ruby
+      (define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
+    )
+  )
 
 (provide 'init-auto-complete)
 

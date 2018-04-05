@@ -8,21 +8,20 @@
 ;; Access via Web
 ;; (use-package take-off :defer t)
 
-(use-package auto-indent-mode
+(req-package auto-indent-mode
   :defer t
   :init
   ;; If you want auto-indent on for files
   (setq auto-indent-on-visit-file t) )
 
-(use-package hl-anything :defer t)
-(use-package hl-indent :defer t)
+(req-package hl-anything :defer t)
+(req-package hl-indent :defer t)
 
-(use-package highlight-parentheses :defer t)
-(use-package highlight-chars :defer t)
-(use-package highlight-thing :defer t)
+(req-package highlight-parentheses :defer t)
+(req-package highlight-thing :defer t)
 
 
-(use-package auto-highlight-symbol
+(req-package auto-highlight-symbol
   :defer t
   :config (global-auto-highlight-symbol-mode t))
 
@@ -99,21 +98,18 @@
     (add-auto-mode 'csv-mode "\\.[Cc][Ss][Vv]\\'")
     (setq csv-separators '("," ";" "|" " "))))
 
-(use-package csv-nav :defer t)
-
 ;; irfc
-(use-package irfc
+(req-package irfc
   :defer t
   :config
   (progn
     (setq irfc-directory *rfc-directory*)
     (setq irfc-assoc-mode t)))
 
-(use-package anyins :defer t)
-(use-package browse-kill-ring+ :defer t)
+(req-package anyins :defer t)
 
-(use-package popup-kill-ring :defer t)
-(use-package kill-ring-search
+(req-package popup-kill-ring :defer t)
+(req-package kill-ring-search
   :defer t
   :config
   (progn
@@ -121,7 +117,7 @@
       "Search the kill ring in the minibuffer."
       (interactive))))
 
-(use-package vkill
+(req-package vkill
   :config
   (progn
     (autoload 'vkill "vkill" nil t)
@@ -132,12 +128,15 @@
 (if (file-exists-p abbrev-file-name)
     (quietly-read-abbrev-file))
 (setq save-abbrevs t)
+(xterm-mouse-mode 1)
 
 (custom-set-variables
+ '(custom-enabled-themes (quote (light-blue)))
  '(httpd-host "0.0.0.0")
  '(httpd-port 8088)
  '(minimap-window-location (quote right))
  '(size-indication-mode t)
+ '(speedbar-show-unknown-files t)
  '(visual-line-mode nil t))
 
 (provide 'init-edit)
