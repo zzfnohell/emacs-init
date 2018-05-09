@@ -82,7 +82,7 @@
 (use-package yapfify
 	:ensure t
   :config (add-hook 'python-mode-hook 'yapf-mode)
-  )
+	)
 
 (req-package cython-mode)
 (req-package flycheck-cython)
