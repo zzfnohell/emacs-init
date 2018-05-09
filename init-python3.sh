@@ -16,3 +16,5 @@ pip install importmagic
 pip install jupyter
 pip install cython
 pip install trepan3k
+pip install yapf
+
