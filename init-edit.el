@@ -117,12 +117,6 @@
       "Search the kill ring in the minibuffer."
       (interactive))))
 
-(req-package vkill
-  :config
-  (progn
-    (autoload 'vkill "vkill" nil t)
-    (autoload 'list-unix-processes "vkill" nil t)))
-
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")  
 (setq-default abbrev-mode t)
 (if (file-exists-p abbrev-file-name)

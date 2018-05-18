@@ -47,20 +47,22 @@
 (require 'init-flycheck)
 (require 'init-flymake)
 (require 'init-yasnippet)
+(require 'init-lsp)
 
 (require 'init-ess)
 (require 'init-maxima)
 (require 'init-axiom)
 
-(require 'init-sage-mode)
-(require 'init-java)
-
+(require 'init-cc-mode)
+(require 'init-rust)
 (require 'init-lisp)
 (require 'init-octave)
-(require 'init-cc-mode)
 (require 'init-lex)
 (require 'init-sl)
-(require 'init-pascal)
+
+
+(require 'init-sage-mode)
+(require 'init-java)
 
 (require 'init-erlang)
 (require 'init-clojure)
@@ -76,6 +78,7 @@
 (require 'init-powershell)
 (require 'init-dos)
 (require 'init-csharp)
+(require 'init-pascal)
 (require 'init-erc)
 (require 'init-markdown)
 (require 'init-ml)
