@@ -9,8 +9,8 @@
 (use-package json-mode)
 
 (req-package js2-mode
+	:require web-mode
   :config
-
     (defcustom preferred-javascript-mode
       (first (remove-if-not #'fboundp '(js2-mode js-mode)))
       "Javascript mode to use for .js files."
@@ -30,6 +30,18 @@
 		(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 		;; Better imenu
 		(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+
+		;; Need to first remove from list if present,
+		;; since elpa adds entries too, which may be in an arbitrary order
+		(eval-when-compile (require 'cl))
+		(setq auto-mode-alist
+					(cons `("\\.js\\(\\.erb\\)?\\'" . ,preferred-javascript-mode)
+								(loop for entry in auto-mode-alist
+											unless (eq preferred-javascript-mode (cdr entry))
+											collect entry)))
+		;; js-mode
+		(setq js-indent-level preferred-javascript-indent-level)
+		(add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
     )
 
 ;; (use-package ac-js2
@@ -94,26 +106,18 @@
 
 
 
-;; Need to first remove from list if present,
-;; since elpa adds entries too, which may be in an arbitrary order
-(eval-when-compile (require 'cl))
-(setq auto-mode-alist
-      (cons `("\\.js\\(\\.erb\\)?\\'" . ,preferred-javascript-mode)
-            (loop for entry in auto-mode-alist
-                  unless (eq preferred-javascript-mode (cdr entry))
-                  collect entry)))
 
 
-;; js-mode
-(setq js-indent-level preferred-javascript-indent-level)
-(add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
 
-(use-package js-comint)
-(setq inferior-js-program-command "js")
+(req-package js-comint
+	:config
+	(setq inferior-js-program-command "node")
+	)
 
 
 (use-package rainbow-delimiters)
-(use-package coffee-mode
+(req-package coffee-mode
+	:require js2-mode
   :config
   (progn
     ;; Coffeescript
