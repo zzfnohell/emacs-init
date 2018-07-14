@@ -74,6 +74,7 @@
 (require 'init-go)
 (require 'init-php)
 (require 'init-lua)
+(require 'init-javascript)
 
 (require 'init-powershell)
 (require 'init-dos)

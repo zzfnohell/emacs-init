@@ -25,7 +25,6 @@
             ("blade"  . "\\.blade\\.")))
 
     (add-to-list 'auto-mode-alist '("\\.api\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("/some/react/path/*\\.js[x]?\\'" . web-mode))
 
     (defun init-web/custom-web-mode-hook ()
       "Hooks for Web mode."
@@ -61,8 +60,6 @@
                    (if (string= web-mode-cur-language "css")
                        (setq emmet-use-css-transform t)
                      (setq emmet-use-css-transform nil)))))
-
-    
     )
   )
 
@@ -156,110 +153,6 @@
     (add-hook 'css-mode-hook 'turn-on-css-eldoc)
     )
   )
-
-;; Javascript
-(use-package json-mode)
-
-(use-package js2-mode
-  :config
-  (progn
-    
-    (defcustom preferred-javascript-mode
-      (first (remove-if-not #'fboundp '(js2-mode js-mode)))
-      "Javascript mode to use for .js files."
-      :type 'symbol
-      :group 'programming
-      :options '(js2-mode js-mode))
-
-    (defvar preferred-javascript-indent-level 2)
-    (setq js2-use-font-lock-faces t
-          js2-mode-must-byte-compile nil
-          js2-basic-offset preferred-javascript-indent-level
-          js2-indent-on-enter-key t
-          js2-auto-indent-p t
-          js2-bounce-indent-p t
-          js2-basic-offset 2)
-    ))
-
-(use-package ac-js2
-  :config
-  (progn
-    ;;(setq ac-js2-evaluate-calls t)
-    ;;(setq ac-js2-external-libraries '(/full/path/to/a/library.js))
-    (add-hook 'js2-mode-hook 'ac-js2-mode)
-
-    )
-  )
-
-(use-package js2-refactor)
-
-(use-package tern
-  :config
-  (progn
-    (setq tern-command '("tern" "--no-port-file" "--persistent"))
-    )
-  )
-
-(use-package tern-auto-complete
-  :config
-  (progn
-    (add-hook 'js2-mode-hook
-              '(lambda ()
-                 (define-key js2-mode-map (kbd "TAB") 'indent-for-tab-command)
-                 (setq mode-name "JS2")
-                 (js2-imenu-extras-setup)
-                 (tern-mode t)
-                 (tern-ac-setup)))))
-
-
-
-;; Need to first remove from list if present,
-;; since elpa adds entries too, which may be in an arbitrary order
-(eval-when-compile (require 'cl))
-(setq auto-mode-alist
-      (cons `("\\.js\\(\\.erb\\)?\\'" . ,preferred-javascript-mode)
-            (loop for entry in auto-mode-alist
-                  unless (eq preferred-javascript-mode (cdr entry))
-                  collect entry)))
-
-
-;; js-mode
-(setq js-indent-level preferred-javascript-indent-level)
-(add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
-
-(use-package js-comint)
-(setq inferior-js-program-command "js")
-
-
-(use-package rainbow-delimiters)
-(use-package coffee-mode
-  :config
-  (progn
-    ;; Coffeescript
-    (after-load 'coffee-mode
-      (setq coffee-js-mode preferred-javascript-mode
-            coffee-tab-width preferred-javascript-indent-level))
-    
-    (add-to-list 'auto-mode-alist '("\\.coffee\\.erb\\'" . coffee-mode))
-    ))
-
-
-(req-package skewer-mode :config (skewer-setup))
-
-;; Node.js
-(use-package nodejs-repl)
-(use-package sws-mode
-  :config (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode)))
-(use-package jade-mode
-  :config (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode)))
-
-
-(req-package indium
-	:init
-	(message "init indium")
-	:config
-	(message "config indium"))
-
 
 (provide 'init-web)
 
