@@ -244,7 +244,7 @@
     ))
 
 
-(use-package skewer-mode :config (skewer-setup))
+(req-package skewer-mode :config (skewer-setup))
 
 ;; Node.js
 (use-package nodejs-repl)
@@ -252,6 +252,13 @@
   :config (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode)))
 (use-package jade-mode
   :config (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode)))
+
+
+(req-package indium
+	:init
+	(message "init indium")
+	:config
+	(message "config indium"))
 
 
 (provide 'init-web)
