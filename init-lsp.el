@@ -30,7 +30,11 @@
 	(add-hook 'python-mode-hook #'lsp-python-enable)
 	)
 
-
+(req-package company-lsp
+	:demand
+	:config
+	(push 'company-lsp company-backends)
+	)
 
 (provide 'init-lsp)
 

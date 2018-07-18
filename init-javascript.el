@@ -72,6 +72,7 @@
 							(add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 	)
 	
+(req-package rjsx-mode)
 
 (req-package tern
   :config
@@ -128,6 +129,11 @@
     (add-to-list 'auto-mode-alist '("\\.coffee\\.erb\\'" . coffee-mode))
     ))
 
+(req-package flow-minor-mode
+	:require js2-mode
+	:demand
+	:config (add-hook 'js2-mode-hook 'flow-minor-enable-automatically)
+	)
 
 (req-package skewer-mode :config (skewer-setup))
 
