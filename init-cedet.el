@@ -34,7 +34,7 @@
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
 
-(semantic-mode 1)
+;; (semantic-mode 1)
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
 (require 'semantic/bovine/c)
