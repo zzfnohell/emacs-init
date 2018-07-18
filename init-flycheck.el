@@ -19,6 +19,13 @@
 	)
   )
 
+
+(req-package flycheck-flow
+	:demand
+	:config
+	(add-hook 'javascript-mode-hook 'flycheck-mode)
+)
+
 (provide 'init-flycheck)
 
 ;;; init-flycheck.el ends here

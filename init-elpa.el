@@ -20,7 +20,8 @@
 
 (eval-when-compile
   (require 'use-package)
-	(require 'req-package))
+  (require 'req-package)
+  )
 
 (setq use-package-always-ensure t)
 
