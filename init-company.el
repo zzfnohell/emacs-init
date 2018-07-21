@@ -92,6 +92,12 @@
   (when (executable-find "glslangValidator")
     (add-to-list 'company-backends 'company-glsl)))
 
+(req-package company-flow
+	:config
+	(eval-after-load 'company
+    '(add-to-list 'company-backends 'company-flow)))
+
+
 (provide 'init-company)
 
 ;;; init-company.el ends here

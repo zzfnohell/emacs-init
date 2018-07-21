@@ -36,6 +36,9 @@
 	(push 'company-lsp company-backends)
 	)
 
+;; npm install -g flow-language-server
+(req-package lsp-javascript-flow :requires lsp-mode :demand)
+
 (provide 'init-lsp)
 
 ;;; init-lsp.el ends here
