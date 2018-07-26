@@ -135,7 +135,14 @@
 	:config (add-hook 'js2-mode-hook 'flow-minor-enable-automatically)
 	)
 
-(req-package skewer-mode :config (skewer-setup))
+(req-package skewer-mode
+	:require js2-mode css-mode
+	:config
+	(skewer-setup)
+	(add-hook 'js2-mode-hook 'skewer-mode)
+	(add-hook 'css-mode-hook 'skewer-css-mode)
+	(add-hook 'html-mode-hook 'skewer-html-mode)
+	)
 
 ;; Node.js
 (use-package nodejs-repl)
