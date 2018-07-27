@@ -84,7 +84,12 @@
 	(add-hook 'less-mode-hook #'lsp-less-enable)
 	(add-hook 'sass-mode-hook #'lsp-scss-enable)
 	(add-hook 'scss-mode-hook #'lsp-scss-enable))
-	
+
+(use-package lsp-go
+	:ensure t
+	:config 
+	(add-hook 'go-mode-hook #'lsp-go-enable))
+
 (use-package company-lsp
 	:after company
 	:ensure t
@@ -96,7 +101,13 @@
 	)
 
 ;; npm install -g flow-language-server
-(use-package lsp-javascript-flow :requires lsp-mode :demand t)
+(use-package lsp-javascript-flow
+	:ensure t
+	:config
+	(add-hook 'js-mode-hook #'lsp-javascript-flow-enable)
+	(add-hook 'js2-mode-hook #'lsp-javascript-flow-enable) ;; for js2-mode support
+	(add-hook 'rjsx-mode #'lsp-javascript-flow-enable) ;; for rjsx-mode support
+	)
 
 (provide 'init-lsp)
 
