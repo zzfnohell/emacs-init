@@ -16,3 +16,5 @@ tar xf ~/.emacs.d/eclipse.jdt.ls/server/jdt-latest.tar -C ~/.emacs.d/eclipse.jdt
 pip install 'python-language-server[all]'
 
 go get -u github.com/sourcegraph/go-langserver
+
+composer require felixfbecker/language-server

@@ -28,7 +28,7 @@
 (use-package lsp-php
 	:ensure t
 	:config
-	(add-hook 'php-mode-hook #'lsp-mode)
+	(add-hook 'php-mode-hook #'lsp-php-enable)
 	)
 
 (use-package lsp-rust
