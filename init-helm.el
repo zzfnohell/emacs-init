@@ -35,6 +35,7 @@
 (req-package helm-gtags :require helm)
 (req-package helm-fuzzy-find :require helm)
 
+(req-package restclient-helm :demand t)
 
 (provide 'init-helm)
 
