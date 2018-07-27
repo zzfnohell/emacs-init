@@ -112,7 +112,6 @@
 	(push 'company-lsp company-backends)
   (setq company-lsp-enable-snippet t
         company-lsp-cache-candidates t)
-  (push 'java-mode company-global-modes)
 	)
 
 (provide 'init-lsp)
