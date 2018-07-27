@@ -83,7 +83,8 @@
 	(add-hook 'css-mode-hook #'init-lsp/lsp-css/css-mode-setup)
 	(add-hook 'less-mode-hook #'lsp-less-enable)
 	(add-hook 'sass-mode-hook #'lsp-scss-enable)
-	(add-hook 'scss-mode-hook #'lsp-scss-enable))
+	(add-hook 'scss-mode-hook #'lsp-scss-enable)
+	)
 	
 (use-package company-lsp
 	:after company

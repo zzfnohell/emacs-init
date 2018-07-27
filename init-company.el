@@ -11,6 +11,11 @@
   (add-hook 'after-init-hook 'global-company-mode)
   )
 
+(req-package company-lsp
+	:demand t
+	:config (push 'company-lsp company-backends)
+	)
+
 (use-package company-jedi
 	:after (:all company jedi)
 	:demand t
@@ -63,7 +68,6 @@
 	(eval-after-load 'company
     '(add-to-list 'company-backends 'company-flow)))
 
-(req-package company-ycmd :demand t :config (require 'company-ycmd))
 
 (req-package company-web
 	:demand t
