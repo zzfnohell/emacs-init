@@ -6,6 +6,7 @@
 ;;; Code:
 
 (use-package web-mode
+	:require company-web
   :config
   (progn
     (setq web-mode-enable-current-element-highlight nil)

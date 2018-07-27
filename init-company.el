@@ -97,9 +97,10 @@
 	(eval-after-load 'company
     '(add-to-list 'company-backends 'company-flow)))
 
-(req-package company-ycmd)
+(req-package company-ycmd :demand t)
 
 (req-package company-web
+	:demand t
 	:config
 	(add-to-list 'company-backends 'company-web-html)
 	(add-to-list 'company-backends 'company-web-jade)
