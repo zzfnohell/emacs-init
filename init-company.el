@@ -97,6 +97,18 @@
 	(eval-after-load 'company
     '(add-to-list 'company-backends 'company-flow)))
 
+(req-package company-ycmd)
+
+(req-package company-web
+	:config
+	(add-to-list 'company-backends 'company-web-html)
+	(add-to-list 'company-backends 'company-web-jade)
+	(add-to-list 'company-backends 'company-web-slim)
+	)
+
+
+
+
 
 (provide 'init-company)
 

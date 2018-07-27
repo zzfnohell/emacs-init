@@ -47,7 +47,16 @@
       (setq web-mode-enable-block-face t)
       (setq web-mode-enable-part-face t)
       (setq web-mode-enable-comment-keywords t)
-      (setq web-mode-enable-heredoc-fontification t))
+      (setq web-mode-enable-heredoc-fontification t)
+
+			;; company-web
+			(define-key web-mode-map (kbd "C-'") 'company-web-html)
+			(add-hook 'web-mode-hook
+								(lambda ()
+									(set (make-local-variable 'company-backends)
+											 '(company-web-html company-files))
+									(company-mode t)))
+			)
 
     (add-hook 'web-mode-hook  'init-web/custom-web-mode-hook)
     (add-hook 'web-mode-before-auto-complete-hooks
@@ -60,57 +69,6 @@
                    (if (string= web-mode-cur-language "css")
                        (setq emmet-use-css-transform t)
                      (setq emmet-use-css-transform nil)))))
-    )
-  )
-
-
-(use-package ac-html
-  :config
-  (progn
-    (defun setup-ac-for-haml ()
-      ;; Require ac-haml since we are setup haml auto completion
-      (require 'ac-haml)
-      ;; Require default data provider if you want to use
-      (require 'ac-html-default-data-provider)
-      ;; Enable data providers,
-      ;; currently only default data provider available
-      (ac-html-enable-data-provider 'ac-html-default-data-provider)
-      ;; Let ac-haml do some setup
-      (ac-haml-setup)
-      ;; Set your ac-source
-      (setq ac-sources '(ac-source-haml-tag
-                         ac-source-haml-attr
-                         ac-source-haml-attrv))
-      ;; Enable auto complete mode
-      (auto-complete-mode))
-
-    (add-hook 'haml-mode-hook 'setup-ac-for-haml)
-
-    (add-to-list 'web-mode-ac-sources-alist
-                 '("html" . (ac-source-html-tag
-                             ac-source-html-attr
-                             ac-source-html-attrv)))
-
-    (add-to-list  'web-mode-ac-sources-alist
-                  '("php" . (ac-source-yasnippet ac-source-php-auto-yasnippets)))
-
-    (add-to-list 'web-mode-ac-sources-alist
-                 '("css" . (ac-source-css-property
-                            ac-source-emmet-css-snippets)))
-
-    ;; (add-to-list 'web-mode-ac-sources-alist
-    ;;              '("html" . (
-    ;;                          ;; attribute-value better to be first
-    ;; 			 ;; ac-source-words-in-buffer
-    ;; 			 ;; ac-source-abbrev
-    ;; 			 ;; ac-source-emmet-html-aliases
-    ;; 			 ;; ac-source-emmet-html-snippets
-    ;;                          ;;ac-source-html-attribute-value
-    ;;                          ;;ac-source-html-tag
-    ;;                          ;;ac-source-html-attribute
-    ;; 			 )))
-
-
     )
   )
 

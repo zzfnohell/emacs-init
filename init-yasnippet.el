@@ -11,7 +11,6 @@
   (progn
     ;;; use popup menu for yas-choose-value
     (require 'popup)
-
     (add-to-list 'yas-snippet-dirs 
                  "~/.emacs.d/snippets"
                  "~/.emacs.d/snippets/yasmate/snippets")
@@ -40,7 +39,9 @@
             yas-no-prompt))))
 
 (use-package auto-yasnippet)
-
+(req-package yasnippet-snippets
+	:require yasnippet
+	:demand )
 (provide 'init-yasnippet)
 
 ;;; init-yasnippet.el ends here
