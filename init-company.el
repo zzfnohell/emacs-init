@@ -58,11 +58,12 @@
     (add-to-list 'company-backends 'company-glsl)))
 
 (req-package company-flow
+	:require company
 	:config
 	(eval-after-load 'company
     '(add-to-list 'company-backends 'company-flow)))
 
-(req-package company-ycmd :demand t)
+(req-package company-ycmd :demand t :config (require 'company-ycmd))
 
 (req-package company-web
 	:demand t
@@ -71,6 +72,11 @@
 	(add-to-list 'company-backends 'company-web-jade)
 	(add-to-list 'company-backends 'company-web-slim)
 	)
+
+(req-package company-shell :demand t)
+(req-package company-cmake :demand t)
+(req-package company-axiom :demand t)
+(req-package company-dict :demand t)
 
 (provide 'init-company)
 
