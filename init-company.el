@@ -78,6 +78,8 @@
 (req-package company-axiom :demand t)
 (req-package company-dict :demand t)
 
+(req-package company-restclient :demand t)
+
 (provide 'init-company)
 
 ;;; init-company.el ends here
