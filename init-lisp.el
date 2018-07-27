@@ -87,17 +87,18 @@
 
 
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
-
 (defvar *slime-helper-path* "~/quicklisp/slime-helper.el")
 
+(req-package slime-company :demand t)
+
 (req-package slime
-	:demand
+	:demand t
 	:config
 	(when (file-exists-p *slime-helper-path*)
 		(load (expand-file-name *slime-helper-path*))
 		;; located in quicklisp install directory
 		(setq inferior-lisp-program "sbcl")
-		(slime-setup)
+		(slime-setup '(slime-company))
 		)
 	)
 

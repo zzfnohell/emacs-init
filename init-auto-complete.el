@@ -4,18 +4,13 @@
 ;; Auto Complete
 
 ;;; Code:
-;; (use-package auto-complete
-;; 	:demand t
-;;   :config
-;;   (progn
-;;     (require 'auto-complete-config)
-;;     (setq ac-auto-start 1)
-;;     (setq ac-ignore-case nil)
-;;     (add-to-list
-;;      'ac-dictionary-directories
-;;      "~/.emacs.d/auto-complete/ac-dict")
-;;     (ac-config-default)
-;;     ))
+
+(req-package auto-complete
+	:demand t
+  :config
+  (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
+  ;; (ac-config-default)
+  )
 
 ;; (use-package auto-complete-clang
 ;; 	:after (:all auto-complete)

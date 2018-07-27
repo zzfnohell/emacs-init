@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(use-package web-mode
+(req-package web-mode
 	:require company-web
   :config
   (progn
