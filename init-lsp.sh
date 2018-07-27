@@ -5,6 +5,7 @@ npm i -g vscode-html-languageserver-bin
 npm i -g vscode-css-languageserver-bin
 npm i -g javascript-typescript-langserver
 npm i -g flow-language-server
+npm i -g ocaml-language-server
 
 # rm -rf ~/.emacs.d/eclipse.jdt.ls/server/
 mkdir -p ~/.emacs.d/eclipse.jdt.ls/server/

@@ -10,8 +10,8 @@
 (use-package lsp-mode
 	:demand t
 	:config
-	(add-hook 'prog-major-mode #'lsp-prog-major-mode-enable)
 	(require 'lsp-imenu)
+	(add-hook 'prog-major-mode #'lsp-prog-major-mode-enable)
 	(add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
 	)
 
@@ -44,8 +44,6 @@
   :requires (lsp-ui-flycheck lsp-ui-sideline)
   :config
   (add-hook 'java-mode-hook  'lsp-java-enable)
-  (add-hook 'java-mode-hook  'flycheck-mode)
-  (add-hook 'java-mode-hook  'company-mode)
   (add-hook 'java-mode-hook  (lambda () (lsp-ui-flycheck-enable t)))
   (add-hook 'java-mode-hook  'lsp-ui-sideline-mode)
 	;; set the projects that are going to be imported into the workspace.
@@ -90,14 +88,12 @@
 	:config 
 	(add-hook 'go-mode-hook #'lsp-go-enable))
 
-(use-package company-lsp
-	:after company
+(use-package lsp-ocaml
 	:ensure t
 	:config
-	(push 'company-lsp company-backends)
-  (setq company-lsp-enable-snippet t
-        company-lsp-cache-candidates t)
-  (push 'java-mode company-global-modes)
+	(add-hook 'tuareg-mode-hook #'lsp-ocaml-enable)
+	(add-hook 'caml-mode-hook #'lsp-ocaml-enable)
+	(add-hook 'reason-mode-hook #'lsp-ocaml-enable) ;; for Reason support
 	)
 
 ;; npm install -g flow-language-server
@@ -107,6 +103,16 @@
 	(add-hook 'js-mode-hook #'lsp-javascript-flow-enable)
 	(add-hook 'js2-mode-hook #'lsp-javascript-flow-enable) ;; for js2-mode support
 	(add-hook 'rjsx-mode #'lsp-javascript-flow-enable) ;; for rjsx-mode support
+	)
+
+(use-package company-lsp
+	:after company
+	:ensure t
+	:config
+	(push 'company-lsp company-backends)
+  (setq company-lsp-enable-snippet t
+        company-lsp-cache-candidates t)
+  (push 'java-mode company-global-modes)
 	)
 
 (provide 'init-lsp)
