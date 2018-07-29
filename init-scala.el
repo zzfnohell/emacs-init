@@ -46,11 +46,7 @@
 	
 	)
 
-(use-package scala-mode-auto
-	:ensure t)
-
 (use-package ensime
-	:after scala-model-auto
 	:demant t
 	:ensure t
 	:pin melpa-stable
