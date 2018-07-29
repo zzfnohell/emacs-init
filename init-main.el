@@ -9,9 +9,9 @@
 ;;; Commentary:
 ;; 
 
-(require 'init-benchmarking)
 (require 'init-proxy)
 (require 'init-elpa)
+(require 'init-benchmarking)
 (require 'init-utils)
 
 (require 'init-parameters)
