@@ -66,6 +66,7 @@
 
 (require 'init-sage-mode)
 (require 'init-java)
+(require 'init-scala)
 
 (require 'init-erlang)
 (require 'init-clojure)
@@ -86,6 +87,7 @@
 (require 'init-erc)
 (require 'init-markdown)
 (require 'init-ml)
+(require 'init-haml)
 
 (require 'init-nav)
 
