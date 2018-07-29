@@ -171,9 +171,9 @@
 (setq semantic-imenu-auto-rebuild-directory-indexes nil)
 
 (setq cedet-sys-include-dirs
-      (list
-       "/usr/include"
-       "/usr/local/include"))
+ (list
+  "/usr/include"
+  "/usr/local/include"))
 
 (setq semantic-c-dependency-system-include-path "/usr/include/")
 
