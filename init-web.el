@@ -97,8 +97,11 @@
 
 
 ;;; SASS and SCSS
-(use-package sass-mode)
-(use-package scss-mode :config (setq-default scss-compile-at-save nil))
+(use-package sass-mode
+	:ensure t)
+(use-package scss-mode
+	:ensure t
+	:config (setq-default scss-compile-at-save nil))
 
 
 ;;; LESS
