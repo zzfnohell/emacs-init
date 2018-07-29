@@ -98,7 +98,9 @@
 
 ;;; SASS and SCSS
 (use-package sass-mode
+	:after markdown-mode
 	:ensure t)
+
 (use-package scss-mode
 	:ensure t
 	:config (setq-default scss-compile-at-save nil))
