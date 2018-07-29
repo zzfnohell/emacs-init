@@ -42,10 +42,13 @@
 ;; ----------------------------------------------------------------------------
 ;; Enable desired features for all lisp modes
 ;; ----------------------------------------------------------------------------
-(use-package rainbow-delimiters)
+(use-package rainbow-delimiters
+	:ensure t
+	:defer t)
 (use-package redshank
+  :ensure t
   :defer t
-  :after (diminish)
+  :after (:all diminish)
   :init
   (after-load 'redshank
     (diminish 'redshank-mode))
@@ -82,8 +85,12 @@
   )
 
 
-(use-package eldoc-eval)
-(use-package macrostep)
+(use-package eldoc-eval
+  :ensure t
+  :defer t)
+(use-package macrostep
+  :ensure t
+  :defer t)
 
 
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
@@ -93,7 +100,7 @@
 (use-package slime
 	:after (:all slime-company)
 	:ensure t
-	:demand t
+	:defer t
 	:config
 	(when (file-exists-p *slime-helper-path*)
 		(load (expand-file-name *slime-helper-path*))
@@ -105,7 +112,7 @@
 
 (use-package slime-company
 	:ensure t
-	:demand t
+	:defer t
 	:after (:all company)
 	)
 

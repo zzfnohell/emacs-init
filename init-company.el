@@ -8,21 +8,21 @@
 
 (use-package company
 	:ensure t
-  :demand t
+  :defer t
   :config
   (add-hook 'after-init-hook 'global-company-mode)
   )
 
 (use-package company-lsp
 	:ensure t
-	:demand t
+	:defer t
 	:config (push 'company-lsp company-backends)
 	)
 
 (use-package company-jedi
 	:ensure t
 	:after (:all company jedi)
-	:demand t
+	:defer t
   :config (add-to-list 'company-backends 'company-jedi))
 
 (use-package company-coq
@@ -32,14 +32,14 @@
 
 (use-package company-c-headers
 	:ensure t
-	:demand t
+	:defer t
 	:after (:all company)
   :config (add-to-list 'company-backends 'company-c-headers))
 
 (use-package company-tern
 	:ensure t
 	:after (:all company)
-	:demand t
+	:defer t
   :config
   (progn
     (add-to-list 'company-backends 'company-tern)
@@ -48,13 +48,13 @@
 
 (use-package company-quickhelp
 	:after (:all company)
-	:demand t
+	:defer t
   :config (company-quickhelp-mode 1))
 
 (use-package company-math
 	:ensure t
 	:after (:all company)
-  :demand t
+  :defer t
   :config (add-to-list 'company-backends 'company-math-symbols-unicode))
 
 ;; (use-package company-inf-ruby
@@ -66,13 +66,14 @@
 (use-package company-glsl
 	:ensure t
 	:after (:all company)
-  :demand t
+  :defer t
   :config
   (when (executable-find "glslangValidator")
     (add-to-list 'company-backends 'company-glsl)))
 
 (use-package company-flow
 	:ensure t
+	:defer t
 	:config
 	(eval-after-load 'company
     '(add-to-list 'company-backends 'company-flow)))
@@ -80,7 +81,7 @@
 
 (use-package company-web
 	:ensure t
-	:demand t
+	:defer t
 	:config
 	(add-to-list 'company-backends 'company-web-html)
 	(add-to-list 'company-backends 'company-web-jade)
@@ -88,24 +89,26 @@
 	)
 
 (use-package company-shell
-	:demand t
-	:ensure t)
+	:ensure t
+	:defer t
+	)
 
 (use-package company-cmake
-	:demand t
-	:ensure t)
+	:ensure t
+	:defer t)
 
 (use-package company-axiom
-	:demand t
-	:ensure t)
+	:ensure t
+	:defer t)
 
 (use-package company-dict
-	:demand t
-	:ensure t)
+	:ensure t
+	:defer t)
+	
 
 (use-package company-restclient
 	:ensure t
-	:demand t)
+	:defer t)
 
 (provide 'init-company)
 

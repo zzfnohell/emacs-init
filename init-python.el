@@ -7,6 +7,8 @@
 
 
 (use-package anaconda-mode
+  :ensure t
+  :defer t
   :config
   (progn
     (add-hook 'python-mode-hook 'anaconda-mode)
@@ -46,10 +48,12 @@
 
 (use-package ein
 	:ensure t
+  :defer t
   :config (setq ein:use-smartrep t))
 
 (use-package jedi
 	:ensure t
+  :defer t
   :config
   (progn
     (setq jedi:complete-on-dot t)
@@ -60,6 +64,7 @@
 
 (use-package highlight-indentation
 	:ensure t
+  :defer t
   :config
 	(set-face-background 'highlight-indentation-face "#e3e3d3")
 	(set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
@@ -67,6 +72,7 @@
 
 (use-package elpy
 	:ensure t
+	:defer t
   :config
 	(elpy-enable)
 	(defalias 'workon 'pyvenv-workon)
@@ -74,6 +80,7 @@
 
 (use-package pyvenv
 	:ensure t
+  :defer t
   :config
 	(setenv "WORKON_HOME" (expand-file-name "~/Applications/anaconda3/envs/"))
 	(pyvenv-mode 1)
@@ -82,11 +89,17 @@
 
 (use-package yapfify
 	:ensure t
+  :defer t
   :config (add-hook 'python-mode-hook 'yapf-mode)
 	)
 
-(use-package cython-mode :ensure t)
-(use-package flycheck-cython :ensure t)
+(use-package cython-mode
+  :ensure t
+  :defer t)
+
+(use-package flycheck-cython
+  :ensure t
+  :defer t)
 
 
 (provide 'init-python)

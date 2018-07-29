@@ -10,6 +10,7 @@
 
 (use-package js2-mode
 	:ensure t
+	:defer t
   :config
     (defcustom preferred-javascript-mode
       (first (remove-if-not #'fboundp '(js2-mode js-mode)))
@@ -56,6 +57,7 @@
 (use-package js2-refactor
 	:after js2-mode
 	:ensure t
+	:defer t
 	:config
 	(add-hook 'js2-mode-hook #'js2-refactor-mode)
 	(js2r-add-keybindings-with-prefix "C-c C-r")
@@ -65,6 +67,7 @@
 (use-package xref-js2
 	:after js2-mode
 	:ensure t
+	:defer t
 	:config
 	;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
 	;; unbind it.
@@ -75,10 +78,13 @@
 							(add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 	)
 	
-(use-package rjsx-mode :ensure t)
+(use-package rjsx-mode
+	:ensure t
+	:defer t)
 
 (use-package tern
 	:ensure t
+	:defer t
   :config
   (progn
     (setq tern-command '("tern" "--no-port-file" "--persistent"))
@@ -88,6 +94,7 @@
 (use-package company-tern
 	:after (:all company tern js2-mode)
 	:ensure t
+	:defer t
 	:config
 	(add-to-list 'company-backends 'company-tern)
 	(add-hook 'js2-mode-hook (lambda ()
@@ -116,15 +123,21 @@
 
 
 (use-package js-comint
+	:ensure t
+	:defer t
 	:config
 	(setq inferior-js-program-command "node")
 	)
 
 
-(use-package rainbow-delimiters :ensure t)
+(use-package rainbow-delimiters
+	:ensure t
+	:defer t)
+
 (use-package coffee-mode
 	:after js2-mode
 	:ensure t
+	:defer t
   :config
   (progn
     ;; Coffeescript
@@ -138,12 +151,14 @@
 (use-package flow-minor-mode
 	:after js2-mode
 	:ensure t
+	:defer t
 	:config (add-hook 'js2-mode-hook 'flow-minor-enable-automatically)
 	)
 
 (use-package skewer-mode
+	:after (:all js2-mode css-mode)
 	:ensure t
-	:after js2-mode css-mode
+	:defer t
 	:config
 	(skewer-setup)
 	(add-hook 'js2-mode-hook 'skewer-mode)
@@ -152,12 +167,18 @@
 	)
 
 ;; Node.js
-(use-package nodejs-repl :ensure t)
+(use-package nodejs-repl
+	:ensure t
+	:defer t)
+
 (use-package sws-mode
 	:ensure t
+	:defer t
   :config (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode)))
+
 (use-package jade-mode
 	:ensure t
+	:defer t
   :config (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode)))
 
 
