@@ -6,9 +6,14 @@
 
 ;;; Code:
 
-(use-package ruby-hash-syntax)
 (use-package ruby-mode
+  :ensure t
   :defer t
+	:ensure-system-package
+  ((rubocop     . "gem install rubocop")
+   (ruby-lint   . "gem install ruby-lint")
+   (ripper-tags . "gem install ripper-tags")
+   (pry         . "gem install pry"))
   :init
   (after-load 'ruby-mode
   ;; Stupidly the non-bundled ruby-mode isn't a derived mode of
@@ -37,16 +42,18 @@
     )
   )
 
-
-
-
-
+(use-package ruby-hash-syntax
+  :ensure t
+  :defer t)
 
 ;;; Ruby compilation
-(use-package ruby-compilation)
+(use-package ruby-compilation
+  :ensure t
+  :defer t)
 
 ;;; Robe
 (use-package robe
+  :ensure t
   :defer t
   :config
   (progn
@@ -57,11 +64,15 @@
 
 ;;; ri support
 (use-package yari
+  :ensure t
+  :defer t
   :config (defalias 'ri 'yari)
   )
 
 
 (use-package rsense
+  :ensure t
+  :defer t
   :config
   (progn
     (setq rsense-home (expand-file-name "~/Application/rsense"))

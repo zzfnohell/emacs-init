@@ -10,20 +10,31 @@
 
 (use-package auto-indent-mode
   :ensure t
+	:defer t
   :init
   ;; If you want auto-indent on for files
   (setq auto-indent-on-visit-file t)
 	)
 
-(use-package hl-anything :ensure t)
-(use-package hl-indent :ensure t)
+(use-package hl-anything
+  :ensure t
+  :defer t)
+(use-package hl-indent
+  :ensure t
+  :defer t)
 
-(use-package highlight-parentheses :ensure t)
-(use-package highlight-thing :ensure t)
+(use-package highlight-parentheses
+  :ensure t
+  :defer t)
+
+(use-package highlight-thing
+  :ensure t
+  :defer t)
 
 
 (use-package auto-highlight-symbol
   :ensure t
+  :defer t
   :config (global-auto-highlight-symbol-mode t))
 
 (setq-default indent-tabs-mode nil)
@@ -66,16 +77,24 @@
 
 (use-package hlinum
   :ensure t
+  :defer t
   :config (hlinum-activate))
 
 (use-package undo-tree
   :ensure t
+  :defer t
   :config (global-undo-tree-mode))
 
-(use-package regex-tool :ensure t)
-(use-package vline :ensure t)
+(use-package regex-tool
+  :ensure t
+  :defer t)
+(use-package vline
+  :ensure t
+  :defer t)
+
 (use-package visible-mark
   :ensure t
+  :defer t
   :init
   (defface visible-mark-active
     ;; put this before (require 'visible-mark)
@@ -102,16 +121,23 @@
 ;; irfc
 (use-package irfc
   :ensure t
+  :defer t
   :config
   (progn
     (setq irfc-directory *rfc-directory*)
     (setq irfc-assoc-mode t)))
 
-(use-package anyins :ensure t)
+(use-package anyins
+  :ensure t
+  :defer t)
 
-(use-package popup-kill-ring :ensure t)
+(use-package popup-kill-ring
+  :ensure t
+  :defer t)
+
 (use-package kill-ring-search
   :ensure t
+  :defer t
   :config
   (progn
     (autoload 'kill-ring-search "kill-ring-search"

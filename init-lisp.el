@@ -6,13 +6,26 @@
 
 ;;; Code:
 
-(use-package paredit)
-(use-package lispy)
-(use-package diminish)
-(use-package lively)
+(use-package paredit
+	:ensure t
+	:defer t)
+
+(use-package lispy
+  :ensure t
+  :defer t)
+
+(use-package diminish
+  :ensure t
+  :defer t)
+
+(use-package lively
+  :ensure t
+  :defer t)
+
 (require 'derived)
 
 (use-package pretty-mode
+  :ensure t
   :defer t
   :config (autoload 'turn-on-pretty-mode "pretty-mode"))
 
@@ -30,6 +43,7 @@
 ;; Highlight current sexp
 ;; ----------------------------------------------------------------------------
 (use-package hl-sexp
+  :ensure t
   :defer t
   :init
   ;; Prevent flickery behaviour due to hl-sexp-mode unhighlighting before each command
@@ -43,8 +57,10 @@
 ;; Enable desired features for all lisp modes
 ;; ----------------------------------------------------------------------------
 (use-package rainbow-delimiters
+  :ensure t
 	:ensure t
 	:defer t)
+
 (use-package redshank
   :ensure t
   :defer t
@@ -84,18 +100,16 @@
     )
   )
 
-
 (use-package eldoc-eval
   :ensure t
   :defer t)
+
 (use-package macrostep
   :ensure t
   :defer t)
 
-
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
 (defvar *slime-helper-path* "~/quicklisp/slime-helper.el")
-
 
 (use-package slime
 	:after (:all slime-company)
