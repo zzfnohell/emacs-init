@@ -6,10 +6,10 @@
 
 ;;; Code:
 
-(use-package json-mode)
+(use-package json-mode :ensure t)
 
-(req-package js2-mode
-	:require web-mode
+(use-package js2-mode
+	:ensure t
   :config
     (defcustom preferred-javascript-mode
       (first (remove-if-not #'fboundp '(js2-mode js-mode)))
@@ -41,7 +41,8 @@
 											collect entry)))
 		;; js-mode
 		(setq js-indent-level preferred-javascript-indent-level)
-		(add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
+		(add-to-list 'interpreter-mode-alist
+								 (cons "node" preferred-javascript-mode))
     )
 
 ;; (use-package ac-js2
@@ -52,16 +53,18 @@
 ;;   )
 
 
-(req-package js2-refactor
-	:require js2-mode
+(use-package js2-refactor
+	:after js2-mode
+	:ensure t
 	:config
 	(add-hook 'js2-mode-hook #'js2-refactor-mode)
 	(js2r-add-keybindings-with-prefix "C-c C-r")
 	(define-key js2-mode-map (kbd "C-k") #'js2r-kill)
 	)
 
-(req-package xref-js2
-	:require js2-mode
+(use-package xref-js2
+	:after js2-mode
+	:ensure t
 	:config
 	;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
 	;; unbind it.
@@ -72,17 +75,19 @@
 							(add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 	)
 	
-(req-package rjsx-mode)
+(use-package rjsx-mode :ensure t)
 
-(req-package tern
+(use-package tern
+	:ensure t
   :config
   (progn
     (setq tern-command '("tern" "--no-port-file" "--persistent"))
     )
   )
 
-(req-package company-tern
-	:require company tern js2-mode
+(use-package company-tern
+	:after (:all company tern js2-mode)
+	:ensure t
 	:config
 	(add-to-list 'company-backends 'company-tern)
 	(add-hook 'js2-mode-hook (lambda ()
@@ -94,7 +99,7 @@
 	(define-key tern-mode-keymap (kbd "M-,") nil)
 	)
 
-;; (req-package tern-auto-complete
+;; (use-package tern-auto-complete
 ;;   :config
 ;;   (progn
 ;;     (add-hook 'js2-mode-hook
@@ -110,15 +115,16 @@
 
 
 
-(req-package js-comint
+(use-package js-comint
 	:config
 	(setq inferior-js-program-command "node")
 	)
 
 
-(use-package rainbow-delimiters)
-(req-package coffee-mode
-	:require js2-mode
+(use-package rainbow-delimiters :ensure t)
+(use-package coffee-mode
+	:after js2-mode
+	:ensure t
   :config
   (progn
     ;; Coffeescript
@@ -129,14 +135,15 @@
     (add-to-list 'auto-mode-alist '("\\.coffee\\.erb\\'" . coffee-mode))
     ))
 
-(req-package flow-minor-mode
-	:require js2-mode
-	:demand
+(use-package flow-minor-mode
+	:after js2-mode
+	:ensure t
 	:config (add-hook 'js2-mode-hook 'flow-minor-enable-automatically)
 	)
 
-(req-package skewer-mode
-	:require js2-mode css-mode
+(use-package skewer-mode
+	:ensure t
+	:after js2-mode css-mode
 	:config
 	(skewer-setup)
 	(add-hook 'js2-mode-hook 'skewer-mode)
@@ -145,14 +152,17 @@
 	)
 
 ;; Node.js
-(use-package nodejs-repl)
+(use-package nodejs-repl :ensure t)
 (use-package sws-mode
+	:ensure t
   :config (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode)))
 (use-package jade-mode
+	:ensure t
   :config (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode)))
 
 
-(req-package indium
+(use-package indium
+	:ensure t
 	:init
 	(message "init indium")
 	:config
