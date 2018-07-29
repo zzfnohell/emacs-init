@@ -91,6 +91,7 @@
 
 
 (use-package slime
+	:after (:all slime-company)
 	:ensure t
 	:demand t
 	:config
@@ -105,7 +106,7 @@
 (use-package slime-company
 	:ensure t
 	:demand t
-	:after (:all slime company)
+	:after (:all company)
 	)
 
 ;; (use-package ac-slime
