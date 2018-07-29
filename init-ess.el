@@ -8,16 +8,18 @@
 ;;   "Value is t if the OS is one of Microsoft's, nil otherwise.")
 ;;; Code:
 
-(use-package ess-R-data-view :defer t)
-(use-package ess-R-object-popup :defer t)
-(require 'ess-site)
+(use-package ess
+	:ensure t
+	:config
+	(require 'ess-site)
+	(require 'ess-julia)
+	(setq inferior-julia-program-name "julia")
+	)
+(use-package ess-view :ensure t)
+(use-package ess-R-data-view :ensure t)
+(use-package ess-R-object-popup :ensure t)
 
-(require 'ess-julia)
-
-(setq inferior-julia-program-name "julia")
-(use-package julia-mode)
-
-
+(use-package julia-mode :ensure t)
 
 (provide 'init-ess)
 
