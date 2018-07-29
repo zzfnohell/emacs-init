@@ -8,17 +8,18 @@
 ;;; Code:
 
 (use-package lsp-mode
-	:demand t
-	:config
-	(require 'lsp-imenu)
-	(add-hook 'prog-major-mode #'lsp-prog-major-mode-enable)
-	(add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
-	)
+  :demand t
+  :config
+  (require 'lsp-imenu)
+  (add-hook 'prog-major-mode #'lsp-prog-major-mode-enable)
+  (add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
+  )
 
 (use-package lsp-ui
+  :after markdown-mode
   :ensure t
   :config
-	(add-hook 'lsp-mode-hook 'lsp-ui-mode)
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (setq lsp-ui-sideline-enable t
         lsp-ui-sideline-show-symbol t
         lsp-ui-sideline-show-hover t
@@ -32,6 +33,7 @@
 	)
 
 (use-package lsp-rust
+	:after (:all markdown-mode lsp-mode)
 	:demand t
 	:config
 	(with-eval-after-load 'lsp-mode

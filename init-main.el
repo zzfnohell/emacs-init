@@ -98,7 +98,6 @@
 (require 'init-view)
 ;; (require 'init-evil)
 
-(req-package-finish)
 (provide 'init-main)
 
 ;;; init-main.el ends here

@@ -9,9 +9,9 @@
 	:ensure t
 	:demand t
   :config
-	(let (x "~/.emacs.d/auto-complete/ac-dict")
+	(let ((x "~/.emacs.d/auto-complete/ac-dict"))
 		(if (not (file-directory-p x))
-				(mkdir x))
+				(make-directory x t))
 		(add-to-list 'ac-dictionary-directories x))
   ;; (ac-config-default)
   )
