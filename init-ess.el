@@ -15,9 +15,8 @@
 	(require 'ess-julia)
 	(setq inferior-julia-program-name "julia")
 	)
+
 (use-package ess-view :ensure t)
-(use-package ess-R-data-view :ensure t)
-(use-package ess-R-object-popup :ensure t)
 
 (use-package julia-mode :ensure t)
 
