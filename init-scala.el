@@ -47,9 +47,7 @@
 	)
 
 (use-package ensime
-	:demant t
 	:ensure t
-	:pin melpa-stable
 	:config
 	(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 	(eval-after-load "scala-mode"
