@@ -16,6 +16,36 @@
 		 (get-buffer-create (ensime-sbt-build-buffer-name)))
 		(switch-to-buffer-other-window c)))
 
+(use-package scala-mode
+	:ensure t
+	:config
+	(add-hook 'scala-mode-hook
+						(lambda ()
+							(setq prettify-symbols-alist scala-prettify-symbols-alist)
+							(prettify-symbols-mode)))
+  :interpreter
+  ("scala" . scala-mode))
+
+(use-package sbt-mode
+	:ensure t
+  :commands sbt-start sbt-command
+  :config
+  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
+  ;; allows using SPACE when in the minibuffer
+  (substitute-key-definition
+   'minibuffer-complete-word
+   'self-insert-command
+   minibuffer-local-completion-map)
+	(add-hook 'sbt-mode-hook
+						(lambda ()
+							(add-hook 'before-save-hook 'sbt-hydra:check-modified-buffers)
+							(setq prettify-symbols-alist
+										`((,(expand-file-name (directory-file-name default-directory)) . ?⌂)
+											(,(expand-file-name "~") . ?~)))
+							(prettify-symbols-mode t)))
+	
+	)
+
 (use-package scala-mode-auto
 	:defer t
 	:ensure t)
