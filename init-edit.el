@@ -8,21 +8,22 @@
 ;; Access via Web
 ;; (use-package take-off :defer t)
 
-(req-package auto-indent-mode
-  :defer t
+(use-package auto-indent-mode
+  :ensure t
   :init
   ;; If you want auto-indent on for files
-  (setq auto-indent-on-visit-file t) )
+  (setq auto-indent-on-visit-file t)
+	)
 
-(req-package hl-anything :defer t)
-(req-package hl-indent :defer t)
+(use-package hl-anything :ensure t)
+(use-package hl-indent :ensure t)
 
-(req-package highlight-parentheses :defer t)
-(req-package highlight-thing :defer t)
+(use-package highlight-parentheses :ensure t)
+(use-package highlight-thing :ensure t)
 
 
-(req-package auto-highlight-symbol
-  :defer t
+(use-package auto-highlight-symbol
+  :ensure t
   :config (global-auto-highlight-symbol-mode t))
 
 (setq-default indent-tabs-mode nil)
@@ -64,17 +65,17 @@
 (global-linum-mode 1)
 
 (use-package hlinum
-  :defer t
+  :ensure t
   :config (hlinum-activate))
 
 (use-package undo-tree
-  :defer t
+  :ensure t
   :config (global-undo-tree-mode))
 
-(use-package regex-tool :defer t)
-(use-package vline :defer t)
+(use-package regex-tool :ensure t)
+(use-package vline :ensure t)
 (use-package visible-mark
-  :defer t
+  :ensure t
   :init
   (defface visible-mark-active
     ;; put this before (require 'visible-mark)
@@ -92,25 +93,25 @@
 
 ;; CSV file
 (use-package csv-mode
-  :defer t
+  :ensure t
   :config
   (progn
     (add-auto-mode 'csv-mode "\\.[Cc][Ss][Vv]\\'")
     (setq csv-separators '("," ";" "|" " "))))
 
 ;; irfc
-(req-package irfc
-  :defer t
+(use-package irfc
+  :ensure t
   :config
   (progn
     (setq irfc-directory *rfc-directory*)
     (setq irfc-assoc-mode t)))
 
-(req-package anyins :defer t)
+(use-package anyins :ensure t)
 
-(req-package popup-kill-ring :defer t)
-(req-package kill-ring-search
-  :defer t
+(use-package popup-kill-ring :ensure t)
+(use-package kill-ring-search
+  :ensure t
   :config
   (progn
     (autoload 'kill-ring-search "kill-ring-search"
