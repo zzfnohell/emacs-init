@@ -5,7 +5,9 @@
 
 ;;; Code:
 
-(req-package helm
+(use-package helm
+	:demand t
+	:ensure t
   :config
   (require 'helm-config)
   (helm-mode 1)
@@ -15,27 +17,11 @@
    ("C-x r b" . helm-filtered-bookmarks)
    ("C-x C-f" . helm-find-files)))
 
+(use-package helm-css-scss :ensure t)
+(use-package helm-make :ensure t)
+(use-package helm-fuzzy-find :ensure t)
 
-
-(req-package helm-c-yasnippet
-	:require helm yasnippet)
-
-(req-package helm-css-scss
-	:require helm)
-
-(req-package helm-flycheck
-	:require dash flycheck helm)
-(req-package helm-git-files
-	:require helm git)
-(req-package helm-git-grep
-	:require helm)
-(req-package helm-make
-	:require helm projectile)
-
-(req-package helm-gtags :require helm)
-(req-package helm-fuzzy-find :require helm)
-
-(req-package restclient-helm :demand t)
+(use-package restclient-helm :ensure t)
 
 (provide 'init-helm)
 
