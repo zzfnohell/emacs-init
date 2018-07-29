@@ -163,6 +163,7 @@
 
 (use-package indium
 	:ensure t
+	:defer t
 	:init
 	(message "init indium")
 	:config
