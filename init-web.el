@@ -75,14 +75,6 @@
   (add-hook 'web-mode-hook  'init-web/web-mode/custom-web-mode-hook)
   )
 
-(use-package ac-html-bootstrap
-	:ensure t)
-
-(use-package ac-html-csswatcher
-	:ensure t
-	:config (ac-html-csswatcher-setup)
-	)
-
 (use-package web-beautify
 	:ensure t)
 
