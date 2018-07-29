@@ -3,15 +3,24 @@
 ;;; Commentary:
 ;; 
 
-(use-package php-mode)
-(use-package ac-php
-  :defer t
+(use-package php-mode
+  :ensure t)
+
+(use-package company-php
+  :ensure t
   :config
-  (add-hook 'php-mode-hook '(lambda ()
-                           (auto-complete-mode t)
-                           (require 'ac-php)
-                           (setq ac-sources  '(ac-source-php ) )
-                           (yas-global-mode 1))))
+  (add-hook 'php-mode-hook
+            '(lambda ()
+               (require 'company-php)
+               (company-mode t)
+               (add-to-list 'company-backends 'company-ac-php-backend)))
+  )
+
+(use-package lsp-php
+	:ensure t
+	:config
+	(add-hook 'php-mode-hook #'lsp-php-enable)
+	)
 
 (provide 'init-php)
 

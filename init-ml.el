@@ -5,7 +5,9 @@
 
 (require 'nxml-mode)
 (fset 'xml-mode 'nxml-mode)
-(use-package auto-complete-nxml)
+
+(use-package auto-complete-nxml
+	:ensure t)
 
 (add-to-list 'auto-mode-alist
 			 (cons 
@@ -42,10 +44,13 @@ indentation rules."
       (indent-region begin end)))
 
 
-(use-package haml-mode)
+(use-package haml-mode
+	:after markdown-mode
+	:ensure t)
 
 ;;; YAML
 (use-package yaml-mode
+	:ensure t
   :config (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
   )
 

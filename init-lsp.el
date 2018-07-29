@@ -26,11 +26,6 @@
         lsp-ui-sideline-show-code-actions t
         lsp-ui-sideline-update-mode 'point))
 
-(use-package lsp-php
-	:ensure t
-	:config
-	(add-hook 'php-mode-hook #'lsp-php-enable)
-	)
 
 (use-package lsp-rust
 	:after (:all markdown-mode lsp-mode)
