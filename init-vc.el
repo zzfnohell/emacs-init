@@ -9,11 +9,11 @@
 	:ensure t
 	:defer t)
 
-(require 'diff-mode)
-(require 'easymenu)
-(require 'log-edit)
-(require 'ewoc)
-(require 'vc-annotate)
+;; (require 'diff-mode)
+;; (require 'easymenu)
+;; (require 'log-edit)
+;; (require 'ewoc)
+;; (require 'vc-annotate)
 
 (use-package magit
   :ensure t

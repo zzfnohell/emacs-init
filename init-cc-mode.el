@@ -1,5 +1,4 @@
 ;;; init-cc-mode.el --- CC mode
-;; depends on cedet.el
 ;;;; CC-mode  http://cc-mode.sourceforge.net/
 
 ;;; Commentary:
@@ -12,10 +11,6 @@
 (c-set-offset 'friend '-)
 (c-set-offset 'substatement-open 0)
 
-(defun c-mode-cedet-hook ()
-  (local-set-key "." 'semantic-complete-self-insert)
-  (local-set-key ">" 'semantic-complete-self-insert)
-  (local-set-key "\C-c \C-r" 'semantic-symref))
 
 ;;indent strategy
 (defun cpp-indent-or-complete ()
@@ -35,7 +30,7 @@
               tab-width 2
               indent-tabs-mode t)
 
-(defun c-mode-edit-hook()
+(defun init-cc-mode/c-mode-edit-hook()
   ;; hungry-delete and auto-newline
   (c-toggle-auto-hungry-state 1)
   (define-key c-mode-base-map [(tab)] 'cpp-indent-or-complete)
@@ -43,31 +38,30 @@
   (setq hs-minor-mode t)
   (setq abbrev-mode t))
 
-(add-hook 'c-mode-common-hook 'cedet-semantic-hook)
-(add-hook 'c-mode-common-hook 'c-mode-cedet-hook)
-(add-hook 'c-mode-common-hook 'c-mode-edit-hook)
+(add-hook 'c-mode-common-hook 'init-cc-mode/c-mode-edit-hook)
+
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (add-hook 'asm-mode-hook 'helm-gtags-mode)
 
-;(add-hook 'c-mode-common-hook 'doxymacs-mode) ;; init doxymacs-mode
-;(add-hook 'c++-mode-common-hook 'doxymacs-mode) ;;init doxymacs-mode
-
 (use-package clang-format
+  :defer t
 	:ensure t)
 
 ;;opencl source file.
 (add-to-list 'auto-mode-alist '("\\.h$" . c-mode))
 
 (use-package cmake-mode
-	:ensure t)
+	:ensure t
+  :defer t)
 (use-package opencl-mode
 	:ensure t
   :init (add-to-list 'auto-mode-alist '("\\.cl\\'" . opencl-mode))
   )
 
 (use-package shader-mode
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (provide 'init-cc-mode)
 

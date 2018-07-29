@@ -9,11 +9,11 @@
 (use-package ruby-mode
   :ensure t
   :defer t
-	:ensure-system-package
-  ((rubocop     . "gem install rubocop")
-   (ruby-lint   . "gem install ruby-lint")
-   (ripper-tags . "gem install ripper-tags")
-   (pry         . "gem install pry"))
+	;; :ensure-system-package
+  ;; ((rubocop     . "gem install rubocop")
+  ;;  (ruby-lint   . "gem install ruby-lint")
+  ;;  (ripper-tags . "gem install ripper-tags")
+  ;;  (pry         . "gem install pry"))
   :init
   (after-load 'ruby-mode
   ;; Stupidly the non-bundled ruby-mode isn't a derived mode of

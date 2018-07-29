@@ -85,7 +85,7 @@
 (use-package tern
 	:ensure t
 	:defer t
-	:ensure-system-package (tern . "npm i -g tern"))
+;;	:ensure-system-package (tern . "npm i -g tern"))
   :config
   (progn
     (setq tern-command '("tern" "--no-port-file" "--persistent"))

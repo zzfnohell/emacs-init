@@ -13,16 +13,16 @@
 ;; 	(load-file (concat cedet-root-path "contrib/cedet-contrib-load.el")))
 
 (require 'cedet)
-(require 'ede)
-(global-ede-mode t)
-(ede-enable-generic-projects)
+
 
 (setq semantic-ectag-program "ctags")
 
 ;;;; Semantic DataBase directory
 (setq semanticdb-default-save-directory
-     (expand-file-name "~/.emacs.d/semanticdb"))
+      (expand-file-name "~/.emacs.d/semanticdb"))
 
+;;;; Semantic's customization
+(semantic-mode 1)
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
 ;;(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
@@ -34,33 +34,119 @@
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
 
-(semantic-mode 1)
+
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
 (require 'semantic/bovine/c)
+
 (require 'semantic/db)
 (require 'semantic/c nil 'noerror)
 (require 'semantic/decorate/include nil 'noerror)
 
-;; enable support for gnu global
-(semanticdb-enable-gnu-global-databases 'c-mode)
-(semanticdb-enable-gnu-global-databases 'c++-mode)
 
-;; enable ctags for some languages:
-;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
-;; 24.5 it is not supported in buildin cedet.
-;; (semantic-load-enable-primary-ectags-support)
 
+
+;;;; System header files
+;; (semantic-add-system-include "~/exp/include/boost_1_37" 'c++-mode)
+
+;;;; Semantic's work optimization
 (setq-mode-local c-mode semanticdb-find-default-throttle
-				 '(project unloaded system recursive))
+                 '(project unloaded system recursive))
 (setq-mode-local c++-mode semanticdb-find-default-throttle
 				 '(project unloaded system recursive))
 
-(defun my-semantic-hook ()
+;;;; Integration with imenu
+(defun init-cedet/semantic-hook ()
   (imenu-add-to-menubar "TAGS"))
 
-(add-hook 'semantic-init-hooks 'my-semantic-hook)
-(add-hook 'semantic-init-hooks 'cedet-semantic-hook)
+(add-hook 'semantic-init-hooks 'init-cedet/semantic-hook)
+
+;;;; Customization of Semanticdb
+;; enable support for gnu global
+(semanticdb-enable-gnu-global-databases 'c-mode)
+(semanticdb-enable-gnu-global-databases 'c++-mode)
+;; if you want to enable support for gnu global
+(when (cedet-gnu-global-version-check t)
+  (semanticdb-enable-gnu-global-databases 'c-mode)
+  (semanticdb-enable-gnu-global-databases 'c++-mode))
+;; enable ctags for some languages:
+;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
+;; (when (cedet-ectag-version-check t)
+;;   (semantic-load-enable-primary-exuberent-ctags-support))
+
+
+;;;; EDE's customization
+(require 'ede)
+(global-ede-mode t)
+(ede-enable-generic-projects)
+
+
+;;;; Using EDE for C & C++ projects
+;; To define a project, you need to add following code:
+;; (ede-cpp-root-project "Test"
+;;                       :name "Test Project"
+;;                       :file "~/work/project/CMakeLists.txt"
+;;                       :include-path '("/"
+;;                                       "/Common"
+;;                                       "/Interfaces"
+;;                                       "/Libs"
+;;                                       )
+;;                       :system-include-path '("~/exp/include")
+;;                       :spp-table '(("isUnix" . "")
+;;                                    ("BOOST_TEST_DYN_LINK" . "")))
+
+
+;;;; Preprocessing of source code
+;; (setq qt4-base-dir "/usr/include/qt4")
+;; (semantic-add-system-include qt4-base-dir 'c++-mode)
+;; (add-to-list 'auto-mode-alist (cons qt4-base-dir 'c++-mode))
+;; (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt4-base-dir "/Qt/qconfig.h"))
+;; (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt4-base-dir "/Qt/qconfig-dist.h"))
+;; (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt4-base-dir "/Qt/qglobal.h"))
+
+
+;;;; Using EDE for Java projects
+;; (require 'semantic/db-javap)
+;; (ede-java-root-project "TestProject"
+;;                        :file "~/work/TestProject/build.xml"
+;;                        :srcroot '("src" "test")
+;;                        :localclasspath '("/relative/path.jar")
+;;                        :classpath '("/absolute/path.jar"))
+
+
+;;;; Work with Semantic
+;; customisation of modes
+(defun init-cedet/cedet-semantic-hook ()
+  (local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)
+  (local-set-key "\C-c ?" 'semantic-ia-complete-symbol)
+  (local-set-key "\C-c >" 'semantic-complete-analyze-inline)
+  (local-set-key "\C-c =" 'semantic-decoration-include-visit)
+  (local-set-key "\C-c j" 'semantic-ia-fast-jump)
+  (local-set-key "\C-c q" 'semantic-ia-show-doc)
+  (local-set-key "\C-c s" 'semantic-ia-show-summary)
+  (local-set-key "\C-c p" 'semantic-analyze-proto-impl-toggle))
+
+(add-hook 'semantic-init-hooks 'init-cedet/cedet-semantic-hook)
+
+(add-hook 'lisp-mode-hook 'init-cedet/cedet-semantic-hook)
+(add-hook 'scheme-mode-hook 'init-cedet/cedet-semantic-hook)
+(add-hook 'emacs-lisp-mode-hook 'init-cedet/cedet-semantic-hook)
+(add-hook 'erlang-mode-hook 'init-cedet/cedet-semantic-hook)
+
+
+;;;; Names completion
+(defun init-cedet/c-mode-cedet-hook ()
+  (local-set-key "." 'semantic-complete-self-insert)
+  (local-set-key ">" 'semantic-complete-self-insert))
+(add-hook 'c-mode-common-hook 'init-cedet/c-mode-cedet-hook)
+
+
+;;;; Names completion with auto-complete package
+(defun init-cedet/c-mode-cedet-hook ()
+  (add-to-list 'ac-sources 'ac-source-gtags)
+  (add-to-list 'ac-sources 'ac-source-semantic))
+(add-hook 'c-mode-common-hook 'init-cedet/c-mode-cedet-hook)
+
 
 (global-semantic-decoration-mode 1)
 (semantic-toggle-decoration-style "semantic-tag-boundary" -1)
@@ -81,17 +167,6 @@
         try-complete-file-name
         try-expand-whole-kill))
 
-(defun indent-or-complete ()
-  "Complete if point is at end of a word, otherwise indent line."
-  (interactive)
-  (if (looking-at "\\>")
-      (hippie-expand nil)
-    (indent-for-tab-command)))
-
-(defun indent-key-setup ()
-  "Set tab as key for indent-or-complete."
-  (local-set-key [(tab)] 'indent-or-complete))
-
 (setq senator-minor-mode-name "SN")
 (setq semantic-imenu-auto-rebuild-directory-indexes nil)
 
@@ -99,13 +174,6 @@
  cedet-sys-include-dirs
  (list
   "/usr/include"
-  "/usr/include/bits"
-  "/usr/include/glib-2.0"
-  "/usr/include/gnu"
-  "/usr/include/gtk-2.0"
-  "/usr/include/gtk-2.0/gdk-pixbuf"
-  "/usr/include/gtk-2.0/gtk"
-  "/usr/local/include"
   "/usr/local/include"))
 
 (setq semantic-c-dependency-system-include-path "/usr/include/")
@@ -118,7 +186,7 @@
         include-dirs))
 
 
-(defun recur-list-files (dir re)
+(defun init-cedet/recur-list-files (dir re)
   "Returns list of files in directory matching to given regex."
   (when (file-accessible-directory-p dir)
     (let ((files (directory-files dir t)) matched)
@@ -131,44 +199,27 @@
                  (string-match re fname))
             (setq matched (cons file matched)) (message fname))
            ((file-directory-p file)
-            (let ((tfiles (recur-list-files file re)))
+            (let ((tfiles (init-cedet/recur-list-files file re)))
               (when tfiles (setq matched (append matched tfiles)))))))))))
 
-(defun preprocess-symbol-directory (dir)
+(defun init-cedet/preprocess-symbol-directory (dir)
   (when (file-accessible-directory-p dir)
-    (let ((cfiles (recur-list-files dir "(\\.h|\\.hpp)")))
+    (let ((cfiles (init-cedet/recur-list-files dir "(\\.h|\\.hpp)")))
       (dolist (file cfiles)
         (add-to-list 'semantic-lex-c-preprocessor-symbol-file file)))))
 
-(defun add-semantic-include-directory (dir)
+(defun init-cedet/add-semantic-include-directory (dir)
   (semantic-add-system-include dir 'c++-mode)
   (semantic-add-system-include dir 'c-mode))
 
-(mapc #'preprocess-symbol-directory *semantic-preprocessor-directories*)
-(mapc #'add-semantic-include-directory *semantic-include-directories*)
+(mapc #'init-cedet/preprocess-symbol-directory
+      *semantic-preprocessor-directories*)
+(mapc #'init-cedet/add-semantic-include-directory
+      *semantic-include-directories*)
 
-;; customisation of modes
-(defun cedet-semantic-hook ()
-  (local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)
-  (local-set-key "\C-c ?" 'semantic-ia-complete-symbol)
-  (local-set-key "\C-c >" 'semantic-complete-analyze-inline)
-  (local-set-key "\C-c =" 'semantic-decoration-include-visit)
-  (local-set-key "\C-c j" 'semantic-ia-fast-jump)
-  (local-set-key "\C-c q" 'semantic-ia-show-doc)
-  (local-set-key "\C-c s" 'semantic-ia-show-summary)
-  (local-set-key "\C-c p" 'semantic-analyze-proto-impl-toggle))
-
-(add-hook 'lisp-mode-hook 'cedet-semantic-hook)
-(add-hook 'scheme-mode-hook 'cedet-semantic-hook)
-(add-hook 'emacs-lisp-mode-hook 'cedet-semantic-hook)
-(add-hook 'erlang-mode-hook 'cedet-semantic-hook)
 
 (require 'srecode)
 (global-srecode-minor-mode 1)
-;;;; Custom template for srecode
-;;(setq srecode-map-load-path
-;;      (list (srecode-map-base-template-dir)
-;;	    (expand-file-name "~/.emacs.d/templates/srecode")))
 
 (provide 'init-cedet)
 
