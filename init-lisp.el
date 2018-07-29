@@ -89,9 +89,9 @@
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
 (defvar *slime-helper-path* "~/quicklisp/slime-helper.el")
 
-(req-package slime-company :demand t)
 
-(req-package slime
+(use-package slime
+	:ensure t
 	:demand t
 	:config
 	(when (file-exists-p *slime-helper-path*)
@@ -102,16 +102,23 @@
 		)
 	)
 
-(req-package ac-slime
-	:require slime cl-lib auto-complete
-	:config
-	(progn 
-		(add-hook 'slime-mode-hook 'set-up-slime-ac)
-		(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-		(eval-after-load "auto-complete"
-			'(add-to-list 'ac-modes 'slime-repl-mode))
-		)
+(use-package slime-company
+	:ensure t
+	:demand t
+	:after (:all slime company)
 	)
+
+;; (use-package ac-slime
+;; 	:ensure t
+;; 	:after (:all slime cl-lib auto-complete)
+;; 	:config
+;; 	(progn 
+;; 		(add-hook 'slime-mode-hook 'set-up-slime-ac)
+;; 		(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+;; 		(eval-after-load "auto-complete"
+;; 			'(add-to-list 'ac-modes 'slime-repl-mode))
+;; 		)
+;; 	)
 
 
 (provide 'init-lisp)

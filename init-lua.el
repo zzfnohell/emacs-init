@@ -7,11 +7,13 @@
   (setq-local company-backends
 							'((company-lua))))
 
-(req-package company-lua)
+(use-package company-lua
+	:ensure t)
 
-(req-package lua-mode
-	:require company-lua
-	:init (add-hook 'lua-mode-hook #'local-lua-mode-company-init)
+(use-package lua-mode
+	:ensure t
+	:init
+	(add-hook 'lua-mode-hook #'local-lua-mode-company-init)
   :config
 	(setq lua-default-application "luajit")
   (with-eval-after-load 'lua-mode

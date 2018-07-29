@@ -14,7 +14,7 @@
     )
   )
 
-(req-package python-mode
+(use-package python-mode
   :init
   (progn
     (setq
@@ -45,10 +45,11 @@
 
 
 (use-package ein
+	:ensure t
   :config (setq ein:use-smartrep t))
 
-(req-package jedi
-	:require exec-path-from-shell
+(use-package jedi
+	:ensure t
   :config
   (progn
     (setq jedi:complete-on-dot t)
@@ -84,8 +85,8 @@
   :config (add-hook 'python-mode-hook 'yapf-mode)
 	)
 
-(req-package cython-mode)
-(req-package flycheck-cython)
+(use-package cython-mode :ensure t)
+(use-package flycheck-cython :ensure t)
 
 
 (provide 'init-python)

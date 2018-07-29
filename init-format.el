@@ -6,7 +6,7 @@
 ;;; Code:
 
 (use-package fuzzy-format
-  :defer t
+	:ensure t
   :config
   (progn
     (setq fuzzy-format-default-indent-tabs-mode nil)

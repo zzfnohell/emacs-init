@@ -4,6 +4,7 @@
 ;; 
 
 (use-package polymode
+	:ensure t
   :config
   (progn
     ;; MARKDOWN

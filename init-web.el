@@ -55,8 +55,8 @@
 	)
 
 
-(req-package web-mode
-	:demand t
+(use-package web-mode
+	:ensure t
   :config
   (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -75,15 +75,27 @@
   (add-hook 'web-mode-hook  'init-web/web-mode/custom-web-mode-hook)
   )
 
-(use-package ac-html-bootstrap)
-(use-package ac-html-csswatcher :config (ac-html-csswatcher-setup))
-(use-package web-beautify)
-(use-package impatient-mode)
-(use-package react-snippets)
+(use-package ac-html-bootstrap
+	:ensure t)
+
+(use-package ac-html-csswatcher
+	:ensure t
+	:config (ac-html-csswatcher-setup)
+	)
+
+(use-package web-beautify
+	:ensure t)
+
+(use-package impatient-mode
+	:ensure t)
+
+(use-package react-snippets
+	:ensure t)
 
 ;; CSS 
 ;;; Colourise CSS colour literals
 (use-package rainbow-mode
+	:ensure t
   :config
   (progn
     (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
@@ -98,8 +110,10 @@
 
 
 ;;; LESS
-(use-package less-css-mode)
-(use-package skewer-less)
+(use-package less-css-mode
+	:ensure t)
+(use-package skewer-less
+	:ensure t)
 
 ;;; Auto-complete CSS keywords
 (after-load 'auto-complete
@@ -108,6 +122,7 @@
 
 ;;; Use eldoc for syntax hints
 (use-package css-eldoc
+	:ensure t
   :config
   (progn
     (autoload 'turn-on-css-eldoc "css-eldoc")
@@ -115,7 +130,8 @@
     )
   )
 
-(req-package restclient :demand t)
+(use-package restclient
+	:ensure t)
 
 (provide 'init-web)
 

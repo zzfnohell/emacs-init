@@ -6,6 +6,7 @@
 ;;; Code:
 
 (use-package haskell-mode
+	:ensure t
   :config
   (progn
     (dolist (hook '(haskell-mode-hook inferior-haskell-mode-hook))

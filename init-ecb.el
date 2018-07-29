@@ -6,6 +6,7 @@
 ;;; Code:
 
 (use-package ecb
+	:ensure t
   :defer t
   :config
   (progn

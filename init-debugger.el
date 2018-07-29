@@ -8,7 +8,7 @@
 ;;; Code:
 
 (setq gdb-many-windows t)
-(use-package realgud)
+(use-package realgud :ensure t)
 
 (provide 'init-debugger)
 

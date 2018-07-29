@@ -7,8 +7,9 @@
 ;;; Code:
 
 (use-package xcscope
-  :defer t
-  :config (cscope-setup))
+	:ensure t
+  :config
+	(cscope-setup))
 
 (provide 'init-xcscope)
 

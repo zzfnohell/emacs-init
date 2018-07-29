@@ -2,12 +2,14 @@
 
 
 ;;; Commentary:
-;; 
+;;
 
 ;;; Code:
 
 (use-package erlang
-  :config (require 'erlang-start))
+	:ensure t
+	:config
+	(require 'erlang-start))
 
 
 (provide 'init-erlang)

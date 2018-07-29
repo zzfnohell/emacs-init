@@ -6,22 +6,23 @@
 ;;; Code:
 
 (use-package flycheck
-  :defer t
-  :config (add-hook 'after-init-hook #'global-flycheck-mode))
+	:ensure t
+	:defer t
+	:config (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (use-package flycheck-clang-analyzer
-  :defer t
-  :config
-  (progn
-	(with-eval-after-load 'flycheck
-	  (require 'flycheck-clang-analyzer)
-	  (flycheck-clang-analyzer-setup))
+	:ensure t
+	:defer t
+	:config
+	(progn
+		(with-eval-after-load 'flycheck
+			(require 'flycheck-clang-analyzer)
+			(flycheck-clang-analyzer-setup))
+		)
 	)
-  )
 
-
-(req-package flycheck-flow
-	:demand
+(use-package flycheck-flow
+	:ensure t
 	:config
 	(add-hook 'javascript-mode-hook 'flycheck-mode)
 )

@@ -38,10 +38,12 @@
             yas-ido-prompt
             yas-no-prompt))))
 
-(use-package auto-yasnippet)
-(req-package yasnippet-snippets
-	:require yasnippet
-	:demand )
+(use-package auto-yasnippet
+	:ensure t)
+
+(use-package yasnippet-snippets
+	:ensure t)
+
 (provide 'init-yasnippet)
 
 ;;; init-yasnippet.el ends here

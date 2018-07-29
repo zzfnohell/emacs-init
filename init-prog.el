@@ -7,7 +7,8 @@
 
 ;;; Code:
 
-(req-package yafolding
+(use-package yafolding
+	:ensure t
 	:config
 	(add-hook 'prog-mode-hook
 						(lambda () (yafolding-mode)))

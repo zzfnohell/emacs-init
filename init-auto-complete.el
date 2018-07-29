@@ -5,10 +5,14 @@
 
 ;;; Code:
 
-(req-package auto-complete
+(use-package auto-complete
+	:ensure t
 	:demand t
   :config
-  (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
+	(let (x "~/.emacs.d/auto-complete/ac-dict")
+		(if (not (file-directory-p x))
+				(mkdir x))
+		(add-to-list 'ac-dictionary-directories x))
   ;; (ac-config-default)
   )
 
