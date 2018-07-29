@@ -10,15 +10,20 @@
 
 (use-package ess
 	:ensure t
+	:defer t
 	:config
 	(require 'ess-site)
 	(require 'ess-julia)
 	(setq inferior-julia-program-name "julia")
 	)
 
-(use-package ess-view :ensure t)
+(use-package ess-view
+	:ensure t
+	:defer t)
 
-(use-package julia-mode :ensure t)
+(use-package julia-mode
+	:ensure t
+	:defer t)
 
 (provide 'init-ess)
 

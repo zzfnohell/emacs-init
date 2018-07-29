@@ -8,7 +8,8 @@
 ;;; Code:
 
 (use-package lsp-mode
-  :demand t
+	:ensure t
+  :defer t
   :config
   (require 'lsp-imenu)
   (add-hook 'prog-major-mode #'lsp-prog-major-mode-enable)
@@ -18,6 +19,7 @@
 (use-package lsp-ui
   :after markdown-mode
   :ensure t
+	:defer t
   :config
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (setq lsp-ui-sideline-enable t
@@ -29,7 +31,8 @@
 
 (use-package lsp-rust
 	:after (:all markdown-mode lsp-mode)
-	:demand t
+	:ensure t
+	:defer t
 	:config
 	(with-eval-after-load 'lsp-mode
 		(require 'lsp-rust)
@@ -37,14 +40,16 @@
 	)
 
 (use-package lsp-python
-	:demand t
+	:ensure t
+	:defer t
 	:config
 	(add-hook 'python-mode-hook #'lsp-python-enable)
 	)
 
 (use-package lsp-java
+	:after (:all lsp-ui-flycheck lsp-ui-sideline)
   :ensure t
-  :requires (lsp-ui-flycheck lsp-ui-sideline)
+	:defer t
   :config
   (add-hook 'java-mode-hook  'lsp-java-enable)
   (add-hook 'java-mode-hook  (lambda () (lsp-ui-flycheck-enable t)))
@@ -56,7 +61,8 @@
 	)
 
 (use-package lsp-clangd
-	:demand t
+	:ensure t
+	:defer t
 	:config
 	(with-eval-after-load 'lsp-mode
     (require 'lsp-clangd)
@@ -66,7 +72,8 @@
 	)
 
 (use-package lsp-html
-	:demand t
+	:ensure t
+	:defer t
 	:config
 	(add-hook 'html-mode-hook #'lsp-html-enable)
 	)
@@ -80,6 +87,7 @@
 
 (use-package lsp-css
 	:ensure t
+	:defer t
 	:config
 	(add-hook 'css-mode-hook #'init-lsp/lsp-css/css-mode-setup)
 	(add-hook 'less-mode-hook #'lsp-less-enable)
@@ -88,11 +96,13 @@
 
 (use-package lsp-go
 	:ensure t
+	:defer t
 	:config 
 	(add-hook 'go-mode-hook #'lsp-go-enable))
 
 (use-package lsp-ocaml
 	:ensure t
+	:defer t
 	:config
 	(add-hook 'tuareg-mode-hook #'lsp-ocaml-enable)
 	(add-hook 'caml-mode-hook #'lsp-ocaml-enable)
@@ -102,6 +112,7 @@
 ;; npm install -g flow-language-server
 (use-package lsp-javascript-flow
 	:ensure t
+	:defer t
 	:config
 	(add-hook 'js-mode-hook #'lsp-javascript-flow-enable)
 	(add-hook 'js2-mode-hook #'lsp-javascript-flow-enable) ;; for js2-mode support
@@ -111,6 +122,7 @@
 (use-package company-lsp
 	:after company
 	:ensure t
+	:defer t
 	:config
 	(push 'company-lsp company-backends)
   (setq company-lsp-enable-snippet t

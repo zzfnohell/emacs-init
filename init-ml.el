@@ -48,11 +48,13 @@ indentation rules."
 
 (use-package haml-mode
 	:after markdown-mode
-	:ensure t)
+	:ensure t
+	:defer t)
 
 ;;; YAML
 (use-package yaml-mode
 	:ensure t
+	:defer t
   :config (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
   )
 
