@@ -6,6 +6,9 @@
 (require 'nxml-mode)
 (fset 'xml-mode 'nxml-mode)
 
+(use-package markdown-mode
+	:ensure t)
+
 (use-package auto-complete-nxml
 	:ensure t)
 
