@@ -31,6 +31,8 @@
 (require 'init-multi-term)
 (require 'init-shell)
 
+(require 'init-skeletor)
+
 (require 'init-vc)
 (require 'init-compile)
 (require 'init-debugger)
