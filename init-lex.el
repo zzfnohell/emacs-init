@@ -6,13 +6,17 @@
 ;;; Code:
 
 (use-package bison-mode
-  :config
-  (progn
-    (add-to-list 'auto-mode-alist '("\\.lex\\'" . bison-mode))
-    (add-to-list 'auto-mode-alist '("\\.yy\\'" . bison-mode))
-    (add-to-list 'auto-mode-alist '("\\.y\\'" . bison-mode))))
+	:ensure t
+	:defer t
+  :mode (("\\.lex\\'" . bison-mode)
+         ("\\.yy\\'" . bison-mode)
+         ("\\.y\\'" . bison-mode))
+  )
 
-(use-package lex)
+
+(use-package lex
+  :ensure t
+  :defer t)
 
 (provide 'init-lex)
 

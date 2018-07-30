@@ -87,7 +87,6 @@
 (require 'init-erc)
 (require 'init-markdown)
 (require 'init-ml)
-(require 'init-haml)
 
 (require 'init-nav)
 
