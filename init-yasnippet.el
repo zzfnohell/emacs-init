@@ -7,14 +7,22 @@
 
 
 (use-package yasnippet
+	:ensure t
+	:defer t
   :config
   (progn
     ;;; use popup menu for yas-choose-value
     (require 'popup)
-    (add-to-list 'yas-snippet-dirs 
+    (let ((dirs (list
                  "~/.emacs.d/snippets"
-                 "~/.emacs.d/snippets/yasmate/snippets")
-
+                 "~/.emacs.d/snippets/yasmate/snippets")))
+	    (dolist (dir dirs)
+		    (let ((fullpath (expand-file-name dir)))
+			    (if (not (file-directory-p fullpath))
+              (make-directory fullpath t))
+          (add-to-list 'yas-snippet-dirs fullpath))))
+    
+    
     (define-key yas-minor-mode-map [(tab)] nil)
     (define-key yas-minor-mode-map (kbd "TAB") nil)
 
@@ -39,10 +47,12 @@
             yas-no-prompt))))
 
 (use-package auto-yasnippet
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package yasnippet-snippets
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (provide 'init-yasnippet)
 
