@@ -44,6 +44,10 @@
   :after csharp-mode
   :ensure t
   :defer t
+	:init (cond ((eq system-type 'window-nt)
+               (setq omnisharp-server-executable-path "OmniSharp"))
+              (t (setq omnisharp-server-executable-path "omnisharp"))
+              )
   :config
   (add-hook 'csharp-mode-hook 'init-csharp/csharp-mode-setup t)
   )
