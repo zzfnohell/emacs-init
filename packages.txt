@@ -1,4 +1,5 @@
 ctags
+cscope
 global
 r-base
 octave
@@ -9,4 +10,3 @@ llvm
 clang
 sbcl
 lua5.3
-

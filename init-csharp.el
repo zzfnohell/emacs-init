@@ -8,66 +8,49 @@
 
 
 (use-package csharp-mode
+	:ensure t
   :defer t
+  :mode "\\.cs\\'"
   :config
-  (progn
-    (defun init-csharp/csharp-mode-fn ()
-      "function that runs when csharp-mode is initialized for a buffer."
-      (turn-on-auto-revert-mode)
-      (setq indent-tabs-mode nil)
-      (yas-minor-mode-on))
-
-    (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
-    (setq auto-mode-alist (cons '("\\.cs" . csharp-mode) auto-mode-alist))
-    (add-hook 'csharp-mode-hook 'init-csharp/csharp-mode-fn t)))
+  (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
+  )
+  
 
 
+(defun init-csharp/csharp-mode-setup ()
+  (omnisharp-mode)
+  (company-mode)
+  (flycheck-mode)
 
-(use-package omnisharp
-  :defer t
-  :config
-  (progn
-    (require 'omnisharp-utils)
-    (require 'omnisharp-server-actions)
-    (require 'omnisharp-auto-complete-actions)
+  (yas-minor-mode-on)
+  (turn-on-auto-revert-mode)
+  
+  (setq indent-tabs-mode nil)
+  (setq c-syntactic-indentation t)
+  (c-set-style "ellemtel")
+  (setq c-basic-offset 4)
+  (setq truncate-lines t)
+  (setq tab-width 4)
+  (setq evil-shift-width 4)
 
-    (defgroup omnisharp ()
-      "Omnisharp-emacs is a port of the awesome OmniSharp server to
-the Emacs text editor. It provides IDE-like features for editing
-files in C# solutions in Emacs, provided by an OmniSharp server
-instance that works in the background."
-      :group 'external
-      :group 'csharp)
+  (electric-pair-local-mode 1) ;; Emacs 25
 
-    ;; (add-hook 'csharp-mode-hook 'omnisharp-mode)
-
-    )
+  (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
+  (local-set-key (kbd "C-c C-c") 'recompile)
   )
 
-(require 'json)
-(require 'cl-lib)
-(require 'files)
-(require 'ido)
-(require 'thingatpt)
-(require 'dash)
-(require 'compile)
-(require 'dired)
-(require 'popup)
-(require 'etags)
-(require 'flycheck)
-
-(add-to-list
- 'load-path
- (expand-file-name
-  (concat
-   (file-name-directory (or load-file-name buffer-file-name)) "/src/")))
-
-(add-to-list
- 'load-path
- (expand-file-name
-  (concat
-   (file-name-directory (or load-file-name buffer-file-name)) "/src/actions")))
-
+;; CALL omnisharp-install-server
+(use-package omnisharp
+  :after csharp-mode
+  :ensure t
+  :defer t
+	:init (cond ((eq system-type 'window-nt)
+               (setq omnisharp-server-executable-path "OmniSharp"))
+              (t (setq omnisharp-server-executable-path "omnisharp"))
+              )
+  :config
+  (add-hook 'csharp-mode-hook 'init-csharp/csharp-mode-setup t)
+  )
 
 
 (provide 'init-csharp)
