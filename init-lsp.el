@@ -1,32 +1,30 @@
 ;;; init-lsp.el --- LSP
 
-
-
 ;;; Commentary:
-;; 
+;;
 
 ;;; Code:
 
 (use-package lsp-mode
 	:ensure t
-  :defer t
-  :config
-  (require 'lsp-imenu)
-  (add-hook 'prog-major-mode #'lsp-prog-major-mode-enable)
-  (add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
-  )
+	:defer t
+	:config
+	(require 'lsp-imenu)
+	(add-hook 'prog-major-mode #'lsp-prog-major-mode-enable)
+	(add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
+	)
 
 (use-package lsp-ui
-  :after markdown-mode
-  :ensure t
+	:after markdown-mode
+	:ensure t
 	:defer t
-  :config
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-  (setq lsp-ui-sideline-enable t
-        lsp-ui-sideline-show-symbol t
-        lsp-ui-sideline-show-hover t
-        lsp-ui-sideline-show-code-actions t
-        lsp-ui-sideline-update-mode 'point))
+	:config
+	(add-hook 'lsp-mode-hook 'lsp-ui-mode)
+	(setq lsp-ui-sideline-enable t
+				lsp-ui-sideline-show-symbol t
+				lsp-ui-sideline-show-hover t
+				lsp-ui-sideline-show-code-actions t
+				lsp-ui-sideline-update-mode 'point))
 
 
 (use-package lsp-rust
@@ -48,16 +46,16 @@
 
 (use-package lsp-java
 	:after (:all lsp-ui-flycheck lsp-ui-sideline)
-  :ensure t
+	:ensure t
 	:defer t
-  :config
-  (add-hook 'java-mode-hook  'lsp-java-enable)
-  (add-hook 'java-mode-hook  (lambda () (lsp-ui-flycheck-enable t)))
-  (add-hook 'java-mode-hook  'lsp-ui-sideline-mode)
+	:config
+	(add-hook 'java-mode-hook  'lsp-java-enable)
+	(add-hook 'java-mode-hook  (lambda () (lsp-ui-flycheck-enable t)))
+	(add-hook 'java-mode-hook  'lsp-ui-sideline-mode)
 	;; set the projects that are going to be imported into the workspace.
 	;; (setq lsp-java--workspace-folders (list "/path/to/project1"
-	;; 																				"/path/to/project2"
-	;; 																				...))
+	;;																				"/path/to/project2"
+	;;																				...))
 	)
 
 (use-package lsp-clangd
@@ -65,10 +63,10 @@
 	:defer t
 	:config
 	(with-eval-after-load 'lsp-mode
-    (require 'lsp-clangd)
-    (add-hook 'c-mode--hook #'lsp-clangd-c-enable)
-    (add-hook 'c++-mode-hook #'lsp-clangd-c++-enable)
-    (add-hook 'objc-mode-hook #'lsp-clangd-objc-enable))
+		(require 'lsp-clangd)
+		(add-hook 'c-mode--hook #'lsp-clangd-c-enable)
+		(add-hook 'c++-mode-hook #'lsp-clangd-c++-enable)
+		(add-hook 'objc-mode-hook #'lsp-clangd-objc-enable))
 	)
 
 (use-package lsp-html
@@ -80,10 +78,10 @@
 
 
 (defun init-lsp/lsp-css/css-mode-setup ()
-  (when (eq major-mode 'css-mode)
-    ;; Only enable in strictly css-mode, not scss-mode (css-mode-hook
-    ;; fires for scss-mode because scss-mode is derived from css-mode)
-    (lsp-css-enable)))
+	(when (eq major-mode 'css-mode)
+		;; Only enable in strictly css-mode, not scss-mode (css-mode-hook
+		;; fires for scss-mode because scss-mode is derived from css-mode)
+		(lsp-css-enable)))
 
 (use-package lsp-css
 	:ensure t
@@ -97,7 +95,7 @@
 (use-package lsp-go
 	:ensure t
 	:defer t
-	:config 
+	:config
 	(add-hook 'go-mode-hook #'lsp-go-enable))
 
 (use-package lsp-ocaml
@@ -125,8 +123,8 @@
 	:defer t
 	:config
 	(push 'company-lsp company-backends)
-  (setq company-lsp-enable-snippet t
-        company-lsp-cache-candidates t)
+	(setq company-lsp-enable-snippet t
+				company-lsp-cache-candidates t)
 	)
 
 (provide 'init-lsp)

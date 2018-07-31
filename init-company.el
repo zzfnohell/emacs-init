@@ -41,10 +41,11 @@
 	:after (:all company)
 	:defer t
   :config
-  (progn
-    (add-to-list 'company-backends 'company-tern)
-    (setq company-tern-property-marker "")
-    (setq company-tern-meta-as-single-line t)))
+	(add-to-list 'company-backends 'company-tern)
+	(setq company-tern-property-marker "")
+	(setq company-tern-meta-as-single-line t)
+	(setq company-tooltip-align-annotations t)
+	)
 
 (use-package company-quickhelp
 	:after (:all company)
