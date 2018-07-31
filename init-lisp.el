@@ -109,25 +109,25 @@
   :defer t)
 
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
-(defvar *slime-helper-path* "~/quicklisp/slime-helper.el")
+(defvar *slime-helper-path*
+  (expand-file-name"~/quicklisp/slime-helper.el"))
 
 (use-package slime
-	:after (:all slime-company)
 	:ensure t
-	:defer t
+  :defer t
+  :init
+	(setq inferior-lisp-program "sbcl")
 	:config
 	(when (file-exists-p *slime-helper-path*)
-		(load (expand-file-name *slime-helper-path*))
-		;; located in quicklisp install directory
-		(setq inferior-lisp-program "sbcl")
-		(slime-setup '(slime-company))
-		)
+    ;; located in quicklisp install directory
+		(load (expand-file-name *slime-helper-path*)))
+  
+	(slime-setup '(slime-company))
 	)
 
 (use-package slime-company
 	:ensure t
 	:defer t
-	:after (:all company)
 	)
 
 ;; (use-package ac-slime
