@@ -59,6 +59,7 @@
 (require 'init-cc-mode)
 (require 'init-rust)
 (require 'init-lisp)
+(require 'init-racket)
 (require 'init-octave)
 (require 'init-lex)
 (require 'init-sl)
