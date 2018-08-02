@@ -13,7 +13,24 @@
 ;; 	(load-file (concat cedet-root-path "contrib/cedet-contrib-load.el")))
 
 (require 'cedet)
-
+(require 'eieio)
+(require 'eieio-speedbar)
+(require 'eieio-opt)
+(require 'eieio-base)
+(require 'ede/source)
+(require 'ede/base)
+(require 'ede/auto)
+(require 'ede/proj)
+(require 'ede/proj-archive)
+(require 'ede/proj-aux)
+(require 'ede/proj-comp)
+(require 'ede/proj-elisp)
+(require 'ede/proj-info)
+(require 'ede/proj-misc)
+(require 'ede/proj-obj)
+(require 'ede/proj-prog)
+(require 'ede/proj-scheme)
+(require 'ede/proj-shared)
 
 (setq semantic-ectag-program "ctags")
 
