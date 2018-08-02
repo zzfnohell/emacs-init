@@ -154,7 +154,9 @@
 	:ensure t
 	:defer t
 	:config
-	(add-hook 'js2-mode-hook 'flow-minor-mode)
+	(add-hook 'js-mode-hook #'flow-minor-enable-automatically)
+  (add-hook 'js2-mode-hook #'flow-minor-enable-automatically)
+  (add-hook 'rjsx-mode-hook #'flow-minor-enable-automatically)
 	)
 
 (use-package skewer-mode
