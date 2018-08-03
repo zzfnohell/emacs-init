@@ -68,6 +68,7 @@
   :ensure t
   :defer t
   :config
+	(require 'rtags)
   (cmake-ide-setup)
   )
   
