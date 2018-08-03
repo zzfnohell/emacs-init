@@ -235,6 +235,7 @@
 
 
 (require 'srecode)
+;; srecode-map-load-path
 (global-srecode-minor-mode 1)
 
 (provide 'init-cedet)
