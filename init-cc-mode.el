@@ -63,6 +63,14 @@
 	:ensure t
   :defer t)
 
+
+(use-package cmake-ide
+  :ensure t
+  :defer t
+  :config
+  (cmake-ide-setup)
+  )
+  
 (provide 'init-cc-mode)
 
 ;;; init-cc-mode.el ends here

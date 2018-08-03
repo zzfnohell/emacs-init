@@ -151,14 +151,21 @@
 (setq save-abbrevs t)
 (xterm-mouse-mode 1)
 
-(custom-set-variables
- '(custom-enabled-themes (quote (light-blue)))
- '(httpd-host "0.0.0.0")
- '(httpd-port 8088)
- '(minimap-window-location (quote right))
- '(size-indication-mode t)
- '(speedbar-show-unknown-files t)
- '(visual-line-mode nil t))
+(use-package simple-httpd
+  :custom
+  (httpd-host "0.0.0.0")
+  (httpd-port 2020)
+  )
+
+(use-package speedbar
+  :custom
+  (speedbar-show-unknown-files t)
+  )
+(use-package simple
+  :custom
+  (visual-line-mode nil t)
+  (size-indication-mode t)
+  )
 
 (provide 'init-edit)
 

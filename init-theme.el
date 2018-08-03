@@ -4,6 +4,9 @@
 ;; 
 
 ;;; Code:
+(use-package custom
+  :custom
+  (custom-enabled-themes (quote (light-blue))))
 
 (provide 'init-theme)
 
