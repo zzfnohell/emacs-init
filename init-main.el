@@ -100,6 +100,8 @@
 (require 'init-view)
 ;; (require 'init-evil)
 
+(server-start)
+
 (provide 'init-main)
 
 ;;; init-main.el ends here
