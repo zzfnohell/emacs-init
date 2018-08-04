@@ -4,9 +4,12 @@
 ;; 
 
 ;;; Code:
-(use-package custom
+(use-package color-theme
+  :ensure t
+  :defer t
   :custom
-  (custom-enabled-themes (quote (light-blue))))
+  (custom-enabled-themes (quote (light-blue)))
+  )
 
 (provide 'init-theme)
 
