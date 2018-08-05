@@ -8,14 +8,15 @@
 
 (use-package company
 	:ensure t
-  :defer t
+  :demand t
   :config
   (add-hook 'after-init-hook 'global-company-mode)
   )
 
 (use-package company-lsp
+	:after (:all company lsp-mode)
 	:ensure t
-	:defer t
+	:demand t
 	:config (push 'company-lsp company-backends)
 	)
 

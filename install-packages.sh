@@ -41,5 +41,7 @@ pip install rope_py3k
 pip install trepan3k
 pip install yapf
 
+rustup update
+rustup component add rls-preview rust-analysis rust-src
 
 popd

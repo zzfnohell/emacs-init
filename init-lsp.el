@@ -7,7 +7,7 @@
 
 (use-package lsp-mode
 	:ensure t
-	:defer t
+	:demand t
 	:config
 	(require 'lsp-imenu)
 	(add-hook 'prog-major-mode #'lsp-prog-major-mode-enable)
@@ -15,9 +15,9 @@
 	)
 
 (use-package lsp-ui
-	:after markdown-mode
+	:after (:all markdown-mode lsp-mode)
 	:ensure t
-	:defer t
+	:demand t
 	:config
 	(add-hook 'lsp-mode-hook 'lsp-ui-mode)
 	(setq lsp-ui-sideline-enable t
@@ -27,15 +27,6 @@
 				lsp-ui-sideline-update-mode 'point))
 
 
-(use-package lsp-rust
-	:after (:all markdown-mode lsp-mode)
-	:ensure t
-	:defer t
-	:config
-	(with-eval-after-load 'lsp-mode
-		(require 'lsp-rust)
-		(add-hook 'rust-mode-hook #'lsp-rust-enable))
-	)
 
 (use-package lsp-python
 	:ensure t
