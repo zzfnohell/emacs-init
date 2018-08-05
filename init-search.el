@@ -7,7 +7,7 @@
 
 ;;; Code:
 
-(use-package fuzzy :defer t)
+(use-package fuzzy  )
 
 (provide 'init-search)
 

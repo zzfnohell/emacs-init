@@ -5,13 +5,13 @@
 
 (use-package geiser
 	:ensure t
-	:defer t
+	 
 	)
 
 (use-package quack
 	:after geiser
 	:ensure t
-	:defer t
+	 
 	)
 
 (provide 'init-racket)

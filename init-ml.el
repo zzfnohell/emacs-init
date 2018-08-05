@@ -40,21 +40,21 @@ indentation rules."
 
 (use-package markdown-mode
 	:ensure t
-	:defer t)
+	)
 
 (use-package auto-complete-nxml
 	:ensure t
-	:defer t)
+	)
 
 (use-package haml-mode
 	:after markdown-mode
 	:ensure t
-	:defer t)
+	)
 
 ;;; YAML
 (use-package yaml-mode
 	:ensure t
-	:defer t
+	
   :config (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
   )
 

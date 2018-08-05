@@ -4,7 +4,7 @@
 ;;;
 
 (use-package emr
-  :defer t
+  
   :config
   (progn
     (autoload 'emr-show-refactor-menu "emr")
@@ -14,7 +14,7 @@
   )
 
 (use-package srefactor
-  :defer t
+  
   :config
   (progn
     (require 'srefactor)

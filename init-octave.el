@@ -13,7 +13,7 @@
 
 
 ;; (use-package ac-octave
-;;   :defer t
+;;   
 ;;   :config
 ;;   (progn
 ;;     (require 'ac-octave)

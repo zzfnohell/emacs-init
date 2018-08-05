@@ -6,11 +6,11 @@
 ;;; Code:
 
 ;; Access via Web
-;; (use-package take-off :defer t)
+;; (use-package take-off )
 
 (use-package auto-indent-mode
   :ensure t
-	:defer t
+	
   :init
   ;; If you want auto-indent on for files
   (setq auto-indent-on-visit-file t)
@@ -18,23 +18,23 @@
 
 (use-package hl-anything
   :ensure t
-  :defer t)
+  )
 (use-package hl-indent
   :ensure t
-  :defer t)
+  )
 
 (use-package highlight-parentheses
   :ensure t
-  :defer t)
+  )
 
 (use-package highlight-thing
   :ensure t
-  :defer t)
+  )
 
 
 (use-package auto-highlight-symbol
   :ensure t
-  :defer t
+  
   :config (global-auto-highlight-symbol-mode t))
 
 (setq-default indent-tabs-mode nil)
@@ -77,21 +77,21 @@
 
 (use-package hlinum
   :ensure t
-  :defer t
+  
   :config (hlinum-activate))
 
 (use-package undo-tree
   :ensure t
-  :defer t
+  
   :config (global-undo-tree-mode))
 
 (use-package regex-tool
   :ensure t
-  :defer t)
+  )
 
 (use-package vline
   :ensure t
-  :defer t
+  
   :custom
   (visual-line-mode nil t)
   (size-indication-mode t)
@@ -99,7 +99,7 @@
 
 (use-package visible-mark
   :ensure t
-  :defer t
+  
   :init
   (defface visible-mark-active
     ;; put this before (require 'visible-mark)
@@ -126,7 +126,7 @@
 ;; irfc
 (use-package irfc
   :ensure t
-  :defer t
+  
   :config
   (progn
     (setq irfc-directory *rfc-directory*)
@@ -134,15 +134,15 @@
 
 (use-package anyins
   :ensure t
-  :defer t)
+  )
 
 (use-package popup-kill-ring
   :ensure t
-  :defer t)
+  )
 
 (use-package kill-ring-search
   :ensure t
-  :defer t
+  
   :config
   (progn
     (autoload 'kill-ring-search "kill-ring-search"
@@ -158,7 +158,7 @@
 
 (use-package httpd
   :ensure t
-  :defer t
+  
   :custom
   (httpd-host "0.0.0.0")
   (httpd-port 2020)
@@ -166,7 +166,7 @@
 
 (use-package httprepl
   :ensure t
-  :defer t
+  
   )
 
 (use-package speedbar

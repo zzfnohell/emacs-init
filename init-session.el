@@ -7,7 +7,7 @@
 ;;; Code:
 
 (use-package session
-  :defer t
+  
   :config (add-hook 'after-init-hook 'session-initialize))
 
 (provide 'init-session)

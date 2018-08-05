@@ -8,25 +8,25 @@
 
 (use-package paredit
 	:ensure t
-	:defer t)
+	)
 
 (use-package lispy
   :ensure t
-  :defer t)
+  )
 
 (use-package diminish
   :ensure t
-  :defer t)
+  )
 
 (use-package lively
   :ensure t
-  :defer t)
+  )
 
 (require 'derived)
 
 (use-package pretty-mode
   :ensure t
-  :defer t
+  
   :config (autoload 'turn-on-pretty-mode "pretty-mode"))
 
 
@@ -44,7 +44,7 @@
 ;; ----------------------------------------------------------------------------
 (use-package hl-sexp
   :ensure t
-  :defer t
+  
   :init
   ;; Prevent flickery behaviour due to hl-sexp-mode unhighlighting before each command
   (after-load 'hl-sexp
@@ -59,11 +59,11 @@
 (use-package rainbow-delimiters
   :ensure t
 	:ensure t
-	:defer t)
+	)
 
 (use-package redshank
   :ensure t
-  :defer t
+  
   :after (:all diminish)
   :init
   (after-load 'redshank
@@ -102,11 +102,11 @@
 
 (use-package eldoc-eval
   :ensure t
-  :defer t)
+  )
 
 (use-package macrostep
   :ensure t
-  :defer t)
+  )
 
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
 (defvar *slime-helper-path*
@@ -114,7 +114,7 @@
 
 (use-package slime
 	:ensure t
-  :defer t
+  
   :init
 	(setq inferior-lisp-program "sbcl")
 	:config
@@ -127,7 +127,7 @@
 
 (use-package slime-company
 	:ensure t
-	:defer t
+	
 	)
 
 ;; (use-package ac-slime

@@ -7,7 +7,7 @@
 
 ;;; Code:
 (use-package evil
-  :defer t
+  
   :config
   (progn
     (setq init-evil-mode-state-list

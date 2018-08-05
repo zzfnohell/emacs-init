@@ -7,7 +7,7 @@
 
 (use-package ecb
 	:ensure t
-  :defer t
+  
 	:custom
 	(ecb-windows-width 30)
   ;; (ecb-source-path '(("~"  "home")))

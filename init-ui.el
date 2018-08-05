@@ -125,7 +125,7 @@
 
 (use-package minimap
   :ensure t
-  :defer t
+  
   :custom (minimap-window-location (quote right))
 	)
 

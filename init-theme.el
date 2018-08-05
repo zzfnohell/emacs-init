@@ -6,7 +6,7 @@
 ;;; Code:
 (use-package color-theme
   :ensure t
-  :defer t
+   
   :custom
   (custom-enabled-themes (quote (light-blue)))
   )

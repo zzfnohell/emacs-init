@@ -13,7 +13,7 @@
 ;; go get github.com/rogpeppe/godef
 
 (use-package go-guru
-  :defer t
+  
   :config
   (progn
     (go-guru-hl-identifier-mode)
@@ -21,13 +21,13 @@
 	)
   )
 
-(use-package go-rename :defer t)
-(use-package flycheck-gometalinter :defer t)
+(use-package go-rename )
+(use-package flycheck-gometalinter )
 
 ;;; company-go - company backend for Golang
 ;;; https://github.com/nsf/gocode/blob/master/emacs-company/company-go.el
 (use-package company-go
-  :defer t
+  
   :after (go-mode)
   :config
   (progn

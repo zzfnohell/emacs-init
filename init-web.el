@@ -57,7 +57,7 @@
 
 (use-package web-mode
 	:ensure t
-	:defer t
+	
   :config
   (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -78,21 +78,21 @@
 
 (use-package web-beautify
 	:ensure t
-	:defer t)
+	)
 
 (use-package impatient-mode
 	:ensure t
-	:defer t)
+	)
 
 (use-package react-snippets
 	:ensure t
-	:defer t)
+	)
 
 ;; CSS 
 ;;; Colourise CSS colour literals
 (use-package rainbow-mode
 	:ensure t
-	:defer t
+	
   :config
   (progn
     (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
@@ -105,27 +105,27 @@
 (use-package sass-mode
 	:after markdown-mode
 	:ensure t
-	:defer t)
+	)
 
 (use-package scss-mode
 	:ensure t
-	:defer t
+	
 	:config (setq-default scss-compile-at-save nil))
 
 
 ;;; LESS
 (use-package less-css-mode
 	:ensure t
-	:defer t)
+	)
 
 (use-package skewer-less
 	:ensure t
-	:defer t)
+	)
 
 ;;; Use eldoc for syntax hints
 (use-package css-eldoc
 	:ensure t
-	:defer t
+	
   :config
   (progn
     (autoload 'turn-on-css-eldoc "css-eldoc")
@@ -135,7 +135,7 @@
 
 (use-package restclient
 	:ensure t
-	:defer t)
+	)
 
 (provide 'init-web)
 

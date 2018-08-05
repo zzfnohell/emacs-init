@@ -5,11 +5,11 @@
 
 (use-package php-mode
   :ensure t
-	:defer t)
+	)
 
 (use-package company-php
   :ensure t
-  :defer t
+  
   :config
   (add-hook 'php-mode-hook
             '(lambda ()
@@ -20,7 +20,7 @@
 
 (use-package lsp-php
 	:ensure t
-  :defer t
+  
 	:config
 	(add-hook 'php-mode-hook #'lsp-php-enable)
 	)

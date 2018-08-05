@@ -5,7 +5,7 @@
 
 (use-package projectile
 	:ensure t
-	:defer t
+	
 	:config
 	(projectile-global-mode)
 	(setq projectile-indexing-method 'native)
@@ -14,7 +14,7 @@
 
 (use-package helm-projectile
 	:ensure t
-	:defer t
+	
 	:config
 	(helm-projectile-on))
 

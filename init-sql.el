@@ -8,7 +8,7 @@
 (require 'sql)
 
 (use-package sql-indent
-  :defer t
+   
   :config
   (eval-after-load "sql"
     '(load-library "sql-indent")))

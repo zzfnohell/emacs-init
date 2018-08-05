@@ -30,7 +30,7 @@
 
 (use-package lsp-python
 	:ensure t
-	:defer t
+	 
 	:config
 	(add-hook 'python-mode-hook #'lsp-python-enable)
 	)
@@ -38,7 +38,7 @@
 (use-package lsp-java
 	:after (:all lsp-ui-flycheck lsp-ui-sideline)
 	:ensure t
-	:defer t
+	 
 	:config
 	(add-hook 'java-mode-hook  'lsp-java-enable)
 	(add-hook 'java-mode-hook  (lambda () (lsp-ui-flycheck-enable t)))
@@ -51,7 +51,7 @@
 
 (use-package lsp-clangd
 	:ensure t
-	:defer t
+	 
 	:config
 	(with-eval-after-load 'lsp-mode
 		(require 'lsp-clangd)
@@ -62,7 +62,7 @@
 
 (use-package lsp-html
 	:ensure t
-	:defer t
+	 
 	:config
 	(add-hook 'html-mode-hook #'lsp-html-enable)
 	)
@@ -76,7 +76,7 @@
 
 (use-package lsp-css
 	:ensure t
-	:defer t
+	 
 	:config
 	(add-hook 'css-mode-hook #'init-lsp/lsp-css/css-mode-setup)
 	(add-hook 'less-mode-hook #'lsp-less-enable)
@@ -85,13 +85,13 @@
 
 (use-package lsp-go
 	:ensure t
-	:defer t
+	 
 	:config
 	(add-hook 'go-mode-hook #'lsp-go-enable))
 
 (use-package lsp-ocaml
 	:ensure t
-	:defer t
+	 
 	:config
 	(add-hook 'tuareg-mode-hook #'lsp-ocaml-enable)
 	(add-hook 'caml-mode-hook #'lsp-ocaml-enable)
@@ -101,7 +101,7 @@
 ;; npm install -g flow-language-server
 (use-package lsp-javascript-flow
 	:ensure t
-	:defer t
+	 
 	:config
 	(add-hook 'js-mode-hook #'lsp-javascript-flow-enable)
 	(add-hook 'js2-mode-hook #'lsp-javascript-flow-enable) ;; for js2-mode support
@@ -111,7 +111,7 @@
 (use-package company-lsp
 	:after company
 	:ensure t
-	:defer t
+	 
 	:config
 	(push 'company-lsp company-backends)
 	(setq company-lsp-enable-snippet t

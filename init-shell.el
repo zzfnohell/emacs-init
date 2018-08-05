@@ -5,7 +5,7 @@
 
 ;;; Code:
 (use-package shell-switcher
-  :defer t
+   
   :config
   (progn
     (setq shell-switcher-mode t)))
@@ -17,12 +17,12 @@
 ;; (setq-default shell-switcher-new-shell-function 'make-powershell)
 
 (use-package shell-command
-  :defer t
+   
   :config (shell-command-completion-mode))
 
 
 (use-package fish-mode
-  :defer t
+   
   :config
   (add-hook 'fish-mode-hook
             (lambda ()

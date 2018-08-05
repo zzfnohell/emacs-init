@@ -9,7 +9,7 @@
 
 (use-package csharp-mode
 	:ensure t
-  :defer t
+   
   :mode "\\.cs\\'"
   :config
   (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
@@ -43,7 +43,7 @@
 (use-package omnisharp
   :after csharp-mode
   :ensure t
-  :defer t
+   
   :config
   (add-hook 'csharp-mode-hook 'init-csharp/csharp-mode-setup t)
   )

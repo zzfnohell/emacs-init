@@ -10,7 +10,7 @@
 
 (use-package ess
 	:ensure t
-	:defer t
+	
 	:config
 	(require 'ess-site)
 	(require 'ess-julia)
@@ -19,11 +19,11 @@
 
 (use-package ess-view
 	:ensure t
-	:defer t)
+	)
 
 (use-package julia-mode
 	:ensure t
-	:defer t)
+	)
 
 (provide 'init-ess)
 

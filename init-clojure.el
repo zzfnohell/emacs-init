@@ -5,12 +5,12 @@
 
 ;;; Code:
 
-(use-package clojure-mode :defer t)
-(use-package cljsbuild-mode :defer t)
-(use-package elein :defer t)
-(use-package cider :defer t)
+(use-package clojure-mode  )
+(use-package cljsbuild-mode  )
+(use-package elein  )
+(use-package cider  )
 (use-package ac-cider
-  :defer t
+   
   :config
   (progn
     (require 'ac-cider)

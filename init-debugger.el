@@ -10,7 +10,7 @@
 (setq gdb-many-windows t)
 (use-package realgud
 	:ensure t
-	:defer t)
+	)
 
 (provide 'init-debugger)
 

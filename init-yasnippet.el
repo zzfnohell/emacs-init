@@ -8,7 +8,7 @@
 
 (use-package yasnippet
 	:ensure t
-	:defer t
+	
   :config
   (progn
     ;;; use popup menu for yas-choose-value
@@ -48,11 +48,11 @@
 
 (use-package auto-yasnippet
 	:ensure t
-  :defer t)
+  )
 
 (use-package yasnippet-snippets
 	:ensure t
-  :defer t)
+  )
 
 (provide 'init-yasnippet)
 

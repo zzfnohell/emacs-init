@@ -9,7 +9,7 @@
 
 (use-package rust-mode
 	:ensure t
-	:defer t
+	
 	:mode ("\\.rs\\'" . rust-mode)
 	:config
 	(require 'lsp-rust)
@@ -22,12 +22,11 @@
 (use-package lsp-rust
 	:after (:all markdown-mode lsp-mode)
 	:ensure t
-	:defer t
+	
 	)
 
 (use-package flycheck-rust
 	:ensure t
-	:defer t
 	)      
 
 (provide 'init-rust)

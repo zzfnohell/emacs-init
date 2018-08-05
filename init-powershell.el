@@ -5,7 +5,7 @@
 ;; 
 
 ;;; Code:
-(use-package powershell :defer t)
+(use-package powershell  )
 
 (provide 'init-powershell)
 

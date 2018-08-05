@@ -5,10 +5,10 @@
 
 ;;; Code:
 
-(use-package logview :defer t)
+(use-package logview  )
 
 (use-package vlf
-  :defer t
+   
   :config (require 'vlf-setup))
 
 (provide 'init-view)

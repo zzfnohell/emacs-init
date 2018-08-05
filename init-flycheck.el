@@ -7,12 +7,12 @@
 
 (use-package flycheck
 	:ensure t
-	:defer t
+	
 	:config (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (use-package flycheck-clang-analyzer
 	:ensure t
-	:defer t
+	
 	:config
 	(progn
 		(with-eval-after-load 'flycheck

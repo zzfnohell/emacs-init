@@ -7,7 +7,7 @@
 
 (use-package ggtags
 	:ensure t
-	:defer t
+	
   :config
   (progn
     (autoload 'gtags-mode "gtags" "" t)
@@ -29,7 +29,7 @@
 
 (use-package ctags-update
   :ensure t
-  :defer t
+  
   :config
   (progn
     (ctags-global-auto-update-mode)

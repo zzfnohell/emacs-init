@@ -7,7 +7,7 @@
 
 (use-package helm
 	:ensure t
-	:defer t
+	
   :config
   (require 'helm-config)
   (helm-mode 1)
@@ -19,19 +19,19 @@
 
 (use-package helm-css-scss
   :ensure t
-  :defer t)
+  )
 
 (use-package helm-make
   :ensure t
-  :defer t)
+  )
 
 (use-package helm-fuzzy-find
   :ensure t
-  :defer t)
+  )
 
 (use-package restclient-helm
   :ensure t
-  :defer t)
+  )
 
 (provide 'init-helm)
 

@@ -7,7 +7,7 @@
 
 (use-package ahg
 	:ensure t
-	:defer t)
+	)
 
 ;; (require 'diff-mode)
 ;; (require 'easymenu)
@@ -17,7 +17,7 @@
 
 (use-package magit
   :ensure t
-  :defer t)
+  )
 
 
 (provide 'init-vc)
