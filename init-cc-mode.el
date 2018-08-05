@@ -45,7 +45,7 @@
 (add-hook 'asm-mode-hook 'helm-gtags-mode)
 
 (use-package clang-format
-  :defer t
+  
 	:ensure t)
 
 ;;opencl source file.
@@ -53,7 +53,7 @@
 
 (use-package cmake-mode
 	:ensure t
-  :defer t)
+  )
 (use-package opencl-mode
 	:ensure t
   :init (add-to-list 'auto-mode-alist '("\\.cl\\'" . opencl-mode))
@@ -61,12 +61,16 @@
 
 (use-package shader-mode
 	:ensure t
-  :defer t)
+  )
 
+(use-package rtags
+	:ensure t
+	:if (and (executable-find "rdm") (executable-find "rc"))
+	)
 
 (use-package cmake-ide
   :ensure t
-  :defer t
+	:if (featurep 'rtags)
   :config
 	(require 'rtags)
   (cmake-ide-setup)
