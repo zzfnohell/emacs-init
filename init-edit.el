@@ -1,7 +1,7 @@
 ;;; init-edit.el --- Edit Config
 
 ;;; Commentary:
-;; 
+;;
 
 ;;; Code:
 
@@ -10,31 +10,22 @@
 
 (use-package auto-indent-mode
   :ensure t
-	
   :init
   ;; If you want auto-indent on for files
   (setq auto-indent-on-visit-file t)
-	)
-
-(use-package hl-anything
-  :ensure t
-  )
-(use-package hl-indent
-  :ensure t
   )
 
-(use-package highlight-parentheses
-  :ensure t
-  )
+(use-package hl-anything :ensure t)
 
-(use-package highlight-thing
-  :ensure t
-  )
+(use-package hl-indent :ensure t)
+
+(use-package highlight-parentheses :ensure t)
+
+(use-package highlight-thing :ensure t)
 
 
 (use-package auto-highlight-symbol
   :ensure t
-  
   :config (global-auto-highlight-symbol-mode t))
 
 (setq-default indent-tabs-mode nil)
@@ -77,21 +68,16 @@
 
 (use-package hlinum
   :ensure t
-  
   :config (hlinum-activate))
 
 (use-package undo-tree
   :ensure t
-  
   :config (global-undo-tree-mode))
 
-(use-package regex-tool
-  :ensure t
-  )
+(use-package regex-tool :ensure t)
 
 (use-package vline
   :ensure t
-  
   :custom
   (visual-line-mode nil t)
   (size-indication-mode t)
@@ -99,7 +85,6 @@
 
 (use-package visible-mark
   :ensure t
-  
   :init
   (defface visible-mark-active
     ;; put this before (require 'visible-mark)
@@ -126,30 +111,24 @@
 ;; irfc
 (use-package irfc
   :ensure t
-  
   :config
   (progn
     (setq irfc-directory *rfc-directory*)
     (setq irfc-assoc-mode t)))
 
-(use-package anyins
-  :ensure t
-  )
+(use-package anyins :ensure t)
 
-(use-package popup-kill-ring
-  :ensure t
-  )
+(use-package popup-kill-ring :ensure t)
 
 (use-package kill-ring-search
   :ensure t
-  
   :config
   (progn
     (autoload 'kill-ring-search "kill-ring-search"
       "Search the kill ring in the minibuffer."
       (interactive))))
 
-(setq abbrev-file-name "~/.emacs.d/abbrev_defs")  
+(setq abbrev-file-name "~/.emacs.d/abbrev_defs")
 (setq-default abbrev-mode t)
 (if (file-exists-p abbrev-file-name)
     (quietly-read-abbrev-file))
@@ -158,16 +137,12 @@
 
 (use-package httpd
   :ensure t
-  
   :custom
   (httpd-host "0.0.0.0")
   (httpd-port 2020)
   )
 
-(use-package httprepl
-  :ensure t
-  
-  )
+(use-package httprepl :ensure t)
 
 (use-package speedbar
   :custom
