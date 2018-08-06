@@ -4,7 +4,6 @@
 ;;
 
 (use-package nxml-mode
-  :ensure t
   :mode (("\\.xml\\'" . nxml-mode)
          ("\\.xsd\\'" . nxml-mode)
          ("\\.sch\\'" . nxml-mode)

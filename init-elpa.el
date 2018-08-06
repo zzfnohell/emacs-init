@@ -18,7 +18,7 @@
 						 '("gnu" . "https://elpa.gnu.org/packages/"))
 
 (add-to-list 'package-archives
-						 '("popkit" . "http://elpa.popkit.org/packages/"))
+						 '("popkit" . "https://elpa.popkit.org/packages/"))
 
 (package-initialize)
 
