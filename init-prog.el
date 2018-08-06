@@ -12,7 +12,12 @@
 	:config
 	(add-hook 'prog-mode-hook
 						(lambda () (yafolding-mode)))
-)
+	)
+
+(use-package
+	:ensure t
+	:config
+	(add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (provide 'init-prog)
 

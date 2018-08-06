@@ -1,12 +1,12 @@
-;;; init-dired.el ---
+;;; init-dired.el --- dired
 ;;; Code:
 
 ;;; Commentary:
-;; 
+;;
 
 ;; set dired mode format,put it before the desktop load
 
-(cond 
+(cond
  ((eq 'windows-nt system-type) nil)
  ((eq 'darwin system-type) nil)
  (t (setq dired-listing-switches "-avl --time-style=long-iso")))

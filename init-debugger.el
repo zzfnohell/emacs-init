@@ -1,16 +1,15 @@
 ;;; init-debugger.el --- Debugger
 
-
-
 ;;; Commentary:
-;; 
+;;
 
 ;;; Code:
 
-(setq gdb-many-windows t)
+
 (use-package realgud
-	:ensure t
-	)
+  :ensure t
+  :init (setq gdb-many-windows t)
+  )
 
 (provide 'init-debugger)
 

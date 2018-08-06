@@ -98,7 +98,6 @@
 (require 'init-development)
 
 (require 'init-view)
-;; (require 'init-evil)
 
 (server-start)
 
