@@ -90,12 +90,11 @@
     ;; put this before (require 'visible-mark)
     '((((type tty) (class mono)))
       (t (:background "magenta"))) "")
+  (setq visible-mark-max 2)
+  (setq visible-mark-faces `(visible-mark-face1 visible-mark-face2))
   :config
-  (progn
-    ;; or add (visible-mark-mode) to specific hooks
-    (global-visible-mark-mode 1)
-    (setq visible-mark-max 2)
-    (setq visible-mark-faces `(visible-mark-face1 visible-mark-face2))))
+  (global-visible-mark-mode 1)
+  )
 
 
 (add-hook 'texinfo-mode-hook (lambda () (require 'sb-texinfo)))
