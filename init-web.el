@@ -90,7 +90,6 @@
     )
   )
 
-
 ;;; SASS and SCSS
 (use-package sass-mode
   :after markdown-mode
@@ -100,7 +99,6 @@
 (use-package scss-mode
   :ensure t
   :config (setq-default scss-compile-at-save nil))
-
 
 ;;; LESS
 (use-package less-css-mode :ensure t)
@@ -113,6 +111,15 @@
     (autoload 'turn-on-css-eldoc "css-eldoc")
     (add-hook 'css-mode-hook 'turn-on-css-eldoc)
     )
+  )
+
+(use-package sws-mode
+  :ensure t
+  :mode ("\\.styl$" . sws-mode))
+
+(use-package jade-mode
+  :ensure t
+  :mode ("\\.jade$" . jade-mode)
   )
 
 (use-package restclient :ensure t)

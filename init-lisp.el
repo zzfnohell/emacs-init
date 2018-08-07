@@ -63,7 +63,6 @@
 
 (use-package redshank
   :ensure t
-  
   :after (:all diminish)
   :init
   (after-load 'redshank
@@ -80,7 +79,8 @@
     (defun init-lisp/emacs-lisp-setup ()
       "Enable features useful when working with elisp."
       (set-up-hippie-expand-for-elisp)
-      (ac-emacs-lisp-mode-setup))
+      ;; (ac-emacs-lisp-mode-setup)
+			)
 
     (defconst init-lisp/elispy-modes
       '(emacs-lisp-mode ielm-mode)
@@ -113,8 +113,8 @@
   (expand-file-name"~/quicklisp/slime-helper.el"))
 
 (use-package slime
+	:after slime-company
 	:ensure t
-  
   :init
 	(setq inferior-lisp-program "sbcl")
 	:config
@@ -127,7 +127,6 @@
 
 (use-package slime-company
 	:ensure t
-	
 	)
 
 ;; (use-package ac-slime
