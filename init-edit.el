@@ -15,6 +15,8 @@
   (setq auto-indent-on-visit-file t)
   )
 
+(use-package hl-line :ensure nil)
+
 (use-package hl-anything :ensure t)
 
 (use-package hl-indent :ensure t)

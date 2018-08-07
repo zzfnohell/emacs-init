@@ -125,9 +125,9 @@
 
 (use-package minimap
   :ensure t
-  
   :custom (minimap-window-location (quote right))
 	)
+
 
 ;; (use-package sr-speedbar)
 
