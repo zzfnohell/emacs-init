@@ -4,19 +4,18 @@
 ;;;
 
 (use-package projectile
-	:ensure t
-	
-	:config
-	(projectile-global-mode)
-	(setq projectile-indexing-method 'native)
-	;; (setq projectile-completion-system 'default)
-	(setq projectile-completion-system 'helm))
+  :ensure t
+  :custom
+  (projectile-enable-caching t)
+  (projectile-completion-system 'helm)
+  :config
+  (projectile-global-mode)
+  )
 
 (use-package helm-projectile
-	:ensure t
-	
-	:config
-	(helm-projectile-on))
+  :ensure t
+  :config
+  (helm-projectile-on))
 
 
 (provide 'init-projectile)
