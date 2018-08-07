@@ -109,14 +109,6 @@
     (add-auto-mode 'csv-mode "\\.[Cc][Ss][Vv]\\'")
     (setq csv-separators '("," ";" "|" " "))))
 
-;; irfc
-(use-package irfc
-  :ensure t
-  :config
-  (progn
-    (setq irfc-directory *rfc-directory*)
-    (setq irfc-assoc-mode t)))
-
 (use-package anyins :ensure t)
 
 (use-package popup-kill-ring :ensure t)
