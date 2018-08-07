@@ -105,8 +105,6 @@
 ;;; LESS
 (use-package less-css-mode :ensure t)
 
-(use-package skewer-less :ensure t)
-
 ;;; Use eldoc for syntax hints
 (use-package css-eldoc
   :ensure t
