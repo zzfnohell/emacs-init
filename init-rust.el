@@ -9,20 +9,19 @@
 
 (use-package rust-mode
 	:ensure t
-	
 	:mode ("\\.rs\\'" . rust-mode)
 	:config
 	(require 'lsp-rust)
 	(require 'flycheck-rust)
-	(add-hook 'rust-mode-hook #'lsp-rust-enable)
+
 	(add-hook 'rust-mode-hook #'flycheck-mode)
 	(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 	)
 
 (use-package lsp-rust
-	:after (:all markdown-mode lsp-mode)
+	:after (:all markdown-mode lsp-mode rust-mode)
 	:ensure t
-	
+	(add-hook 'rust-mode-hook #'lsp-rust-enable)
 	)
 
 (use-package flycheck-rust
