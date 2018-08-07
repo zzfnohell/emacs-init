@@ -99,8 +99,6 @@
 
 (require 'init-view)
 
-(server-start)
-
 (provide 'init-main)
 
 ;;; init-main.el ends here
