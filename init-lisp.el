@@ -6,27 +6,18 @@
 
 ;;; Code:
 
-(use-package paredit
-	:ensure t
-	)
+(use-package paredit :ensure t)
 
-(use-package lispy
-  :ensure t
-  )
+(use-package lispy :ensure t)
 
-(use-package diminish
-  :ensure t
-  )
+(use-package diminish :ensure t)
 
-(use-package lively
-  :ensure t
-  )
+(use-package lively :ensure t)
 
 (require 'derived)
 
 (use-package pretty-mode
   :ensure t
-  
   :config (autoload 'turn-on-pretty-mode "pretty-mode"))
 
 
@@ -44,7 +35,6 @@
 ;; ----------------------------------------------------------------------------
 (use-package hl-sexp
   :ensure t
-  
   :init
   ;; Prevent flickery behaviour due to hl-sexp-mode unhighlighting before each command
   (after-load 'hl-sexp
@@ -58,15 +48,13 @@
 ;; ----------------------------------------------------------------------------
 (use-package rainbow-delimiters
   :ensure t
-	:ensure t
-	)
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+  )
 
 (use-package redshank
   :ensure t
   :after (:all diminish)
-  :init
-  (after-load 'redshank
-    (diminish 'redshank-mode))
   :config
   (progn
     (defun init-lisp/lisp-setup ()
@@ -91,7 +79,8 @@
               '(lisp-mode inferior-lisp-mode lisp-interaction-mode))
       "All lispy major modes.")
 
-
+    (diminish 'redshank-mode)
+    
     (dolist (hook (mapcar #'derived-mode-hook-name init-lisp/lispy-modes))
       (add-hook hook 'init-lisp/lisp-setup))
 
@@ -100,13 +89,9 @@
     )
   )
 
-(use-package eldoc-eval
-  :ensure t
-  )
+(use-package eldoc-eval :ensure t)
 
-(use-package macrostep
-  :ensure t
-  )
+(use-package macrostep :ensure t)
 
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
 (defvar *slime-helper-path*
@@ -125,9 +110,7 @@
 	(slime-setup '(slime-company))
 	)
 
-(use-package slime-company
-	:ensure t
-	)
+(use-package slime-company :ensure t)
 
 ;; (use-package ac-slime
 ;; 	:ensure t
@@ -141,7 +124,7 @@
 ;; 		)
 ;; 	)
 
-
 (provide 'init-lisp)
 
 ;;; init-lisp.el ends here
+
