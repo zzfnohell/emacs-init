@@ -18,7 +18,7 @@
 
 (load "~/.emacs.d/init/init-main.el")
 (setq custom-file "~/.emacs.d/custom.el")
-;; (load custom-file)
+(load custom-file)
 
 
 ;;; init.el ends here
