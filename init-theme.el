@@ -4,12 +4,7 @@
 ;; 
 
 ;;; Code:
-(use-package color-theme
-  :ensure t
-   
-  :custom
-  (custom-enabled-themes (quote (light-blue)))
-  )
+(use-package color-theme :ensure t)
 
 (provide 'init-theme)
 

@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(use-package axiom-environment  )
+(use-package axiom-environment  :ensure t)
 
 ;; (custom-set-variables
 ;;  '(axiom-process-program "axiom -noht"))

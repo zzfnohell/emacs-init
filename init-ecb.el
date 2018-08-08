@@ -7,10 +7,6 @@
 
 (use-package ecb
 	:ensure t
-  
-	:custom
-	(ecb-windows-width 30)
-  ;; (ecb-source-path '(("~"  "home")))
   :config
   ;;(setq stack-trace-on-error t)
   (ecb-byte-compile)

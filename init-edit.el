@@ -78,12 +78,7 @@
 
 (use-package regex-tool :ensure t)
 
-(use-package vline
-  :ensure t
-  :custom
-  (visual-line-mode nil t)
-  (size-indication-mode t)
-  )
+(use-package vline  :ensure t)
 
 (use-package visible-mark
   :ensure t
@@ -128,19 +123,11 @@
 (setq save-abbrevs t)
 (xterm-mouse-mode 1)
 
-(use-package httpd
-  :ensure t
-  :custom
-  (httpd-host "0.0.0.0")
-  (httpd-port 2020)
-  )
+(use-package httpd :ensure t)
 
 (use-package httprepl :ensure t)
 
-(use-package speedbar
-  :custom
-  (speedbar-show-unknown-files t)
-  )
+(use-package speedbar)
 
 (provide 'init-edit)
 

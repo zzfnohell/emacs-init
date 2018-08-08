@@ -5,9 +5,6 @@
 
 (use-package projectile
   :ensure t
-  :custom
-  (projectile-enable-caching t)
-  (projectile-completion-system 'helm)
   :config
   (projectile-global-mode)
   )

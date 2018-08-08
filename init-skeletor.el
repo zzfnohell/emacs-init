@@ -5,9 +5,6 @@
 
 (use-package skeletor
 	:ensure t
-	 
-	:custom
-	(skeletor-user-directory "~/.emacs.d/init/init-skeletor-projects")
 	:config
 	(skeletor-define-template "skewer-index-html-package"
 		:title "Skewer Index Html"
