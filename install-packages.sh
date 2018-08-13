@@ -27,7 +27,7 @@ curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 
 composer require felixfbecker/language-server
 
-
+conda install virtualenv
 # and importmagic for automatic imports
 pip install importmagic
 
