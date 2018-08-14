@@ -45,6 +45,7 @@
 
 (require 'init-regexp)
 (require 'init-helm)
+(require 'init-ivy)
 (require 'init-ecb)
 (require 'init-projectile)
 (require 'init-flycheck)
