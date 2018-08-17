@@ -18,7 +18,6 @@
 
 (use-package scala-mode
 	:ensure t
-	 
 	:config
 	(add-hook 'scala-mode-hook
 						(lambda ()
@@ -29,7 +28,6 @@
 
 (use-package sbt-mode
 	:ensure t
-	 
   :commands sbt-start sbt-command
   :config
   ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
