@@ -78,7 +78,7 @@
 
 (use-package regex-tool :ensure t)
 
-(use-package vline  :ensure t)
+(use-package vline)
 
 (use-package visible-mark
   :ensure t
