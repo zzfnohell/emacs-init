@@ -23,10 +23,10 @@
 
 (if (not (eq nil window-system))
     (cond
-     ((eq 'windows-nt system-type) (set-font "Monaco" 12))
-     ((eq 'darwin system-type) (set-font "Monaco" 12))
-     ((eq 'gnu/linux system-type) (set-font "Monaco" 12))
-     (t (set-font "Ubuntu Mono" 12))))
+     ((eq 'windows-nt system-type) (set-font "Monaco" 10))
+     ((eq 'darwin system-type) (set-font "Monaco" 10))
+     ((eq 'gnu/linux system-type) (set-font "Monaco" 10))
+     (t (set-font "Ubuntu Mono" 10))))
 
 ;; emacs shell font confusion
 (defvar ansi-color-for-comint-mode t)
