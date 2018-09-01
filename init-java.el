@@ -19,6 +19,8 @@
 
   )
 
+(use-package groovy-mode :ensure t)
+
 (use-package ant :ensure t)
 (use-package mvn :ensure t)
 

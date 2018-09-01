@@ -40,6 +40,7 @@
 
 ;;;; Semantic's customization
 (semantic-mode 1)
+
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
 ;;(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)

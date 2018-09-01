@@ -30,10 +30,6 @@
   :if (featurep 'proof-site)
   :after (:all company))
 
-(use-package company-c-headers
-  :ensure t
-  :after (:all company)
-  :config (add-to-list 'company-backends 'company-c-headers))
 
 (use-package company-tern
   :ensure t

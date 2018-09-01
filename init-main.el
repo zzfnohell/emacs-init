@@ -19,6 +19,7 @@
 (require 'init-ui)
 (require 'init-edit)
 (require 'init-search)
+(require 'init-purpose)
 
 (require 'init-ediff)
 (require 'init-theme)

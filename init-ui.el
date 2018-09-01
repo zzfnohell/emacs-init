@@ -91,8 +91,6 @@
 ;; (setq display-time-day-and-date t)
 
 
-
-
 (when window-system
   (scroll-bar-mode -1)
 	)
@@ -127,6 +125,11 @@
 
 (use-package minimap :ensure t)
 
+(use-package window-number
+  :ensure t
+  :config
+  (window-number-mode 1)
+  )
 
 ;; (use-package sr-speedbar)
 
