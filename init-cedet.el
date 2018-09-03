@@ -152,10 +152,10 @@
 
 
 ;;;; Names completion
-(defun init-cedet/c-mode-cedet-hook ()
+(defun init-cedet/c-mode-common-cedet-hook ()
   (local-set-key "." 'semantic-complete-self-insert)
   (local-set-key ">" 'semantic-complete-self-insert))
-(add-hook 'c-mode-common-hook 'init-cedet/c-mode-cedet-hook)
+(add-hook 'c-mode-common-hook 'init-cedet/c-mode-common-cedet-hook)
 
 
 ;;;; Names completion with auto-complete package

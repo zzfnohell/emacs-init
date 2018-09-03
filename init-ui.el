@@ -125,10 +125,9 @@
 ;;(set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;;(add-to-list 'default-frame-alist '(alpha 85 50))
 
+(use-package sr-speedbar :ensure t)
+
 (use-package minimap :ensure t)
-
-
-;; (use-package sr-speedbar)
 
 (provide 'init-ui)
 
