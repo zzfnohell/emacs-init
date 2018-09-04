@@ -40,28 +40,34 @@
 
 (add-hook 'c-mode-common-hook 'init-cc-mode/c-mode-edit-hook)
 
-(add-hook 'c-mode-hook 'helm-gtags-mode)
-(add-hook 'c++-mode-hook 'helm-gtags-mode)
-(add-hook 'asm-mode-hook 'helm-gtags-mode)
+(defun init-cc-mode/company-semantic-setup ()
+  (set (make-local-variable 'company-backends)
+       '((company-dabbrev-code company-yasnippet)))
+  )
 
-(use-package clang-format
-  
-	:ensure t)
+(use-package company-c-headers
+  :ensure t
+  :after (:all company)
+  :config
+  (add-to-list 'company-backends 'company-c-headers)
+  (add-hook 'c++-mode-hook 'init-cc-mode/company-semantic-setup)
+  (add-hook 'c-mode-hook 'init-cc-mode/company-semantic-setup)
+  )
+
+
+(use-package clang-format	:ensure t)
 
 ;;opencl source file.
 (add-to-list 'auto-mode-alist '("\\.h$" . c-mode))
 
-(use-package cmake-mode
-	:ensure t
-  )
+(use-package cmake-mode :ensure t)
+
 (use-package opencl-mode
 	:ensure t
   :init (add-to-list 'auto-mode-alist '("\\.cl\\'" . opencl-mode))
   )
 
-(use-package shader-mode
-	:ensure t
-  )
+(use-package shader-mode :ensure t)
 
 (use-package rtags
 	:ensure t
