@@ -21,10 +21,11 @@
 *.html     text eol=lf
 
 *.csproj text eol=crlf
-*.sln text eol=crlf
-*.bat text eol=crlf
+*.sln    text eol=crlf
+*.bat    text eol=crlf
 *.cs     text eol=crlf
 *.cshtml text eol=crlf
+*.ps1    text working-tree-encoding=UTF-16LE eol=CRLF
 
 *.png binary
 *.jpg binary
