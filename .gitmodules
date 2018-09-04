@@ -1,3 +1,4 @@
 [submodule "site-lisp/flow-for-emacs"]
 	path = site-lisp/flow-for-emacs
 	url = https://github.com/flowtype/flow-for-emacs.git
+  ignore = dirty
