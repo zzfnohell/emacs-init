@@ -1,0 +1,32 @@
+* text=auto
+
+.projectile    text eol=lf
+.gitattributes text eol=lf
+.gitignore     text eol=lf
+.gitmodules    text eol=lf
+
+.* text eol=lf
+
+*.txt text eol=lf
+
+*.c text eof=lf
+*.h text eof=lf
+
+*.el text eol=lf
+*.sh text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.md     text eol=lf
+*.html     text eol=lf
+
+*.csproj text eol=crlf
+*.sln text eol=crlf
+*.bat text eol=crlf
+*.cs     text eol=crlf
+*.cshtml text eol=crlf
+
+*.png binary
+*.jpg binary
+*.elc binary
+*.pdf binary
