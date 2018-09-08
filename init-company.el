@@ -82,10 +82,6 @@
   :ensure t
   )
 
-(use-package company-cmake
-  :ensure t
-  )
-
 (use-package company-axiom
   :ensure t
   )
