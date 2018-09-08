@@ -3,16 +3,8 @@
 ;;; Commentary:
 ;; 
 
-(use-package geiser
-	:ensure t
-	 
-	)
+(use-package geiser :ensure t)
 
-(use-package quack
-	:after geiser
-	:ensure t
-	 
-	)
 
 (provide 'init-racket)
 

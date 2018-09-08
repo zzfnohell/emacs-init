@@ -31,19 +31,6 @@
   (add-to-list 'hippie-expand-try-functions-list 'try-complete-lisp-symbol-partially t))
 
 ;; ----------------------------------------------------------------------------
-;; Highlight current sexp
-;; ----------------------------------------------------------------------------
-(use-package hl-sexp
-  :ensure t
-  :init
-  ;; Prevent flickery behaviour due to hl-sexp-mode unhighlighting before each command
-  (after-load 'hl-sexp
-    (defadvice hl-sexp-mode (after unflicker (&optional turn-on) activate)
-      (when turn-on
-        (remove-hook 'pre-command-hook #'hl-sexp-unhighlight)))))
-
-
-;; ----------------------------------------------------------------------------
 ;; Enable desired features for all lisp modes
 ;; ----------------------------------------------------------------------------
 (use-package rainbow-delimiters
