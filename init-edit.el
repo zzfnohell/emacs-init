@@ -78,7 +78,6 @@
 
 (use-package regex-tool :ensure t)
 
-(use-package vline)
 
 (use-package visible-mark
   :ensure t
@@ -122,8 +121,6 @@
     (quietly-read-abbrev-file))
 (setq save-abbrevs t)
 (xterm-mouse-mode 1)
-
-(use-package httpd :ensure t)
 
 (use-package httprepl :ensure t)
 
