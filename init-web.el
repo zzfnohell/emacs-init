@@ -122,6 +122,8 @@
   :mode ("\\.jade$" . jade-mode)
   )
 
+(use-package rjsx-mode :ensure t :mode ("\\.jsx$" . rjsx-mode))
+
 (use-package restclient :ensure t)
 
 (provide 'init-web)
