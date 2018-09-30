@@ -24,16 +24,16 @@
 (use-package ant :ensure t)
 (use-package mvn :ensure t)
 
-
+;; ** JDEE
 (use-package jdee
 	:ensure t
 	:custom
 	(jdee-server-dir (expand-file-name "~/.emacs.d/init/jdee-server/target")))
-
-
 ;; mvn -Dmaven.test.skip=true package
-
 ;; (use-package jdee :ensure t)
+
+;; ***
+
 
 (provide 'init-java)
 ;;; init-java.el ends here
