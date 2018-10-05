@@ -82,7 +82,7 @@
 	:ensure t
   
   :config
-	(setenv "WORKON_HOME" (expand-file-name "~/Applications/anaconda3/envs/"))
+	(setenv "WORKON_HOME" (expand-file-name "~/anaconda3/envs/"))
 	(pyvenv-mode 1)
 	(pyvenv-tracking-mode 1))
 

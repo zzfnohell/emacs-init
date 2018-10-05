@@ -82,7 +82,7 @@
 
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
 (defvar *slime-helper-path*
-  (expand-file-name"~/quicklisp/slime-helper.el"))
+  (expand-file-name "~/quicklisp/slime-helper.el"))
 
 (use-package slime
 	:after slime-company
@@ -92,7 +92,7 @@
 	:config
 	(when (file-exists-p *slime-helper-path*)
     ;; located in quicklisp install directory
-		(load (expand-file-name *slime-helper-path*)))
+		(load *slime-helper-path*))
   
 	(slime-setup '(slime-company))
 	)

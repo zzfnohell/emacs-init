@@ -130,7 +130,8 @@
 (use-package window-number
   :ensure t
   :config
-  (window-number-mode 1)
+  ;; (window-number-mode 1)
+	(window-number-meta-mode)
   )
 
 (use-package minimap :ensure t)
