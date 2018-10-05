@@ -57,8 +57,6 @@
   :config
   (progn
     (setq jedi:complete-on-dot t)
-		(when (memq window-system '(mac ns))
-			(exec-path-from-shell-initialize))
     (add-hook 'python-mode-hook 'jedi:setup)
     (add-hook 'python-mode-hook 'jedi:ac-setup)))
 
