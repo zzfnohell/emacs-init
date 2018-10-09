@@ -6,6 +6,8 @@
 
 ;;; Code:
 
+(use-package js :custom (js-indent-level 2))
+
 (use-package json-mode :ensure t)
 
 (use-package js-comint
