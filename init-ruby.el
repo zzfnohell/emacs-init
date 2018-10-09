@@ -8,53 +8,34 @@
 
 (use-package ruby-mode
   :ensure t
-   
-	;; :ensure-system-package
-  ;; ((rubocop     . "gem install rubocop")
-  ;;  (ruby-lint   . "gem install ruby-lint")
-  ;;  (ripper-tags . "gem install ripper-tags")
-  ;;  (pry         . "gem install pry"))
-  :init
-  (after-load 'ruby-mode
-  ;; Stupidly the non-bundled ruby-mode isn't a derived mode of
-  ;; prog-mode: we run the latter's hooks anyway in that case.
-  (add-hook 'ruby-mode-hook
-            (lambda ()
-              (unless (derived-mode-p 'prog-mode)
-                (run-hooks 'prog-mode-hook)))))
-  :config
-  (progn
-    (add-auto-mode 'ruby-mode
-               "Rakefile\\'"
-               "\\.rake\\'"
-               "\\.rxml\\'"
-               "\\.rjs\\'"
-               "\\.irbrc\\'"
-               "\\.pryrc\\'"
-               "\\.builder\\'"
-               "\\.ru\\'"
-               "\\.gemspec\\'"
-               "Gemfile\\'"
-               "Kirkfile\\'")
+  :mode ("Rakefile\\'"
+         "\\.rake\\'"
+         "\\.rxml\\'"
+         "\\.rjs\\'"
+         "\\.irbrc\\'"
+         "\\.pryrc\\'"
+         "\\.builder\\'"
+         "\\.ru\\'"
+         "\\.gemspec\\'"
+         "Gemfile\\'"
+         "Kirkfile\\'")
+	:ensure-system-package ((rubocop     . "gem install rubocop")
+													(ruby-lint   . "gem install ruby-lint")
+													(ripper-tags . "gem install ripper-tags")
+													(pry         . "gem install pry"))
+	:config
+  (setq ruby-use-encoding-map nil)
+  (add-hook 'ruby-mode-hook 'subword-mode)
+	)
 
-    (setq ruby-use-encoding-map nil)
-    (add-hook 'ruby-mode-hook 'subword-mode)
-    )
-  )
-
-(use-package ruby-hash-syntax
-  :ensure t
-   )
+(use-package ruby-hash-syntax :ensure t)
 
 ;;; Ruby compilation
-(use-package ruby-compilation
-  :ensure t
-   )
+(use-package ruby-compilation :ensure t)
 
 ;;; Robe
 (use-package robe
   :ensure t
-   
   :config
   (progn
     (add-hook 'ruby-mode-hook 'robe-mode)
@@ -65,14 +46,11 @@
 ;;; ri support
 (use-package yari
   :ensure t
-   
   :config (defalias 'ri 'yari)
   )
 
-
 (use-package rsense
   :ensure t
-   
   :config
   (progn
     (setq rsense-home (expand-file-name "~/Application/rsense"))
