@@ -98,10 +98,10 @@
 ;; CSV file
 (use-package csv-mode
   :ensure t
-  :config
-  (progn
-    (add-auto-mode 'csv-mode "\\.[Cc][Ss][Vv]\\'")
-    (setq csv-separators '("," ";" "|" " "))))
+  :mode "\\.[Cc][Ss][Vv]\\'"
+  :init (setq csv-separators '("," ";" "|" " "))
+  )
+
 
 (use-package anyins :ensure t)
 
