@@ -10,10 +10,7 @@
 
 (use-package auto-indent-mode
   :ensure t
-  :init
-  ;; If you want auto-indent on for files
-  (setq auto-indent-on-visit-file t)
-  )
+  :config (auto-indent-global-mode))
 
 (use-package hl-line :ensure nil)
 
@@ -29,8 +26,6 @@
 (use-package auto-highlight-symbol
   :ensure t
   :config (global-auto-highlight-symbol-mode t))
-
-(setq-default indent-tabs-mode nil)
 
 (require 'linum)
 (defvar *linum-disable-major-mode-list*
@@ -125,6 +120,11 @@
 (use-package httprepl :ensure t)
 
 (use-package speedbar)
+
+(use-package ag
+	:ensure t
+	:config 
+	(setq ag-highlight-search t))
 
 (provide 'init-edit)
 
