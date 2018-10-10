@@ -13,7 +13,7 @@
  '(ecb-source-path (quote (("/home/zzfnohell" "home"))))
  '(skeletor-user-directory "~/.emacs.d/init/init-skeletor-projects")
  '(ecb-windows-width 30)
- '(custom-enabled-themes (quote (light-blue)))
+ ;; '(custom-enabled-themes (quote (light-blue)))
  '(projectile-enable-caching t)
  '(projectile-completion-system 'ivy)
  '(httpd-host "0.0.0.0")
