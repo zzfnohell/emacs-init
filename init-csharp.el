@@ -9,7 +9,6 @@
 
 (use-package csharp-mode
 	:ensure t
-   
   :mode "\\.cs\\'"
   :config
   (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
@@ -25,7 +24,6 @@
   (yas-minor-mode-on)
   (turn-on-auto-revert-mode)
   
-  (setq indent-tabs-mode nil)
   (setq c-syntactic-indentation t)
   (c-set-style "ellemtel")
   (setq c-basic-offset 4)

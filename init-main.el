@@ -17,7 +17,6 @@
 
 (require 'init-parameters)
 (require 'init-coding)
-(require 'init-ui)
 (require 'init-edit)
 (require 'init-search)
 (require 'init-purpose)
