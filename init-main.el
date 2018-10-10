@@ -1,14 +1,13 @@
 ;;; init-main.el --- MAIN
+;;; Commentary:
+;;
+
 ;;; Code:
 
 ;; (setq *user-site-lisp-path* (concat user-emacs-directory  "site-lisp/"))
 (add-to-list 'load-path "~/.emacs.d/init/")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/")
-;;(add-to-list 'load-path (concat user-emacs-directory  *user-site-lisp-path*))
-
-;;; Commentary:
-;; 
-
+;; (add-to-list 'load-path (concat user-emacs-directory  *user-site-lisp-path*))
 
 (require 'init-proxy)
 (require 'init-elpa)
@@ -100,6 +99,8 @@
 (require 'init-development)
 
 (require 'init-view)
+
+(require 'custom-template)
 
 (provide 'init-main)
 
