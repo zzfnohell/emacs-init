@@ -61,7 +61,7 @@
 (use-package lsp-html
 	:ensure t
 	:ensure-system-package
-  ((vscode-html-languageserver-bin . "npm i -g vscode-html-languageserver-bin"))
+  ((html-languageserver . "npm i -g vscode-html-languageserver-bin"))
   :config
 	(add-hook 'html-mode-hook #'lsp-html-enable)
 	)
@@ -76,7 +76,7 @@
 (use-package lsp-css
 	:ensure t
 	:ensure-system-package
-  ((vscode-css-languageserver-bin . "npm i -g vscode-css-languageserver-bin"))
+  ((css-languageserver . "npm i -g vscode-css-languageserver-bin"))
 	:config
 	(add-hook 'css-mode-hook #'init-lsp/lsp-css/css-mode-setup)
 	(add-hook 'less-mode-hook #'lsp-less-enable)
