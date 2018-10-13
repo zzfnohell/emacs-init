@@ -38,7 +38,6 @@
 (use-package lsp-java
 	:after (:all lsp-ui-flycheck lsp-ui-sideline)
 	:ensure t
-	 
 	:config
 	(add-hook 'java-mode-hook  'lsp-java-enable)
 	(add-hook 'java-mode-hook  (lambda () (lsp-ui-flycheck-enable t)))
@@ -51,7 +50,6 @@
 
 (use-package lsp-clangd
 	:ensure t
-	 
 	:config
 	(with-eval-after-load 'lsp-mode
 		(require 'lsp-clangd)
@@ -62,8 +60,9 @@
 
 (use-package lsp-html
 	:ensure t
-	 
-	:config
+	:ensure-system-package
+  ((vscode-html-languageserver-bin . "npm i -g vscode-html-languageserver-bin"))
+  :config
 	(add-hook 'html-mode-hook #'lsp-html-enable)
 	)
 
@@ -76,7 +75,8 @@
 
 (use-package lsp-css
 	:ensure t
-	 
+	:ensure-system-package
+  ((vscode-css-languageserver-bin . "npm i -g vscode-css-languageserver-bin"))
 	:config
 	(add-hook 'css-mode-hook #'init-lsp/lsp-css/css-mode-setup)
 	(add-hook 'less-mode-hook #'lsp-less-enable)
@@ -85,13 +85,17 @@
 
 (use-package lsp-go
 	:ensure t
-	 
+	:ensure-system-package 
+  ((go-langserver . "go get -u github.com/sourcegraph/go-langserver")
+   (dep . "go get -u github.com/golang/dep/cmd/dep")
+   (gocode . "go get -u github.com/nsf/gocode"))
 	:config
 	(add-hook 'go-mode-hook #'lsp-go-enable))
 
 (use-package lsp-ocaml
 	:ensure t
-	 
+  :ensure-system-package
+  ((ocaml-language-server . "npm i -g ocaml-language-server"))
 	:config
 	(add-hook 'tuareg-mode-hook #'lsp-ocaml-enable)
 	(add-hook 'caml-mode-hook #'lsp-ocaml-enable)
@@ -102,7 +106,6 @@
 (use-package company-lsp
 	:after company
 	:ensure t
-	 
 	:config
 	(push 'company-lsp company-backends)
 	(setq company-lsp-enable-snippet t

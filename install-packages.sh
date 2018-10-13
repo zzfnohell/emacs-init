@@ -8,40 +8,29 @@ pushd $src_path
 file_name=packages.txt
 apt-get install $(grep -vE "^\s*#" $file_name  | tr "\n" " ")
 
-npm i -g vscode-html-languageserver-bin
-npm i -g vscode-css-languageserver-bin
-npm i -g javascript-typescript-langserver
-npm i -g flow-language-server
-npm i -g ocaml-language-server
 
 # rm -rf ~/.emacs.d/eclipse.jdt.ls/server/
 mkdir -p ~/.emacs.d/eclipse.jdt.ls/server/
 wget http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz -O ~/.emacs.d/eclipse.jdt.ls/jdt-latest.tar
 tar xf ~/.emacs.d/eclipse.jdt.ls/jdt-latest.tar -C ~/.emacs.d/eclipse.jdt.ls/server/
 
-
-pip install 'python-language-server[all]'
-
-go get -u github.com/sourcegraph/go-langserver
-go get -u github.com/golang/dep/cmd/dep
-go get -u github.com/nsf/gocode
-
-
 composer require felixfbecker/language-server
 
 conda install virtualenv
+conda install cython
+conda install yapf
+conda install flake8
+conda install jedi
+conda install jupyter
+
+pip install python-language-server[all]
 # and importmagic for automatic imports
 pip install importmagic
-
-pip install cython
 pip install epc
-pip install flake8
-pip install jedi
-pip install jupyter
 pip install pyflakes
 pip install rope_py3k
 pip install trepan3k
-pip install yapf
+
 
 rustup update
 rustup component add rls-preview rust-analysis rust-src

@@ -22,7 +22,9 @@
 (use-package lsp-javascript-flow
   :after lsp-mode
 	:ensure t
-  :ensure-system-package ((flow-language-server . "npm install -g flow-language-server"))
+  :ensure-system-package
+  ((flow-language-server . "npm i -g flow-language-server")
+   (javascript-typescript-langserver . "npm i -g javascript-typescript-langserver"))
 	:config
 	(add-hook 'js-mode-hook #'lsp-javascript-flow-enable)
   ;; for rjsx-mode support
