@@ -16,12 +16,12 @@ tar xf ~/.emacs.d/eclipse.jdt.ls/jdt-latest.tar -C ~/.emacs.d/eclipse.jdt.ls/ser
 
 composer require felixfbecker/language-server
 
-conda install virtualenv
-conda install cython
-conda install yapf
-conda install flake8
-conda install jedi
-conda install jupyter
+conda install -y virtualenv
+conda install -y cython
+conda install -y yapf
+conda install -y flake8
+conda install -y jedi
+conda install -y jupyter
 
 pip install python-language-server[all]
 # and importmagic for automatic imports
