@@ -12,5 +12,5 @@ sbcl
 lua5.3
 cargo
 realpath
-ruby
-
+opam
+rbenv
