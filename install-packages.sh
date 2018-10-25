@@ -5,10 +5,6 @@ src_path=`dirname $src_path`
 
 pushd $src_path
 
-file_name=packages.txt
-apt-get install $(grep -vE "^\s*#" $file_name  | tr "\n" " ")
-
-
 # rm -rf ~/.emacs.d/eclipse.jdt.ls/server/
 if [ ! -f ~/.emacs.d/eclipse.jdt.ls/jdt-latest.tar ]; then
   mkdir -p ~/.emacs.d/eclipse.jdt.ls/server/
