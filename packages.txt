@@ -11,4 +11,6 @@ clang
 sbcl
 lua5.3
 cargo
+realpath
+ruby
 
