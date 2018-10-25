@@ -10,9 +10,11 @@ apt-get install $(grep -vE "^\s*#" $file_name  | tr "\n" " ")
 
 
 # rm -rf ~/.emacs.d/eclipse.jdt.ls/server/
-mkdir -p ~/.emacs.d/eclipse.jdt.ls/server/
-wget http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz -O ~/.emacs.d/eclipse.jdt.ls/jdt-latest.tar
-tar xf ~/.emacs.d/eclipse.jdt.ls/jdt-latest.tar -C ~/.emacs.d/eclipse.jdt.ls/server/
+if [ ! -f ~/.emacs.d/eclipse.jdt.ls/jdt-latest.tar ]; then
+  mkdir -p ~/.emacs.d/eclipse.jdt.ls/server/
+  wget http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz -O ~/.emacs.d/eclipse.jdt.ls/jdt-latest.tar
+  tar xf ~/.emacs.d/eclipse.jdt.ls/jdt-latest.tar -C ~/.emacs.d/eclipse.jdt.ls/server/
+if
 
 composer require felixfbecker/language-server
 
