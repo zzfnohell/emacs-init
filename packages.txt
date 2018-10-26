@@ -1,4 +1,4 @@
-ctags
+exuberant-ctags
 cscope
 global
 r-base
@@ -11,6 +11,5 @@ clang
 sbcl
 lua5.3
 cargo
-realpath
 opam
 rbenv
