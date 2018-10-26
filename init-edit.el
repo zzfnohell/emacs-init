@@ -26,7 +26,7 @@
     (cond
      ((eq 'windows-nt system-type) (set-font "Monaco" 10))
      ((eq 'darwin system-type) (set-font "Monaco" 10))
-     ((eq 'gnu/linux system-type) (set-font "Monaco" 10))
+     ((eq 'gnu/linux system-type) (set-font "Ubuntu Mono" 12))
      (t (set-font "Ubuntu Mono" 10))))
 
 ;; emacs shell font confusion
