@@ -251,9 +251,12 @@
 
 (use-package ag
 	:ensure t
-	:config 
+	:config
 	(setq ag-highlight-search t))
 
-(provide 'init-edit)
+(use-package rg
+  :ensure t
+  :config (rg-enable-default-bindings))
 
+(provide 'init-edit)
 ;;; init-edit.el ends here

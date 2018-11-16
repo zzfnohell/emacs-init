@@ -3,6 +3,7 @@
 ;;; Commentary:
 ;;;
 
+;;; Code:
 (use-package projectile
   :ensure t
   :config
@@ -11,6 +12,7 @@
 	(projectile-mode +1)
   )
 
-(provide 'init-projectile)
+(use-package projectile-ripgrep :ensure t)
 
-;;; init-porjectile.el ends here
+(provide 'init-projectile)
+;;; init-projectile.el ends here
