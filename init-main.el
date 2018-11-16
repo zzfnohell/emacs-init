@@ -56,6 +56,7 @@
 (require 'init-ess)
 (require 'init-maxima)
 (require 'init-axiom)
+(require 'init-proof)
 
 (require 'init-cc-mode)
 (require 'init-rust)
@@ -64,7 +65,6 @@
 (require 'init-octave)
 (require 'init-lex)
 (require 'init-sl)
-
 
 (require 'init-sage-mode)
 (require 'init-java)
