@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(use-package :ensure t proof-general)
+(use-package proof-general :ensure t)
 
 (provide 'init-proof)
 
