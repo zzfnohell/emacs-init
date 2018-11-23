@@ -19,11 +19,6 @@
     )
   )
 
-(use-package flycheck-flow
-  :ensure t
-  :config
-  (add-hook 'javascript-mode-hook 'flycheck-mode)
-)
 
 (provide 'init-flycheck)
 

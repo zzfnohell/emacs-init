@@ -63,13 +63,6 @@
   (when (executable-find "glslangValidator")
     (add-to-list 'company-backends 'company-glsl)))
 
-(use-package company-flow
-  :ensure t
-  :config
-  (eval-after-load 'company
-    '(add-to-list 'company-backends 'company-flow)))
-
-
 (use-package company-web
   :ensure t
   :config

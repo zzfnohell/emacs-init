@@ -25,6 +25,12 @@
 (setq use-package-always-ensure t)
 (use-package use-package-ensure-system-package :ensure t)
 
+;; (use-package auto-package-update
+;;   :config
+;;   (setq auto-package-update-delete-old-versions t)
+;;   (setq auto-package-update-hide-results t)
+;;   (auto-package-update-maybe))
+
 (require 'bind-key)
 
 (provide 'init-elpa)
