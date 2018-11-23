@@ -1,7 +1,3 @@
-[submodule "site-lisp/flow-for-emacs"]
-	path = site-lisp/flow-for-emacs
-	url = https://github.com/flowtype/flow-for-emacs.git
-  ignore = dirty
 [submodule "jdee-server"]
 	path = jdee-server
 	url = https://github.com/jdee-emacs/jdee-server.git
