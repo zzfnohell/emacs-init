@@ -109,21 +109,10 @@
   :config
   (progn
     (autoload 'turn-on-css-eldoc "css-eldoc")
-    (add-hook 'css-mode-hook 'turn-on-css-eldoc)
-    )
-  )
-
-(use-package sws-mode
-  :ensure t
-  :mode ("\\.styl$" . sws-mode))
-
-(use-package jade-mode
-  :ensure t
-  :mode ("\\.jade$" . jade-mode)
-  )
+    (add-hook 'css-mode-hook 'turn-on-css-eldoc)))
 
 (use-package rjsx-mode :ensure t :mode ("\\.jsx$" . rjsx-mode))
-
+(use-package pug-mode :ensure t)
 (use-package restclient :ensure t)
 
 (provide 'init-web)
