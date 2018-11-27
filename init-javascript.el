@@ -24,6 +24,7 @@
 
 (use-package flow-minor-mode
   :ensure t
+  :after (:all flycheck-flow)
   :config
   (add-hook 'js2-mode-hook 'flow-minor-enable-automatically)
   (with-eval-after-load 'flycheck
