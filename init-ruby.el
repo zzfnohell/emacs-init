@@ -19,10 +19,6 @@
          "\\.gemspec\\'"
          "Gemfile\\'"
          "Kirkfile\\'")
-	:ensure-system-package ((rubocop     . "gem install rubocop")
-													(ruby-lint   . "gem install ruby-lint")
-													(ripper-tags . "gem install ripper-tags")
-													(pry         . "gem install pry"))
 	:config
   (setq ruby-use-encoding-map nil)
   (add-hook 'ruby-mode-hook 'subword-mode)
