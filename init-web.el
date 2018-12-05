@@ -7,6 +7,9 @@
 
 (defun init-web/web-mode/custom-web-mode-hook ()
   "Hooks for Web mode."
+  ;; Indent Level 2
+  (setq web-mode-markup-indent-offset 2)
+
   ;; Syntax Higlighting
   (set-face-attribute 'web-mode-css-rule-face nil :foreground "Pink3")
 
@@ -51,8 +54,7 @@
             (lambda ()
               (set (make-local-variable 'company-backends)
                    '(company-web-html company-files))
-              (company-mode t)))
-  )
+              (company-mode t))))
 
 
 (use-package web-mode
