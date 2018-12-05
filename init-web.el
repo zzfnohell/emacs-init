@@ -7,8 +7,10 @@
 
 (defun init-web/web-mode/custom-web-mode-hook ()
   "Hooks for Web mode."
-  ;; Indent Level 2
+  ;; Indentation
   (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
 
   ;; Syntax Higlighting
   (set-face-attribute 'web-mode-css-rule-face nil :foreground "Pink3")
