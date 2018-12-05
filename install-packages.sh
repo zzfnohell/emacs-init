@@ -29,6 +29,10 @@ pip install pyflakes
 pip install rope_py3k
 pip install trepan3k
 
+gem install rubocop
+gem install ruby-lint
+gem install ripper-tags
+gem install pry
 
 rustup update
 rustup component add rls-preview rust-analysis rust-src
