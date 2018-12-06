@@ -9,7 +9,8 @@
 ;; (use-package take-off )
 
 (defconst *font-list* (list
-                       "Sarasa Mono T SC"
+                       "Sarasa Term SC"
+                       "Roboto Mono"
                        "Ubuntu Mono"
                        "Source Code Pro"
                        "DejaVu Sans Mono"
@@ -19,16 +20,19 @@
 (defun init-edit/set-font (name size)
   "Set default font by NAME and SIZE."
   (let ((s (format "%s-%d" name size)))
-    (add-to-list 'default-frame-alist `(font . ,s))
-    (set-face-attribute 'default t :font s)))
+    (add-to-list 'default-frame-alist `(font . ,s))))
 
 (defun init-edit/select-font ()
   "Select available font."
-  (catch 'loop
-    (dolist (name *font-list*)
-      (when (font-info name)
-          (init-edit/set-font name 12)
-          (throw 'loop name)))))
+  (let* ((found nil)
+         (names *font-list*)
+  		 (name nil))
+    (while (and (not found) names)
+	  (setq name (car names))
+	  (when (and name (font-info name))
+	     (init-edit/set-font name 12)
+		 (setq found t))
+	  (setq names (cdr names)))))
 
 (when window-system (init-edit/select-font))
 
