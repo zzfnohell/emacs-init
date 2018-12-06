@@ -8,26 +8,29 @@
 ;; Access via Web
 ;; (use-package take-off )
 
-(defun set-font (name size)
-  "Set font to NAME and SIZE."
-  (let ((style (format "%s %d" name size)))
-    ;; (add-to-list 'default-frame-alist '(font . style))
-    (set-frame-font style)
-    ;;Setting English Font
-    (set-face-attribute 'default nil :font style)
-    ;; Chinese Font
-    (dolist (charset '(kana han symbol cjk-misc bopomofo))
-      (set-fontset-font
-       (frame-parameter nil 'font)
-       charset
-       (font-spec :family name :size size)))))
+(defconst *font-list* (list
+                       "Sarasa Mono T SC"
+                       "Ubuntu Mono"
+                       "Source Code Pro"
+                       "DejaVu Sans Mono"
+                       "Monaco")
+  "Favored font list.")
 
-(if (not (eq nil window-system))
-    (cond
-     ((eq 'windows-nt system-type) (set-font "Monaco" 12))
-     ((eq 'darwin system-type) (set-font "Monaco" 12))
-     ((eq 'gnu/linux system-type) (set-font "Ubuntu Mono" 12))
-     (t (set-font "Ubuntu Mono" 12))))
+(defun init-edit/set-font (name size)
+  "Set default font by NAME and SIZE."
+  (let ((s (format "%s-%d" name size)))
+    (add-to-list 'default-frame-alist `(font . ,s))
+    (set-face-attribute 'default t :font s)))
+
+(defun init-edit/select-font ()
+  "Select available font."
+  (catch 'loop
+    (dolist (name *font-list*)
+      (when (font-info name)
+          (init-edit/set-font name 12)
+          (throw 'loop name)))))
+
+(when window-system (init-edit/select-font))
 
 ;; emacs shell font confusion
 (defvar ansi-color-for-comint-mode t)
