@@ -13,8 +13,7 @@
   (setq web-mode-code-indent-offset 2)
 
   ;; Syntax Higlighting
-  (set-face-attribute 'web-mode-css-rule-face nil :foreground "Pink3")
-
+  
   ;; Auto-pairs
   (setq web-mode-extra-auto-pairs
         '(("erb"  . (("beg" "end")))
