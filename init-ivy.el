@@ -32,7 +32,7 @@
 
 (use-package swiper
   :after ivy
-	:ensure t
+  :ensure t
   :bind
   (("C-s" . swiper)))
 
@@ -41,15 +41,15 @@
   :after (:all ivy counsel)
   :config
   (add-hook 'counsel-tramp-pre-command-hook
-            '(lambda () 
+            '(lambda ()
                (global-aggressive-indent-mode 0)
                (projectile-mode 0)
                (editorconfig-mode 0)))
-  (add-hook 'counsel-tramp-quit-hook 
-            '(lambda () 
+  (add-hook 'counsel-tramp-quit-hook
+            '(lambda ()
                (global-aggressive-indent-mode 1)
-			         (projectile-mode 1)
-			         (editorconfig-mode 1))))
+               (projectile-mode 1)
+               (editorconfig-mode 1))))
 
 (provide 'init-ivy)
 
