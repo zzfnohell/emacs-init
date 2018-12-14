@@ -9,6 +9,8 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp/")
 ;; (add-to-list 'load-path (concat user-emacs-directory  *user-site-lisp-path*))
 
+(require 'init-system)
+
 (require 'server)
 (unless (server-running-p)
   (setq server-auth-dir (expand-file-name "~/.emacs.d/server"))

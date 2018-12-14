@@ -1,22 +1,11 @@
-
-;;; init-system.el --- System
-;; environment parameters.
-;;; Code:
-
-(defun cygwin-p ()
-  (eq 'cygwin system-type))
-
-(defun linux-p ()
-  (eq 'gnu/linux system-type))
-
-(defun windows-p ()
-  (eq 'windows-nt system-type))
-
-(defun darwin-p ()
-  (eq 'darwin system-type))
+;;; init-system.el ---
 
 ;;; Commentary:
 ;; 
+
+;;; Code:
+
+(setq gc-cons-threshold (* 100 (* 1000  1000)))
 
 (provide 'init-system)
 
