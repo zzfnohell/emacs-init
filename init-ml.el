@@ -33,15 +33,12 @@ indentation rules."
 (use-package auto-complete-nxml :ensure t)
 
 (use-package haml-mode
-  :after markdown-mode
-  :ensure t
-  )
+  :after markdown-mode :ensure t)
 
 ;;; YAML
 (use-package yaml-mode
   :ensure t
-  :mode ("\\.yml$" . yaml-mode)
-  )
+  :mode ("\\.yml$" . yaml-mode))
 
 (provide 'init-ml)
 

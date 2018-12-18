@@ -48,27 +48,22 @@
 
 (use-package rainbow-delimiters :ensure t)
 
-(use-package lsp-javascript-flow
-  :after lsp-mode
-	:ensure t
-  :ensure-system-package
-  ((flow-language-server . "npm i -g flow-language-server")
-   (javascript-typescript-langserver . "npm i -g javascript-typescript-langserver"))
-	:config
-	(add-hook 'js-mode-hook #'lsp-javascript-flow-enable)
-  ;; for rjsx-mode support
-  (add-hook 'rjsx-mode #'lsp-javascript-flow-enable))
+;; (use-package lsp-javascript-flow
+;;   :after (:all lsp-mode js2-mode) 
+;; 	:ensure t
+;;   :ensure-system-package
+;;   ((flow-language-server . "npm i -g flow-language-server")
+;;    (javascript-typescript-langserver . "npm i -g javascript-typescript-langserver"))
+;; 	:config
+;; 	(add-hook 'js-mode-hook #'lsp-javascript-flow-enable)
+;;   (add-hook 'js2-mode-hook #'lsp-javascript-flow-enable)
+;;   ;; for rjsx-mode support
+;;   (add-hook 'rjsx-mode #'lsp-javascript-flow-enable))
 
 (use-package flycheck-flow
   :ensure t
   :config
   (add-hook 'javascript-mode-hook 'flycheck-mode))
-
-(use-package company-flow
-  :ensure t
-  :config
-  (eval-after-load 'company
-    '(add-to-list 'company-backends 'company-flow)))
 
 (use-package indium :ensure t)
 

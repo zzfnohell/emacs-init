@@ -9,19 +9,12 @@
 	:ensure t
 	:config
 	(require 'lsp-clients)
-        (add-hook 'programming-mode-hook 'lsp))
+	(add-hook 'programming-mode-hook 'lsp))
 
 (use-package lsp-ui
   :after (:all markdown-mode lsp-mode)
   :ensure t
-  :demand t
-  :config
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-  (lsp-ui-peek-jump-backward)
-  (lsp-ui-peek-jump-forward)
-  (lsp-ui-peek-find-workspace-symbol "pattern 0")
-  ;; If the server supports custom cross references
-  (lsp-ui-peek-find-custom 'base "$cquery/base"))
+  :config (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
 
 ;; (use-package lsp-python
@@ -67,15 +60,15 @@
     ;; fires for scss-mode because scss-mode is derived from css-mode)
     (lsp-css-enable)))
 
-(use-package lsp-css
-  :ensure t
-  :ensure-system-package
-  ((css-languageserver . "npm i -g vscode-css-languageserver-bin"))
-  :config
-  (add-hook 'css-mode-hook #'init-lsp/lsp-css/css-mode-setup)
-  (add-hook 'less-mode-hook #'lsp-less-enable)
-  (add-hook 'sass-mode-hook #'lsp-scss-enable)
-  (add-hook 'scss-mode-hook #'lsp-scss-enable))
+;; (use-package lsp-css
+;;   :ensure t
+;;   :ensure-system-package
+;;   ((css-languageserver . "npm i -g vscode-css-languageserver-bin"))
+;;   :config
+;;   (add-hook 'css-mode-hook #'init-lsp/lsp-css/css-mode-setup)
+;;   (add-hook 'less-mode-hook #'lsp-less-enable)
+;;   (add-hook 'sass-mode-hook #'lsp-scss-enable)
+;;   (add-hook 'scss-mode-hook #'lsp-scss-enable))
 
 (use-package lsp-go
   :ensure t
@@ -112,10 +105,10 @@
   (dap-ui-mode 1))
 
 ;; Requires Eclispe JDT Server
-(use-package dap-java :ensure t)
+;;(use-package dap-java :ensure t)
 
 ;; pip install "ptvsd>=4.2"
-(use-package dap-python :ensure t)
+;; (use-package dap-python :ensure t)
 
 (provide 'init-lsp)
 
