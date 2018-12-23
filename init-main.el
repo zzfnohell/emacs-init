@@ -76,6 +76,7 @@
 (require 'init-java)
 (require 'init-scala)
 
+(require 'init-ocaml)
 (require 'init-erlang)
 (require 'init-clojure)
 (require 'init-python)
