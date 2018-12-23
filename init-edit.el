@@ -196,7 +196,10 @@
                             (count-lines (point-min) (point-max))))))
             (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
 
-(define-globalized-minor-mode global-linum-mode linum-mode turn-linum-on)
+(define-globalized-minor-mode
+  global-linum-mode
+  linum-mode
+  turn-linum-on)
 
 (global-linum-mode 1)
 
@@ -209,7 +212,6 @@
   :config (global-undo-tree-mode))
 
 (use-package regex-tool :ensure t)
-
 
 (use-package visible-mark
   :ensure t
@@ -257,11 +259,6 @@
 (use-package httprepl :ensure t)
 
 (use-package speedbar)
-
-(use-package ag
-	:ensure t
-	:config
-	(setq ag-highlight-search t))
 
 (use-package rg
   :ensure t
