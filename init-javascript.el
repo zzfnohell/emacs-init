@@ -15,13 +15,13 @@
   :config
   (setq inferior-js-program-command "node"))
 
-(use-package js2-mode 
+(use-package js2-mode
   :ensure t
   :mode (("\\.js\\'" . js2-mode))
   :config
   (add-hook 'js2-mode-hook #'js2-imenu-extras-mode))
 
-(use-package js2-refactor 
+(use-package js2-refactor
   :ensure t
   :after (:all js2-mode)
   :config 
@@ -47,23 +47,6 @@
     (flycheck-add-next-checker 'javascript-flow 'javascript-eslint)))
 
 (use-package rainbow-delimiters :ensure t)
-
-;; (use-package lsp-javascript-flow
-;;   :after (:all lsp-mode js2-mode) 
-;; 	:ensure t
-;;   :ensure-system-package
-;;   ((flow-language-server . "npm i -g flow-language-server")
-;;    (javascript-typescript-langserver . "npm i -g javascript-typescript-langserver"))
-;; 	:config
-;; 	(add-hook 'js-mode-hook #'lsp-javascript-flow-enable)
-;;   (add-hook 'js2-mode-hook #'lsp-javascript-flow-enable)
-;;   ;; for rjsx-mode support
-;;   (add-hook 'rjsx-mode #'lsp-javascript-flow-enable))
-
-(use-package flycheck-flow
-  :ensure t
-  :config
-  (add-hook 'javascript-mode-hook 'flycheck-mode))
 
 (use-package indium :ensure t)
 
