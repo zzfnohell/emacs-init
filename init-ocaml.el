@@ -34,7 +34,8 @@
 (use-package merlin
   :ensure t
   :config
-  (merlin-ac-setup))
+  (add-hook 'tuareg-mode-hook 'merlin-mode)
+  (add-hook 'caml-mode-hook 'merlin-mode))
 
 (use-package reason-mode
   :after (:all merlin)
