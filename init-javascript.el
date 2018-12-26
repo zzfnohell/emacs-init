@@ -24,27 +24,16 @@
 (use-package js2-refactor
   :ensure t
   :after (:all js2-mode)
-  :config 
+  :config
   (add-hook 'js2-mode-hook #'js2-refactor-mode))
 
 (use-package xref-js2
   :ensure t
   :after (:all js2-mode)
-  :config 
-  (add-hook 'js2-mode-hook 
+  :config
+  (add-hook 'js2-mode-hook
             (lambda ()
               (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
-
-
-(use-package flow-minor-mode
-  :ensure t
-  :after (:all flycheck-flow)
-  :config
-  (add-hook 'js2-mode-hook 'flow-minor-enable-automatically)
-  (with-eval-after-load 'flycheck
-    (flycheck-add-mode 'javascript-flow 'flow-minor-mode)
-    (flycheck-add-mode 'javascript-eslint 'flow-minor-mode)
-    (flycheck-add-next-checker 'javascript-flow 'javascript-eslint)))
 
 (use-package rainbow-delimiters :ensure t)
 

@@ -10,15 +10,14 @@
   :ensure t
   :demand t
   :config
-  (add-hook 'after-init-hook 'global-company-mode)
-  )
+  (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package company-lsp
   :after (:all company lsp-mode)
   :ensure t
   :demand t
-  :config (push 'company-lsp company-backends)
-  )
+  :config
+  (push 'company-lsp company-backends))
 
 (use-package company-jedi
   :ensure t
@@ -30,7 +29,6 @@
   :if (featurep 'proof-site)
   :after (:all company))
 
-
 (use-package company-tern
   :ensure t
   :after (:all company)
@@ -38,8 +36,7 @@
 	(add-to-list 'company-backends 'company-tern)
 	(setq company-tern-property-marker "")
 	(setq company-tern-meta-as-single-line t)
-	(setq company-tooltip-align-annotations t)
-	)
+	(setq company-tooltip-align-annotations t))
 
 (use-package company-quickhelp
   :after (:all company)
@@ -48,7 +45,8 @@
 (use-package company-math
   :ensure t
   :after (:all company)
-  :config (add-to-list 'company-backends 'company-math-symbols-unicode))
+  :config
+  (add-to-list 'company-backends 'company-math-symbols-unicode))
 
 ;; (use-package company-inf-ruby
 ;; 	:after (:all company)
@@ -68,25 +66,15 @@
   :config
   (add-to-list 'company-backends 'company-web-html)
   (add-to-list 'company-backends 'company-web-jade)
-  (add-to-list 'company-backends 'company-web-slim)
-  )
+  (add-to-list 'company-backends 'company-web-slim))
 
-(use-package company-shell
-  :ensure t
-  )
+(use-package company-shell :ensure t)
 
-(use-package company-axiom
-  :ensure t
-  )
+(use-package company-axiom :ensure t)
 
-(use-package company-dict
-  :ensure t
-  )
+(use-package company-dict :ensure t)
 
-
-(use-package company-restclient
-  :ensure t
-  )
+(use-package company-restclient :ensure t)
 
 (provide 'init-company)
 
