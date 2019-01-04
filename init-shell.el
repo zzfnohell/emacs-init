@@ -16,17 +16,15 @@
 ;;   (powershell (generate-new-buffer-name "*PowerShell*")))
 ;; (setq-default shell-switcher-new-shell-function 'make-powershell)
 
-(use-package shell-command
-   
-  :config (shell-command-completion-mode))
+(use-package shell-command :config (shell-command-completion-mode))
 
+(use-package fish-mode)
 
-(use-package fish-mode
-   
+(use-package fish-completion
   :config
-  (add-hook 'fish-mode-hook
-            (lambda ()
-              (add-hook 'before-save-hook 'fish_indent-before-save))))
+  (when (and (executable-find "fish")
+             (require 'fish-completion nil t))
+    (global-fish-completion-mode)))
 
 
 ;; (defun clear-shell ()
