@@ -30,7 +30,7 @@
     (while (and (not found) names)
 	  (setq name (car names))
 	  (when (and name (font-info name))
-	     (init-edit/set-font name 16)
+	     (init-edit/set-font name 12)
 		 (setq found t))
 	  (setq names (cdr names)))))
 
