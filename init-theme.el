@@ -4,7 +4,6 @@
 ;; 
 
 ;;; Code:
-(use-package color-theme :ensure t)
 
 (provide 'init-theme)
 
