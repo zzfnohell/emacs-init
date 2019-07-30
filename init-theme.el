@@ -1,4 +1,4 @@
-;;; init-theme.el --- color-theme
+;;; init-theme.el --- theme
 
 ;;; Commentary:
 ;; 
