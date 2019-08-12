@@ -129,21 +129,19 @@
 ;;(set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;;(add-to-list 'default-frame-alist '(alpha 85 50))
 
-(use-package sr-speedbar :ensure t)
+(use-package sr-speedbar)
 
-(use-package minimap :ensure t)
+(use-package minimap)
 
 (use-package window-number
-  :ensure t
   :config
   ;; (window-number-mode 1)
   (window-number-meta-mode)
   )
 
-(use-package minimap :ensure t)
+(use-package minimap)
 
 (use-package auto-indent-mode
-  :ensure t
   :custom
   (auto-indent-known-indent-level-variables
    '(c-basic-offset lisp-body-indent sgml-basic-offset))
@@ -151,17 +149,15 @@
 
 (use-package hl-line :ensure nil)
 
-(use-package hl-anything :ensure t)
+(use-package hl-anything)
 
-(use-package hl-indent :ensure t)
+(use-package hl-indent)
 
-(use-package highlight-parentheses :ensure t)
+(use-package highlight-parentheses)
 
-(use-package highlight-thing :ensure t)
-
+(use-package highlight-thing)
 
 (use-package auto-highlight-symbol
-  :ensure t
   :config (global-auto-highlight-symbol-mode t))
 
 (require 'linum)
@@ -204,17 +200,14 @@
 (global-linum-mode 1)
 
 (use-package hlinum
-  :ensure t
   :config (hlinum-activate))
 
 (use-package undo-tree
-  :ensure t
   :config (global-undo-tree-mode))
 
-(use-package regex-tool :ensure t)
+(use-package regex-tool)
 
 (use-package visible-mark
-  :ensure t
   :init
   (defface visible-mark-active
     ;; put this before (require 'visible-mark)
@@ -231,18 +224,16 @@
 
 ;; CSV file
 (use-package csv-mode
-  :ensure t
   :mode "\\.[Cc][Ss][Vv]\\'"
   :init (setq csv-separators '("," ";" "|" " "))
   )
 
 
-(use-package anyins :ensure t)
+(use-package anyins)
 
-(use-package popup-kill-ring :ensure t)
+(use-package popup-kill-ring)
 
 (use-package kill-ring-search
-  :ensure t
   :config
   (progn
     (autoload 'kill-ring-search "kill-ring-search"
@@ -256,15 +247,14 @@
 (setq save-abbrevs t)
 (xterm-mouse-mode 1)
 
-(use-package httprepl :ensure t)
+(use-package httprepl)
 
 (use-package speedbar)
 
 (use-package rg
-  :ensure t
   :config (rg-enable-default-bindings))
 
-(use-package graphviz-dot-mode :ensure t)
+(use-package graphviz-dot-mode)
 
 (provide 'init-edit)
 ;;; init-edit.el ends here

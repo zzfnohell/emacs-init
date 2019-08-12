@@ -7,7 +7,6 @@
 ;;; Code:
 
 (use-package xcscope
-	:ensure t
   :config
 	(cscope-setup))
 

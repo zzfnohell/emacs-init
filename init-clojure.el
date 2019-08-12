@@ -5,10 +5,10 @@
 
 ;;; Code:
 
-(use-package clojure-mode :ensure t)
-(use-package cljsbuild-mode :ensure t)
-(use-package elein :ensure t)
-(use-package cider :ensure t)
+(use-package clojure-mode)
+(use-package cljsbuild-mode)
+(use-package elein)
+(use-package cider)
 
 
 (provide 'init-clojure)

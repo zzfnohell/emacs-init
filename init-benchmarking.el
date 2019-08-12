@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(use-package esup :ensure t)
+(use-package esup)
 
 (provide 'init-benchmarking)
 

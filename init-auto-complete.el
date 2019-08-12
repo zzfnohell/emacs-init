@@ -6,7 +6,6 @@
 ;;; Code:
 
 (use-package auto-complete
-	:ensure t
 	:demand t
   :config
 	(let ((x "~/.emacs.d/auto-complete/ac-dict"))

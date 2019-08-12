@@ -19,10 +19,9 @@
 
   )
 
-(use-package groovy-mode :ensure t)
+(use-package groovy-mode)
 
 (use-package flycheck-gradle
-  :ensure t
   :commands (flycheck-gradle-setup)
   :init
   (mapc
@@ -30,12 +29,11 @@
      (add-hook x #'flycheck-gradle-setup))
    '(java-mode-hook kotlin-mode-hook)))
 
-(use-package ant :ensure t)
-(use-package mvn :ensure t)
+(use-package ant)
+(use-package mvn)
 
 ;; ** JDEE
 (use-package jdee
-	:ensure t
 	:custom
 	(jdee-server-dir (expand-file-name "~/.emacs.d/init/jdee-server/target")))
 

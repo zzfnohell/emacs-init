@@ -3,7 +3,6 @@
 ;;; Commentary:
 ;; 
 (use-package  window-purpose
-	:ensure t
 	:config
 	(purpose-mode)
 	(require 'window-purpose-x)

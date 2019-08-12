@@ -12,14 +12,13 @@
 ;; go get github.com/rogpeppe/godef
 
 (use-package go-guru
-	:ensure t
   :config
 	(go-guru-hl-identifier-mode)
   (add-hook 'go-mode-hook #'go-guru-hl-identifier-mode)
 	)
 
-(use-package go-rename :ensure t)
-(use-package flycheck-gometalinter :ensure t)
+(use-package go-rename)
+(use-package flycheck-gometalinter)
 
 (use-package company-go
   :after (go-mode company)

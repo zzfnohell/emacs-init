@@ -6,17 +6,13 @@
 ;;; Code:
 
 (use-package bison-mode
-	:ensure t
-	 
   :mode (("\\.lex\\'" . bison-mode)
          ("\\.yy\\'" . bison-mode)
          ("\\.y\\'" . bison-mode))
   )
 
 
-(use-package lex
-  :ensure t
-   )
+(use-package lex)
 
 (provide 'init-lex)
 

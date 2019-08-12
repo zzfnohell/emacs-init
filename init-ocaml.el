@@ -31,7 +31,6 @@
     (setq refmt-command refmt-bin)))
 
 (use-package merlin
-  :ensure t
   :config
   (setq merlin-use-auto-complete-mode t)
   (setq merlin-error-after-save nil)
@@ -40,20 +39,17 @@
 
 (use-package reason-mode
   :after (:all merlin)
-  :ensure t
   :config
   (add-hook 'reason-mode-hook (lambda ()
                                 (add-hook 'before-save-hook 'refmt-before-save)
                                 (merlin-mode))))
 
 (use-package utop
-  :ensure t
   :config
   (autoload 'utop-setup-ocaml-buffer "utop" "TopLevel for OCaml" t))
 
 (use-package tuareg
   :after (:all tuareg utop)
-  :ensure t
   :mode (("\\.ml[ily]?$" . tuareg-mode)
          ("\\.topml$" . tuareg-mode))
   :config

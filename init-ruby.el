@@ -7,7 +7,6 @@
 ;;; Code:
 
 (use-package ruby-mode
-  :ensure t
   :mode ("Rakefile\\'"
          "\\.rake\\'"
          "\\.rxml\\'"
@@ -24,14 +23,13 @@
   (add-hook 'ruby-mode-hook 'subword-mode)
 	)
 
-(use-package ruby-hash-syntax :ensure t)
+(use-package ruby-hash-syntax)
 
 ;;; Ruby compilation
-(use-package ruby-compilation :ensure t)
+(use-package ruby-compilation)
 
 ;;; Robe
 (use-package robe
-  :ensure t
   :config
   (progn
     (add-hook 'ruby-mode-hook 'robe-mode)
@@ -41,12 +39,10 @@
 
 ;;; ri support
 (use-package yari
-  :ensure t
   :config (defalias 'ri 'yari)
   )
 
 (use-package rsense
-  :ensure t
   :config
   (progn
     (setq rsense-home (expand-file-name "~/Application/rsense"))

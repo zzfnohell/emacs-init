@@ -7,11 +7,9 @@
   (setq-local company-backends
 							'((company-lua))))
 
-(use-package company-lua
-	:ensure t)
+(use-package company-lua)
 
 (use-package lua-mode
-	:ensure t
 	:init
 	(add-hook 'lua-mode-hook #'local-lua-mode-company-init)
   :config

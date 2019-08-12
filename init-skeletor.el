@@ -4,7 +4,6 @@
 ;; 
 
 (use-package skeletor
-	:ensure t
 	:config
 	(skeletor-define-template "skewer-index-html-package"
 		:title "Skewer Index Html"

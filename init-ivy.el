@@ -4,7 +4,6 @@
 ;;
 
 (use-package  ivy
-  :ensure t
   :bind (("C-c C-r" . ivy-resume)
          ("<f6>" . ivy-resume))
   :config
@@ -14,7 +13,6 @@
 
 (use-package counsel
   :after ivy
-  :ensure t
   :bind
   (("M-x" . counsel-M-x)
    ("C-x C-f" . counsel-find-file)
@@ -32,7 +30,6 @@
 
 (use-package swiper
   :after ivy
-  :ensure t
   :bind
   (("C-s" . swiper)))
 

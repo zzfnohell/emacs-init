@@ -46,7 +46,6 @@
   )
 
 (use-package company-c-headers
-  :ensure t
   :after (:all company)
   :config
   (add-to-list 'company-backends 'company-c-headers)
@@ -55,27 +54,22 @@
   )
 
 
-(use-package clang-format	:ensure t)
+(use-package clang-format)
 
 ;;opencl source file.
 (add-to-list 'auto-mode-alist '("\\.h$" . c-mode))
 
-(use-package cmake-mode :ensure t)
+(use-package cmake-mode)
 
 (use-package opencl-mode
-	:ensure t
-  :init (add-to-list 'auto-mode-alist '("\\.cl\\'" . opencl-mode))
-  )
+  :init (add-to-list 'auto-mode-alist '("\\.cl\\'" . opencl-mode)))
 
-(use-package shader-mode :ensure t)
+(use-package shader-mode)
 
 (use-package rtags
-	:ensure t
-	:if (and (executable-find "rdm") (executable-find "rc"))
-	)
+	:if (and (executable-find "rdm") (executable-find "rc")))
 
 (use-package cmake-ide
-  :ensure t
 	:if (featurep 'rtags)
   :config
 	(require 'rtags)

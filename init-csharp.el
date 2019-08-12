@@ -8,7 +8,6 @@
 
 
 (use-package csharp-mode
-	:ensure t
   :mode "\\.cs\\'"
   :config
   (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
@@ -41,7 +40,6 @@
 ;; WIN scoop install omnisharp
 (use-package omnisharp
   :after csharp-mode
-  :ensure t
   :init (setq omnisharp-server-executable-path "OmniSharp.exe")
   :config
   (add-hook 'csharp-mode-hook 'init-csharp/csharp-mode-setup t)

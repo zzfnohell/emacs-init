@@ -6,18 +6,17 @@
 
 ;;; Code:
 
-(use-package paredit :ensure t)
+(use-package paredit)
 
-(use-package lispy :ensure t)
+(use-package lispy)
 
-(use-package diminish :ensure t)
+(use-package diminish)
 
-(use-package lively :ensure t)
+(use-package lively)
 
 (require 'derived)
 
 (use-package pretty-mode
-  :ensure t
   :config (autoload 'turn-on-pretty-mode "pretty-mode"))
 
 
@@ -34,13 +33,11 @@
 ;; Enable desired features for all lisp modes
 ;; ----------------------------------------------------------------------------
 (use-package rainbow-delimiters
-  :ensure t
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
   )
 
 (use-package redshank
-  :ensure t
   :after (:all diminish)
   :config
   (progn
@@ -76,9 +73,9 @@
     )
   )
 
-(use-package eldoc-eval :ensure t)
+(use-package eldoc-eval)
 
-(use-package macrostep :ensure t)
+(use-package macrostep)
 
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
 (defvar *slime-helper-path*
@@ -86,7 +83,6 @@
 
 (use-package slime
 	:after slime-company
-	:ensure t
   :init
 	(setq inferior-lisp-program "sbcl")
 	:config
@@ -97,10 +93,9 @@
 	(slime-setup '(slime-company))
 	)
 
-(use-package slime-company :ensure t)
+(use-package slime-company)
 
 ;; (use-package ac-slime
-;; 	:ensure t
 ;; 	:after (:all slime cl-lib auto-complete)
 ;; 	:config
 ;; 	(progn 

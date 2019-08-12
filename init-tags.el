@@ -6,7 +6,6 @@
 ;;; Code:
 
 (use-package ggtags
-	:ensure t
   :config
   (add-hook 'c-mode-common-hook
             (lambda ()
@@ -15,7 +14,6 @@
   )
 
 (use-package ctags-update
-  :ensure t
   :config
   (ctags-global-auto-update-mode)
   (setq ctags-update-prompt-create-tags nil)

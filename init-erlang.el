@@ -7,7 +7,6 @@
 ;;; Code:
 
 (use-package erlang
-	:ensure t
 	:config
 	(require 'erlang-start))
 

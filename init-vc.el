@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(use-package ahg :ensure t)
+(use-package ahg)
 
 ;; (require 'diff-mode)
 ;; (require 'easymenu)
@@ -14,7 +14,6 @@
 ;; (require 'vc-annotate)
 
 (use-package magit
-	:ensure t
 	:config
 	(setq magit-refresh-status-buffer nil))
 

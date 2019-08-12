@@ -3,7 +3,7 @@
 ;;; Commentary:
 ;; 
 
-(use-package geiser :ensure t)
+(use-package geiser)
 
 
 (provide 'init-racket)

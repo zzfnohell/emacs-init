@@ -28,16 +28,14 @@ indentation rules."
       (backward-char) (insert "\n"))
     (indent-region begin end)))
 
-(use-package markdown-mode :ensure t)
+(use-package markdown-mode)
 
-(use-package auto-complete-nxml :ensure t)
+(use-package auto-complete-nxml)
 
-(use-package haml-mode
-  :after markdown-mode :ensure t)
+(use-package haml-mode :after markdown-mode)
 
 ;;; YAML
 (use-package yaml-mode
-  :ensure t
   :mode ("\\.yml$" . yaml-mode))
 
 (provide 'init-ml)

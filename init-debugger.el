@@ -6,10 +6,7 @@
 ;;; Code:
 
 
-(use-package realgud
-  :ensure t
-  :init (setq gdb-many-windows t)
-  )
+(use-package realgud :init (setq gdb-many-windows t))
 
 (provide 'init-debugger)
 

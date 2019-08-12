@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(use-package haskell-mode	:ensure t)
+(use-package haskell-mode)
 
 (use-package ghci-completion
   :config (add-hook 'inferior-haskell-mode-hook 'turn-on-ghci-completion))

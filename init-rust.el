@@ -9,7 +9,6 @@
 
 (use-package rust-mode
   :after flycheck-mode
-  :ensure t
   :mode ("\\.rs\\'" . rust-mode)
   :config
   (add-hook 'rust-mode-hook #'flycheck-mode)
@@ -17,13 +16,11 @@
 
 (use-package lsp-rust
   :after (:all markdown-mode lsp-mode rust-mode)
-  :ensure t
 	:config
   (add-hook 'rust-mode-hook #'lsp-rust-enable)
   )
 
 (use-package flycheck-rust
-  :ensure t
   :config
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
   )

@@ -59,7 +59,6 @@
 
 
 (use-package web-mode
-  :ensure t
   :mode (
          ("\\.phtml\\'" . web-mode)
          ("\\.tpl\\.php\\'" . web-mode)
@@ -76,16 +75,15 @@
   (add-hook 'web-mode-hook  'init-web/web-mode/custom-web-mode-hook)
   )
 
-(use-package web-beautify :ensure t)
+(use-package web-beautify)
 
-(use-package impatient-mode :ensure t)
+(use-package impatient-mode)
 
-(use-package react-snippets :ensure t)
+(use-package react-snippets)
 
 ;; CSS
 ;;; Colourise CSS colour literals
 (use-package rainbow-mode
-  :ensure t
   :config
   (progn
     (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
@@ -94,29 +92,24 @@
   )
 
 ;;; SASS and SCSS
-(use-package sass-mode
-  :after markdown-mode
-  :ensure t
-  )
+(use-package sass-mode :after markdown-mode)
 
 (use-package scss-mode
-  :ensure t
   :config (setq-default scss-compile-at-save nil))
 
 ;;; LESS
-(use-package less-css-mode :ensure t)
+(use-package less-css-mode)
 
 ;;; Use eldoc for syntax hints
 (use-package css-eldoc
-  :ensure t
   :config
   (progn
     (autoload 'turn-on-css-eldoc "css-eldoc")
     (add-hook 'css-mode-hook 'turn-on-css-eldoc)))
 
-(use-package rjsx-mode :ensure t :mode ("\\.jsx$" . rjsx-mode))
-(use-package pug-mode :ensure t)
-(use-package restclient :ensure t)
+(use-package rjsx-mode :mode ("\\.jsx$" . rjsx-mode))
+(use-package pug-mode)
+(use-package restclient)
 
 (provide 'init-web)
 
