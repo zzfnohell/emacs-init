@@ -264,5 +264,7 @@
   :ensure t
   :config (rg-enable-default-bindings))
 
+(use-package graphviz-dot-mode :ensure t)
+
 (provide 'init-edit)
 ;;; init-edit.el ends here
