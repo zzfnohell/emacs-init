@@ -13,34 +13,14 @@
 ;; 	(load-file (concat cedet-root-path "contrib/cedet-contrib-load.el")))
 
 (require 'cedet)
-(require 'eieio)
-(require 'eieio-speedbar)
-(require 'eieio-opt)
-(require 'eieio-base)
-(require 'ede/source)
-(require 'ede/base)
-(require 'ede/auto)
-(require 'ede/proj)
-(require 'ede/proj-archive)
-(require 'ede/proj-aux)
-(require 'ede/proj-comp)
-(require 'ede/proj-elisp)
-(require 'ede/proj-info)
-(require 'ede/proj-misc)
-(require 'ede/proj-obj)
-(require 'ede/proj-prog)
-(require 'ede/proj-scheme)
-(require 'ede/proj-shared)
-
-(setq semantic-ectag-program "ctags")
+(require 'semantic)
+(require 'ede)
 
 ;;;; Semantic DataBase directory
 (setq semanticdb-default-save-directory
       (expand-file-name "~/.emacs.d/semanticdb"))
 
 ;;;; Semantic's customization
-(semantic-mode 1)
-
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
 ;;(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
@@ -52,17 +32,7 @@
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
 
-
-(require 'semantic/ia)
-(require 'semantic/bovine/gcc)
-(require 'semantic/bovine/c)
-
-(require 'semantic/db)
-(require 'semantic/c nil 'noerror)
-(require 'semantic/decorate/include nil 'noerror)
-
-
-
+(semantic-mode 1)
 
 ;;;; System header files
 ;; (semantic-add-system-include "~/exp/include/boost_1_37" 'c++-mode)
@@ -80,24 +50,21 @@
 (add-hook 'semantic-init-hooks 'init-cedet/semantic-hook)
 
 ;;;; Customization of Semanticdb
-;; enable support for gnu global
-(semanticdb-enable-gnu-global-databases 'c-mode)
-(semanticdb-enable-gnu-global-databases 'c++-mode)
 ;; if you want to enable support for gnu global
-(when (cedet-gnu-global-version-check t)
-  (semanticdb-enable-gnu-global-databases 'c-mode)
-  (semanticdb-enable-gnu-global-databases 'c++-mode))
+(when (symbol-function 'cedet-gnu-global-version-check)
+  (when (cedet-gnu-global-version-check t)
+    (semanticdb-enable-gnu-global-databases 'c-mode)
+    (semanticdb-enable-gnu-global-databases 'c++-mode)))
+
 ;; enable ctags for some languages:
 ;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
-;; (when (cedet-ectag-version-check t)
-;;   (semantic-load-enable-primary-exuberent-ctags-support))
-
+(when (symbol-function 'cedet-ectag-version-check)
+  (when (cedet-ectag-version-check t)
+    (semantic-load-enable-primary-exuberent-ctags-support)))
 
 ;;;; EDE's customization
-(require 'ede)
 (global-ede-mode t)
 (ede-enable-generic-projects)
-
 
 ;;;; Using EDE for C & C++ projects
 ;; To define a project, you need to add following code:
@@ -150,7 +117,6 @@
 (add-hook 'scheme-mode-hook 'init-cedet/cedet-semantic-hook)
 (add-hook 'emacs-lisp-mode-hook 'init-cedet/cedet-semantic-hook)
 (add-hook 'erlang-mode-hook 'init-cedet/cedet-semantic-hook)
-
 
 ;;;; Names completion
 (defun init-cedet/c-mode-common-cedet-hook ()
