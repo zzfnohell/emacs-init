@@ -16,6 +16,7 @@
  ;; '(custom-enabled-themes (quote (light-blue)))
  '(projectile-enable-caching t)
  '(projectile-completion-system 'ivy)
+ '(semantic-idle-scheduler-idle-time 5)
  '(httpd-host "0.0.0.0")
  '(httpd-port 2020)
  '(minimap-window-location (quote right))
