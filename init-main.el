@@ -112,13 +112,11 @@
 )
 
 
-(let ((gc-cons-threshold most-positive-fixnum)
-      (file-name-handler-alist nil))
+(let ((file-name-handler-alist nil))
   (require 'benchmark-init-modes)
   (require 'benchmark-init)
   (benchmark-init/activate)
-  (init-main/main)
-  )
+  (init-main/main))
 
 
 (provide 'init-main)
