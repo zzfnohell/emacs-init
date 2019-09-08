@@ -4,8 +4,6 @@
 ;; 
 
 ;;; Code:
-(use-package flymake-lua
-	:init (add-hook 'lua-mode-hook 'flymake-lua-load))
 
 (provide 'init-flymake)
 
