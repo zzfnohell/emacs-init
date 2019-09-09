@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(setq gc-cons-threshold (* 100 (* 1000  1000)))
+;; (setq gc-cons-threshold (* 100 (* 1000  1000)))
 
 (provide 'init-system)
 
