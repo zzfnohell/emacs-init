@@ -17,9 +17,6 @@
 
 (require 'semantic)
 (require 'semantic/ia)
-(require 'semantic/senator)
-
-(require 'ede)
 
 ;;;; Semantic DataBase directory
 (setq semanticdb-default-save-directory
