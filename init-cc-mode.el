@@ -75,16 +75,6 @@
 	(require 'rtags)
   (cmake-ide-setup))
 
-
-(use-package lsp-clangd
-  :after (:all lsp-mode)
-  :config 
-  (with-eval-after-load 'lsp-mode
-    (require 'lsp-clangd)
-    (add-hook 'c-mode-hook #'lsp-clangd-c-enable)
-    (add-hook 'c++-mode-hook #'lsp-clangd-c++-enable)
-    (add-hook 'objc-mode-hook #'lsp-clangd-objc-enable)))
-  
 (provide 'init-cc-mode)
 
 ;;; init-cc-mode.el ends here

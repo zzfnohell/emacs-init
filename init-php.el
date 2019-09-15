@@ -13,10 +13,6 @@
                (company-mode t)
                (add-to-list 'company-backends 'company-ac-php-backend))))
 
-(use-package lsp-php
-	:config
-	(add-hook 'php-mode-hook #'lsp-php-enable))
-
 (provide 'init-php)
 
 ;;; init-php.el ends here

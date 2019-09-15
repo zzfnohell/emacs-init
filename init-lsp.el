@@ -17,7 +17,12 @@
   )
 
 (use-package lsp-ui :commands lsp-ui-mode)
-(use-package company-lsp :commands company-lsp)
+
+(use-package company-lsp
+  :after (:all company lsp-mode)
+  :demand t
+  :config
+  (push 'company-lsp company-backends))
 
 (use-package company-lsp
   :after company
@@ -38,6 +43,19 @@
 ;; (use-package dap-python 
 ;;   :ensure-system-package 
 ;;   ((ptvsd . "pip install ptvsd")))
+
+;; (use-package lsp-clangd
+;;   :after (:all lsp-mode)
+;;   :config 
+;;   (with-eval-after-load 'lsp-mode
+;;     (require 'lsp-clangd)
+;;     (add-hook 'c-mode-hook #'lsp-clangd-c-enable)
+;;     (add-hook 'c++-mode-hook #'lsp-clangd-c++-enable)
+;;     (add-hook 'objc-mode-hook #'lsp-clangd-objc-enable)))
+
+;; (use-package lsp-php
+;;   :config
+;;   (add-hook 'php-mode-hook #'lsp-php-enable))
 
 (provide 'init-lsp)
 

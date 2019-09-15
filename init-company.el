@@ -11,11 +11,7 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
-(use-package company-lsp
-  :after (:all company lsp-mode)
-  :demand t
-  :config
-  (push 'company-lsp company-backends))
+
 
 (use-package company-jedi
   :after (:all company jedi)
