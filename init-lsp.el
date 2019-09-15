@@ -19,12 +19,6 @@
 (use-package lsp-ui :commands lsp-ui-mode)
 
 (use-package company-lsp
-  :after (:all company lsp-mode)
-  :demand t
-  :config
-  (push 'company-lsp company-backends))
-
-(use-package company-lsp
   :after company
   :config
   (push 'company-lsp company-backends)
