@@ -13,7 +13,12 @@
 ;; 	(load-file (concat cedet-root-path "contrib/cedet-contrib-load.el")))
 
 (require 'cedet)
+(require 'cedet-global)
+
 (require 'semantic)
+(require 'semantic/ia)
+(require 'semantic/senator)
+
 (require 'ede)
 
 ;;;; Semantic DataBase directory
@@ -51,16 +56,14 @@
 
 ;;;; Customization of Semanticdb
 ;; if you want to enable support for gnu global
-(when (symbol-function 'cedet-gnu-global-version-check)
-  (when (cedet-gnu-global-version-check t)
-    (semanticdb-enable-gnu-global-databases 'c-mode)
-    (semanticdb-enable-gnu-global-databases 'c++-mode)))
+(when (cedet-gnu-global-version-check t)
+  (semanticdb-enable-gnu-global-databases 'c-mode)
+  (semanticdb-enable-gnu-global-databases 'c++-mode))
 
 ;; enable ctags for some languages:
 ;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
-(when (symbol-function 'cedet-ectag-version-check)
-  (when (cedet-ectag-version-check t)
-    (semantic-load-enable-primary-exuberent-ctags-support)))
+;; (when (cedet-ectag-version-check t)
+;;   (semantic-load-enable-primary-exuberent-ctags-support))
 
 ;;;; EDE's customization
 (global-ede-mode t)
