@@ -20,7 +20,7 @@
 ;;  (server-start))
 
 (require 'init-parameters)
-(require 'init-coding)
+(require 'init-coding-system)
 (require 'init-edit)
 (require 'init-search)
 (require 'init-purpose)
