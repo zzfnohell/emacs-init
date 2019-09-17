@@ -3,6 +3,9 @@
 ;;
 
 ;;; Code:
+(when (and (version< "25" emacs-version)
+           (version< emacs-version "26.3"))
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 ;; (setq *user-site-lisp-path* (concat user-emacs-directory  "site-lisp/"))
 (add-to-list 'load-path "~/.emacs.d/init/")
