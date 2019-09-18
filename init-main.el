@@ -17,6 +17,7 @@
 (require 'init-elpa)
 (require 'init-benchmarking)
 (require 'init-utils)
+(require 'init-monitor)
 (require 'server)
 ;; (unless (server-running-p)
 ;;  (setq server-auth-dir (expand-file-name "~/.emacs.d/server"))
