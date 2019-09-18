@@ -41,7 +41,12 @@
 
 (use-package pyvenv
   :config
-	(setenv "WORKON_HOME" (expand-file-name "~/anaconda3/envs/"))
+  (let ((anaconda-envs-path (expand-file-name "~/anaconda3/envs/"))
+        (berryconda-envs-path (expand-file-name "~/berryconda3/envs/")))
+    (cond 
+     ((file-directory-p anaconda-envs-path) (setenv "WORKON_HOME" anaconda-envs-path))
+     ((file-directory-p anaconda-envs-path) (setenv "WORKON_HOME" berryconda-envs-path))
+     (t t)))
 	(pyvenv-mode 1)
 	(pyvenv-tracking-mode 1))
 
