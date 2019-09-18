@@ -125,83 +125,8 @@
 (add-hook 'c-mode-common-hook 'init-cedet/c-mode-common-cedet-hook)
 
 
-;;;; Names completion with auto-complete package
-(defun init-cedet/c-mode-cedet-hook ()
-  (add-to-list 'ac-sources 'ac-source-gtags)
-  (add-to-list 'ac-sources 'ac-source-semantic))
-(add-hook 'c-mode-common-hook 'init-cedet/c-mode-cedet-hook)
-
-
-(global-semantic-decoration-mode 1)
-(semantic-toggle-decoration-style "semantic-tag-boundary" -1)
-
-(autoload 'senator-try-expand-semantic "senator")
-
-(setq hippie-expand-try-functions-list
-      '(senator-try-expand-semantic
-        try-expand-dabbrev
-        try-expand-dabbrev-visible
-        try-expand-dabbrev-all-buffers
-        try-expand-dabbrev-from-kill
-        try-expand-list
-        try-expand-list-all-buffers
-        try-expand-line
-        try-expand-line-all-buffers
-        try-complete-file-name-partially
-        try-complete-file-name
-        try-expand-whole-kill))
-
-(setq senator-minor-mode-name "SN")
-(setq semantic-imenu-auto-rebuild-directory-indexes nil)
-
-(setq cedet-sys-include-dirs
-      (list
-       "/usr/include"
-       "/usr/local/include"))
-
-(setq semantic-c-dependency-system-include-path "/usr/include/")
-
-(let ((include-dirs *cedet-user-include-dirs*))
-  (setq include-dirs (append include-dirs cedet-sys-include-dirs))
-  (mapc (lambda (dir)
-          (semantic-add-system-include dir 'c++-mode)
-          (semantic-add-system-include dir 'c-mode))
-        include-dirs))
-
-
-(defun init-cedet/recur-list-files (dir re)
-  "Returns list of files in directory matching to given regex."
-  (when (file-accessible-directory-p dir)
-    (let ((files (directory-files dir t)) matched)
-      (dolist (file files matched)
-        (let ((fname (file-name-nondirectory file)))
-          (cond
-           ((or (string= fname ".")
-                (string= fname "..")) nil)
-           ((and (file-regular-p file)
-                 (string-match re fname))
-            (setq matched (cons file matched)) (message fname))
-           ((file-directory-p file)
-            (let ((tfiles (init-cedet/recur-list-files file re)))
-              (when tfiles (setq matched (append matched tfiles)))))))))))
-
-(defun init-cedet/preprocess-symbol-directory (dir)
-  (when (file-accessible-directory-p dir)
-    (let ((cfiles (init-cedet/recur-list-files dir "(\\.h|\\.hpp)")))
-      (dolist (file cfiles)
-        (add-to-list 'semantic-lex-c-preprocessor-symbol-file file)))))
-
-(defun init-cedet/add-semantic-include-directory (dir)
-  (semantic-add-system-include dir 'c++-mode)
-  (semantic-add-system-include dir 'c-mode))
-
-(mapc #'init-cedet/preprocess-symbol-directory
-      *semantic-preprocessor-directories*)
-(mapc #'init-cedet/add-semantic-include-directory
-      *semantic-include-directories*)
-
-
 (require 'srecode)
+;;;; Names completion with auto-complete package
 ;; srecode-map-load-path
 (global-srecode-minor-mode 1)
 
