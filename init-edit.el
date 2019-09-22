@@ -256,5 +256,7 @@
 
 (use-package graphviz-dot-mode)
 
+(use-package memory-usage)
+
 (provide 'init-edit)
 ;;; init-edit.el ends here
