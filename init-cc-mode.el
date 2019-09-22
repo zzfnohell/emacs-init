@@ -73,9 +73,8 @@
 	:if (featurep 'rtags)
   :config
 	(require 'rtags)
-  (cmake-ide-setup)
-  )
-  
+  (cmake-ide-setup))
+
 (provide 'init-cc-mode)
 
 ;;; init-cc-mode.el ends here

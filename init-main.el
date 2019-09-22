@@ -3,6 +3,9 @@
 ;;
 
 ;;; Code:
+(when (and (version< "25" emacs-version)
+           (version< emacs-version "26.3"))
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 ;; (setq *user-site-lisp-path* (concat user-emacs-directory  "site-lisp/"))
 (add-to-list 'load-path "~/.emacs.d/init/")
@@ -10,19 +13,18 @@
 ;; (add-to-list 'load-path (concat user-emacs-directory  *user-site-lisp-path*))
 
 (require 'init-system)
-
-(require 'server)
-(unless (server-running-p)
-  (setq server-auth-dir (expand-file-name "~/.emacs.d/server"))
-  (server-start))
-
 (require 'init-proxy)
 (require 'init-elpa)
 (require 'init-benchmarking)
 (require 'init-utils)
+(require 'init-monitor)
+(require 'server)
+;; (unless (server-running-p)
+;;  (setq server-auth-dir (expand-file-name "~/.emacs.d/server"))
+;;  (server-start))
 
 (require 'init-parameters)
-(require 'init-coding)
+(require 'init-coding-system)
 (require 'init-edit)
 (require 'init-search)
 (require 'init-purpose)
@@ -108,6 +110,7 @@
 (require 'init-view)
 
 (require 'custom-template)
+
 
 (provide 'init-main)
 

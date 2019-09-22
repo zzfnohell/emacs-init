@@ -13,34 +13,16 @@
 ;; 	(load-file (concat cedet-root-path "contrib/cedet-contrib-load.el")))
 
 (require 'cedet)
-(require 'eieio)
-(require 'eieio-speedbar)
-(require 'eieio-opt)
-(require 'eieio-base)
-(require 'ede/source)
-(require 'ede/base)
-(require 'ede/auto)
-(require 'ede/proj)
-(require 'ede/proj-archive)
-(require 'ede/proj-aux)
-(require 'ede/proj-comp)
-(require 'ede/proj-elisp)
-(require 'ede/proj-info)
-(require 'ede/proj-misc)
-(require 'ede/proj-obj)
-(require 'ede/proj-prog)
-(require 'ede/proj-scheme)
-(require 'ede/proj-shared)
+(require 'cedet-global)
 
-(setq semantic-ectag-program "ctags")
+(require 'semantic)
+(require 'semantic/ia)
 
 ;;;; Semantic DataBase directory
 (setq semanticdb-default-save-directory
       (expand-file-name "~/.emacs.d/semanticdb"))
 
 ;;;; Semantic's customization
-(semantic-mode 1)
-
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
 ;;(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
@@ -52,17 +34,7 @@
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
 
-
-(require 'semantic/ia)
-(require 'semantic/bovine/gcc)
-(require 'semantic/bovine/c)
-
-(require 'semantic/db)
-(require 'semantic/c nil 'noerror)
-(require 'semantic/decorate/include nil 'noerror)
-
-
-
+(semantic-mode 1)
 
 ;;;; System header files
 ;; (semantic-add-system-include "~/exp/include/boost_1_37" 'c++-mode)
@@ -80,24 +52,19 @@
 (add-hook 'semantic-init-hooks 'init-cedet/semantic-hook)
 
 ;;;; Customization of Semanticdb
-;; enable support for gnu global
-(semanticdb-enable-gnu-global-databases 'c-mode)
-(semanticdb-enable-gnu-global-databases 'c++-mode)
 ;; if you want to enable support for gnu global
 (when (cedet-gnu-global-version-check t)
   (semanticdb-enable-gnu-global-databases 'c-mode)
   (semanticdb-enable-gnu-global-databases 'c++-mode))
+
 ;; enable ctags for some languages:
 ;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
 ;; (when (cedet-ectag-version-check t)
 ;;   (semantic-load-enable-primary-exuberent-ctags-support))
 
-
 ;;;; EDE's customization
-(require 'ede)
 (global-ede-mode t)
 (ede-enable-generic-projects)
-
 
 ;;;; Using EDE for C & C++ projects
 ;; To define a project, you need to add following code:
@@ -151,7 +118,6 @@
 (add-hook 'emacs-lisp-mode-hook 'init-cedet/cedet-semantic-hook)
 (add-hook 'erlang-mode-hook 'init-cedet/cedet-semantic-hook)
 
-
 ;;;; Names completion
 (defun init-cedet/c-mode-common-cedet-hook ()
   (local-set-key "." 'semantic-complete-self-insert)
@@ -159,83 +125,8 @@
 (add-hook 'c-mode-common-hook 'init-cedet/c-mode-common-cedet-hook)
 
 
-;;;; Names completion with auto-complete package
-(defun init-cedet/c-mode-cedet-hook ()
-  (add-to-list 'ac-sources 'ac-source-gtags)
-  (add-to-list 'ac-sources 'ac-source-semantic))
-(add-hook 'c-mode-common-hook 'init-cedet/c-mode-cedet-hook)
-
-
-(global-semantic-decoration-mode 1)
-(semantic-toggle-decoration-style "semantic-tag-boundary" -1)
-
-(autoload 'senator-try-expand-semantic "senator")
-
-(setq hippie-expand-try-functions-list
-      '(senator-try-expand-semantic
-        try-expand-dabbrev
-        try-expand-dabbrev-visible
-        try-expand-dabbrev-all-buffers
-        try-expand-dabbrev-from-kill
-        try-expand-list
-        try-expand-list-all-buffers
-        try-expand-line
-        try-expand-line-all-buffers
-        try-complete-file-name-partially
-        try-complete-file-name
-        try-expand-whole-kill))
-
-(setq senator-minor-mode-name "SN")
-(setq semantic-imenu-auto-rebuild-directory-indexes nil)
-
-(setq cedet-sys-include-dirs
-      (list
-       "/usr/include"
-       "/usr/local/include"))
-
-(setq semantic-c-dependency-system-include-path "/usr/include/")
-
-(let ((include-dirs *cedet-user-include-dirs*))
-  (setq include-dirs (append include-dirs cedet-sys-include-dirs))
-  (mapc (lambda (dir)
-          (semantic-add-system-include dir 'c++-mode)
-          (semantic-add-system-include dir 'c-mode))
-        include-dirs))
-
-
-(defun init-cedet/recur-list-files (dir re)
-  "Returns list of files in directory matching to given regex."
-  (when (file-accessible-directory-p dir)
-    (let ((files (directory-files dir t)) matched)
-      (dolist (file files matched)
-        (let ((fname (file-name-nondirectory file)))
-          (cond
-           ((or (string= fname ".")
-                (string= fname "..")) nil)
-           ((and (file-regular-p file)
-                 (string-match re fname))
-            (setq matched (cons file matched)) (message fname))
-           ((file-directory-p file)
-            (let ((tfiles (init-cedet/recur-list-files file re)))
-              (when tfiles (setq matched (append matched tfiles)))))))))))
-
-(defun init-cedet/preprocess-symbol-directory (dir)
-  (when (file-accessible-directory-p dir)
-    (let ((cfiles (init-cedet/recur-list-files dir "(\\.h|\\.hpp)")))
-      (dolist (file cfiles)
-        (add-to-list 'semantic-lex-c-preprocessor-symbol-file file)))))
-
-(defun init-cedet/add-semantic-include-directory (dir)
-  (semantic-add-system-include dir 'c++-mode)
-  (semantic-add-system-include dir 'c-mode))
-
-(mapc #'init-cedet/preprocess-symbol-directory
-      *semantic-preprocessor-directories*)
-(mapc #'init-cedet/add-semantic-include-directory
-      *semantic-include-directories*)
-
-
 (require 'srecode)
+;;;; Names completion with auto-complete package
 ;; srecode-map-load-path
 (global-srecode-minor-mode 1)
 
