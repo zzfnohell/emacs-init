@@ -14,12 +14,6 @@
   (add-hook 'rust-mode-hook #'flycheck-mode)
   )
 
-(use-package lsp-rust
-  :after (:all markdown-mode lsp-mode rust-mode)
-	:config
-  (add-hook 'rust-mode-hook #'lsp-rust-enable)
-  )
-
 (use-package flycheck-rust
   :config
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
