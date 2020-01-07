@@ -214,6 +214,7 @@
 
 (use-package graphviz-dot-mode)
 
+(use-package memory-usage)
 (global-display-line-numbers-mode)
 
 (provide 'init-edit)
