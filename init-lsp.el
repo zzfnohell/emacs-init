@@ -6,6 +6,8 @@
 ;;; Code:
 (use-package lsp-mode
   :commands lsp
+  :hook ((rust-mode . lsp-deferred) 
+         (go-mode . lsp-deferred))
   ;; :ensure-system-package
   ;; ((bash-language-server . "npm i -g bash-language-server")
   ;;  (vscode-html-languageserver-bin . "npm i -g vscode-html-languageserver-bin")
@@ -24,11 +26,14 @@
   (push 'company-lsp company-backends)
   (setq company-lsp-enable-snippet t company-lsp-cache-candidates t))
 
-;; (use-package dap-mode
-;;   :after (:all lsp-mode)
-;;   :config
-;;   (dap-mode 1)
-;;   (dap-ui-mode 1))
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+(use-package dap-mode
+  :after (:all lsp-mode)
+  :config
+  (dap-mode 1)
+  (dap-ui-mode 1))
+
 
 ;; Requires Eclispe JDT Server
 ;; (use-package dap-java)
