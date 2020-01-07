@@ -44,7 +44,6 @@
 
 (require 'init-vc)
 (require 'init-compile)
-(require 'init-debugger)
 (require 'init-prog)
 (require 'init-xcscope)
 (require 'init-cedet)
@@ -60,6 +59,7 @@
 (require 'init-flymake)
 (require 'init-yasnippet)
 (require 'init-lsp)
+(require 'init-dap)
 
 (require 'init-ess)
 (require 'init-maxima)
