@@ -33,9 +33,9 @@
 (use-package mvn)
 
 ;; ** JDEE
-(use-package jdee
-	:custom
-	(jdee-server-dir (expand-file-name "~/.emacs.d/init/jdee-server/target")))
+;; (use-package jdee
+;; 	:custom
+;; 	(jdee-server-dir (expand-file-name "~/.emacs.d/init/jdee-server/target")))
 
 ;; mvn -Dmaven.test.skip=true package
 ;;
