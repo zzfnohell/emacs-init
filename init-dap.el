@@ -6,7 +6,7 @@
 ;;; Code:
 
 (use-package dap-mode
-  :after (:all lsp-mode)
+  :after (:all lsp-mode lsp-java)
   :config
   (dap-mode 1)
   (dap-ui-mode 1)

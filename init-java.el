@@ -41,7 +41,8 @@
 ;;
 
 ;; ***
-
+(use-package lsp-java
+  :after lsp-mode)
 
 (provide 'init-java)
 ;;; init-java.el ends here
