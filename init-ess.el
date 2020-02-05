@@ -16,8 +16,6 @@
 
 (use-package ess-view)
 
-(use-package julia-mode)
-
 (use-package stan-mode)
 (use-package stan-snippets)
 

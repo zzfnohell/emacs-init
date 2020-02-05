@@ -6,17 +6,17 @@
 ;;; Code:
 
 (use-package flycheck
-  :config (add-hook 'after-init-hook #'global-flycheck-mode))
+  :config 
+  (add-hook 'after-init-hook #'global-flycheck-mode))
+
+(use-package flycheck-inline
+  :after (:all flycheck)
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-inline-mode))
 
 (use-package flycheck-clang-analyzer
   :config
-  (progn
-    (with-eval-after-load 'flycheck
-      (require 'flycheck-clang-analyzer)
-      (flycheck-clang-analyzer-setup))
-    )
-  )
-
+  (flycheck-clang-analyzer-setup))
 
 (provide 'init-flycheck)
 

@@ -10,6 +10,12 @@
 ;; (setq *user-site-lisp-path* (concat user-emacs-directory  "site-lisp/"))
 (add-to-list 'load-path "~/.emacs.d/init/")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/")
+
+;; (let ((default-directory "/usr/local/share/emacs/site-lisp/"))
+;;   (if (find default-directory load-path :test-not #'equal)
+;;       (normal-top-level-add-subdirs-to-load-path)))
+
+
 ;; (add-to-list 'load-path (concat user-emacs-directory  *user-site-lisp-path*))
 
 (require 'init-system)
@@ -62,6 +68,7 @@
 (require 'init-dap)
 
 (require 'init-ess)
+(require 'init-julia)
 (require 'init-maxima)
 (require 'init-axiom)
 (require 'init-proof)

@@ -35,6 +35,11 @@
 
 (use-package indium)
 
+(use-package flycheck-flow
+  :after (:all flycheck)
+  :config
+  (add-hook 'javascript-mode-hook 'flycheck-mode))
+
 (provide 'init-javascript)
 
 ;;; init-javascript.el ends here
