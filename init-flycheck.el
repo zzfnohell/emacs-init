@@ -6,7 +6,7 @@
 ;;; Code:
 
 (use-package flycheck
-  :config 
+  :config
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (use-package flycheck-inline
