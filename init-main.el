@@ -8,11 +8,6 @@
 (let ((default-directory "~/.emacs.d/site-lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-(let ((default-directory "/usr/local/share/emacs/site-lisp/"))
-  (if (find default-directory load-path :test-not #'equal)
-      (normal-top-level-add-subdirs-to-load-path)))
-
-
 (require 'init-system)
 (require 'init-proxy)
 (require 'init-elpa)
