@@ -82,16 +82,13 @@
   (expand-file-name "~/quicklisp/slime-helper.el"))
 
 (use-package slime
-	:after slime-company
   :init
 	(setq inferior-lisp-program "sbcl")
+  (setq slime-contribs '(slime-fancy))
 	:config
 	(when (file-exists-p *slime-helper-path*)
     ;; located in quicklisp install directory
-		(load *slime-helper-path*))
-  
-	(slime-setup '(slime-company))
-	)
+		(load *slime-helper-path*)))
 
 (use-package slime-company)
 
