@@ -64,6 +64,8 @@
 		     :components ("note-org" "note-static")
 		     :author "zzfnohell@gmail.com" )))
 
+(use-package flymd)
+
 (provide 'init-org)
 
 ;;; init-org.el ends here
