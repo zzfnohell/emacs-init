@@ -86,12 +86,12 @@
 (use-package slime
   :init
 	(setq inferior-lisp-program "sbcl")
-  (setq slime-contribs '(slime-fancy))
+  (setq slime-contribs '(slime-fancy slime-company))
 	:config
 	(when (file-exists-p *slime-helper-path*)
     ;; located in quicklisp install directory
 		(load *slime-helper-path*))
-  (slime-setup '(slime-fancy slime-company)))
+  (slime-setup))
 
 ;; (use-package ac-slime
 ;; 	:after (:all slime cl-lib auto-complete)
