@@ -11,8 +11,6 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
-
-
 (use-package company-jedi
   :after (:all company jedi)
   :config (add-to-list 'company-backends 'company-jedi))

@@ -141,12 +141,6 @@
 
 (use-package minimap)
 
-(use-package auto-indent-mode
-  :custom
-  (auto-indent-known-indent-level-variables
-   '(c-basic-offset lisp-body-indent sgml-basic-offset))
-  :config (auto-indent-global-mode))
-
 (use-package hl-line :ensure nil)
 
 (use-package hl-anything)
