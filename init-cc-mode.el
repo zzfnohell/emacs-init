@@ -50,11 +50,7 @@
   :config
   (add-to-list 'company-backends 'company-c-headers)
   (add-hook 'c++-mode-hook 'init-cc-mode/company-semantic-setup)
-  (add-hook 'c-mode-hook 'init-cc-mode/company-semantic-setup)
-  )
-
-
-(use-package clang-format)
+  (add-hook 'c-mode-hook 'init-cc-mode/company-semantic-setup))
 
 ;;opencl source file.
 (add-to-list 'auto-mode-alist '("\\.h$" . c-mode))
