@@ -24,7 +24,8 @@
  '(speedbar-show-unknown-files t)
  '(size-indication-mode t)
  '(indent-tabs-mode nil)
- '(visual-line-mode nil t))
+ '(visual-line-mode nil t)
+ '(init-python/workon-directory "~/anaconda/envs"))
 
 
 

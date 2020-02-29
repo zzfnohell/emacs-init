@@ -39,17 +39,18 @@
 	(defalias 'workon 'pyvenv-workon)
 	(setq elpy-rpc-backend "jedi"))
 
+(defcustom
+  init-python/workon-directory
+  "~/anaconda3/envs"
+  "pyvenv workon home directory."
+  :type 'directory
+  :group 'init-python)
+
 (use-package pyvenv
   :config
-  (let ((anaconda-envs-path (expand-file-name "~/anaconda3/envs/"))
-        (berryconda-envs-path (expand-file-name "~/berryconda3/envs/")))
-    (cond 
-     ((file-directory-p anaconda-envs-path) (setenv "WORKON_HOME" anaconda-envs-path))
-     ((file-directory-p anaconda-envs-path) (setenv "WORKON_HOME" berryconda-envs-path))
-     (t t)))
-	(pyvenv-mode 1)
-	(pyvenv-tracking-mode 1))
-
+  (setenv "WORKON_HOME" init-python/workon-directory)
+  (pyvenv-mode 1)
+  (pyvenv-tracking-mode 1))
 
 (use-package yapfify
   :config (add-hook 'python-mode-hook 'yapf-mode))

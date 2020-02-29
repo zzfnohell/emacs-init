@@ -16,10 +16,10 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(load "~/.emacs.d/init/init-main.el")
 (setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+(when (file-exists-p custom-file)
+  (load custom-file))
 
+(load "~/.emacs.d/init/init-main.el")
 
 ;;; init.el ends here
-(put 'magit-clean 'disabled nil)
