@@ -11,8 +11,10 @@
          ("\\.rng\\'" . nxml-mode)
          ("\\.xslt\\'" . nxml-mode)
          ("\\.svg\\'" . nxml-mode)
-         ("\\.rss\\'" . nxml-mode))
-  )
+         ("\\.rss\\'" . nxml-mode)))
+
+(use-package ini-mode
+  :mode (("\\.ini\\'" . ini-mode)))
 
 ;; See: http://sinewalker.wordpress.com/2008/06/26/pretty-printing-xml-with-emacs-nxml-mode/
 (defun pp-xml-region (begin end)
