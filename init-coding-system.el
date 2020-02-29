@@ -9,8 +9,8 @@
 
 (prefer-coding-system 'utf-8)
 
-(set-language-environment 'utf-8)
-;; (set-language-environment 'Chinese-GBK)
+(when (eq system-type 'windows-nt)
+  (set-language-environment 'Chinese-GBK))
 
 ;; (set-default-coding-systems 'utf-8)
 ;; (set-terminal-coding-system 'utf-8)
@@ -18,7 +18,7 @@
 ;; (set-selection-coding-system 'utf-8)
 ;; (set-buffer-file-coding-system 'utf-8)
 ;; (set-file-name-coding-system 'utf-8)
-;; (modify-coding-system-alist 'process "*" 'gbk)
+;; (modify-coding-system-alist 'process "*" 'utf-8)
 ;; (set-buffer-process-coding-system 'utf-8 'utf-8)
 
 ;; (set-default-coding-systems 'gbk)
