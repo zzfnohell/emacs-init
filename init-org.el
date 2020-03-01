@@ -66,9 +66,6 @@
 
 (use-package flymd)
 
-(use-package org-mode
-  :mode (("\\.org$" . org-mode)))
-
 (provide 'init-org)
 
 ;;; init-org.el ends here
