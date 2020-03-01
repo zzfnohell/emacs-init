@@ -39,16 +39,8 @@
 	(defalias 'workon 'pyvenv-workon)
 	(setq elpy-rpc-backend "jedi"))
 
-(defcustom
-  init-python/workon-directory
-  "~/anaconda3/envs"
-  "pyvenv workon home directory."
-  :type 'directory
-  :group 'init-python)
-
 (use-package pyvenv
   :config
-  (setenv "WORKON_HOME" init-python/workon-directory)
   (pyvenv-mode 1)
   (pyvenv-tracking-mode 1))
 
