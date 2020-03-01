@@ -6,8 +6,7 @@
 ;;; Code:
 
 (use-package flycheck
-  :config
-  (add-hook 'after-init-hook #'global-flycheck-mode))
+  :init (global-flycheck-mode))
 
 (use-package flycheck-clang-analyzer
   :config

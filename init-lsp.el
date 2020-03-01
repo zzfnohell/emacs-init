@@ -32,8 +32,11 @@
   :commands company-lsp)
 
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+
 (use-package lsp-treemacs
-  :commands lsp-treemacs-errors-list)
+  :config
+  (lsp-metals-treeview-enable t)
+  (setq lsp-metals-treeview-show-when-views-received t))
 
 (use-package which-key
   :config

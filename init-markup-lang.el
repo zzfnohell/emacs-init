@@ -1,4 +1,4 @@
-;;; init-ml.el --- Markup Language
+;;; init-markup-lang.el --- Markup Language
 
 ;;; Commentary:
 ;;
@@ -44,8 +44,10 @@ indentation rules."
 
 (use-package markdown-preview-mode
   :config
-  (add-to-list 'markdown-preview-javascript "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"))
+  (add-to-list
+   'markdown-preview-javascript
+   "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"))
 
 (provide 'init-markup-lang)
 
-;;; init-ml.el ends here
+;;; init-markup-lang.el ends here

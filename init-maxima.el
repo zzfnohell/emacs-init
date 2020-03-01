@@ -5,7 +5,6 @@
 
 ;;; Code:
 (use-package auctex
-  :defer t
   :ensure t)
 
 (if (require 'maxima nil 'noerror)

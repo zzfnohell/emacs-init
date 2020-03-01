@@ -5,6 +5,11 @@
 
 ;;; Code:
 
+
+;; Use the Debug Adapter Protocol for running tests and debugging
+;; Posframe is a pop-up tool that must be manually installed for dap-mode
+(use-package posframe)
+
 (use-package dap-mode
   :after (:all lsp-mode lsp-java)
   :config
@@ -17,6 +22,7 @@
   (tooltip-mode 1)
   
   (require 'dap-gdb-lldb)
+  (dap-gdb-lldb-setup)
   (require 'dap-go)
   (require 'dap-chrome)
   (require 'dap-python)
