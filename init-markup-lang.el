@@ -30,16 +30,22 @@ indentation rules."
       (backward-char) (insert "\n"))
     (indent-region begin end)))
 
-(use-package markdown-mode)
-
-(use-package auto-complete-nxml)
-
 (use-package haml-mode :after markdown-mode)
 
 ;;; YAML
 (use-package yaml-mode
   :mode ("\\.yml$" . yaml-mode))
 
-(provide 'init-ml)
+(use-package markdown-mode
+  :mode
+  (("\\.text\\'" . markdown-mode)
+   ("\\.markdown\\'" . markdown-mode)
+   ("\\.md\\'" . markdown-mode)))
+
+(use-package markdown-preview-mode
+  :config
+  (add-to-list 'markdown-preview-javascript "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"))
+
+(provide 'init-markup-lang)
 
 ;;; init-ml.el ends here

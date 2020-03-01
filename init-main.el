@@ -93,8 +93,7 @@
 (require 'init-csharp)
 (require 'init-pascal)
 (require 'init-erc)
-(require 'init-markdown)
-(require 'init-ml)
+(require 'init-markup-lang)
 
 (require 'init-nav)
 
