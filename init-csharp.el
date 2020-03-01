@@ -10,11 +10,8 @@
 (use-package csharp-mode
   :mode "\\.cs\\'"
   :config
-  (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
-  )
+  (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t))
   
-
-
 (defun init-csharp/csharp-mode-setup ()
   (omnisharp-mode)
   (company-mode)
@@ -33,8 +30,7 @@
   (electric-pair-local-mode 1) ;; Emacs 25
 
   (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
-  (local-set-key (kbd "C-c C-c") 'recompile)
-  )
+  (local-set-key (kbd "C-c C-c") 'recompile))
 
 ;; CALL omnisharp-install-server
 ;; WIN scoop install omnisharp
@@ -42,8 +38,7 @@
   :after csharp-mode
   :init (setq omnisharp-server-executable-path "OmniSharp.exe")
   :config
-  (add-hook 'csharp-mode-hook 'init-csharp/csharp-mode-setup t)
-  )
+  (add-hook 'csharp-mode-hook 'init-csharp/csharp-mode-setup t))
 
 
 (provide 'init-csharp)
