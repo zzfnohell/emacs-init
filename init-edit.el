@@ -97,9 +97,7 @@
 ;; (setq display-time-day-and-date t)
 
 
-(when window-system
-  (scroll-bar-mode -1)
-  )
+(when window-system (scroll-bar-mode -1))
 
 (transient-mark-mode t)
 
@@ -136,8 +134,7 @@
 (use-package window-number
   :config
   ;; (window-number-mode 1)
-  (window-number-meta-mode)
-  )
+  (window-number-meta-mode))
 
 (use-package minimap)
 
@@ -168,8 +165,7 @@
   (setq visible-mark-max 2)
   (setq visible-mark-faces `(visible-mark-face1 visible-mark-face2))
   :config
-  (global-visible-mark-mode 1)
-  )
+  (global-visible-mark-mode 1))
 
 
 (add-hook 'texinfo-mode-hook (lambda () (require 'sb-texinfo)))
@@ -177,9 +173,7 @@
 ;; CSV file
 (use-package csv-mode
   :mode "\\.[Cc][Ss][Vv]\\'"
-  :init (setq csv-separators '("," ";" "|" " "))
-  )
-
+  :init (setq csv-separators '("," ";" "|" " ")))
 
 (use-package anyins)
 
