@@ -23,14 +23,14 @@
 
 (setq org-publish-project-alist
       `(("blog-notes"
-         :base-directory *org-root-directory*
+         :base-directory ,*org-root-directory*
          :recursive t
-         :publishing-directory *org-publish-directory*
+         :publishing-directory ,*org-publish-directory*
          :publishing-function org-html-publish-to-html)
         ("blog-static"
-         :base-directory *org-root-directory*
+         :base-directory ,*org-root-directory*
          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-         :publishing-directory *org-publish-directory*
+         :publishing-directory ,*org-publish-directory*
          :recursive 
          :publishing-function org-publish-attachment)
         ("blog" :components ("blog-notes" "blog-static"))))
