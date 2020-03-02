@@ -4,15 +4,13 @@
 ;; 
 
 ;;; Code:
-(use-package auctex
-  :ensure t)
+(use-package auctex)
 
-(if (require 'maxima nil 'noerror)
-    (progn
-     (require 'emaxima)
-     (require 'imaxima)
-     (setq auto-mode-alist (cons '("\\.mac" . maxima-mode) auto-mode-alist))
-     (setq auto-mode-alist (cons '("\\.wxm" . maxima-mode) auto-mode-alist))))
+(when (require 'maxima nil 'noerror)
+  (require 'emaxima)
+  (require 'imaxima)
+  (setq auto-mode-alist (cons '("\\.mac" . maxima-mode) auto-mode-alist))
+  (setq auto-mode-alist (cons '("\\.wxm" . maxima-mode) auto-mode-alist)))
 
 (provide 'init-maxima)
 
