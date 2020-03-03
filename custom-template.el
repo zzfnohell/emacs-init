@@ -10,9 +10,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ecb-source-path (quote (("/home/zzfnohell" "home"))))
  '(skeletor-user-directory "~/.emacs.d/init/init-skeletor-projects")
- '(ecb-windows-width 30)
  ;; '(custom-enabled-themes (quote (light-blue)))
  '(projectile-enable-caching t)
  '(projectile-completion-system 'ivy)
