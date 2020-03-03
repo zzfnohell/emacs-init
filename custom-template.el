@@ -25,9 +25,9 @@
  '(size-indication-mode t)
  '(indent-tabs-mode nil)
  '(visual-line-mode nil t)
- '(init-python/workon-directory "~/anaconda/envs"))
-
-
+ '(dart-sdk-path "/Applications/flutter/bin/cache/dart-sdk/")
+ '(flutter-sdk-path "/Applications/flutter/")
+)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
