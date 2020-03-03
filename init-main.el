@@ -106,7 +106,7 @@
 
 (require 'init-view)
 
-(require 'custom-template)
+;; (require 'custom-template)
 
 
 (provide 'init-main)
