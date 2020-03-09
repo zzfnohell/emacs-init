@@ -15,7 +15,6 @@
 ;;; Code:
 
 (use-package dart-mode
-  :ensure-system-package (dart_language_server . "pub global activate dart_language_server")
   :custom
   (dart-format-on-save t))
 
