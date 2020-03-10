@@ -4,7 +4,7 @@
 ;; 
 
 ;;; Code:
-(use-package auctex)
+(use-package tex :ensure auctex)
 
 (when (require 'maxima nil 'noerror)
   (require 'emaxima)
