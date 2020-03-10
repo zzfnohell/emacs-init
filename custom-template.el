@@ -25,7 +25,7 @@
  '(visual-line-mode nil t)
  '(dart-sdk-path "/Applications/flutter/bin/cache/dart-sdk/")
  '(flutter-sdk-path "/Applications/flutter/")
- '(org-agenda-files (quote ("agenda.org")))
+ '(org-agenda-files (quote ("E:/OneDrive/org/agenda.org")))
  '(org-directory "E:/OneDrive/org"))
 
 (custom-set-faces
