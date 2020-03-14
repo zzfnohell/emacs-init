@@ -9,7 +9,6 @@
 (require 'cedet)
 (require 'semantic)
 (use-package java-snippets)
-
 (use-package groovy-mode)
 
 (use-package flycheck-gradle
@@ -23,17 +22,8 @@
 (use-package ant)
 (use-package mvn)
 
-;; ** JDEE
-(use-package jdee
-	:custom
-	(jdee-server-dir (expand-file-name "~/.emacs.d/init/jdee-server/target")))
-
 ;; mvn -Dmaven.test.skip=true package
-;;
-
-;; ***
-(use-package lsp-java
-  :after lsp-mode)
+(use-package lsp-java :after lsp-mode)
 
 (provide 'init-java)
 ;;; init-java.el ends here

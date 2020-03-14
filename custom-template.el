@@ -23,8 +23,10 @@
  '(size-indication-mode t)
  '(indent-tabs-mode nil)
  '(visual-line-mode nil t)
- '(dart-sdk-path "/Applications/flutter/bin/cache/dart-sdk/")
- '(flutter-sdk-path "/Applications/flutter/")
+ ;; flutter
+ '(dart-sdk-path "d:/Scoop/apps/flutter/current/bin/cache/dart-sdk/")
+ '(flutter-sdk-path "d:/Scoop/apps/flutter/current/")
+ ;; org
  '(org-agenda-files (quote ("e:/OneDrive/org/agenda.org")))
  '(org-default-notes-file "e:/OneDrive/org/notes.org")
  '(org-directory "e:/OneDrive/org"))
