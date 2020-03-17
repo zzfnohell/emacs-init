@@ -16,28 +16,26 @@
   ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/dependency")
   )
 
-
 (use-package ein
   :config (setq ein:use-smartrep t))
 
-(use-package jedi
-  :config
-  (progn
-    (setq jedi:complete-on-dot t)
-    (add-hook 'python-mode-hook 'jedi:setup)
-    (add-hook 'python-mode-hook 'jedi:ac-setup)))
+;; (use-package jedi
+;;   :config
+;;   (progn
+;;     (setq jedi:complete-on-dot t)
+;;     (add-hook 'python-mode-hook 'jedi:setup)
+;;     (add-hook 'python-mode-hook 'jedi:ac-setup)))
+
+;; (use-package elpy
+;;   :config
+;; 	(elpy-enable)
+;; 	(defalias 'workon 'pyvenv-workon)
+;; 	(setq elpy-rpc-backend "jedi"))
 
 (use-package highlight-indentation
   :config
 	(set-face-background 'highlight-indentation-face "#e3e3d3")
-	(set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
-  )
-
-(use-package elpy
-  :config
-	(elpy-enable)
-	(defalias 'workon 'pyvenv-workon)
-	(setq elpy-rpc-backend "jedi"))
+  (set-face-background 'highlight-indentation-current-column-face "#c3b3b3"))
 
 (use-package pyvenv
   :config
