@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(use-package esup)
+(use-package esup :defer t)
 (use-package benchmark-init
   :config
   ;; To disable collection of benchmark data after init is done.
