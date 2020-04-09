@@ -5,13 +5,13 @@
 
 ;;; Code:
 
-
 (use-package org-preview-html)
 (use-package ob-axiom)
 
 (use-package org
   :after (:all ob-axiom)
   :config
+  (setq org-mobile-directory "/davs:zzfnohell@dav.centaurs.bid:/")
   ;; active Babel languages
   (org-babel-do-load-languages
    'org-babel-load-languages
