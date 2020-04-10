@@ -30,6 +30,7 @@
  '(org-agenda-files (quote ("e:/OneDrive/org/agenda.org")))
  '(org-default-notes-file "e:/OneDrive/org/notes.org")
  '(org-directory "e:/OneDrive/org")
+ '(org-mobile-inbox-for-pull "from-mobile.org")
  '(org-mobile-files
    (quote
     (org-agenda-files "oil.org" "stock.org" "oanda.org" "us_stock.org"))))

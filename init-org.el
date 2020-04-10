@@ -11,7 +11,7 @@
 (use-package org
   :after (:all ob-axiom)
   :config
-  (setq org-mobile-directory "/davs:zzfnohell@dav.centaurs.bid:/")
+  (setq org-mobile-directory "/ssh:zzfnohell@pluto:/var/local/dav/")
   ;; active Babel languages
   (org-babel-do-load-languages
    'org-babel-load-languages
