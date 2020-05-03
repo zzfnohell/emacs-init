@@ -1,16 +1,8 @@
-.PHONY:clean
+.PHONY:clean compile
 
-SOURCE := $(wildcard *.el)
-
-OBJECTS :=  $(basename $(SOURCE))
-ELC_FILES := $(addsuffix .elc,$(OBJECTS))
-
-# targets
-compile:$(ELC_FILES)
+compile:
+	emacs --batch --load byte-compile.el 
 	@echo 'done'
-
-%.elc:%.el
-	@echo $<
 
 clean:
 	rm -v *.elc
