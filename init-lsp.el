@@ -25,7 +25,8 @@
          (lsp-mode . lsp-enable-which-key-integration)) 
   :commands (lsp lsp-deferred))
 
-(use-package lsp-ui :commands lsp-ui-mode)
+(use-package lsp-ui
+  :commands lsp-ui-mode)
 
 (use-package company-lsp
   :after company
@@ -34,9 +35,9 @@
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 
 (use-package lsp-treemacs
+  :commands lsp-treemacs-errors-list
   :config
-  (lsp-metals-treeview-enable t)
-  (setq lsp-metals-treeview-show-when-views-received t))
+  (lsp-treemacs-sync-mode 1))
 
 (use-package which-key
   :config
