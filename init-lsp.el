@@ -35,9 +35,7 @@
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 
 (use-package lsp-treemacs
-  :commands lsp-treemacs-errors-list
-  :config
-  (lsp-treemacs-sync-mode 1))
+  :commands lsp-treemacs-errors-list)
 
 (use-package which-key
   :config
