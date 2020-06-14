@@ -55,7 +55,7 @@
 (require 'init-yasnippet)
 (require 'init-treemacs)
 (require 'init-lsp)
-(require 'init-eglot)
+;; (require 'init-eglot)
 (require 'init-dap)
 
 (require 'init-ess)
