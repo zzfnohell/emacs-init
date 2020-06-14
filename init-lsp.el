@@ -9,23 +9,6 @@
   :custom
   (lsp-enable-completion-at-point t)
   (lsp-prefer-capf t)
-  :hook (
-         (cc-mode . lsp-deferred)
-         (cmake-mode . lsp-deferred)
-         (csharp-mode . lsp-deferred)
-         (css-mode . lsp-deferred)
-         (fsharp-mode . lsp-deferred)
-         (go-mode . lsp-deferred)
-         (haskell-mode . lsp-deferred)
-         (html-mode . lsp-deferred)
-         (js2-mode . lsp-deferred)
-         (julia-mode . lsp-deferred)
-         (python-mode . lsp-deferred)
-         (rust-mode . lsp-deferred)
-         (scala-mode . lsp-deferred)
-         (xml-mode . lsp-deferred)
-         (yaml-mode . lsp-deferred)
-         (lsp-mode . lsp-enable-which-key-integration)) 
   :config
   (require 'lsp-clients))
 
