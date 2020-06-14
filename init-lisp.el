@@ -104,6 +104,12 @@
 ;; 		)
 ;; 	)
 
+(defun init-lisp/append-elisp-backends ()
+  (let ((mode-backends (make-local-variable 'company-backends)))
+    (add-to-list mode-backends '(company-elisp company-dabbrev))))
+
+(add-hook 'emacs-mode-hook #'init-lisp/append-elisp-backends)
+
 (provide 'init-lisp)
 
 ;;; init-lisp.el ends here

@@ -9,12 +9,8 @@
 (use-package company
   :demand t
   :config
-  (add-to-list 'company-backends '(company-capf company-dabbrev))
-  (add-to-list 'company-backends '(company-css company-dabbrev))
-  (add-to-list 'company-backends '(company-elisp company-dabbrev))
-  (add-to-list 'company-backends '(company-nxml company-dabbrev))
-  (add-to-list 'company-backends '(company-files company-dabbrev))
   (setq company-dabbrev-downcase nil)
+  (add-to-list 'company-backends '(company-capf company-dabbrev))
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package company-lsp

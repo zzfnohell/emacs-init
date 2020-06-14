@@ -47,7 +47,7 @@
     (add-to-list mode-backends '(company-dabbrev-code company-yasnippet))))
 
 (use-package company-c-headers
-  :after (:all company)
+  :after company
   :config
   (add-hook 'c-mode-hook #'init-cc-mode/append-company-backends)
   (add-hook 'c++-mode-hook #'init-cc-mode/append-company-backends))
@@ -80,6 +80,7 @@
     (add-to-list 'company-backends 'company-glsl)))
 
 (use-package glsl-mode
+  :after company
   :mode (("\\.glsl\\'" . glsl-mode)
          ("\\.vert\\'" . glsl-mode)
          ("\\.frag\\'" . glsl-mode)
@@ -87,7 +88,7 @@
          ("\\.fx\\'" . hlsl-mode)
          ("\\.hlsl\\'" . hlsl-mode))
   :config
-  (add-hook glsl-mode-hook #'init-cc-mode/glsl-mode-hook-func))
+  (add-hook 'glsl-mode-hook #'init-cc-mode/glsl-mode-hook-func))
 
 (provide 'init-cc-mode)
 
