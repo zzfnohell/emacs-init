@@ -5,8 +5,10 @@
 
 ;;; Code:
 (use-package lsp-mode
-  :init (setq lsp-keymap-prefix "s-l")
   :commands (lsp lsp-deferred)
+  :custom
+  (lsp-enable-completion-at-point t)
+  (lsp-prefer-capf t)
   :hook (
          (cc-mode . lsp-deferred)
          (cmake-mode . lsp-deferred)
