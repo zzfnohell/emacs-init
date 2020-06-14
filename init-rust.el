@@ -5,19 +5,16 @@
 ;; 
 
 ;;; Code:
-
-
 (use-package rust-mode
   :after flycheck-mode
   :mode ("\\.rs\\'" . rust-mode)
-  :config
-  (add-hook 'rust-mode-hook #'flycheck-mode)
-  )
+  :hook ((rust-mode . lsp)))
 
 (use-package flycheck-rust
   :config
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-  )
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
+(use-package toml-mode)
 
 (provide 'init-rust)
 

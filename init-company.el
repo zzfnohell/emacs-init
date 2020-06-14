@@ -10,14 +10,14 @@
   :demand t
   :config
   (setq company-dabbrev-downcase nil)
-  (add-to-list 'company-backends '(company-capf company-dabbrev))
+  (add-to-list 'company-backends 'company-capf)
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package company-lsp
   :after company lsp
   :commands company-lsp
   :config
-  (add-to-list 'company-backends 'company-lsp ))
+  (add-to-list 'company-backends 'company-lsp))
 
 (use-package company-coq
   :if (featurep 'proof-site)

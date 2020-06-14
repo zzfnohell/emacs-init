@@ -6,6 +6,7 @@
 ;;; Code:
 (use-package lsp-mode
   :init (setq lsp-keymap-prefix "s-l")
+  :commands (lsp lsp-deferred)
   :hook (
          (cc-mode . lsp-deferred)
          (cmake-mode . lsp-deferred)
@@ -23,7 +24,8 @@
          (xml-mode . lsp-deferred)
          (yaml-mode . lsp-deferred)
          (lsp-mode . lsp-enable-which-key-integration)) 
-  :commands (lsp lsp-deferred))
+  :config
+  (require 'lsp-clients))
 
 (use-package lsp-ui
   :commands lsp-ui-mode)
