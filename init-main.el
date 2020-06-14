@@ -69,7 +69,6 @@
 (require 'init-racket)
 (require 'init-octave)
 (require 'init-lex)
-(require 'init-sl)
 
 (require 'init-sage-mode)
 (require 'init-java)

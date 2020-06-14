@@ -51,11 +51,10 @@
 
   ;; company-web
   (define-key web-mode-map (kbd "C-'") 'company-web-html)
-  (add-hook 'web-mode-hook
-            (lambda ()
-              (set (make-local-variable 'company-backends)
-                   '(company-web-html company-files))
-              (company-mode t))))
+  (set (make-local-variable 'company-backends)
+       '(company-web-html company-files)))
+
+(use-package company-web :after company)
 
 (use-package emmet-mode
   :config
@@ -64,8 +63,7 @@
   (add-hook 'css-mode-hook  'emmet-mode))
 
 (use-package web-mode
-  :mode (
-         ("\\.phtml\\'" . web-mode)
+  :mode (("\\.phtml\\'" . web-mode)
          ("\\.tpl\\.php\\'" . web-mode)
          ("\\.[agj]sp\\'" . web-mode)
          ("\\.as[cp]x\\'" . web-mode)
@@ -74,11 +72,10 @@
          ("\\.djhtml\\'" . web-mode)
          ("\\.html?\\'" . web-mode))
   :config
+  (add-hook 'web-mode-hook #'init-web/web-mode/custom-web-mode-hook)
   (setq web-mode-engines-alist
         '(("php"    . "\\.phtml\\'")
-          ("blade"  . "\\.blade\\.")))
-  (add-hook 'web-mode-hook  'init-web/web-mode/custom-web-mode-hook)
-  )
+          ("blade"  . "\\.blade\\."))))
 
 (use-package web-beautify)
 

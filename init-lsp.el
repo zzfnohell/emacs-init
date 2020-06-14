@@ -28,10 +28,6 @@
 (use-package lsp-ui
   :commands lsp-ui-mode)
 
-(use-package company-lsp
-  :after company
-  :commands company-lsp)
-
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 
 (use-package lsp-treemacs

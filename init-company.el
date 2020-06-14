@@ -9,11 +9,19 @@
 (use-package company
   :demand t
   :config
+  (add-to-list 'company-backends '(company-capf company-dabbrev))
+  (add-to-list 'company-backends '(company-css company-dabbrev))
+  (add-to-list 'company-backends '(company-elisp company-dabbrev))
+  (add-to-list 'company-backends '(company-nxml company-dabbrev))
+  (add-to-list 'company-backends '(company-files company-dabbrev))
+  (setq company-dabbrev-downcase nil)
   (add-hook 'after-init-hook 'global-company-mode))
 
-(use-package company-jedi
-  :after (:all company jedi)
-  :config (add-to-list 'company-backends 'company-jedi))
+(use-package company-lsp
+  :after company lsp
+  :commands company-lsp
+  :config
+  (add-to-list 'company-backends 'company-lsp ))
 
 (use-package company-coq
   :if (featurep 'proof-site)
@@ -33,18 +41,6 @@
 ;;   :demand t
 ;;   :config (add-to-list 'company-backends 'company-inf-ruby))
 
-
-(use-package company-glsl
-  :after (:all company)
-  :config
-  (when (executable-find "glslangValidator")
-    (add-to-list 'company-backends 'company-glsl)))
-
-(use-package company-web
-  :config
-  (add-to-list 'company-backends 'company-web-html)
-  (add-to-list 'company-backends 'company-web-jade)
-  (add-to-list 'company-backends 'company-web-slim))
 
 (use-package company-shell)
 

@@ -5,13 +5,13 @@
 
 (use-package php-mode)
 
+(defun init-php/php-mode-hook-func ()
+  (require 'company-php)
+  (setq-local company-backends '(company-ac-php-backend)))
+
 (use-package company-php
   :config
-  (add-hook 'php-mode-hook
-            '(lambda ()
-               (require 'company-php)
-               (company-mode t)
-               (add-to-list 'company-backends 'company-ac-php-backend))))
+  (add-hook 'php-mode-hook #'init-php/php-mode-hook-func))
 
 (provide 'init-php)
 

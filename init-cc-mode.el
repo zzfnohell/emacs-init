@@ -40,17 +40,17 @@
 
 (add-hook 'c-mode-common-hook 'init-cc-mode/c-mode-edit-hook)
 
-(defun init-cc-mode/company-semantic-setup ()
-  (set (make-local-variable 'company-backends)
-       '((company-dabbrev-code company-yasnippet)))
-  )
+(defun init-cc-mode/append-company-backends ()
+  "Append custom company backends."
+  (let ((mode-backends (make-local-variable 'company-backends)))
+    (add-to-list mode-backends 'company-c-headers)
+    (add-to-list mode-backends '(company-dabbrev-code company-yasnippet))))
 
 (use-package company-c-headers
   :after (:all company)
   :config
-  (add-to-list 'company-backends 'company-c-headers)
-  (add-hook 'c++-mode-hook 'init-cc-mode/company-semantic-setup)
-  (add-hook 'c-mode-hook 'init-cc-mode/company-semantic-setup))
+  (add-hook 'c-mode-hook #'init-cc-mode/append-company-backends)
+  (add-hook 'c++-mode-hook #'init-cc-mode/append-company-backends))
 
 ;;opencl source file.
 (add-to-list 'auto-mode-alist '("\\.h$" . c-mode))
@@ -58,7 +58,7 @@
 (use-package cmake-mode)
 
 (use-package opencl-mode
-  :init (add-to-list 'auto-mode-alist '("\\.cl\\'" . opencl-mode)))
+  :mode (("\\.cl\\'" . opencl-mode)))
 
 (use-package shader-mode)
 
@@ -70,6 +70,24 @@
   :config
 	(require 'rtags)
   (cmake-ide-setup))
+
+(use-package company-glsl
+ :after (:all company))
+
+(defun init-cc-mode/glsl-mode-hook-func ()
+  "Hook glsl mode."
+  (when (executable-find "glslangValidator")
+    (add-to-list 'company-backends 'company-glsl)))
+
+(use-package glsl-mode
+  :mode (("\\.glsl\\'" . glsl-mode)
+         ("\\.vert\\'" . glsl-mode)
+         ("\\.frag\\'" . glsl-mode)
+         ("\\.geom\\'" . glsl-mode)
+         ("\\.fx\\'" . hlsl-mode)
+         ("\\.hlsl\\'" . hlsl-mode))
+  :config
+  (add-hook glsl-mode-hook #'init-cc-mode/glsl-mode-hook-func))
 
 (provide 'init-cc-mode)
 
