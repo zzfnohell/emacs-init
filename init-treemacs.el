@@ -94,6 +94,7 @@
   :ensure t
   :config (treemacs-set-scope-type 'Perspectives))
 
+(use-package all-the-icons)
 
 (provide 'init-treemacs)
 
