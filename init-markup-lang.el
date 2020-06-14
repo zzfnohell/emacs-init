@@ -3,6 +3,10 @@
 ;;; Commentary:
 ;;
 
+(defun init-markup-lang/append-company-backends ()
+  (let ((mode-backends (make-local-variable 'company-backends)))
+    (add-to-list mode-backends 'company-nxml)))
+
 (use-package nxml-mode
   :ensure nil
   :mode (("\\.xml\\'" . nxml-mode)
@@ -11,7 +15,9 @@
          ("\\.rng\\'" . nxml-mode)
          ("\\.xslt\\'" . nxml-mode)
          ("\\.svg\\'" . nxml-mode)
-         ("\\.rss\\'" . nxml-mode)))
+         ("\\.rss\\'" . nxml-mode))
+  :config
+  (add-hook 'nxml-mode-hook #'init-markup-lang/append-company-backends))
 
 (use-package ini-mode
   :mode (("\\.ini\\'" . ini-mode)))

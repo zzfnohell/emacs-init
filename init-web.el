@@ -113,6 +113,12 @@
 (use-package pug-mode)
 (use-package restclient)
 
+(require 'css-mode)
+(add-hook 'css-mode-hook
+          (lambda ()
+            (let ((mode-backends (make-local-variable 'company-backends)))
+              (add-to-list mode-backends 'company-css))))
+
 (provide 'init-web)
 
 ;;; init-web.el ends here
