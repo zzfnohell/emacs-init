@@ -47,9 +47,7 @@
 (require 'init-org)
 
 (require 'init-regexp)
-(require 'init-helm)
 (require 'init-ivy)
-(require 'init-projectile)
 (require 'init-flycheck)
 (require 'init-flymake)
 (require 'init-yasnippet)

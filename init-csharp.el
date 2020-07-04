@@ -25,7 +25,6 @@
   (setq c-basic-offset 4)
   (setq truncate-lines t)
   (setq tab-width 4)
-  (setq evil-shift-width 4)
 
   (electric-pair-local-mode 1) ;; Emacs 25
 

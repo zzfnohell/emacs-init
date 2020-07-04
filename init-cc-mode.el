@@ -35,7 +35,6 @@
   (c-toggle-auto-hungry-state 1)
   (define-key c-mode-base-map [(tab)] 'cpp-indent-or-complete)
   ;;preprocessors
-  (setq hs-minor-mode t)
   (setq abbrev-mode t))
 
 (add-hook 'c-mode-common-hook 'init-cc-mode/c-mode-edit-hook)
