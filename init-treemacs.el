@@ -12,6 +12,7 @@
   :bind ("M-o" . ace-window))
 
 (use-package treemacs
+  :after winum
   :ensure t
   :defer t
   :init
