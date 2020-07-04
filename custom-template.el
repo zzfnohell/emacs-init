@@ -27,8 +27,6 @@
    (quote
     (org-agenda-files "oil.org" "stock.org" "oanda.org" "us_stock.org")))
  '(org-mobile-inbox-for-pull "from-mobile.org")
- '(projectile-completion-system 'ivy)
- '(projectile-enable-caching t)
  '(semantic-idle-scheduler-idle-time 5)
  '(session-use-package t nil (session))
  '(size-indication-mode t)
