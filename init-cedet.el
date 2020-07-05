@@ -5,125 +5,49 @@
 ;; 
 
 ;;; Code:
-
+;; From http://alexott.net/en/writings/emacs-devenv/EmacsCedet.html
 ;; (setq cedet-root-path (concat  *user-site-lisp-path* "cedet/"))
 
 ;; (if (file-exists-p cedet-root-path)
 ;;     (load-file (concat cedet-root-path "cedet-devel-load.el"))
 ;; 	(load-file (concat cedet-root-path "contrib/cedet-contrib-load.el")))
 
-(require 'cedet)
-(require 'cedet-global)
 
-(require 'semantic)
-(require 'semantic/ia)
-
-;;;; Semantic DataBase directory
-(setq semanticdb-default-save-directory
-      (expand-file-name "~/.emacs.d/semanticdb"))
-
-;;;; Semantic's customization
-(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
-;;(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-local-symbol-highlight-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
-
-(semantic-mode 1)
-
-;;;; System header files
-;; (semantic-add-system-include "~/exp/include/boost_1_37" 'c++-mode)
-
-;;;; Semantic's work optimization
-(setq-mode-local c-mode semanticdb-find-default-throttle
-                 '(project unloaded system recursive))
-(setq-mode-local c++-mode semanticdb-find-default-throttle
-				 '(project unloaded system recursive))
-
-;;;; Integration with imenu
 (defun init-cedet/semantic-hook ()
+  "Add a TAGS entry to menu bar."
   (imenu-add-to-menubar "TAGS"))
 
-(add-hook 'semantic-init-hooks 'init-cedet/semantic-hook)
+(use-package cedet
+  :init
+  ;;;; Semantic DataBase directory
+  (setq semanticdb-default-save-directory (expand-file-name "~/.emacs.d/semanticdb"))
 
-;;;; Customization of Semanticdb
-;; if you want to enable support for gnu global
-(when (cedet-gnu-global-version-check t)
-  (semanticdb-enable-gnu-global-databases 'c-mode)
-  (semanticdb-enable-gnu-global-databases 'c++-mode))
+  ;;;; Semantic's customization
+  (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
+  (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
+  ;;(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
+  (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
+  (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+  (add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
+  (add-to-list 'semantic-default-submodes 'global-semantic-idle-local-symbol-highlight-mode)
+  (add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
+  (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
+  (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
+  
+  :config
+  (require 'cedet-global)
+  (require 'semantic)
+  (semantic-mode 1)
+  
+  ;;;; Integration with imenu
+  (add-hook 'semantic-init-hooks 'init-cedet/semantic-hook)
 
-;; enable ctags for some languages:
-;;  Unix Shell, Perl, Pascal, Tcl, Fortran, Asm
-;; (when (cedet-ectag-version-check t)
-;;   (semantic-load-enable-primary-exuberent-ctags-support))
-
-;;;; EDE's customization
-(global-ede-mode t)
-(ede-enable-generic-projects)
-
-;;;; Using EDE for C & C++ projects
-;; To define a project, you need to add following code:
-;; (ede-cpp-root-project "Test"
-;;                       :name "Test Project"
-;;                       :file "~/work/project/CMakeLists.txt"
-;;                       :include-path '("/"
-;;                                       "/Common"
-;;                                       "/Interfaces"
-;;                                       "/Libs"
-;;                                       )
-;;                       :system-include-path '("~/exp/include")
-;;                       :spp-table '(("isUnix" . "")
-;;                                    ("BOOST_TEST_DYN_LINK" . "")))
-
-
-;;;; Preprocessing of source code
-;; (setq qt4-base-dir "/usr/include/qt4")
-;; (semantic-add-system-include qt4-base-dir 'c++-mode)
-;; (add-to-list 'auto-mode-alist (cons qt4-base-dir 'c++-mode))
-;; (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt4-base-dir "/Qt/qconfig.h"))
-;; (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt4-base-dir "/Qt/qconfig-dist.h"))
-;; (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt4-base-dir "/Qt/qglobal.h"))
-
-
-;;;; Using EDE for Java projects
-;; (require 'semantic/db-javap)
-;; (ede-java-root-project "TestProject"
-;;                        :file "~/work/TestProject/build.xml"
-;;                        :srcroot '("src" "test")
-;;                        :localclasspath '("/relative/path.jar")
-;;                        :classpath '("/absolute/path.jar"))
-
-
-;;;; Work with Semantic
-;; customisation of modes
-(defun init-cedet/cedet-semantic-hook ()
-  (local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)
-  (local-set-key "\C-c ?" 'semantic-ia-complete-symbol)
-  (local-set-key "\C-c >" 'semantic-complete-analyze-inline)
-  (local-set-key "\C-c =" 'semantic-decoration-include-visit)
-  (local-set-key "\C-c j" 'semantic-ia-fast-jump)
-  (local-set-key "\C-c q" 'semantic-ia-show-doc)
-  (local-set-key "\C-c s" 'semantic-ia-show-summary)
-  (local-set-key "\C-c p" 'semantic-analyze-proto-impl-toggle))
-
-(add-hook 'semantic-init-hooks 'init-cedet/cedet-semantic-hook)
-
-(add-hook 'lisp-mode-hook 'init-cedet/cedet-semantic-hook)
-(add-hook 'scheme-mode-hook 'init-cedet/cedet-semantic-hook)
-(add-hook 'emacs-lisp-mode-hook 'init-cedet/cedet-semantic-hook)
-(add-hook 'erlang-mode-hook 'init-cedet/cedet-semantic-hook)
-
-;;;; Names completion
-(defun init-cedet/c-mode-common-cedet-hook ()
-  (local-set-key "." 'semantic-complete-self-insert)
-  (local-set-key ">" 'semantic-complete-self-insert))
-(add-hook 'c-mode-common-hook 'init-cedet/c-mode-common-cedet-hook)
-
+  ;;;; System header files
+  (when (eq system-type 'windows-nt)
+    (semantic-add-system-include "d:/msys64/mingw64/include/"))
+  
+  (require 'ede)
+  (global-ede-mode t) )
 
 (require 'srecode)
 ;;;; Names completion with auto-complete package

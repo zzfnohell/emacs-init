@@ -28,6 +28,7 @@
     (org-agenda-files "oil.org" "stock.org" "oanda.org" "us_stock.org")))
  '(org-mobile-inbox-for-pull "from-mobile.org")
  '(semantic-idle-scheduler-idle-time 5)
+ '(semantic-symref-tool (quote global))
  '(session-use-package t nil (session))
  '(size-indication-mode t)
  '(skeletor-user-directory "~/.emacs.d/init/init-skeletor-projects")
