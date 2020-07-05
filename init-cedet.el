@@ -44,7 +44,8 @@
 
   ;;;; System header files
   (when (eq system-type 'windows-nt)
-    (semantic-add-system-include "d:/msys64/mingw64/include/"))
+    (semantic-add-system-include "d:/msys64/mingw64/include/" 'c-mode)
+    (semantic-add-system-include "d:/msys64/mingw64/include/" 'c++-mode))
   
   (require 'ede)
   (global-ede-mode t) )
