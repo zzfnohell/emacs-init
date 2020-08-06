@@ -93,6 +93,7 @@
 (require 'init-pascal)
 (require 'init-erc)
 (require 'init-markup-lang)
+(require 'init-uml)
 
 (require 'init-nav)
 
