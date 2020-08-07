@@ -1,8 +1,6 @@
 ;;; init-sql.el --- sql mode
-
 ;;; Commentary:
-;; 
-
+;;
 ;;; Code:
 
 (use-package sql
@@ -14,9 +12,6 @@
   :config
   (eval-after-load "sql"
     '(load-library "sql-indent")))
-
-
-
 
 (provide 'init-sql)
 
