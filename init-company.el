@@ -54,7 +54,6 @@
   (setq company-box-backends-colors nil)
   (setq company-box-show-single-candidate t)
   (setq company-box-max-candidates 50)
-  
   (defun company-box-icons--elisp (candidate)
     (when (derived-mode-p 'emacs-lisp-mode)
       (let ((sym (intern candidate)))
