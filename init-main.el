@@ -34,7 +34,7 @@
 (require 'init-session)
 (require 'init-multi-term)
 (require 'init-shell)
-
+(require 'init-docker)
 (require 'init-skeletor)
 
 (require 'init-vc)
