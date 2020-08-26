@@ -97,7 +97,12 @@
   :ensure t
   :config (treemacs-set-scope-type 'Perspectives))
 
+
 (use-package all-the-icons)
+;; Slow Rendering
+;; If you experience a slow down in performance when rendering multiple
+;; icons simultaneously, you can try setting the following variable
+(setq inhibit-compacting-font-caches t)
 
 (provide 'init-treemacs)
 

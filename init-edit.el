@@ -42,8 +42,6 @@
 ;; close startup slash
 (setq inhibit-startup-message t)
 
-(setq inhibit-compacting-font-caches t)
-
 ;; close close-bell
 (setq visible-bell t)
 
