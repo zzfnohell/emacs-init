@@ -14,11 +14,8 @@
 	(require 'ess-julia)
 	(setq inferior-julia-program-name "julia"))
 
-(use-package ess-view)
-
 (use-package stan-mode)
 (use-package stan-snippets)
-(use-package ess-R-object-popup)
 
 (provide 'init-ess)
 
