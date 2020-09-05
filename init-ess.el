@@ -10,6 +10,7 @@
 
 (use-package ess
 	:config
+  (setq ess-history-directory "~/.ess/")
 	(require 'ess-site)
 	(require 'ess-julia)
 	(setq inferior-julia-program-name "julia"))
