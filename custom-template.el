@@ -20,9 +20,9 @@
  '(org-agenda-files (quote ("e:/OneDrive/org/agenda.org")))
  '(org-default-notes-file "e:/OneDrive/org/notes.org")
  '(org-directory "e:/OneDrive/org")
- '(org-mobile-directory "/ssh:pluto.centaurs.bid:/var/local/dav/")
+ '(org-mobile-directory "/ssh:zzfnohell@pluto.centaurs.bid:/var/local/dav/")
  ;; on windows
- ;; '(org-mobile-directory "/plink:pluto.centaurs.bid:/var/local/dav/")
+ ;; '(org-mobile-directory "/plink:zzfnohell@pluto.centaurs.bid:/var/local/dav/")
  '(org-mobile-files
    (quote
     (org-agenda-files "oil.org" "stock.org" "oanda.org" "us_stock.org")))
