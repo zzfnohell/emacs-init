@@ -26,6 +26,8 @@
 (require 'init-edit)
 (require 'init-search)
 
+(require 'init-rfc)
+
 (require 'init-ediff)
 (require 'init-theme)
 (require 'init-global-set-key)
