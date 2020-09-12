@@ -31,6 +31,7 @@
 (require 'init-global-set-key)
 (require 'init-dired)
 (require 'init-uniquify)
+(require 'init-tramp)
 
 (require 'init-tags)
 (require 'init-session)
