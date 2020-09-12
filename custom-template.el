@@ -20,7 +20,7 @@
  '(org-agenda-files (quote ("~/org/agenda.org")))
  '(org-default-notes-file "~/org/notes.org")
  '(org-directory "~/org")
- '(org-mobile-directory "/ssh:zzfnohell@pluto.centaurs.bid:/var/local/dav/")
+ '(org-mobile-directory "/davs://dav.centaurs.bid/")
  ;; on windows
  ;; '(org-mobile-directory "/plink:zzfnohell@pluto.centaurs.bid:/var/local/dav/")
  '(org-mobile-files
