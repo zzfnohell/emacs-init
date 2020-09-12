@@ -21,8 +21,6 @@
  '(org-default-notes-file "~/org/notes.org")
  '(org-directory "~/org")
  '(org-mobile-directory "/davs://dav.centaurs.bid/")
- ;; on windows
- ;; '(org-mobile-directory "/plink:zzfnohell@pluto.centaurs.bid:/var/local/dav/")
  '(org-mobile-files
    (quote
     (org-agenda-files "oil.org" "stock.org" "oanda.org" "us_stock.org")))
