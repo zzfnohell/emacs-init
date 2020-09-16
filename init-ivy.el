@@ -34,17 +34,17 @@
   (("C-s" . swiper)))
 
 
-(use-package counsel-tramp
-  :after (:all ivy counsel)
-  :config
-  (add-hook 'counsel-tramp-pre-command-hook
-            '(lambda ()
-               (global-aggressive-indent-mode 0)
-               (editorconfig-mode 0)))
-  (add-hook 'counsel-tramp-quit-hook
-            '(lambda ()
-               (global-aggressive-indent-mode 1)
-               (editorconfig-mode 1))))
+;; (use-package counsel-tramp
+;;   :after (:all ivy counsel)
+;;   :config
+;;   (add-hook 'counsel-tramp-pre-command-hook
+;;             '(lambda ()
+;;                (global-aggressive-indent-mode 0)
+;;                (editorconfig-mode 0)))
+;;   (add-hook 'counsel-tramp-quit-hook
+;;             '(lambda ()
+;;                (global-aggressive-indent-mode 1)
+;;                (editorconfig-mode 1))))
 
 (provide 'init-ivy)
 
