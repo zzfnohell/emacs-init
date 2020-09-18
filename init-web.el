@@ -71,7 +71,7 @@
          ("\\.mustache\\'" . web-mode)
          ("\\.djhtml\\'" . web-mode)
          ("\\.html?\\'" . web-mode)
-         ("\\.cshtml?\\'" . web-mode))  
+         ("\\.cshtml?\\'" . web-mode))
   :config
   (add-hook 'web-mode-hook #'init-web/web-mode/custom-web-mode-hook)
   (setq web-mode-engines-alist
