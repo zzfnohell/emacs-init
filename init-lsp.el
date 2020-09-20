@@ -12,8 +12,10 @@
   :config
   (require 'lsp-clients))
 
+;; LSP UI tools
 (use-package lsp-ui
-  :commands lsp-ui-mode)
+  :hook
+  (lsp-mode . lsp-ui-mode))
 
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 

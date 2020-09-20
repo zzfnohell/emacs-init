@@ -11,7 +11,11 @@
 (use-package org
   :after (:all ob-axiom)
   :config
-  (setq org-mobile-directory "/ssh:zzfnohell@pluto:/var/local/dav/")
+  (cond ((equal system-type 'windows-nt)
+         (setq org-mobile-directory "/plink:zzfnohell@pluto.centaurs.bid:/var/local/dav/"))
+        (t
+         (setq org-mobile-directory "/ssh:zzfnohell@pluto.centaurs.bid:/var/local/dav/")))
+
   ;; active Babel languages
   (org-babel-do-load-languages
    'org-babel-load-languages

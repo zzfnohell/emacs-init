@@ -17,16 +17,14 @@
  '(httpd-port 2020)
  '(indent-tabs-mode nil)
  '(minimap-window-location (quote right))
- '(org-agenda-files (quote ("e:/OneDrive/org/agenda.org")))
- '(org-default-notes-file "e:/OneDrive/org/notes.org")
- '(org-directory "e:/OneDrive/org")
- '(org-mobile-directory "/ssh:pluto:/var/local/dav/")
- ;; on windows
- ;; '(org-mobile-directory "/plink:pluto:/var/local/dav/")
+ '(org-agenda-files (quote ("~/org/agenda.org")))
+ '(org-default-notes-file "~/org/notes.org")
+ '(org-directory "~/org")
+ '(org-mobile-directory "/davs://dav.centaurs.bid/")
  '(org-mobile-files
    (quote
     (org-agenda-files "oil.org" "stock.org" "oanda.org" "us_stock.org")))
- '(org-mobile-inbox-for-pull "from-mobile.org")
+ '(org-mobile-inbox-for-pull "~/org/from-mobile.org")
  '(semantic-idle-scheduler-idle-time 5)
  '(semantic-symref-tool (quote global))
  '(session-use-package t nil (session))

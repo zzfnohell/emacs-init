@@ -10,7 +10,9 @@
 
 (require 'init-system)
 (require 'init-proxy)
+
 (require 'init-elpa)
+
 (require 'init-benchmarking)
 (require 'init-utils)
 (require 'init-monitor)
@@ -24,17 +26,20 @@
 (require 'init-edit)
 (require 'init-search)
 
+(require 'init-rfc)
+
 (require 'init-ediff)
 (require 'init-theme)
 (require 'init-global-set-key)
 (require 'init-dired)
 (require 'init-uniquify)
+(require 'init-tramp)
 
 (require 'init-tags)
 (require 'init-session)
 (require 'init-multi-term)
 (require 'init-shell)
-
+(require 'init-docker)
 (require 'init-skeletor)
 
 (require 'init-vc)
@@ -93,6 +98,7 @@
 (require 'init-pascal)
 (require 'init-erc)
 (require 'init-markup-lang)
+(require 'init-uml)
 
 (require 'init-nav)
 
@@ -103,7 +109,7 @@
 (require 'init-development)
 
 (require 'init-view)
-
+(require 'init-tools)
 ;; (require 'custom-template)
 
 
