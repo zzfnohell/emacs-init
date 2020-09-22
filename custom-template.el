@@ -11,6 +11,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  ;; '(custom-enabled-themes (quote (light-blue)))
+ '(blink-cursor-mode t)
+ '(cursor-type 'box)
+ '(column-number-mode t)
  '(dart-sdk-path "d:/Scoop/apps/flutter/current/bin/cache/dart-sdk/")
  '(flutter-sdk-path "d:/Scoop/apps/flutter/current/")
  '(httpd-host "0.0.0.0")

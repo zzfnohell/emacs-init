@@ -63,7 +63,7 @@
 ;; match parentheses.
 (show-paren-mode t)
 
-;; (setq-default cursor-type 'box)
+(blink-cursor-mode t)
 
 (size-indication-mode 1)
 
