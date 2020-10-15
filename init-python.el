@@ -48,6 +48,7 @@
 (use-package cython-mode)
 
 (use-package flycheck-cython)
+(use-package pyenv-mode)
 
 (provide 'init-python)
 ;;; init-python.el ends here
