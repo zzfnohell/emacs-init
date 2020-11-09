@@ -17,6 +17,7 @@
 	:config
 	(setq magit-refresh-status-buffer nil))
 
+
 (use-package vc-fossil)
 
 (provide 'init-vc)
