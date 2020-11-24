@@ -12,6 +12,7 @@
                        "Sarasa Term SC"
                        "Roboto Mono"
                        "Ubuntu Mono"
+                       "Consolas"
                        "Source Code Pro"
                        "DejaVu Sans Mono"
                        "Monaco")

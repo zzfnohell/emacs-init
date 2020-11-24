@@ -9,14 +9,9 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 
-(add-to-list 'package-archives
-             '("gnu" . "https://elpa.gnu.org/packages/"))
-
-(add-to-list 'package-archives
-             '("marmalade" . "https://marmalade-repo.org/packages/"))
-
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+						 
 (when (< emacs-major-version 27)
     (package-initialize))
 
