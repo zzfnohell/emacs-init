@@ -33,6 +33,33 @@
   :bind
   (("C-s" . swiper)))
 
+(use-package counsel-gtags
+	:bind-keymap ("C-c g" . counsel-gtags-command-map)
+	:config
+	(counsel-gtags-mode 1))
+
+(use-package counsel-etags
+  :ensure t
+  :bind (("C-]" . counsel-etags-find-tag-at-point))
+  :init
+  (add-hook 'prog-mode-hook
+        (lambda ()
+          (add-hook 'after-save-hook
+            'counsel-etags-virtual-update-tags 'append 'local)))
+  :config
+  (setq counsel-etags-update-interval 60)
+  (push "build" counsel-etags-ignore-directories)
+  ;; counsel-etags-ignore-directories does NOT support wildcast
+  (push "build_clang" counsel-etags-ignore-directories)
+  (push "build_clang" counsel-etags-ignore-directories)
+  ;; counsel-etags-ignore-filenames supports wildcast
+  (push "TAGS" counsel-etags-ignore-filenames)
+  (push "*.json" counsel-etags-ignore-filenames))
+
+(use-package all-the-icons-ivy-rich-mode
+  :ensure t
+  :init (all-the-icons-ivy-rich-mode 1))
+
 
 ;; (use-package counsel-tramp
 ;;   :after (:all ivy counsel)

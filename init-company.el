@@ -43,10 +43,8 @@
 
 (use-package company-restclient)
 
-(use-package all-the-icons)
-
 (use-package company-box
-  :after company
+  :after (:all company all-the-icons) 
   :diminish
   :hook (company-mode . company-box-mode)
   :init (setq company-box-icons-alist 'company-box-icons-all-the-icons)
@@ -97,7 +95,6 @@
             (Operator . ,(all-the-icons-fileicon "typedoc" :height 0.65 :v-adjust 0.05))
             (TypeParameter . ,(all-the-icons-faicon "hashtag" :height 0.65 :v-adjust 0.07 :face 'font-lock-const-face))
             (Template . ,(all-the-icons-faicon "code" :height 0.7 :v-adjust 0.02 :face 'font-lock-variable-name-face))))))
-
 
 (provide 'init-company)
 

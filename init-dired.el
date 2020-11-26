@@ -5,6 +5,7 @@
 ;;
 
 (require 'ls-lisp)
+(use-package fd-dired :ensure t)
 
 (provide 'init-dired)
 
