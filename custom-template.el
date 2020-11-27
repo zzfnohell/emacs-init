@@ -20,19 +20,10 @@
  '(httpd-port 2020)
  '(indent-tabs-mode nil)
  '(minimap-window-location (quote right))
- '(org-agenda-files (quote ("~/org/agenda.org")))
- '(org-default-notes-file "~/org/notes.org")
- '(org-directory "~/org")
- '(org-mobile-directory "/davs://dav.centaurs.bid/")
- '(org-mobile-files
-   (quote
-    (org-agenda-files "oil.org" "stock.org" "oanda.org" "us_stock.org")))
- '(org-mobile-inbox-for-pull "~/org/from-mobile.org")
  '(semantic-idle-scheduler-idle-time 5)
  '(semantic-symref-tool (quote global))
  '(session-use-package t nil (session))
  '(size-indication-mode t)
- '(skeletor-user-directory "~/.emacs.d/init/init-skeletor-projects")
  '(speedbar-show-unknown-files t)
  '(visual-line-mode nil t))
 

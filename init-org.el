@@ -10,7 +10,22 @@
 
 (use-package org
   :after (:all ob-axiom)
+  :custom
+  (org-agenda-files (quote ("~/org/agenda.org")))
+  (org-default-notes-file "~/org/notes.org")
+  (org-directory "~/org")
+  (org-mobile-directory "/davs://dav.centaurs.bid/")
+  (org-mobile-files
+   (quote
+    (org-agenda-files "oil.org" "stock.org" "oanda.org" "us_stock.org")))
+  (org-mobile-inbox-for-pull "~/org/from-mobile.org")
   :config
+  (setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+         "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+         "* %?\nEntered on %U\n  %i\n  %a")))
+    
   (cond ((equal system-type 'windows-nt)
          (setq org-mobile-directory "/plink:zzfnohell@pluto.centaurs.bid:/var/local/dav/"))
         (t
@@ -55,6 +70,28 @@
          :recursive t
          :publishing-function org-publish-attachment)
         ("private" :components ("private-notes" "private-static")))))
+
+(use-package org-web-tools :ensure t)
+
+(use-package org-brain
+  :ensure t
+  :init
+  (setq org-brain-path "~/org/brain")
+  :config
+  (require 'org-capture)
+  (bind-key "C-c b" 'org-brain-prefix-map org-mode-map)
+  (setq org-id-track-globally t)
+  (setq org-id-locations-file "~/.emacs.d/.org-id-locations")
+  (add-hook 'before-save-hook #'org-brain-ensure-ids-in-buffer)
+  (push '("b" "Brain" plain (function org-brain-goto-end)
+          "* %i%?" :empty-lines 1)
+        org-capture-templates)
+  (setq org-brain-visualize-default-choices 'all)
+  (setq org-brain-title-max-length 12)
+  (setq org-brain-include-file-entries nil
+        org-brain-file-entries-use-title nil))
+
+(use-package org-onenote :ensure t)
 
 (provide 'init-org)
 
