@@ -93,6 +93,13 @@
 
 (use-package org-onenote :ensure t)
 
+(use-package ob-cypher
+  :ensure t
+  :config
+  (add-to-list 'org-babel-load-languages '(cypher . t))
+  (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
+  (add-to-list 'org-babel-tangle-lang-exts '("cypher" . "cypher")))
+
 (provide 'init-org)
 
 ;;; init-org.el ends here
