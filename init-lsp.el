@@ -5,17 +5,18 @@
 
 ;;; Code:
 (use-package lsp-mode
+  :ensure t
   :commands (lsp lsp-deferred)
+  :hook ((python-mode . lsp)
+         (lsp-mode . lsp-enable-which-key-integration))
   :custom
   (lsp-enable-completion-at-point t)
-  (lsp-prefer-capf t)
-  :config
-  (require 'lsp-clients))
+  (lsp-prefer-capf t))
 
 ;; LSP UI tools
 (use-package lsp-ui
-  :hook
-  (lsp-mode . lsp-ui-mode))
+  :ensure t
+  :commands lsp-ui-mode)
 
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 
