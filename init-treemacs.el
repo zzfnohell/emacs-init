@@ -21,7 +21,7 @@
     (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
   :config
   (progn
-    (setq treemacs-collapse-dirs                 (if treemacs-python-executable 3 0)
+    (setq treemacs-collapse-dirs                 0
           treemacs-deferred-git-apply-delay      0.5
           treemacs-directory-name-transformer    #'identity
           treemacs-display-in-side-window        t
@@ -67,21 +67,7 @@
 
     (treemacs-follow-mode -1)
     (treemacs-filewatch-mode t)
-    (treemacs-fringe-indicator-mode -1)
-    (pcase (cons (not (null (executable-find "git")))
-                 (not (null treemacs-python-executable)))
-      (`(t . t)
-       (treemacs-git-mode 'deferred))
-      (`(t . _)
-       (treemacs-git-mode 'simple))))
-  :bind
-  (:map global-map
-        ("M-0"       . treemacs-select-window)
-        ("C-x t 1"   . treemacs-delete-other-windows)
-        ("C-x t t"   . treemacs)
-        ("C-x t B"   . treemacs-bookmark)
-        ("C-x t C-t" . treemacs-find-file)
-        ("C-x t M-t" . treemacs-find-tag)))
+    (treemacs-fringe-indicator-mode -1)))
 
 (use-package treemacs-icons-dired
   :after treemacs dired
