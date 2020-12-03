@@ -65,9 +65,9 @@
     ;; using a Hi-DPI display, uncomment this to double the icon size.
     ;;(treemacs-resize-icons 44)
 
-    (treemacs-follow-mode t)
+    (treemacs-follow-mode -1)
     (treemacs-filewatch-mode t)
-    (treemacs-fringe-indicator-mode t)
+    (treemacs-fringe-indicator-mode -1)
     (pcase (cons (not (null (executable-find "git")))
                  (not (null treemacs-python-executable)))
       (`(t . t)
