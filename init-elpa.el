@@ -9,8 +9,8 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 
-(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+                          ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 						 
 (when (< emacs-major-version 27)
     (package-initialize))
