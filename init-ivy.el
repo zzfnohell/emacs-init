@@ -56,11 +56,6 @@
   (push "TAGS" counsel-etags-ignore-filenames)
   (push "*.json" counsel-etags-ignore-filenames))
 
-(use-package all-the-icons-ivy-rich-mode
-  :ensure t
-  :init (all-the-icons-ivy-rich-mode 1))
-
-
 ;; (use-package counsel-tramp
 ;;   :after (:all ivy counsel)
 ;;   :config

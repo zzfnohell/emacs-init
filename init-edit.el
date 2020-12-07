@@ -202,9 +202,5 @@
 (use-package all-the-icons
   :ensure t)
 
-(use-package all-the-icons-ibuffer-mode
-  :ensure t
-  :init (all-the-icons-ibuffer-mode 1))
-
 (provide 'init-edit)
 ;;; init-edit.el ends here
