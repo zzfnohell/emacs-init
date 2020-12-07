@@ -132,13 +132,6 @@
 
 (use-package minimap)
 
-(use-package window-number
-  :config
-  ;; (window-number-mode 1)
-  (window-number-meta-mode))
-
-(use-package minimap)
-
 (use-package hl-line :ensure nil)
 
 (use-package hl-anything)
