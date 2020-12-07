@@ -25,6 +25,11 @@
 (use-package magit-imerge
   :ensure t)
 
+(use-package magit-delta
+  :ensure t
+  :config
+  (add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1))))
+
 (use-package vc-fossil
   :ensure t)
 
