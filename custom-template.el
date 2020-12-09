@@ -16,6 +16,7 @@
  '(column-number-mode t)
  '(dart-sdk-path "d:/Scoop/apps/flutter/current/bin/cache/dart-sdk/")
  '(flutter-sdk-path "d:/Scoop/apps/flutter/current/")
+ '(gc-cons-threshold 3200000)
  '(httpd-host "0.0.0.0")
  '(httpd-port 2020)
  '(indent-tabs-mode nil)
