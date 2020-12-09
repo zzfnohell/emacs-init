@@ -8,35 +8,6 @@
 ;; Access via Web
 ;; (use-package take-off )
 
-(defconst *font-list* (list
-                       "Sarasa Term SC"
-                       "Roboto Mono"
-                       "Ubuntu Mono"
-                       "Consolas"
-                       "Source Code Pro"
-                       "DejaVu Sans Mono"
-                       "Monaco")
-  "Favored font list.")
-
-(defun init-edit/set-font (name size)
-  "Set default font by NAME and SIZE."
-  (let ((s (format "%s-%d" name size)))
-    (add-to-list 'default-frame-alist `(font . ,s))))
-
-(defun init-edit/select-font ()
-  "Select available font."
-  (let* ((found nil)
-         (names *font-list*)
-  		 (name nil))
-    (while (and (not found) names)
-	  (setq name (car names))
-	  (when (and name (font-info name))
-	     (init-edit/set-font name 12)
-		 (setq found t))
-	  (setq names (cdr names)))))
-
-(when window-system (init-edit/select-font))
-
 ;; emacs shell font confusion
 (defvar ansi-color-for-comint-mode t)
 
