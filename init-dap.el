@@ -30,7 +30,8 @@
   (require 'dap-pwsh)
   (require 'dap-node))
 
-(use-package realgud :init (setq gdb-many-windows t))
+(use-package realgud
+  :init (setq gdb-many-windows t))
 
 (provide 'init-dap)
 

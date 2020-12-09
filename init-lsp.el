@@ -18,7 +18,8 @@
   :ensure t
   :commands lsp-ui-mode)
 
-(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-ivy
+  :commands lsp-ivy-workspace-symbol)
 
 (use-package lsp-treemacs
   :after treemacs
@@ -45,6 +46,17 @@
 ;; (use-package lsp-php
 ;;   :config
 ;;   (add-hook 'php-mode-hook #'lsp-php-enable))
+
+(use-package tree-sitter
+  :ensure t
+  :config
+  (require 'tree-sitter))
+
+(use-package tree-sitter-langs
+  :ensure t
+  :config
+  (require 'tree-sitter-langs))
+
 
 (provide 'init-lsp)
 
