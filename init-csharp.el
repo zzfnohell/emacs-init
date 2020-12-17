@@ -11,7 +11,9 @@
   :mode "\\.cs\\'"
   :config
   (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t))
-  
+
+(use-package csproj-mode :ensure t)
+
 (defun init-csharp/csharp-mode-setup ()
   (omnisharp-mode)
   (company-mode)

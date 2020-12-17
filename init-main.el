@@ -73,6 +73,7 @@
 (require 'init-octave)
 (require 'init-lex)
 
+(require 'init-grammar)
 (require 'init-sage-mode)
 (require 'init-java)
 (require 'init-scala)
