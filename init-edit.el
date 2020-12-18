@@ -173,5 +173,17 @@
 (use-package all-the-icons
   :ensure t)
 
+(use-package winum
+  :config
+  (winum-mode))
+
+(use-package all-the-icons
+  :ensure t)
+
+;; Slow Rendering
+;; If you experience a slow down in performance when rendering multiple
+;; icons simultaneously, you can try setting the following variable
+(setq inhibit-compacting-font-caches t)
+
 (provide 'init-edit)
 ;;; init-edit.el ends here

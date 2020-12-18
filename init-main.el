@@ -56,7 +56,6 @@
 (require 'init-flycheck)
 (require 'init-flymake)
 (require 'init-yasnippet)
-(require 'init-treemacs)
 (require 'init-lsp)
 (require 'init-dap)
 
