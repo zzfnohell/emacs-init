@@ -6,6 +6,10 @@
 
 (require 'ls-lisp)
 (require 'dired)
+
+(when (eq system-type 'windows-nt)
+  (setq find-program "gfind"))
+
 (setq dired-listing-switches "-alh")
 
 (use-package fd-dired :ensure t)
