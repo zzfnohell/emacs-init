@@ -5,14 +5,13 @@
 ;;
 
 (require 'ls-lisp)
-(require 'dired)
 
+(require 'dired)
 (when (eq system-type 'windows-nt)
-  (setq find-program "gfind"))
+  (setq find-program (purecopy "gfind")))
 
 (setq dired-listing-switches "-alh")
 
-(use-package fd-dired :ensure t)
 (provide 'init-dired)
 
 ;;; init-dired.el ends here

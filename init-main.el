@@ -24,14 +24,12 @@
 (require 'init-parameters)
 (require 'init-coding-system)
 (require 'init-edit)
-(require 'init-search)
+(require 'init-dired)
 
 (require 'init-rfc)
-
 (require 'init-ediff)
 (require 'init-theme)
 (require 'init-global-set-key)
-(require 'init-dired)
 (require 'init-uniquify)
 (require 'init-tramp)
 
