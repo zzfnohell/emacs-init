@@ -4,10 +4,12 @@
 ;;
 
 (use-package scala-mode
+  :ensure t
   :mode "\\.s\\(cala\\|bt\\)$")
 
 ;; Enable sbt mode for executing sbt commands
 (use-package sbt-mode
+  :ensure t
   :commands sbt-start sbt-command
   :config
   ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31

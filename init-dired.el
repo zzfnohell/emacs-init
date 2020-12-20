@@ -7,10 +7,14 @@
 (require 'ls-lisp)
 
 (require 'dired)
+
+(setq dired-listing-switches "-alh")
+
 (when (eq system-type 'windows-nt)
   (setq find-program (purecopy "gfind")))
 
-(setq dired-listing-switches "-alh")
+(when (eq system-type 'darwin)
+  (setq dired-use-ls-dired nil))
 
 (provide 'init-dired)
 
