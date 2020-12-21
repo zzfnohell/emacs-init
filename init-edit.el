@@ -188,5 +188,15 @@
 ;; icons simultaneously, you can try setting the following variable
 (setq inhibit-compacting-font-caches t)
 
+(use-package backward-forward
+  :demand
+  :config
+  (backward-forward-mode t)
+  :bind (:map backward-forward-mode-map
+              ("<C-left>" . nil)
+              ("<C-right>" . nil)
+              ("<M-left>" . backward-forward-previous-location)
+              ("<M-right>" . backward-forward-next-location)))
+
 (provide 'init-edit)
 ;;; init-edit.el ends here
