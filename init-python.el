@@ -9,6 +9,9 @@
   ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/dependency")
   )
 
+(use-package jupyter
+  :ensure t)
+
 (use-package ein
 	:ensure t)
 
