@@ -46,6 +46,10 @@
    'markdown-preview-javascript
    "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"))
 
+
+(use-package plantuml-mode
+  :ensure t)
+
 (provide 'init-markup-lang)
 
 ;;; init-markup-lang.el ends here

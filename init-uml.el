@@ -7,7 +7,7 @@
 
 ;;; Code:
 
-(use-package plantuml-mode)
+
 
 (provide 'init-uml)
 
