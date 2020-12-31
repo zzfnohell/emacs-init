@@ -7,28 +7,34 @@
   (let ((mode-backends (make-local-variable 'company-backends)))
     (add-to-list mode-backends 'company-nxml)))
 
-(use-package nxml-mode
-  :ensure nil
-  :mode (("\\.xml\\'" . nxml-mode)
-         ("\\.xsd\\'" . nxml-mode)
-         ("\\.sch\\'" . nxml-mode)
-         ("\\.rng\\'" . nxml-mode)
-         ("\\.xslt\\'" . nxml-mode)
-         ("\\.svg\\'" . nxml-mode)
-         ("\\.rss\\'" . nxml-mode))
-  :config
-  (add-hook 'nxml-mode-hook #'init-markup-lang/append-company-backends))
+(require 'sgml-mode)
+(require 'nxml-mode)
+
+(add-to-list 'auto-mode-alist '("\\.xml\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.sch\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.rng\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.xslt\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.svg\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.rss\\'" . nxml-mode))
+
+(add-hook 'nxml-mode-hook #'init-markup-lang/append-company-backends)
 
 (use-package ini-mode
+  :ensure t
   :mode (("\\.ini\\'" . ini-mode)))
 
-(use-package haml-mode :after markdown-mode)
+(use-package haml-mode
+  :ensure t
+  :after markdown-mode)
 
 ;;; YAML
 (use-package yaml-mode
+  :ensure t
   :mode ("\\.yml$" . yaml-mode))
 
 (use-package markdown-mode
+  :ensure t
   :mode
   (("\\.text\\'" . markdown-mode)
    ("\\.markdown\\'" . markdown-mode)
@@ -39,22 +45,6 @@
   (add-to-list
    'markdown-preview-javascript
    "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"))
-
-(add-to-list 'hs-special-modes-alist
-             '(nxml-mode
-               "<!--\\|<[^/>]*[^/]>"
-               "-->\\|</[^/>]*[^/]>"
-
-               "<!--"
-               sgml-skip-tag-forward
-               nil))
-
-
-
-(add-hook 'nxml-mode-hook 'hs-minor-mode)
-
-
-
 
 (provide 'init-markup-lang)
 
