@@ -55,15 +55,6 @@
 ;; srecode-map-load-path
 (global-srecode-minor-mode 1)
 
-(use-package msvc
-  :config
-  (setq w32-pipe-read-delay 0)
-  (when (msvc-initialize)
-    (msvc-flags-load-db :parsing-buffer-delete-p t)
-    (add-hook 'c-mode-common-hook #'msvc-mode-on t)))
-
-
-
 (provide 'init-cedet)
 
 ;;; init-cedet.el ends here
