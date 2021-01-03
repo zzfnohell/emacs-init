@@ -176,21 +176,6 @@
               ("<M-left>" . backward-forward-previous-location)
               ("<M-right>" . backward-forward-next-location)))
 
-(use-package hideshow
-  :after nxml-mode
-  :ensure t
-  :config
-  (add-to-list 'hs-special-modes-alist
-               '(nxml-mode
-                 "<!--\\|<[^/>]*[^/]>"
-                 "-->\\|</[^/>]*[^/]>"
-                 
-               "<!--"
-               sgml-skip-tag-forward
-               nil))
-  
-  (add-hook 'nxml-mode-hook 'hs-minor-mode))
-
 (use-package visible-mark
   :ensure t
   :demand t
