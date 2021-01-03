@@ -155,10 +155,6 @@
   :config
   (winum-mode))
 
-;; Slow Rendering
-;; If you experience a slow down in performance when rendering multiple
-;; icons simultaneously, you can try setting the following variable
-(setq inhibit-compacting-font-caches t)
 
 (use-package backward-forward
   :demand
@@ -183,6 +179,14 @@
   
   (setq visible-mark-faces `(visible-mark-face init-ui/visible-mark-face-2))
   (global-visible-mark-mode +1))
+
+(use-package projectile
+  :ensure t
+  :demand t
+  :config
+  (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 (provide 'init-edit)
 ;;; init-edit.el ends here
