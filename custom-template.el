@@ -21,6 +21,7 @@
  '(httpd-port 2020)
  '(indent-tabs-mode nil)
  '(minimap-window-location (quote right))
+ '(select-enable-clipboard t)
  '(semantic-idle-scheduler-idle-time 5)
  '(semantic-symref-tool (quote global))
  '(session-use-package t nil (session))

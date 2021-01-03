@@ -69,12 +69,10 @@
 ;; (setq display-time-day-and-date t)
 
 
-(when window-system (scroll-bar-mode -1))
+(when window-system
+  (scroll-bar-mode -1))
 
 (transient-mark-mode t)
-
-;;enable clipboard.
-(setq x-select-enable-clipboard t)
 
 ;; display buffer name on the caption.
 (setq frame-title-format
@@ -132,11 +130,7 @@
 
 (use-package kill-ring-search
   :ensure t
-  :demand t
-  :config
-  (autoload 'kill-ring-search "kill-ring-search"
-    "Search the kill ring in the minibuffer."
-    (interactive)))
+  :demand t)
 
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
 (setq-default abbrev-mode t)
