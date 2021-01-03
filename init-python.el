@@ -49,5 +49,10 @@
 	:config
 	(pyenv-mode))
 
+
+(use-package python-pytest
+  :custom
+  (python-pytest-confirm t))
+
 (provide 'init-python)
 ;;; init-python.el ends here

@@ -46,9 +46,14 @@
    'markdown-preview-javascript
    "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"))
 
-
 (use-package plantuml-mode
   :ensure t)
+
+;; CSV file
+(use-package csv-mode
+  :ensure t
+  :mode "\\.[Cc][Ss][Vv]\\'"
+  :init (setq csv-separators '("," ";" "|" " ")))
 
 (provide 'init-markup-lang)
 

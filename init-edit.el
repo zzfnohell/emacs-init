@@ -84,75 +84,59 @@
 (setq-default truncate-lines nil)
 (setq-default global-visual-line-mode t)
 
-(defun set-transparency (alpha-level)
-  "Set transparency as ALPHA-LEVEL."
-  (interactive "p")
-  (message (format "Alpha level passed in: %s" alpha-level))
-  (let ((alpha-level
-         (if (< alpha-level 2)
-             (read-number "Opacity percentage: " 85)
-           alpha-level))
-        (myalpha (frame-parameter nil 'alpha)))
-    (set-frame-parameter nil 'alpha alpha-level))
-  (message (format "Alpha level is %d" (frame-parameter nil 'alpha))))
-
-;;(set-frame-parameter (selected-frame) 'alpha '(85 50))
-;;(add-to-list 'default-frame-alist '(alpha 85 50))
-
 (use-package fuzzy
-  :ensure t)
+  :ensure t
+  :demand t)
 
-(use-package sr-speedbar)
+(use-package hl-line
+  :ensure t
+  :demand t)
 
-(use-package minimap)
+(use-package hl-anything
+  :ensure t
+  :demand t)
 
-(use-package hl-line :ensure nil)
+(use-package hl-indent
+  :ensure t
+  :demand t)
 
-(use-package hl-anything)
+(use-package highlight-parentheses
+  :ensure t
+  :demand t)
 
-(use-package hl-indent)
-
-(use-package highlight-parentheses)
-
-(use-package highlight-thing)
+(use-package highlight-thing
+  :ensure t
+  :demand t)
 
 (use-package auto-highlight-symbol
-  :config (global-auto-highlight-symbol-mode t))
+  :ensure t
+  :demand t
+  :config
+  (global-auto-highlight-symbol-mode t))
 
 (use-package undo-tree
-  :config (global-undo-tree-mode))
-
-(use-package regex-tool)
-
-(use-package visible-mark
-  :init
-  (defface visible-mark-active
-    ;; put this before (require 'visible-mark)
-    '((((type tty) (class mono)))
-      (t (:background "magenta"))) "")
-  (setq visible-mark-max 2)
-  (setq visible-mark-faces `(visible-mark-face1 visible-mark-face2))
+  :ensure t
+  :demand t
   :config
-  (global-visible-mark-mode 1))
-
+  (global-undo-tree-mode))
 
 (add-hook 'texinfo-mode-hook (lambda () (require 'sb-texinfo)))
 
-;; CSV file
-(use-package csv-mode
-  :mode "\\.[Cc][Ss][Vv]\\'"
-  :init (setq csv-separators '("," ";" "|" " ")))
+(use-package anyins
+  :ensure t
+  :demand t)
 
-(use-package anyins)
-
-(use-package popup-kill-ring)
+(use-package popup-kill-ring
+  :ensure t
+  :demand t)
 
 (use-package kill-ring-search
+  :ensure t
+  :demand t
   :config
-  (progn
-    (autoload 'kill-ring-search "kill-ring-search"
-      "Search the kill ring in the minibuffer."
-      (interactive))))
+  (autoload 'kill-ring-search "kill-ring-search"
+    "Search the kill ring in the minibuffer."
+    (interactive)))
 
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
 (setq-default abbrev-mode t)
@@ -161,27 +145,21 @@
 (setq save-abbrevs t)
 (xterm-mouse-mode 1)
 
-(use-package httprepl)
-
-(use-package speedbar)
-
-(use-package rg
-  :config (rg-enable-default-bindings))
-
-(use-package graphviz-dot-mode)
-
-(use-package memory-usage)
 (global-display-line-numbers-mode)
 
-(use-package all-the-icons
-  :ensure t)
+(use-package speedbar
+  :ensure t
+  :demand t)
+
+(use-package memory-usage
+  :ensure t
+  :demand t)
 
 (use-package winum
+  :ensure t
+  :demand t
   :config
   (winum-mode))
-
-(use-package all-the-icons
-  :ensure t)
 
 ;; Slow Rendering
 ;; If you experience a slow down in performance when rendering multiple
@@ -198,7 +176,6 @@
               ("<M-left>" . backward-forward-previous-location)
               ("<M-right>" . backward-forward-next-location)))
 
-
 (use-package hideshow
   :after nxml-mode
   :ensure t
@@ -214,6 +191,19 @@
   
   (add-hook 'nxml-mode-hook 'hs-minor-mode))
 
+(use-package visible-mark
+  :ensure t
+  :demand t
+  :config
+  (setq visible-mark-max 2)
+
+  (defface init-ui/visible-mark-face-2
+    `((t (:background "orange" :foreground "black")))
+    "Face for the mark."
+    :group 'visible-mark)
+  
+  (setq visible-mark-faces `(visible-mark-face init-ui/visible-mark-face-2))
+  (global-visible-mark-mode +1))
 
 (provide 'init-edit)
 ;;; init-edit.el ends here

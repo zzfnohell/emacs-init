@@ -24,6 +24,7 @@
 (require 'init-parameters)
 (require 'init-coding-system)
 (require 'init-edit)
+(require 'init-ui)
 (require 'init-dired)
 
 (require 'init-rfc)
