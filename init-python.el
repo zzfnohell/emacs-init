@@ -5,22 +5,16 @@
 
 ;;; Code:
 (use-package python-mode
+  :ensure t
   ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/project")
   ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/dependency")
   )
 
-;; (use-package jedi
-;;   :config
-;;   (progn
-;;     (setq jedi:complete-on-dot t)
-;;     (add-hook 'python-mode-hook 'jedi:setup)
-;;     (add-hook 'python-mode-hook 'jedi:ac-setup)))
-
-;; (use-package elpy
-;;   :config
-;; 	(elpy-enable)
-;; 	(defalias 'workon 'pyvenv-workon)
-;; 	(setq elpy-rpc-backend "jedi"))
+(use-package python-cell
+  :after python-mode
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook #'python-cell-mode 1))
 
 (use-package highlight-indentation
 	:ensure t
