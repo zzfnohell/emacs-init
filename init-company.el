@@ -8,23 +8,28 @@
 
 (use-package company
   :demand t
+  :ensure t
   :config
   (setq company-dabbrev-downcase nil)
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package company-posframe
   :after company
+  :ensure t
   :hook (company-mode . company-posframe-mode))
 
 (use-package company-coq
   :if (featurep 'proof-site)
+  :ensure t
   :after (:all company))
 
 (use-package company-quickhelp
+  :ensure t
   :after (:all company)
   :config (company-quickhelp-mode 1))
 
 (use-package company-math
+  :ensure t
   :after (:all company)
   :config
   (add-to-list 'company-backends 'company-math-symbols-unicode))
@@ -35,23 +40,24 @@
 ;;   :config (add-to-list 'company-backends 'company-inf-ruby))
 
 
-(use-package company-shell)
+(use-package company-shell
+  :ensure t)
 
-(use-package company-axiom)
+(use-package company-axiom ensure t)
 
-(use-package company-dict)
+(use-package company-dict ensure t)
 
-(use-package company-restclient)
+(use-package company-restclient ensure t)
 
 (use-package company-box
-  :after (:all company all-the-icons) 
+  :ensure t
+  :after (:all company all-the-icons)
   :diminish
   :hook (company-mode . company-box-mode)
   :init (setq company-box-icons-alist 'company-box-icons-all-the-icons)
   :config
   (setq company-box-backends-colors nil)
   (setq company-box-show-single-candidate t)
-  (setq company-box-max-candidates 50)
   (defun company-box-icons--elisp (candidate)
     (when (derived-mode-p 'emacs-lisp-mode)
       (let ((sym (intern candidate)))
