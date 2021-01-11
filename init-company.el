@@ -9,8 +9,9 @@
 (use-package company
   :demand t
   :ensure t
+  :costom
+  (company-dabbrev-downcase nil)
   :config
-  (setq company-dabbrev-downcase nil)
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package company-posframe
@@ -43,11 +44,14 @@
 (use-package company-shell
   :ensure t)
 
-(use-package company-axiom ensure t)
+(use-package company-axiom
+  :ensure t)
 
-(use-package company-dict ensure t)
+(use-package company-dict
+  :ensure t)
 
-(use-package company-restclient ensure t)
+(use-package company-restclient
+  :ensure t)
 
 (use-package company-box
   :ensure t
