@@ -9,7 +9,7 @@
 (use-package company
   :demand t
   :ensure t
-  :costom
+  :custom
   (company-dabbrev-downcase nil)
   :config
   (add-hook 'after-init-hook 'global-company-mode))
