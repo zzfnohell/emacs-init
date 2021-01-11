@@ -7,7 +7,8 @@
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)
-  :hook ((python-mode . lsp)
+  :hook (
+         (python-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :custom
   (lsp-enable-completion-at-point t)

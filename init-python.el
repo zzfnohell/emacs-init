@@ -13,12 +13,6 @@
   ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/dependency")
   )
 
-;; elpy-config
-(use-package elpy
-  :ensure t
-  :init
-  (elpy-enable))
-
 (use-package python-cell
   :after python-mode
   :ensure t
