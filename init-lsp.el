@@ -20,29 +20,13 @@
   :commands lsp-ui-mode)
 
 (use-package lsp-ivy
+  :ensure t
   :commands lsp-ivy-workspace-symbol)
 
 (use-package which-key
+  :ensure t
   :config
   (which-key-mode))
-
-;; pip install "ptvsd>=4.2"
-;; (use-package dap-python 
-;;   :ensure-system-package 
-;;   ((ptvsd . "pip install ptvsd")))
-
-;; (use-package lsp-clangd
-;;   :after (:all lsp-mode)
-;;   :config 
-;;   (with-eval-after-load 'lsp-mode
-;;     (require 'lsp-clangd)
-;;     (add-hook 'c-mode-hook #'lsp-clangd-c-enable)
-;;     (add-hook 'c++-mode-hook #'lsp-clangd-c++-enable)
-;;     (add-hook 'objc-mode-hook #'lsp-clangd-objc-enable)))
-
-;; (use-package lsp-php
-;;   :config
-;;   (add-hook 'php-mode-hook #'lsp-php-enable))
 
 (use-package tree-sitter
   :ensure t
