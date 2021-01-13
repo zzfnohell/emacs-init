@@ -11,18 +11,22 @@
 (use-package org
   :after (:all ob-axiom)
   :custom
-  (org-directory "~/org")
+;;  (org-directory "~/org")
   (org-agenda-files '("agendas.org"))
   (org-default-notes-file "notes.org")
   (org-mobile-directory "/davs://dav.centaurs.bid/")
   (org-mobile-files '(org-agenda-files "mobile"))
   (org-mobile-inbox-for-pull "from-mobile.org")
   :config
-  (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
-         "* TODO %?\n  %i\n  %a")
-        ("j" "Journal" entry (file+datetree "~/org/journal.org")
-         "* %?\nEntered on %U\n  %i\n  %a")))
+  (require 'org-capture)
+  (let ((gtd-file-path (expand-file-name "gtd.org" org-directory))
+        (journal-file-path (expand-file-name "journal.org" org-directory)))
+    (setq org-capture-templates
+          (list
+           `("t" "Todo" entry (file+headline ,gtd-file-path "Tasks")
+             "* TODO %?\n  %i\n  %a")
+           `("j" "Journal" entry (file+datetree ,journal-file-path)
+             "* %?\nEntered on %U\n  %i\n  %a"))))
     
   (cond ((equal system-type 'windows-nt)
          (setq org-mobile-directory "/plink:zzfnohell@pluto.centaurs.bid:/var/local/dav/"))
