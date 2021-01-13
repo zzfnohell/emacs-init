@@ -11,14 +11,12 @@
 (use-package org
   :after (:all ob-axiom)
   :custom
-  (org-agenda-files (quote ("~/org/agenda.org")))
-  (org-default-notes-file "~/org/notes.org")
   (org-directory "~/org")
+  (org-agenda-files '("agendas.org"))
+  (org-default-notes-file "notes.org")
   (org-mobile-directory "/davs://dav.centaurs.bid/")
-  (org-mobile-files
-   (quote
-    (org-agenda-files "oil.org" "stock.org" "oanda.org" "us_stock.org")))
-  (org-mobile-inbox-for-pull "~/org/from-mobile.org")
+  (org-mobile-files '(org-agenda-files "mobile"))
+  (org-mobile-inbox-for-pull "from-mobile.org")
   :config
   (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
@@ -99,6 +97,35 @@
   (add-to-list 'org-babel-load-languages '(cypher . t))
   (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
   (add-to-list 'org-babel-tangle-lang-exts '("cypher" . "cypher")))
+
+(use-package org-roam
+      :ensure t
+      :hook
+      (after-init . org-roam-mode)
+      :custom
+      (org-roam-directory "~/org/roam")
+      :bind (:map org-roam-mode-map
+              (("C-c n l" . org-roam)
+               ("C-c n f" . org-roam-find-file)
+               ("C-c n g" . org-roam-graph))
+              :map org-mode-map
+              (("C-c n i" . org-roam-insert))
+              (("C-c n I" . org-roam-insert-immediate))))
+
+(use-package org-roam-server
+  :ensure t
+  :config
+  (setq org-roam-server-host "127.0.0.1"
+        org-roam-server-port 8080
+        org-roam-server-authenticate nil
+        org-roam-server-export-inline-images t
+        org-roam-server-serve-files nil
+        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+        org-roam-server-network-poll t
+        org-roam-server-network-arrows nil
+        org-roam-server-network-label-truncate t
+        org-roam-server-network-label-truncate-length 60
+        org-roam-server-network-label-wrap-length 20))
 
 (provide 'init-org)
 
