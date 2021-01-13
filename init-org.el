@@ -15,7 +15,7 @@
   (org-agenda-files '("agendas.org"))
   (org-default-notes-file "notes.org")
   (org-mobile-directory "/davs://dav.centaurs.bid/")
-  (org-mobile-files '(org-agenda-files "mobile"))
+  (org-mobile-files '(org-agenda-files "mobile/"))
   (org-mobile-inbox-for-pull "from-mobile.org")
   :config
   (require 'org-capture)
