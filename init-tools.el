@@ -19,6 +19,15 @@
   :config
   (rg-enable-default-bindings))
 
+(use-package deft
+  :ensure t
+  :demand t
+  :bind ("<f8>" . deft)
+  :commands (deft)
+  :config
+  (setq deft-recursive t)
+  (setq deft-extensions '("txt" "tex" "org")))
+
 (use-package graphviz-dot-mode
   :ensure t
   :demand t)
