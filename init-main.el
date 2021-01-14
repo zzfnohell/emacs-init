@@ -105,8 +105,6 @@
 
 (require 'init-view)
 (require 'init-tools)
-(require 'custom-template)
-
 
 (provide 'init-main)
 

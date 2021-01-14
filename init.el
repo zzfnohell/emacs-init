@@ -11,10 +11,14 @@
 ;; (setq debug-on-message ".*error.*")
 
 (setq custom-file "~/.emacs.d/custom.el")
-
-(load "~/.emacs.d/init/init-main.el")
+(unless (file-exists-p custom-file)
+  (write-region "" nil custom-file))
 
 (when (file-exists-p custom-file)
   (load custom-file))
+
+(load "~/.emacs.d/init/init-main.el")
+
+
 
 ;;; init.el ends here
