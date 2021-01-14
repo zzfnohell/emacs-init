@@ -86,9 +86,7 @@
   :ensure t
   :demand t)
 
-(use-package hl-line
-  :ensure t
-  :demand t)
+(require 'hl-line)
 
 (use-package hl-anything
   :ensure t
@@ -141,9 +139,7 @@
 
 (global-display-line-numbers-mode)
 
-(use-package speedbar
-  :ensure t
-  :demand t)
+(require 'speedbar)
 
 (use-package memory-usage
   :ensure t

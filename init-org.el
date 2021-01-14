@@ -78,7 +78,7 @@
 (use-package org-brain
   :ensure t
   :init
-  (setq org-brain-path "~/org/brain")
+  (setq org-brain-path (concat (file-name-as-directory org-directory) "brain"))
   :config
   (require 'org-capture)
   (bind-key "C-c b" 'org-brain-prefix-map org-mode-map)
