@@ -26,7 +26,7 @@
   :commands (deft)
   :config
   (setq deft-recursive t)
-	(setq deft-directoy (file-name-as-directory org-directory))
+	(setq deft-directory (file-name-as-directory org-directory))
 	(setq deft-text-mode 'org-mode)
 	(setq deft-use-filename-as-title t)
   (setq deft-extensions '("txt" "tex" "org" "md")))
