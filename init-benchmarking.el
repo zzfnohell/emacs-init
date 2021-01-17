@@ -5,14 +5,12 @@
 
 ;;; Code:
 
-(use-package esup
-	:ensure t)
-
 (use-package benchmark-init
 	:ensure t
-  :config
-  ;; To disable collection of benchmark data after init is done.
-  (add-hook 'after-init-hook 'benchmark-init/deactivate))
+  :init
+  (benchmark-init/activate)
+  :hook
+  (after-init . benchmark-init/deactivate))
 
 (provide 'init-benchmarking)
 

@@ -25,7 +25,6 @@
  '(select-enable-clipboard t)
  '(semantic-idle-scheduler-idle-time 5)
  '(semantic-symref-tool (quote global))
- '(session-use-package t nil (session))
  '(size-indication-mode t)
  '(speedbar-show-unknown-files t)
  '(visual-line-mode nil t))
