@@ -3,10 +3,6 @@
 ;;
 
 ;;; Code:
-(add-to-list 'load-path "~/.emacs.d/init/")
-
-(let ((default-directory "~/.emacs.d/site-lisp/"))
-  (normal-top-level-add-subdirs-to-load-path))
 
 (require 'init-system)
 (require 'init-proxy)
