@@ -31,6 +31,16 @@
 	(setq deft-use-filename-as-title t)
   (setq deft-extensions '("txt" "tex" "org" "md")))
 
+(use-package highlight-indent-guides
+	:ensure t
+	:config
+	(add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
+
+(use-package fill-column-indicator
+	:ensure t
+	:config
+	(add-hook 'prog-mode-hook 'fci-mode))
+
 (use-package graphviz-dot-mode
   :ensure t
   :demand t)
