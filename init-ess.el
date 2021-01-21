@@ -8,9 +8,14 @@
 ;;   "Value is t if the OS is one of Microsoft's, nil otherwise.")
 ;;; Code:
 
-
 (use-package julia-mode
   :ensure t)
+
+(use-package lsp-julia
+  :after (:all julia-mode lsp-mode)
+  :config
+  (add-hook 'julia-mode-hook #'lsp-mode)
+  (add-hook 'julia-mode-hook #'lsp))
 
 (use-package ess
   :ensure t

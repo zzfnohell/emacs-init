@@ -19,17 +19,6 @@
   :config
   (rg-enable-default-bindings))
 
-(use-package deft
-  :ensure t
-  :demand t
-  :bind ("<f8>" . deft)
-  :commands (deft)
-  :config
-  (setq deft-recursive t)
-	(setq deft-directory (file-name-as-directory org-directory))
-	(setq deft-text-mode 'org-mode)
-	(setq deft-use-filename-as-title t)
-  (setq deft-extensions '("txt" "tex" "org" "md")))
 
 (use-package highlight-indent-guides
 	:ensure t
@@ -55,6 +44,15 @@
 (use-package vlf
   :ensure t
   :config (require 'vlf-setup))
+
+(use-package origami
+  :ensure t)
+
+(use-package lsp-origami
+  :after (:all origami lsp)
+  :ensure t
+  :config
+  (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable))
 
 (provide 'init-tools)
 

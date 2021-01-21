@@ -21,7 +21,6 @@
 (require 'init-coding-system)
 (require 'init-edit)
 (require 'init-tools)
-(require 'init-view)
 (require 'init-ui)
 (require 'init-dired)
 
@@ -57,7 +56,6 @@
 (require 'init-dap)
 
 (require 'init-ess)
-(require 'init-julia)
 (require 'init-maxima)
 (require 'init-axiom)
 (require 'init-proof)

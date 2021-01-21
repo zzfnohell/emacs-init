@@ -11,19 +11,19 @@
 	:config
 	(add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
-(use-package hideshow
-  :ensure t
-  :config
-  (add-to-list 'hs-special-modes-alist
-               '(nxml-mode
-                 "<!--\\|<[^/>]*[^/]>"
-                 "-->\\|</[^/>]*[^/]>"
+;; (use-package hideshow
+;;   :ensure t
+;;   :config
+;;   (add-to-list 'hs-special-modes-alist
+;;                '(nxml-mode
+;;                  "<!--\\|<[^/>]*[^/]>"
+;;                  "-->\\|</[^/>]*[^/]>"
                  
-               "<!--"
-               sgml-skip-tag-forward
-               nil))
+;;                "<!--"
+;;                sgml-skip-tag-forward
+;;                nil))
   
-  (add-hook 'nxml-mode-hook 'hs-minor-mode))
+;;   (add-hook 'nxml-mode-hook 'hs-minor-mode))
 
 (provide 'init-prog)
 

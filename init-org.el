@@ -131,6 +131,19 @@
         org-roam-server-network-label-truncate-length 60
         org-roam-server-network-label-wrap-length 20))
 
+(use-package deft
+  :after org
+  :ensure t
+  :demand t
+  :bind ("<f8>" . deft)
+  :commands (deft)
+  :config
+  (setq deft-recursive t)
+	(setq deft-directory (file-name-as-directory org-directory))
+	(setq deft-text-mode 'org-mode)
+	(setq deft-use-filename-as-title t)
+  (setq deft-extensions '("txt" "tex" "org" "md")))
+
 (provide 'init-org)
 
 ;;; init-org.el ends here
