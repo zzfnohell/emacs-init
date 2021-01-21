@@ -8,15 +8,24 @@
 ;;   "Value is t if the OS is one of Microsoft's, nil otherwise.")
 ;;; Code:
 
+
+(use-package julia-mode
+  :ensure t)
+
 (use-package ess
-	:config
+  :ensure t
+  :after (:all julia-mode)
+  :config
   (setq ess-history-directory "~/.ess/")
 	(require 'ess-site)
 	(require 'ess-julia)
 	(setq inferior-julia-program-name "julia"))
 
-(use-package stan-mode)
-(use-package stan-snippets)
+(use-package stan-mode
+  :ensure t)
+
+(use-package stan-snippets
+  :ensure t)
 
 (provide 'init-ess)
 

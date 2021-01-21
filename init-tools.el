@@ -49,6 +49,13 @@
   :ensure t
   :demand t)
 
+(use-package logview
+  :ensure t)
+
+(use-package vlf
+  :ensure t
+  :config (require 'vlf-setup))
+
 (provide 'init-tools)
 
 ;;; init-tools.el ends here

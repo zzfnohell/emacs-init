@@ -20,6 +20,8 @@
 (require 'init-parameters)
 (require 'init-coding-system)
 (require 'init-edit)
+(require 'init-tools)
+(require 'init-view)
 (require 'init-ui)
 (require 'init-dired)
 
@@ -96,11 +98,7 @@
 (require 'init-polymode)
 (require 'init-web)
 
-(require 'init-format)
 (require 'init-development)
-
-(require 'init-view)
-(require 'init-tools)
 
 (provide 'init-main)
 
