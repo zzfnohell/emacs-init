@@ -12,11 +12,6 @@
 (require 'init-benchmarking)
 (require 'init-utils)
 (require 'init-monitor)
-(require 'server)
-;; (unless (server-running-p)
-;;  (setq server-auth-dir (expand-file-name "~/.emacs.d/server"))
-;;  (server-start))
-
 (require 'init-parameters)
 (require 'init-coding-system)
 (require 'init-edit)
@@ -26,7 +21,6 @@
 
 (require 'init-rfc)
 (require 'init-ediff)
-(require 'init-theme)
 (require 'init-global-set-key)
 (require 'init-uniquify)
 (require 'init-tramp)
@@ -97,6 +91,13 @@
 (require 'init-web)
 
 (require 'init-development)
+
+(require 'init-theme)
+
+; (require 'server)
+; (unless (server-running-p)
+;  (setq server-auth-dir (expand-file-name "~/.emacs.d/server"))
+;  (server-start))
 
 (provide 'init-main)
 

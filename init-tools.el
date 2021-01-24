@@ -17,7 +17,7 @@
   :ensure t
   :demand t
   :config
-  (rg-enable-default-bindings))
+  (rg-enable-menu))
 
 
 (use-package highlight-indent-guides
@@ -25,10 +25,6 @@
 	:config
 	(add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
 
-(use-package fill-column-indicator
-	:ensure t
-	:config
-	(add-hook 'prog-mode-hook 'fci-mode))
 
 (use-package graphviz-dot-mode
   :ensure t

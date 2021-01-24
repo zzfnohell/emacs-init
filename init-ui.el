@@ -37,6 +37,13 @@
 ;;(set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;;(add-to-list 'default-frame-alist '(alpha 85 50))
 
+(require 'display-fill-column-indicator)
+(setq display-fill-column-indicator-column 120)
+(defun init-ui/enable-display-fill-column ()
+	(display-fill-column-indicator-mode))
+
+(add-hook 'prog-mode-hook #'init-ui/enable-display-fill-column)
+
 (provide 'init-ui)
 
 ;;; init-ui.el ends here
