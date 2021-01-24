@@ -14,7 +14,7 @@
   (with-eval-after-load 'lua-mode
     (setq lua-indent-level 4)))
 
-(message "loading init-lisp done.")
+(message "loading init-lua done.")
 
 (provide 'init-lua)
 

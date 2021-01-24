@@ -15,6 +15,8 @@
                ;; ("\\.m$" . mercury-mode)
                 )
               auto-mode-alist))
+			  
+(message "loading init-prolog done.")
 
 (provide 'init-prolog)
 

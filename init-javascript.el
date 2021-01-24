@@ -6,15 +6,18 @@
 
 ;;; Code:
 
-(use-package js :custom (js-indent-level 2))
+(use-package js
+ :ensure t
+ :custom (js-indent-level 2))
 
-(use-package json-mode)
+(use-package json-mode :ensure t)
 
 (use-package js-comint
   :config
   (setq inferior-js-program-command "node"))
 
 (use-package js2-mode
+  :ensure t
   :mode (("\\.js\\'" . js2-mode))
   :config
   (add-hook 'js2-mode-hook #'js2-imenu-extras-mode))
