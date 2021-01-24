@@ -10,6 +10,7 @@
 (use-package elein)
 (use-package cider)
 
+(message "loading init-clojure done.")
 
 (provide 'init-clojure)
 

@@ -38,6 +38,7 @@
   :config
   (require 'tree-sitter-langs))
 
+(message "loading init-lsp done.")
 
 (provide 'init-lsp)
 

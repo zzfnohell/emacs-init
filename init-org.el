@@ -144,6 +144,8 @@
 	(setq deft-use-filename-as-title t)
   (setq deft-extensions '("txt" "tex" "org" "md")))
 
+(message "loading init-org done.")
+
 (provide 'init-org)
 
 ;;; init-org.el ends here

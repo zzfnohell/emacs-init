@@ -120,6 +120,8 @@
             (let ((mode-backends (make-local-variable 'company-backends)))
               (add-to-list mode-backends 'company-css))))
 
+(message "loading init-web done.")
+
 (provide 'init-web)
 
 ;;; init-web.el ends here

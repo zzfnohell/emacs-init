@@ -27,6 +27,7 @@
 (use-package groovy-mode
   :ensure t)
 
+(message "loading init-java done.")
+
 (provide 'init-java)
-(message "init-java loaded.")
 ;;; init-java.el ends here

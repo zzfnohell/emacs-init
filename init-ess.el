@@ -32,6 +32,8 @@
 (use-package stan-snippets
   :ensure t)
 
+(message "loading init-ess done.")
+
 (provide 'init-ess)
 
 ;;; init-ess.el ends here

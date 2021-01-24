@@ -110,6 +110,8 @@
 
 (add-hook 'emacs-mode-hook #'init-lisp/append-elisp-backends)
 
+(message "loading init-lisp done.")
+
 (provide 'init-lisp)
 
 ;;; init-lisp.el ends here

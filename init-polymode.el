@@ -18,6 +18,8 @@
   (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
   (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode)))
 
+(message "loading init-polymode done.")
+
 (provide 'init-polymode)
 
 ;;; init-polymode.el ends here

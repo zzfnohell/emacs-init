@@ -33,6 +33,8 @@
 (use-package realgud
   :init (setq gdb-many-windows t))
 
+(message "loading init-dap done.")
+
 (provide 'init-dap)
 
 ;;; init-dap.el ends here

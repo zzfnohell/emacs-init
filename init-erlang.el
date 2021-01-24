@@ -11,6 +11,7 @@
 	:config
 	(require 'erlang-start))
 
+(message "loading init-erlang done.")
 
 (provide 'init-erlang)
 

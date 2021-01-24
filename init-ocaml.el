@@ -58,6 +58,7 @@
   (add-hook 'tuareg-mode-hook 'merlin-mode)
   )
 
+(message "loading init-ocaml done.")
 
 (provide 'init-ocaml)
 

@@ -19,6 +19,8 @@
 (use-package go-rename)
 (use-package flycheck-gometalinter)
 
+(message "loading init-go done.")
+
 (provide 'init-go)
 
 ;;; init-go.el ends here

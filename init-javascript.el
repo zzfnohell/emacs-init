@@ -40,6 +40,8 @@
   :config
   (add-hook 'javascript-mode-hook 'flycheck-mode))
 
+(message "loading init-javascript done.")
+
 (provide 'init-javascript)
 
 ;;; init-javascript.el ends here
