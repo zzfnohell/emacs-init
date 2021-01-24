@@ -11,6 +11,8 @@
   (benchmark-init/activate)
   :hook
   (after-init . benchmark-init/deactivate))
+  
+(message "loading init-benchmarking done.")
 
 (provide 'init-benchmarking)
 

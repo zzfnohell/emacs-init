@@ -10,7 +10,6 @@
 (require 'init-elpa)
 
 (require 'init-benchmarking)
-(require 'init-monitor)
 (require 'init-parameters)
 (require 'init-coding-system)
 (require 'init-edit)

@@ -34,6 +34,8 @@
 
 (require 'bind-key)
 
+(message "loading init-elpa done.")
+
 (provide 'init-elpa)
 
 ;;; init-elpa.el ends here
