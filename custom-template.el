@@ -15,6 +15,8 @@
  '(cursor-type 'box)
  '(column-number-mode t)
  '(dart-sdk-path "d:/Scoop/apps/flutter/current/bin/cache/dart-sdk/")
+ ;;; FIX find-dired.elc freeze on windows
+ '(find-exec-terminator "\"+\"")
  '(flutter-sdk-path "d:/Scoop/apps/flutter/current/")
  '(gc-cons-threshold 3200000)
  '(httpd-host "0.0.0.0")
