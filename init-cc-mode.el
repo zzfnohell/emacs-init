@@ -89,6 +89,10 @@
   :config
   (add-hook 'glsl-mode-hook #'init-cc-mode/glsl-mode-hook-func))
 
+(use-package xcscope
+  :config
+	(cscope-setup))
+
 (provide 'init-cc-mode)
 
 ;;; init-cc-mode.el ends here
