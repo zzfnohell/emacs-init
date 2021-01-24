@@ -14,10 +14,10 @@
 (require 'init-parameters)
 (require 'init-coding-system)
 (require 'init-edit)
+(require 'init-auxiliaries)
 
 (require 'init-global-set-key)
 (require 'init-tags)
-(require 'init-multi-term)
 (require 'init-shell)
 (require 'init-docker)
 (require 'init-skeletor)
@@ -48,10 +48,8 @@
 (require 'init-lex)
 
 (require 'init-grammar)
-(require 'init-sage-mode)
 (require 'init-java)
 (require 'init-scala)
-
 (require 'init-ocaml)
 (require 'init-erlang)
 (require 'init-clojure)
@@ -69,13 +67,10 @@
 (require 'init-powershell)
 (require 'init-csharp)
 (require 'init-pascal)
-(require 'init-erc)
 (require 'init-markup-lang)
 
 (require 'init-polymode)
 (require 'init-web)
-
-(require 'init-development)
 
 (require 'init-theme)
 

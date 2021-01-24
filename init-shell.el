@@ -5,10 +5,9 @@
 
 ;;; Code:
 (use-package shell-switcher
-   
+  :ensure t
   :config
-  (progn
-    (setq shell-switcher-mode t)))
+	(setq shell-switcher-mode t))
 
 
 ;; (defun make-powershell ()
@@ -16,11 +15,16 @@
 ;;   (powershell (generate-new-buffer-name "*PowerShell*")))
 ;; (setq-default shell-switcher-new-shell-function 'make-powershell)
 
-(use-package shell-command :config (shell-command-completion-mode))
+(use-package shell-command
+	:ensure t
+	:config
+	(shell-command-completion-mode))
 
-(use-package fish-mode)
+(use-package fish-mode
+	:ensure t)
 
 (use-package fish-completion
+	:ensure t
   :config
   (when (and (executable-find "fish")
              (require 'fish-completion nil t))
@@ -33,6 +37,11 @@
 ;;     (setq comint-buffer-maximum-size 0)
 ;;     (comint-truncate-buffer)
 ;;     (setq comint-buffer-maximum-size old-max))) 
+
+(use-package multi-term
+	:ensure t
+  :config
+	(setq multi-term-program "/bin/bash"))
 
 (provide 'init-shell)
 

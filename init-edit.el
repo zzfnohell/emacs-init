@@ -82,10 +82,6 @@
 (setq-default truncate-lines nil)
 (setq-default global-visual-line-mode t)
 
-(use-package fuzzy
-  :ensure t
-  :demand t)
-
 (require 'hl-line)
 
 (use-package hl-anything
@@ -103,6 +99,11 @@
 (use-package highlight-thing
   :ensure t
   :demand t)
+
+(use-package highlight-indent-guides
+	:ensure t
+	:config
+	(add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
 
 (use-package auto-highlight-symbol
   :ensure t
@@ -130,27 +131,7 @@
   :ensure t
   :demand t)
 
-(setq abbrev-file-name "~/.emacs.d/abbrev_defs")
-(setq-default abbrev-mode t)
-(if (file-exists-p abbrev-file-name)
-    (quietly-read-abbrev-file))
-(setq save-abbrevs t)
-(xterm-mouse-mode 1)
-
 (global-display-line-numbers-mode)
-
-(require 'speedbar)
-
-(use-package memory-usage
-  :ensure t
-  :demand t)
-
-(use-package winum
-  :ensure t
-  :demand t
-  :config
-  (winum-mode))
-
 
 (use-package backward-forward
   :demand
@@ -176,31 +157,6 @@
   (setq visible-mark-faces `(visible-mark-face init-ui/visible-mark-face-2))
   (global-visible-mark-mode +1))
 
-(use-package projectile
-  :ensure t
-  :demand t
-  :config
-  (projectile-mode +1)
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
-
-(use-package sr-speedbar
-  :ensure t)
-
-(use-package minimap
-  :ensure t
-  :demand t)
-
-(use-package all-the-icons
-  :ensure t
-  :demand t)
-
-
-
-;; Slow Rendering
-;; If you experience a slow down in performance when rendering multiple
-;; icons simultaneously, you can try setting the following variable
-(setq inhibit-compacting-font-caches t)
 
 (defun ui-set-transparency (alpha-level)
   "Set transparency as ALPHA-LEVEL."
@@ -217,78 +173,14 @@
 ;;(set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;;(add-to-list 'default-frame-alist '(alpha 85 50))
 
-(require 'display-fill-column-indicator)
-(setq display-fill-column-indicator-column 120)
-(defun init-ui/enable-display-fill-column ()
-	(display-fill-column-indicator-mode))
-
-(add-hook 'prog-mode-hook #'init-ui/enable-display-fill-column)
 
 (require 'ls-lisp)
-
-(require 'dired)
-(setq dired-listing-switches "-alh")
-
-(when (eq system-type 'windows-nt)
-  (setq find-program (purecopy "gfind")))
-
-(when (eq system-type 'darwin)
-  (setq dired-use-ls-dired nil))
-
-(when (eq system-type 'windows-nt)
-  (setq w32-get-true-file-attributes nil)
-  (global-auto-revert-mode -1))
-
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
-
-(setq ediff-split-window-function 'split-window-horizontally)
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
-
-(use-package session
-  :config (add-hook 'after-init-hook 'session-initialize))
-
-(use-package visual-regexp)
-(use-package regex-tool
-  :ensure t
-  :demand t)
-
-(use-package rfc-mode
-  :ensure t)
-
-(require 'tramp-gvfs)
-
-(use-package httprepl
-  :ensure t
-  :demand t)
-
-(use-package mqtt-mode
-  :ensure t
-  :demand t)
-
-(use-package rg
-  :ensure t
-  :demand t
-  :config
-  (rg-enable-menu))
-
-(use-package highlight-indent-guides
-	:ensure t
-	:config
-	(add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
 
 (use-package graphviz-dot-mode
   :ensure t
   :demand t)
-
-(use-package logview
-  :ensure t)
-
-(use-package vlf
-  :ensure t
-  :config (require 'vlf-setup))
-
-
 
 (provide 'init-edit)
 ;;; init-edit.el ends here
