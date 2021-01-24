@@ -182,5 +182,7 @@
   :ensure t
   :demand t)
 
+(message "loading init-edit done.")
+
 (provide 'init-edit)
 ;;; init-edit.el ends here

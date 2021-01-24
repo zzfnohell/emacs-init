@@ -45,9 +45,7 @@
 (require 'init-lisp)
 (require 'init-racket)
 (require 'init-octave)
-(require 'init-lex)
 
-(require 'init-grammar)
 (require 'init-java)
 (require 'init-scala)
 (require 'init-ocaml)

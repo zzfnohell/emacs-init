@@ -68,6 +68,16 @@
 
 (add-hook 'prog-mode-hook #'init-ui/enable-display-fill-column)
 
+(use-package bison-mode
+  :mode (("\\.lex\\'" . bison-mode)
+         ("\\.yy\\'" . bison-mode)
+         ("\\.y\\'" . bison-mode)))
+
+(use-package lex :ensure t)
+(use-package peg :ensure t)
+
+(message "loading init-prog done.")
+
 (provide 'init-prog)
 
 ;;; init-prog.el ends here

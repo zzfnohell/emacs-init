@@ -131,6 +131,8 @@
 ;;; XTERM
 (xterm-mouse-mode 1)
 
+(message "loading init-auxiliaries done.")
+
 (provide 'init-auxiliaries)
 
 ;;; init-auxiliaries.el ends here
