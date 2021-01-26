@@ -5,8 +5,14 @@
 
 ;;; Code:
 
-(use-package org-preview-html)
-(use-package ob-axiom)
+(use-package org-preview-html
+	:ensure t)
+
+(use-package ob-axiom
+	:ensure t)
+
+(use-package ob-ipython
+	:ensure t)
 
 (use-package org
   :after (:all ob-axiom)
@@ -32,7 +38,7 @@
          (setq org-mobile-directory "/plink:zzfnohell@pluto.centaurs.bid:/var/local/dav/"))
         (t
          (setq org-mobile-directory "/ssh:zzfnohell@pluto.centaurs.bid:/var/local/dav/")))
-
+	
   ;; active Babel languages
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -49,6 +55,7 @@
      (latex . t)
      (lisp . t)
      (lua . t)
+		 (ipython . t)
      (mscgen . t)
      (ocaml . t)
      (octave . t)
