@@ -11,8 +11,17 @@
 (use-package ob-axiom
 	:ensure t)
 
+(defun init-python/ob-ipython-hook-func ()
+	"Hook ob ipython mode."
+	(message "ob-ipython-hook")
+  (let ((mode-backends (make-local-variable 'company-backends)))
+    (add-to-list mode-backends 'company-ob-ipython)))
+
 (use-package ob-ipython
-	:ensure t)
+	:after company
+	:ensure t
+	:hook
+	(ob-ipython-mode . init-python/ob-ipython-hook-func))
 
 (use-package org
   :after (:all ob-axiom)
