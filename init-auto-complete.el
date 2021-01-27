@@ -23,10 +23,11 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
-(use-package company-posframe
-  :after company
-  :ensure t
-  :hook (company-mode . company-posframe-mode))
+;; (use-package company-posframe
+;;   :after company
+;;   :ensure t
+;;   :hook
+;; 	(company-mode . company-posframe-mode))
 
 (use-package company-coq
   :if (featurep 'proof-site)
@@ -66,8 +67,10 @@
   :ensure t
   :after (:all company all-the-icons)
   :diminish
-  :hook (company-mode . company-box-mode)
-  :init (setq company-box-icons-alist 'company-box-icons-all-the-icons)
+  :hook
+	(company-mode . company-box-mode)
+  :init
+	(setq company-box-icons-alist 'company-box-icons-all-the-icons)
   :config
   (setq company-box-backends-colors nil)
   (setq company-box-show-single-candidate t)

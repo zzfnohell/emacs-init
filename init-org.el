@@ -20,6 +20,7 @@
 (use-package ob-ipython
 	:after company
 	:ensure t
+	:bind ("C-<tab>" . company-complete)
 	:hook
 	(ob-ipython-mode . init-python/ob-ipython-hook-func))
 
