@@ -37,7 +37,8 @@
 (use-package company-quickhelp
   :ensure t
   :after (:all company)
-  :config (company-quickhelp-mode 1))
+  :config
+  (company-quickhelp-mode 1))
 
 (use-package company-math
   :ensure t
