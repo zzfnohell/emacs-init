@@ -162,17 +162,20 @@
   (setq deft-extensions '("txt" "tex" "org" "md")))
 
 (use-package ob-ess-julia
+	:after org
 	:ensure t)
 
 (use-package ob-fsharp
+	:after org
 	:ensure t)
 
 (use-package ob-graphql
+	:after org
 	:ensure t)
 
 (use-package ob-rust
+	:after org
 	:ensure t)
-
 
 (message "loading init-org done.")
 

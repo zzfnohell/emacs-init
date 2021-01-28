@@ -48,8 +48,6 @@
   :config
   (add-hook 'javascript-mode-hook 'flycheck-mode))
 
-(use-package nvm)
-
 (message "loading init-javascript done.")
 
 (provide 'init-javascript)
