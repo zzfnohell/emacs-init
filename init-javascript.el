@@ -13,6 +13,7 @@
 (use-package json-mode :ensure t)
 
 (use-package js-comint
+	:ensure t
   :config
   (setq inferior-js-program-command "node"))
 
@@ -23,6 +24,7 @@
   (add-hook 'js2-mode-hook #'js2-imenu-extras-mode))
 
 (use-package js2-refactor
+	:ensure t
   :after (:all js2-mode)
   :config
   (add-hook 'js2-mode-hook #'js2-refactor-mode))
@@ -34,14 +36,19 @@
             (lambda ()
               (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
 
-(use-package rainbow-delimiters)
+(use-package rainbow-delimiters
+	:ensure t)
 
-(use-package indium)
+(use-package indium
+	:ensure t)
 
 (use-package flycheck-flow
+	:ensure t
   :after (:all flycheck)
   :config
   (add-hook 'javascript-mode-hook 'flycheck-mode))
+
+(use-package nvm)
 
 (message "loading init-javascript done.")
 

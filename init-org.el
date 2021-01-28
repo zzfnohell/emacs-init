@@ -161,6 +161,19 @@
 	(setq deft-use-filename-as-title t)
   (setq deft-extensions '("txt" "tex" "org" "md")))
 
+(use-package ob-ess-julia
+	:ensure t)
+
+(use-package ob-fsharp
+	:ensure t)
+
+(use-package ob-graphql
+	:ensure t)
+
+(use-package ob-rust
+	:ensure t)
+
+
 (message "loading init-org done.")
 
 (provide 'init-org)
