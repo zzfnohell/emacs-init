@@ -12,6 +12,7 @@
   :ensure t)
 
 (use-package lsp-julia
+	:enusre t
   :after (:all julia-mode lsp-mode)
   :config
   (add-hook 'julia-mode-hook #'lsp-mode)
@@ -31,6 +32,9 @@
 
 (use-package stan-snippets
   :ensure t)
+
+(use-package ess-view-data
+	:ensure t)
 
 (message "loading init-ess done.")
 

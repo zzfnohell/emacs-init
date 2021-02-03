@@ -60,18 +60,20 @@
      (emacs-lisp . t)
      (gnuplot . t)
      (haskell . t)
+		 (ipython . t)
+		 (go . t)
      (java . t)
      (js . t)
      (latex . t)
      (lisp . t)
      (lua . t)
-		 (ipython . t)
      (mscgen . t)
      (ocaml . t)
      (octave . t)
      (plantuml . t)
      (python . t)
      (R . t)
+		 (resetclient . t)
      (ruby . t)
      (scheme . t)
      (shell . t)))
@@ -110,7 +112,8 @@
   (setq org-brain-include-file-entries nil
         org-brain-file-entries-use-title nil))
 
-(use-package org-onenote :ensure t)
+(use-package org-onenote
+	:ensure t)
 
 (use-package ob-cypher
   :ensure t
@@ -162,19 +165,24 @@
   (setq deft-extensions '("txt" "tex" "org" "md")))
 
 (use-package ob-ess-julia
-	:after org
 	:ensure t)
 
 (use-package ob-fsharp
-	:after org
 	:ensure t)
 
 (use-package ob-graphql
-	:after org
 	:ensure t)
 
 (use-package ob-rust
-	:after org
+	:ensure t)
+
+(use-package ob-sql-mode
+	:ensure t)
+
+(use-package ob-go
+	:ensure t)
+
+(use-package ob-restclient
 	:ensure t)
 
 (message "loading init-org done.")
