@@ -73,10 +73,11 @@
      (plantuml . t)
      (python . t)
      (R . t)
-		 (resetclient . t)
+		 (restclient . t)
      (ruby . t)
      (scheme . t)
-     (shell . t)))
+     (shell . t)
+		 (sql . t)))
 
   (setq org-publish-project-alist
       `(("private-notes"
