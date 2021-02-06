@@ -77,7 +77,8 @@
      (ruby . t)
      (scheme . t)
      (shell . t)
-		 (sql . t)))
+		 (sql . t)
+		 (sqlite . t)))
 
   (setq org-publish-project-alist
       `(("private-notes"
