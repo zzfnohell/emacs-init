@@ -12,7 +12,7 @@
   :ensure t)
 
 (use-package lsp-julia
-	:enusre t
+	:ensure t
   :after (:all julia-mode lsp-mode)
   :config
   (add-hook 'julia-mode-hook #'lsp-mode)
