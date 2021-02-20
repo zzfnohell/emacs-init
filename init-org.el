@@ -178,9 +178,6 @@
 (use-package ob-rust
 	:ensure t)
 
-(use-package ob-sql-mode
-	:ensure t)
-
 (use-package ob-go
 	:ensure t)
 
