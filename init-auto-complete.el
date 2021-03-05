@@ -46,12 +46,6 @@
   :config
   (add-to-list 'company-backends 'company-math-symbols-unicode))
 
-;; (use-package company-inf-ruby
-;; 	:after (:all company)
-;;   :demand t
-;;   :config (add-to-list 'company-backends 'company-inf-ruby))
-
-
 (use-package company-shell
   :ensure t)
 
@@ -63,14 +57,6 @@
 
 (use-package company-restclient
   :ensure t)
-
-(use-package company-box
-  :ensure t
-  :after (:all company all-the-icons)
-  :diminish
-  :hook
-  (company-mode . company-box-mode))
-
 
 (provide 'init-auto-complete)
 

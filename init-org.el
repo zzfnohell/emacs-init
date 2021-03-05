@@ -29,19 +29,8 @@
 (use-package ob-restclient
 	:ensure t)
 
-
-(defun init-python/ob-ipython-hook-func ()
-	"Hook ob ipython mode."
-	(message "ob-ipython-hook")
-  (let ((mode-backends (make-local-variable 'company-backends)))
-    (add-to-list mode-backends 'company-ob-ipython)))
-
-(use-package ob-ipython
-	:after company
-	:ensure t
-	:bind ("C-<tab>" . company-complete)
-	:hook
-	(ob-ipython-mode . init-python/ob-ipython-hook-func))
+(use-package emacs-jupyter
+	:ensure t)
 
 (use-package org
   :after (:all ob-axiom)
@@ -79,10 +68,10 @@
      (emacs-lisp . t)
      (gnuplot . t)
      (haskell . t)
-		 (ipython . t)
 		 (go . t)
      (java . t)
      (js . t)
+		 (jupyter . t)
      (latex . t)
      (lisp . t)
      (lua . t)
