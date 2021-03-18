@@ -152,6 +152,10 @@
   :ensure t
   :demand t)
 
+(use-package multiple-cursors
+	:ensure t
+	:demand t)
+
 (message "loading init-edit done.")
 
 (provide 'init-edit)

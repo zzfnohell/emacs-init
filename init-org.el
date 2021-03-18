@@ -29,9 +29,6 @@
 (use-package ob-restclient
 	:ensure t)
 
-(use-package emacs-jupyter
-	:ensure t)
-
 (use-package org
   :after (:all ob-axiom)
   :custom
@@ -68,10 +65,9 @@
      (emacs-lisp . t)
      (gnuplot . t)
      (haskell . t)
-		 (go . t)
+     (go . t)
      (java . t)
      (js . t)
-		 (jupyter . t)
      (latex . t)
      (lisp . t)
      (lua . t)
@@ -81,12 +77,12 @@
      (plantuml . t)
      (python . t)
      (R . t)
-		 (restclient . t)
+     (restclient . t)
      (ruby . t)
      (scheme . t)
      (shell . t)
-		 (sql . t)
-		 (sqlite . t)))
+     (sql . t)
+     (sqlite . t)))
 
   (setq org-publish-project-alist
       `(("private-notes"
