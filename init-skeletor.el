@@ -3,6 +3,9 @@
 ;;; Commentary:
 ;; 
 
+;;; Code:
+;;
+
 (use-package skeletor
   :ensure t
   :custom
