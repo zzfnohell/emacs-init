@@ -23,12 +23,6 @@
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
-;; (use-package company-posframe
-;;   :after company
-;;   :ensure t
-;;   :hook
-;; 	(company-mode . company-posframe-mode))
-
 (use-package company-coq
   :if (featurep 'proof-site)
   :ensure t
