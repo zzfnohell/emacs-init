@@ -26,6 +26,7 @@
  '(indicate-empty-lines t)
  '(minimap-window-location (quote right))
  '(org-directory "E:/OneDrive/org")
+ ;; '(org-directory (expand-file-name "E:/OneDrive/org"))
  '(select-enable-clipboard t)
  '(semantic-idle-scheduler-idle-time 5)
  '(semantic-symref-tool (quote global))
