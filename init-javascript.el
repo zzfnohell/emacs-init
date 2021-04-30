@@ -42,12 +42,6 @@
 (use-package indium
 	:ensure t)
 
-(use-package flycheck-flow
-	:ensure t
-  :after (:all flycheck)
-  :config
-  (add-hook 'javascript-mode-hook 'flycheck-mode))
-
 (message "loading init-javascript done.")
 
 (provide 'init-javascript)

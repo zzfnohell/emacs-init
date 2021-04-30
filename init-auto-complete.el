@@ -52,6 +52,12 @@
 (use-package company-restclient
   :ensure t)
 
+(use-package company-flow
+	:ensure t
+	:config
+	(message "init-auto-complete/config company flow")
+	(add-to-list 'company-backends 'company-flow))
+
 (provide 'init-auto-complete)
 
 ;;; init-auto-complete.el ends here
