@@ -174,6 +174,17 @@
 ;;; TLDR
 (use-package tldr)
 
+(use-package telega
+	:ensure t
+	:init
+	(setq telega-proxies
+				(list
+				 '(:server "sshost"
+									 :port 2003
+									 :enable :false
+									 :type (:@type "proxyTypeSocks5")))))
+
+
 (message "loading init-auxiliaries done.")
 
 (provide 'init-auxiliaries)
