@@ -57,6 +57,7 @@
 (require 'init-sql)
 (require 'init-go)
 (require 'init-php)
+(require 'init-latex)
 (require 'init-lua)
 (require 'init-javascript)
 (require 'init-flutter)

@@ -171,6 +171,9 @@
 ;;; XTERM
 (xterm-mouse-mode 1)
 
+;;; TLDR
+(use-package tldr)
+
 (message "loading init-auxiliaries done.")
 
 (provide 'init-auxiliaries)

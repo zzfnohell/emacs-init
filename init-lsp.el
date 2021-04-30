@@ -38,6 +38,11 @@
   :config
   (require 'tree-sitter-langs))
 
+(use-package lsp-treemacs
+	:ensure t
+	:config
+	(lsp-treemacs-sync-mode 1))
+
 (message "loading init-lsp done.")
 
 (provide 'init-lsp)
