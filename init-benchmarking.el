@@ -6,7 +6,7 @@
 ;;; Code:
 
 (use-package benchmark-init
-	:ensure t
+  :ensure t
   :init
   (benchmark-init/activate)
   :hook

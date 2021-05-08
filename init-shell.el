@@ -15,10 +15,6 @@
 ;;   (powershell (generate-new-buffer-name "*PowerShell*")))
 ;; (setq-default shell-switcher-new-shell-function 'make-powershell)
 
-(use-package shell-command
-	:ensure t
-	:config
-	(shell-command-completion-mode))
 
 (use-package fish-mode
 	:ensure t)
