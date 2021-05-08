@@ -8,6 +8,7 @@
 ;;; Code:
 
 (use-package rainbow-delimiters
+	:ensure t
 	:config
 	(add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
@@ -29,15 +30,6 @@
 (setq compilation-disable-input nil)
 (setq compilation-scroll-output t)
 (setq mode-compile-always-save-buffer-p t)
-
-(use-package origami
-  :ensure t)
-
-(use-package lsp-origami
-  :after (:all origami lsp)
-  :ensure t
-  :config
-  (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable))
 
 (use-package emr
   :config
