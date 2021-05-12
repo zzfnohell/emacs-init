@@ -12,19 +12,31 @@
 	:config
 	(add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
-;; (use-package hideshow
-;;   :ensure t
-;;   :config
-;;   (add-to-list 'hs-special-modes-alist
-;;                '(nxml-mode
-;;                  "<!--\\|<[^/>]*[^/]>"
-;;                  "-->\\|</[^/>]*[^/]>"
-                 
-;;                "<!--"
-;;                sgml-skip-tag-forward
-;;                nil))
-  
-;;   (add-hook 'nxml-mode-hook 'hs-minor-mode))
+(use-package hideshow
+  :ensure t
+  :config
+	;; Fix XML folding
+	(add-to-list 'hs-special-modes-alist
+							 (list 'nxml-mode
+										 "<!--\\|<[^/>]*[^/]>"
+										 "-->\\|</[^/>]*[^/]>"
+										 "<!--"
+										 'nxml-forward-element
+										 nil))
+	
+	;; Fix HTML folding
+	(dolist (mode '(sgml-mode
+									html-mode
+									html-erb-mode))
+		(add-to-list 'hs-special-modes-alist
+								 (list mode
+											 "<!--\\|<[^/>]*[^/]>"
+											 "-->\\|</[^/>]*[^/]>"
+											 "<!--"
+											 'sgml-skip-tag-forward
+											 nil)))
+	(add-hook 'nxml-mode-hook 'hs-minor-mode)
+  (add-hook 'prog-mode-hook 'hs-minor-mode))
 
 (require 'compile)
 (setq compilation-disable-input nil)
