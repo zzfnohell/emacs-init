@@ -58,10 +58,6 @@
   :ensure t
   :demand t)
 
-(use-package hl-indent
-  :ensure t
-  :demand t)
-
 (use-package highlight-parentheses
   :ensure t
   :demand t)
@@ -69,11 +65,6 @@
 (use-package highlight-thing
   :ensure t
   :demand t)
-
-(use-package highlight-indent-guides
-	:ensure t
-	:config
-	(add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
 
 (use-package auto-highlight-symbol
   :ensure t
