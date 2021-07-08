@@ -250,6 +250,11 @@
 (use-package window-purpose
 	:config
 	(purpose-mode)
+
+	(require 'window-purpose-x)
+	(purpose-x-magit-multi-on)
+	(purpose-x-kill-setup)
+	
 	(add-to-list 'purpose-user-mode-purposes
 							 '(ggtags-global-mode . ggtags-global))
 	(add-to-list 'purpose-user-mode-purposes
@@ -261,12 +266,6 @@
 	(purpose-compile-user-configuration))
 
 (message "loading init-auxiliaries/window-purpose done.")
-
-(use-package window-purpose-x
-	:config
-	(purpose-x-kill-setup))
-
-(message "loading init-auxiliaries/window-purpose-x done")
 
 (use-package golden-ratio
 	:config
