@@ -249,9 +249,24 @@
 
 (use-package window-purpose
 	:config
-	(purpose-mode))
+	(purpose-mode)
+	(add-to-list 'purpose-user-mode-purposes
+							 '(ggtags-global-mode . ggtags-global))
+	(add-to-list 'purpose-user-mode-purposes
+							 '(rg-mode . rg))
+	;; (add-to-list 'purpose-user-mode-purposes '(<major-mode> . <purpose>))
+	;; (add-to-list 'purpose-user-name-purposes '(<name> . <purpose>))
+	;; (add-to-list 'purpose-user-regexp-purposes '(<pattern> . <purpose>))
+	(setq purpose-use-default-configuration t) ; not really necessary, default is t
+	(purpose-compile-user-configuration))
 
 (message "loading init-auxiliaries/window-purpose done.")
+
+(use-package window-purpose-x
+	:config
+	(purpose-x-kill-setup))
+
+(message "loading init-auxiliaries/window-purpose-x done")
 
 (use-package golden-ratio
 	:config
