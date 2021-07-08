@@ -267,6 +267,13 @@
 
 (message "loading init-auxiliaries/window-purpose done.")
 
+(use-package perspective
+	:bind (("C-x b" . persp-switch-to-buffer*)
+         ("C-x k" . persp-kill-buffer*))
+  :config
+  (persp-mode))
+(message "loading init-auxiliaries/perspective done.")
+
 (use-package golden-ratio
 	:config
 	(golden-ratio-mode 1))
