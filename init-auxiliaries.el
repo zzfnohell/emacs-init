@@ -247,6 +247,20 @@
 
 (message "loading init-auxiliaries/bm done.")
 
+(use-package window-purpose
+	:config
+	(purpose-mode))
+
+(message "loading init-auxiliaries/window-purpose done.")
+
+(use-package golden-ratio
+	:config
+	(golden-ratio-mode 1))
+(message "loading init-auxiliaries/golden ratio")
+
+(winner-mode)
+(message "loading init-auxiliaries/winner mode done.")
+
 (message "loading init-auxiliaries done.")
 
 (provide 'init-auxiliaries)
