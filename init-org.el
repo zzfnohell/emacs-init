@@ -63,6 +63,7 @@
      (css . t)
      (dot . t)
      (emacs-lisp . t)
+		 (eshell . t)
      (gnuplot . t)
      (haskell . t)
      (go . t)
