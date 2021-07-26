@@ -34,15 +34,16 @@
   :ensure t)
 
 (use-package ess-view-data
-	:ensure t)
-
-(use-package vterm
   :ensure t)
 
-(use-package julia-snail
-  :ensure t
-  :requires vterm
-  :hook (julia-mode . julia-snail-mode))
+(when (eq system-type 'gnu/linux)
+  (use-package vterm
+    :ensure t)
+  
+  (use-package julia-snail
+    :ensure t
+    :requires vterm
+    :hook (julia-mode . julia-snail-mode)))
 
 (message "loading init-ess done.")
 
