@@ -89,6 +89,10 @@
   :config
   (add-hook 'glsl-mode-hook #'init-cc-mode/glsl-mode-hook-func))
 
+(use-package call-graph
+	:after (:all anaconda-mode ivy)
+	:ensure t)
+
 (provide 'init-cc-mode)
 
 ;;; init-cc-mode.el ends here

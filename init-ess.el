@@ -36,6 +36,14 @@
 (use-package ess-view-data
 	:ensure t)
 
+(use-package vterm
+  :ensure t)
+
+(use-package julia-snail
+  :ensure t
+  :requires vterm
+  :hook (julia-mode . julia-snail-mode))
+
 (message "loading init-ess done.")
 
 (provide 'init-ess)

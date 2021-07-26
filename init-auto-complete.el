@@ -58,6 +58,13 @@
 	(message "init-auto-complete/config company flow")
 	(add-to-list 'company-backends 'company-flow))
 
+(use-package company-ctags
+	:ensure t
+	:after company
+	:config
+	(with-eval-after-load 'company
+		(company-ctags-auto-setup)))
+
 (provide 'init-auto-complete)
 
 ;;; init-auto-complete.el ends here

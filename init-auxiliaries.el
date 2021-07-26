@@ -282,6 +282,10 @@
 (winner-mode)
 (message "loading init-auxiliaries/winner mode done.")
 
+(use-package syslog-mode
+	:ensure t)
+(message "loading init-auxiliaries/syslog mode done.")
+
 (message "loading init-auxiliaries done.")
 
 (provide 'init-auxiliaries)
