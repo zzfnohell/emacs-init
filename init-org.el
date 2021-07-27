@@ -129,6 +129,7 @@
   (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
   (add-to-list 'org-babel-tangle-lang-exts '("cypher" . "cypher")))
 
+(setq org-roam-v2-ack t)
 (use-package org-roam
   :ensure t
   :hook
@@ -141,9 +142,7 @@
                ("C-c n g" . org-roam-graph))
               :map org-mode-map
               (("C-c n i" . org-roam-insert))
-              (("C-c n I" . org-roam-insert-immediate)))
-  :config
-  (setq org-roam-v2-ack t))
+              (("C-c n I" . org-roam-insert-immediate))))
 
 ;; (use-package org-roam-server
 ;;   :ensure t
