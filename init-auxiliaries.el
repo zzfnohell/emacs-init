@@ -286,6 +286,17 @@
 	:ensure t)
 (message "loading init-auxiliaries/syslog mode done.")
 
+
+(use-package ssh-config-mode
+	:config 
+	(autoload 'ssh-config-mode "ssh-config-mode" t)
+  (add-to-list 'auto-mode-alist '("/\\.ssh/config\\'"     . ssh-config-mode))
+  (add-to-list 'auto-mode-alist '("/sshd?_config\\'"      . ssh-config-mode))
+  (add-to-list 'auto-mode-alist '("/knownhosts\\'"       . ssh-known-hosts-mode))
+  (add-to-list 'auto-mode-alist '("/authorized_keys2?\\'" . ssh-authorized-keys-mode))
+  (add-hook 'ssh-config-mode-hook 'turn-on-font-lock))
+(message "loading init-auxiliaries/ssh-config mode done.")
+
 (message "loading init-auxiliaries done.")
 
 (provide 'init-auxiliaries)

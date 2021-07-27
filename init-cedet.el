@@ -18,6 +18,7 @@
   (imenu-add-to-menubar "TAGS"))
 
 (use-package cedet
+	:after (:all company yasnippet)
   :init
   ;;;; Semantic DataBase directory
   (setq semanticdb-default-save-directory (expand-file-name "~/.emacs.d/semanticdb"))
@@ -48,7 +49,12 @@
     (semantic-add-system-include "d:/msys64/mingw64/include/" 'c++-mode))
   
   (require 'ede)
-  (global-ede-mode t) )
+  (global-ede-mode t)
+
+	(let ((ede-custom-file
+				 (expand-file-name "cedet-projects.el" user-emacs-directory)))
+		(when (file-exists-p ede-custom-file)
+			(load ede-custom-file))))
 
 (require 'srecode)
 ;;;; Names completion with auto-complete package

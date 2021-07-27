@@ -130,18 +130,20 @@
   (add-to-list 'org-babel-tangle-lang-exts '("cypher" . "cypher")))
 
 (use-package org-roam
-      :ensure t
-      :hook
-      (after-init . org-roam-mode)
-      :custom
-      (org-roam-directory (concat (file-name-as-directory org-directory) "roam"))
-      :bind (:map org-roam-mode-map
-              (("C-c n l" . org-roam)
+  :ensure t
+  :hook
+  (after-init . org-roam-mode)
+  :custom
+  (org-roam-directory (concat (file-name-as-directory org-directory) "roam"))
+  :bind (:map org-roam-mode-map
+							(("C-c n l" . org-roam)
                ("C-c n f" . org-roam-find-file)
                ("C-c n g" . org-roam-graph))
               :map org-mode-map
               (("C-c n i" . org-roam-insert))
-              (("C-c n I" . org-roam-insert-immediate))))
+              (("C-c n I" . org-roam-insert-immediate)))
+	:confg
+	(setq org-roam-v2-ack t))
 
 ;; (use-package org-roam-server
 ;;   :ensure t
