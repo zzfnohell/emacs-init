@@ -136,14 +136,14 @@
   :custom
   (org-roam-directory (concat (file-name-as-directory org-directory) "roam"))
   :bind (:map org-roam-mode-map
-							(("C-c n l" . org-roam)
+	      (("C-c n l" . org-roam)
                ("C-c n f" . org-roam-find-file)
                ("C-c n g" . org-roam-graph))
               :map org-mode-map
               (("C-c n i" . org-roam-insert))
               (("C-c n I" . org-roam-insert-immediate)))
-	:confg
-	(setq org-roam-v2-ack t))
+  :config
+  (setq org-roam-v2-ack t))
 
 ;; (use-package org-roam-server
 ;;   :ensure t
