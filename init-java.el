@@ -22,10 +22,19 @@
 ;; mvn -Dmaven.test.skip=true package
 (use-package lsp-java
   :ensure t
-  :after lsp-mode)
+  :after lsp-mode
+	:config
+	(require 'lsp-java-boot)
+
+	;; to enable the lenses
+	(add-hook 'lsp-mode-hook #'lsp-lens-mode)
+	(add-hook 'java-mode-hook #'lsp-java-lens-mode)
+	)
 
 (use-package groovy-mode
   :ensure t)
+
+
 
 (message "loading init-java done.")
 
