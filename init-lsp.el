@@ -11,8 +11,10 @@
          (python-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :custom
-  (lsp-completion--enable t)
+  (lsp-completion-enable t)
+	(lsp-completion-provider :capf)
   (lsp-enable-snippet))
+
 
 ;; LSP UI tools
 (use-package lsp-ui
