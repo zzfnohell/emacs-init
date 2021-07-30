@@ -7,12 +7,12 @@
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)
-  :hook (
+  :hook ((java-mode . lsp)
          (python-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :custom
-  (lsp-enable-completion-at-point t)
-  (lsp-prefer-capf t))
+  (lsp-completion--enable t)
+  (lsp-enable-snippet))
 
 ;; LSP UI tools
 (use-package lsp-ui
