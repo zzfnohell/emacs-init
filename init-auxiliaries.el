@@ -297,12 +297,15 @@
   (add-hook 'ssh-config-mode-hook 'turn-on-font-lock))
 (message "loading init-auxiliaries/ssh-config mode done.")
 
-(use-package ellocate
+
+(when (not (eq system-type 'windows-nt))
+	(use-package ellocate
 	:ensure t
 	:custom
 	((ellocate-scan-dirs
-	 '(("~/" "~/.emacs.d/.ellocate-db/home-db")
-		 ("/mnt/" nil)))))
+		'(("~/" "~/.emacs.d/.ellocate-db/home-db")
+			("/mnt/" nil))))))
+
 
 (message "loading init-auxiliaries done.")
 
