@@ -5,11 +5,13 @@
 
 ;;; Code:
 ;;
+(defconst init-skeletor/projects-dir
+	"~/.emacs.d/init/misc/init-skeletor-projects")
 
 (use-package skeletor
   :ensure t
   :custom
-  (skeletor-user-directory "~/.emacs.d/init/init-skeletor-projects")
+  (skeletor-user-directory init-skeletor/projects-dir)
 	:config
 	(skeletor-define-template "conan-app"
 		:title "Conan App"
