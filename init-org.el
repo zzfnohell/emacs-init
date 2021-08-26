@@ -129,20 +129,22 @@
   (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
   (add-to-list 'org-babel-tangle-lang-exts '("cypher" . "cypher")))
 
-(setq org-roam-v2-ack t)
+
 (use-package org-roam
-  :ensure t
-  :hook
-  (after-init . org-roam-mode)
-  :custom
-  (org-roam-directory (concat (file-name-as-directory org-directory) "roam"))
-  :bind (:map org-roam-mode-map
-	      (("C-c n l" . org-roam)
-               ("C-c n f" . org-roam-find-file)
-               ("C-c n g" . org-roam-graph))
-              :map org-mode-map
-              (("C-c n i" . org-roam-insert))
-              (("C-c n I" . org-roam-insert-immediate))))
+	:ensure t
+	:custom
+	(org-roam-directory (file-truename "~/org/roam/"))
+	:bind (("C-c n l" . org-roam-buffer-toggle)
+				 ("C-c n f" . org-roam-node-find)
+				 ("C-c n g" . org-roam-graph)
+				 ("C-c n i" . org-roam-node-insert)
+				 ("C-c n c" . org-roam-capture)
+				 ;; Dailies
+				 ("C-c n j" . org-roam-dailies-capture-today))
+	:config
+	(org-roam-db-autosync-mode)
+	;; If using org-roam-protocol
+	(require 'org-roam-protocol))
 
 ;; (use-package org-roam-server
 ;;   :ensure t

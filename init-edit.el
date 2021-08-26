@@ -12,7 +12,7 @@
 (defvar ansi-color-for-comint-mode t)
 
 ;; close startup slash
-(setq inhibit-startup-message t)
+;; (setq inhibit-startup-message t)
 
 ;; close close-bell
 (setq visible-bell t)
