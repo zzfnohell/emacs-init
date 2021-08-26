@@ -6,59 +6,78 @@ Note -*- mode:org; -*-
 #+STARTUP: inlineimages
 
 * Custom.el Template
-	#+NAME: csv_to_table
-  #+BEGIN_SRC emacs-lisp
-		(custom-set-variables
-		 ;; custom-set-variables was added by Custom.
-		 ;; If you edit it by hand, you could mess it up, so be careful.
-		 ;; Your init file should contain only one such instance.
-		 ;; If there is more than one, they won't work right.
-		 ;; '(custom-enabled-themes (quote (light-blue)))
-		 '(blink-cursor-mode t)
-		 '(column-number-mode t)
-		 '(cursor-type 'box)
-		 '(dart-sdk-path "d:/Scoop/apps/flutter/current/bin/cache/dart-sdk/")
-		 ;;; FIX find-dired.elc freeze on windows(CMD: gfind NUL -ls)
-		 '(find-ls-option '("-exec ls -ld {} \";\"" . "-ld"))
-		 '(flutter-sdk-path "d:/Scoop/apps/flutter/current/")
-		 '(gc-cons-threshold 3200000)
-		 '(global-display-line-numbers-mode t)
-		 '(httpd-host "0.0.0.0")
-		 '(httpd-port 2020)
-		 '(indent-tabs-mode nil)
-		 '(indicate-empty-lines t)
-		 '(minimap-window-location (quote right))
-		 '(org-directory "E:/OneDrive/org")
-		 ;; '(org-directory (expand-file-name "E:/OneDrive/org"))
-		 '(select-enable-clipboard t)
-		 '(semantic-idle-scheduler-idle-time 5)
-		 '(semantic-symref-tool (quote global))
-		 '(size-indication-mode t)
-		 '(speedbar-show-unknown-files t)
-		 '(visual-line-mode nil t))
+#+NAME: csv_to_table
+#+BEGIN_SRC emacs-lisp
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   ;; '(custom-enabled-themes (quote (light-blue)))
+   '(blink-cursor-mode t)
+   '(column-number-mode t)
+   '(cursor-type 'box)
+   '(dart-sdk-path "d:/Scoop/apps/flutter/current/bin/cache/dart-sdk/")
+   ;;; FIX find-dired.elc freeze on windows(CMD: gfind NUL -ls)
+   '(find-ls-option '("-exec ls -ld {} \";\"" . "-ld"))
+   '(flutter-sdk-path "d:/Scoop/apps/flutter/current/")
+   '(gc-cons-threshold 3200000)
+   '(global-display-line-numbers-mode t)
+   '(httpd-host "0.0.0.0")
+   '(httpd-port 2020)
+   '(indent-tabs-mode nil)
+   '(indicate-empty-lines t)
+   '(minimap-window-location (quote right))
+   '(org-directory "E:/OneDrive/org")
+   ;; '(org-directory (expand-file-name "E:/OneDrive/org"))
+   '(select-enable-clipboard t)
+   '(semantic-idle-scheduler-idle-time 5)
+   '(semantic-symref-tool (quote global))
+   '(size-indication-mode t)
+   '(speedbar-show-unknown-files t)
+   '(visual-line-mode nil t))
 
-		(custom-set-faces
-		 ;; custom-set-faces was added by Custom.
-		 ;; If you edit it by hand, you could mess it up, so be careful.
-		 ;; Your init file should contain only one such instance.
-		 ;; If there is more than one, they won't work right.
-		 '(default ((t (:family "Consolas" :foundry "outline" :slant normal :weight normal :height 105 :width normal))))
-		 )
-	#+END_SRC
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(default ((t (:family "Consolas" :foundry "outline" :slant normal :weight normal :height 105 :width normal))))
+   )
+#+END_SRC
 
 
 * Cedet Project
-	** Windows Cpp Root Project
-  #+name: cedet-windows-cpp-root-project
-	#+begin_src emacs-lisp
-    (ede-cpp-root-project
-     :name "win-cpp-root"
-     :file "~/.emacs.d/cedet-projects/Makefile"
-     :system-include-path
-     '("c:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0/shared/"
-       "c:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0/um/"
-       "c:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0/ucrt/"
-       "c:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0/winrt/"
-       "c:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0/cppwinrt/winrt/"))
+** Windows Cpp Root Project
+#+name: cedet-windows-cpp-root-project
+#+begin_src emacs-lisp
+  (ede-cpp-root-project
+   :name "win-cpp-root"
+   :file "~/.emacs.d/cedet-projects/Makefile"
+   :system-include-path
+   '("c:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0/shared/"
+     "c:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0/um/"
+     "c:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0/ucrt/"
+     "c:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0/winrt/"
+     "c:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0/cppwinrt/winrt/"))
 
-	#+end_src
+#+end_src
+
+** Project Template
+#+name: cedet-project-template
+#+begin_src emacs-lisp
+  (ede-cpp-root-project "template-project-name"
+                        :file "/path/to/project/Makefile"
+                        :include-path '("include/" "include1/")
+                        :system-include-path
+                        '("/usr/include"
+                          "/usr/local/include"
+                          "/path/to/sys/include"))
+  (ede-cpp-root-project "template-project-name"
+                        :file "/path/to/project/Makefile"
+                        :include-path '("include/" "include1/")
+                        :system-include-path
+                        '("/usr/include"
+                          "/usr/local/include"
+                          "/path/to/sys/include"))
+#+end_src
