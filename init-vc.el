@@ -30,5 +30,17 @@
 	:init
 	(add-to-list 'vc-handled-backends 'Fossil t))
 
+(use-package gitconfig-mode
+	:ensure t)
+
+(use-package gitignore-mode
+	:ensure t)
+
+(use-package gitattributes-mode
+	:ensure t)
+
+(use-package gitignore-snippets
+	:ensure t)
+
 (provide 'init-vc)
 ;;; init-vc.el ends here
