@@ -65,6 +65,14 @@
 	(with-eval-after-load 'company
 		(company-ctags-auto-setup)))
 
+(use-package company-maxima
+	:after (:all maxima)
+	:ensure t)
+
+(use-package company-lean
+	:after (:all lean-mode)
+	:ensure t)
+
 (provide 'init-auto-complete)
 
 ;;; init-auto-complete.el ends here
