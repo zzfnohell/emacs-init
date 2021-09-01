@@ -9,9 +9,12 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 
-(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-                          ("melpa" . "http://elpa.emacs-china.org/melpa/")))
-						 
+;; (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+;;                           ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
+
 (when (< emacs-major-version 27)
     (package-initialize))
 
