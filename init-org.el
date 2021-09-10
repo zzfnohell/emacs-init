@@ -104,11 +104,13 @@
 
 (use-package org-brain
   :ensure t
+	:bind (:map org-mode-map
+							("C-c b" . org-brain-prefix-map))
   :init
   (setq org-brain-path (concat (file-name-as-directory org-directory) "brain"))
   :config
   (require 'org-capture)
-  (bind-key "C-c b" 'org-brain-prefix-map org-mode-map)
+  ;; (bind-key "C-c b" 'org-brain-prefix-map org-mode-map)
   (setq org-id-track-globally t)
   (setq org-id-locations-file "~/.emacs.d/.org-id-locations")
   (add-hook 'before-save-hook #'org-brain-ensure-ids-in-buffer)

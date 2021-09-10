@@ -47,7 +47,9 @@
             yas-no-prompt))))
 
 (use-package auto-yasnippet
-	:ensure t)
+	:ensure t
+	:bind (("C-c w" . aya-create)
+				 ("C-c y" . aya-expand)))
 
 (use-package yasnippet-snippets
 	:ensure t
