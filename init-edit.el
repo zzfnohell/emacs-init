@@ -55,47 +55,38 @@
 (require 'hl-line)
 
 (use-package hl-anything
-  :ensure t
-  :demand t)
+  :ensure t)
 
 (use-package highlight-parentheses
-  :ensure t
-  :demand t)
+  :ensure t)
 
 (use-package highlight-thing
-  :ensure t
-  :demand t)
+  :ensure t)
 
 (use-package auto-highlight-symbol
   :ensure t
-  :demand t
   :config
   (global-auto-highlight-symbol-mode t))
 
 (use-package undo-tree
   :ensure t
-  :demand t
   :config
   (global-undo-tree-mode))
 
 (add-hook 'texinfo-mode-hook (lambda () (require 'sb-texinfo)))
 
 (use-package anyins
-  :ensure t
-  :demand t)
+  :ensure t)
 
 (use-package popup-kill-ring
-  :ensure t
-  :demand t)
+  :ensure t)
 
 (use-package kill-ring-search
-  :ensure t
-  :demand t)
+  :ensure t)
 
 (global-display-line-numbers-mode)
 
 (use-package backward-forward
-  :demand
   :config
   (backward-forward-mode t)
   :bind (:map backward-forward-mode-map
@@ -106,7 +97,6 @@
 
 (use-package visible-mark
   :ensure t
-  :demand t
   :config
   (setq visible-mark-max 2)
 
@@ -140,12 +130,10 @@
 (setq uniquify-buffer-name-style 'forward)
 
 (use-package graphviz-dot-mode
-  :ensure t
-  :demand t)
+  :ensure t)
 
 (use-package multiple-cursors
 	:ensure t
-	:demand t
 	:bind (("C-S-c C-S-c" . mc/edit-lines)
          ("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)

@@ -32,10 +32,11 @@
 (message "loading init-auxiliaries/DIRED done.")
 
 ;;; Regex 
-(use-package visual-regexp)
+(use-package visual-regexp
+	:ensure t)
+
 (use-package regex-tool
-  :ensure t
-  :demand t)
+  :ensure t)
   
 (message "loading init-auxiliaries/Regex done.")
 
@@ -51,20 +52,17 @@
 (message "loading init-auxiliaries/TRAMP done.")
 
 (use-package httprepl
-  :ensure t
-  :demand t)
+  :ensure t)
 
 (message "loading init-auxiliaries/httprepl done.")
 
 (use-package mqtt-mode
-  :ensure t
-  :demand t)
+  :ensure t)
   
 (message "loading init-auxiliaries/mqtt-mode done.")
 
 (use-package rg
   :ensure t
-  :demand t
   :config
   (rg-enable-menu))
   
@@ -108,8 +106,7 @@
 (message "loading init-auxiliaries/SPEEDBAR done.")
 
 (use-package memory-usage
-  :ensure t
-  :demand t)
+  :ensure t)
   
 (message "loading init-auxiliaries/memory-usage done.")
 
@@ -129,15 +126,14 @@
 (message "loading init-auxiliaries/sr-speedbar done.")
 
 (use-package minimap
-  :ensure t
-  :demand t)
+  :ensure t)
   
 (message "loading init-auxiliaries/minimap done.")
 
 ;;; ICONS
 (use-package all-the-icons
-  :ensure t
-  :demand t)
+  :ensure t)
+
 ;; Slow Rendering
 ;; If you experience a slow down in performance when rendering multiple
 ;; icons simultaneously, you can try setting the following variable
@@ -147,15 +143,13 @@
 
 ;;; FUZZY
 (use-package fuzzy
-  :ensure t
-  :demand t)
+  :ensure t)
   
 (message "loading init-auxiliaries/FUZZY done.")
 
 ;;; WINNUM
 (use-package winum
   :ensure t
-  :demand t
   :config
   (winum-mode))
 
@@ -190,13 +184,12 @@
 
 (use-package bm
   :ensure t
-  :demand t
-	
+	:bind (("M-<f2>" . bm-next)
+         ("S-<f2>" . bm-previous)
+         ("C-<f2>" . bm-toggle))
   :init
   ;; restore on load (even before you require bm)
   (setq bm-restore-repository-on-load t)
-	
-	
   :config
   ;; Allow cross-buffer 'next'
   (setq bm-cycle-all-buffers t)
@@ -237,13 +230,7 @@
   ;; called before the buffer is reverted (like `vc-before-checkin-hook').
   ;; Then new bookmarks can be saved before the buffer is reverted.
   ;; Make sure bookmarks is saved before check-in (and revert-buffer)
-  (add-hook 'vc-before-checkin-hook #'bm-buffer-save)
-	
-	
-  :bind (("M-<f2>" . bm-next)
-         ("S-<f2>" . bm-previous)
-         ("C-<f2>" . bm-toggle))
-  )
+  (add-hook 'vc-before-checkin-hook #'bm-buffer-save))
 
 (message "loading init-auxiliaries/bm done.")
 

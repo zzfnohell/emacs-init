@@ -8,6 +8,7 @@
 
 (use-package yasnippet
 	:ensure t
+	:hook (prog-mode . yas-minor-mode)
   :config
   (progn
     ;;; use popup menu for yas-choose-value
@@ -49,7 +50,8 @@
 	:ensure t)
 
 (use-package yasnippet-snippets
-	:ensure t)
+	:ensure t
+	:after (yasnippet))
 
 (provide 'init-yasnippet)
 
