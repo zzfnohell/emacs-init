@@ -6,7 +6,7 @@
 ;;; Code:
 
 (use-package auto-complete
-	:demand t
+	:ensure t
   :config
 	(let ((x "~/.emacs.d/auto-complete/ac-dict"))
 		(if (not (file-directory-p x))
@@ -16,16 +16,15 @@
   )
 
 (use-package company
-  :demand t
-  :ensure t
+	:ensure t
   :custom
   (company-dabbrev-downcase nil)
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package company-coq
-  :if (featurep 'proof-site)
   :ensure t
+	:if (featurep 'proof-site)
   :after (:all company))
 
 (use-package company-quickhelp
@@ -66,12 +65,12 @@
 		(company-ctags-auto-setup)))
 
 (use-package company-maxima
-	:after (:all maxima)
-	:ensure t)
+	:ensure t
+	:after (:all maxima))
 
 (use-package company-lean
-	:after (:all lean-mode)
-	:ensure t)
+	:ensure t
+	:after (:all lean-mode))
 
 (provide 'init-auto-complete)
 

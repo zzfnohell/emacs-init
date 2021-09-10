@@ -7,6 +7,7 @@
 
 
 (use-package yasnippet
+	:ensure t
   :config
   (progn
     ;;; use popup menu for yas-choose-value
@@ -44,9 +45,11 @@
             yas-ido-prompt
             yas-no-prompt))))
 
-(use-package auto-yasnippet)
+(use-package auto-yasnippet
+	:ensure t)
 
-(use-package yasnippet-snippets)
+(use-package yasnippet-snippets
+	:ensure t)
 
 (provide 'init-yasnippet)
 

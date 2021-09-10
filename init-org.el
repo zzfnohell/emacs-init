@@ -30,6 +30,7 @@
 	:ensure t)
 
 (use-package org
+	:ensure t
   :after (:all ob-axiom)
   :custom
 ;;  (org-directory "~/org")
@@ -151,7 +152,6 @@
 (use-package deft
   :after org
   :ensure t
-  :demand t
   :bind ("<f8>" . deft)
   :commands (deft)
   :config
