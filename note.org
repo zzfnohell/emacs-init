@@ -81,3 +81,25 @@ Note -*- mode:org; -*-
                           "/usr/local/include"
                           "/path/to/sys/include"))
 #+end_src
+
+* Debugging Templates
+** Debug on entry
+#+name: debug-on-entry-sample
+#+begin_src emacs-lisp
+  (defun func-sample () (message "ABC"))
+  (debug-on-entry #'func-sample)
+#+end_src
+
+
+** Debug on error
+#+name: debug-on-error-sample
+#+begin_src emacs-lisp
+  (setq debug-on-error t)
+#+end_src
+
+** Debug on messages
+#+name: debug-on-messages-sample
+#+begin_src emacs-lisp
+  (setq debug-on-message ".*ad-handle-definition.*")
+  (setq debug-on-message ".*error.*")
+#+end_src
