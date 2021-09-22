@@ -103,3 +103,12 @@ Note -*- mode:org; -*-
   (setq debug-on-message ".*ad-handle-definition.*")
   (setq debug-on-message ".*error.*")
 #+end_src
+
+
+* Custom
+** imaxima
+#+name: fg/equation color
+#+begin_src emacs-lisp
+ '(imaxima-equation-color "black")
+ '(imaxima-fg-color "black")
+#+end_src
