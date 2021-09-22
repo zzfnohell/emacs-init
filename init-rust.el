@@ -30,6 +30,9 @@
 (use-package rust-auto-use
   :ensure t)
 
+(use-package rust-playground
+	:ensure t)
+
 (provide 'init-rust)
 
 ;;; init-rust.el ends here
