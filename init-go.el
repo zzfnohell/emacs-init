@@ -18,6 +18,7 @@
 
 (use-package go-rename)
 (use-package flycheck-gometalinter)
+(use-package go-playground)
 
 (message "loading init-go done.")
 

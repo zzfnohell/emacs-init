@@ -27,11 +27,9 @@
 ;;   (add-hook 'rust-mode-hook #'racer-mode)
 ;;   (add-hook 'racer-mode-hook #'eldoc-mode))
 
-(use-package rust-auto-use
-  :ensure t)
+(use-package rust-auto-use)
 
-(use-package rust-playground
-	:ensure t)
+(use-package rust-playground)
 
 (provide 'init-rust)
 
