@@ -112,7 +112,8 @@
 
 ;;; projectile
 (use-package projectile
-  :ensure t
+	:custom
+	(projectile-require-project-root t)
   :config
   (projectile-mode +1)
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)

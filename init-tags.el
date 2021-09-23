@@ -74,5 +74,9 @@
 																			 nil
 																			 t))))
 
+(use-package xcscope
+	:config
+	(cscope-setup))
+
 (provide 'init-tags) 
 ;;; init-tags.el ends here
