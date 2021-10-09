@@ -152,6 +152,14 @@
 	:after (:all anaconda-mode ivy)
 	:ensure t)
 
+(use-package qt-pro-mode
+  :ensure t
+  :mode ("\\.pro\\'" "\\.pri\\'"))
+
+(use-package qml-mode
+	:ensure t
+	:mode (("\\.qml\\'" . qml-mode)))
+
 (provide 'init-cc-mode)
 
 ;;; init-cc-mode.el ends here
