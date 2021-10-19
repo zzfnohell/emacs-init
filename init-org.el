@@ -88,7 +88,8 @@
      (scheme . t)
      (shell . t)
      (sql . t)
-     (sqlite . t)))
+     (sqlite . t)
+		 (verb . t)))
 
   (setq org-publish-project-alist
       `(("private-notes"
