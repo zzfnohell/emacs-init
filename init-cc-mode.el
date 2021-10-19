@@ -89,6 +89,7 @@
 
 
 (defun init-cc-mode/ede-object-system-include-path ()
+	"System include path."
 	(when 'ede-project
 		(ede-system-include-path ede-object)))
 
