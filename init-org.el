@@ -29,9 +29,13 @@
 (use-package ob-restclient
 	:ensure t)
 
+(use-package verb
+	:ensure t)
+
 (use-package org
 	:ensure t
   :after (:all ob-axiom)
+  :config (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
   :custom
 ;;  (org-directory "~/org")
   (org-agenda-files '("agendas.org"))
