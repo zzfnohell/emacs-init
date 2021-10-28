@@ -30,13 +30,7 @@
 	:init
 	(add-to-list 'vc-handled-backends 'Fossil t))
 
-(use-package gitconfig-mode
-	:ensure t)
-
-(use-package gitignore-mode
-	:ensure t)
-
-(use-package gitattributes-mode
+(use-package git-modes
 	:ensure t)
 
 (use-package gitignore-snippets
