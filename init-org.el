@@ -37,7 +37,6 @@
   :after (:all ob-axiom)
   :config (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
   :custom
-;;  (org-directory "~/org")
   (org-agenda-files '("agendas.org"))
   (org-default-notes-file "notes.org")
   (org-mobile-directory "/davs://dav.centaurs.bid/")
