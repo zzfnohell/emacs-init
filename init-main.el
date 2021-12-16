@@ -13,7 +13,7 @@
 (require 'init-parameters)
 (require 'init-coding-system)
 (require 'init-edit)
-(require 'init-auxiliaries)
+(require 'init-misc)
 
 (require 'init-global-set-key)
 (require 'init-tags)
@@ -27,7 +27,8 @@
 (require 'init-auto-complete)
 (require 'init-org)
 
-(require 'init-ivy)
+(require 'init-recentf)
+(require 'init-minibuffer)
 (require 'init-flycheck)
 (require 'init-flymake)
 (require 'init-yasnippet)

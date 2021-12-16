@@ -294,9 +294,13 @@
 		'(("~/" "~/.emacs.d/.ellocate-db/home-db")
 			("/mnt/" nil))))))
 
+;; git config --global github.user <your-github-user-name>
+;; git config --global github.oauth-token <your-personal-access-token-with-gist-scope>
+(use-package gist
+	:ensure t)
 
-(message "loading init-auxiliaries done.")
+(message "loading init-auxiliaries/ssh-config mode done.")
 
 (provide 'init-auxiliaries)
-
+(message "loading init-auxiliaries done.")
 ;;; init-auxiliaries.el ends here
