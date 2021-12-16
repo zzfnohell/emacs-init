@@ -156,14 +156,14 @@
 
 
 (use-package deft
-  :after org
   :ensure t
   :bind ("<f8>" . deft)
+	:custom
+	(deft-recursive t)
+	(deft-use-filename-as-title nil)
   :commands (deft)
   :config
-  (setq deft-recursive t)
 	(setq deft-text-mode 'org-mode)
-	(setq deft-use-filename-as-title t)
   (setq deft-extensions '("txt" "tex" "org" "md")))
 
 
