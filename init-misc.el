@@ -301,6 +301,6 @@
 
 (message "loading init-auxiliaries/ssh-config mode done.")
 
-(provide 'init-auxiliaries)
-(message "loading init-auxiliaries done.")
+(provide 'init-misc)
+(message "loading init-misc done.")
 ;;; init-auxiliaries.el ends here
