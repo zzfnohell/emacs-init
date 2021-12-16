@@ -4,22 +4,22 @@
 
 
 (defun init-minibuffer/use-orderless-in-minibuffer ()
-		(setq-local completion-styles '(substring orderless)))
+  (setq-local completion-styles '(substring orderless)))
 
 (use-package orderless
-	:config
-	(add-hook 'minibuffer-setup-hook
-						'init-minibuffer/user-orderless-in-minibuffer))
+  :config
+  (add-hook 'minibuffer-setup-hook
+	    'init-minibuffer/user-orderless-in-minibuffer))
 
 (use-package embark)
 
 (use-package vertico
-	:after (:all orderless embark)
-	:config
-	(add-hook 'after-init-hook 'vertico-mode)
-	(require 'orderless)
-	(define-key vertico-map (kbd "C-c C-o") 'embark-export)
-	(define-key vertico-map (kbd "C-c C-c") 'embark-act))
+  :after (:all orderless embark)
+  :config
+  (add-hook 'after-init-hook 'vertico-mode)
+  (require 'orderless)
+  (define-key vertico-map (kbd "C-c C-o") 'embark-export)
+  (define-key vertico-map (kbd "C-c C-c") 'embark-act))
 
 (use-package affe)
 
@@ -28,17 +28,17 @@
      (consult-customize ,@cmds :preview-key (kbd "M-P"))))
 
 (use-package consult
-	:after (:all projectile)
-	:config
-	(sanityinc/no-consult-preview
+  :after (:all projectile)
+  :config
+  (sanityinc/no-consult-preview
    consult-ripgrep
    consult-git-grep consult-grep
    consult-bookmark consult-recent-file consult-xref
    consult--source-file consult--source-project-file consult--source-bookmark)
 
-	(setq-default consult-project-root-function 'projectile-project-root)
+  (setq-default consult-project-root-function 'projectile-project-root)
 
-	(when (executable-find "rg")
+  (when (executable-find "rg")
     (defun sanityinc/affe-grep-at-point (&optional dir initial)
       (interactive (list prefix-arg (when-let ((s (symbol-at-point)))
                                       (symbol-name s))))
@@ -54,17 +54,17 @@
 
 
 (use-package embark-consult
-	:after (:all embark consult)
-	:config
-	(require 'embark-consult)
-	(add-hook 'embark-collect-mode-hook 'embark-consult-preview-minor-mode))
+  :after (:all embark consult)
+  :config
+  (require 'embark-consult)
+  (add-hook 'embark-collect-mode-hook 'embark-consult-preview-minor-mode))
 
 
 (use-package consult-flycheck)
 
 (use-package marginalia
-	:config
-	(add-hook 'after-init-hook 'marginalia-mode))
+  :config
+  (add-hook 'after-init-hook 'marginalia-mode))
 
 
 (provide 'init-minibuffer)
