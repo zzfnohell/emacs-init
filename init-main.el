@@ -1,4 +1,4 @@
-;;; init-main.el --- MAIN
+;;; init-main.el --- main -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;
 
@@ -12,6 +12,17 @@
 (require 'init-benchmarking)
 (require 'init-parameters)
 (require 'init-coding-system)
+(require 'init-session)
+(require 'init-dired)
+(require 'init-regex)
+(require 'init-uniquify)
+(require 'init-windows)
+(require 'init-ediff)
+(require 'init-erc)
+(require 'init-log)
+(require 'init-bookmark)
+(require 'init-highlight)
+(require 'init-tools)
 (require 'init-edit)
 (require 'init-misc)
 
@@ -20,6 +31,7 @@
 (require 'init-shell)
 (require 'init-docker)
 (require 'init-skeletor)
+
 
 (require 'init-vc)
 (require 'init-prog)
@@ -40,6 +52,7 @@
 (require 'init-axiom)
 (require 'init-proof)
 
+(require 'init-log)
 (require 'init-cc-mode)
 (require 'init-rust)
 (require 'init-lisp)
@@ -62,6 +75,7 @@
 (require 'init-lua)
 (require 'init-javascript)
 (require 'init-flutter)
+(require 'init-graphviz)
 
 (require 'init-powershell)
 (require 'init-csharp)

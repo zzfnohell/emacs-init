@@ -1,4 +1,4 @@
-;;; init-edit.el --- Edit Config
+;;; init-edit.el --- edit -*- lexical-binding: t -*-
 
 ;;; Commentary:
 ;;
@@ -42,8 +42,6 @@
 (when (window-system)
   (scroll-bar-mode -1))
 
-(transient-mark-mode t)
-
 ;; display buffer name on the caption.
 (setq frame-title-format
       (list
@@ -51,22 +49,6 @@
 
 (setq-default truncate-lines nil)
 (setq-default global-visual-line-mode t)
-
-(require 'hl-line)
-
-(use-package hl-anything
-  :ensure t)
-
-(use-package highlight-parentheses
-  :ensure t)
-
-(use-package highlight-thing
-  :ensure t)
-
-(use-package auto-highlight-symbol
-  :ensure t
-  :config
-  (global-auto-highlight-symbol-mode t))
 
 (use-package undo-tree
   :ensure t
@@ -95,19 +77,6 @@
               ("<M-left>" . backward-forward-previous-location)
               ("<M-right>" . backward-forward-next-location)))
 
-(use-package visible-mark
-  :ensure t
-  :config
-  (setq visible-mark-max 2)
-
-  (defface init-ui/visible-mark-face-2
-    `((t (:background "orange" :foreground "black")))
-    "Face for the mark."
-    :group 'visible-mark)
-  
-  (setq visible-mark-faces `(visible-mark-face init-ui/visible-mark-face-2))
-  (global-visible-mark-mode +1))
-
 
 (defun ui-set-transparency (alpha-level)
   "Set transparency as ALPHA-LEVEL."
@@ -123,14 +92,6 @@
 
 ;;(set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;;(add-to-list 'default-frame-alist '(alpha 85 50))
-
-
-(require 'ls-lisp)
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-
-(use-package graphviz-dot-mode
-  :ensure t)
 
 (use-package multiple-cursors
 	:ensure t

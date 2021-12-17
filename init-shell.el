@@ -1,4 +1,4 @@
-;;; init-shell.el --- SHELL
+;;; init-shell.el --- shell/term -*- lexical-binding: t -*-
 
 ;;; Commentary:
 ;; 
@@ -39,6 +39,10 @@
   :config
 	(setq multi-term-program "/bin/bash"))
 
+;;; XTERM
+(xterm-mouse-mode 1)
+
+(message "loading init-shell done.")
 (provide 'init-shell)
 
 ;;; init-shell.el ends here
