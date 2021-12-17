@@ -23,6 +23,9 @@
 (use-package gist
 	:ensure t)
 
+(use-package httprepl
+  :ensure t)
+
 (message "loading init-tools done.")
 (provide 'init-tools)
 

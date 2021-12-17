@@ -1,4 +1,4 @@
-;;; init-web-mode.el --- Web Mode
+;;; init-web-mode.el --- Web Mode -*- lexical-binding: t -*-
 
 ;;; Commentary:
 ;;
@@ -119,9 +119,6 @@
           (lambda ()
             (let ((mode-backends (make-local-variable 'company-backends)))
               (add-to-list mode-backends 'company-css))))
-
-(use-package httprepl
-  :ensure t)
 
 (message "loading init-web done.")
 (provide 'init-web)
