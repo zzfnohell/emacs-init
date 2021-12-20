@@ -15,14 +15,17 @@
 (let ((default-directory (file-name-as-directory (expand-file-name "~/.emacs.d/site-lisp/"))))
   (normal-top-level-add-subdirs-to-load-path))
 
-(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
-(unless (file-exists-p custom-file)
-  (write-region "" nil custom-file))
+(let ((custom-file (expand-file-name "~/.emacs.d/custom.el")))
+	(if (file-exists-p custom-file) (load custom-file)
+		(write-region "" nil custom-file)))
 
-(when (file-exists-p custom-file)
-  (load custom-file))
+(let ((envs-file (expand-file-name "~/.emacs.d/envs.el")))
+	(when (file-exists-p envs-file)
+		(load envs-file)))
 
-(load (expand-file-name "~/.emacs.d/init/init-main.el"))
+(let ((main-file (expand-file-name "~/.emacs.d/init/init-main.el")))
+	(load main-file))
+
 
 
 ;;; init.el ends here
