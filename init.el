@@ -16,7 +16,7 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 (setq custom-file "~/.emacs.d/custom.el")
-(if (file-exists-p custom-file) (load custom-file)
+(unless (file-exists-p custom-file)
 	(write-region "" nil custom-file))
 
 (let ((envs-file (expand-file-name "~/.emacs.d/envs.el")))
