@@ -9,14 +9,21 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 
+
+;; https://www.github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el
+;; Install into separate package dirs for each Emacs version,
+;; to prevent bytecode incompatibility
+(setq package-user-dir
+      (expand-file-name (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
+       user-emacs-directory))
+
 ;; (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
 ;;                           ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 
-(when (< emacs-major-version 27)
-    (package-initialize))
+(package-initialize)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
