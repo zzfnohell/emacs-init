@@ -101,7 +101,11 @@
          ("C-c C-<" . mc/mark-all-like-this)
          ("C-S-<mouse-1>" . mc/add-cursor-on-click)))
 
-(message "loading init-edit done.")
+(use-package so-long
+  :ensure t
+  :config
+  (global-so-long-mode 1))
 
+(message "loading init-edit done.")
 (provide 'init-edit)
 ;;; init-edit.el ends here
