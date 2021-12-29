@@ -8,9 +8,6 @@
 (require 'dired)
 (setq dired-listing-switches "-alh")
 
-(when (eq system-type 'windows-nt)
-  (setq find-program (purecopy "gfind")))
-
 (when (eq system-type 'darwin)
   (setq dired-use-ls-dired nil))
 
