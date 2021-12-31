@@ -56,20 +56,6 @@
   ;; Make sure bookmarks is saved before check-in (and revert-buffer)
   (add-hook 'vc-before-checkin-hook #'bm-buffer-save))
 
-(use-package visible-mark
-  :ensure t
-  :config
-  (setq visible-mark-max 2)
-
-  (defface init-ui/visible-mark-face-2
-    `((t (:background "orange" :foreground "black")))
-    "Face for the mark."
-    :group 'visible-mark)
-  
-  (setq visible-mark-faces `(visible-mark-face init-ui/visible-mark-face-2))
-  (global-visible-mark-mode +1))
-
-
 (message "loading init-bookmark done.")
 (provide 'init-bookmark)
 
