@@ -33,7 +33,9 @@
 (use-package tree-sitter
   :ensure t
   :config
-  (require 'tree-sitter))
+  (require 'tree-sitter)
+	(global-tree-sitter-mode)
+	(tree-sitter-hl-mode))
 
 (use-package tree-sitter-langs
   :ensure t
