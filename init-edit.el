@@ -47,6 +47,9 @@
       (list
        '(:eval (buffer-name (current-buffer)))))
 
+(setq-default tab-width 2)
+(setq-default indent-tabs-mode nil)
+
 (setq-default truncate-lines nil)
 (setq-default global-visual-line-mode t)
 
@@ -107,5 +110,6 @@
   (global-so-long-mode 1))
 
 (message "loading init-edit done.")
+
 (provide 'init-edit)
 ;;; init-edit.el ends here

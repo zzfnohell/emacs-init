@@ -73,10 +73,6 @@
         ('awk-mode . "awk")
         (other . "linux")))
 
-(setq-default c-basic-offset 2
-              tab-width 2
-              indent-tabs-mode t)
-
 (defun init-cc-mode/c-mode-edit-hook()
   ;; hungry-delete and auto-newline
   (c-toggle-auto-hungry-state 1)
@@ -85,8 +81,6 @@
   (setq abbrev-mode t))
 
 (add-hook 'c-mode-common-hook 'init-cc-mode/c-mode-edit-hook)
-
-
 
 (defun init-cc-mode/ede-object-system-include-path ()
 	"System include path."
