@@ -2,12 +2,12 @@
 ;; packages required in hooks
 
 ;;; Commentary:
-;; 
+;;
 
 ;;; Code:
 
 (use-package paredit
-	:ensure t)
+  :ensure t)
 
 (use-package lispy :ensure t)
 
@@ -18,7 +18,7 @@
 (require 'derived)
 
 (use-package pretty-mode
-	:ensure t
+  :ensure t
   :config (autoload 'turn-on-pretty-mode "pretty-mode"))
 
 
@@ -35,12 +35,12 @@
 ;; Enable desired features for all lisp modes
 ;; ----------------------------------------------------------------------------
 (use-package rainbow-delimiters
-	:ensure t
+  :ensure t
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package redshank
-	:ensure t
+  :ensure t
   :after (:all diminish)
   :config
   (progn
@@ -55,7 +55,7 @@
       "Enable features useful when working with elisp."
       (set-up-hippie-expand-for-elisp)
       ;; (ac-emacs-lisp-mode-setup)
-			)
+      )
 
     (defconst init-lisp/elispy-modes
       '(emacs-lisp-mode ielm-mode)
@@ -67,7 +67,7 @@
       "All lispy major modes.")
 
     (diminish 'redshank-mode)
-    
+
     (dolist (hook (mapcar #'derived-mode-hook-name init-lisp/lispy-modes))
       (add-hook hook 'init-lisp/lisp-setup))
 
@@ -77,38 +77,38 @@
   )
 
 (use-package eldoc-eval
-	:ensure t)
+  :ensure t)
 
 (use-package macrostep
-	:ensure t)
+  :ensure t)
 
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
 
 (use-package slime-company
-	:ensure t)
+  :ensure t)
 
 (use-package slime
-	:ensure t
+  :ensure t
   :init
-	(setq inferior-lisp-program "sbcl")
+  (setq inferior-lisp-program "sbcl")
   (setq slime-contribs '(slime-fancy slime-company))
-	:config
-	(let ((slime-helper-path (expand-file-name "~/quicklisp/slime-helper.el")))
-			(when (file-exists-p slime-helper-path)
-				;; located in quicklisp install directory
-				(load *slime-helper-path*)))
+  :config
+  (let ((slime-helper-path (expand-file-name "~/quicklisp/slime-helper.el")))
+    (when (file-exists-p slime-helper-path)
+      ;; located in quicklisp install directory
+      (load slime-helper-path)))
   (slime-setup))
 
 ;; (use-package ac-slime
-;; 	:after (:all slime cl-lib auto-complete)
-;; 	:config
-;; 	(progn 
-;; 		(add-hook 'slime-mode-hook 'set-up-slime-ac)
-;; 		(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-;; 		(eval-after-load "auto-complete"
-;; 			'(add-to-list 'ac-modes 'slime-repl-mode))
-;; 		)
-;; 	)
+;;  :after (:all slime cl-lib auto-complete)
+;;  :config
+;;  (progn
+;;    (add-hook 'slime-mode-hook 'set-up-slime-ac)
+;;    (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+;;    (eval-after-load "auto-complete"
+;;      '(add-to-list 'ac-modes 'slime-repl-mode))
+;;    )
+;;  )
 
 (defun init-lisp/append-elisp-backends ()
   (let ((mode-backends (make-local-variable 'company-backends)))
