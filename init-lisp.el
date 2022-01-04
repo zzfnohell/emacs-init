@@ -6,17 +6,19 @@
 
 ;;; Code:
 
-(use-package paredit)
+(use-package paredit
+	:ensure t)
 
-(use-package lispy)
+(use-package lispy :ensure t)
 
-(use-package diminish)
+(use-package diminish :ensure t)
 
-(use-package lively)
+(use-package lively :ensure t)
 
 (require 'derived)
 
 (use-package pretty-mode
+	:ensure t
   :config (autoload 'turn-on-pretty-mode "pretty-mode"))
 
 
@@ -33,11 +35,12 @@
 ;; Enable desired features for all lisp modes
 ;; ----------------------------------------------------------------------------
 (use-package rainbow-delimiters
+	:ensure t
   :config
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-  )
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package redshank
+	:ensure t
   :after (:all diminish)
   :config
   (progn
@@ -73,24 +76,27 @@
     )
   )
 
-(use-package eldoc-eval)
+(use-package eldoc-eval
+	:ensure t)
 
-(use-package macrostep)
+(use-package macrostep
+	:ensure t)
 
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
-(defvar *slime-helper-path*
-  (expand-file-name "~/quicklisp/slime-helper.el"))
 
-(use-package slime-company)
+(use-package slime-company
+	:ensure t)
 
 (use-package slime
+	:ensure t
   :init
 	(setq inferior-lisp-program "sbcl")
   (setq slime-contribs '(slime-fancy slime-company))
 	:config
-	(when (file-exists-p *slime-helper-path*)
-    ;; located in quicklisp install directory
-		(load *slime-helper-path*))
+	(let ((slime-helper-path (expand-file-name "~/quicklisp/slime-helper.el")))
+			(when (file-exists-p slime-helper-path)
+				;; located in quicklisp install directory
+				(load *slime-helper-path*)))
   (slime-setup))
 
 ;; (use-package ac-slime
