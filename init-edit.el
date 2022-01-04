@@ -47,9 +47,22 @@
       (list
        '(:eval (buffer-name (current-buffer)))))
 
+;;; Indent
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 
+;; http://xahlee.info/emacs/emacs/emacs_tabs_space_indentation_setup.html
+;; make tab key always call a indent command.
+;; (setq-default tab-always-indent t)
+
+;; make tab key call indent command or insert tab character, depending on cursor position
+;; (setq-default tab-always-indent nil)
+
+;; make tab key do indent first then completion.
+(setq-default tab-always-indent 'complete)
+
+
+;;; Line
 (setq-default truncate-lines nil)
 (setq-default global-visual-line-mode t)
 
@@ -80,7 +93,7 @@
               ("<M-left>" . backward-forward-previous-location)
               ("<M-right>" . backward-forward-next-location)))
 
-
+;;; UI transparency
 (defun ui-set-transparency (alpha-level)
   "Set transparency as ALPHA-LEVEL."
   (interactive "p")
