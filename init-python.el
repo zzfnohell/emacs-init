@@ -4,11 +4,17 @@
 ;; elpy
 
 ;;; Code:
+
 (use-package python-mode
   :ensure t
   :custom
-  (python-shell-interpreter "ipython")
-  (python-shell-interpreter-args "-i --simple-prompt")
+  (setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "--pylab=osx --pdb --nosep --classic"
+      python-shell-prompt-regexp ">>> "
+      python-shell-prompt-output-regexp ""
+      python-shell-completion-setup-code "from IPython.core.completerlib import module_completion"
+      python-shell-completion-module-string-code "';'.join(module_completion('''%s'''))\n"
+      python-shell-completion-string-code "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
   ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/project")
   ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/dependency")
   )
@@ -48,6 +54,13 @@
 
 (use-package jupyter
 	:ensure t)
+
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable))
+
+(message "loading init-python done.")
 
 (provide 'init-python)
 ;;; init-python.el ends here
