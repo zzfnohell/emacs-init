@@ -1,7 +1,7 @@
 ;;; init-python.el --- python
 
 ;;; Commentary:
-;; elpy
+;;
 
 ;;; Code:
 
