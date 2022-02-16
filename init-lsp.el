@@ -32,6 +32,7 @@
 
 (use-package tree-sitter
   :ensure t
+  :after lsp
   :config
   (require 'tree-sitter)
 	(global-tree-sitter-mode)
@@ -39,6 +40,7 @@
 
 (use-package tree-sitter-langs
   :ensure t
+  :after tree-sitter
   :config
   (require 'tree-sitter-langs))
 
