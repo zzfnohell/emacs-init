@@ -10,10 +10,18 @@
 ;; (setq debug-on-message ".*ad-handle-definition.*")
 ;; (setq debug-on-message ".*error.*")
 
-(add-to-list 'load-path (file-name-as-directory (expand-file-name "~/.emacs.d/init/")))
+(add-to-list 'load-path (directory-file-name (expand-file-name "~/.emacs.d/init")))
 
-(let ((default-directory (file-name-as-directory (expand-file-name "~/.emacs.d/site-lisp/"))))
-  (normal-top-level-add-subdirs-to-load-path))
+(let* ((site-lisp-dir (directory-file-name (expand-file-name "~/.emacs.d/site-lisp")))
+       (dirlist (directory-files site-lisp-dir t)))
+  (dolist (subdir dirlist)
+    (let ((name (file-name-base subdir)))
+      (unless (or (not (file-directory-p subdir))
+                  (equal name ".")
+                  (equal name ".."))
+        (message (format "add to load path: %s" subdir))
+        (add-to-list 'load-path (directory-file-name subdir))))))
+
 
 (setq custom-file "~/.emacs.d/custom.el")
 (unless (file-exists-p custom-file)
