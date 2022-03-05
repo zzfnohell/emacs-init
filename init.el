@@ -23,9 +23,9 @@
         (add-to-list 'load-path (directory-file-name subdir))))))
 
 
-(setq custom-file "~/.emacs.d/custom.el")
-(unless (file-exists-p custom-file)
-	(write-region "" nil custom-file))
+(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
+
+(load custom-file)
 
 (let ((envs-file (expand-file-name "~/.emacs.d/envs.el")))
 	(when (file-exists-p envs-file)
