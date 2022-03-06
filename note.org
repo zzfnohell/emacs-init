@@ -32,6 +32,7 @@ Note -*- mode:org; -*-
    '(select-enable-clipboard t)
    '(semantic-idle-scheduler-idle-time 5)
    '(semantic-symref-tool (quote global))
+   '(skeletor-user-directory "~/.emacs.d/init/init-skeletor-projects")
    '(size-indication-mode t)
    '(speedbar-show-unknown-files t)
    '(sql-connection-alist
