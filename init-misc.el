@@ -58,6 +58,10 @@
   (add-hook 'ssh-config-mode-hook 'turn-on-font-lock))
 (message "loading init-misc/ssh-config mode done.")
 
+(use-package su
+  :ensure t
+  :config
+  (su-mode +1))
 
 (when (not (eq system-type 'windows-nt))
 	(use-package ellocate
