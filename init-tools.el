@@ -12,6 +12,8 @@
 
 (use-package rg
   :ensure t
+  :ensure-system-package
+  (rg . ripgrep)
   :config
   (rg-enable-menu))
 

@@ -8,8 +8,8 @@
 (use-package org-preview-html
 	:ensure t)
 
-(use-package ob-axiom
-	:ensure t)
+;; (use-package ob-axiom
+;; 	:ensure t)
 
 (use-package ob-ess-julia
 	:ensure t)

@@ -8,13 +8,8 @@
 (use-package python-mode
   :ensure t
   :custom
-  (python-shell-interpreter "ipython")
-  (python-shell-interpreter-args "--pylab=osx --pdb --nosep --classic")
-  (python-shell-prompt-regexp ">>> ")
-  (python-shell-prompt-output-regexp "")
-  (python-shell-completion-setup-code "from IPython.core.completerlib import module_completion")
-  (python-shell-completion-module-string-code "';'.join(module_completion('''%s'''))\n")
-  (python-shell-completion-string-code "';'.join(get_ipython().Completer.all_completions('''%s'''))\n") 
+  (python-ipython-command "ipython")
+  (python-ipython-command-args "--pylab=osx --pdb --nosep --classic")
   :config
   (message "config python mode")
   ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/project")
@@ -59,6 +54,10 @@
 
 (use-package elpy
   :ensure t
+  ;; :ensure-system-package
+  ;; ((jedi     . "pip install jedi")
+   ;; (black    . "pip install black")
+   ;; (flake8   . "pip install flake8"))
   :init
   (elpy-enable))
 
