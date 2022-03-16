@@ -1,4 +1,4 @@
-;;; init-auxiliaries.el --- miscellaneous -*- lexical-binding: t -*-
+;;; init-misc.el --- miscellaneous -*- lexical-binding: t -*-
 
 ;;; Commentary:
 ;; 
@@ -56,8 +56,12 @@
   (add-to-list 'auto-mode-alist '("/knownhosts\\'"       . ssh-known-hosts-mode))
   (add-to-list 'auto-mode-alist '("/authorized_keys2?\\'" . ssh-authorized-keys-mode))
   (add-hook 'ssh-config-mode-hook 'turn-on-font-lock))
-(message "loading init-auxiliaries/ssh-config mode done.")
+(message "loading init-misc/ssh-config mode done.")
 
+(use-package su
+  :ensure t
+  :config
+  (su-mode +1))
 
 (when (not (eq system-type 'windows-nt))
 	(use-package ellocate

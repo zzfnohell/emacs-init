@@ -6,9 +6,15 @@
 ;;; Code:
 (use-package lsp-mode
   :ensure t
-  :commands (lsp lsp-deferred)
+  :commands lsp
   :hook ((java-mode . lsp)
          (python-mode . lsp)
+         (haskell-mode . lsp)
+         (haskell-literate-mode . lsp)
+         (latex-mode . lsp)
+         (tex-mode . lsp)
+         (yatex-mode . lsp)
+         (bibtex-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :custom
   (lsp-completion-enable t)
@@ -48,6 +54,10 @@
 	:ensure t
 	:config
 	(lsp-treemacs-sync-mode 1))
+
+
+;; https://github.com/emacs-lsp/lsp-docker
+;; (use-package lsp-docker :ensure t)
 
 (message "loading init-lsp done.")
 
