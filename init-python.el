@@ -8,8 +8,10 @@
 (use-package python-mode
   :ensure t
   :custom
-  (python-ipython-command "ipython")
-  (python-ipython-command-args "--pylab=osx --pdb --nosep --classic")
+  (py-shell-name "python")
+  (py-python-command "python")
+  (py-ipython-command "ipython")
+  (py-ipython-command-args '("--pylab" "--pdb" "--nosep") )
   :config
   (message "config python mode")
   ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/project")
