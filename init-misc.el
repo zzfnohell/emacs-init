@@ -71,6 +71,15 @@
 		'(("~/" "~/.emacs.d/.ellocate-db/home-db")
 			("/mnt/" nil))))))
 
+(use-package twittering-mode
+  :ensure t
+  :config
+  (when (executable-find "gpg")
+    (setq twittering-use-master-password t))
+  (setq twittering-proxy-use t)
+  (setq twittering-proxy-server "sshost")
+  (setq twittering-proxy-port 2001))
+
 (message "loading init-misc done.")
 (provide 'init-misc)
 
