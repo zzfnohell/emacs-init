@@ -11,7 +11,7 @@
   (py-shell-name "python")
   (py-python-command "python")
   (py-ipython-command "ipython")
-  (py-ipython-command-args '("--pylab" "--pdb" "--nosep") )
+  (py-ipython-command-args '("--pylab" "--pdb" "--nosep" "--simple-prompt") )
   :config
   (message "config python mode")
   ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/project")

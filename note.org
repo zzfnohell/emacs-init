@@ -35,6 +35,16 @@ Note -*- mode:org; -*-
    '(skeletor-user-directory "~/.emacs.d/init/init-skeletor-projects")
    '(size-indication-mode t)
    '(speedbar-show-unknown-files t)
+   '(ellocate-scan-dirs (quote
+                         (("~/" "~/ellocate-home-db")
+                          ("/mnt/USB" "~/ellocate-usb-drive-db")
+                          ;; I want this directory to be re-scanned on first search after every emacs restart by not creating a database file for it
+                          ("/mnt/USB2" nil)
+                           ;; Never make your scan paths overlap like this:
+                           ;; ("/mnt/USB2/newFolder" nil)
+                           ;; This is pretty useful if you have many USB devices, but remember to not overlap like this would if it wasn't commented (because the subdirectory /mnt/USB is also scanned as defined above)
+                           ;; ("/mnt/" nil)
+                           ))
    '(sql-connection-alist
      (("mysql-localhost"
        (sql-product 'mysql)

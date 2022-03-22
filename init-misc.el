@@ -63,13 +63,13 @@
   :config
   (su-mode +1))
 
-(when (not (eq system-type 'windows-nt))
-	(use-package ellocate
+(use-package ellocate
 	:ensure t
-	:custom
-	((ellocate-scan-dirs
-		'(("~/" "~/.emacs.d/.ellocate-db/home-db")
-			("/mnt/" nil))))))
+	;; :custom
+	;; ((ellocate-scan-dirs
+	;; 	'(("~/" "~/.emacs.d/.ellocate-db/home-db")
+	;; 		("/mnt/" nil))))
+  )
 
 (message "loading init-misc done.")
 (provide 'init-misc)
