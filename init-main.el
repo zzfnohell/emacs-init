@@ -13,7 +13,6 @@
 (require 'init-parameters)
 (require 'init-coding-system)
 (require 'init-session)
-(require 'init-dired)
 (require 'init-regex)
 (require 'init-uniquify)
 (require 'init-windows)
@@ -84,6 +83,8 @@
 
 (require 'init-polymode)
 (require 'init-web)
+
+(require 'init-ide)
 
 (require 'init-theme)
 

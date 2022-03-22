@@ -19,9 +19,34 @@
 
 (use-package pretty-mode
   :ensure t
-  :config (autoload 'turn-on-pretty-mode "pretty-mode"))
+  :config
+  (autoload 'turn-on-pretty-mode "pretty-mode"))
 
+(use-package elisp-refs
+  :ensure t)
 
+(use-package elisp-def
+  :ensure t
+  :config
+  (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+    (add-hook hook #'elisp-def-mode)))
+
+(use-package elisp-depmap
+  :bind
+  (("C-c M-d" . elisp-depmap-graphviz-digraph)
+   ("C-c M-g" . elisp-depmap-graphviz)
+   ("C-c M-s" . elisp-depmap-makesummarytable))
+  :config
+  ((elisp-depmap-exec-file "~/graphviz2.dot")))
+
+(use-package elisp-lint
+  :ensure t)
+
+(use-package elpr
+  :ensure t)
+
+(use-package elsa
+  :ensure t)
 ;; ----------------------------------------------------------------------------
 ;; Hippie-expand
 ;; ----------------------------------------------------------------------------

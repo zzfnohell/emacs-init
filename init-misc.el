@@ -71,6 +71,26 @@
 	;; 		("/mnt/" nil))))
   )
 
+
+(require 'dired)
+(setq dired-listing-switches "-alh")
+
+(when (eq system-type 'darwin)
+  (setq dired-use-ls-dired nil))
+
+(when (eq system-type 'windows-nt)
+  (setq w32-get-true-file-attributes nil)
+  (global-auto-revert-mode -1))
+
+(require 'tramp-gvfs)
+
+(use-package dired-rsync
+  :config
+  (bind-key "C-c C-r" 'dired-rsync dired-mode-map))
+
+(use-package elgrep
+  :ensure t)
+
 (message "loading init-misc done.")
 (provide 'init-misc)
 
