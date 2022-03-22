@@ -4,6 +4,8 @@
 ;; 
 
 ;;; Code:
+(use-package session
+  :config (add-hook 'after-init-hook 'session-initialize))
 
 (use-package memory-usage
   :ensure t)
@@ -58,10 +60,6 @@
   (add-hook 'ssh-config-mode-hook 'turn-on-font-lock))
 (message "loading init-misc/ssh-config mode done.")
 
-(use-package su
-  :ensure t
-  :config
-  (su-mode +1))
 
 (use-package ellocate
 	:ensure t
@@ -89,6 +87,52 @@
   (bind-key "C-c C-r" 'dired-rsync dired-mode-map))
 
 (use-package elgrep
+  :ensure t)
+
+;; Nicer naming of buffers for files with identical names
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator " • ")
+(setq uniquify-after-kill-buffer-p t)
+(setq uniquify-ignore-buffers-re "^\\*")
+
+(setq ediff-split-window-function 'split-window-horizontally)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+(use-package logview
+  :ensure t)
+
+(use-package vlf
+  :ensure t
+  :config
+  (require 'vlf-setup))
+
+(use-package syslog-mode
+	:ensure t)
+
+;; extra tools
+(use-package rfc-mode
+  :ensure t)
+
+(use-package mqtt-mode
+  :ensure t)
+
+(use-package rg
+  :ensure t
+  :ensure-system-package
+  (rg . ripgrep)
+  :config
+  (rg-enable-menu))
+
+(use-package tldr
+	:ensure t)
+
+;; git config --global github.user <your-github-user-name>
+;; git config --global github.oauth-token <your-personal-access-token-with-gist-scope>
+(use-package gist
+	:ensure t)
+
+(use-package httprepl
   :ensure t)
 
 (message "loading init-misc done.")

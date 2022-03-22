@@ -11,17 +11,9 @@
 
 (require 'init-benchmarking)
 (require 'init-parameters)
-(require 'init-coding-system)
-(require 'init-session)
-(require 'init-regex)
-(require 'init-uniquify)
 (require 'init-windows)
-(require 'init-ediff)
 (require 'init-erc)
-(require 'init-log)
 (require 'init-bookmark)
-(require 'init-highlight)
-(require 'init-tools)
 (require 'init-edit)
 (require 'init-misc)
 
