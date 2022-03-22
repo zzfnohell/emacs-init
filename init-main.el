@@ -42,7 +42,6 @@
 (require 'init-axiom)
 (require 'init-proof)
 
-(require 'init-log)
 (require 'init-cc-mode)
 (require 'init-rust)
 (require 'init-lisp)
