@@ -55,6 +55,6 @@
 	:ensure t
 	:after (yasnippet))
 
-(provide 'init-yasnippet)
+(provide 'init-snippets)
 
-;;; init-yasnippet.el ends here
+;;; init-snippets.el ends here

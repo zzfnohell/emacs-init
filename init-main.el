@@ -30,11 +30,10 @@
 (require 'init-auto-complete)
 (require 'init-org)
 
-(require 'init-recentf)
 (require 'init-minibuffer)
 (require 'init-flycheck)
 (require 'init-flymake)
-(require 'init-yasnippet)
+(require 'init-snippets)
 (require 'init-lsp)
 (require 'init-dap)
 
