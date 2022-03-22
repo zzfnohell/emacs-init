@@ -42,7 +42,7 @@
 (use-package elisp-lint
   :ensure t)
 
-(use-package elpr
+(use-package elpl
   :ensure t)
 
 (use-package elsa

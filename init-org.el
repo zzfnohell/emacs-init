@@ -34,7 +34,6 @@
 
 (use-package org
 	:ensure t
-  :after (:all ob-axiom)
   :config (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
   :custom
   (org-agenda-files '("agendas.org"))
@@ -76,7 +75,6 @@
      (latex . t)
      (lisp . t)
      (lua . t)
-     (mscgen . t)
      (ocaml . t)
      (octave . t)
      (plantuml . t)
@@ -135,7 +133,6 @@
   (add-to-list 'org-babel-load-languages '(cypher . t))
   (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
   (add-to-list 'org-babel-tangle-lang-exts '("cypher" . "cypher")))
-
 
 (use-package org-roam
 	:ensure t
