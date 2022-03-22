@@ -44,7 +44,7 @@ Note -*- mode:org; -*-
                            ;; ("/mnt/USB2/newFolder" nil)
                            ;; This is pretty useful if you have many USB devices, but remember to not overlap like this would if it wasn't commented (because the subdirectory /mnt/USB is also scanned as defined above)
                            ;; ("/mnt/" nil)
-                           ))
+                           )))
    '(sql-connection-alist
      (("mysql-localhost"
        (sql-product 'mysql)
