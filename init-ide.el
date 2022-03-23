@@ -7,8 +7,7 @@
 
 ;;; Code:
 
-(use-package eide
-  :ensure t)
+;; (use-package eide :ensure t)
 
 (provide 'init-ide)
 
