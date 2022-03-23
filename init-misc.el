@@ -111,10 +111,6 @@
     (dired-rainbow-define vc "#0074d9" ("git" "gitignore" "gitattributes" "gitmodules"))
     (dired-rainbow-define-chmod executable-unix "#38c172" "-.*x.*")))
 
-(use-package dired-quick-sort
-  :config
-  (dired-quick-sort-setup))
-
 (require 'tramp-gvfs)
 
 (use-package dired-rsync
