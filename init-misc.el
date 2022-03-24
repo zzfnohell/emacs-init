@@ -145,9 +145,6 @@
 (use-package rfc-mode
   :ensure t)
 
-(use-package mqtt-mode
-  :ensure t)
-
 (use-package rg
   :ensure t
   :ensure-system-package
