@@ -99,7 +99,9 @@
 (use-package undo-tree
   :ensure t
   :config
-  (global-undo-tree-mode))
+  (global-undo-tree-mode 1)
+  (setq undo-tree-auto-save-history 1)
+  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
 
 (add-hook 'texinfo-mode-hook (lambda () (require 'sb-texinfo)))
 
