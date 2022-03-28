@@ -11,7 +11,8 @@
   (py-shell-name "python")
   (py-python-command "python")
   (py-ipython-command "ipython")
-  (py-ipython-command-args '("--pylab" "--pdb" "--nosep" "--simple-prompt") )
+  (py-ipython-command-args '("--pylab" "--pdb" "--nosep" "--simple-prompt"))
+  (py-split-window-on-execute nil)
   :config
   (message "config python mode")
   ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/project")
@@ -58,8 +59,8 @@
   :ensure t
   ;; :ensure-system-package
   ;; ((jedi     . "pip install jedi")
-   ;; (black    . "pip install black")
-   ;; (flake8   . "pip install flake8"))
+  ;; (black    . "pip install black")
+  ;; (flake8   . "pip install flake8"))
   :init
   (elpy-enable))
 
