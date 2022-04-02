@@ -41,7 +41,10 @@
   :config
   (add-hook 'csharp-mode-hook 'init-csharp/csharp-mode-setup t))
 
+(use-package fsharp-mode
+  :defer t
+  :ensure t)
 
-(provide 'init-csharp)
+(provide 'init-dotnet)
 
-;;; init-csharp.el ends here
+;;; init-dotnet.el ends here
