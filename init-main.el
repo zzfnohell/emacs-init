@@ -67,7 +67,7 @@
 (require 'init-graphviz)
 
 (require 'init-powershell)
-(require 'init-csharp)
+(require 'init-dotnet)
 (require 'init-pascal)
 (require 'init-markup-lang)
 
