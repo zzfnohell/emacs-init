@@ -29,6 +29,9 @@
 (use-package ob-restclient
 	:ensure t)
 
+(use-package ob-powershell
+  :ensure t)
+
 (use-package verb
 	:ensure t)
 
@@ -78,6 +81,7 @@
      (ocaml . t)
      (octave . t)
      (plantuml . t)
+     (powershell . t)
      (python . t)
      (R . t)
      (restclient . t)
