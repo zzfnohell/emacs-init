@@ -36,7 +36,7 @@ Note -*- mode:org; -*-
    '(size-indication-mode t)
    '(speedbar-show-unknown-files t)
    '(ellocate-scan-dirs (quote
-                         (("~/" "~/ellocate-home-db")
+                         (("~/" "~/.cache/ellocate/home-db")
                           ("/mnt/USB" "~/ellocate-usb-drive-db")
                           ;; I want this directory to be re-scanned on first search after every emacs restart by not creating a database file for it
                           ("/mnt/USB2" nil)
