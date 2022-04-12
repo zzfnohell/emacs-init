@@ -59,6 +59,14 @@
 ;; https://github.com/emacs-lsp/lsp-docker
 ;; (use-package lsp-docker :ensure t)
 
+(use-package lsp-haskell
+  :after haskell-mode
+  :ensuare t
+  :config
+  (add-hook 'haskell-mode-hook #'lsp)
+  (add-hook 'haskell-literate-mode-hook #'lsp))
+
+
 (message "loading init-lsp done.")
 
 (provide 'init-lsp)
