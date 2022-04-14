@@ -61,7 +61,7 @@
 
 (use-package lsp-haskell
   :after haskell-mode
-  :ensuare t
+  :ensure t
   :config
   (add-hook 'haskell-mode-hook #'lsp)
   (add-hook 'haskell-literate-mode-hook #'lsp))
