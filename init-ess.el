@@ -45,6 +45,12 @@
     :requires vterm
     :hook (julia-mode . julia-snail-mode)))
 
+(use-package julia-repl
+  :ensure t
+  :config
+  (add-hook 'julia-mode-hook 'julia-repl-mode))
+
+
 (message "loading init-ess done.")
 
 (provide 'init-ess)

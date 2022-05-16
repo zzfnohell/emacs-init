@@ -35,6 +35,9 @@
 (use-package verb
 	:ensure t)
 
+(use-package ein
+  :ensure t)
+
 (use-package org
 	:ensure t
   :config (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
@@ -68,6 +71,7 @@
      (calc . t)
      (css . t)
      (dot . t)
+     (ein . t)
      (emacs-lisp . t)
 		 (eshell . t)
      (gnuplot . t)
