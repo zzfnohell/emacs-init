@@ -72,7 +72,10 @@ Note -*- mode:org; -*-
 $+name: windows-extra
 #+begin_src elisp
   (custom-set-variables
+   '(citre-readtags-program "c:/Scoop/apps/universal-ctags/current/readtags.exe")
+   '(citre-ctags-program "c:/Scoop/apps/universal-ctags/current/ctags.exe")
    '(citre-gtags-args '("--compact")))
+
 #+end_src
 
 * Cedet Project
