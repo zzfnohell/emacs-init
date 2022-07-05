@@ -29,7 +29,8 @@
   :init
   ;; This is needed in `:init' block for lazy load to work.
   (require 'citre-config)
-  ;; Bind your frequently used commands.
+  ;; Bind your frequently used commands.  Alternatively, you can define them
+  ;; in `citre-mode-map' so you can only use them when `citre-mode' is enabled.
   (global-set-key (kbd "C-x c j") 'citre-jump)
   (global-set-key (kbd "C-x c J") 'citre-jump-back)
   (global-set-key (kbd "C-x c p") 'citre-ace-peek)
@@ -46,7 +47,11 @@
    citre-default-create-tags-file-location 'global-cache
    ;; See the "Create tags file" section above to know these options
    citre-use-project-root-when-creating-tags t
-   citre-prompt-language-for-ctags-command t))
+   citre-prompt-language-for-ctags-command t
+   ;; By default, when you open any file, and a tags file can be found for it,
+   ;; `citre-mode' is automatically enabled.  If you only want this to work for
+   ;; certain modes (like `prog-mode'), set it like this.
+   citre-auto-enable-citre-mode-modes '(prog-mode)))
 
 (use-package rtags-xref
 	:ensure t
