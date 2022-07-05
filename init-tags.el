@@ -53,42 +53,33 @@
 	:config
   (add-hook 'c-mode-common-hook #'rtags-xref-enable))
 
-(use-package global-tags
-	:ensure t
-	:config
-	;; to use GNU Global automagically, regardless of Emacs default configuration
-	(add-hook 'ruby-mode-hook #'global-tags-exclusive-backend-mode)
-	;; to use GNU Global automagically, respecting other backends
-	(add-hook 'ruby-mode-hook #'global-tags-shared-backend-mode)
 
-	;; xref (finding definitions, references)
-	(add-to-list 'xref-backend-functions 'global-tags-xref-backend)
-	;; project.el (finding files)
-	(add-to-list 'project-find-functions 'global-tags-try-project-root)
-	;; configure Imenu
-	(add-hook 'ruby-mode-hook #'global-tags-imenu-mode)
-	;; to update database after save
-	(add-hook 'c++-mode-hook (lambda ()
-														 (add-hook 'after-save-hook
-																			 #'global-tags-update-database-with-buffer
-																			 nil
-																			 t))))
-
+(require 'clue)
+(add-hook 'find-file-hook #'clue-auto-enable-clue-mode)
+(setq
+ ;; Set this if you use project management plugin like projectile.
+ clue-project-root-function #'projectile-project-root
+ ;; Set like this if you only want auto-enabling citre-mode to work
+ ;; for markdown files.  You can also set it to nil, then the
+ ;; auto-enabling works for all files.  By default, it works for all
+ ;; text-modes.
+ ;; clue-auto-enable-modes '(markdown-mode)
+ clue-auto-enable-modes nil)
 
 ;; (use-package clue
-;;   :defer t
-;;   :init
-;;   (add-hook 'find-file-hook #'clue-auto-enable-clue-mode)
-;;   :config
-;;   (setq
-;;    ;; Set this if you use project management plugin like projectile.
-;;    clue-project-root-function #'projectile-project-root
-;;    ;; Set like this if you only want auto-enabling citre-mode to work
-;;    ;; for markdown files.  You can also set it to nil, then the
-;;    ;; auto-enabling works for all files.  By default, it works for all
-;;    ;; text-modes.
-;;    ;; clue-auto-enable-modes '(markdown-mode)
-;;    clue-auto-enable-modes nil))
+;;  :ensure t
+;;  ;; :init
+;;  ;; (add-hook 'find-file-hook #'clue-auto-enable-clue-mode)
+;;  :config
+;;  (setq
+;;   ;; Set this if you use project management plugin like projectile.
+;;   clue-project-root-function #'projectile-project-root
+;;   ;; Set like this if you only want auto-enabling citre-mode to work
+;;   ;; for markdown files.  You can also set it to nil, then the
+;;   ;; auto-enabling works for all files.  By default, it works for all
+;;   ;; text-modes.
+;;   ;; clue-auto-enable-modes '(markdown-mode)
+;;   clue-auto-enable-modes nil))
 
 
 (use-package xcscope

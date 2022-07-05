@@ -5,13 +5,13 @@
 
 ;;; Code:
 
-(use-package humanoid-themes
+(use-package monokai-theme
   :ensure t)
 
 (setq custom-safe-themes t)
 
 (defun init-theme/load-default-theme ()
-	(load-theme 'humanoid-light t))
+	(load-theme 'monokai t))
 
 (add-hook 'after-init-hook #'init-theme/load-default-theme)
 

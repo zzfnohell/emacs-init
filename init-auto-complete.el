@@ -82,10 +82,6 @@
 	:ensure t
 	:after (:all maxima))
 
-(use-package company-lean
-	:ensure t
-	:after (:all lean-mode))
-
 (provide 'init-auto-complete)
 
 ;;; init-auto-complete.el ends here
