@@ -66,8 +66,7 @@
   ;; active Babel languages
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((axiom . t)
-     (C . t)
+   '((C . t)
      (calc . t)
      (css . t)
      (dot . t)
