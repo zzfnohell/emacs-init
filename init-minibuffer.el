@@ -2,11 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package affe
-  :config
-  ;; Manual preview key for `affe-grep'
-  (consult-customize affe-grep :preview-key (kbd "M-.")))
-
 (use-package marginalia
   :ensure t
   :config
@@ -66,7 +61,6 @@
 (use-package savehist
   :init
   (savehist-mode))
-
 
 (provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here
