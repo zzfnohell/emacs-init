@@ -2,13 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package affe
-  :config
-  ;; Manual preview key for `affe-grep'
-  (consult-customize affe-grep :preview-key (kbd "M-.")))
-
-;; Example configuration for Consult
-
 (use-package marginalia
   :ensure t
   :config
