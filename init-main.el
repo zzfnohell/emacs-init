@@ -9,6 +9,11 @@
 
 (require 'init-elpa)
 
+;; if session is install as an ELPA package,
+;; it means that package-initialize must be called
+;; before the customization file is loaded.
+(load custom-file)
+
 (require 'init-benchmarking)
 (require 'init-parameters)
 (require 'init-windows)

@@ -5,15 +5,10 @@
 
 ;;; Code:
 
-(use-package monokai-theme
-  :ensure t)
-
-(setq custom-safe-themes t)
-
-(defun init-theme/load-default-theme ()
-	(load-theme 'monokai t))
-
-(add-hook 'after-init-hook #'init-theme/load-default-theme)
+(use-package doneburn-theme
+  :ensure t
+  :config
+  (load-theme 'doneburn 'no-confirm))
 
 (provide 'init-theme)
 

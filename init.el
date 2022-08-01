@@ -25,16 +25,12 @@
 
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 
-(load custom-file)
-
 (let ((envs-file (expand-file-name "~/.emacs.d/envs.el")))
 	(when (file-exists-p envs-file)
 		(load envs-file)))
 
 (let ((main-file (expand-file-name "~/.emacs.d/init/init-main.el")))
 	(load main-file))
-
-
 
 ;;; init.el ends here
 
