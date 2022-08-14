@@ -5,10 +5,17 @@
 
 ;;; Code:
 
-(use-package doneburn-theme
+;; (use-package doneburn-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'doneburn 'no-confirm))
+
+
+(use-package color-theme-sanityinc-tomorrow
   :ensure t
   :config
-  (load-theme 'doneburn 'no-confirm))
+  (require 'color-theme-sanityinc-tomorrow)
+  (color-theme-sanityinc-tomorrow-day))
 
 (provide 'init-theme)
 
