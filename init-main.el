@@ -19,6 +19,7 @@
 (require 'init-windows)
 (require 'init-erc)
 (require 'init-bookmark)
+(require 'init-font)
 (require 'init-edit)
 (require 'init-misc)
 
