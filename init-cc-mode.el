@@ -8,9 +8,6 @@
 
 (require 'cc-mode)
 
-(rtags-enable-standard-keybindings)
-(setq rtags-autostart-diagnostics t)
-(rtags-diagnostics)
 
 
 (c-set-offset 'inline-open 0)
@@ -116,7 +113,12 @@
 (use-package shader-mode)
 
 (use-package rtags
-	:if (and (executable-find "rdm") (executable-find "rc")))
+	:if (and (executable-find "rdm") (executable-find "rc"))
+  :config
+  (rtags-enable-standard-keybindings)
+  ;; (setq rtags-autostart-diagnostics t)
+  ;; (rtags-diagnostics)
+  )
 
 (use-package cmake-ide
 	:if (featurep 'rtags)
