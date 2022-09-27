@@ -95,8 +95,7 @@
 ;; Line
 (setq-default truncate-lines nil)
 (setq-default global-visual-line-mode t)
-(require 'linum)
-(global-linum-mode)
+(global-display-line-numbers-mode 1)
 (require 'hl-line)
 (global-hl-line-mode 1)
 
