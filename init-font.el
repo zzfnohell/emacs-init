@@ -78,6 +78,7 @@
 
 
 (use-package ligature
+  :if (>= emacs-major-version 28)
   :ensure t
   :config
   ;; Enable the www ligature in every possible major mode
