@@ -92,10 +92,15 @@
 (setq-default tab-always-indent 'complete)
 
 
-;;; Line
+;; Line
 (setq-default truncate-lines nil)
 (setq-default global-visual-line-mode t)
+(require 'linum)
+(global-linum-mode)
+(require 'hl-line)
+(global-hl-line-mode 1)
 
+;; 
 (use-package undo-tree
   :ensure t
   :config
@@ -113,8 +118,6 @@
 
 (use-package kill-ring-search
   :ensure t)
-
-(global-display-line-numbers-mode)
 
 (use-package backward-forward
   :config
@@ -171,7 +174,6 @@
 (use-package regex-tool
   :ensure t)
 
-(require 'hl-line)
 
 (use-package hl-anything
   :ensure t)

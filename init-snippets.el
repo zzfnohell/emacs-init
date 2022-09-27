@@ -55,6 +55,10 @@
 	:ensure t
 	:after (yasnippet))
 
+(use-package py-snippets
+  :ensure t
+  :after (yasnippet))
+
 (provide 'init-snippets)
 
 ;;; init-snippets.el ends here

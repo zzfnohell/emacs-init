@@ -45,6 +45,11 @@
   :defer t
   :ensure t)
 
+(use-package sharper
+  :demand t
+  :bind
+  ("C-c n" . sharper-main-transient))
+
 (provide 'init-dotnet)
 
 ;;; init-dotnet.el ends here
