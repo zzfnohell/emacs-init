@@ -6,25 +6,16 @@
 ;;; Code:
 
 (use-package ggtags
-  :config
+  :ensure t
+  :defer t
+  :init
   (add-hook 'c-mode-common-hook
             (lambda ()
               (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-                (ggtags-mode 1))))
-  )
-
-(use-package ctags-update
-  :config
-  (ctags-global-auto-update-mode)
-  (setq ctags-update-prompt-create-tags nil)
-  (autoload 'turn-on-ctags-auto-update-mode
-    "ctags-update" "turn on `ctags-auto-update-mode'." t)
-  (add-hook 'c-mode-common-hook 'turn-on-ctags-auto-update-mode)
-  (add-hook 'emacs-lisp-mode-hook 'turn-on-ctags-auto-update-mode)
-  (autoload 'ctags-update "ctags-update" "update TAGS using ctags" t)
-  )
+                (ggtags-mode 1)))))
 
 (use-package citre
+  :ensure t
   :defer t
   :init
   ;; This is needed in `:init' block for lazy load to work.
@@ -53,11 +44,11 @@
    ;; certain modes (like `prog-mode'), set it like this.
    citre-auto-enable-citre-mode-modes '(prog-mode)))
 
-(unless (eq system-type 'windows-nt)
-  (use-package rtags-xref
-	  :ensure t
-	  :config
-    (add-hook 'c-mode-common-hook #'rtags-xref-enable)))
+(use-package rtags-xref
+	:ensure t
+  :if (eq system-type 'windows-nt)
+	:init
+  (add-hook 'c-mode-common-hook #'rtags-xref-enable))
 
 (require 'clue)
 (add-hook 'find-file-hook #'clue-auto-enable-clue-mode)
@@ -88,6 +79,8 @@
 
 
 (use-package xcscope
+  :ensure t
+  :defer t
 	:config
 	(cscope-setup))
 

@@ -42,7 +42,6 @@
   (add-hook 'csharp-mode-hook 'init-csharp/csharp-mode-setup t))
 
 (use-package fsharp-mode
-  :defer t
   :ensure t)
 
 (use-package sharper
