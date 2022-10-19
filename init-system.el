@@ -5,8 +5,8 @@
 
 ;;; Code:
 
-;; (setq gc-cons-threshold (* 100 (* 1000  1000)))
-(setq read-process-output-max (* 16 1024 1024))
+(setq gc-cons-threshold (* 100 1000 1000))
+(setq read-process-output-max (* 32 1024 1024))
 
 (provide 'init-system)
 
