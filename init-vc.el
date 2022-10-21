@@ -5,7 +5,9 @@
 
 ;;; Code:
 
-(use-package ahg)
+(use-package ahg
+  :ensure t
+  :defer t)
 
 ;; (require 'diff-mode)
 ;; (require 'easymenu)
@@ -15,15 +17,28 @@
 
 (use-package magit
   :ensure t
+  :defer t
 	:config
-	(setq magit-refresh-status-buffer nil))
+	(setq magit-refresh-status-buffer nil)
+  (transient-define-prefix th/magit-aux-commands ()
+    "My personal auxiliary magit commands."
+    ["Auxiliary commands"
+     ("d" "Difftastic Diff (dwim)" th/magit-diff-with-difftastic)
+     ("s" "Difftastic Show" th/magit-show-with-difftastic)])
+  
+  (transient-append-suffix 'magit-dispatch "!"
+    '("#" "My Magit Cmds" th/magit-aux-commands))
+
+  (define-key magit-status-mode-map (kbd "#") #'th/magit-aux-commands))
 
 (use-package magit-lfs
   :ensure t
+  :defer t
   :pin melpa)
 
 (use-package magit-imerge
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package vc-fossil
 	:ensure t
@@ -131,16 +146,6 @@
      (get-buffer-create name)
      `("git" "--no-pager" "diff" "--ext-diff" ,@(when arg (list arg))))))
 
-(transient-define-prefix th/magit-aux-commands ()
-  "My personal auxiliary magit commands."
-  ["Auxiliary commands"
-   ("d" "Difftastic Diff (dwim)" th/magit-diff-with-difftastic)
-   ("s" "Difftastic Show" th/magit-show-with-difftastic)])
-
-(transient-append-suffix 'magit-dispatch "!"
-  '("#" "My Magit Cmds" th/magit-aux-commands))
-
-(define-key magit-status-mode-map (kbd "#") #'th/magit-aux-commands)
 
 (provide 'init-vc)
 ;;; init-vc.el ends here

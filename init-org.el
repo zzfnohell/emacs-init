@@ -6,41 +6,51 @@
 ;;; Code:
 
 (use-package org-preview-html
-	:ensure t)
+	:ensure t
+  :defer t)
 
 ;; (use-package ob-axiom
 ;; 	:ensure t)
 
 (use-package ob-ess-julia
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ob-fsharp
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ob-graphql
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ob-rust
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ob-go
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ob-restclient
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ob-powershell
-  :ensure t)
+  :ensure t
+  :defer)
 
 (use-package verb
-	:ensure t)
+	:ensure t
+  :defer)
 
 (use-package ein
-  :ensure t)
+  :ensure t
+  :defer)
 
 (use-package org
 	:ensure t
-  :config (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
+  :defer
   :custom
   (org-agenda-files '("agendas.org"))
   (org-default-notes-file "notes.org")
@@ -49,6 +59,7 @@
   (org-mobile-inbox-for-pull "from-mobile.org")
   :config
   (require 'org-capture)
+  (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
   (let ((gtd-file-path (expand-file-name "gtd.org" org-directory))
         (journal-file-path (expand-file-name "journal.org" org-directory)))
     (setq org-capture-templates
@@ -109,10 +120,13 @@
          :publishing-function org-publish-attachment)
         ("private" :components ("private-notes" "private-static")))))
 
-(use-package org-web-tools :ensure t)
+(use-package org-web-tools
+  :ensure t
+  :defer t)
 
 (use-package org-brain
   :ensure t
+  :defer t
 	:bind (:map org-mode-map
 							("C-c b" . org-brain-prefix-map))
   :init
@@ -132,10 +146,12 @@
         org-brain-file-entries-use-title nil))
 
 (use-package org-onenote
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ob-cypher
   :ensure t
+  :defer t
   :config
   (add-to-list 'org-babel-load-languages '(cypher . t))
   (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
@@ -143,6 +159,7 @@
 
 (use-package org-roam
 	:ensure t
+  :defer t
 ;;	:custom
 ;;	(org-roam-directory (file-truename "~/org/roam/"))
 	:bind (("C-c n l" . org-roam-buffer-toggle)
@@ -159,10 +176,12 @@
 
 (use-package websocket
   :after org-roam
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 (use-package org-roam-ui
+  :defer t
   :after org-roam
   :hook (after-init . org-roam-ui-mode)
   :config
@@ -173,6 +192,7 @@
 
 (use-package deft
   :ensure t
+  :defer t
   :bind ("<f8>" . deft)
 	:custom
 	(deft-recursive t)

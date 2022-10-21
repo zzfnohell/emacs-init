@@ -6,6 +6,8 @@
 ;;; Code:
 
 (use-package dap-mode
+  :ensure t
+  :defer t
   :after (:all lsp-mode lsp-java)
   :config
 	(dap-auto-configure-mode)
@@ -20,6 +22,8 @@
   (require 'dap-node))
 
 (use-package realgud
+  :ensure t
+  :defer t
   :init (setq gdb-many-windows t))
 
 (message "loading init-dap done.")

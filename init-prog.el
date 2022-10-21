@@ -14,6 +14,7 @@
 
 (use-package hideshow
   :ensure t
+  :defer t
   :config
 	;; Fix XML folding
 	(add-to-list 'hs-special-modes-alist
@@ -44,13 +45,16 @@
 (setq mode-compile-always-save-buffer-p t)
 
 (use-package emr
+  :ensure t
+  :defer t
   :config
-  (progn
-    (autoload 'emr-show-refactor-menu "emr")
-    (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu)
-    (eval-after-load "emr" '(emr-initialize))))
+  (autoload 'emr-show-refactor-menu "emr")
+  (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu)
+  (eval-after-load "emr" '(emr-initialize)))
 
 (use-package srefactor
+  :ensure t
+  :defer t
   :config
   (progn
     (require 'srefactor)
@@ -73,12 +77,18 @@
 (add-hook 'prog-mode-hook #'init-ui/enable-display-fill-column)
 
 (use-package bison-mode
+  :ensure t
+  :defer t
   :mode (("\\.lex\\'" . bison-mode)
          ("\\.yy\\'" . bison-mode)
          ("\\.y\\'" . bison-mode)))
 
-(use-package lex :ensure t)
-(use-package peg :ensure t)
+(use-package lex
+  :ensure t
+  :defer t)
+(use-package peg
+  :ensure t
+  :defer t)
 
 (message "loading init-prog done.")
 

@@ -13,6 +13,7 @@
 
 (use-package lsp-julia
 	:ensure t
+  :defer t
   :after (:all julia-mode lsp-mode)
   :config
   (add-hook 'julia-mode-hook #'lsp-mode)
@@ -20,7 +21,7 @@
 
 (use-package ess
   :ensure t
-  :after (:all julia-mode)
+  :defer t
   :config
   (setq ess-history-directory "~/.ess/")
 	(require 'ess-site)
@@ -36,20 +37,23 @@
 (use-package ess-view-data
   :ensure t)
 
-(when (eq system-type 'gnu/linux)
-  (use-package vterm
-    :ensure t)
+(use-package vterm
+  :ensure t
+  :defer t
+  :when (eq system-type 'gnu/linux))
   
-  (use-package julia-snail
-    :ensure t
-    :requires vterm
-    :hook (julia-mode . julia-snail-mode)))
+(use-package julia-snail
+  :ensure t
+  :defer t
+  :requires vterm
+  :when (eq system-type 'gnu/linux)
+  :hook (julia-mode . julia-snail-mode))
 
 (use-package julia-repl
   :ensure t
+  :defer t
   :config
   (add-hook 'julia-mode-hook 'julia-repl-mode))
-
 
 (message "loading init-ess done.")
 

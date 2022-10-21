@@ -23,6 +23,7 @@
 
 (use-package telega
 	:ensure t
+  :defer t
 	:init
 	(setq telega-proxies
 				(list

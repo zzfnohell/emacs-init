@@ -18,7 +18,7 @@
   (imenu-add-to-menubar "TAGS"))
 
 (use-package cedet
-	:after (:all company yasnippet)
+  :defer t
   :init
   ;;;; Semantic DataBase directory
   (setq semanticdb-default-save-directory (expand-file-name "~/.emacs.d/semanticdb"))

@@ -77,6 +77,7 @@
 
 (use-package ellocate
 	:ensure t
+  :defer t
 	;; :custom
 	;; ((ellocate-scan-dirs
 	;; 	'(("~/" "~/.emacs.d/.ellocate-db/home-db")
@@ -125,7 +126,8 @@
   (bind-key "C-c C-r" 'dired-rsync dired-mode-map))
 
 (use-package elgrep
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;; Nicer naming of buffers for files with identical names
 (require 'uniquify)
@@ -142,6 +144,7 @@
 
 (use-package vlf
   :ensure t
+  :defer t
   :config
   (require 'vlf-setup))
 
@@ -150,25 +153,30 @@
 
 ;; extra tools
 (use-package rfc-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package rg
   :ensure t
+  :defer t
   :ensure-system-package
   (rg . ripgrep)
   :config
   (rg-enable-menu))
 
 (use-package tldr
-	:ensure t)
+	:ensure t
+  :defer t)
 
 ;; git config --global github.user <your-github-user-name>
 ;; git config --global github.oauth-token <your-personal-access-token-with-gist-scope>
 (use-package gist
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package httprepl
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (message "loading init-misc done.")
 (provide 'init-misc)

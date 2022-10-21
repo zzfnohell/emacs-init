@@ -23,15 +23,19 @@
   (autoload 'turn-on-pretty-mode "pretty-mode"))
 
 (use-package elisp-refs
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package elisp-def
   :ensure t
+  :defer t
   :config
   (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
     (add-hook hook #'elisp-def-mode)))
 
 (use-package elisp-depmap
+  :ensure t
+  :defer t
   :bind
   (("C-c M-d" . elisp-depmap-graphviz-digraph)
    ("C-c M-g" . elisp-depmap-graphviz)
@@ -40,13 +44,16 @@
   ((elisp-depmap-exec-file "~/graphviz2.dot")))
 
 (use-package elisp-lint
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package elpl
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package elsa
-  :ensure t)
+  :ensure t
+  :defer t)
 ;; ----------------------------------------------------------------------------
 ;; Hippie-expand
 ;; ----------------------------------------------------------------------------
@@ -61,7 +68,8 @@
 ;; ----------------------------------------------------------------------------
 (use-package rainbow-delimiters
   :ensure t
-  :config
+  :defer t
+  :init
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package redshank
@@ -114,15 +122,17 @@
 
 (use-package slime
   :ensure t
-  :init
-  (setq inferior-lisp-program "sbcl")
-  (setq slime-contribs '(slime-fancy slime-company))
+  :defer t
   :config
   (let ((slime-helper-path (expand-file-name "~/quicklisp/slime-helper.el")))
     (when (file-exists-p slime-helper-path)
       ;; located in quicklisp install directory
       (load slime-helper-path)))
-  (slime-setup))
+  (require 'slime-autoloads)
+  (setq slime-lisp-implementations
+        '((cmucl ("cmucl" "-quiet"))
+          (sbcl ("sbcl") :coding-system utf-8-unix)))
+  (setq inferior-lisp-program "sbcl"))
 
 ;; (use-package ac-slime
 ;;  :after (:all slime cl-lib auto-complete)
