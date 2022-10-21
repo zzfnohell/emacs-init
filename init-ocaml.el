@@ -31,6 +31,8 @@
     (setq refmt-command refmt-bin)))
 
 (use-package merlin
+  :ensure t
+  :defer t
   :config
   (setq merlin-use-auto-complete-mode t)
   (setq merlin-error-after-save nil)
@@ -45,6 +47,8 @@
                                 (merlin-mode))))
 
 (use-package utop
+  :ensure t
+  :defer t
   :config
   (autoload 'utop-setup-ocaml-buffer "utop" "TopLevel for OCaml" t))
 

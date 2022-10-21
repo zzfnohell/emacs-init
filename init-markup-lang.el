@@ -8,7 +8,7 @@
     (add-to-list mode-backends 'company-nxml)))
 
 (require 'sgml-mode)
-(require 'nxml-mode)
+;; (require 'nxml-mode)
 
 (add-to-list 'auto-mode-alist '("\\.xml\\'" . nxml-mode))
 (add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
@@ -22,36 +22,42 @@
 
 (use-package ini-mode
   :ensure t
+  :defer t
   :mode (("\\.ini\\'" . ini-mode)))
 
 (use-package haml-mode
-  :ensure t
-  :after markdown-mode)
+  :ensure t)
 
 ;;; YAML
 (use-package yaml-mode
   :ensure t
+  :defer t
   :mode ("\\.yml$" . yaml-mode))
 
 (use-package markdown-mode
   :ensure t
+  :defer t
   :mode
   (("\\.text\\'" . markdown-mode)
    ("\\.markdown\\'" . markdown-mode)
    ("\\.md\\'" . markdown-mode)))
 
 (use-package markdown-preview-mode
+  :ensure t
+  :defer t
   :config
   (add-to-list
    'markdown-preview-javascript
    "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"))
 
 (use-package plantuml-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;; CSV file
 (use-package csv-mode
   :ensure t
+  :defer t
   :mode "\\.[Cc][Ss][Vv]\\'"
   :init (setq csv-separators '("," ";" "|" " ")))
 

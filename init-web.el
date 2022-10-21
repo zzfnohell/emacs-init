@@ -54,15 +54,20 @@
   (set (make-local-variable 'company-backends)
        '(company-web-html company-files)))
 
-(use-package company-web :after company)
+(use-package company-web
+  :ensure t)
 
 (use-package emmet-mode
-  :config
+  :ensure t
+  :defer t
+  :init
   (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
   (add-hook 'html-mode-hook 'emmet-mode)
   (add-hook 'css-mode-hook  'emmet-mode))
 
 (use-package web-mode
+  :ensure t
+  :defer t
   :mode (("\\.phtml\\'" . web-mode)
          ("\\.tpl\\.php\\'" . web-mode)
          ("\\.[agj]sp\\'" . web-mode)
@@ -78,16 +83,23 @@
         '(("php"    . "\\.phtml\\'")
           ("blade"  . "\\.blade\\."))))
 
-(use-package web-beautify)
+(use-package web-beautify
+  :ensure t
+  :defer t)
 
-(use-package impatient-mode)
+(use-package impatient-mode
+  :ensure t
+  :defer t)
 
-(use-package react-snippets)
+(use-package react-snippets
+  :ensure t)
 
 ;; CSS
 ;;; Colourise CSS colour literals
 (use-package rainbow-mode
-  :config
+  :ensure t
+  :defer t
+  :init
   (progn
     (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
       (add-hook hook 'rainbow-mode))
@@ -95,24 +107,41 @@
   )
 
 ;;; SASS and SCSS
-(use-package sass-mode :after markdown-mode)
+(use-package sass-mode
+  :ensure t
+  :defer t
+  :mode ("\\.sass$" . sass-mode))
 
 (use-package scss-mode
   :config (setq-default scss-compile-at-save nil))
 
 ;;; LESS
-(use-package less-css-mode)
+(use-package less-css-mode
+  :ensure t
+  :defer t
+  :mode ("\\.less$" . less-css-mode))
 
 ;;; Use eldoc for syntax hints
 (use-package css-eldoc
+  :ensure t
+  :defer t
+  :hook (css-mode-hook . turn-on-css-eldoc)
   :config
-  (progn
-    (autoload 'turn-on-css-eldoc "css-eldoc")
-    (add-hook 'css-mode-hook 'turn-on-css-eldoc)))
+  (autoload 'turn-on-css-eldoc "css-eldoc"))
 
-(use-package rjsx-mode :mode ("\\.jsx$" . rjsx-mode))
-(use-package pug-mode)
-(use-package restclient)
+(use-package rjsx-mode
+  :ensure t
+  :defer t
+  :mode ("\\.jsx$" . rjsx-mode))
+
+(use-package pug-mode
+  :ensure t
+  :defer t
+  :mode ("\\.pug$" . rjsx-mode))
+
+(use-package restclient
+  :ensure t
+  :defer t)
 
 (require 'css-mode)
 (add-hook 'css-mode-hook

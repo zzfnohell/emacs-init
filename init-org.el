@@ -50,7 +50,7 @@
 
 (use-package org
 	:ensure t
-  :defer
+  :defer t
   :custom
   (org-agenda-files '("agendas.org"))
   (org-default-notes-file "notes.org")
@@ -127,11 +127,12 @@
 (use-package org-brain
   :ensure t
   :defer t
+  :requires org
+  :after org
 	:bind (:map org-mode-map
 							("C-c b" . org-brain-prefix-map))
-  :init
-  (setq org-brain-path (concat (file-name-as-directory org-directory) "brain"))
   :config
+  (setq org-brain-path (concat (file-name-as-directory org-directory) "brain"))
   (require 'org-capture)
   ;; (bind-key "C-c b" 'org-brain-prefix-map org-mode-map)
   (setq org-id-track-globally t)

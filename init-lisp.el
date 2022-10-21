@@ -9,7 +9,9 @@
 (use-package paredit
   :ensure t)
 
-(use-package lispy :ensure t)
+(use-package lispy
+  :ensure t
+  :defer t)
 
 (use-package diminish :ensure t)
 
@@ -118,6 +120,8 @@
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
 
 (use-package slime-company
+  :ensure t
+  :defer t
   :ensure t)
 
 (use-package slime

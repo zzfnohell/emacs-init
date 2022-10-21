@@ -38,18 +38,19 @@
 ;; CALL omnisharp-install-server
 ;; WIN scoop install omnisharp
 (use-package omnisharp
-  :after csharp-mode
   :ensure t
-  :defer t
   :init (setq omnisharp-server-executable-path "OmniSharp.exe")
   :config
   (add-hook 'csharp-mode-hook 'init-csharp/csharp-mode-setup t))
 
 (use-package fsharp-mode
-  :ensure t)
+  :ensure t
+  :defer t
+  :mode "\\.fs\\'")
 
 (use-package sharper
   :demand t
+  :defer t
   :bind
   ("C-c n" . sharper-main-transient))
 

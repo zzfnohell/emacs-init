@@ -7,6 +7,7 @@
 
 (use-package python-mode
   :ensure t
+  :defer t
   :custom
   (py-shell-name "python")
   (py-python-command "python")
@@ -53,7 +54,8 @@
 	(pyenv-mode))
 
 (use-package jupyter
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package elpy
   :ensure t
