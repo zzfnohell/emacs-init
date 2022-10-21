@@ -55,7 +55,8 @@
        '(company-web-html company-files)))
 
 (use-package company-web
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package emmet-mode
   :ensure t
@@ -146,11 +147,11 @@
   :ensure t
   :defer t)
 
-(require 'css-mode)
-(add-hook 'css-mode-hook
-          (lambda ()
-            (let ((mode-backends (make-local-variable 'company-backends)))
-              (add-to-list mode-backends 'company-css))))
+(defun init-web/css-mode-hook-func ()
+  (let ((mode-backends (make-local-variable 'company-backends)))
+    (add-to-list mode-backends 'company-css)))
+
+(add-hook 'css-mode-hook #'init-web/css-mode-hook-func)
 
 (message "loading init-web done.")
 (provide 'init-web)

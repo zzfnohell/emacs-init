@@ -7,8 +7,7 @@
   (let ((mode-backends (make-local-variable 'company-backends)))
     (add-to-list mode-backends 'company-nxml)))
 
-(require 'sgml-mode)
-;; (require 'nxml-mode)
+(require 'nxml-mode)
 
 (add-to-list 'auto-mode-alist '("\\.xml\\'" . nxml-mode))
 (add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))

@@ -4,7 +4,8 @@
 ;; 
 
 (use-package tex
-	:ensure auctex)
+	:ensure auctex
+  :defer t)
 
 (use-package tikz
 	:ensure t)

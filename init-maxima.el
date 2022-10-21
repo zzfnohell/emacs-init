@@ -4,9 +4,6 @@
 ;; 
 
 ;;; Code:
-(use-package tex
-  :ensure auctex
-  :defer t)
 
 (when (require 'maxima nil 'noerror)
   (setq auto-mode-alist (cons '("\\.mac" . maxima-mode) auto-mode-alist))

@@ -5,10 +5,13 @@
 
 
 (use-package company-lua
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package lua-mode
   :ensure t
+  :defer t
+  :hook ((lua-mode-hook . company-lua)) 
   :config
 	(setq lua-default-application "luajit")
   (with-eval-after-load 'lua-mode
