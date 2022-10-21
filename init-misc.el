@@ -119,8 +119,6 @@
     (dired-rainbow-define vc "#0074d9" ("git" "gitignore" "gitattributes" "gitmodules"))
     (dired-rainbow-define-chmod executable-unix "#38c172" "-.*x.*")))
 
-(require 'tramp-gvfs)
-
 (use-package dired-rsync
   :config
   (bind-key "C-c C-r" 'dired-rsync dired-mode-map))
@@ -140,7 +138,8 @@
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (use-package logview
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package vlf
   :ensure t
@@ -149,7 +148,8 @@
   (require 'vlf-setup))
 
 (use-package syslog-mode
-	:ensure t)
+	:ensure t
+  :defer t)
 
 ;; extra tools
 (use-package rfc-mode

@@ -113,7 +113,10 @@
   :mode ("\\.sass$" . sass-mode))
 
 (use-package scss-mode
-  :config (setq-default scss-compile-at-save nil))
+  :ensure t
+  :defer t
+  :config
+  (setq-default scss-compile-at-save nil))
 
 ;;; LESS
 (use-package less-css-mode

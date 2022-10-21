@@ -30,7 +30,9 @@
 
 ;;; Robe
 (use-package robe
-  :config
+  :ensure t
+  :defer t
+  :init
   (progn
     (add-hook 'ruby-mode-hook 'robe-mode)
     (add-hook 'robe-mode-hook 'ac-robe-setup)))

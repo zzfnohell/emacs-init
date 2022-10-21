@@ -35,7 +35,8 @@
   :ensure t)
 
 (use-package ess-view-data
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package vterm
   :ensure t

@@ -39,6 +39,7 @@
 ;; WIN scoop install omnisharp
 (use-package omnisharp
   :ensure t
+  :defer t
   :init (setq omnisharp-server-executable-path "OmniSharp.exe")
   :config
   (add-hook 'csharp-mode-hook 'init-csharp/csharp-mode-setup t))

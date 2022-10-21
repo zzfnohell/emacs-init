@@ -38,6 +38,7 @@
 
 (use-package company-coq
   :ensure t
+  :defer t
 	:if (featurep 'proof-site)
   :after (:all company))
 
@@ -57,13 +58,15 @@
   :ensure t)
 
 (use-package company-axiom
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package company-dict
   :ensure t)
 
 (use-package company-restclient
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package company-flow
 	:ensure t

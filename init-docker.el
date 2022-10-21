@@ -9,13 +9,16 @@
 
 
 (use-package docker
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package dockerfile-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package docker-tramp
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (provide 'init-docker)
 

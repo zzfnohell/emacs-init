@@ -43,7 +43,8 @@
   :config (add-hook 'python-mode-hook 'yapf-mode))
 
 (use-package cython-mode
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package flycheck-cython
 	:ensure t)
