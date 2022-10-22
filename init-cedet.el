@@ -18,11 +18,12 @@
   (imenu-add-to-menubar "TAGS"))
 
 (use-package cedet
+  :ensure t
   :defer t
   :init
-  ;;;; Semantic DataBase directory
+    ;;;; Semantic DataBase directory
   (setq semanticdb-default-save-directory (expand-file-name "~/.emacs.d/semanticdb"))
-
+  :config
   ;;;; Semantic's customization
   (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
   (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
@@ -35,7 +36,6 @@
   (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
   (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
   
-  :config
   (require 'cedet-global)
   (require 'semantic)
   (semantic-mode 1)

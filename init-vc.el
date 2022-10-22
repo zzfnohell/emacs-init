@@ -42,14 +42,17 @@
 
 (use-package vc-fossil
 	:ensure t
+  :defer t
 	:init
 	(add-to-list 'vc-handled-backends 'Fossil t))
 
 (use-package git-modes
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package gitignore-snippets
-	:ensure t)
+	:ensure t
+  :defer t)
 
 
 ;; https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html

@@ -37,6 +37,7 @@
 
 (use-package multi-term
 	:ensure t
+  :defer t
   :config
 	(setq multi-term-program "/bin/bash"))
 

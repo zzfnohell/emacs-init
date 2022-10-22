@@ -8,6 +8,7 @@
 
 (use-package yasnippet
 	:ensure t
+  :defer t
 	:hook (prog-mode . yas-minor-mode)
   :config
   (progn
@@ -48,16 +49,14 @@
 
 (use-package auto-yasnippet
 	:ensure t
+  :defer t
 	:bind (("C-c w" . aya-create)
 				 ("C-c y" . aya-expand)))
 
 (use-package yasnippet-snippets
 	:ensure t
-	:after (yasnippet))
+  :defer t)
 
-(use-package py-snippets
-  :ensure t
-  :after (yasnippet))
 
 (provide 'init-snippets)
 

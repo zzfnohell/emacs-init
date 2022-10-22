@@ -102,17 +102,22 @@
 	(add-to-list 'company-backends 'company-cmake))
 
 (use-package cmake-mode
+  :ensure t
+  :defer t
 	:mode (("CMakeLists\\.txt\\'" . cmake-mode)
 				 ("\\.cmake\\'" . cmake-mode))
-	:config
-	(add-hook 'cmake-mode-hook 'init-cc-mode/company-cmake-setup))
+  :hook ((cmake-mode-hook . 'init-cc-mode/company-cmake-setup)))
 
 (use-package opencl-mode
+  :ensure t
   :mode (("\\.cl\\'" . opencl-mode)))
 
-(use-package shader-mode)
+(use-package shader-mode
+  :ensure t)
 
 (use-package rtags
+  :ensure t
+  :defer t
 	:if (and (executable-find "rdm") (executable-find "rc"))
   :config
   (rtags-enable-standard-keybindings)
@@ -122,12 +127,16 @@
 
 (use-package cmake-ide
 	:if (featurep 'rtags)
+  :ensure t
+  :defer t
   :config
 	(require 'rtags)
   (cmake-ide-setup))
 
 (use-package company-glsl
- :after (:all company))
+  :ensure t
+  :defer t
+ :requires company)
 
 (defun init-cc-mode/glsl-mode-hook-func ()
   "Hook glsl mode."
@@ -135,26 +144,29 @@
     (add-to-list 'company-backends 'company-glsl)))
 
 (use-package glsl-mode
-  :after company
+  :ensure t
+  :defer t
   :mode (("\\.glsl\\'" . glsl-mode)
          ("\\.vert\\'" . glsl-mode)
          ("\\.frag\\'" . glsl-mode)
          ("\\.geom\\'" . glsl-mode)
          ("\\.fx\\'" . hlsl-mode)
          ("\\.hlsl\\'" . hlsl-mode))
-  :config
-  (add-hook 'glsl-mode-hook #'init-cc-mode/glsl-mode-hook-func))
+  :hook ((glsl-mode-hook . #'init-cc-mode/glsl-mode-hook-func)
+         (glsl-mode-hook . company-glsl)))
 
 (use-package call-graph
-	:after (:all anaconda-mode ivy)
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package qt-pro-mode
   :ensure t
+  :defer t
   :mode ("\\.pro\\'" "\\.pri\\'"))
 
 (use-package qml-mode
 	:ensure t
+  :defer t
 	:mode (("\\.qml\\'" . qml-mode)))
 
 (provide 'init-cc-mode)

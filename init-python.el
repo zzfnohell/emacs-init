@@ -5,9 +5,15 @@
 
 ;;; Code:
 
+(use-package py-snippets
+  :ensure t
+  :defer t
+  :after yasnippet-snippets)
+
 (use-package python-mode
   :ensure t
   :defer t
+  :hook ((python-mode-hook . py-snippets))
   :custom
   (py-shell-name "python")
   (py-python-command "python")

@@ -120,6 +120,8 @@
     (dired-rainbow-define-chmod executable-unix "#38c172" "-.*x.*")))
 
 (use-package dired-rsync
+  :ensuer t
+  :defer t
   :config
   (bind-key "C-c C-r" 'dired-rsync dired-mode-map))
 
