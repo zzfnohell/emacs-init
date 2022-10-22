@@ -19,6 +19,7 @@
 
 (use-package dante
   :ensure t
+  :defer t
   :after haskell-mode
   :commands 'dante-mode
   :init

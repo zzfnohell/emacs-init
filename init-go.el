@@ -12,13 +12,17 @@
 ;; go get github.com/rogpeppe/godef
 
 (use-package go-guru
+  :ensure t
+  :defer t
   :config
 	(go-guru-hl-identifier-mode)
   (add-hook 'go-mode-hook #'go-guru-hl-identifier-mode))
 
 (use-package go-rename)
 (use-package flycheck-gometalinter)
-(use-package go-playground)
+(use-package go-playground
+  :ensure t
+  :defer t)
 
 (message "loading init-go done.")
 

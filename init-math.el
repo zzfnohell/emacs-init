@@ -1,9 +1,7 @@
-;;; init-maxima.el --- MAXIMA
+;;; init-math.el --- Math
 
 ;;; Commentary:
 ;; 
-
-;;; Code:
 
 (when (require 'maxima nil 'noerror)
   (setq auto-mode-alist (cons '("\\.mac" . maxima-mode) auto-mode-alist))
@@ -14,6 +12,20 @@
   (require 'emaxima)
   (require 'imaxima))
 
-(provide 'init-maxima)
 
-;;; init-maxima.el ends here
+(use-package frimacs
+  :ensure t
+  :defer t)
+
+(use-package ob-fricas
+  :ensure t
+  :defer t
+  :requires org)
+
+(use-package proof-general
+	:ensure t
+  :defer t)
+
+(provide 'init-math)
+
+;;; init-math.el ends here

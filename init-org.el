@@ -9,9 +9,6 @@
 	:ensure t
   :defer t)
 
-;; (use-package ob-axiom
-;; 	:ensure t)
-
 (use-package ob-ess-julia
 	:ensure t
   :defer t)

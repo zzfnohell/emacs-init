@@ -40,6 +40,7 @@
 
 (use-package pyvenv
 	:ensure t
+  :defer t
   :config
   (pyvenv-mode 1)
   (pyvenv-tracking-mode 1))
@@ -57,6 +58,7 @@
 
 (use-package pyenv-mode
 	:ensure t
+  :defer t
 	:config
 	(pyenv-mode))
 

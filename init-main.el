@@ -44,9 +44,7 @@
 (require 'init-dap)
 
 (require 'init-ess)
-(require 'init-maxima)
-(require 'init-axiom)
-(require 'init-proof)
+(require 'init-math)
 
 (require 'init-cc-mode)
 (require 'init-rust)

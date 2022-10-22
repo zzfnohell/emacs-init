@@ -57,10 +57,6 @@
 (use-package company-shell
   :ensure t)
 
-(use-package company-axiom
-  :ensure t
-  :defer t)
-
 (use-package company-dict
   :ensure t)
 
