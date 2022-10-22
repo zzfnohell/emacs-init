@@ -29,10 +29,12 @@
 	(setq inferior-julia-program-name "julia"))
 
 (use-package stan-mode
-  :ensure t)
+  :ensure t
+  :hook ((stan-mode-hook . stan-snippets)))
 
 (use-package stan-snippets
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package ess-view-data
   :ensure t

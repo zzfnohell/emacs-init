@@ -6,7 +6,13 @@
 
 ;;; Code:
 (use-package java-snippets
-  :ensure t)
+  :ensure t
+  :defer t)
+
+(defun init-java/java-mode-hook-func ()
+  (require 'java-snippets))
+
+(add-hook 'java-mode-hook #'init-java/java-mode-hook-func)
 
 (use-package flycheck-gradle
   :commands (flycheck-gradle-setup)

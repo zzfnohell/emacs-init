@@ -7,8 +7,12 @@
 
 (use-package py-snippets
   :ensure t
+  :defer t)
+
+(use-package yapfify
+	:ensure t
   :defer t
-  :after yasnippet-snippets)
+  :hook ((python-mode-hook . yapf-mode)))
 
 (use-package python-mode
   :ensure t
@@ -29,11 +33,13 @@
 (use-package python-cell
   :after python-mode
   :ensure t
-  :config
+  :defer t
+  :init
   (add-hook 'python-mode-hook #'python-cell-mode 1))
 
 (use-package highlight-indentation
 	:ensure t
+  :defer t
   :config
 	(set-face-background 'highlight-indentation-face "#e3e3d3")
   (set-face-background 'highlight-indentation-current-column-face "#c3b3b3"))
@@ -45,16 +51,16 @@
   (pyvenv-mode 1)
   (pyvenv-tracking-mode 1))
 
-(use-package yapfify
-	:ensure t
-  :config (add-hook 'python-mode-hook 'yapf-mode))
+
 
 (use-package cython-mode
 	:ensure t
-  :defer t)
+  :defer t
+  :hook ((cython-mode-hook . flycheck-cython)))
 
 (use-package flycheck-cython
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package pyenv-mode
 	:ensure t
@@ -68,11 +74,12 @@
 
 (use-package elpy
   :ensure t
+  :defer t
   ;; :ensure-system-package
   ;; ((jedi     . "pip install jedi")
   ;; (black    . "pip install black")
   ;; (flake8   . "pip install flake8"))
-  :init
+  :config
   (elpy-enable))
 
 (message "loading init-python done.")

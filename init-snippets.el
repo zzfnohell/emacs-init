@@ -5,15 +5,12 @@
 
 ;;; Code:
 
-
 (use-package yasnippet
 	:ensure t
   :defer t
-	:hook (prog-mode . yas-minor-mode)
+  :hook ((prog-mode-hook . yas-minor-mode))
   :config
   (progn
-    ;;; use popup menu for yas-choose-value
-    (require 'popup)
     (let ((dirs (list
                  "~/.emacs.d/snippets"
                  "~/.emacs.d/snippets/yasmate/snippets")))
@@ -22,13 +19,14 @@
 			    (if (not (file-directory-p fullpath))
               (make-directory fullpath t))
           (add-to-list 'yas-snippet-dirs fullpath))))
+    ;; (yas-reload-all)
+    (yas-global-mode 1)
     
+    ;;; use popup menu for yas-choose-value
+    (require 'popup)
     
     (define-key yas-minor-mode-map [(tab)] nil)
     (define-key yas-minor-mode-map (kbd "TAB") nil)
-
-    (yas-reload-all)
-    (yas-global-mode 1)
 
     (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
       (when (featurep 'popup)
@@ -47,15 +45,16 @@
             yas-ido-prompt
             yas-no-prompt))))
 
+(use-package yasnippet-snippets
+	:ensure t)
+
 (use-package auto-yasnippet
 	:ensure t
   :defer t
 	:bind (("C-c w" . aya-create)
 				 ("C-c y" . aya-expand)))
 
-(use-package yasnippet-snippets
-	:ensure t
-  :defer t)
+
 
 
 (provide 'init-snippets)

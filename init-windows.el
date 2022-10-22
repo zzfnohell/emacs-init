@@ -11,8 +11,10 @@
   (winum-mode))
 
 (require 'speedbar)
+
 (use-package sr-speedbar
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package minimap
   :ensure t)
@@ -20,6 +22,7 @@
 
 (use-package perspective
   :ensure t
+  :defer t
   :bind
   ("C-x C-b" . persp-list-buffers)         ; or use a nicer switcher, see below
   :custom
@@ -33,7 +36,6 @@
 	(golden-ratio-mode 1))
 
 (winner-mode)
-
 
 (use-package dimmer
 	:ensure t

@@ -92,8 +92,6 @@
   :ensure t
   :defer t)
 
-(use-package react-snippets
-  :ensure t)
 
 ;; CSS
 ;;; Colourise CSS colour literals
@@ -133,10 +131,15 @@
   :config
   (autoload 'turn-on-css-eldoc "css-eldoc"))
 
+(use-package react-snippets
+  :ensure t
+  :defer t)
+
 (use-package rjsx-mode
   :ensure t
   :defer t
-  :mode ("\\.jsx$" . rjsx-mode))
+  :mode ("\\.jsx$" . rjsx-mode)
+  :hook (rjsx-mode-hook . react-snippets))
 
 (use-package pug-mode
   :ensure t

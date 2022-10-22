@@ -54,12 +54,13 @@
 	(let ((ede-custom-file
 				 (expand-file-name "cedet-projects.el" user-emacs-directory)))
 		(when (file-exists-p ede-custom-file)
-			(load ede-custom-file))))
+			(load ede-custom-file)))
 
-(require 'srecode)
-;;;; Names completion with auto-complete package
-;; srecode-map-load-path
-(global-srecode-minor-mode 1)
+  (require 'srecode)
+  ;; Names completion with auto-complete package
+  ;; srecode-map-load-path
+  (global-srecode-minor-mode 1))
+
 
 (provide 'init-cedet)
 

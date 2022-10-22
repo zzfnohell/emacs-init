@@ -21,6 +21,7 @@
 
 ;;; projectile
 (use-package projectile
+  :ensure t
 	:custom
 	(projectile-require-project-root t)
   (projectile-enable-caching t)
