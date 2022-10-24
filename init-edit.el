@@ -108,6 +108,8 @@
   :ensure t
   :config
   (global-undo-tree-mode 1)
+  (setq undo-tree-visualizer-diff t)
+  (setq undo-tree-visualizer-timestamps t)
   (setq undo-tree-auto-save-history 1)
   (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
 
