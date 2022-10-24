@@ -33,7 +33,9 @@
               (substitute-key-definition
                'company-complete-common
                'company-yasnippet-or-completion
-               company-active-map))))
+               company-active-map)))
+  (setq company-idle-delay 0
+        company-show-numbers t))
 
 
 (use-package company-coq

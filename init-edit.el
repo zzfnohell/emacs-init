@@ -77,9 +77,13 @@
       (list
        '(:eval (buffer-name (current-buffer)))))
 
-;;; Indent
+;;; Indent & Spacing & Tabs
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
+(setq-default show-trailing-whitespace t)
+
+;; Count 1 space after a period as the end of a sentence, instead of 2
+(setq sentence-end-double-space nil)
 
 ;; http://xahlee.info/emacs/emacs/emacs_tabs_space_indentation_setup.html
 ;; make tab key always call a indent command.

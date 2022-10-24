@@ -47,7 +47,7 @@
 (use-package rtags-xref
 	:ensure t
   :defer t
-  :if (eq system-type 'windows-nt)
+  :unless (eq system-type 'windows-nt)
 	:init
   (add-hook 'c-mode-common-hook #'rtags-xref-enable))
 

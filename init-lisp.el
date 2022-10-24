@@ -155,6 +155,10 @@
 
 (add-hook 'emacs-mode-hook #'init-lisp/append-elisp-backends)
 
+(use-package aggressive-indent
+  :ensure t
+  :hook emacs-lisp)
+
 (message "loading init-lisp done.")
 
 (provide 'init-lisp)
