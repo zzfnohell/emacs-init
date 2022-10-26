@@ -15,17 +15,22 @@
 ;;; Code:
 
 (use-package dart-mode
+  :ensure t
+  :defer t
   :custom
   (dart-format-on-save t))
 
 (use-package flutter
-  :after dart-mode
+  :ensure t
+  :defer t
   :bind (:map dart-mode-map
               ("C-M-x" . #'flutter-run-or-hot-reload)))
 
 ;; Optional
 (use-package flutter-l10n-flycheck
-  :after flutter
+  :ensure t
+  :defer t
+  :requires flutter
   :config
   (flutter-l10n-flycheck-setup))
 
