@@ -119,7 +119,7 @@
   ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
   ;;
   (require 'consult)
-  (setq consult-project-function #'consult--default-project--function))
+  (setq consult-project-function #'consult--default-project-function))
 
 ;; Enable richer annotations using the Marginalia package
 (use-package marginalia
