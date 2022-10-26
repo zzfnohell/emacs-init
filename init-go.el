@@ -18,7 +18,9 @@
 	(go-guru-hl-identifier-mode)
   (add-hook 'go-mode-hook #'go-guru-hl-identifier-mode))
 
-(use-package go-rename)
+(use-package go-rename
+  :ensure t
+  :defer t)
 
 (use-package go-playground
   :ensure t
