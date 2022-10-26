@@ -10,6 +10,7 @@
 
 (use-package skeletor
   :ensure t
+  :defer t
   :custom
   (skeletor-user-directory init-skeletor/projects-dir)
 	:config
@@ -38,8 +39,7 @@
 		:no-license? t
 		:no-git? t
 		:substitutions
-		'(("__TITLE__" . (lambda () (read-string "Description: ")))))
-	)
+		'(("__TITLE__" . (lambda () (read-string "Description: "))))))
 
 (provide 'init-skeletor)
 

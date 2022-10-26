@@ -30,16 +30,14 @@
   :defer t
   :mode (("\\.js\\'" . js2-mode))
   :hook ((js2-mode-hook . js2-imenu-extras-mode)
+         (js2-mode-hook . js2-refactor-mode)
          (js2-mode-hook .
                         (lambda ()
                           (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))))
 
 (use-package js2-refactor
 	:ensure t
-  :config
-  (add-hook 'js2-mode-hook #'js2-refactor-mode))
-
-
+  :defer t)
 
 (use-package rainbow-delimiters
 	:ensure t)
