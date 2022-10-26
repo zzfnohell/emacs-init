@@ -19,7 +19,7 @@
   (add-hook 'go-mode-hook #'go-guru-hl-identifier-mode))
 
 (use-package go-rename)
-(use-package flycheck-gometalinter)
+
 (use-package go-playground
   :ensure t
   :defer t)

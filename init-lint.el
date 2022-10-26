@@ -1,14 +1,13 @@
-;;; init-flycheck.el --- Flycheck
+;;; init-lint.el --- Static Syntax Analysis
 
 ;;; Commentary:
-;;
+;; 
 
 ;;; Code:
 
 (use-package flycheck
-  :init
-	(global-flycheck-mode)
-	:config
+  :hook ((after-init-hook . global-flycheck-mode))
+  :config
 	(message "init-flycheck/config flycheck."))
 
 (use-package flycheck-flow
@@ -19,9 +18,15 @@
 	(flycheck-add-mode 'javascript-eslint 'flow-mode)
 	(flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
 
-
+(use-package flycheck-gometalinter
+  :ensure t
+  :defer t
+  :hook ((go-mode-hook . flycheck-gometalinter)))
 
 (use-package flycheck-clang-analyzer
+  :ensure t
+  :defer t
+  :hook ((c-mode-common-hook . flycheck-clang-analyzer))
   :config
 	(message "init-flycheck/config flycheck clang analyzer.")
   (flycheck-clang-analyzer-setup))
@@ -32,6 +37,6 @@
 	(require 'flycheck-plantuml)
 	(flycheck-plantuml-setup))
 
-(provide 'init-flycheck)
+(provide 'init-lint)
 
-;;; init-flycheck.el ends here
+;;; init-lint.el ends here

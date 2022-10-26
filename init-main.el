@@ -37,9 +37,8 @@
 (require 'init-org)
 
 (require 'init-minibuffer)
-(require 'init-flycheck)
-(require 'init-flymake)
 (require 'init-snippets)
+(require 'init-lint)
 (require 'init-lsp)
 (require 'init-dap)
 
