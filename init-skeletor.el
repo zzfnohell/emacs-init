@@ -10,6 +10,7 @@
 
 (use-package skeletor
   :ensure t
+  :defer t
   :custom
   (skeletor-user-directory init-skeletor/projects-dir)
 	:config
@@ -35,6 +36,12 @@
 		'(("__TITLE__" . (lambda () (read-string "Description: ")))))
 	(skeletor-define-template "skewer-index-html-package"
 		:title "Skewer Index Html"
+		:no-license? t
+		:no-git? t
+		:substitutions
+		'(("__TITLE__" . (lambda () (read-string "Description: ")))))
+  (skeletor-define-template "makefile-project"
+		:title "Makefile Project"
 		:no-license? t
 		:no-git? t
 		:substitutions
