@@ -22,6 +22,7 @@
 (use-package ess
   :ensure t
   :defer t
+  :commands R
   :config
   (setq ess-history-directory "~/.ess/")
 	(require 'ess-site)
