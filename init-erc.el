@@ -16,13 +16,21 @@
 (setq erc-server-connect-function 'socks-open-network-stream)
 (setq socks-server '("Stunnel" "sshost" 2003 5))
 
-(require 'erc-log)
-(setq erc-log-channels-directory "~/.emacs.d/log/erc/"
-      erc-save-buffer-on-part t
-      erc-log-file-coding-system 'utf-8
-      erc-log-write-after-send t
-      erc-log-write-after-insert t)
-(erc-log-mode 1)
+
+(defun init-erc/erc-mode-hook-func ()
+  (require 'erc-log)
+  (setq erc-log-channels-directory "~/.emacs.d/log/erc/"
+        erc-save-buffer-on-part t
+        erc-log-file-coding-system 'utf-8
+        erc-log-write-after-send t
+        erc-log-write-after-insert t)
+  (erc-log-mode 1))
+
+(use-package erc
+  :ensure nil
+  :defer t
+  :hook ((erc-mode-hook . init-erc/erc-mode-hook-func)))
+
 
 (unless (file-exists-p erc-log-channels-directory)
   (mkdir erc-log-channels-directory t))
