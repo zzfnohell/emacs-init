@@ -10,27 +10,33 @@
 (setq erc-nick "zzfnohell"
       erc-user-full-name "ZF.Z")
 
+(setq socks-override-functions 1)
+(setq socks-noproxy '("localhost" "sshost"))
+(require 'socks)
+(setq erc-server-connect-function 'socks-open-network-stream)
+(setq socks-server '("Stunnel" "sshost" 2003 5))
+
 (require 'erc-log)
-(erc-log-mode 1)
 (setq erc-log-channels-directory "~/.emacs.d/log/erc/"
       erc-save-buffer-on-part t
       erc-log-file-coding-system 'utf-8
       erc-log-write-after-send t
       erc-log-write-after-insert t)
+(erc-log-mode 1)
 
 (unless (file-exists-p erc-log-channels-directory)
   (mkdir erc-log-channels-directory t))
 
 (use-package telega
-	:ensure t
+  :ensure t
   :defer t
-	:init
-	(setq telega-proxies
-				(list
-				 '(:server "sshost"
-									 :port 2003
-									 :enable :false
-									 :type (:@type "proxyTypeSocks5")))))
+  :init
+  (setq telega-proxies
+	(list
+	 '(:server "sshost"
+		   :port 2003
+		   :enable :false
+		   :type (:@type "proxyTypeSocks5")))))
 
 (message "loading init-erc done")
 (provide 'init-erc)

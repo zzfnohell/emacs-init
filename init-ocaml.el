@@ -40,8 +40,9 @@
   (add-hook 'caml-mode-hook 'merlin-mode))
 
 (use-package reason-mode
-  :after (:all merlin)
-  :config
+  :ensure t
+  :defer t
+  :init
   (add-hook 'reason-mode-hook (lambda ()
                                 (add-hook 'before-save-hook 'refmt-before-save)
                                 (merlin-mode))))

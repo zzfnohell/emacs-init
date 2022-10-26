@@ -13,7 +13,6 @@
 
 (use-package flycheck-flow
 	:ensure t
-  :after (:all flycheck)
   :config
 	(message "init-flycheck/config flycheck flow.")
 	(flycheck-add-mode 'javascript-flow 'flow-mode)
@@ -28,7 +27,6 @@
   (flycheck-clang-analyzer-setup))
 
 (use-package flycheck-plantuml
-  :after (:all flycheck plantuml-mode)
   :config
 	(message "init-flycheck/config flycheck plantuml.")
 	(require 'flycheck-plantuml)

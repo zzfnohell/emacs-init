@@ -7,6 +7,8 @@
 ;;; Code:
 
 (use-package ruby-mode
+  :ensure t
+  :defer t
   :mode ("Rakefile\\'"
          "\\.rake\\'"
          "\\.rxml\\'"
@@ -20,25 +22,29 @@
          "Kirkfile\\'")
 	:config
   (setq ruby-use-encoding-map nil)
-  (add-hook 'ruby-mode-hook 'subword-mode)
-	)
+  (add-hook 'ruby-mode-hook 'subword-mode))
 
-(use-package ruby-hash-syntax)
+(use-package ruby-hash-syntax
+  :ensure t
+  :defer t)
 
 ;;; Ruby compilation
-(use-package ruby-compilation)
+(use-package ruby-compilation
+  :ensure t
+  :defer t)
 
 ;;; Robe
 (use-package robe
   :ensure t
   :defer t
   :init
-  (progn
-    (add-hook 'ruby-mode-hook 'robe-mode)
-    (add-hook 'robe-mode-hook 'ac-robe-setup)))
+  (add-hook 'ruby-mode-hook 'robe-mode)
+  (add-hook 'robe-mode-hook 'ac-robe-setup))
 
 ;;; ri support
 (use-package yari
+  :ensure t
+  :defer t
   :config (defalias 'ri 'yari))
 
 

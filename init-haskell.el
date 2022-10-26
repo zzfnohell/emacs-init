@@ -6,7 +6,8 @@
 ;;; Code:
 
 (use-package haskell-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package flycheck-haskell
   :ensure t

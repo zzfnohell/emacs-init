@@ -10,31 +10,36 @@
  :ensure t
  :custom (js-indent-level 2))
 
-(use-package json-mode :ensure t)
+(use-package json-mode
+  :ensure t
+  :defer t
+  :mode (("\\.json\\'" . json-mode)))
 
 (use-package js-comint
 	:ensure t
+  :defer t
   :config
   (setq inferior-js-program-command "node"))
 
+(use-package xref-js2
+  :ensure t
+  :defer t)
+
 (use-package js2-mode
   :ensure t
+  :defer t
   :mode (("\\.js\\'" . js2-mode))
-  :config
-  (add-hook 'js2-mode-hook #'js2-imenu-extras-mode))
+  :hook ((js2-mode-hook . js2-imenu-extras-mode)
+         (js2-mode-hook .
+                        (lambda ()
+                          (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))))
 
 (use-package js2-refactor
 	:ensure t
-  :after (:all js2-mode)
   :config
   (add-hook 'js2-mode-hook #'js2-refactor-mode))
 
-(use-package xref-js2
-  :after (:all js2-mode)
-  :config
-  (add-hook 'js2-mode-hook
-            (lambda ()
-              (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
+
 
 (use-package rainbow-delimiters
 	:ensure t)
