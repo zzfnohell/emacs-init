@@ -12,29 +12,31 @@
 
 (use-package flycheck-flow
 	:ensure t
+  :defer t
+  :hook ((javascript-flow . flow-mode)
+         (javascript-eslint . flow-mode))
   :config
-	(message "init-flycheck/config flycheck flow.")
-	(flycheck-add-mode 'javascript-flow 'flow-mode)
-	(flycheck-add-mode 'javascript-eslint 'flow-mode)
 	(flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
 
 (use-package flycheck-gometalinter
   :ensure t
   :defer t
-  :hook ((go-mode-hook . flycheck-gometalinter)))
+  :hook ((go-mode-hook . flycheck-gometalinter))
+  :config
+  (flycheck-gometalinter-setup))
 
 (use-package flycheck-clang-analyzer
   :ensure t
   :defer t
   :hook ((c-mode-common-hook . flycheck-clang-analyzer))
   :config
-	(message "init-flycheck/config flycheck clang analyzer.")
   (flycheck-clang-analyzer-setup))
 
 (use-package flycheck-plantuml
   :config
-	(message "init-flycheck/config flycheck plantuml.")
-	(require 'flycheck-plantuml)
+  :defer t
+  :hook ((plantuml-mode-hook . flycheck-plantuml))
+  :config
 	(flycheck-plantuml-setup))
 
 (provide 'init-lint)
