@@ -10,7 +10,9 @@
   :config
   (winum-mode))
 
-(require 'speedbar)
+(use-package speedbar
+  :ensure nil
+  :defer t)
 
 (use-package sr-speedbar
   :ensure t
@@ -30,23 +32,7 @@
   :init
   (persp-mode))
 
-
-(use-package golden-ratio
-	:config
-	(golden-ratio-mode 1))
-
 (winner-mode)
-
-(use-package dimmer
-	:ensure t
-	:config
-	(dimmer-configure-which-key)
-	(dimmer-configure-company-box)
-	(dimmer-configure-gnus)
-	(dimmer-configure-magit)
-	(dimmer-configure-org)
-	(dimmer-configure-posframe)
-	(dimmer-mode t))
 
 (provide 'init-windows)
 

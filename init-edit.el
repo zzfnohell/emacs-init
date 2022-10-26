@@ -164,24 +164,23 @@
 
 (use-package su
   :ensure t
+  :defer t
   :config
   (su-mode +1))
 
-(use-package visual-regexp
-	:ensure t)
-
 (use-package regex-tool
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package visual-regexp
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package regex-tool
-  :ensure t)
+  :ensure t
+  :defer t)
 
-
-(use-package hl-anything
-  :ensure t)
+;; (use-package hl-anything  :ensure t)
 
 (use-package highlight-parentheses
   :ensure t)

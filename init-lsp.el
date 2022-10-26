@@ -101,6 +101,18 @@
   :ensure t
   :defer t)
 
+(use-package eglot-fsharp
+  :requires eglot
+  :ensure t
+  :defer t)
+
+(use-package eglot-java
+  :requires eglot
+  :ensure t
+  :defer t
+  :config
+  (eglot-java-init))
+
 (message "loading init-lsp done.")
 
 (provide 'init-lsp)

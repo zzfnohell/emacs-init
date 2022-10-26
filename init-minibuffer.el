@@ -117,9 +117,9 @@
   ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
   ;;;; 4. locate-dominating-file
   ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
-  ;; 
-   (setq consult-project-function #'consult--default-project--function)
-  )
+  ;;
+  (require 'consult)
+  (setq consult-project-function #'consult--default-project--function))
 
 ;; Enable richer annotations using the Marginalia package
 (use-package marginalia
