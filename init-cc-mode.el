@@ -6,11 +6,6 @@
 
 ;;; Code:
 
-(require 'cc-mode)
-
-(c-set-offset 'inline-open 0)
-(c-set-offset 'friend '-)
-(c-set-offset 'substatement-open 0)
 
 (defun init-cc-mode/company-c-headers-setup ()
   (let ((mode-backends (make-local-variable 'company-backends)))
@@ -52,7 +47,22 @@
 	(add-hook 'c-mode-hook 'init-cc-mode/company-rtags-setup)
 	(add-hook 'c++-mode-hook #'init-cc-mode/company-rtags-setup))
 
-(init-cc-mode/cedet-enable)
+
+(use-package cc-mode
+  :defer t
+  :hook ((c-mode-common-hook . init-cc-mode/c-mode-edit-hook))
+  :config
+  (c-set-offset 'inline-open 0)
+  (c-set-offset 'friend '-)
+  (c-set-offset 'substatement-open 0)
+  (init-cc-mode/cedet-enable)
+  (setq c-default-style 
+      '(('c-mode . "bsd")
+        ('c++-mode . "bsd")
+        ('java-mode . "java")
+        ('awk-mode . "awk")
+        (other . "linux")))
+  )
 
 ;;indent strategy
 (defun init-cc-mode/cpp-indent-or-complete ()
@@ -61,21 +71,17 @@
       (hippie-expand nil)
     (indent-for-tab-command)))
 
-(setq c-default-style 
-      '(('c-mode . "bsd")
-        ('c++-mode . "bsd")
-        ('java-mode . "java")
-        ('awk-mode . "awk")
-        (other . "linux")))
+
 
 (defun init-cc-mode/c-mode-edit-hook()
+  (doxygen-mode t)
+  (subword-mode t)
   ;; hungry-delete and auto-newline
   (c-toggle-auto-hungry-state 1)
   (define-key c-mode-base-map [(tab)] 'init-cc-mode/cpp-indent-or-complete)
   ;;preprocessors
   (setq abbrev-mode t))
 
-(add-hook 'c-mode-common-hook 'init-cc-mode/c-mode-edit-hook)
 
 (defun init-cc-mode/ede-object-system-include-path ()
 	"System include path."
@@ -86,14 +92,10 @@
   :after company
   :config
 	(setq company-c-headers-path-system 'init-cc-mode/ede-object-system-include-path)
-
+  
 	(let ((header-custom-file (expand-file-name "cc-mode-header-custom.el" user-emacs-directory)))
 		(when (file-exists-p header-custom-file)
 			(load header-custom-file))))
-
-
-;;opencl source file.
-(add-to-list 'auto-mode-alist '("\\.h$" . c-mode))
 
 
 (defun init-cc-mode/company-cmake-setup ()
@@ -134,7 +136,7 @@
 (use-package company-glsl
   :ensure t
   :defer t
- :requires company)
+  :requires company)
 
 (defun init-cc-mode/glsl-mode-hook-func ()
   "Hook glsl mode."
