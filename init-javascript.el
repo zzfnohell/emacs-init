@@ -7,8 +7,9 @@
 ;;; Code:
 
 (use-package js
- :ensure t
- :custom (js-indent-level 2))
+  :defer t
+  :custom
+  (js-indent-level 2))
 
 (use-package json-mode
   :ensure t
