@@ -6,15 +6,17 @@
 
 ;;; Code:
 (use-package rust-mode
-  :after flycheck-mode
-  :mode ("\\.rs\\'" . rust-mode)
-  :hook ((rust-mode . lsp)))
+  :ensure t
+  :defer t
+  :mode ("\\.rs\\'" . rust-mode))
 
 (use-package flycheck-rust
-  :config
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+  :ensure t
+  :defer t
+  :hook ((flycheck-mode-hook . flycheck-rust-setup)))
 
-(use-package toml-mode)
+(use-package toml-mode
+  :ensure t)
 
 ;; (use-package racer
 ;;   :after rust-mode company
@@ -27,9 +29,12 @@
 ;;   (add-hook 'rust-mode-hook #'racer-mode)
 ;;   (add-hook 'racer-mode-hook #'eldoc-mode))
 
-(use-package rust-auto-use)
+(use-package rust-auto-use
+  :ensure t)
 
-(use-package rust-playground)
+(use-package rust-playground
+  :ensure t
+  :defer t)
 
 (provide 'init-rust)
 

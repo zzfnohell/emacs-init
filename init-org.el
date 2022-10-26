@@ -37,6 +37,11 @@
   :ensure t
   :defer)
 
+(use-package ob-fricas
+  :ensure t
+  :defer t
+  :requires org)
+
 (use-package verb
 	:ensure t
   :defer)

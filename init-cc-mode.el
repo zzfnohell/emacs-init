@@ -106,7 +106,7 @@
   :defer t
 	:mode (("CMakeLists\\.txt\\'" . cmake-mode)
 				 ("\\.cmake\\'" . cmake-mode))
-  :hook ((cmake-mode-hook . 'init-cc-mode/company-cmake-setup)))
+  :hook ((cmake-mode-hook . init-cc-mode/company-cmake-setup)))
 
 (use-package opencl-mode
   :ensure t
@@ -152,7 +152,7 @@
          ("\\.geom\\'" . glsl-mode)
          ("\\.fx\\'" . hlsl-mode)
          ("\\.hlsl\\'" . hlsl-mode))
-  :hook ((glsl-mode-hook . #'init-cc-mode/glsl-mode-hook-func)
+  :hook ((glsl-mode-hook . init-cc-mode/glsl-mode-hook-func)
          (glsl-mode-hook . company-glsl)))
 
 (use-package call-graph

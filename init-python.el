@@ -5,9 +5,10 @@
 
 ;;; Code:
 
-(use-package py-snippets
-  :ensure t
-  :defer t)
+;; The package is "python" but the mode is "python-mode":
+(use-package python
+  :mode ("\\.py\\'" . python-mode)
+  :interpreter ("python" . python-mode))
 
 (use-package yapfify
 	:ensure t
@@ -50,7 +51,6 @@
   :config
   (pyvenv-mode 1)
   (pyvenv-tracking-mode 1))
-
 
 
 (use-package cython-mode

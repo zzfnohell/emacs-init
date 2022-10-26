@@ -45,6 +45,9 @@
 (use-package yasnippet-snippets
 	:ensure t)
 
+(use-package py-snippets
+  :ensure t)
+
 (use-package auto-yasnippet
 	:ensure t
   :defer t

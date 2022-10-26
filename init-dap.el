@@ -8,10 +8,9 @@
 (use-package dap-mode
   :ensure t
   :defer t
-  :after (:all lsp-mode lsp-java)
   :config
 	(dap-auto-configure-mode)
-	    
+
   (require 'dap-gdb-lldb)
   (dap-gdb-lldb-setup)
   (require 'dap-go)

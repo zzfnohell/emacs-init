@@ -11,14 +11,6 @@
 (use-package julia-mode
   :ensure t)
 
-(use-package lsp-julia
-	:ensure t
-  :defer t
-  :after (:all julia-mode lsp-mode)
-  :config
-  (add-hook 'julia-mode-hook #'lsp-mode)
-  (add-hook 'julia-mode-hook #'lsp))
-
 (use-package ess
   :ensure t
   :defer t

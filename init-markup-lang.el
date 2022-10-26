@@ -7,17 +7,17 @@
   (let ((mode-backends (make-local-variable 'company-backends)))
     (add-to-list mode-backends 'company-nxml)))
 
-(require 'nxml-mode)
-
-(add-to-list 'auto-mode-alist '("\\.xml\\'" . nxml-mode))
-(add-to-list 'auto-mode-alist '("\\.xsd\\'" . nxml-mode))
-(add-to-list 'auto-mode-alist '("\\.sch\\'" . nxml-mode))
-(add-to-list 'auto-mode-alist '("\\.rng\\'" . nxml-mode))
-(add-to-list 'auto-mode-alist '("\\.xslt\\'" . nxml-mode))
-(add-to-list 'auto-mode-alist '("\\.svg\\'" . nxml-mode))
-(add-to-list 'auto-mode-alist '("\\.rss\\'" . nxml-mode))
-
-(add-hook 'nxml-mode-hook #'init-markup-lang/append-company-backends)
+(use-package nxml-mode
+  :ensure nil
+  :defer t
+  :hook ((nxml-mode-hook . init-markup-lang/append-company-backends))
+  :mode (("\\.xml\\'" . nxml-mode)
+         ("\\.xsd\\'" . nxml-mode)
+         ("\\.sch\\'" . nxml-mode)
+         ("\\.rng\\'" . nxml-mode)
+         ("\\.xslt\\'" . nxml-mode)
+         ("\\.svg\\'" . nxml-mode)
+         ("\\.rss\\'" . nxml-mode)))
 
 (use-package ini-mode
   :ensure t

@@ -5,6 +5,7 @@
 
 ;;; Code:
 (use-package lsp-mode
+  :disabled
   :ensure t
   :defer t
   :commands lsp
@@ -25,19 +26,16 @@
 
 ;; LSP UI tools
 (use-package lsp-ui
+  :disabled
   :ensure t
   :defer t
   :commands lsp-ui-mode)
 
 (use-package lsp-ivy
+  :disabled
   :ensure t
   :defer t
   :commands lsp-ivy-workspace-symbol)
-
-(use-package which-key
-  :ensure t
-  :config
-  (which-key-mode))
 
 (use-package tree-sitter
   :ensure t
@@ -56,6 +54,7 @@
   (require 'tree-sitter-langs))
 
 (use-package lsp-treemacs
+  :disabled
 	:ensure t
   :defer t
 	:config
@@ -66,6 +65,7 @@
 ;; (use-package lsp-docker :ensure t)
 
 (use-package lsp-haskell
+  :disabled
   :after haskell-mode
   :ensure t
   :defer t
@@ -73,6 +73,33 @@
   (add-hook 'haskell-mode-hook #'lsp)
   (add-hook 'haskell-literate-mode-hook #'lsp))
 
+(use-package lsp-java
+  :disabled
+  :ensure t
+  :after lsp-mode
+	:config
+	(require 'lsp-java-boot)
+
+	;; to enable the lenses
+	(add-hook 'lsp-mode-hook #'lsp-lens-mode)
+	(add-hook 'java-mode-hook #'lsp-java-lens-mode))
+
+(use-package lsp-julia
+  :disabled
+	:ensure t
+  :defer t
+  :after (:all julia-mode lsp-mode)
+  :hook ((julia-mode-hook . lsp-mode)
+         (julia-mode-hook . lsp)))
+
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+
+(use-package eglot
+  :ensure t
+  :defer t)
 
 (message "loading init-lsp done.")
 

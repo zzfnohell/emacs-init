@@ -3,24 +3,18 @@
 ;;; Commentary:
 ;; 
 
-(when (require 'maxima nil 'noerror)
-  (setq auto-mode-alist (cons '("\\.mac" . maxima-mode) auto-mode-alist))
-  (setq auto-mode-alist (cons '("\\.wxm" . maxima-mode) auto-mode-alist)))
-
-(defun init-maxima/load ()
-  (interactive)
+(use-package maxima
+  :ensure nil
+  :defer t
+  :mode (("\\.mac" . maxima-mode)
+         ("\\.wxm" . maxima-mode))
+  :config
   (require 'emaxima)
   (require 'imaxima))
-
 
 (use-package frimacs
   :ensure t
   :defer t)
-
-(use-package ob-fricas
-  :ensure t
-  :defer t
-  :requires org)
 
 (use-package proof-general
 	:ensure t
