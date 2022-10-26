@@ -27,6 +27,7 @@
   (global-set-key (kbd "C-x c p") 'citre-ace-peek)
   (global-set-key (kbd "C-x c u") 'citre-update-this-tags-file)
   :config
+  (require 'projectile)
   (setq
    ;; Set these if readtags/ctags is not in your path.
    ;;;; citre-readtags-program "/path/to/readtags"
