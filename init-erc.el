@@ -24,16 +24,15 @@
         erc-log-file-coding-system 'utf-8
         erc-log-write-after-send t
         erc-log-write-after-insert t)
+  (unless (file-exists-p erc-log-channels-directory)
+    (mkdir erc-log-channels-directory t))
+  
   (erc-log-mode 1))
 
 (use-package erc
   :ensure nil
   :defer t
   :hook ((erc-mode-hook . init-erc/erc-mode-hook-func)))
-
-
-(unless (file-exists-p erc-log-channels-directory)
-  (mkdir erc-log-channels-directory t))
 
 (use-package telega
   :ensure t
