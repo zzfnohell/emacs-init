@@ -14,7 +14,9 @@
   :config
   (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t))
 
-(use-package csproj-mode :ensure t)
+(use-package csproj-mode
+  :ensure t
+  :ensure t)
 
 (defun init-csharp/csharp-mode-setup ()
   (omnisharp-mode)
@@ -23,7 +25,7 @@
 
   (yas-minor-mode-on)
   (turn-on-auto-revert-mode)
-  
+
   (setq c-syntactic-indentation t)
   (c-set-style "ellemtel")
   (setq c-basic-offset 4)

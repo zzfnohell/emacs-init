@@ -1,14 +1,15 @@
 ;;; init-latex.el --- Latex
 
 ;;; Commentary:
-;; 
+;;
 
 (use-package tex
 	:ensure auctex
   :defer t)
 
 (use-package tikz
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (message "init latex")
 (provide 'init-latex)

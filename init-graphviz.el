@@ -7,6 +7,7 @@
 ;;; Code:
 
 (use-package graphviz-dot-mode
+  :ensure t
   :ensure t)
 
 (message "loading init-graphviz done.")
