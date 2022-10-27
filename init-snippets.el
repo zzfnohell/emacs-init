@@ -18,25 +18,25 @@
         (add-to-list 'yas-snippet-dirs fullpath))))
   ;; (yas-reload-all)
   (yas-global-mode 1)
-      
+
   ;;; use popup menu for yas-choose-value
   (require 'popup)
-  
+
   (define-key yas-minor-mode-map [(tab)] nil)
   (define-key yas-minor-mode-map (kbd "TAB") nil)
-  
+
   (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
     (when (featurep 'popup)
       (popup-menu*
        (mapcar (lambda (choice)
-                 (popup-make-item 
-                  (or (and display-fn (funcall display-fn choice)) choice) 
+                 (popup-make-item
+                  (or (and display-fn (funcall display-fn choice)) choice)
                   :value choice))
                choices)
        :prompt prompt
        ;; start isearch mode immediately
        :isearch t)))
-  
+
   (setq yas-prompt-functions
         '(yas-popup-isearch-prompt
           yas-ido-prompt
