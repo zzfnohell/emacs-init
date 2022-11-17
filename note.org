@@ -28,6 +28,7 @@ Note -*- mode:org; -*-
    '(minimap-window-location (quote right))
    '(org-directory "~/notes/org")
    '(org-roam-directory "~/notes/org/roam")
+   '(org-plantuml-jar-path "d:/Scoop/apps/plantuml/current/plantuml.jar")
    '(deft-directory "~/notes/org")
    '(select-enable-clipboard t)
    '(semantic-idle-scheduler-idle-time 5)
@@ -45,6 +46,12 @@ Note -*- mode:org; -*-
                            ;; This is pretty useful if you have many USB devices, but remember to not overlap like this would if it wasn't commented (because the subdirectory /mnt/USB is also scanned as defined above)
                            ;; ("/mnt/" nil)
                            )))
+   '(c-macro-cppflags " -DDEBUG -I d:/path/to/custom/include ")
+   '(c-macro-preprocessor "cpp -C -x c++ -std=c++11")
+   '(c-macro-prompt-flag t)
+   '(cmake-ide-build-pool-dir "e:/any/path/to/cache/cmake-ide-build-pool")
+   '(cmake-ide-build-pool-use-persistent-naming t)
+   '(cmake-ide-cmake-opts "-DCMAKE_BUILD_TYPE=Debug")
    '(sql-connection-alist
      (("mysql-localhost"
        (sql-product 'mysql)
@@ -57,6 +64,7 @@ Note -*- mode:org; -*-
        (sql-database "")
        (sql-server "dbhost"))))
    '(tcl-application "C:/msys64/mingw64/bin/wish.exe")
+   '(ispell-program-name "d:/Scoop/shims/aspell.exe")
    '(visual-line-mode nil t))
 
   (custom-set-faces

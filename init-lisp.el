@@ -133,10 +133,11 @@
       ;; located in quicklisp install directory
       (load slime-helper-path)))
   (require 'slime-autoloads)
+
+  (setq inferior-lisp-program "sbcl")
   (setq slime-lisp-implementations
-        '((cmucl ("cmucl" "-quiet"))
-          (sbcl ("sbcl") :coding-system utf-8-unix)))
-  (setq inferior-lisp-program "sbcl"))
+        '((sbcl ("sbcl") :coding-system utf-8-unix)
+          (cmucl ("cmucl" "-quiet")))))
 
 ;; (use-package ac-slime
 ;;  :after (:all slime cl-lib auto-complete)
