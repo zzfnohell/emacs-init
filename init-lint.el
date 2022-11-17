@@ -39,6 +39,12 @@
   :config
 	(flycheck-plantuml-setup))
 
+(use-package flymake-shellcheck
+  :ensure t
+  :defer t
+  :config
+  (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
+
 (provide 'init-lint)
 
 ;;; init-lint.el ends here

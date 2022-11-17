@@ -10,15 +10,14 @@
   :defer t
   :after (lsp-mode lsp-java)
   :config
-  (setq dap-auto-configure-features '(sessions locals controls tooltip))
-
+	(dap-auto-configure-mode)
   (require 'dap-gdb-lldb)
   (dap-gdb-lldb-setup)
   (require 'dap-go)
   (require 'dap-chrome)
   (require 'dap-python)
+  (require 'dap-java)
   (require 'dap-pwsh)
-  (require 'dap-netcore)
   (require 'dap-node))
 
 (use-package realgud
