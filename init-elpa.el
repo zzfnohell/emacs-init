@@ -33,6 +33,7 @@
 (eval-when-compile (require 'use-package))
 
 (setq use-package-always-ensure t)
+(setq use-package-always-demand (daemonp))
 (use-package use-package-ensure-system-package)
 
 (use-package auto-package-update

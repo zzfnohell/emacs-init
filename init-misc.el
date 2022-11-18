@@ -1,7 +1,7 @@
 ;;; init-misc.el --- miscellaneous -*- lexical-binding: t -*-
 
 ;;; Commentary:
-;; 
+;;
 
 ;;; Code:
 (use-package session
@@ -16,15 +16,15 @@
 
 (use-package memory-usage
   :ensure t)
-  
+
 (message "loading init-misc/memory-usage done.")
 
 ;;; projectile
 (use-package projectile
   :ensure t
   :defer t
-	:custom
-	(projectile-require-project-root t)
+  :custom
+  (projectile-require-project-root t)
   (projectile-enable-caching t)
   (projectile-indexing-method 'alien)
   (projectile-globally-ignored-file-suffixes
@@ -36,7 +36,7 @@
   (projectile-mode +1)
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
-  
+
 (message "loading init-misc/projectile done.")
 
 ;;; ICONS
@@ -53,7 +53,7 @@
 ;;; FUZZY
 (use-package fuzzy
   :ensure t)
-  
+
 (message "loading init-misc/FUZZY done.")
 
 ;;; ABBREV
@@ -67,8 +67,8 @@
 
 
 (use-package ssh-config-mode
-	:config
-	(autoload 'ssh-config-mode "ssh-config-mode" t)
+  :config
+  (autoload 'ssh-config-mode "ssh-config-mode" t)
   (add-to-list 'auto-mode-alist '("/\\.ssh/config\\'"     . ssh-config-mode))
   (add-to-list 'auto-mode-alist '("/sshd?_config\\'"      . ssh-config-mode))
   (add-to-list 'auto-mode-alist '("/knownhosts\\'"       . ssh-known-hosts-mode))
@@ -78,12 +78,12 @@
 
 
 (use-package ellocate
-	:ensure t
+  :ensure t
   :defer t
-	;; :custom
-	;; ((ellocate-scan-dirs
-	;; 	'(("~/" "~/.emacs.d/.ellocate-db/home-db")
-	;; 		("/mnt/" nil))))
+  ;; :custom
+  ;; ((ellocate-scan-dirs
+  ;;  '(("~/" "~/.emacs.d/.ellocate-db/home-db")
+  ;;    ("/mnt/" nil))))
   )
 
 
@@ -152,7 +152,7 @@
   (require 'vlf-setup))
 
 (use-package syslog-mode
-	:ensure t
+  :ensure t
   :defer t)
 
 ;; extra tools
@@ -169,13 +169,13 @@
   (rg-enable-menu))
 
 (use-package tldr
-	:ensure t
+  :ensure t
   :defer t)
 
 ;; git config --global github.user <your-github-user-name>
 ;; git config --global github.oauth-token <your-personal-access-token-with-gist-scope>
 (use-package gist
-	:ensure t
+  :ensure t
   :defer t)
 
 (use-package httprepl

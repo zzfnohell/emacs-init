@@ -48,7 +48,15 @@
 (setq visible-bell t)
 
 ;; do not create backup files
-(setq make-backup-files nil)
+(setq
+ backup-by-copying t      ; don't clobber symlinks
+ backup-directory-alist
+ '(("." . "~/.emacs.d/.backups/"))
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ ;; use versioned backups
+ version-control t)
 
 ;; semantic highlight
 (global-font-lock-mode t)
@@ -103,7 +111,7 @@
 (require 'hl-line)
 (global-hl-line-mode 1)
 
-;; 
+;;
 (use-package undo-tree
   :ensure t
   :config
@@ -150,8 +158,8 @@
 ;;(add-to-list 'default-frame-alist '(alpha 85 50))
 
 (use-package multiple-cursors
-	:ensure t
-	:bind (("C-S-c C-S-c" . mc/edit-lines)
+  :ensure t
+  :bind (("C-S-c C-S-c" . mc/edit-lines)
          ("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)
@@ -173,7 +181,7 @@
   :defer t)
 
 (use-package visual-regexp
-	:ensure t
+  :ensure t
   :defer t)
 
 (use-package regex-tool
