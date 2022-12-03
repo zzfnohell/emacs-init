@@ -49,7 +49,9 @@
 (use-package fsharp-mode
   :ensure t
   :defer t
-  :mode "\\.fs\\'")
+  :mode "\\.fs\\'"
+  :config
+  (require 'eglot-fsharp))
 
 (use-package sharper
   :demand t

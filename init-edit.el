@@ -90,6 +90,12 @@
 (setq-default indent-tabs-mode nil)
 (setq-default show-trailing-whitespace t)
 
+(setq c-basic-offset 4)
+(setq js-indent-level 2)
+(setq css-indent-offset 2)
+(setq sh-basic-offset 2)
+
+
 ;; Count 1 space after a period as the end of a sentence, instead of 2
 (setq sentence-end-double-space nil)
 
