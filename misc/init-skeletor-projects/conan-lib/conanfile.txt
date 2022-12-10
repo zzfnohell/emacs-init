@@ -3,7 +3,8 @@
 
 [requires]
 doctest/2.4.4
-sqlite3/3.34.1
+sqlite3/3.40.0
+lua/5.4.4
 
 [generators]
 cmake

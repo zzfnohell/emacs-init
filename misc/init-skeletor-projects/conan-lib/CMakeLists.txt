@@ -5,32 +5,30 @@ project(samplelib VERSION 0.0.1 LANGUAGES CXX)
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup(TARGETS)
+conan_basic_setup()
 
-find_package(SQLite3 REQUIRED)
+find_package(SQLite3)
 
 SET(SOURCE_FILES src/lib.cpp)
 SET(TEST_SOURCE_FILES tests/lib_test.cpp)
 
+INCLUDE_DIRECTORIES(src/include)
 
 add_library(${PROJECT_NAME} SHARED)
-target_include_directories(${PROJECT_NAME} PUBLIC ${DOCTEST_INCLUDE_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC ${CONAN_INCLUDE_DIRS})
 target_sources(${PROJECT_NAME} PRIVATE ${SOURCE_FILES}) 
-target_link_libraries(${PROJECT_NAME} PUBLIC CONAN_PKG::doctest)
-target_link_libraries(${PROJECT_NAME} PUBLIC SQLite::SQLite3)
+target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
 
 
-add_executable("${PROJECT_NAME}-tests" ${TEST_SOURCE_FILES})
-
+add_executable("${PROJECT_NAME}-tests")
 target_include_directories(
     "${PROJECT_NAME}-tests"
     PUBLIC
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/;${CMAKE_CURRENT_BINARY_DIR}/>"
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-target_link_libraries("${PROJECT_NAME}-tests" PRIVATE CONAN_PKG::doctest)
-target_link_libraries("${PROJECT_NAME}-tests" PRIVATE SQLite::SQLite3)
-target_link_libraries("${PROJECT_NAME}-tests" PRIVATE ${PROJECT_NAME})
+target_sources("${PROJECT_NAME}-tests" PRIVATE ${TEST_SOURCE_FILES})
+target_link_libraries("${PROJECT_NAME}-tests" PRIVATE ${PROJECT_NAME} ${CONAN_LIBS})
 
 
 include(GNUInstallDirs)

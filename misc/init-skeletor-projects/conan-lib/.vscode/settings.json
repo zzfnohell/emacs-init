@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "impl.h": "c",
+        "lib.h": "c"
+    }
+}
