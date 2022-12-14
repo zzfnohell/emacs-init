@@ -7,29 +7,24 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
-find_package(SQLite3 REQUIRED)
 
-SET(SOURCE_FILES src/main.cpp)
-SET(TEST_SOURCE_FILES tests/main_test.cpp)
+SET(SOURCE_FILES src/main.cpp src/lib.cpp src/lib_wrap.cxx)
+
+INCLUDE_DIRECTORIES(include)
+
+SET_SOURCE_FILES_PROPERTIES(src/lib.i PROPERTIES CPLUSPLUS ON)
+SET_SOURCE_FILES_PROPERTIES(src/lib.i PROPERTIES SWIG_FLAGS "-includeall")
+SET_SOURCE_FILES_PROPERTIES(src/lib.i PROPERTIES SWIG_USE_TARGET_INCLUDE_DIRECTORIES ON)
+
 
 ## Main EXE
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${DOCTEST_INCLUDE_DIR})b
-target_sources(${PROJECT_NAME} PRIVATE ${SOURCE_FILES}) 
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 23)
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${CONAN_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
-
-## Test
-add_executable("${PROJECT_NAME}-tests" ${TEST_SOURCE_FILES})
-
-target_include_directories(
-    "${PROJECT_NAME}-tests"
-    PUBLIC
-        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/;${CMAKE_CURRENT_BINARY_DIR}/>"
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
-
-target_link_libraries("${PROJECT_NAME}-tests" PRIVATE ${CONAN_LIBS})
-
+ 
 include(GNUInstallDirs)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES DEBUG_POSTFIX "d")

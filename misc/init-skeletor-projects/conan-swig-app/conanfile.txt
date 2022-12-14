@@ -1,0 +1,17 @@
+[build_requires]
+
+[requires]
+doctest/2.4.4
+sqlite3/3.40.0
+lua/5.4.4
+
+[generators]
+cmake
+
+[options]
+sqlite3:shared=True
+lua:shared=True
+
+[imports]
+bin, *.dll -> ./bin # Copies all dll files from packages bin folder to my local "bin" folder
+lib, *.dylib* -> ./bin # Copies all dylib files from packages lib folder to my local "bin" folder
