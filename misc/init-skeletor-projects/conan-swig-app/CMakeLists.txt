@@ -8,7 +8,9 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
 
-SET(SOURCE_FILES src/main.cpp src/lib.cpp src/lib_wrap.cxx)
+SET(SWIG_CXX_OUTPUT lib_wrap.cpp)
+SET(SOURCE_FILES src/main.cpp src/lib.cpp ${SWIG_CXX_OUTPUT})
+SET(SWIG_SOURCE src/lib.i)
 
 INCLUDE_DIRECTORIES(include)
 
@@ -17,10 +19,30 @@ SET_SOURCE_FILES_PROPERTIES(src/lib.i PROPERTIES SWIG_FLAGS "-includeall")
 SET_SOURCE_FILES_PROPERTIES(src/lib.i PROPERTIES SWIG_USE_TARGET_INCLUDE_DIRECTORIES ON)
 
 
+add_custom_command(
+    OUTPUT ${SWIG_CXX_OUTPUT} 
+    COMMAND swig
+    ARGS -Wall -c++ -includeall -lua
+    -I${CMAKE_CURRENT_SOURCE_DIR}/include
+    -o ${CMAKE_CURRENT_BINARY_DIR}/${SWIG_CXX_OUTPUT}
+    ${SWIG_SOURCE}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    VERBATIM)
+
 ## Main EXE
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 23)
+
+# add_custom_command(
+#     TARGET ${PROJECT_NAME}
+#     PRE_BUILD 
+#     COMMAND swig
+#     ARGS -Wall -c++ -includeall -lua
+#     -I"${CMAKE_CURRENT_SOURCE_DIR}/include/"
+#     -o ${SWIG_CXX_OUTPUT}
+#     ${SWIG_SOURCE}
+#     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CONAN_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
