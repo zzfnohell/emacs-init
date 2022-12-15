@@ -11,7 +11,7 @@
 	:ensure t
   :defer t)
 
-(message "init latex")
+(message "loading init-latex done.")
 (provide 'init-latex)
 
 ;;; init-latex.el ends here
