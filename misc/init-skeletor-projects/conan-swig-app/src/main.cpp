@@ -2,9 +2,9 @@
 #include <doctest/doctest.h>
 extern "C"
 {
-#include "lua.h"
-#include "lauxlib.h"
-#include "lualib.h"
+#include <lua.h>
+#include <lauxlib.h>
+#include <lualib.h>
 }
 #include <filesystem>
 #include "lib.h"
