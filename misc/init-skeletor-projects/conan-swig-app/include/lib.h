@@ -1,13 +1,19 @@
 #ifndef LIB_H
 #define LIB_H
 
-class LibSample
-{
-public:
-    LibSample() = default;
-    ~LibSample() = default;
+#include <memory>
+#include <string>
+#include <vector>
+#include <list>
 
+class LibOptions{
+public:
+    LibOptions() = default;
+    virtual ~LibOptions() = default;
     void Print();
+    std::vector<std::string>* GetInstrumentList();
+    std::vector<std::string> instrument_list {"A","B"};
+private:
 };
 
 #endif

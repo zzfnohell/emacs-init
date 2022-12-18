@@ -5,7 +5,12 @@
 
 using namespace std;
 
-void LibSample::Print()
+void LibOptions::Print()
 {
     cout << "Lib Print Sample." << endl;
+}
+
+vector<string> *LibOptions::GetInstrumentList()
+{
+    return &instrument_list;
 }
