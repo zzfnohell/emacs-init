@@ -1,8 +1,6 @@
 %module lib
- 
-%include "std_string.i"
-%include "windows.i" 
-
+  
+%include <windows.i>
 %include <exception.i>
 %import <std_string.i>
 %import <std_vector.i>
