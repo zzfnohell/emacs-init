@@ -56,7 +56,9 @@
  kept-new-versions 6
  kept-old-versions 2
  ;; use versioned backups
- version-control t)
+ version-control t
+ auto-save-file-name-transforms
+ '((".*" "~/.emacs.d/.auto-saves/" t)))
 
 ;; semantic highlight
 (global-font-lock-mode t)
