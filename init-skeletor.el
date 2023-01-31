@@ -14,32 +14,37 @@
   :custom
   (skeletor-user-directory init-skeletor/projects-dir)
 	:config
-	(skeletor-define-template "conan-app"
-		:title "Conan App"
+  (skeletor-define-template "conan-app"
+		:title "CMake Project & Conan Package Manager"
 		:default-license (rx bol "gpl")
 		:substitutions
-		'(("__TITLE__" . (lambda () (read-string "Description: ")))))
-	(skeletor-define-template "conan-lib"
-		:title "Conan App"
+		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
+  (skeletor-define-template "conan-lib"
+		:title "CMake Project & Conan Package Manager"
 		:default-license (rx bol "gpl")
 		:substitutions
-		'(("__TITLE__" . (lambda () (read-string "Description: ")))))
-	(skeletor-define-template "cmake-project"
-		:title "CMake Project"
+		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
+	(skeletor-define-template "conan-swig-app"
+		:title "CMake Project & Conan Package Manager & Swig"
 		:default-license (rx bol "gpl")
 		:substitutions
-		'(("__TITLE__" . (lambda () (read-string "Description: ")))))
-	(skeletor-define-template "cmake-project-swig"
-		:title "CMake Project (SWIG)"
+		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
+	(skeletor-define-template "conan-swig-lib"
+		:title "CMake Project & Conan Package Manager & Swig"
 		:default-license (rx bol "gpl")
 		:substitutions
-		'(("__TITLE__" . (lambda () (read-string "Description: ")))))
+		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
+	(skeletor-define-template "makefile-project"
+		:title "Makefile Project"
+		:default-license (rx bol "gpl")
+		:substitutions
+		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
 	(skeletor-define-template "skewer-index-html-package"
 		:title "Skewer Index Html"
 		:no-license? t
 		:no-git? t
 		:substitutions
-		'(("__TITLE__" . (lambda () (read-string "Description: "))))))
+		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: "))))))
 
 (provide 'init-skeletor)
 

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project(sample VERSION 0.0.1 LANGUAGES CXX)
 
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
