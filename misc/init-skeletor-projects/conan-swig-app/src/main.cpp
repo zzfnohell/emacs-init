@@ -1,3 +1,7 @@
+#include <filesystem>
+#include <iostream>
+
+#include "lib.h"
 
 extern "C"
 {
@@ -5,8 +9,6 @@ extern "C"
 #include <lauxlib.h>
 #include <lualib.h>
 }
-#include <filesystem>
-#include "lib.h"
 
 using namespace std;
 using namespace std::filesystem;
