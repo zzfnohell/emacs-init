@@ -6,6 +6,8 @@
 #include <vector>
 #include <list>
 
+int factorial(const int number);
+
 class LibOptions{
 public:
     LibOptions() = default;

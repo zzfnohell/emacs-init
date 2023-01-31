@@ -10,6 +10,7 @@ conan_basic_setup()
 
 SET(SWIG_CXX_OUTPUT lib_wrap.cpp)
 SET(SOURCE_FILES src/main.cpp src/lib.cpp ${SWIG_CXX_OUTPUT})
+SET(TEST_SOURCE_FILES test/main.cpp src/lib.cpp ${SWIG_CXX_OUTPUT})
 SET(SWIG_SOURCE src/lib.i)
 
 INCLUDE_DIRECTORIES(include)
@@ -48,7 +49,14 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 23)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CONAN_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
- 
+
+
+add_executable(${PROJECT_NAME}-test ${SOURCE_FILES})
+set_property(TARGET ${PROJECT_NAME}-test PROPERTY CXX_STANDARD 23)
+target_include_directories(${PROJECT_NAME}-test PUBLIC ${CONAN_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME}-test ${CONAN_LIBS})
+
+
 include(GNUInstallDirs)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES DEBUG_POSTFIX "d")
