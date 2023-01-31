@@ -15,22 +15,22 @@
   (skeletor-user-directory init-skeletor/projects-dir)
 	:config
   (skeletor-define-template "conan-app"
-		:title "CMake Project & Conan Package Manager"
+		:title "App CMake Project & Conan Package Manager"
 		:default-license (rx bol "gpl")
 		:substitutions
 		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
   (skeletor-define-template "conan-lib"
-		:title "CMake Project & Conan Package Manager"
+		:title "Lib CMake Project & Conan Package Manager"
 		:default-license (rx bol "gpl")
 		:substitutions
 		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
 	(skeletor-define-template "conan-swig-app"
-		:title "CMake Project & Conan Package Manager & Swig"
+		:title "App CMake Project & Conan Package Manager & Swig"
 		:default-license (rx bol "gpl")
 		:substitutions
 		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
 	(skeletor-define-template "conan-swig-lib"
-		:title "CMake Project & Conan Package Manager & Swig"
+		:title "Lib CMake Project & Conan Package Manager & Swig"
 		:default-license (rx bol "gpl")
 		:substitutions
 		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
