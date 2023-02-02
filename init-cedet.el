@@ -19,35 +19,38 @@
 
 (use-package cedet
   :ensure t
-  :defer t
+  :custom
+  (semantic-default-submodes
+   '(global-semantic-highlight-func-mode
+     global-semantic-decoration-mode
+     global-semantic-stickyfunc-mode
+     global-semantic-idle-completions-mode
+     global-semantic-idle-scheduler-mode
+     global-semanticdb-minor-mode
+     global-semantic-idle-summary-mode
+     global-semantic-mru-bookmark-mode
+     global-semantic-idle-local-symbol-highlight-mode
+     global-semantic-highlight-edits-mode
+     global-semantic-show-unmatched-syntax-mode
+     global-semantic-show-parser-state-mode))
+  (semanticdb-default-save-directory "~/.emacs.d/semanticdb")
+  (semantic-idle-scheduler-idle-time 5)
+  (semantic-symref-tool 'global)
   :init
-    ;;;; Semantic DataBase directory
-  (setq semanticdb-default-save-directory (expand-file-name "~/.emacs.d/semanticdb"))
+  (message "init cedet")
   :config
-  ;;;; Semantic's customization
-  (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
-  (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
-  ;;(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
-  (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
-  (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-  (add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
-  (add-to-list 'semantic-default-submodes 'global-semantic-idle-local-symbol-highlight-mode)
-  (add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
-  (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
-  (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
-  
   (require 'cedet-global)
   (require 'semantic)
   (semantic-mode 1)
-  
+
   ;;;; Integration with imenu
   (add-hook 'semantic-init-hooks 'init-cedet/semantic-hook)
 
   ;;;; System header files
   (when (eq system-type 'windows-nt)
-    (semantic-add-system-include "d:/msys64/mingw64/include/" 'c-mode)
-    (semantic-add-system-include "d:/msys64/mingw64/include/" 'c++-mode))
-  
+    (semantic-add-system-include "c:/msys64/mingw64/include/" 'c-mode)
+    (semantic-add-system-include "c:/msys64/mingw64/include/" 'c++-mode))
+
   (require 'ede)
   (global-ede-mode t)
 
