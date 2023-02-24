@@ -26,6 +26,8 @@
 	:ensure t
   :custom
   (company-dabbrev-downcase nil)
+  (company-idle-delay 0.2)
+  (company-show-numbers t)
   :config
   (add-hook 'after-init-hook 'global-company-mode)
   (add-hook 'company-mode-hook
@@ -33,9 +35,7 @@
               (substitute-key-definition
                'company-complete-common
                'company-yasnippet-or-completion
-               company-active-map)))
-  (setq company-idle-delay 0
-        company-show-numbers t))
+               company-active-map))))
 
 
 (use-package company-coq
