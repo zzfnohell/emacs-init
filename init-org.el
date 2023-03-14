@@ -52,6 +52,7 @@
 
 (use-package org
 	:ensure t
+  :after (:all verb)
   :defer t
   :custom
   (org-agenda-files '("agendas.org"))

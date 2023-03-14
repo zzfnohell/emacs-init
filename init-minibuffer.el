@@ -165,7 +165,8 @@
 
 ;; Enable vertico
 (use-package vertico
-  :init
+  :ensure t
+  :config
   (vertico-mode)
 
   ;; Different scroll margin
