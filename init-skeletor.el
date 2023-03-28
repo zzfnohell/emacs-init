@@ -10,7 +10,6 @@
 
 (use-package skeletor
   :ensure t
-  :defer t
   :custom
   (skeletor-user-directory init-skeletor/projects-dir)
 	:config

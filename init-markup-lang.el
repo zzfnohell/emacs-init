@@ -9,34 +9,33 @@
 
 (use-package nxml-mode
   :ensure nil
-  :defer t
-  :hook ((nxml-mode-hook . init-markup-lang/append-company-backends))
-  :mode (("\\.xml\\'" . nxml-mode)
-         ("\\.xsd\\'" . nxml-mode)
-         ("\\.sch\\'" . nxml-mode)
-         ("\\.rng\\'" . nxml-mode)
-         ("\\.xslt\\'" . nxml-mode)
-         ("\\.svg\\'" . nxml-mode)
-         ("\\.rss\\'" . nxml-mode)))
+  :hook
+  ((nxml-mode-hook . init-markup-lang/append-company-backends))
+  :mode
+  (("\\.xml\\'" . nxml-mode)
+   ("\\.xsd\\'" . nxml-mode)
+   ("\\.sch\\'" . nxml-mode)
+   ("\\.rng\\'" . nxml-mode)
+   ("\\.xslt\\'" . nxml-mode)
+   ("\\.svg\\'" . nxml-mode)
+   ("\\.rss\\'" . nxml-mode)))
 
 (use-package ini-mode
   :ensure t
-  :defer t
-  :mode (("\\.ini\\'" . ini-mode)))
+  :mode
+  (("\\.ini\\'" . ini-mode)))
 
 (use-package haml-mode
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;;; YAML
 (use-package yaml-mode
   :ensure t
-  :defer t
-  :mode ("\\.yml$" . yaml-mode))
+  :mode
+  ("\\.yml$" . yaml-mode))
 
 (use-package markdown-mode
   :ensure t
-  :defer t
   :mode
   (("\\.text\\'" . markdown-mode)
    ("\\.markdown\\'" . markdown-mode)
@@ -44,20 +43,17 @@
 
 (use-package markdown-preview-mode
   :ensure t
-  :defer t
   :config
   (add-to-list
    'markdown-preview-javascript
    "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"))
 
 (use-package plantuml-mode
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;; CSV file
 (use-package csv-mode
   :ensure t
-  :defer t
   :mode "\\.[Cc][Ss][Vv]\\'"
   :init (setq csv-separators '("," ";" "|" " ")))
 

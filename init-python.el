@@ -12,13 +12,13 @@
 
 (use-package yapfify
 	:ensure t
-  :defer t
-  :hook ((python-mode-hook . yapf-mode)))
+  :hook
+  ((python-mode-hook . yapf-mode)))
 
 (use-package python-mode
   :ensure t
-  :defer t
-  :hook ((python-mode-hook . py-snippets))
+  :hook
+  ((python-mode-hook . py-snippets))
   :custom
   (py-shell-name "python")
   (py-python-command "python")
@@ -34,20 +34,17 @@
 (use-package python-cell
   :after python-mode
   :ensure t
-  :defer t
   :init
   (add-hook 'python-mode-hook #'python-cell-mode 1))
 
 (use-package highlight-indentation
 	:ensure t
-  :defer t
   :config
 	(set-face-background 'highlight-indentation-face "#e3e3d3")
   (set-face-background 'highlight-indentation-current-column-face "#c3b3b3"))
 
 (use-package pyvenv
 	:ensure t
-  :defer t
   :config
   (pyvenv-mode 1)
   (pyvenv-tracking-mode 1))
@@ -55,26 +52,23 @@
 
 (use-package cython-mode
 	:ensure t
-  :defer t
-  :hook ((cython-mode-hook . flycheck-cython)))
+  :hook
+  ((cython-mode-hook . flycheck-cython)))
 
 (use-package flycheck-cython
-	:ensure t
-  :defer t)
+	:ensure t)
 
 (use-package pyenv-mode
 	:ensure t
-  :defer t
 	:config
 	(pyenv-mode))
 
 (use-package jupyter
 	:ensure t
-  :defer t)
+  )
 
 (use-package elpy
   :ensure t
-  :defer t
   ;; :ensure-system-package
   ;; ((jedi     . "pip install jedi")
   ;; (black    . "pip install black")

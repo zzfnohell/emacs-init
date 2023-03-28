@@ -10,8 +10,7 @@
   :ensure t)
 
 (use-package lispy
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package diminish :ensure t)
 
@@ -25,19 +24,16 @@
   (autoload 'turn-on-pretty-mode "pretty-mode"))
 
 (use-package elisp-refs
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package elisp-def
   :ensure t
-  :defer t
   :config
   (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
     (add-hook hook #'elisp-def-mode)))
 
 (use-package elisp-depmap
   :ensure t
-  :defer t
   :bind
   (("C-c M-d" . elisp-depmap-graphviz-digraph)
    ("C-c M-g" . elisp-depmap-graphviz)
@@ -46,16 +42,14 @@
   ((elisp-depmap-exec-file "~/graphviz2.dot")))
 
 (use-package elisp-lint
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package elpl
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package elsa
-  :ensure t
-  :defer t)
+  :ensure t)
+
 ;; ----------------------------------------------------------------------------
 ;; Hippie-expand
 ;; ----------------------------------------------------------------------------
@@ -70,7 +64,6 @@
 ;; ----------------------------------------------------------------------------
 (use-package rainbow-delimiters
   :ensure t
-  :defer t
   :init
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
@@ -120,13 +113,10 @@
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
 
 (use-package slime-company
-  :ensure t
-  :defer t
   :ensure t)
 
 (use-package slime
   :ensure t
-  :defer t
   :config
   (let ((slime-helper-path (expand-file-name "~/quicklisp/slime-helper.el")))
     (when (file-exists-p slime-helper-path)

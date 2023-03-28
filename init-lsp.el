@@ -7,7 +7,6 @@
 (use-package lsp-mode
   :disabled
   :ensure t
-  :defer t
   :commands lsp
   :hook ((java-mode . lsp)
          (python-mode . lsp)
@@ -23,23 +22,19 @@
 	(lsp-completion-provider :capf)
   (lsp-enable-snippet))
 
-
 ;; LSP UI tools
 (use-package lsp-ui
   :disabled
   :ensure t
-  :defer t
   :commands lsp-ui-mode)
 
 (use-package lsp-ivy
   :disabled
   :ensure t
-  :defer t
   :commands lsp-ivy-workspace-symbol)
 
 (use-package tree-sitter
   :ensure t
-  :defer t
   :after lsp
   :config
   (require 'tree-sitter)
@@ -48,7 +43,6 @@
 
 (use-package tree-sitter-langs
   :ensure t
-  :defer t
   :after tree-sitter
   :config
   (require 'tree-sitter-langs))
@@ -56,7 +50,6 @@
 (use-package lsp-treemacs
   :disabled
 	:ensure t
-  :defer t
 	:config
 	(lsp-treemacs-sync-mode 1))
 
@@ -68,7 +61,6 @@
   :disabled
   :after haskell-mode
   :ensure t
-  :defer t
   :config
   (add-hook 'haskell-mode-hook #'lsp)
   (add-hook 'haskell-literate-mode-hook #'lsp))
@@ -87,7 +79,6 @@
 (use-package lsp-julia
   :disabled
 	:ensure t
-  :defer t
   :after (:all julia-mode lsp-mode)
   :hook ((julia-mode-hook . lsp-mode)
          (julia-mode-hook . lsp)))
@@ -98,18 +89,15 @@
   (which-key-mode))
 
 (use-package eglot
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package eglot-fsharp
   :requires eglot
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package eglot-java
   :requires eglot
   :ensure t
-  :defer t
   :config
   (eglot-java-init))
 

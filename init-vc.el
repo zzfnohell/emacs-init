@@ -6,8 +6,7 @@
 ;;; Code:
 
 (use-package ahg
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;; (require 'diff-mode)
 ;; (require 'easymenu)
@@ -17,32 +16,26 @@
 
 (use-package magit
   :ensure t
-  :defer t
 	:config
 	(setq magit-refresh-status-buffer nil))
 
 (use-package magit-lfs
   :ensure t
-  :defer t
   :pin melpa)
 
 (use-package magit-imerge
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package vc-fossil
 	:ensure t
-  :defer t
 	:init
 	(add-to-list 'vc-handled-backends 'Fossil t))
 
 (use-package git-modes
-	:ensure t
-  :defer t)
+	:ensure t)
 
 (use-package gitignore-snippets
-	:ensure t
-  :defer t)
+	:ensure t)
 
 (provide 'init-vc)
 ;;; init-vc.el ends here

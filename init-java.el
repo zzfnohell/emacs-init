@@ -6,8 +6,7 @@
 
 ;;; Code:
 (use-package java-snippets
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (defun init-java/java-mode-hook-func ()
   (require 'java-snippets))

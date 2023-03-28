@@ -29,17 +29,15 @@
         erc-log-write-after-insert t)
   (unless (file-exists-p erc-log-channels-directory)
     (mkdir erc-log-channels-directory t))
-  
   (erc-log-mode 1))
 
 (use-package erc
   :ensure nil
-  :defer t
-  :hook ((erc-mode-hook . init-erc/erc-mode-hook-func)))
+  :hook
+  ((erc-mode-hook . init-erc/erc-mode-hook-func)))
 
 (use-package telega
   :ensure t
-  :defer t
   :init
   (setq telega-proxies
 	(list

@@ -7,7 +7,6 @@
 
 (use-package ggtags
   :ensure t
-  :defer t
   :init
   (add-hook 'c-mode-common-hook
             (lambda ()
@@ -16,7 +15,6 @@
 
 (use-package citre
   :ensure t
-  :defer t
   :init
   ;; This is needed in `:init' block for lazy load to work.
   (require 'citre-config)
@@ -47,7 +45,6 @@
 
 (use-package rtags-xref
 	:ensure t
-  :defer t
   :unless (eq system-type 'windows-nt)
 	:init
   (add-hook 'c-mode-common-hook #'rtags-xref-enable))
@@ -82,9 +79,8 @@
 
 (use-package xcscope
   :ensure t
-  :defer t
 	:config
 	(cscope-setup))
 
-(provide 'init-tags) 
+(provide 'init-tags)
 ;;; init-tags.el ends here

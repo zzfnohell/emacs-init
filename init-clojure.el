@@ -6,15 +6,13 @@
 ;;; Code:
 
 (use-package clojure-mode
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package cljsbuild-mode)
 (use-package elein)
 
 (use-package cider
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (message "loading init-clojure done.")
 

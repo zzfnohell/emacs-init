@@ -32,7 +32,6 @@
 
 (use-package merlin
   :ensure t
-  :defer t
   :config
   (setq merlin-use-auto-complete-mode t)
   (setq merlin-error-after-save nil)
@@ -41,7 +40,6 @@
 
 (use-package reason-mode
   :ensure t
-  :defer t
   :init
   (add-hook 'reason-mode-hook (lambda ()
                                 (add-hook 'before-save-hook 'refmt-before-save)
@@ -49,19 +47,18 @@
 
 (use-package utop
   :ensure t
-  :defer t
   :config
   (autoload 'utop-setup-ocaml-buffer "utop" "TopLevel for OCaml" t))
 
 (use-package tuareg
   :after (:all tuareg utop)
-  :mode (("\\.ml[ily]?$" . tuareg-mode)
-         ("\\.topml$" . tuareg-mode))
+  :mode
+  (("\\.ml[ily]?$" . tuareg-mode)
+   ("\\.topml$" . tuareg-mode))
   :config
   (add-hook 'tuareg-mode-hook 'tuareg-imenu-set-imenu)
   (add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
-  (add-hook 'tuareg-mode-hook 'merlin-mode)
-  )
+  (add-hook 'tuareg-mode-hook 'merlin-mode))
 
 (message "loading init-ocaml done.")
 

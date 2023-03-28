@@ -8,7 +8,6 @@
 
 (use-package erlang
 	:ensure t
-  :defer t
 	:config
 	(require 'erlang-start))
 

@@ -13,7 +13,6 @@
 
 (use-package ess
   :ensure t
-  :defer t
   :commands R
   :config
   (setq ess-history-directory "~/.ess/")
@@ -26,28 +25,23 @@
   :hook ((stan-mode-hook . stan-snippets)))
 
 (use-package stan-snippets
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package ess-view-data
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package vterm
   :ensure t
-  :defer t
   :when (eq system-type 'gnu/linux))
-  
+
 (use-package julia-snail
   :ensure t
-  :defer t
   :requires vterm
   :when (eq system-type 'gnu/linux)
   :hook (julia-mode . julia-snail-mode))
 
 (use-package julia-repl
   :ensure t
-  :defer t
   :config
   (add-hook 'julia-mode-hook 'julia-repl-mode))
 

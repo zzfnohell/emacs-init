@@ -11,12 +11,10 @@
   (winum-mode))
 
 (use-package speedbar
-  :ensure nil
-  :defer t)
+  :ensure t)
 
 (use-package sr-speedbar
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package minimap
   :ensure t)
@@ -24,7 +22,6 @@
 
 (use-package perspective
   :ensure t
-  :defer t
   :bind
   ("C-x C-b" . persp-list-buffers)         ; or use a nicer switcher, see below
   :custom

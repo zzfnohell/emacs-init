@@ -50,7 +50,6 @@
 
 (use-package auto-yasnippet
 	:ensure t
-  :defer t
 	:bind (("C-c w" . aya-create)
 				 ("C-c y" . aya-expand)))
 

@@ -8,7 +8,6 @@
 
 (use-package ruby-mode
   :ensure t
-  :defer t
   :mode ("Rakefile\\'"
          "\\.rake\\'"
          "\\.rxml\\'"
@@ -25,18 +24,15 @@
   (add-hook 'ruby-mode-hook 'subword-mode))
 
 (use-package ruby-hash-syntax
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;;; Ruby compilation
 (use-package ruby-compilation
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;;; Robe
 (use-package robe
   :ensure t
-  :defer t
   :init
   (add-hook 'ruby-mode-hook 'robe-mode)
   (add-hook 'robe-mode-hook 'ac-robe-setup))
@@ -44,10 +40,7 @@
 ;;; ri support
 (use-package yari
   :ensure t
-  :defer t
   :config (defalias 'ri 'yari))
-
-
 
 (provide 'init-ruby)
 

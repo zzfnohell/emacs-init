@@ -4,12 +4,10 @@
 ;;
 
 (use-package tex
-	:ensure auctex
-  :defer t)
+	:ensure auctex)
 
 (use-package tikz
-	:ensure t
-  :defer t)
+	:ensure t)
 
 (message "loading init-latex done.")
 (provide 'init-latex)

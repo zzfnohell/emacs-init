@@ -14,7 +14,6 @@
 
 (use-package hideshow
   :ensure t
-  :defer t
   :config
 	;; Fix XML folding
 	(add-to-list 'hs-special-modes-alist
@@ -24,7 +23,7 @@
 										 "<!--"
 										 'nxml-forward-element
 										 nil))
-	
+
 	;; Fix HTML folding
 	(dolist (mode '(sgml-mode
 									html-mode
@@ -46,7 +45,6 @@
 
 (use-package emr
   :ensure t
-  :defer t
   :config
   (autoload 'emr-show-refactor-menu "emr")
   (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu)
@@ -54,12 +52,11 @@
 
 (use-package srefactor
   :ensure t
-  :defer t
   :config
   (progn
     (require 'srefactor)
     (require 'srefactor-lisp)
-    
+
     ;; OPTIONAL: ADD IT ONLY IF YOU USE C/C++. 
     ;; (semantic-mode 1) ;; -> this is optional for Lisp
     (define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
@@ -78,17 +75,16 @@
 
 (use-package bison-mode
   :ensure t
-  :defer t
-  :mode (("\\.lex\\'" . bison-mode)
-         ("\\.yy\\'" . bison-mode)
-         ("\\.y\\'" . bison-mode)))
+  :mode
+  (("\\.lex\\'" . bison-mode)
+   ("\\.yy\\'" . bison-mode)
+   ("\\.y\\'" . bison-mode)))
 
 (use-package lex
-  :ensure t
-  :defer t)
+  :ensure t)
+
 (use-package peg
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (message "loading init-prog done.")
 

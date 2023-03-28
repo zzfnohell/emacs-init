@@ -5,8 +5,6 @@
 ;; CC mode
 
 ;;; Code:
-
-
 (defun init-cc-mode/company-c-headers-setup ()
   (let ((mode-backends (make-local-variable 'company-backends)))
     (add-to-list mode-backends 'company-c-headers)
@@ -49,20 +47,18 @@
 
 
 (use-package cc-mode
-  :defer t
   :hook ((c-mode-common-hook . init-cc-mode/c-mode-edit-hook))
   :config
   (c-set-offset 'inline-open 0)
   (c-set-offset 'friend '-)
   (c-set-offset 'substatement-open 0)
   (init-cc-mode/cedet-enable)
-  (setq c-default-style 
+  (setq c-default-style
       '(('c-mode . "bsd")
         ('c++-mode . "bsd")
         ('java-mode . "java")
         ('awk-mode . "awk")
-        (other . "linux")))
-  )
+        (other . "linux"))))
 
 ;;indent strategy
 (defun init-cc-mode/cpp-indent-or-complete ()
@@ -70,8 +66,6 @@
   (if (looking-at "\\>")
       (hippie-expand nil)
     (indent-for-tab-command)))
-
-
 
 (defun init-cc-mode/c-mode-edit-hook()
   (doxygen-mode t)
@@ -92,7 +86,7 @@
   :after company
   :config
 	(setq company-c-headers-path-system 'init-cc-mode/ede-object-system-include-path)
-  
+
 	(let ((header-custom-file (expand-file-name "cc-mode-header-custom.el" user-emacs-directory)))
 		(when (file-exists-p header-custom-file)
 			(load header-custom-file))))
@@ -103,21 +97,22 @@
 
 (use-package cmake-mode
   :ensure t
-  :defer t
-	:mode (("CMakeLists\\.txt\\'" . cmake-mode)
-				 ("\\.cmake\\'" . cmake-mode))
-  :hook ((cmake-mode-hook . init-cc-mode/company-cmake-setup)))
+	:mode
+  (("CMakeLists\\.txt\\'" . cmake-mode)
+	 ("\\.cmake\\'" . cmake-mode))
+  :hook
+  ((cmake-mode-hook . init-cc-mode/company-cmake-setup)))
 
 (use-package opencl-mode
   :ensure t
-  :mode (("\\.cl\\'" . opencl-mode)))
+  :mode
+  (("\\.cl\\'" . opencl-mode)))
 
 (use-package shader-mode
   :ensure t)
 
 (use-package rtags
   :ensure t
-  :defer t
 	:if (and (executable-find "rdm") (executable-find "rc"))
   :config
   (rtags-enable-standard-keybindings)
@@ -128,14 +123,12 @@
 (use-package cmake-ide
 	:if (featurep 'rtags)
   :ensure t
-  :defer t
   :config
 	(require 'rtags)
   (cmake-ide-setup))
 
 (use-package company-glsl
   :ensure t
-  :defer t
   :requires company)
 
 (defun init-cc-mode/glsl-mode-hook-func ()
@@ -145,29 +138,29 @@
 
 (use-package glsl-mode
   :ensure t
-  :defer t
-  :mode (("\\.glsl\\'" . glsl-mode)
-         ("\\.vert\\'" . glsl-mode)
-         ("\\.frag\\'" . glsl-mode)
-         ("\\.geom\\'" . glsl-mode)
-         ("\\.fx\\'" . hlsl-mode)
-         ("\\.hlsl\\'" . hlsl-mode))
-  :hook ((glsl-mode-hook . init-cc-mode/glsl-mode-hook-func)
-         (glsl-mode-hook . company-glsl)))
+  :mode
+  (("\\.glsl\\'" . glsl-mode)
+   ("\\.vert\\'" . glsl-mode)
+   ("\\.frag\\'" . glsl-mode)
+   ("\\.geom\\'" . glsl-mode)
+   ("\\.fx\\'" . hlsl-mode)
+   ("\\.hlsl\\'" . hlsl-mode))
+  :hook
+  ((glsl-mode-hook . init-cc-mode/glsl-mode-hook-func)
+   (glsl-mode-hook . company-glsl)))
 
 (use-package call-graph
-	:ensure t
-  :defer t)
+	:ensure t)
 
 (use-package qt-pro-mode
   :ensure t
-  :defer t
-  :mode ("\\.pro\\'" "\\.pri\\'"))
+  :mode
+  ("\\.pro\\'" "\\.pri\\'"))
 
 (use-package qml-mode
 	:ensure t
-  :defer t
-	:mode (("\\.qml\\'" . qml-mode)))
+	:mode
+  (("\\.qml\\'" . qml-mode)))
 
 (provide 'init-cc-mode)
 

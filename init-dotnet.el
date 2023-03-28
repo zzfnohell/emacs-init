@@ -9,13 +9,11 @@
 
 (use-package csharp-mode
   :ensure t
-  :defer t
   :mode "\\.cs\\'"
   :config
   (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t))
 
 (use-package csproj-mode
-  :ensure t
   :ensure t)
 
 (defun init-csharp/csharp-mode-setup ()
@@ -41,21 +39,20 @@
 ;; WIN scoop install omnisharp
 (use-package omnisharp
   :ensure t
-  :defer t
-  :init (setq omnisharp-server-executable-path "OmniSharp.exe")
+  :init
+  (setq omnisharp-server-executable-path "OmniSharp.exe")
   :config
   (add-hook 'csharp-mode-hook 'init-csharp/csharp-mode-setup t))
 
 (use-package fsharp-mode
   :ensure t
-  :defer t
-  :mode "\\.fs\\'"
+  :mode
+  "\\.fs\\'"
   :config
   (require 'eglot-fsharp))
 
 (use-package sharper
   :demand t
-  :defer t
   :bind
   ("C-c n" . sharper-main-transient))
 

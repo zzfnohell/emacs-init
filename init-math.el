@@ -5,7 +5,6 @@
 
 (use-package maxima
   :ensure nil
-  :defer t
   :mode (("\\.mac" . maxima-mode)
          ("\\.wxm" . maxima-mode))
   :config
@@ -13,12 +12,10 @@
   (require 'imaxima))
 
 (use-package frimacs
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package proof-general
-	:ensure t
-  :defer t)
+	:ensure t)
 
 (provide 'init-math)
 

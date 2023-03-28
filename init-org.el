@@ -6,54 +6,42 @@
 ;;; Code:
 
 (use-package org-preview-html
-	:ensure t
-  :defer t)
+	:ensure t)
 
 (use-package ob-ess-julia
-	:ensure t
-  :defer t)
+	:ensure t)
 
 (use-package ob-fsharp
-	:ensure t
-  :defer t)
+	:ensure t)
 
 (use-package ob-graphql
-	:ensure t
-  :defer t)
+	:ensure t)
 
 (use-package ob-rust
-	:ensure t
-  :defer t)
+	:ensure t)
 
 (use-package ob-go
-	:ensure t
-  :defer t)
+	:ensure t)
 
 (use-package ob-restclient
-	:ensure t
-  :defer t)
+	:ensure t)
 
 (use-package ob-powershell
-  :ensure t
-  :defer)
+  :ensure t)
 
 (use-package ob-fricas
   :ensure t
-  :defer t
   :requires org)
 
 (use-package verb
-	:ensure t
-  :defer)
+	:ensure t)
 
 (use-package ein
-  :ensure t
-  :defer)
+  :ensure t)
 
 (use-package org
 	:ensure t
   :after (:all verb)
-  :defer t
   :custom
   (org-agenda-files '("agendas.org"))
   (org-default-notes-file "notes.org")
@@ -71,12 +59,12 @@
              "* TODO %?\n  %i\n  %a")
            `("j" "Journal" entry (file+datetree ,journal-file-path)
              "* %?\nEntered on %U\n  %i\n  %a"))))
-    
+
   (cond ((equal system-type 'windows-nt)
          (setq org-mobile-directory "/plink:zzfnohell@pluto.centaurs.bid:/var/local/dav/"))
         (t
          (setq org-mobile-directory "/ssh:zzfnohell@pluto.centaurs.bid:/var/local/dav/")))
-	
+
   ;; active Babel languages
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -124,12 +112,10 @@
         ("private" :components ("private-notes" "private-static")))))
 
 (use-package org-web-tools
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package org-brain
   :ensure t
-  :defer t
   :requires org
   :after org
 	:bind (:map org-mode-map
@@ -150,12 +136,10 @@
         org-brain-file-entries-use-title nil))
 
 (use-package org-onenote
-	:ensure t
-  :defer t)
+	:ensure t)
 
 (use-package ob-cypher
   :ensure t
-  :defer t
   :config
   (add-to-list 'org-babel-load-languages '(cypher . t))
   (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
@@ -163,7 +147,6 @@
 
 (use-package org-roam
 	:ensure t
-  :defer t
 ;;	:custom
 ;;	(org-roam-directory (file-truename "~/org/roam/"))
 	:bind (("C-c n l" . org-roam-buffer-toggle)
@@ -180,12 +163,11 @@
 
 (use-package websocket
   :after org-roam
-  :ensure t
-  :defer t)
+  :ensure t)
 
 
 (use-package org-roam-ui
-  :defer t
+  :ensure t
   :after org-roam
   :hook (after-init . org-roam-ui-mode)
   :config
@@ -196,7 +178,6 @@
 
 (use-package deft
   :ensure t
-  :defer t
   :bind ("<f8>" . deft)
 	:custom
 	(deft-recursive t)

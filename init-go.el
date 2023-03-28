@@ -13,18 +13,15 @@
 
 (use-package go-guru
   :ensure t
-  :defer t
   :config
 	(go-guru-hl-identifier-mode)
   (add-hook 'go-mode-hook #'go-guru-hl-identifier-mode))
 
 (use-package go-rename
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package go-playground
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (message "loading init-go done.")
 

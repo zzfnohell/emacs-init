@@ -7,13 +7,13 @@
 ;;; Code:
 (use-package rust-mode
   :ensure t
-  :defer t
-  :mode ("\\.rs\\'" . rust-mode))
+  :mode
+  ("\\.rs\\'" . rust-mode))
 
 (use-package flycheck-rust
   :ensure t
-  :defer t
-  :hook ((flycheck-mode-hook . flycheck-rust-setup)))
+  :hook
+  ((flycheck-mode-hook . flycheck-rust-setup)))
 
 (use-package toml-mode
   :ensure t)
@@ -25,7 +25,7 @@
 ;;   (require 'rust-mode)
 ;;   (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
 ;;   (setq company-tooltip-align-annotations t)
-  
+
 ;;   (add-hook 'rust-mode-hook #'racer-mode)
 ;;   (add-hook 'racer-mode-hook #'eldoc-mode))
 
@@ -33,8 +33,7 @@
   :ensure t)
 
 (use-package rust-playground
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (provide 'init-rust)
 

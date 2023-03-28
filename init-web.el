@@ -13,7 +13,6 @@
   (setq web-mode-code-indent-offset 2)
 
   ;; Syntax Higlighting
-  
   ;; Auto-pairs
   (setq web-mode-extra-auto-pairs
         '(("erb"  . (("beg" "end")))
@@ -55,12 +54,10 @@
        '(company-web-html company-files)))
 
 (use-package company-web
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package emmet-mode
   :ensure t
-  :defer t
   :init
   (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
   (add-hook 'html-mode-hook 'emmet-mode)
@@ -68,7 +65,6 @@
 
 (use-package web-mode
   :ensure t
-  :defer t
   :mode (("\\.phtml\\'" . web-mode)
          ("\\.tpl\\.php\\'" . web-mode)
          ("\\.[agj]sp\\'" . web-mode)
@@ -85,70 +81,61 @@
           ("blade"  . "\\.blade\\."))))
 
 (use-package web-beautify
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package impatient-mode
-  :ensure t
-  :defer t)
+  :ensure t)
 
 
 ;; CSS
 ;;; Colourise CSS colour literals
 (use-package rainbow-mode
   :ensure t
-  :defer t
   :init
   (progn
     (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
-      (add-hook hook 'rainbow-mode))
-    )
-  )
+      (add-hook hook 'rainbow-mode))))
 
 ;;; SASS and SCSS
 (use-package sass-mode
   :ensure t
-  :defer t
   :mode ("\\.sass$" . sass-mode))
 
 (use-package scss-mode
   :ensure t
-  :defer t
   :config
   (setq-default scss-compile-at-save nil))
 
 ;;; LESS
 (use-package less-css-mode
   :ensure t
-  :defer t
-  :mode ("\\.less$" . less-css-mode))
+  :mode
+  ("\\.less$" . less-css-mode))
 
 ;;; Use eldoc for syntax hints
 (use-package css-eldoc
   :ensure t
-  :defer t
-  :hook (css-mode-hook . turn-on-css-eldoc)
+  :hook
+  (css-mode-hook . turn-on-css-eldoc)
   :config
   (autoload 'turn-on-css-eldoc "css-eldoc"))
 
 (use-package react-snippets
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package rjsx-mode
   :ensure t
-  :defer t
   :mode ("\\.jsx$" . rjsx-mode)
-  :hook (rjsx-mode-hook . react-snippets))
+  :hook
+  (rjsx-mode-hook . react-snippets))
 
 (use-package pug-mode
   :ensure t
-  :defer t
-  :mode ("\\.pug$" . rjsx-mode))
+  :mode
+  ("\\.pug$" . rjsx-mode))
 
 (use-package restclient
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (defun init-web/css-mode-hook-func ()
   (let ((mode-backends (make-local-variable 'company-backends)))

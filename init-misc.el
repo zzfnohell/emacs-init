@@ -5,7 +5,8 @@
 
 ;;; Code:
 (use-package session
-  :config (add-hook 'after-init-hook 'session-initialize))
+  :config
+  (add-hook 'after-init-hook 'session-initialize))
 
 ;; recentf
 (require 'recentf)
@@ -22,7 +23,6 @@
 ;;; projectile
 (use-package projectile
   :ensure t
-  :defer t
   :custom
   (projectile-require-project-root t)
   (projectile-enable-caching t)
@@ -79,7 +79,6 @@
 
 (use-package ellocate
   :ensure t
-  :defer t
   ;; :custom
   ;; ((ellocate-scan-dirs
   ;;  '(("~/" "~/.emacs.d/.ellocate-db/home-db")
@@ -123,13 +122,11 @@
 
 (use-package dired-rsync
   :ensure t
-  :defer t
   :init
   (bind-key "C-c C-r" 'dired-rsync dired-mode-map))
 
 (use-package elgrep
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;; Nicer naming of buffers for files with identical names
 (require 'uniquify)
@@ -142,45 +139,37 @@
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (use-package logview
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package vlf
   :ensure t
-  :defer t
   :config
   (require 'vlf-setup))
 
 (use-package syslog-mode
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;; extra tools
 (use-package rfc-mode
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package rg
   :ensure t
-  :defer t
   :ensure-system-package
   (rg . ripgrep)
   :config
   (rg-enable-menu))
 
 (use-package tldr
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;; git config --global github.user <your-github-user-name>
 ;; git config --global github.oauth-token <your-personal-access-token-with-gist-scope>
 (use-package gist
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package httprepl
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (message "loading init-misc done.")
 (provide 'init-misc)

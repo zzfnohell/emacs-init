@@ -21,7 +21,6 @@
 
 (use-package fish-completion
 	:ensure t
-  :defer
   :config
   (when (and (executable-find "fish")
              (require 'fish-completion nil t))
@@ -37,7 +36,6 @@
 
 (use-package multi-term
 	:ensure t
-  :defer t
   :config
 	(setq multi-term-program "/bin/bash"))
 

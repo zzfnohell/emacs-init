@@ -143,11 +143,12 @@
 (use-package backward-forward
   :config
   (backward-forward-mode t)
-  :bind (:map backward-forward-mode-map
-              ("<C-left>" . nil)
-              ("<C-right>" . nil)
-              ("<M-left>" . backward-forward-previous-location)
-              ("<M-right>" . backward-forward-next-location)))
+  :bind
+  (:map backward-forward-mode-map
+        ("<C-left>" . nil)
+        ("<C-right>" . nil)
+        ("<M-left>" . backward-forward-previous-location)
+        ("<M-right>" . backward-forward-next-location)))
 
 ;;; UI transparency
 (defun ui-set-transparency (alpha-level)
@@ -167,11 +168,12 @@
 
 (use-package multiple-cursors
   :ensure t
-  :bind (("C-S-c C-S-c" . mc/edit-lines)
-         ("C->" . mc/mark-next-like-this)
-         ("C-<" . mc/mark-previous-like-this)
-         ("C-c C-<" . mc/mark-all-like-this)
-         ("C-S-<mouse-1>" . mc/add-cursor-on-click)))
+  :bind
+  (("C-S-c C-S-c" . mc/edit-lines)
+   ("C->" . mc/mark-next-like-this)
+   ("C-<" . mc/mark-previous-like-this)
+   ("C-c C-<" . mc/mark-all-like-this)
+   ("C-S-<mouse-1>" . mc/add-cursor-on-click)))
 
 (use-package so-long
   :ensure t
@@ -180,21 +182,17 @@
 
 (use-package su
   :ensure t
-  :defer t
   :config
   (su-mode +1))
 
 (use-package regex-tool
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package visual-regexp
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package regex-tool
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;; (use-package hl-anything  :ensure t)
 
