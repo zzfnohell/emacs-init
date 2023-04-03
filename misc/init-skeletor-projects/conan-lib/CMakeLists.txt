@@ -2,12 +2,13 @@ cmake_minimum_required(VERSION 3.15)
 
 project(samplelib VERSION 0.0.1 LANGUAGES CXX)
 
-
 set(CMAKE_VERBOSE_MAKEFILE ON)
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
 
-find_package(SQLite3)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+find_package(SQLite3 REQUIRED)
+find_package(spdlog REQUIRED)
+
 
 SET(SOURCE_FILES src/lib.cpp)
 SET(TEST_SOURCE_FILES tests/lib_test.cpp)
@@ -15,7 +16,7 @@ SET(TEST_SOURCE_FILES tests/lib_test.cpp)
 INCLUDE_DIRECTORIES(src/include)
 
 add_library(${PROJECT_NAME} SHARED)
-target_include_directories(${PROJECT_NAME} PUBLIC ${CONAN_INCLUDE_DIRS})
+target_include_directories(${PROJECT_NAME} PUBLIC ${DOCTEST_INCLUDE_DIR} ${spdlog_INCLUDE_DIR})
 target_sources(${PROJECT_NAME} PRIVATE ${SOURCE_FILES}) 
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
 

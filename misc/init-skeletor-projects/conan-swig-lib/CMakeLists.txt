@@ -2,10 +2,9 @@ cmake_minimum_required(VERSION 3.15)
 
 project(samplelib VERSION 0.0.1 LANGUAGES CXX)
 
-
 set(CMAKE_VERBOSE_MAKEFILE ON)
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 find_package(SWIG REQUIRED)
 include (UseSWIG)
@@ -31,7 +30,7 @@ set_target_properties("${PROJECT_NAME}" PROPERTIES
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 23)
 
-target_include_directories("${PROJECT_NAME}" PUBLIC ${CONAN_INCLUDE_DIRS})
+target_include_directories("${PROJECT_NAME}" PUBLIC ${DOCTEST_INCLUDE_DIR} ${spdlog_INCLUDE_DIR})
 SWIG_LINK_LIBRARIES("${PROJECT_NAME}" PRIVATE ${CONAN_LIBS})
 
 
@@ -44,7 +43,6 @@ target_include_directories(
 
 target_sources("${PROJECT_NAME}-tests" PRIVATE ${TEST_SOURCE_FILES})
 target_link_libraries("${PROJECT_NAME}-tests" PRIVATE ${PROJECT_NAME} ${CONAN_LIBS})
-
 
 include(GNUInstallDirs)
 

@@ -1,15 +1,17 @@
-[build_requires]
-
-
 [requires]
-doctest/2.4.4
-sqlite3/3.34.1
+sqlite3/3.40.1
+spdlog/1.11.0
+doctest/2.4.9
+
+[tool_requires]
+cmake/3.25.3
 
 [generators]
-cmake
+CMakeDeps
+CMakeToolchain
 
 [options]
-sqlite3:shared=True
+sqlite3/*:shared=True
 
 [imports]
 bin, *.dll -> ./bin # Copies all dll files from packages bin folder to my local "bin" folder

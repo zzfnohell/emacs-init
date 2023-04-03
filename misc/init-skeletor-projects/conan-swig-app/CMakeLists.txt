@@ -1,11 +1,10 @@
 cmake_minimum_required(VERSION 3.15)
 
 project(__PROJECT-NAME__ VERSION 0.0.1 LANGUAGES CXX)
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 
 SET(SWIG_CXX_OUTPUT lib_wrap.cpp)
@@ -47,13 +46,13 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 23)
 #     ${SWIG_SOURCE}
 #     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${CONAN_INCLUDE_DIRS})
+target_include_directories(${PROJECT_NAME} PUBLIC  ${DOCTEST_INCLUDE_DIR} ${spdlog_INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
 
 
 add_executable(${PROJECT_NAME}-test ${SOURCE_FILES})
 set_property(TARGET ${PROJECT_NAME}-test PROPERTY CXX_STANDARD 23)
-target_include_directories(${PROJECT_NAME}-test PUBLIC ${CONAN_INCLUDE_DIRS})
+target_include_directories(${PROJECT_NAME}-test PUBLIC ${DOCTEST_INCLUDE_DIR} ${spdlog_INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME}-test ${CONAN_LIBS})
 
 
