@@ -4,6 +4,31 @@
 ;;
 
 ;;; Code:
+(setq socks-server '("SSHOST SOCKS5" "sshost.local" 2003 5))
+
+(defadvice url-http (around url-http-around activate disable)
+  "Fix the `url-gateway-method' bug in `url-http'."
+  (if (eq 'socks url-gateway-method)
+      (let ((gateway-method url-gateway-method))
+        ad-do-it)
+    ad-do-it))
+
+(setq socks-override-functions 1)
+(setq socks-noproxy '("localhost" "sshost" "sshost.local"))
+(require 'socks)
+
+(defun use-socks-proxy ()
+    "Enable socks5 proxy."
+  (interactive)
+  (message (format "enable socks proxy."))
+  (setq url-gateway-method 'socks))
+
+(defun unuse-socks-proxy ()
+    "Disable socks5 proxy."
+  (interactive)
+  (message (format "disable socks proxy."))
+  (setq url-gateway-method 'native))
+
 
 (defun enable-proxy ()
   "Enable proxy."
