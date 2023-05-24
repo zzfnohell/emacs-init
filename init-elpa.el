@@ -2,7 +2,7 @@
 ;;; init-elpa.el --- ELPA
 
 ;;; Commentary:
-;; 
+;; elpa
 
 ;;; Code:
 
@@ -10,18 +10,17 @@
 ;; (setq package-enable-at-startup nil)
 (setq package-native-compile t)
 (setq package-gnupghome-dir "~/.gnupg")
+
 ;; https://www.github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el
 ;; Install into separate package dirs for each Emacs version,
 ;; to prevent bytecode incompatibility
 (setq package-user-dir
       (expand-file-name (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
-       user-emacs-directory))
+                        user-emacs-directory))
 
-;; (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-;;                           ("melpa" . "http://elpa.emacs-china.org/melpa/")))
-
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
 (package-initialize)
 
@@ -41,7 +40,7 @@
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-hide-results t)
   (setq auto-package-update-interval 14))
-  
+
 ;; (auto-package-update-maybe)
 ;; (auto-package-update-now)
 
