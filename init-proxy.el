@@ -17,21 +17,20 @@
 (setq socks-noproxy '("localhost" "sshost" "sshost.local"))
 (require 'socks)
 
-(defun use-socks-proxy ()
-    "Enable socks5 proxy."
+(defun proxy-enable-socks-proxy ()
+  "Enable socks5 proxy."
   (interactive)
   (message (format "enable socks proxy."))
   (setq url-gateway-method 'socks))
 
-(defun unuse-socks-proxy ()
-    "Disable socks5 proxy."
+(defun proxy-disable-socks-proxy ()
+  "Disable socks5 proxy."
   (interactive)
   (message (format "disable socks proxy."))
   (setq url-gateway-method 'native))
 
-
-(defun enable-proxy ()
-  "Enable proxy."
+(defun proxy-enable-sys-proxy ()
+  "Enable sys proxy."
   (interactive)
   (message (format "enable proxy."))
   (let ((http-proxy-url  "http://sshost.local:2001")
@@ -44,15 +43,10 @@
     (setenv "HTTP_PROXY" http-proxy-url)
     (setenv "HTTPS_PROXY" http-proxy-url)
     (setenv "FTP_PROXY"  http-proxy-url)
-    (setenv "RSYNC_PROXY" http-proxy-url))
+    (setenv "RSYNC_PROXY" http-proxy-url)))
 
-  (setq url-proxy-services
-        '(("no_proxy" . "^\\(localhost\\|192.*\\|*.local\\|sshost\\)")
-          ("http" . "sshost.local:2001")
-          ("https" . "sshost.local:2001"))))
-
-(defun disable-proxy ()
-  "Disable proxy."
+(defun proxy-disable-sys-proxy ()
+  "Disable sys proxy."
   (interactive)
   (message (format "disable proxy."))
   (setenv "http_proxy")
@@ -63,16 +57,28 @@
   (setenv "HTTP_PROXY")
   (setenv "HTTPS_PROXY")
   (setenv "FTP_PROXY")
-  (setenv "RSYNC_PROXY")
+  (setenv "RSYNC_PROXY"))
 
+
+(defun proxy-enable-url-proxy ()
+  "Enable url proxy."
+  (interactive)
+  (message (format "enable url proxy."))
+  (setq url-proxy-services
+        '(("no_proxy" . "^\\(localhost\\|192.*\\|*.local\\|sshost\\)")
+          ("http" . "sshost.local:2001")
+          ("https" . "sshost.local:2001"))))
+
+(defun proxy-disable-url-proxy ()
+  "Disable url proxy."
+  (interactive)
+  (message (format "disable url proxy."))
   (setq url-proxy-services nil))
 
 ;; (setq url-http-proxy-basic-auth-storage
 ;;     (list (list "proxy.com:8080"
 ;;                 (cons "Input your LDAP UID !"
 ;;                       (base64-encode-string "LOGIN:PASSWORD")))))
-
-(enable-proxy)
 
 (provide 'init-proxy)
 
