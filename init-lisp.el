@@ -6,6 +6,9 @@
 
 ;;; Code:
 
+(use-package ansi
+  :ensure t)
+  
 (use-package paredit
   :ensure t)
 

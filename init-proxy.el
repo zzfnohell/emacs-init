@@ -6,16 +6,16 @@
 ;;; Code:
 (setq socks-server '("SSHOST SOCKS5" "sshost.local" 2003 5))
 
-(defadvice url-http (around url-http-around activate disable)
-  "Fix the `url-gateway-method' bug in `url-http'."
-  (if (eq 'socks url-gateway-method)
-      (let ((gateway-method url-gateway-method))
-        ad-do-it)
-    ad-do-it))
-
-(setq socks-override-functions 1)
-(setq socks-noproxy '("localhost" "sshost" "sshost.local"))
-(require 'socks)
+;; (defadvice url-http (around url-http-around activate disable)
+;;   "Fix the `url-gateway-method' bug in `url-http'."
+;;   (if (eq 'socks url-gateway-method)
+;;       (let ((gateway-method url-gateway-method))
+;;         ad-do-it)
+;;     ad-do-it))
+;; 
+;; (setq socks-override-functions 1)
+;; (setq socks-noproxy '("localhost" "sshost" "sshost.local"))
+;; (require 'socks)
 
 (defun proxy-enable-socks-proxy ()
   "Enable socks5 proxy."
