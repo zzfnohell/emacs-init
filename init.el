@@ -5,10 +5,6 @@
 
 ;;; Code:
 
-;; (setq debug-on-error t)
-
-;; (setq debug-on-message ".*ad-handle-definition.*")
-;; (setq debug-on-message ".*error.*")
 
 (add-to-list 'load-path (directory-file-name (expand-file-name "~/.emacs.d/init")))
 
