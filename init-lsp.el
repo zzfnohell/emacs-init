@@ -97,9 +97,7 @@
 
 (use-package eglot-java
   :requires eglot
-  :ensure t
-  :config
-  (eglot-java-init))
+  :ensure t)
 
 (message "loading init-lsp done.")
 
