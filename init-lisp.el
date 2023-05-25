@@ -6,6 +6,9 @@
 
 ;;; Code:
 
+(use-package lgr
+  :ensure t)
+  
 (use-package ansi
   :ensure t)
   
