@@ -5,14 +5,6 @@
 
 
 ;;; Code:
-
-
-(use-package csharp-mode
-  :ensure t
-  :mode "\\.cs\\'"
-  :config
-  (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t))
-
 (use-package csproj-mode
   :ensure t)
 
