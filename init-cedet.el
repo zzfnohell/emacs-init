@@ -47,9 +47,11 @@
   (add-hook 'semantic-init-hooks 'init-cedet/semantic-hook)
 
   ;;;; System header files
-  (when (eq system-type 'windows-nt)
-    (semantic-add-system-include "c:/msys64/mingw64/include/" 'c-mode)
-    (semantic-add-system-include "c:/msys64/mingw64/include/" 'c++-mode))
+  (let ((inc-cnf-file
+         (expand-file-name "semantic-system-include.el"
+                           user-emacs-directory)))
+	  (when (file-exists-p inc-cnf-file)
+		  (load inc-cnf-file)))
 
   (require 'ede)
   (global-ede-mode t)

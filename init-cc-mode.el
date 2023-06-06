@@ -76,20 +76,14 @@
   ;;preprocessors
   (setq abbrev-mode t))
 
-
-(defun init-cc-mode/ede-object-system-include-path ()
-	"System include path."
-	(when 'ede-project
-		(ede-system-include-path ede-object)))
-
 (use-package company-c-headers
   :after company
   :config
-	(setq company-c-headers-path-system 'init-cc-mode/ede-object-system-include-path)
-
-	(let ((header-custom-file (expand-file-name "cc-mode-header-custom.el" user-emacs-directory)))
-		(when (file-exists-p header-custom-file)
-			(load header-custom-file))))
+	(let ((el-file
+         (expand-file-name "custom-company-c-headers.el"
+                           user-emacs-directory)))
+		(when (file-exists-p el-file)
+      (load el-file))))
 
 
 (defun init-cc-mode/company-cmake-setup ()
@@ -161,6 +155,11 @@
 	:ensure t
 	:mode
   (("\\.qml\\'" . qml-mode)))
+
+(use-package function-args
+  :ensure t
+  :config
+  (fa-config-default))
 
 (provide 'init-cc-mode)
 

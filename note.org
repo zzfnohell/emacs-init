@@ -121,6 +121,31 @@ $+name: windows-extra
                           "/path/to/sys/include"))
 #+end_src
 
+* Include Dirs
+** Cedet Semantic
+PATH: ~/.emacs.d/custom-semantic.el
+#+name: semantic-system-include
+#+begin_src emacs-lisp
+;; on windows nt
+  (semantic-add-system-include "c:/msys64/mingw64/include/" 'c-mode)
+  (semantic-add-system-include "c:/msys64/mingw64/include/" 'c++-mode)
+#+end_src
+
+** Clang Include
+PATH: .dir-locals.el
+#+name: company-clang-arguments
+#+begin_src emacs-lisp
+((nil . ((company-clang-arguments . ("-I/home/<user>/project_root/include1/"
+                                     "-I/home/<user>/project_root/include2/")))))
+#+end_src
+** Clang Include
+PATH: .dir-locals.el
+OR
+PATH: ~/.emacs.d/custom-company-c-headers.el
+#+name: company-c-haeders-path-system
+#+begin_src emacs-lisp
+  (add-to-list 'company-c-headers-path-system "c:/msys64/mingw64/include")
+#+end_src
 * Debugging Templates
 ** Debug on entry
 #+name: debug-on-entry-sample
