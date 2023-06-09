@@ -14,11 +14,12 @@
 ;; https://www.github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el
 ;; Install into separate package dirs for each Emacs version,
 ;; to prevent bytecode incompatibility
-(setq package-user-dir
+;; (setq package-user-dir
 ;;      (expand-file-name (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
-;;                        user-emacs-directory)
+;;                        user-emacs-directory))
 
-      (expand-file-name (format "elpa" user-emacs-directory)))
+(setq package-user-dir
+      (expand-file-name "elpa" user-emacs-directory))
 
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/"))
