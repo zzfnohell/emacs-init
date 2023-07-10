@@ -29,7 +29,7 @@
   (message (format "disable socks proxy."))
   (setq url-gateway-method 'native))
 
-(defun proxy-enable-sys-proxy ()
+(defun proxy-enable-env-proxy ()
   "Enable sys proxy."
   (interactive)
   (message (format "enable proxy."))
@@ -45,7 +45,7 @@
     (setenv "FTP_PROXY"  http-proxy-url)
     (setenv "RSYNC_PROXY" http-proxy-url)))
 
-(defun proxy-disable-sys-proxy ()
+(defun proxy-disable-env-proxy ()
   "Disable sys proxy."
   (interactive)
   (message (format "disable proxy."))
