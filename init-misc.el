@@ -28,9 +28,9 @@
   (projectile-enable-caching t)
   (projectile-indexing-method 'alien)
   (projectile-globally-ignored-file-suffixes
-        '("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar"))
+   '("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar"))
   (projectile-globally-ignored-directories
-        '(".git" "node_modules" "__pycache__" ".vs"))
+   '(".git" "node_modules" "__pycache__" ".vs"))
   (projectile-globally-ignored-files '("TAGS" "tags" ".DS_Store"))
   :config
   (projectile-mode +1)
@@ -169,6 +169,12 @@
   :ensure t)
 
 (use-package httprepl
+  :ensure t)
+
+(use-package syntree
+  :ensure t)
+
+(use-package format-all
   :ensure t)
 
 (message "loading init-misc done.")
