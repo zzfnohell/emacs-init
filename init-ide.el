@@ -7,10 +7,10 @@
 
 ;;; Code:
 
-(use-package eide
-  :ensure t
-  :config
-  (eide-start))
+;; (use-package eide
+;;   :ensure t
+;;   :config
+;;   (eide-start))
 
 (provide 'init-ide)
 
