@@ -8,10 +8,10 @@
 
 (use-package lgr
   :ensure t)
-  
+
 (use-package ansi
   :ensure t)
-  
+
 (use-package paredit
   :ensure t)
 
@@ -161,4 +161,3 @@
 (provide 'init-lisp)
 
 ;;; init-lisp.el ends here
-
