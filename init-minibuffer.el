@@ -119,9 +119,9 @@
   ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
   ;;;; 5. No project support
   ;; (setq consult-project-function nil)
-
-  (setq consult-project-function #'consult--default-project--function)
-)
+  ;;;;
+  (autoload 'projectile-project-root "projectile")
+  (setq consult-project-function (lambda (_) (projectile-project-root))))
 
 ;; Enable richer annotations using the Marginalia package
 (use-package marginalia
