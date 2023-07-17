@@ -74,7 +74,7 @@
   ;; (black    . "pip install black")
   ;; (flake8   . "pip install flake8"))
   :config
-  (elpy-enable))
+  (elpy-disable))
 
 (use-package conda
   :ensure t
