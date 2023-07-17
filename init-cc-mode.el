@@ -20,8 +20,6 @@
 		 (push '(company-tags :with company-yasnippet) company-backends))
 
 (defun init-cc-mode/cedet-enable ()
-	"Start cedet"
-	(interactive)
 	(remove-hook 'c++-mode-hook 'init-cc-mode/company-rtags-setup)
 	(remove-hook 'c-mode-hook 'init-cc-mode/company-rtags-setup)
 
