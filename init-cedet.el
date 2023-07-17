@@ -12,11 +12,6 @@
 ;;     (load-file (concat cedet-root-path "cedet-devel-load.el"))
 ;; 	(load-file (concat cedet-root-path "contrib/cedet-contrib-load.el")))
 
-
-(defun init-cedet/semantic-hook ()
-  "Add a TAGS entry to menu bar."
-  (imenu-add-to-menubar "TAGS"))
-
 (use-package cedet
   :ensure t
   :custom
@@ -43,8 +38,6 @@
   (require 'semantic)
   (semantic-mode 1)
 
-  ;;;; Integration with imenu
-  (add-hook 'semantic-init-hooks 'init-cedet/semantic-hook)
 
   ;;;; System header files
   (let ((inc-cnf-file
@@ -54,8 +47,9 @@
 		  (load inc-cnf-file)))
 
   (require 'ede)
+  (ede-enable-generic-projects)
   (global-ede-mode t)
-
+  
 	(let ((ede-custom-file
 				 (expand-file-name "cedet-projects.el" user-emacs-directory)))
 		(when (file-exists-p ede-custom-file)

@@ -32,8 +32,7 @@
 
 (require 'init-vc)
 (require 'init-prog)
-(require 'init-cedet)
-(require 'init-auto-complete)
+;; (require 'init-cedet)
 (require 'init-org)
 
 (require 'init-minibuffer)
