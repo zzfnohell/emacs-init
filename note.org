@@ -5,76 +5,77 @@ Note -*- mode:org; -*-
 #+STARTUP: align
 #+STARTUP: inlineimages
 
-* Template: custom.el 
+* Template: custom.el
 #+NAME: csv_to_table
 #+BEGIN_SRC emacs-lisp
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(blink-cursor-mode t)
-   '(column-number-mode t)
-   '(cursor-type 'box)
-   '(dart-sdk-path "d:/Scoop/apps/flutter/current/bin/cache/dart-sdk/")
-   '(find-ls-option '("-exec ls -ld {} \";\"" . "-ld"))
-   '(flutter-sdk-path "d:/Scoop/apps/flutter/current/")
-   '(gc-cons-threshold 3200000)
-   '(global-display-line-numbers-mode t)
-   '(httpd-host "0.0.0.0")
-   '(httpd-port 2020)
-   '(indent-tabs-mode nil)
-   '(indicate-empty-lines t)
-   '(minimap-window-location (quote right))
-   '(org-directory "~/notes/org")
-   '(org-roam-directory "~/notes/org/roam")
-   '(org-plantuml-jar-path "d:/Scoop/apps/plantuml/current/plantuml.jar")
-   '(deft-directory "~/notes/org")
-   '(select-enable-clipboard t)
-   '(semantic-idle-scheduler-idle-time 5)
-   '(semantic-symref-tool (quote global))
-   '(skeletor-user-directory "~/.emacs.d/init/init-skeletor-projects")
-   '(size-indication-mode t)
-   '(speedbar-show-unknown-files t)
-   '(ellocate-scan-dirs (quote
-                         (("~/" "~/.cache/ellocate/home-db")
-                          ("/mnt/USB" "~/ellocate-usb-drive-db")
-                          ;; I want this directory to be re-scanned on first search after every emacs restart by not creating a database file for it
-                          ("/mnt/USB2" nil)
-                           ;; Never make your scan paths overlap like this:
-                           ;; ("/mnt/USB2/newFolder" nil)
-                           ;; This is pretty useful if you have many USB devices, but remember to not overlap like this would if it wasn't commented (because the subdirectory /mnt/USB is also scanned as defined above)
-                           ;; ("/mnt/" nil)
-                           )))
-   '(c-macro-cppflags " -DDEBUG -I d:/path/to/custom/include ")
-   '(c-macro-preprocessor "cpp -C -x c++ -std=c++11")
-   '(c-macro-prompt-flag t)
-   '(cmake-ide-build-pool-dir "e:/any/path/to/cache/cmake-ide-build-pool")
-   '(cmake-ide-build-pool-use-persistent-naming t)
-   '(cmake-ide-cmake-opts "-DCMAKE_BUILD_TYPE=Debug")
-   '(sql-connection-alist
-     (("mysql-localhost"
-       (sql-product 'mysql)
-       (sql-user "root")
-       (sql-database "")
-       (sql-server "localhost"))
-      ("mysql-dbhost"
-       (sql-product 'mysql)
-       (sql-user "root")
-       (sql-database "")
-       (sql-server "dbhost"))))
-   '(tcl-application "C:/msys64/mingw64/bin/wish.exe")
-   '(ispell-program-name "d:/Scoop/shims/aspell.exe")
-   '(visual-line-mode nil t))
+   (custom-set-variables
+    ;; custom-set-variables was added by Custom.
+    ;; If you edit it by hand, you could mess it up, so be careful.
+    ;; Your init file should contain only one such instance.
+    ;; If there is more than one, they won't work right.
+    '(blink-cursor-mode t)
+    '(conda-anaconda-home "d:/Scoop/apps/anaconda3/current")
+    '(column-number-mode t)
+    '(cursor-type 'box)
+    '(dart-sdk-path "d:/Scoop/apps/flutter/current/bin/cache/dart-sdk/")
+    '(find-ls-option '("-exec ls -ld {} \";\"" . "-ld"))
+    '(flutter-sdk-path "d:/Scoop/apps/flutter/current/")
+    '(gc-cons-threshold 3200000)
+    '(global-display-line-numbers-mode t)
+    '(httpd-host "0.0.0.0")
+    '(httpd-port 2020)
+    '(indent-tabs-mode nil)
+    '(indicate-empty-lines t)
+    '(minimap-window-location (quote right))
+    '(org-directory "~/notes/org")
+    '(org-roam-directory "~/notes/org/roam")
+    '(org-plantuml-jar-path "d:/Scoop/apps/plantuml/current/plantuml.jar")
+    '(deft-directory "~/notes/org")
+    '(select-enable-clipboard t)
+    '(semantic-idle-scheduler-idle-time 5)
+    '(semantic-symref-tool (quote global))
+    '(skeletor-user-directory "~/.emacs.d/init/init-skeletor-projects")
+    '(size-indication-mode t)
+    '(speedbar-show-unknown-files t)
+    '(ellocate-scan-dirs (quote
+                          (("~/" "~/.cache/ellocate/home-db")
+                           ("/mnt/USB" "~/ellocate-usb-drive-db")
+                           ;; I want this directory to be re-scanned on first search after every emacs restart by not creating a database file for it
+                           ("/mnt/USB2" nil)
+                            ;; Never make your scan paths overlap like this:
+                            ;; ("/mnt/USB2/newFolder" nil)
+                            ;; This is pretty useful if you have many USB devices, but remember to not overlap like this would if it wasn't commented (because the subdirectory /mnt/USB is also scanned as defined above)
+                            ;; ("/mnt/" nil)
+                            )))
+    '(c-macro-cppflags " -DDEBUG -I d:/path/to/custom/include ")
+    '(c-macro-preprocessor "cpp -C -x c++ -std=c++11")
+    '(c-macro-prompt-flag t)
+    '(cmake-ide-build-pool-dir "e:/any/path/to/cache/cmake-ide-build-pool")
+    '(cmake-ide-build-pool-use-persistent-naming t)
+    '(cmake-ide-cmake-opts "-DCMAKE_BUILD_TYPE=Debug")
+    '(sql-connection-alist
+      (("mysql-localhost"
+        (sql-product 'mysql)
+        (sql-user "root")
+        (sql-database "")
+        (sql-server "localhost"))
+       ("mysql-dbhost"
+        (sql-product 'mysql)
+        (sql-user "root")
+        (sql-database "")
+        (sql-server "dbhost"))))
+    '(tcl-application "C:/msys64/mingw64/bin/wish.exe")
+    '(ispell-program-name "d:/Scoop/shims/aspell.exe")
+    '(visual-line-mode nil t))
 
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:family "JetBrainsMono Nerd Font Mono" :foundry "outline" :slant normal :weight normal :height 98 :width normal)))))
+   (custom-set-faces
+    ;; custom-set-faces was added by Custom.
+    ;; If you edit it by hand, you could mess it up, so be careful.
+    ;; Your init file should contain only one such instance.
+    ;; If there is more than one, they won't work right.
+    '(default ((t (:family "JetBrainsMono Nerd Font Mono" :foundry "outline" :slant normal :weight normal :height 98 :width normal)))))
 
-  (setenv "WORKON_HOME" "/home/zzfnohell/dev/pyenvs")
+   (setenv "WORKON_HOME" "/home/zzfnohell/dev/pyenvs")
 #+END_SRC
 ** Windows
 $+name: windows-extra

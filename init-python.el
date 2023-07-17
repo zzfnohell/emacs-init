@@ -76,6 +76,14 @@
   :config
   (elpy-enable))
 
+(use-package conda
+  :ensure t
+  :config
+  ;; if you want interactive shell support, include:
+  (conda-env-initialize-interactive-shells)
+  ;; if you want eshell support, include:
+  (conda-env-initialize-eshell))
+
 (message "loading init-python done.")
 
 (provide 'init-python)
