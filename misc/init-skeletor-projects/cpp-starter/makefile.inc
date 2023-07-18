@@ -1,7 +1,7 @@
-CC	= gcc
-CFLAGS= -c -Wall -D _GNU_SOURCE -fPIC
+CC	= g++
+CFLAGS= -c -Wall -D _GNU_SOURCE -fPIC -std=c++20
 
-LD	= gcc
+LD	= g++
 LDFLAGS=
 LDLIBS= -lstdc++
 LIBPATH= -L./

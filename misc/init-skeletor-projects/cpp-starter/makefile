@@ -40,7 +40,7 @@ release: $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(OUT_DIR)/$(BIN_NAME)
 
 %.o: %.cpp
-	$(CC) -c -fPIC $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
 	$(RM) *.o
