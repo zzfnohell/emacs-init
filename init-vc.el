@@ -143,5 +143,10 @@
 (use-package gitignore-snippets
 	:ensure t)
 
+(use-package git-timemachine
+  :ensure t
+  :bind
+  (("s-t" . git-timemachine-toggle)))
+
 (provide 'init-vc)
 ;;; init-vc.el ends here
