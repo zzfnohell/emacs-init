@@ -43,7 +43,13 @@
 		:no-license? t
 		:no-git? t
 		:substitutions
-		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: "))))))
+		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
+  (skeletor-define-template "cpp-starter"
+    :title "Cpp Starter Project"
+    :no-license? t
+    :no-git? t
+    :substitutions
+    '(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: "))))))
 
 (provide 'init-skeletor)
 
