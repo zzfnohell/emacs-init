@@ -29,10 +29,9 @@
 (require 'init-docker)
 (require 'init-skeletor)
 
-
 (require 'init-vc)
 (require 'init-prog)
-;; (require 'init-cedet)
+(require 'init-cedet)
 (require 'init-org)
 
 (require 'init-minibuffer)
@@ -41,15 +40,14 @@
 (require 'init-lsp)
 (require 'init-dap)
 
+;; langs
 (require 'init-ess)
 (require 'init-math)
-
 (require 'init-cc-mode)
 (require 'init-rust)
 (require 'init-lisp)
 (require 'init-racket)
 (require 'init-octave)
-
 (require 'init-java)
 (require 'init-scala)
 (require 'init-ocaml)
@@ -67,23 +65,20 @@
 (require 'init-javascript)
 (require 'init-flutter)
 (require 'init-graphviz)
-
 (require 'init-powershell)
 (require 'init-dotnet)
 (require 'init-pascal)
 (require 'init-markup-lang)
-
 (require 'init-polymode)
 (require 'init-web)
-
 (require 'init-ide)
-
+;; theme
 (require 'init-theme)
 
-; (require 'server)
-; (unless (server-running-p)
-;  (setq server-auth-dir (expand-file-name "~/.emacs.d/server"))
-;  (server-start))
+                                        ; (require 'server)
+                                        ; (unless (server-running-p)
+                                        ;  (setq server-auth-dir (expand-file-name "~/.emacs.d/server"))
+                                        ;  (server-start))
 
 (provide 'init-main)
 

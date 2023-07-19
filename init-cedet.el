@@ -33,6 +33,9 @@
   (semantic-idle-scheduler-idle-time 5)
   (semantic-symref-tool 'global)
   :config
+  (require 'cedet-global)
+  (require 'semantic)
+  (semantic-mode 1)
   (global-ede-mode 1)
   (global-srecode-minor-mode 1)
 

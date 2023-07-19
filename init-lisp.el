@@ -6,9 +6,6 @@
 
 ;;; Code:
 
-(use-package lgr
-  :ensure t)
-
 (use-package ansi
   :ensure t)
 
@@ -51,9 +48,6 @@
   :ensure t)
 
 (use-package elpl
-  :ensure t)
-
-(use-package elsa
   :ensure t)
 
 ;; ----------------------------------------------------------------------------
@@ -106,9 +100,7 @@
       (add-hook hook 'init-lisp/lisp-setup))
 
     (dolist (hook (mapcar #'derived-mode-hook-name init-lisp/elispy-modes))
-      (add-hook hook 'init-lisp/emacs-lisp-setup))
-    )
-  )
+      (add-hook hook 'init-lisp/emacs-lisp-setup))))
 
 (use-package eldoc-eval
   :ensure t)
