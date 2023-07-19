@@ -7,13 +7,12 @@
 
 ;; coding system
 (define-coding-system-alias 'cp65001 'utf-8)
-
 (prefer-coding-system 'utf-8)
 
 (when (eq system-type 'windows-nt)
   (setenv "LC_TIME" "zh_CN.UTF-8")
   (setq system-time-locale "C")
-  (set-language-environment 'Chinese-GBK))
+  (set-language-environment "UTF-8")) 
 
 ;; (set-default-coding-systems 'utf-8)
 ;; (set-terminal-coding-system 'utf-8)
