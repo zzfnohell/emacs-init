@@ -186,7 +186,7 @@
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
   ;; (setq vertico-cycle t)
   )
-  
+
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
   :init
@@ -198,19 +198,19 @@
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
   ;;       orderless-component-separator #'orderless-escapable-split-on-space)
-  
+
   :config
   (orderless-define-completion-style orderless+initialism
-  (orderless-matching-styles '(orderless-initialism orderless-literal orderless-regexp)))
+    (orderless-matching-styles '(orderless-initialism orderless-literal orderless-regexp)))
   (setq orderless-matching-styles '(orderless-literal orderless-regexp))
   (setq completion-styles '(orderless basic)
         completion-category-defaults nil)
   (setq completion-category-overrides
-      '((file (styles partial-completion orderless+initialism))
-        (command (styles orderless+initialism))
-        (buffer (styles orderless+initialism))
-        (consult-multi (styles orderless+initialism))
-        (symbol (styles orderless+initialism)))))
+        '((file (styles partial-completion orderless+initialism))
+          (command (styles orderless+initialism))
+          (buffer (styles orderless+initialism))
+          (consult-multi (styles orderless+initialism))
+          (symbol (styles orderless+initialism)))))
 
 (provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here
