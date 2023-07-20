@@ -26,7 +26,7 @@
   :custom
   (projectile-require-project-root t)
   (projectile-enable-caching t)
-  (projectile-indexing-method 'alien)
+  (projectile-indexing-method 'native)
   (projectile-globally-ignored-file-suffixes
    '("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar"))
   (projectile-globally-ignored-directories
