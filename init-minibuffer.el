@@ -122,8 +122,7 @@
   ;;;; 5. No project support
   ;; (setq consult-project-function nil)
   ;;;;
-  (autoload 'projectile-project-root "projectile")
-  (setq consult-project-function (lambda (_) (projectile-project-root))))
+  (setq consult-project-function #'consult--default-project--function))
 
 ;; Enable richer annotations using the Marginalia package
 (use-package marginalia
@@ -185,18 +184,31 @@
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
   ;; (setq vertico-cycle t)
   )
-
-;; (use-package orderless
-;;   :ensure t
-;;   :custom
-;;   (completion-styles '(orderless basic))
-;;   (completion-category-overrides
-;;    '((file (styles basic partial-completion)))))
-
+  
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
   :init
   (savehist-mode))
+
+(use-package orderless
+  :ensure t
+  ;; :init
+  ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
+  ;;       orderless-component-separator #'orderless-escapable-split-on-space)
+  
+  :config
+  (orderless-define-completion-style orderless+initialism
+  (orderless-matching-styles '(orderless-initialism orderless-literal orderless-regexp)))
+  (setq orderless-matching-styles '(orderless-literal orderless-regexp))
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil)
+  (setq completion-category-overrides
+      '((file (styles partial-completion orderless+initialism))
+        (command (styles orderless+initialism))
+        (buffer (styles orderless+initialism))
+        (consult-multi (styles orderless+initialism))
+        (symbol (styles orderless+initialism)))))
 
 (provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here

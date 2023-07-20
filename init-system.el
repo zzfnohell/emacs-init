@@ -14,12 +14,6 @@
   (byte-recompile-directory package-user-dir nil 'force))
 
 
-(setq debug-on-error t)
-(toggle-debug-on-quit)
-;; (setq debug-on-message ".*ad-handle-definition.*")
-;; (setq debug-on-message ".*error.*")
-;; (debug-on-entry 'yas-load-directory)
-
 
 (provide 'init-system)
 

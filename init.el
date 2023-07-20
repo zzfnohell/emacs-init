@@ -5,6 +5,13 @@
 
 ;;; Code:
 
+;;; Debug flags
+(setq debug-on-error t)
+;; (toggle-debug-on-quit)
+;; (setq debug-on-message ".*ad-handle-definition.*")
+;; (setq debug-on-message ".*error.*")
+;; (debug-on-entry 'yas-load-directory)
+
 
 (add-to-list 'load-path (directory-file-name (expand-file-name "~/.emacs.d/init")))
 
