@@ -43,12 +43,6 @@
    ;; certain modes (like `prog-mode'), set it like this.
    citre-auto-enable-citre-mode-modes '(prog-mode)))
 
-(use-package rtags-xref
-	:ensure t
-  :unless (eq system-type 'windows-nt)
-	:init
-  (add-hook 'c-mode-common-hook #'rtags-xref-enable))
-
 (require 'clue)
 (add-hook 'find-file-hook #'clue-auto-enable-clue-mode)
 (setq

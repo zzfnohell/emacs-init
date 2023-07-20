@@ -75,11 +75,10 @@
 ;; theme
 (require 'init-theme)
 
-                                        ; (require 'server)
-                                        ; (unless (server-running-p)
-                                        ;  (setq server-auth-dir (expand-file-name "~/.emacs.d/server"))
-                                        ;  (server-start))
+;; (require 'server)
+;; (unless (server-running-p)
+;;  (setq server-auth-dir (expand-file-name "~/.emacs.d/server"))
+;;  (server-start))
 
-(provide 'init-main)
 
 ;;; init-main.el ends here

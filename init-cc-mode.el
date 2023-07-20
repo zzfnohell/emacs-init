@@ -105,17 +105,24 @@
 
 (use-package rtags
   :ensure t
-  :unless (eq system-type 'windows-nt)
-	:if (and (executable-find "rdm") (executable-find "rc"))
+	:if (and (not (eq system-type 'windows-nt)) (executable-find "rdm") (executable-find "rc"))
   :config
   (rtags-enable-standard-keybindings)
   ;; (setq rtags-autostart-diagnostics t)
   ;; (rtags-diagnostics)
   )
 
-(use-package cmake-ide
-	:if (featurep 'rtags)
+(use-package rtags-xref
   :ensure t
+  :if (featurep 'rtags)
+  :after rtags
+  :init
+  (add-hook 'c-mode-common-hook #'rtags-xref-enable))
+
+(use-package cmake-ide
+  :ensure t
+  :if (featurep 'rtags)
+  :after rtags
   :config
 	(require 'rtags)
   (cmake-ide-setup))
