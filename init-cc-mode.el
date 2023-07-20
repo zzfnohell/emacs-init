@@ -105,6 +105,7 @@
 
 (use-package rtags
   :ensure t
+  :unless (eq system-type 'windows-nt)
 	:if (and (executable-find "rdm") (executable-find "rc"))
   :config
   (rtags-enable-standard-keybindings)
