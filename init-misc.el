@@ -9,11 +9,15 @@
   (add-hook 'after-init-hook 'session-initialize))
 
 ;; recentf
-(require 'recentf)
-(add-hook 'after-init-hook 'recentf-mode)
-(setq-default
- recentf-max-saved-items 1000
- recentf-exclude `("/tmp/" "/ssh:" ,(concat package-user-dir "/.*-autoloads\\.el\\'")))
+(use-package recentf
+  :config
+  (setq-default recentf-max-saved-items 1000)
+  (add-to-list 'recentf-exclude "\\elpa")
+  (add-to-list 'recentf-exclude "/tmp")
+  (add-to-list 'recentf-exclude "/ssh:")
+  (add-to-list 'recentf-exclude (concat package-user-dir "/.*-autoloads\\.el\\'"))
+  (recentf-mode))
+
 
 (use-package memory-usage
   :ensure t)
@@ -176,6 +180,11 @@
 
 (use-package format-all
   :ensure t)
+
+(use-package dabbrev
+  :bind (("C-/" . #'dabbrev-completion))
+  :custom
+  (dabbrev-case-replace nil))
 
 (message "loading init-misc done.")
 (provide 'init-misc)

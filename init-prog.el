@@ -6,6 +6,9 @@
 ;; 
 
 ;;; Code:
+(use-package paren
+  :config (show-paren-mode)
+  :custom (show-paren-style 'expression))
 
 (use-package rainbow-delimiters
 	:ensure t
@@ -144,7 +147,10 @@
   (add-to-list 'company-backends 'company-math-symbols-unicode))
 
 (use-package company-shell
-  :ensure t)
+  :after (:all company)
+  :ensure t
+  :config
+  (add-to-list 'company-backends 'company-shell))
 
 (use-package company-dict
   :ensure t)

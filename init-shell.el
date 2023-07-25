@@ -42,6 +42,19 @@
 ;;; XTERM
 (xterm-mouse-mode 1)
 
+; ;;; https://www.reddit.com/r/emacs/comments/oh36yi/company_and_companyshell_super_slow_over_tramp/
+; (defun shell-mode-hook-setup ()
+;   "Set up `shell-mode'."
+
+;   (setq-local company-backends '((company-files company-native-complete)))
+;   ;; `company-native-complete' is better than `completion-at-point'
+;   (local-set-key (kbd "TAB") 'company-complete)
+
+;   ;; @see https://github.com/redguardtoo/emacs.d/issues/882
+;   (setq-local company-idle-delay 1))
+
+; (add-hook 'shell-mode-hook 'shell-mode-hook-setup)
+
 (message "loading init-shell done.")
 (provide 'init-shell)
 

@@ -15,7 +15,15 @@
 (use-package lispy
   :ensure t)
 
-(use-package diminish :ensure t)
+(use-package diminish
+  :ensure t
+  :config
+  (diminish 'visual-line-mode))
+
+(use-package dimmer
+  :ensure t
+  :custom (dimmer-fraction 0.3)
+  :config (dimmer-mode))
 
 (use-package lively :ensure t)
 
@@ -62,10 +70,6 @@
 ;; ----------------------------------------------------------------------------
 ;; Enable desired features for all lisp modes
 ;; ----------------------------------------------------------------------------
-(use-package rainbow-delimiters
-  :ensure t
-  :init
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package redshank
   :ensure t

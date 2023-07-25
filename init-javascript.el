@@ -36,9 +36,6 @@
 (use-package js2-refactor
 	:ensure t)
 
-(use-package rainbow-delimiters
-	:ensure t)
-
 (use-package indium
 	:ensure t)
 

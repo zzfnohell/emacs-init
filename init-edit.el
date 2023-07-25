@@ -6,6 +6,8 @@
 ;;; Code:
 
 ;; coding system
+
+(set-charset-priority 'unicode)
 (define-coding-system-alias 'cp65001 'utf-8)
 (prefer-coding-system 'utf-8)
 
@@ -121,6 +123,7 @@
 ;;
 (use-package undo-tree
   :ensure t
+  :diminish
   :config
   (global-undo-tree-mode 1)
   (setq undo-tree-visualizer-diff t)
@@ -205,6 +208,31 @@
   :ensure t
   :config
   (global-auto-highlight-symbol-mode t))
+
+(use-package centaur-tabs
+  :config
+  (centaur-tabs-mode t)
+  :custom
+  (centaur-tabs-set-icons nil)
+  (centaur-tabs-show-new-tab-button nil)
+  (centaur-tabs-set-close-button nil)
+  (centaur-tabs-enable-ido-completion nil)
+
+  :bind
+  (("s-{" . #'centaur-tabs-backward)
+   ("s-}" . #'centaur-tabs-forward)))
+
+(use-package sudo-edit)
+
+(use-package ace-window
+  :config
+  ;; Show the window designators in the modeline.
+  (ace-window-display-mode)
+
+  :bind* (("C-<" . other-window) ("C-," . ace-window))
+  :custom
+  (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l) "Designate windows by home row keys, not numbers.")
+  (aw-background nil))
 
 (message "loading init-edit done.")
 
