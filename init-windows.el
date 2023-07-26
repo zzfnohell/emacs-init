@@ -4,12 +4,6 @@
 ;; 
 
 ;;; Code:
-
-(use-package winum
-  :ensure t
-  :config
-  (winum-mode))
-
 (use-package speedbar
   :ensure t)
 
