@@ -209,19 +209,6 @@
   :config
   (global-auto-highlight-symbol-mode t))
 
-(use-package centaur-tabs
-  :config
-  (centaur-tabs-mode t)
-  :custom
-  (centaur-tabs-set-icons nil)
-  (centaur-tabs-show-new-tab-button nil)
-  (centaur-tabs-set-close-button nil)
-  (centaur-tabs-enable-ido-completion nil)
-
-  :bind
-  (("s-{" . #'centaur-tabs-backward)
-   ("s-}" . #'centaur-tabs-forward)))
-
 (use-package sudo-edit)
 
 (use-package ace-window
@@ -233,6 +220,11 @@
   :custom
   (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l) "Designate windows by home row keys, not numbers.")
   (aw-background nil))
+
+(use-package iedit
+  :ensure t)
+
+(minibuffer-depth-indicate-mode)
 
 (message "loading init-edit done.")
 

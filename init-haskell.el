@@ -32,6 +32,9 @@
   :config
   (flycheck-add-next-checker 'haskell-dante '(info . haskell-hlint)))
 
+(use-package ormolu
+  :ensure t)
+
 (provide 'init-haskell)
 
 ;;; init-haskell.el ends here

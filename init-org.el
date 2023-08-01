@@ -83,6 +83,7 @@
      (latex . t)
      (lisp . t)
      (lua . t)
+     (maxima . t)
      (ocaml . t)
      (octave . t)
      (plantuml . t)

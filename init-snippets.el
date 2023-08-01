@@ -53,9 +53,12 @@
 	:bind (("C-c w" . aya-create)
 				 ("C-c y" . aya-expand)))
 
+(use-package haskell-snippets
+  :after (haskell yasnippet)
+  :ensure
+  :defer)
 
 
-
-(provide 'init-snippets)
+(providel 'init-snippets)
 
 ;;; init-snippets.el ends here

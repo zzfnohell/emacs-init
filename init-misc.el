@@ -18,11 +18,8 @@
   (add-to-list 'recentf-exclude (concat package-user-dir "/.*-autoloads\\.el\\'"))
   (recentf-mode))
 
-
 (use-package memory-usage
   :ensure t)
-
-(message "loading init-misc/memory-usage done.")
 
 ;;; projectile
 (use-package projectile
@@ -185,6 +182,16 @@
   :bind (("C-/" . #'dabbrev-completion))
   :custom
   (dabbrev-case-replace nil))
+
+(use-package prodigy
+  :bind (("C-c 8" . #'prodigy)
+         :map prodigy-view-mode-map
+         ("$" . #'end-of-buffer))
+  :custom (prodigy-view-truncate-by-default t)
+  :config
+  (let ((srv-file "~/.emacs.d/services.el"))
+    (when (file-exists-p srv-file)
+        (load srv-file 'noerror))))
 
 (message "loading init-misc done.")
 (provide 'init-misc)

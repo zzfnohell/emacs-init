@@ -82,7 +82,16 @@
   (which-key-mode))
 
 (use-package eglot
-  :ensure t)
+  :ensure t
+  :hook ((go-mode . eglot-ensure)
+         (haskell-mode . eglot-ensure)
+         (csharp-mode . eglot-ensure)
+         (rust-mode . eglot-ensure))
+  :bind (:map eglot-mode-map
+              ("C-c a r" . #'eglot-rename)
+              ("C-c C-c" . #'eglot-code-actions))
+  :custom
+  (eglot-autoshutdown t))
 
 (use-package eglot-fsharp
   :requires eglot
@@ -189,6 +198,17 @@
 (use-package treemacs-magit
   :after (treemacs magit)
   :ensure t)
+
+(use-package xref
+  :ensure t
+  :bind (("s-r" . #'xref-find-references)
+         ("s-[" . #'xref-go-back)
+         ("C-<down-mouse-2>" . #'xref-go-back)
+         ("s-]" . #'xref-go-forward)))
+
+(use-package eldoc
+  :bind ("s-d" . #'eldoc)
+  :custom (eldoc-echo-area-prefer-doc-buffer t))
 
 (message "loading init-lsp done.")
 
