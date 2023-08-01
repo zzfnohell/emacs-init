@@ -7,29 +7,20 @@
 
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
-  :mode ("\\.py\\'" . python-mode)
-  :interpreter ("python" . python-mode))
+  :mode
+  ("\\.py\\'" . python-mode)
+  :interpreter
+  ("python" . python-mode)
+  :hook
+  ((python-mode-hook . py-snippets))
+  :custom
+  (python-shell-interpreter "ipython")
+  (python-shell-interpreter-args "--pylab --pdb --nosep --simple-prompt"))
 
 (use-package yapfify
 	:ensure t
   :hook
   ((python-mode-hook . yapf-mode)))
-
-(use-package python-mode
-  :ensure t
-  :hook
-  ((python-mode-hook . py-snippets))
-  :custom
-  (py-shell-name "python")
-  (py-python-command "python")
-  (py-ipython-command "ipython")
-  (py-ipython-command-args '("--pylab" "--pdb" "--nosep" "--simple-prompt"))
-  (py-split-window-on-execute nil)
-  :config
-  (message "config python mode")
-  ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/project")
-  ;; (add-to-list 'python-shell-extra-pythonpaths "/path/to/the/dependency")
-  )
 
 (use-package python-cell
   :after python-mode
