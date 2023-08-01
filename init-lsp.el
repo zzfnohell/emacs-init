@@ -195,6 +195,10 @@
   :hook (dired-mode . treemacs-icons-dired-enable-once)
   :ensure t)
 
+(use-package treemacs-perspective
+  :ensure t
+  :after (treemacs perspective))
+
 (use-package treemacs-magit
   :after (treemacs magit)
   :ensure t)
