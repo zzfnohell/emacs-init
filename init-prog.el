@@ -99,12 +99,29 @@
   ;; (ac-config-default)
   )
 
+;; https://www.emacswiki.org/emacs/CompanyMode
+  ;; From here. Dated 2015, tested 2023. Based on PR accepted into spacemacs
+;; https://stackoverflow.com/a/28510968.
+;; Add yasnippet support for all company backends
+;; https://github.com/syl20bnr/spacemacs/pull/179
+(defvar company-mode/enable-yas t
+  "Enable yasnippet for all backends.")
+
+(defun company-mode/backend-with-yas (backends)
+  (if (or (not company-mode/enable-yas)
+          (and (listp backends) (member 'company-yasnippet backends)))
+	    backends
+    (append (if (consp backends) backends (list backends))
+            '(:with company-yasnippet))))
+
+;; From here. Dated 2015, tested 2023. API use confirmed by author of yasnippet
+;; https://stackoverflow.com/a/28510968
+;; Try yas-expand and on failure to company-completion
 (defun company-yasnippet-or-completion ()
-  "Solve company yasnippet conflicts."
   (interactive)
-  (let ((yas-fallback-behavior
-         (apply 'company-complete-common nil)))
-    (yas-expand)))
+  (let ((yas-fallback-behavior nil))
+    (unless (yas-expand)
+	    (call-interactively #'company-complete-common))))
 
 (use-package company
 	:ensure t
@@ -113,6 +130,7 @@
   (company-show-numbers t)
   :config
   (global-company-mode t)
+  (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
   (setq-default company-idle-delay 0.1
                 company-require-match nil
                 company-tooltip-align-annotations t
