@@ -20,8 +20,8 @@
 (use-package cedet
   :ensure t
   :demand t
-  :hook
-  (prog-mode . #'init-cedet/cedet-prog-mode-hook)
+  :init
+  (add-hook 'prog-mode-hook #'init-cedet/cedet-prog-mode-hook)
   :custom
   (semantic-default-submodes
    '(global-semantic-highlight-func-mode

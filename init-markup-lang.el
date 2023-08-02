@@ -5,20 +5,20 @@
 
 (defun init-markup-lang/append-company-backends ()
   (let ((mode-backends (make-local-variable 'company-backends)))
-    (add-to-list mode-backends 'company-nxml)))
+    (add-to-list mode-backends '(company-nxml :with company-yasnippet))))
 
 (use-package nxml-mode
   :ensure nil
-  :hook
-  ((nxml-mode-hook . init-markup-lang/append-company-backends))
   :mode
-  (("\\.xml\\'" . nxml-mode)
-   ("\\.xsd\\'" . nxml-mode)
-   ("\\.sch\\'" . nxml-mode)
-   ("\\.rng\\'" . nxml-mode)
-   ("\\.xslt\\'" . nxml-mode)
-   ("\\.svg\\'" . nxml-mode)
-   ("\\.rss\\'" . nxml-mode)))
+  ("\\.xml\\'" . nxml-mode)
+  ("\\.xsd\\'" . nxml-mode)
+  ("\\.sch\\'" . nxml-mode)
+  ("\\.rng\\'" . nxml-mode)
+  ("\\.xslt\\'" . nxml-mode)
+  ("\\.svg\\'" . nxml-mode)
+  ("\\.rss\\'" . nxml-mode)
+  :config
+  (add-hook 'nxml-mode-hook #'init-markup-lang/append-company-backends))
 
 (use-package ini-mode
   :ensure t

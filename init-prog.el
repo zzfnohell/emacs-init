@@ -123,15 +123,16 @@
     (unless (yas-expand)
 	    (call-interactively #'company-complete-common))))
 
+(defun init-prog/elisp-mode-hook-func ()
+  (add-to-list
+   (make-local-variable 'company-backends)
+   '(company-elisp :with company-yasnippet)))
+
 (use-package company
 	:ensure t
   :custom
   (company-dabbrev-downcase nil)
   (company-show-numbers t)
-  :hook
-  (elisp-mode . (lambda () (add-to-list
-                            (make-local-variable 'company-backends)
-                            '(company-elisp :with company-yasnippet))))
   :config
   (global-company-mode t)
   (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
@@ -148,7 +149,8 @@
               (substitute-key-definition
                'company-complete-common
                'company-yasnippet-or-completion
-               company-active-map))))
+               company-active-map)))
+  (add-hook 'emacs-lisp-mode-hook #'init-prog/elisp-mode-hook-func))
 
 
 (use-package company-coq
@@ -168,14 +170,17 @@
   :config
   (add-to-list 'company-backends 'company-math-symbols-unicode))
 
+
+(defun init-prog/shell-mode-hook-func ()
+  (let ((backends (make-local-variable 'company-backends)))
+    (add-to-list backends '(company-files :with company-yasnippet))
+    (add-to-list backends '(company-shell :with company-yasnippet)))))
+
 (use-package company-shell
   :after (:all company)
   :ensure t
-  :hook
-  (shell-mode . (lambda ()
-                  (let ((backends (make-local-variable 'company-backends)))
-                    (add-to-list backends '(company-files :with company-yasnippet)
-                    (add-to-list backends '(company-shell :with company-yasnippet))))))
+  :config
+  (add-hook 'shell-mode-hook #'init-prog/shell-mode-hook-func))
 
 (use-package company-dict
   :ensure t)
@@ -183,11 +188,15 @@
 (use-package company-restclient
   :ensure t)
 
+
+(defun init-prog/flow-mode-hook-func ()
+(add-to-list (make-local-variable 'company-backends) '(company-flow :with company-yasnippet)))
+
 (use-package company-flow
 	:ensure t
-  :hook
-  (flow-mode-hook . (lambda ()
- 	                    (add-to-list 'company-backends 'company-flow))))
+  :config
+  (add-hook 'flow-mode-hook #'init-prog/flow-mode-hook-func))
+
 
 (use-package company-ctags
 	:ensure t

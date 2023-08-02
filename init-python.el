@@ -11,21 +11,21 @@
   ("\\.py\\'" . python-mode)
   :interpreter
   ("python" . python-mode)
-  :hook
-  ((python-mode-hook . py-snippets))
   :custom
   (python-shell-interpreter "ipython")
-  (python-shell-interpreter-args "--pylab --pdb --nosep --simple-prompt"))
+  (python-shell-interpreter-args "--pylab --pdb --nosep --simple-prompt")
+  :config
+  (add-hook 'python-mode-hook #'py-snippets)
 
 (use-package yapfify
 	:ensure t
   :hook
-  ((python-mode-hook . yapf-mode)))
+  (python-mode . yapf-mode))
 
 (use-package python-cell
   :after python-mode
   :ensure t
-  :init
+  :config
   (add-hook 'python-mode-hook #'python-cell-mode 1))
 
 (use-package highlight-indentation
@@ -40,14 +40,14 @@
   (pyvenv-mode 1)
   (pyvenv-tracking-mode 1))
 
+(use-package flycheck-cython
+	:ensure t)
 
 (use-package cython-mode
 	:ensure t
-  :hook
-  ((cython-mode-hook . flycheck-cython)))
+  :config
+  (add-hook 'cython-mode-hook cython-mode #'flycheck-cython))
 
-(use-package flycheck-cython
-	:ensure t)
 
 (use-package pyenv-mode
 	:ensure t

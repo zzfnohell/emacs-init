@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(defun init-web/web-mode/custom-web-mode-hook ()
+(defun init-web/custom-web-mode-hook-func ()
   "Hooks for Web mode."
   ;; Indentation
   (setq web-mode-markup-indent-offset 2)
@@ -51,14 +51,18 @@
   ;; company-web
   (define-key web-mode-map (kbd "C-'") 'company-web-html))
 
-(use-package company-web
-  :after (:all company)
-  :hook
-  (web-mode . (lambda ()
-                (let ((backends (make-local-variable 'company-backends)))
+
+(defun init-web/web-mode-hook-func ()
+  (let ((backends (make-local-variable 'company-backends)))
                   (add-to-list backends '(company-web-html :with company-yasnippet))
-                  (add-to-list backends '(company-files :with company-yasnippet)))))
-  :ensure t)
+                  (add-to-list backends '(company-files :with company-yasnippet))))
+
+(use-package company-web
+  :ensure t
+  :after (:all company)
+  :config
+  (add-hook 'web-mode-hook #'init-web/web-mode-hook-func))
+
 
 (use-package emmet-mode
   :ensure t
@@ -79,7 +83,7 @@
          ("\\.html?\\'" . web-mode)
          ("\\.cshtml?\\'" . web-mode))
   :config
-  (add-hook 'web-mode-hook #'init-web/web-mode/custom-web-mode-hook)
+  (add-hook 'web-mode-hook #'init-web/custom-web-mode-hook-func)
   (setq web-mode-engines-alist
         '(("php"    . "\\.phtml\\'")
           ("blade"  . "\\.blade\\."))))
@@ -119,9 +123,8 @@
 ;;; Use eldoc for syntax hints
 (use-package css-eldoc
   :ensure t
-  :hook
-  (css-mode-hook . turn-on-css-eldoc)
   :config
+  (add-hook 'css-mode-hook #'turn-on-css-eldoc)
   (autoload 'turn-on-css-eldoc "css-eldoc"))
 
 (use-package react-snippets
@@ -130,8 +133,8 @@
 (use-package rjsx-mode
   :ensure t
   :mode ("\\.jsx$" . rjsx-mode)
-  :hook
-  (rjsx-mode-hook . react-snippets))
+  :config
+  (add-hook 'rjsx-mode-hook  #'react-snippets))
 
 (use-package pug-mode
   :ensure t

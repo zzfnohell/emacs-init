@@ -6,7 +6,8 @@
 ;;; Code:
 
 (use-package flycheck
-  :hook ((after-init-hook . global-flycheck-mode))
+  :hook
+  (after-init . global-flycheck-mode)
   :config
 	(message "init-flycheck/config flycheck."))
 
@@ -19,19 +20,22 @@
 
 (use-package flycheck-gometalinter
   :ensure t
-  :hook ((go-mode-hook . flycheck-gometalinter))
+  :hook
+  (go-mode . flycheck-gometalinter)
   :config
   (flycheck-gometalinter-setup))
 
 (use-package flycheck-clang-analyzer
   :ensure t
-  :hook ((c-mode-common-hook . flycheck-clang-analyzer))
+  :hook
+  (c-mode-common . flycheck-clang-analyzer)
   :config
   (flycheck-clang-analyzer-setup))
 
 (use-package flycheck-plantuml
   :config
-  :hook ((plantuml-mode-hook . flycheck-plantuml))
+  :hook
+  (plantuml-mode . flycheck-plantuml)
   :config
 	(flycheck-plantuml-setup))
 

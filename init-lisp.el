@@ -70,41 +70,38 @@
 ;; ----------------------------------------------------------------------------
 ;; Enable desired features for all lisp modes
 ;; ----------------------------------------------------------------------------
+(defun init-lisp/lisp-setup ()
+  "Enable features useful in any Lisp mode."
+  (rainbow-delimiters-mode t)
+  (enable-paredit-mode)
+  (turn-on-eldoc-mode)
+  (redshank-mode))
+
+(defun init-lisp/emacs-lisp-setup ()
+  "Enable features useful when working with elisp."
+  (set-up-hippie-expand-for-elisp)
+  ;; (ac-emacs-lisp-mode-setup)
+  )
+
+(defconst init-lisp/elispy-modes
+  '(emacs-lisp-mode ielm-mode)
+  "Major modes relating to elisp.")
+
+(defconst init-lisp/lispy-modes
+  (append init-lisp/elispy-modes
+          '(lisp-mode inferior-lisp-mode lisp-interaction-mode))
+  "All lispy major modes.")
 
 (use-package redshank
   :ensure t
   :after (:all diminish)
   :config
-  (progn
-    (defun init-lisp/lisp-setup ()
-      "Enable features useful in any Lisp mode."
-      (rainbow-delimiters-mode t)
-      (enable-paredit-mode)
-      (turn-on-eldoc-mode)
-      (redshank-mode))
-
-    (defun init-lisp/emacs-lisp-setup ()
-      "Enable features useful when working with elisp."
-      (set-up-hippie-expand-for-elisp)
-      ;; (ac-emacs-lisp-mode-setup)
-      )
-
-    (defconst init-lisp/elispy-modes
-      '(emacs-lisp-mode ielm-mode)
-      "Major modes relating to elisp.")
-
-    (defconst init-lisp/lispy-modes
-      (append init-lisp/elispy-modes
-              '(lisp-mode inferior-lisp-mode lisp-interaction-mode))
-      "All lispy major modes.")
-
-    (diminish 'redshank-mode)
-
-    (dolist (hook (mapcar #'derived-mode-hook-name init-lisp/lispy-modes))
-      (add-hook hook 'init-lisp/lisp-setup))
-
-    (dolist (hook (mapcar #'derived-mode-hook-name init-lisp/elispy-modes))
-      (add-hook hook 'init-lisp/emacs-lisp-setup))))
+  (diminish 'redshank-mode)
+  (dolist (hook (mapcar #'derived-mode-hook-name init-lisp/lispy-modes))
+    (add-hook hook #'init-lisp/lisp-setup))
+  
+  (dolist (hook (mapcar #'derived-mode-hook-name init-lisp/elispy-modes))
+    (add-hook hook #'init-lisp/emacs-lisp-setup)))
 
 (use-package eldoc-eval
   :ensure t)
@@ -144,7 +141,9 @@
 
 (use-package aggressive-indent
   :ensure t
-  :hook emacs-lisp)
+  :config
+  (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+  (add-hook 'css-mode-hook #'aggressive-indent-mode))
 
 (message "loading init-lisp done.")
 

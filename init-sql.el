@@ -2,20 +2,18 @@
 ;;; Commentary:
 ;;
 ;;; Code:
-
-(use-package sql
-  :ensure t
-  :hook
-  ((sql . sql-indent))
-  :config
-  (when (eq system-type 'windows-nt)
-    (setq sql-mysql-options '("-C" "-t" "-f" "-n"))))
-
 (use-package sql-indent
   :ensure t
   :config
   (eval-after-load "sql"
     '(load-library "sql-indent")))
+
+(use-package sql
+  :ensure t
+  :config
+  (add-hook 'sql-mode-hook #'sql-indent)
+  (when (eq system-type 'windows-nt)
+    (setq sql-mysql-options '("-C" "-t" "-f" "-n"))))
 
 (message "loading init-sql done.")
 

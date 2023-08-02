@@ -22,7 +22,8 @@
 
 (use-package stan-mode
   :ensure t
-  :hook ((stan-mode-hook . stan-snippets)))
+  :hook
+  (stan-mode . stan-snippets))
 
 (use-package stan-snippets
   :ensure t)
@@ -38,7 +39,8 @@
   :ensure t
   :requires vterm
   :when (eq system-type 'gnu/linux)
-  :hook (julia-mode . julia-snail-mode))
+  :hook
+  (julia-mode . julia-snail-mode))
 
 (use-package julia-repl
   :ensure t

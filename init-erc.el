@@ -33,8 +33,8 @@
 
 (use-package erc
   :ensure nil
-  :hook
-  ((erc-mode-hook . init-erc/erc-mode-hook-func)))
+  :config
+  (add-hook 'erc-mode-hook #'init-erc/erc-mode-hook-func))
 
 (use-package telega
   :ensure t

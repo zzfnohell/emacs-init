@@ -12,8 +12,8 @@
 
 (use-package flycheck-rust
   :ensure t
-  :hook
-  ((flycheck-mode-hook . flycheck-rust-setup)))
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 (use-package toml-mode
   :ensure t)

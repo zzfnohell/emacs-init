@@ -19,41 +19,42 @@
   ;;preprocessors
   (setq abbrev-mode t))
 
-(use-package cc-mode
-  :hook
-  (c-mode-common . init-cc-mode/c-mode-edit-hook)
-  :config
-  (c-set-offset 'inline-open 0)
-  (c-set-offset 'friend '-)
-  (c-set-offset 'substatement-open 0)
-  (setq c-default-style
-        '(('c-mode . "bsd")
-          ('c++-mode . "bsd")
-          ('java-mode . "java")
-          ('awk-mode . "awk")
-          (other . "linux"))))
+(require 'cc-mode)
+(add-hook 'c-mode-common-hook #'init-cc-mode/c-mode-edit-hook)
+(c-set-offset 'inline-open 0)
+(c-set-offset 'friend '-)
+(c-set-offset 'substatement-open 0)
+(setq c-default-style
+      '(('c-mode . "bsd")
+        ('c++-mode . "bsd")
+        ('java-mode . "java")
+        ('awk-mode . "awk")
+        (other . "linux")))
 
 (use-package company-c-headers
   :after company
-  :hook
-  (c-mode . #'init-cc-mode/company-c-headers-setup)
-  (c++mode . #'init-cc-mode/company-c-headers-setup)
   :config
+  (add-hook 'c-mode-hook #'init-cc-mode/company-c-headers-setup)
+  (add-hook 'c++mode-hook #'init-cc-mode/company-c-headers-setup)
+
 	(let ((el-file
          (expand-file-name "custom-company-c-headers.el"
                            user-emacs-directory)))
 		(when (file-exists-p el-file)
       (load el-file))))
 
+
+(defun init-cc-mode/cmake-mode-hook-func ()
+  (let ((backends (make-local-variable 'company-backends)))
+    (add-to-list backends '(company-cmake :with company-yasnippet))))
+
 (use-package cmake-mode
   :ensure t
 	:mode
   (("CMakeLists\\.txt\\'" . cmake-mode)
 	 ("\\.cmake\\'" . cmake-mode))
-  :hook
-  (cmake-mode-hook . (lambda ()
-                        (let ((backends (make-local-variable 'company-backends)))
-                          (add-to-list backends '(company-cmake :with company-yasnippet))))))
+  :config
+  (add-hook 'cmake-mode-hook #'init-cc-mode/cmake-mode-hook-func)
 
 (use-package opencl-mode
   :ensure t
@@ -76,7 +77,7 @@
   :ensure t
   :if (featurep 'rtags)
   :after rtags
-  :init
+  :config
   (add-hook 'c-mode-common-hook #'rtags-xref-enable))
 
 (use-package cmake-ide
@@ -87,9 +88,6 @@
 	(require 'rtags)
   (cmake-ide-setup))
 
-(use-package company-glsl
-  :ensure t
-  :requires company)
 
 (defun init-cc-mode/glsl-mode-hook-func ()
   "Hook glsl mode."
@@ -104,10 +102,13 @@
    ("\\.frag\\'" . glsl-mode)
    ("\\.geom\\'" . glsl-mode)
    ("\\.fx\\'" . hlsl-mode)
-   ("\\.hlsl\\'" . hlsl-mode))
-  :hook
-  ((glsl-mode-hook . init-cc-mode/glsl-mode-hook-func)
-   (glsl-mode-hook . company-glsl)))
+   ("\\.hlsl\\'" . hlsl-mode)))
+
+(use-package company-glsl
+  :ensure t
+  :requires (glsl-mode company)
+  :config
+  (add-hook 'glsl-mode-hook #'init-cc-mode/glsl-mode-hook-func))
 
 (use-package call-graph
 	:ensure t)
