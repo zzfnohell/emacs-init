@@ -174,13 +174,13 @@
 (defun init-prog/shell-mode-hook-func ()
   (let ((backends (make-local-variable 'company-backends)))
     (add-to-list backends '(company-files :with company-yasnippet))
-    (add-to-list backends '(company-shell :with company-yasnippet)))))
+    (add-to-list backends '(company-shell :with company-yasnippet))))
 
 (use-package company-shell
   :after (:all company)
   :ensure t
-  :config
-  (add-hook 'shell-mode-hook #'init-prog/shell-mode-hook-func))
+  :hook
+  (shell-mode . init-prog/shell-mode-hook-func))
 
 (use-package company-dict
   :ensure t)
