@@ -59,6 +59,6 @@
   :defer)
 
 
-(providel 'init-snippets)
+(provide 'init-snippets)
 
 ;;; init-snippets.el ends here
