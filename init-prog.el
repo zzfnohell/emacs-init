@@ -12,11 +12,14 @@
 
 (use-package rainbow-delimiters
 	:ensure t
-	:config
-	(add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+	:hook
+	(prog-mode . rainbow-delimiters-mode))
 
 (use-package hideshow
   :ensure t
+  :hook
+  (prog-mode . hs-minor-mode)
+  (nxml-mode . hs-minor-mode)
   :config
 	;; Fix XML folding
 	(add-to-list 'hs-special-modes-alist
@@ -37,9 +40,7 @@
 											 "-->\\|</[^/>]*[^/]>"
 											 "<!--"
 											 'sgml-skip-tag-forward
-											 nil)))
-	(add-hook 'nxml-mode-hook 'hs-minor-mode)
-  (add-hook 'prog-mode-hook 'hs-minor-mode))
+											 nil))))
 
 (require 'compile)
 (setq compilation-disable-input nil)
@@ -71,10 +72,12 @@
 
 (require 'display-fill-column-indicator)
 (setq display-fill-column-indicator-column 120)
-(defun init-ui/enable-display-fill-column ()
+
+(defun init-prog/enable-display-fill-column ()
+  (message "display fill column indicator")
 	(display-fill-column-indicator-mode))
 
-(add-hook 'prog-mode-hook #'init-ui/enable-display-fill-column)
+(add-hook 'prog-mode-hook #'init-prog/enable-display-fill-column)
 
 (use-package bison-mode
   :ensure t
@@ -133,6 +136,8 @@
   :custom
   (company-dabbrev-downcase nil)
   (company-show-numbers t)
+  :hook
+  (emacs-lisp-mode . init-prog/elisp-mode-hook-func)
   :config
   (global-company-mode t)
   (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
@@ -149,8 +154,7 @@
               (substitute-key-definition
                'company-complete-common
                'company-yasnippet-or-completion
-               company-active-map)))
-  (add-hook 'emacs-lisp-mode-hook #'init-prog/elisp-mode-hook-func))
+               company-active-map))))
 
 
 (use-package company-coq
@@ -194,9 +198,8 @@
 
 (use-package company-flow
 	:ensure t
-  :config
-  (add-hook 'flow-mode-hook #'init-prog/flow-mode-hook-func))
-
+  :hook
+  (flow-mode . init-prog/flow-mode-hook-func))
 
 (use-package company-ctags
 	:ensure t
@@ -205,9 +208,16 @@
 	(with-eval-after-load 'company
 		(company-ctags-auto-setup)))
 
+(defun init-prog/company-maxima-hook-func ()
+    (let ((backends (make-local-variable 'company-backends)))
+    (add-to-list backends '(company-maxima-libraries :with company-yasnippet))
+    (add-to-list backends '(company-maxima-symbols :with company-yasnippet))))
+
 (use-package company-maxima
 	:ensure t
-	:after (:all maxima))
+	:after (:all maxima)
+  :hook
+  (maxima-mode . init-prog/company-maxima-hook-func))
 
 (require 'codeium)
 (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
