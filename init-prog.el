@@ -128,6 +128,10 @@
   :custom
   (company-dabbrev-downcase nil)
   (company-show-numbers t)
+  :hook
+  (elisp-mode . (lambda () (add-to-list
+                            (make-local-variable 'company-backends)
+                            '(company-elisp :with company-yasnippet))))
   :config
   (global-company-mode t)
   (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
@@ -167,8 +171,11 @@
 (use-package company-shell
   :after (:all company)
   :ensure t
-  :config
-  (add-to-list 'company-backends 'company-shell))
+  :hook
+  (shell-mode . (lambda ()
+                  (let ((backends (make-local-variable 'company-backends)))
+                    (add-to-list backends '(company-files :with company-yasnippet)
+                    (add-to-list backends '(company-shell :with company-yasnippet))))))
 
 (use-package company-dict
   :ensure t)

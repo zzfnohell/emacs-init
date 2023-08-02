@@ -7,63 +7,8 @@
 ;;; Code:
 (defun init-cc-mode/company-c-headers-setup ()
   (let ((mode-backends (make-local-variable 'company-backends)))
-    (add-to-list mode-backends 'company-c-headers)
-    (add-to-list mode-backends '(company-dabbrev-code company-yasnippet))))
-
-(defun init-cc-mode/company-semantic-setup ()
-	(delete 'company-irony company-backends)
-	(push '(company-semantic :with company-yasnippet) company-backends))
-
-(defun init-cc-mode/company-rtags-setup ()
-		 (delete 'compnay-semantic company-backends)
-		 (setq rtags-completions-enabled t)
-		 (push '(company-tags :with company-yasnippet) company-backends))
-
-(defun init-cc-mode/cedet-enable ()
-	(remove-hook 'c++-mode-hook 'init-cc-mode/company-rtags-setup)
-	(remove-hook 'c-mode-hook 'init-cc-mode/company-rtags-setup)
-
- 	(add-hook 'c++-mode-hook 'init-cc-mode/company-c-headers-setup)
-	(add-hook 'c++-mode-hook 'init-cc-mode/company-semantic-setup)
-
-	(add-hook 'c-mode-hook 'init-cc-mode/company-c-headers-setup)
-	(add-hook 'c-mode-hook 'init-cc-mode/company-semantic-setup))
-
-
-(defun init-cc-mode/irony-enable ()
-	"Start irony mode"
-	(interactive)
-	(remove-hook 'c++-mode-hook 'init-cc-mode/company-c-headers-setup)
-	(remove-hook 'c++-mode-hook 'init-cc-mode/company-semantic-setup)
-
-	(remove-hook 'c-mode-hook 'init-cc-mode/company-c-headers-setup)
-	(remove-hook 'c-mode-hook 'init-cc-mode/company-semantic-setup)
-
-	(rtags-start-process-unless-running)
-	(add-hook 'c-mode-hook 'init-cc-mode/company-rtags-setup)
-	(add-hook 'c++-mode-hook #'init-cc-mode/company-rtags-setup))
-
-
-(use-package cc-mode
-  :hook ((c-mode-common-hook . init-cc-mode/c-mode-edit-hook))
-  :config
-  (c-set-offset 'inline-open 0)
-  (c-set-offset 'friend '-)
-  (c-set-offset 'substatement-open 0)
-  (init-cc-mode/cedet-enable)
-  (setq c-default-style
-      '(('c-mode . "bsd")
-        ('c++-mode . "bsd")
-        ('java-mode . "java")
-        ('awk-mode . "awk")
-        (other . "linux"))))
-
-;;indent strategy
-(defun init-cc-mode/cpp-indent-or-complete ()
-  (interactive)
-  (if (looking-at "\\>")
-      (hippie-expand nil)
-    (indent-for-tab-command)))
+    (add-to-list mode-backends '(company-c-headers :with company-yasnippet))
+    (add-to-list mode-backends '(company-dabbrev-code :with company-yasnippet))))
 
 (defun init-cc-mode/c-mode-edit-hook()
   (doxygen-mode t)
@@ -74,8 +19,25 @@
   ;;preprocessors
   (setq abbrev-mode t))
 
+(use-package cc-mode
+  :hook
+  (c-mode-common . init-cc-mode/c-mode-edit-hook)
+  :config
+  (c-set-offset 'inline-open 0)
+  (c-set-offset 'friend '-)
+  (c-set-offset 'substatement-open 0)
+  (setq c-default-style
+        '(('c-mode . "bsd")
+          ('c++-mode . "bsd")
+          ('java-mode . "java")
+          ('awk-mode . "awk")
+          (other . "linux"))))
+
 (use-package company-c-headers
   :after company
+  :hook
+  (c-mode . #'init-cc-mode/company-c-headers-setup)
+  (c++mode . #'init-cc-mode/company-c-headers-setup)
   :config
 	(let ((el-file
          (expand-file-name "custom-company-c-headers.el"
@@ -83,17 +45,15 @@
 		(when (file-exists-p el-file)
       (load el-file))))
 
-
-(defun init-cc-mode/company-cmake-setup ()
-	(add-to-list 'company-backends 'company-cmake))
-
 (use-package cmake-mode
   :ensure t
 	:mode
   (("CMakeLists\\.txt\\'" . cmake-mode)
 	 ("\\.cmake\\'" . cmake-mode))
   :hook
-  ((cmake-mode-hook . init-cc-mode/company-cmake-setup)))
+  (cmake-mode-hook . (lambda ()
+                        (let ((backends (make-local-variable 'company-backends)))
+                          (add-to-list backends '(company-cmake :with company-yasnippet))))))
 
 (use-package opencl-mode
   :ensure t
@@ -134,7 +94,7 @@
 (defun init-cc-mode/glsl-mode-hook-func ()
   "Hook glsl mode."
   (when (executable-find "glslangValidator")
-    (add-to-list 'company-backends 'company-glsl)))
+    (add-to-list (make-local-variable 'company-backends) 'company-glsl)))
 
 (use-package glsl-mode
   :ensure t

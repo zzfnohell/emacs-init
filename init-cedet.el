@@ -12,9 +12,16 @@
 ;;     (load-file (concat cedet-root-path "cedet-devel-load.el"))
 ;; 	(load-file (concat cedet-root-path "contrib/cedet-contrib-load.el")))
 
+(defun init-cedet/cedet-prog-mode-hook ()
+  (let ((backends (make-local-variable 'company-backends)))
+    (delete 'company-irony backends)
+    (add-to-list backends '(company-semantic :with company-yasnippet))))
+
 (use-package cedet
   :ensure t
   :demand t
+  :hook
+  (prog-mode . #'init-cedet/cedet-prog-mode-hook)
   :custom
   (semantic-default-submodes
    '(global-semantic-highlight-func-mode

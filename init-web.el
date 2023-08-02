@@ -49,11 +49,15 @@
                    (setq emmet-use-css-transform nil)))))
 
   ;; company-web
-  (define-key web-mode-map (kbd "C-'") 'company-web-html)
-  (set (make-local-variable 'company-backends)
-       '(company-web-html company-files)))
+  (define-key web-mode-map (kbd "C-'") 'company-web-html))
 
 (use-package company-web
+  :after (:all company)
+  :hook
+  (web-mode . (lambda ()
+                (let ((backends (make-local-variable 'company-backends)))
+                  (add-to-list backends '(company-web-html :with company-yasnippet))
+                  (add-to-list backends '(company-files :with company-yasnippet)))))
   :ensure t)
 
 (use-package emmet-mode
