@@ -5,13 +5,17 @@
 
 ;;; Code:
 
+(defun init-tags/enable-ggtags ()
+  "Enable ggtags in cc derived modes."
+  (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'csharp-mode)
+    (ggtags-mode 1)))
+
 (use-package ggtags
   :ensure t
-  :init
-  (add-hook 'c-mode-common-hook
-            (lambda ()
-              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-                (ggtags-mode 1)))))
+  :custom
+  (ggtags-use-idutils t)
+  :hook
+  (c-mode-common . init-tags/enable-ggtags))
 
 (use-package citre
   :ensure t
