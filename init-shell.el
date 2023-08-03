@@ -26,13 +26,23 @@
              (require 'fish-completion nil t))
     (global-fish-completion-mode)))
 
+(defun init-prog/add-shell-company-backends ()
+  "Add shell company backends."
+  (let ((backends (make-local-variable 'company-backends)))
+    (add-to-list backends 'company-files)
+    (add-to-list backends 'company-shell)))
 
-;; (defun clear-shell ()
-;;   (interactive)
-;;   (let ((old-max comint-buffer-maximum-size))
-;;     (setq comint-buffer-maximum-size 0)
-;;     (comint-truncate-buffer)
-;;     (setq comint-buffer-maximum-size old-max))) 
+
+(use-package company-shell
+  :after (:all company)
+  :require company
+  :ensure t
+  :hook
+  (shell-mode . init-prog/add-shell-company-backends)
+  (sh-mode . init-prog/add-shell-company-backends)
+  (fish-mode . init-prog/add-shell-company-backends)
+  (eshell-mode . init-prog/add-shell-company-backends))
+
 
 (use-package multi-term
 	:ensure t
@@ -42,20 +52,8 @@
 ;;; XTERM
 (xterm-mouse-mode 1)
 
-; ;;; https://www.reddit.com/r/emacs/comments/oh36yi/company_and_companyshell_super_slow_over_tramp/
-; (defun shell-mode-hook-setup ()
-;   "Set up `shell-mode'."
-
-;   (setq-local company-backends '((company-files company-native-complete)))
-;   ;; `company-native-complete' is better than `completion-at-point'
-;   (local-set-key (kbd "TAB") 'company-complete)
-
-;   ;; @see https://github.com/redguardtoo/emacs.d/issues/882
-;   (setq-local company-idle-delay 1))
-
-; (add-hook 'shell-mode-hook 'shell-mode-hook-setup)
-
 (message "loading init-shell done.")
+
 (provide 'init-shell)
 
 ;;; init-shell.el ends here

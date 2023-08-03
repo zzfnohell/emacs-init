@@ -174,18 +174,6 @@
   :config
   (add-to-list 'company-backends 'company-math-symbols-unicode))
 
-
-(defun init-prog/shell-mode-hook-func ()
-  (let ((backends (make-local-variable 'company-backends)))
-    (add-to-list backends '(company-files :with company-yasnippet))
-    (add-to-list backends '(company-shell :with company-yasnippet))))
-
-(use-package company-shell
-  :after (:all company)
-  :ensure t
-  :hook
-  (shell-mode . init-prog/shell-mode-hook-func))
-
 (use-package company-dict
   :ensure t)
 
