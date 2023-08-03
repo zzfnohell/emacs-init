@@ -80,6 +80,7 @@
 (defun init-lisp/emacs-lisp-setup ()
   "Enable features useful when working with elisp."
   (set-up-hippie-expand-for-elisp)
+  (enable-paredit-mode)
   ;; (ac-emacs-lisp-mode-setup)
   )
 
