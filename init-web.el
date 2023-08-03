@@ -4,6 +4,11 @@
 ;;
 
 ;;; Code:
+(use-package mmm-mode
+  :ensure t
+  :config
+  (require 'mmm-auto)
+  (setq mmm-global-mode 'buffers-with-submode-classes))
 
 (defun init-web/custom-web-mode-hook-func ()
   "Hooks for Web mode."

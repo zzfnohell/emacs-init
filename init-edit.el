@@ -224,8 +224,11 @@
 (use-package iedit
   :ensure t)
 
-
 (minibuffer-depth-indicate-mode)
+
+(electric-pair-mode 1)
+(show-paren-mode 1)
+(global-highlight-parentheses-mode t)
 
 (message "loading init-edit done.")
 

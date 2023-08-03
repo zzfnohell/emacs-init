@@ -14,8 +14,8 @@
   :custom
   (python-shell-interpreter "ipython")
   (python-shell-interpreter-args "--pylab --pdb --nosep --simple-prompt")
-  :config
-  (add-hook 'python-mode-hook #'py-snippets)
+  :hook
+  (python-mode . py-snippets))
 
 (use-package yapfify
 	:ensure t
@@ -55,8 +55,7 @@
 	(pyenv-mode))
 
 (use-package jupyter
-	:ensure t
-  )
+	:ensure t)
 
 (use-package elpy
   :ensure t

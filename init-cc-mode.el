@@ -53,8 +53,8 @@
 	:mode
   (("CMakeLists\\.txt\\'" . cmake-mode)
 	 ("\\.cmake\\'" . cmake-mode))
-  :config
-  (add-hook 'cmake-mode-hook #'init-cc-mode/cmake-mode-hook-func)
+  :hook
+  (cmake-mode . init-cc-mode/cmake-mode-hook-func))
 
 (use-package opencl-mode
   :ensure t

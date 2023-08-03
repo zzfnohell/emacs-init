@@ -5,12 +5,27 @@
 ;;
 
 ;;; Code:
+(defconst init-lisp/elispy-modes
+  '(emacs-lisp-mode ielm-mode)
+  "Major modes relating to elisp.")
+
+(defconst init-lisp/lispy-modes
+  (append init-lisp/elispy-modes
+          '(lisp-mode inferior-lisp-mode lisp-interaction-mode))
+  "All lispy major modes.")
+
 
 (use-package ansi
   :ensure t)
 
 (use-package paredit
-  :ensure t)
+  :ensure t
+  :hook
+  (lisp-mode . enable-paredit-mode)
+  (inferior-lisp-mode . enable-paredit-mode)
+  (lisp-interaction-mode . enable-paredit-mode)
+  (emacs-lisp-mode . enable-paredit-mode)
+  (ielm-mode .enable-paredit-mode))
 
 (use-package lispy
   :ensure t)
@@ -72,37 +87,28 @@
 ;; ----------------------------------------------------------------------------
 (defun init-lisp/lisp-setup ()
   "Enable features useful in any Lisp mode."
-  (rainbow-delimiters-mode t)
-  (enable-paredit-mode)
   (turn-on-eldoc-mode)
   (redshank-mode))
 
 (defun init-lisp/emacs-lisp-setup ()
   "Enable features useful when working with elisp."
   (set-up-hippie-expand-for-elisp)
-  (enable-paredit-mode)
+  (turn-on-eldoc-mode)
   ;; (ac-emacs-lisp-mode-setup)
   )
 
-(defconst init-lisp/elispy-modes
-  '(emacs-lisp-mode ielm-mode)
-  "Major modes relating to elisp.")
-
-(defconst init-lisp/lispy-modes
-  (append init-lisp/elispy-modes
-          '(lisp-mode inferior-lisp-mode lisp-interaction-mode))
-  "All lispy major modes.")
 
 (use-package redshank
   :ensure t
   :after (:all diminish)
+  :hook
+  (lisp-mode . init-lisp/lisp-setup)
+  (inferior-lisp-mode . init-lisp/lisp-setup)
+  (lisp-interaction-mode . init-lisp/lisp-setup)
+  (emacs-lisp-mode . init-lisp/emacs-lisp-setup)
+  (ielm-mode . init-lisp/emacs-lisp-setup)
   :config
-  (diminish 'redshank-mode)
-  (dolist (hook (mapcar #'derived-mode-hook-name init-lisp/lispy-modes))
-    (add-hook hook #'init-lisp/lisp-setup))
-  
-  (dolist (hook (mapcar #'derived-mode-hook-name init-lisp/elispy-modes))
-    (add-hook hook #'init-lisp/emacs-lisp-setup)))
+  (diminish 'redshank-mode))
 
 (use-package eldoc-eval
   :ensure t)
