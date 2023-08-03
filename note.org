@@ -177,3 +177,36 @@ PATH: ~/.emacs.d/custom-company-c-headers.el
   '(imaxima-equation-color "black")
   '(imaxima-fg-color "black")
 #+end_src
+
+
+*  Dir Local Variables
+ ** cc-mode (.dir-locals.el)
+ #+NAME: cc-mode-local-variables
+ #+begin_src emacs-lisp :file 
+   ((nil . ((buffer-read-only . nil)))
+    ;; You should execute gtags(1) at each directory in the
+    ;; `GTAGSLIBPATH'.  If `GTAGS' is not found there, global ignores
+    ;; such directories.
+    (setenv "GTAGSLIBPATH" "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22000.0\\um")
+
+    (c++-mode . ((c-basic-offset . 4)
+                 (tab-width . 4)
+                 (indent-tabs-mode . t)
+                 (compile-command . "build.bat")
+                 (cd-compile-directory . "C:\\Users\\sonictk\\Git\\experiments\\dx11tutorial")
+                 (cc-search-directories . ("C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\shared"
+                                           "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\ucrt"
+                                           "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um"
+                                           "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\winrt"))))
+
+    (c-mode . ((c-basic-offset . 4)
+               (tab-width . 4)
+               (indent-tabs-mode . t)
+               (compile-command . "build.bat")
+               (cd-compile-directory . "C:\\Users\\sonictk\\Git\\experiments\\dx11tutorial")
+               (cc-search-directories . ("C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\shared"
+                                         "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\ucrt"
+                                         "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um"
+                                         "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\winrt")))))
+
+ #+end_src
