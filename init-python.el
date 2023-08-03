@@ -25,8 +25,8 @@
 (use-package python-cell
   :after python-mode
   :ensure t
-  :config
-  (add-hook 'python-mode-hook #'python-cell-mode 1))
+  :hook
+  (python-mode . python-cell-mode))
 
 (use-package highlight-indentation
 	:ensure t
@@ -40,14 +40,8 @@
   (pyvenv-mode 1)
   (pyvenv-tracking-mode 1))
 
-(use-package flycheck-cython
-	:ensure t)
-
 (use-package cython-mode
-	:ensure t
-  :hook
-  (cython-mode . flycheck-cython))
-
+	:ensure t)
 
 (use-package pyenv-mode
 	:ensure t

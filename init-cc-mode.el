@@ -11,13 +11,8 @@
     (add-to-list mode-backends '(company-dabbrev-code :with company-yasnippet))))
 
 (defun init-cc-mode/c-mode-edit-hook()
-  (doxygen-mode t)
   (subword-mode t)
-  ;; hungry-delete and auto-newline
-  (c-toggle-auto-hungry-state 1)
-  (define-key c-mode-base-map [(tab)] 'init-cc-mode/cpp-indent-or-complete)
-  ;;preprocessors
-  (setq abbrev-mode t))
+  (abbrev-mode t))
 
 (require 'cc-mode)
 (add-hook 'c-mode-common-hook #'init-cc-mode/c-mode-edit-hook)
