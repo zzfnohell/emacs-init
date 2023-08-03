@@ -45,8 +45,8 @@
 
 (use-package cython-mode
 	:ensure t
-  :config
-  (add-hook 'cython-mode-hook cython-mode #'flycheck-cython))
+  :hook
+  (cython-mode . flycheck-cython))
 
 
 (use-package pyenv-mode
