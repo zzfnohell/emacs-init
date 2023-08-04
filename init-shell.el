@@ -35,7 +35,6 @@
 
 (use-package company-shell
   :after (:all company)
-  :require company
   :ensure t
   :hook
   (shell-mode . init-prog/add-shell-company-backends)
