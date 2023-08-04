@@ -183,32 +183,38 @@ PATH: ~/.emacs.d/custom-company-c-headers.el
  ** cc-mode (.dir-locals.el)
  #+NAME: cc-mode-local-variables
  #+begin_src emacs-lisp :file 
-     ((nil . ((buffer-read-only . nil)))
-      ;; You should execute gtags(1) at each directory in the
-      ;; `GTAGSLIBPATH'.  If `GTAGS' is not found there, global ignores
-      ;; such directories.
-      (setenv "GTAGSLIBPATH" "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22000.0\\um")
-      (setenv "GTAGSROOT" "C:\\nufront\\gerrit\\linphone-android-sdk")
-      (setenv "GTAGSDBPATH" "C:\\cache\\gtagsdb\\linphone-android-sdk")
+   ((nil . ((ggtags-process-environment . ("GTAGSLABEL=pygments"
+                                           "GTAGSDBPATH=C:\\sdk"
+                                           "GTAGSROOT=C:\\sdk"
+                                           "GTAGSLIBPATH=C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22000.0\\um"
+                                           "GTAGSOBJDIRPREFIX=C:\\cache\\gtagsdb"))
+       (ggtags-extra-args . ("--verbose" "--statistics"))
+       (ggtags-use-idutils . t)
+       (buffer-read-only . nil)
+       (eval . (message "hello sdk"))))
 
-      (c++-mode . ((c-basic-offset . 4)
-                   (tab-width . 4)
-                   (indent-tabs-mode . t)
-                   (compile-command . "build.bat")
-                   (cd-compile-directory . "C:\\Users\\sonictk\\Git\\experiments\\dx11tutorial")
-                   (cc-search-directories . ("C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\shared"
-                                             "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\ucrt"
-                                             "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um"
-                                             "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\winrt"))))
-
-      (c-mode . ((c-basic-offset . 4)
+    (c++-mode . ((c-basic-offset . 4)
                  (tab-width . 4)
                  (indent-tabs-mode . t)
                  (compile-command . "build.bat")
-                 (cd-compile-directory . "C:\\Users\\sonictk\\Git\\experiments\\dx11tutorial")
+                 (cd-compile-directory . "C:\\src\\sampleapp")
                  (cc-search-directories . ("C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\shared"
                                            "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\ucrt"
                                            "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um"
-                                           "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\winrt")))))
+                                           "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\winrt"))
+                 (flycheck-clang-include-path . ("c:/sdk/include"
+                                                 "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um"))))
+
+    (c-mode . ((c-basic-offset . 4)
+               (tab-width . 4)
+               (indent-tabs-mode . t)
+               (compile-command . "build.bat")
+               (cd-compile-directory . "C:\\src\\sampleapp")
+               (cc-search-directories . ("C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\shared"
+                                         "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\ucrt"
+                                         "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um"
+                                         "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\winrt"))
+               (flycheck-clang-include-path . ("c:/sdk/include"
+                                              "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um")))))
 
  #+end_src
