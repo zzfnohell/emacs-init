@@ -79,7 +79,7 @@
 ;;     (list (list "proxy.com:8080"
 ;;                 (cons "Input your LDAP UID !"
 ;;                       (base64-encode-string "LOGIN:PASSWORD")))))
-(proxy-enable-url-proxy )
+;; (proxy-enable-url-proxy )
 (provide 'init-proxy)
 
 ;;; init-proxy.el ends here
