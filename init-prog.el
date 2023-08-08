@@ -3,7 +3,7 @@
 
 
 ;;; Commentary:
-;; 
+;;
 
 ;;; Code:
 (use-package julia-ts-mode
@@ -37,8 +37,6 @@
   :config
   (setq treesit-auto-install 'prompt)
   (global-treesit-auto-mode))
-
-
 
 (use-package paren
   :config (show-paren-mode)
@@ -95,7 +93,7 @@
     (require 'srefactor)
     (require 'srefactor-lisp)
 
-    ;; OPTIONAL: ADD IT ONLY IF YOU USE C/C++. 
+    ;; OPTIONAL: ADD IT ONLY IF YOU USE C/C++.
     ;; (semantic-mode 1) ;; -> this is optional for Lisp
     (define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
     (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
@@ -137,7 +135,7 @@
   )
 
 ;; https://www.emacswiki.org/emacs/CompanyMode
-  ;; From here. Dated 2015, tested 2023. Based on PR accepted into spacemacs
+;; From here. Dated 2015, tested 2023. Based on PR accepted into spacemacs
 ;; https://stackoverflow.com/a/28510968.
 ;; Add yasnippet support for all company backends
 ;; https://github.com/syl20bnr/spacemacs/pull/179
@@ -216,7 +214,7 @@
 
 
 (defun init-prog/flow-mode-hook-func ()
-(add-to-list (make-local-variable 'company-backends) '(company-flow :with company-yasnippet)))
+  (add-to-list (make-local-variable 'company-backends) '(company-flow :with company-yasnippet)))
 
 (use-package company-flow
 	:ensure t
@@ -231,7 +229,7 @@
 		(company-ctags-auto-setup)))
 
 (defun init-prog/company-maxima-hook-func ()
-    (let ((backends (make-local-variable 'company-backends)))
+  (let ((backends (make-local-variable 'company-backends)))
     (add-to-list backends '(company-maxima-libraries :with company-yasnippet))
     (add-to-list backends '(company-maxima-symbols :with company-yasnippet))))
 
@@ -244,8 +242,8 @@
 (require 'codeium)
 (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
 (setq use-dialog-box nil) ;; do not use popup boxes
-    (setq codeium-mode-line-enable
-        (lambda (api) (not (memq api '(CancelRequest Heartbeat AcceptCompletion)))))
+(setq codeium-mode-line-enable
+      (lambda (api) (not (memq api '(CancelRequest Heartbeat AcceptCompletion)))))
 (add-to-list 'mode-line-format '(:eval (car-safe codeium-mode-line)) t)
 
 (setq codeium-api-enabled
