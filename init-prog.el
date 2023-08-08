@@ -6,6 +6,29 @@
 ;; 
 
 ;;; Code:
+(require 'treesit)
+(setq major-mode-remap-alist
+      '((c++-mode . c++-ts-mode)
+        (c-mode . c-ts-mode)
+        (c-or-c++-mode . c-or-c++-ts-mode)
+        (cmake-mode . cmake-ts-mode)
+        (csharp-mode . csharp-ts-mode)
+        (css-mode . css-ts-mode)
+        (java-mode . java-ts-mode)
+        (js-mode . js-ts-mode)
+        (python-mode . python-ts-mode)
+        (rust-mode . rust-ts-mode)
+        (sh-mode . bash-ts-mode)
+        (tsx-mode . tsx-ts-mode)
+        (yaml-mode . yaml-ts-mode)))
+
+(use-package treesit-auto
+  :ensure t
+  :demand t
+  :config
+  (setq treesit-auto-install 'prompt)
+  (global-treesit-auto-mode))
+
 (use-package paren
   :config (show-paren-mode)
   :custom (show-paren-style 'expression))

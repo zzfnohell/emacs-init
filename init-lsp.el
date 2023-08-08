@@ -33,19 +33,6 @@
   :ensure t
   :commands lsp-ivy-workspace-symbol)
 
-(use-package tree-sitter
-  :ensure t
-  :after lsp
-  :config
-  (require 'tree-sitter)
-	(global-tree-sitter-mode)
-	(tree-sitter-hl-mode))
-
-(use-package tree-sitter-langs
-  :ensure t
-  :after tree-sitter
-  :config
-  (require 'tree-sitter-langs))
 
 ;; https://github.com/emacs-lsp/lsp-docker
 ;; (use-package lsp-docker :ensure t)
