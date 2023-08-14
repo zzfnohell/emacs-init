@@ -7,6 +7,22 @@
 
 (use-package yasnippet
 	:ensure t
+  :hook
+  (c++-ts . (lambda () (yas-active-extra-mode 'c++-mode)))
+  (c-ts . (lambda () (yas-active-extra-mode 'c-mode)))
+  (c-or-c++-ts . (lambda () (yas-active-extra-mode 'c-or-c++-mode)))
+  (clojure-ts . (lambda () (yas-active-extra-mode 'clojure-mode)))
+  (csharp-ts . (lambda () (yas-active-extra-mode 'csharp-mode)))
+  (css-ts . (lambda () (yas-active-extra-mode 'css-mode)))
+  (java-ts . (lambda () (yas-active-extra-mode 'java-mode)))
+  (julia-ts .  (lambda () (yas-active-extra-mode 'julia-mode)))
+  (js-ts . (lambda () (yas-active-extra-mode 'js-mode)))
+  (kotlin-ts . (lambda () (yas-active-extra-mode 'kotlin-mode)))
+  (python-ts . (lambda () (yas-active-extra-mode 'python-mode)))
+  (rust-ts . (lambda () (yas-active-extra-mode 'rust-mode)))
+  (sh-ts . (lambda () (yas-active-extra-mode 'sh-mode)))
+  (tsx-ts . (lambda () (yas-active-extra-mode 'tsx-mode)))
+  (yaml-ts . (lambda () (yas-active-extra-mode 'yaml-mode)))
   :config
   (let ((dirs (list
                "~/.emacs.d/snippets"
@@ -57,6 +73,7 @@
   :after (haskell yasnippet)
   :ensure
   :defer)
+
 
 
 (provide 'init-snippets)

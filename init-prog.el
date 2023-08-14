@@ -24,12 +24,14 @@
         (java-mode . java-ts-mode)
         (julia-mode . julia-ts-mode)
         (js-mode . js-ts-mode)
+        (json-mode . json-ts-mode)
         (kotlin-mode . kotlin-ts-mode)
         (python-mode . python-ts-mode)
         (rust-mode . rust-ts-mode)
         (sh-mode . bash-ts-mode)
         (tsx-mode . tsx-ts-mode)
         (yaml-mode . yaml-ts-mode)))
+
 
 (use-package treesit-auto
   :ensure t
