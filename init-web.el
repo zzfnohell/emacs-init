@@ -43,15 +43,15 @@
           ("css" . (ac-source-css-property ac-source-emmet-css-snippets))))
 
   (add-hook 'web-mode-before-auto-complete-hooks
-            '(lambda ()
-               (let ((web-mode-cur-language
-                      (web-mode-language-at-pos)))
-                 (if (string= web-mode-cur-language "php")
-                     (yas-activate-extra-mode 'php-mode)
-                   (yas-deactivate-extra-mode 'php-mode))
-                 (if (string= web-mode-cur-language "css")
-                     (setq emmet-use-css-transform t)
-                   (setq emmet-use-css-transform nil)))))
+            (lambda ()
+              (let ((web-mode-cur-language
+                     (web-mode-language-at-pos)))
+                (if (string= web-mode-cur-language "php")
+                    (yas-activate-extra-mode 'php-mode)
+                  (yas-deactivate-extra-mode 'php-mode))
+                (if (string= web-mode-cur-language "css")
+                    (setq emmet-use-css-transform t)
+                  (setq emmet-use-css-transform nil)))))
 
   ;; company-web
   (define-key web-mode-map (kbd "C-'") 'company-web-html))
@@ -71,24 +71,26 @@
 
 (use-package emmet-mode
   :ensure t
-  :init
-  (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-  (add-hook 'html-mode-hook 'emmet-mode)
-  (add-hook 'css-mode-hook  'emmet-mode))
+  :hook
+  (sgml-mode . emmet-mode)
+  (html-mode . emmet-mode)
+  (css-mode .  emmet-mode))
 
 (use-package web-mode
   :ensure t
-  :mode (("\\.phtml\\'" . web-mode)
-         ("\\.tpl\\.php\\'" . web-mode)
-         ("\\.[agj]sp\\'" . web-mode)
-         ("\\.as[cp]x\\'" . web-mode)
-         ("\\.erb\\'" . web-mode)
-         ("\\.mustache\\'" . web-mode)
-         ("\\.djhtml\\'" . web-mode)
-         ("\\.html?\\'" . web-mode)
-         ("\\.cshtml?\\'" . web-mode))
+  :mode
+  ("\\.phtml\\'" . web-mode)
+  ("\\.tpl\\.php\\'" . web-mode)
+  ("\\.[agj]sp\\'" . web-mode)
+  ("\\.as[cp]x\\'" . web-mode)
+  ("\\.erb\\'" . web-mode)
+  ("\\.mustache\\'" . web-mode)
+  ("\\.djhtml\\'" . web-mode)
+  ("\\.html?\\'" . web-mode)
+  ("\\.cshtml?\\'" . web-mode)
+  :hook
+  (web-mode . init-web/custom-web-mode-hook-func)
   :config
-  (add-hook 'web-mode-hook #'init-web/custom-web-mode-hook-func)
   (setq web-mode-engines-alist
         '(("php"    . "\\.phtml\\'")
           ("blade"  . "\\.blade\\."))))
