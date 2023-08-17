@@ -287,6 +287,13 @@
   (add-to-list 'completion-at-point-functions #'cape-symbol)
   (add-to-list 'completion-at-point-functions #'cape-line))
 
+(use-package imenu-list
+  :ensure t
+  :bind ("C-." . imenu-list-minor-mode)
+  :config
+  (setq imenu-list-focus-after-activation t))
+
+
 (message "loading init-prog done.")
 
 (provide 'init-prog)

@@ -2,7 +2,7 @@
 ;; cedet setting.
 
 ;;; Commentary:
-;; 
+;;
 
 ;;; Code:
 ;; From http://alexott.net/en/writings/emacs-devenv/EmacsCedet.html
@@ -41,7 +41,17 @@
   :config
   (require 'cedet-global)
   (require 'semantic)
+
+  (add-hook 'semantic-init-hook (lambda () (imenu-add-to-menubar "TAGS")))
+
+  (when (cedet-gnu-global-version-check t)
+    (semanticdb-enable-gnu-global-databases 'c-mode)
+    (semanticdb-enable-gnu-global-databases 'c++-mode)
+    (semanticdb-enable-gnu-global-databases 'c-ts-mode)
+    (semanticdb-enable-gnu-global-databases 'c++-ts-mode))
+
   (semantic-mode 1)
+
   (global-ede-mode 1)
   (global-srecode-minor-mode 1)
 
@@ -56,7 +66,6 @@
 				 (expand-file-name "cedet-projects.el" user-emacs-directory)))
 		(when (file-exists-p ede-custom-file)
 			(load ede-custom-file))))
-
 
 (provide 'init-cedet)
 
