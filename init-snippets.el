@@ -7,7 +7,7 @@
 
 (use-package gitignore-snippets
 	:ensure t
-  :require yasnippet
+  :requires yasnippet
   :autoload gitignore-snippets-init
   :hook
   (gitignore-mode . gitignore-snippets-init))
@@ -72,7 +72,7 @@
 
 (use-package py-snippets
   :ensure t
-  :require yasnippet
+  :requires yasnippet
   :autoload py-snippets-initialize
   :hook
   (python-mode . py-snippets-initialize))

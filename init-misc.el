@@ -123,11 +123,17 @@
 
 (use-package dired-rsync
   :ensure t
-  :init
-  (bind-key "C-c C-r" 'dired-rsync dired-mode-map))
+  :bind
+  (:map dired-mode-map
+        ( "C-c C-r" . dired-rsync))
+  :commands dired-rsync
+  ;;  :init
+  ;;  (bind-key "C-c C-r" 'dired-rsync dired-mode-map)
+  )
 
 (use-package elgrep
-  :ensure t)
+  :ensure t
+  :commands elgrep)
 
 ;; Nicer naming of buffers for files with identical names
 (require 'uniquify)
@@ -148,7 +154,8 @@
   (require 'vlf-setup))
 
 (use-package syslog-mode
-  :ensure t)
+  :ensure t
+  :commands syslog-mode)
 
 ;; extra tools
 (use-package rfc-mode

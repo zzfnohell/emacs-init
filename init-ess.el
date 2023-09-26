@@ -29,7 +29,9 @@
   :ensure t)
 
 (use-package ess-view-data
-  :ensure t)
+  :ensure t
+  :hook
+  (ess-mode . ess-view-data-mode))
 
 (use-package vterm
   :ensure t
@@ -44,8 +46,8 @@
 
 (use-package julia-repl
   :ensure t
-  :config
-  (add-hook 'julia-mode-hook 'julia-repl-mode))
+  :hook
+  (julia-mode . julia-repl-mode))
 
 (message "loading init-ess done.")
 

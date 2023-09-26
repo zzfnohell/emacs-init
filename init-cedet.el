@@ -44,16 +44,16 @@
 
   (add-hook 'semantic-init-hook (lambda () (imenu-add-to-menubar "TAGS")))
 
-  (when (cedet-gnu-global-version-check t)
-    (semanticdb-enable-gnu-global-databases 'c-mode)
-    (semanticdb-enable-gnu-global-databases 'c++-mode)
-    (semanticdb-enable-gnu-global-databases 'c-ts-mode)
-    (semanticdb-enable-gnu-global-databases 'c++-ts-mode))
+  ;; (when (cedet-gnu-global-version-check t)
+  ;;   (semanticdb-enable-gnu-global-databases 'c-mode)
+  ;;   (semanticdb-enable-gnu-global-databases 'c++-mode)
+  ;;   (semanticdb-enable-gnu-global-databases 'c-ts-mode)
+  ;;   (semanticdb-enable-gnu-global-databases 'c++-ts-mode))
 
   (semantic-mode 1)
 
   (global-ede-mode 1)
-  (global-srecode-minor-mode 1)
+  ;; (global-srecode-minor-mode 1)
 
 ;;;; System header files
   (let ((inc-cnf-file

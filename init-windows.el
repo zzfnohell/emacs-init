@@ -5,13 +5,17 @@
 
 ;;; Code:
 (use-package speedbar
-  :ensure t)
+  :ensure t
+  :commands speedbar)
 
 (use-package sr-speedbar
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands (sr-speedbar-open sr-speedbar-toggle) )
 
 (use-package minimap
-  :ensure t)
+  :ensure t
+  :commands minimap)
 
 
 (use-package perspective

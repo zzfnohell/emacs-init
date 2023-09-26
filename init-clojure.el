@@ -12,7 +12,8 @@
 (use-package elein)
 
 (use-package cider
-  :ensure t)
+  :ensure t
+  :commands cider)
 
 (message "loading init-clojure done.")
 

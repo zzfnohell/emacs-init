@@ -43,13 +43,16 @@
 
 (use-package markdown-preview-mode
   :ensure t
+  :defer t
+  :commands markdown-preview
   :config
   (add-to-list
    'markdown-preview-javascript
    "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"))
 
 (use-package plantuml-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;; CSV file
 (use-package csv-mode

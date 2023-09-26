@@ -6,7 +6,8 @@
 ;;; Code:
 
 (use-package ahg
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;; (require 'diff-mode)
 ;; (require 'easymenu)
@@ -21,10 +22,13 @@
 
 (use-package magit-lfs
   :ensure t
-  :pin melpa)
+  :pin melpa
+  :hook
+  (magit-mode . magit-lfs))
 
 (use-package magit-imerge
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package vc-fossil
 	:ensure t

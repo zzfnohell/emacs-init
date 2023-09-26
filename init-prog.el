@@ -98,7 +98,7 @@
    :map c-mode-map
    ("M-RET" . srefactor-refactor-at-point)
    :map c++-mode-map
-   (kbd "M-RET" . srefactor-refactor-at-point))
+   ("M-RET" . srefactor-refactor-at-point))
   :config
   (require 'srefactor)
   (require 'srefactor-lisp)
@@ -154,10 +154,10 @@
   "Enable yasnippet for all backends.")
 
 (defun company-mode/backend-with-yas (backends)
-  (if (or (not company-mode/enable-yas)
-          (and (listp backends) (member 'company-yasnippet backends)))
-	    backends
-    (append (if (consp backends) backends (list backends))
+  "Add yas backends."
+  (unless (or (not company-mode/enable-yas)
+              (and (listp backends) (member 'company-yasnippet backends)))
+	  (append (if (consp backends) backends (list backends))
             '(:with company-yasnippet))))
 
 ;; From here. Dated 2015, tested 2023. API use confirmed by author of yasnippet
@@ -169,20 +169,46 @@
     (unless (yas-expand)
 	    (call-interactively #'company-complete-common))))
 
+
+
+(use-package company-coq
+  :ensure t
+  :commands company-coq-mode
+	:if (featurep 'proof-site)
+  :hook (coq-mode . company-coq-mode))
+
 (defun init-prog/elisp-mode-hook-func ()
-  (add-to-list
-   (make-local-variable 'company-backends)
-   '(company-elisp :with company-yasnippet)))
+  "Setup company backends for elisp mode."
+  (let ((backends (make-local-variable 'company-backends)))
+    (add-to-list backends 'company-elisp)))
 
 (use-package company
 	:ensure t
-  :commands company-mode
   :custom
   (company-dabbrev-downcase nil)
   (company-show-numbers t)
   :hook
   (emacs-lisp-mode . init-prog/elisp-mode-hook-func)
   :config
+  (use-package company-dict
+    :ensure t)
+
+  (use-package company-quickhelp
+    :ensure t
+    :config
+    (company-quickhelp-mode))
+
+  (use-package company-math
+    :ensure t
+    :config
+    (add-to-list 'company-backends 'company-math-symbols-unicode))
+
+  (use-package company-ctags
+	  :ensure t
+	  :config
+	  (with-eval-after-load 'company
+		  (company-ctags-auto-setup)))
+
   (global-company-mode t)
   (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
   (setq-default company-idle-delay 0.1
@@ -200,31 +226,10 @@
                'company-yasnippet-or-completion
                company-active-map))))
 
-
-(use-package company-coq
-  :ensure t
-  :commands company-coq-mode
-	:if (featurep 'proof-site)
-  :hook (coq-mode . company-coq-mode))
-
-(use-package company-quickhelp
-  :ensure t
-  :after (:all company)
-  :config
-  (company-quickhelp-mode))
-
-(use-package company-math
-  :ensure t
-  :after (:all company)
-  :config
-  (add-to-list 'company-backends 'company-math-symbols-unicode))
-
-(use-package company-dict
-  :ensure t)
-
 (use-package company-restclient
-  :ensure t)
-
+  :ensure t
+  :hook
+  (restclient-mode . company-restclient))
 
 (defun init-prog/flow-mode-hook-func ()
   (add-to-list (make-local-variable 'company-backends) '(company-flow :with company-yasnippet)))
@@ -234,12 +239,6 @@
   :hook
   (flow-mode . init-prog/flow-mode-hook-func))
 
-(use-package company-ctags
-	:ensure t
-	:after company
-	:config
-	(with-eval-after-load 'company
-		(company-ctags-auto-setup)))
 
 (defun init-prog/company-maxima-hook-func ()
   (let ((backends (make-local-variable 'company-backends)))

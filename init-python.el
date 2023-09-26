@@ -41,18 +41,22 @@
   (pyvenv-tracking-mode 1))
 
 (use-package cython-mode
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package pyenv-mode
 	:ensure t
+  :defer t
 	:config
 	(pyenv-mode))
 
 (use-package jupyter
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package elpy
   :ensure t
+  :defer t
   ;; :ensure-system-package
   ;; ((jedi     . "pip install jedi")
   ;; (black    . "pip install black")
@@ -62,6 +66,7 @@
 
 (use-package conda
   :ensure t
+  :defer t
   :config
   ;; if you want interactive shell support, include:
   (conda-env-initialize-interactive-shells)
