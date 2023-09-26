@@ -14,7 +14,8 @@
   :bind ("C-c d" . docker))
 
 (use-package dockerfile-mode
-  :ensure t)
+  :ensure t
+  :commands dockerfile-mode)
 
 (provide 'init-docker)
 

@@ -5,8 +5,17 @@
 
 ;;; Code:
 
+(use-package gitignore-snippets
+	:ensure t
+  :require yasnippet
+  :autoload gitignore-snippets-init
+  :hook
+  (gitignore-mode . gitignore-snippets-init))
+
 (use-package yasnippet
 	:ensure t
+  :autoload yasnippet-snippets-initialize
+  :defer t
   :hook
   (c++-ts . (lambda () (yas-active-extra-mode 'c++-mode)))
   (c-ts . (lambda () (yas-active-extra-mode 'c-mode)))
@@ -62,7 +71,11 @@
 	:ensure t)
 
 (use-package py-snippets
-  :ensure t)
+  :ensure t
+  :require yasnippet
+  :autoload py-snippets-initialize
+  :hook
+  (python-mode . py-snippets-initialize))
 
 (use-package auto-yasnippet
 	:ensure t

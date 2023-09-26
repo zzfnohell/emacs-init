@@ -209,7 +209,9 @@
   :config
   (global-auto-highlight-symbol-mode t))
 
-(use-package sudo-edit)
+(use-package sudo-edit
+  :ensure t
+  :commands sudo-edit)
 
 (use-package ace-window
   :config

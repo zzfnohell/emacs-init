@@ -21,10 +21,9 @@
 
 (use-package fish-completion
 	:ensure t
-  :config
-  (when (and (executable-find "fish")
-             (require 'fish-completion nil t))
-    (global-fish-completion-mode)))
+  :defer t
+  :hook
+  (fish-mode . fish-completion-mode))
 
 (defun init-prog/add-shell-company-backends ()
   "Add shell company backends."

@@ -29,6 +29,7 @@
 
 (use-package lispy
   :ensure t
+  :defer t
   :hook
   (emacs-lisp-mode . (lambda () (lispy-mode 1))))
 
@@ -48,6 +49,7 @@
 
 (use-package pretty-mode
   :ensure t
+  :defer t
   :init
   (autoload 'turn-on-pretty-mode "pretty-mode"))
 

@@ -16,7 +16,8 @@
 
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :commands magit)
 
 (use-package magit-lfs
   :ensure t
@@ -30,11 +31,7 @@
 	:init
 	(add-to-list 'vc-handled-backends 'Fossil t))
 
-
 (use-package git-modes
-	:ensure t)
-
-(use-package gitignore-snippets
 	:ensure t)
 
 (use-package git-timemachine

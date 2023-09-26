@@ -176,6 +176,7 @@
 
 (use-package company
 	:ensure t
+  :commands company-mode
   :custom
   (company-dabbrev-downcase nil)
   (company-show-numbers t)
@@ -202,6 +203,7 @@
 
 (use-package company-coq
   :ensure t
+  :commands company-coq-mode
 	:if (featurep 'proof-site)
   :hook (coq-mode . company-coq-mode))
 
