@@ -169,46 +169,37 @@
     (unless (yas-expand)
 	    (call-interactively #'company-complete-common))))
 
-
-
 (use-package company-coq
   :ensure t
   :commands company-coq-mode
 	:if (featurep 'proof-site)
   :hook (coq-mode . company-coq-mode))
 
-(defun init-prog/elisp-mode-hook-func ()
-  "Setup company backends for elisp mode."
-  (let ((backends (make-local-variable 'company-backends)))
-    (add-to-list backends 'company-elisp)))
+(use-package company-dict
+  :ensure t)
+
+(use-package company-quickhelp
+  :ensure t
+  :config
+  (company-quickhelp-mode))
+
+(use-package company-math
+  :ensure t
+  :config
+  (add-to-list 'company-backends 'company-math-symbols-unicode))
+
+(use-package company-ctags
+	:ensure t
+	:config
+	(with-eval-after-load 'company
+		(company-ctags-auto-setup)))
 
 (use-package company
 	:ensure t
   :custom
   (company-dabbrev-downcase nil)
   (company-show-numbers t)
-  :hook
-  (emacs-lisp-mode . init-prog/elisp-mode-hook-func)
   :config
-  (use-package company-dict
-    :ensure t)
-
-  (use-package company-quickhelp
-    :ensure t
-    :config
-    (company-quickhelp-mode))
-
-  (use-package company-math
-    :ensure t
-    :config
-    (add-to-list 'company-backends 'company-math-symbols-unicode))
-
-  (use-package company-ctags
-	  :ensure t
-	  :config
-	  (with-eval-after-load 'company
-		  (company-ctags-auto-setup)))
-
   (global-company-mode t)
   (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
   (setq-default company-idle-delay 0.1

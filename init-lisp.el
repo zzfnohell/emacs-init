@@ -162,6 +162,14 @@
   :hook
   (clojure-ts-mode . paredit-mode))
 
+(defun init-lisp/elisp-mode-hook-func ()
+  "Setup company backends for elisp mode."
+  (let ((backends (make-local-variable 'company-backends)))
+    (add-to-list backends 'company-elisp)))
+
+(require 'elisp-mode)
+(add-hook 'emacs-lisp-mode-hook  #'init-lisp/elisp-mode-hook-func)
+
 (message "loading init-lisp done.")
 
 (provide 'init-lisp)

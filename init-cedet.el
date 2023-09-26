@@ -18,7 +18,7 @@
 
 (use-package cedet
   :ensure t
-  :demand t
+  :after company
   :hook
   (prog-mode . init-cedet/cedet-prog-mode-hook)
   :custom

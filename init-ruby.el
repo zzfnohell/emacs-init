@@ -33,9 +33,9 @@
 ;;; Robe
 (use-package robe
   :ensure t
-  :init
-  (add-hook 'ruby-mode-hook 'robe-mode)
-  (add-hook 'robe-mode-hook 'ac-robe-setup))
+  :hook
+  (ruby-mode . robe-mode)
+  (robe-mode . ac-robe-setup))
 
 ;;; ri support
 (use-package yari
