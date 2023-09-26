@@ -49,15 +49,14 @@
 
 (use-package pretty-mode
   :ensure t
-  :defer t
-  :init
-  (autoload 'turn-on-pretty-mode "pretty-mode"))
+  :autoload turn-on-pretty-mode)
 
 (use-package elisp-refs
   :ensure t)
 
 (use-package elisp-def
   :ensure t
+  :commands elisp-def
   :config
   (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
     (add-hook hook #'elisp-def-mode)))
@@ -122,11 +121,10 @@
 
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
 
-(use-package slime-company
-  :ensure t)
-
 (use-package slime
   :ensure t
+  :defer t
+  :commands slime
   :config
   (let ((slime-helper-path (expand-file-name "~/quicklisp/slime-helper.el")))
     (when (file-exists-p slime-helper-path)
@@ -137,7 +135,10 @@
   (setq inferior-lisp-program "sbcl")
   (setq slime-lisp-implementations
         '((sbcl ("sbcl") :coding-system utf-8-unix)
-          (cmucl ("cmucl" "-quiet")))))
+          (cmucl ("cmucl" "-quiet"))))
+
+  (use-package slime-company
+    :ensure t))
 
 ;; (use-package ac-slime
 ;;  :after (:all slime cl-lib auto-complete)

@@ -12,8 +12,8 @@
 
 (use-package flycheck-rust
   :ensure t
-  :config
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+  :hook
+  (flycheck-mode . flycheck-rust-setup))
 
 (use-package toml-mode
   :ensure t)
@@ -33,7 +33,8 @@
   :ensure t)
 
 (use-package rust-playground
-  :ensure t)
+  :ensure t
+  :commands rust-playground)
 
 (provide 'init-rust)
 
