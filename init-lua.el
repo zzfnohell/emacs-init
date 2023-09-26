@@ -15,8 +15,8 @@
 
 (use-package company-lua
 	:ensure t
-  :config
-  (add-hook 'lua-mode-hook #'init-lua/company-lua-hook-func))
+  :hook
+  (lua-mode . init-lua/company-lua-hook-func))
 
 (message "loading init-lua done.")
 

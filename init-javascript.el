@@ -37,7 +37,8 @@
 	:ensure t)
 
 (use-package indium
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (message "loading init-javascript done.")
 

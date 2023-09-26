@@ -106,7 +106,9 @@
   (add-hook 'glsl-mode-hook #'init-cc-mode/glsl-mode-hook-func))
 
 (use-package call-graph
-	:ensure t)
+	:ensure t
+  :defer t
+  :commands call-graph)
 
 (use-package qt-pro-mode
   :ensure t
