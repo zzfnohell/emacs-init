@@ -12,10 +12,12 @@
 
 (defun init-cc-mode/c-mode-edit-hook()
   (subword-mode t)
-  (abbrev-mode t))
+  (abbrev-mode t)
+  (function-args-mode))
 
 (require 'cc-mode)
 (add-hook 'c-mode-common-hook #'init-cc-mode/c-mode-edit-hook)
+
 (c-set-offset 'inline-open 0)
 (c-set-offset 'friend '-)
 (c-set-offset 'substatement-open 0)
@@ -122,6 +124,7 @@
 
 (use-package function-args
   :ensure t
+  :defer t
   :config
   (fa-config-default))
 
