@@ -152,28 +152,35 @@
 
 ;; extra tools
 (use-package rfc-mode
-  :ensure t)
+  :ensure t
+  :autoload rfc-mode)
 
 (use-package rg
   :ensure t
+  :commands rg
   :ensure-system-package
   (rg . ripgrep)
   :config
   (rg-enable-menu))
 
 (use-package tldr
-  :ensure t)
+  :ensure t
+  :commands tldr)
 
 ;; git config --global github.user <your-github-user-name>
 ;; git config --global github.oauth-token <your-personal-access-token-with-gist-scope>
 (use-package gist
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package httprepl
-  :ensure t)
+  :ensure t
+  :commands httprepl)
 
 (use-package syntree
-  :ensure t)
+  :ensure t
+  :requires org
+  :commands syntree-new)
 
 (use-package format-all
   :ensure t)
@@ -184,14 +191,28 @@
   (dabbrev-case-replace nil))
 
 (use-package prodigy
-  :bind (("C-c 8" . #'prodigy)
-         :map prodigy-view-mode-map
-         ("$" . #'end-of-buffer))
+  :bind
+  (("C-c 8" . #'prodigy)
+   :map prodigy-view-mode-map
+   ("$" . #'end-of-buffer))
   :custom (prodigy-view-truncate-by-default t)
   :config
   (let ((srv-file "~/.emacs.d/services.el"))
     (when (file-exists-p srv-file)
-        (load srv-file 'noerror))))
+      (load srv-file 'noerror))))
+
+(defun set-transparency (alpha-level)
+  (interactive "p")
+  (message (format "Alpha level passed in: %s" alpha-level))
+  (let ((alpha-level (if (< alpha-level 2)
+                         (read-number "Opacity percentage: " 85)
+                       alpha-level))
+        (myalpha (frame-parameter nil 'alpha)))
+    (set-frame-parameter nil 'alpha alpha-level))
+  (message (format "Alpha level is %d" (frame-parameter nil 'alpha))))
+
+;; (set-frame-parameter (selected-frame) 'alpha '(85 50))
+;; (add-to-list 'default-frame-alist '(alpha 85 50))
 
 (message "loading init-misc done.")
 (provide 'init-misc)

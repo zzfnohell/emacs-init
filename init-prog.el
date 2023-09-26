@@ -12,33 +12,33 @@
 (use-package kotlin-ts-mode
   :ensure t)
 
-(require 'treesit)
-(setq major-mode-remap-alist
-      '((c++-mode . c++-ts-mode)
-        (c-mode . c-ts-mode)
-        (c-or-c++-mode . c-or-c++-ts-mode)
-        (clojure-mode . clojure-ts-mode)
-        (cmake-mode . cmake-ts-mode)
-        (csharp-mode . csharp-ts-mode)
-        (css-mode . css-ts-mode)
-        (java-mode . java-ts-mode)
-        (julia-mode . julia-ts-mode)
-        (js-mode . js-ts-mode)
-        (json-mode . json-ts-mode)
-        (kotlin-mode . kotlin-ts-mode)
-        (python-mode . python-ts-mode)
-        (rust-mode . rust-ts-mode)
-        (sh-mode . bash-ts-mode)
-        (tsx-mode . tsx-ts-mode)
-        (yaml-mode . yaml-ts-mode)))
+;; (require 'treesit)
+;; (setq major-mode-remap-alist
+;;       '((c++-mode . c++-ts-mode)
+;;         (c-mode . c-ts-mode)
+;;         (c-or-c++-mode . c-or-c++-ts-mode)
+;;         (clojure-mode . clojure-ts-mode)
+;;         (cmake-mode . cmake-ts-mode)
+;;         (csharp-mode . csharp-ts-mode)
+;;         (css-mode . css-ts-mode)
+;;         (java-mode . java-ts-mode)
+;;         (julia-mode . julia-ts-mode)
+;;         (js-mode . js-ts-mode)
+;;         (json-mode . json-ts-mode)
+;;         (kotlin-mode . kotlin-ts-mode)
+;;         (python-mode . python-ts-mode)
+;;         (rust-mode . rust-ts-mode)
+;;         (sh-mode . bash-ts-mode)
+;;         (tsx-mode . tsx-ts-mode)
+;;         (yaml-mode . yaml-ts-mode)))
 
 
-(use-package treesit-auto
-  :ensure t
-  :demand t
-  :config
-  (setq treesit-auto-install 'prompt)
-  (global-treesit-auto-mode))
+;; (use-package treesit-auto
+;;   :ensure t
+;;   :demand t
+;;   :config
+;;   (setq treesit-auto-install 'prompt)
+;;   (global-treesit-auto-mode))
 
 (use-package paren
   :config (show-paren-mode)
@@ -90,19 +90,28 @@
 
 (use-package srefactor
   :ensure t
+  :bind
+  (("M-RET o" . srefactor-lisp-one-line)
+   ("M-RET m"  . srefactor-lisp-format-sexp)
+   ("M-RET d" . srefactor-lisp-format-defun)
+   ("M-RET b" . srefactor-lisp-format-buffer)
+   :map c-mode-map
+   ("M-RET" . srefactor-refactor-at-point)
+   :map c++-mode-map
+   (kbd "M-RET" . srefactor-refactor-at-point))
   :config
-  (progn
-    (require 'srefactor)
-    (require 'srefactor-lisp)
+  (require 'srefactor)
+  (require 'srefactor-lisp)
 
-    ;; OPTIONAL: ADD IT ONLY IF YOU USE C/C++.
-    ;; (semantic-mode 1) ;; -> this is optional for Lisp
-    (define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
-    (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
-    (global-set-key (kbd "M-RET o") 'srefactor-lisp-one-line)
-    (global-set-key (kbd "M-RET m") 'srefactor-lisp-format-sexp)
-    (global-set-key (kbd "M-RET d") 'srefactor-lisp-format-defun)
-    (global-set-key (kbd "M-RET b") 'srefactor-lisp-format-buffer)))
+  ;; OPTIONAL: ADD IT ONLY IF YOU USE C/C++.
+  ;; (semantic-mode 1) ;; -> this is optional for Lisp
+  ;; (define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+  ;; (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+  ;; (global-set-key (kbd "M-RET o") 'srefactor-lisp-one-line)
+  ;; (global-set-key (kbd "M-RET m") 'srefactor-lisp-format-sexp)
+  ;; (global-set-key (kbd "M-RET d") 'srefactor-lisp-format-defun)
+  ;; (global-set-key (kbd "M-RET b") 'srefactor-lisp-format-buffer)
+  )
 
 (require 'display-fill-column-indicator)
 (setq display-fill-column-indicator-column 120)
@@ -194,13 +203,13 @@
 (use-package company-coq
   :ensure t
 	:if (featurep 'proof-site)
-  :after (:all company))
+  :hook (coq-mode . company-coq-mode))
 
 (use-package company-quickhelp
   :ensure t
   :after (:all company)
   :config
-  (company-quickhelp-mode 1))
+  (company-quickhelp-mode))
 
 (use-package company-math
   :ensure t

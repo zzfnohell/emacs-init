@@ -6,42 +6,56 @@
 ;;; Code:
 
 (use-package org-preview-html
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ob-ess-julia
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ob-fsharp
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ob-graphql
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ob-rust
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ob-go
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ob-restclient
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ob-powershell
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package ob-fricas
   :ensure t
-  :requires org)
+  :defer t)
 
 (use-package verb
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package ein
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package org
 	:ensure t
-  :after (:all verb)
+  :mode
+  ("\\.org$" . org-mode)
+  :bind
+  (:map org-mode-map
+        ("C-c C-r" . verb-command-map))
   :custom
   (org-agenda-files '("agendas.org"))
   (org-default-notes-file "notes.org")
@@ -99,26 +113,27 @@
 		 (verb . t)))
 
   (setq org-publish-project-alist
-      `(("private-notes"
-         :base-directory ,org-directory
-         :recursive t
-         :publishing-directory "~/notes-public"
-         :publishing-function org-html-publish-to-html)
-        ("private-static"
-         :base-directory ,org-directory
-         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-         :publishing-directory "~/notes-public"
-         :recursive t
-         :publishing-function org-publish-attachment)
-        ("private" :components ("private-notes" "private-static")))))
+        `(("private-notes"
+           :base-directory ,org-directory
+           :recursive t
+           :publishing-directory "~/notes-public"
+           :publishing-function org-html-publish-to-html)
+          ("private-static"
+           :base-directory ,org-directory
+           :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+           :publishing-directory "~/notes-public"
+           :recursive t
+           :publishing-function org-publish-attachment)
+          ("private" :components ("private-notes" "private-static")))))
 
 (use-package org-web-tools
-  :ensure t)
+  :ensure t
+  :requires org
+  :defer t)
 
 (use-package org-brain
   :ensure t
   :requires org
-  :after org
 	:bind (:map org-mode-map
 							("C-c b" . org-brain-prefix-map))
   :config
@@ -137,10 +152,14 @@
         org-brain-file-entries-use-title nil))
 
 (use-package org-onenote
-	:ensure t)
+	:ensure t
+  :requires org
+  :defer t)
 
 (use-package ob-cypher
   :ensure t
+  :defer t
+  :requires org
   :config
   (add-to-list 'org-babel-load-languages '(cypher . t))
   (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)

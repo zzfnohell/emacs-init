@@ -9,7 +9,9 @@
 
 
 (use-package docker
-  :ensure t)
+  :ensure t
+  :commands docker
+  :bind ("C-c d" . docker))
 
 (use-package dockerfile-mode
   :ensure t)

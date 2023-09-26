@@ -28,7 +28,9 @@
   (ielm-mode .enable-paredit-mode))
 
 (use-package lispy
-  :ensure t)
+  :ensure t
+  :hook
+  (emacs-lisp-mode . (lambda () (lispy-mode 1))))
 
 (use-package diminish
   :ensure t
@@ -46,7 +48,7 @@
 
 (use-package pretty-mode
   :ensure t
-  :config
+  :init
   (autoload 'turn-on-pretty-mode "pretty-mode"))
 
 (use-package elisp-refs

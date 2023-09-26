@@ -21,7 +21,9 @@
 
 (use-package realgud
   :ensure t
-  :init (setq gdb-many-windows t))
+  :defer t
+  :init
+  (setq gdb-many-windows t))
 
 (message "loading init-dap done.")
 
