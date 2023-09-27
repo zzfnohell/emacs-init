@@ -9,7 +9,8 @@
 ;;; Code:
 
 (use-package julia-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package ess
   :ensure t

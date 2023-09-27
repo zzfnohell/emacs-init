@@ -6,22 +6,22 @@
 ;;; Code:
 
 (use-package haskell-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package flycheck-haskell
   :ensure t
-  :init
-  (add-hook 'haskell-mode-hook #'flycheck-haskell-setup))
+  (haskell-mode . flycheck-haskell-setup))
 
 (use-package ghci-completion
   :ensure t
-  :init
-  (add-hook 'inferior-haskell-mode-hook 'turn-on-ghci-completion))
+  :hook
+  (inferior-haskell-mode . turn-on-ghci-completion))
 
 (use-package dante
   :ensure t
   :after haskell-mode
-  :commands 'dante-mode
+  :commands dante-mode
   :init
   (add-hook 'haskell-mode-hook 'flycheck-mode)
   ;; OR for flymake support:
