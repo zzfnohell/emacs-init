@@ -4,14 +4,13 @@
 ;;; Code:
 (use-package sql-indent
   :ensure t
-  :config
-  (eval-after-load "sql"
-    '(load-library "sql-indent")))
+  :hook
+  (sql-mode . sql-indent))
 
 (use-package sql
   :ensure t
+  :defer t
   :config
-  (add-hook 'sql-mode-hook #'sql-indent)
   (when (eq system-type 'windows-nt)
     (setq sql-mysql-options '("-C" "-t" "-f" "-n"))))
 
