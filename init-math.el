@@ -12,7 +12,8 @@
   (require 'imaxima))
 
 (use-package frimacs
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package proof-general
 	:ensure t)
