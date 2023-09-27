@@ -26,7 +26,8 @@
   (("\\.ini\\'" . ini-mode)))
 
 (use-package haml-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;;; YAML
 (use-package yaml-mode
