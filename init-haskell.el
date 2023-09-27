@@ -11,6 +11,7 @@
 
 (use-package flycheck-haskell
   :ensure t
+  :hook
   (haskell-mode . flycheck-haskell-setup))
 
 (use-package ghci-completion
