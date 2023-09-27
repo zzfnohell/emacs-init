@@ -6,7 +6,8 @@
 ;;; Code:
 
 (use-package clojure-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package cljsbuild-mode)
 (use-package elein)

@@ -32,26 +32,29 @@
 
 (use-package merlin
   :ensure t
+  :hook
+  (tuareg-mode . merlin-mode)
+  (caml-mode . merlin-mode)
   :config
   (setq merlin-use-auto-complete-mode t)
-  (setq merlin-error-after-save nil)
-  (add-hook 'tuareg-mode-hook 'merlin-mode)
-  (add-hook 'caml-mode-hook 'merlin-mode))
+  (setq merlin-error-after-save nil))
 
 (use-package reason-mode
   :ensure t
-  :init
-  (add-hook 'reason-mode-hook (lambda ()
-                                (add-hook 'before-save-hook 'refmt-before-save)
-                                (merlin-mode))))
+  :hook
+  (reason-mode . (lambda ()
+                   (add-hook 'before-save-hook 'refmt-before-save)
+                   (merlin-mode))))
 
 (use-package utop
   :ensure t
+  :defer t
+  :commands utop
   :config
   (autoload 'utop-setup-ocaml-buffer "utop" "TopLevel for OCaml" t))
 
 (use-package tuareg
-  :after (:all tuareg utop)
+  :ensure t
   :mode
   (("\\.ml[ily]?$" . tuareg-mode)
    ("\\.topml$" . tuareg-mode))

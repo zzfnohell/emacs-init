@@ -7,10 +7,12 @@
 
 ;;; Code:
 (use-package julia-ts-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package kotlin-ts-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;; (require 'treesit)
 ;; (setq major-mode-remap-alist

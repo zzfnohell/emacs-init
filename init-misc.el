@@ -24,6 +24,7 @@
 ;;; projectile
 (use-package projectile
   :ensure t
+  :defer t
   :custom
   (projectile-require-project-root t)
   (projectile-enable-caching t)
@@ -146,10 +147,13 @@
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (use-package logview
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package vlf
   :ensure t
+  :defer t
+  :commands vlf
   :config
   (require 'vlf-setup))
 
