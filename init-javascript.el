@@ -22,7 +22,7 @@
 
 (use-package xref-js2
   :ensure t
-  )
+  :defer t)
 
 (use-package js2-mode
   :ensure t
@@ -34,7 +34,8 @@
                      (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
 
 (use-package js2-refactor
-	:ensure t)
+	:ensure t
+  :defer t)
 
 (use-package indium
 	:ensure t

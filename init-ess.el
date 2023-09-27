@@ -23,10 +23,12 @@
 (use-package stan-mode
   :ensure t
   :hook
-  (stan-mode . stan-snippets))
+  (stan-mode . stan-snippets-initialize))
 
 (use-package stan-snippets
-  :ensure t)
+  :ensure t
+  :autoload stan-snippets-initialize
+  :defer t)
 
 (use-package ess-view-data
   :ensure t

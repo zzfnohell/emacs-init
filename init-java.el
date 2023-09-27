@@ -6,7 +6,8 @@
 
 ;;; Code:
 (use-package java-snippets
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (defun init-java/java-mode-hook-func ()
   (require 'java-snippets))
@@ -25,7 +26,6 @@
 (use-package mvn :ensure t)
 
 ;; mvn -Dmaven.test.skip=true package
-
 
 (use-package groovy-mode
   :ensure t)

@@ -14,7 +14,6 @@
 
 (use-package yasnippet
 	:ensure t
-  :autoload yasnippet-snippets-initialize
   :defer t
   :hook
   (c++-ts . (lambda () (yas-active-extra-mode 'c++-mode)))
@@ -65,10 +64,11 @@
   (setq yas-prompt-functions
         '(yas-popup-isearch-prompt
           yas-ido-prompt
-          yas-no-prompt)))
+          yas-no-prompt))
 
-(use-package yasnippet-snippets
-	:ensure t)
+  (use-package yasnippet-snippets
+	  :ensure t))
+
 
 (use-package py-snippets
   :ensure t
@@ -84,8 +84,8 @@
 
 (use-package haskell-snippets
   :after (haskell yasnippet)
-  :ensure
-  :defer)
+  :ensure t
+  :defer t)
 
 
 

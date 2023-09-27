@@ -6,7 +6,8 @@
 
 ;;; Code:
 (use-package csproj-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package fsharp-mode
   :ensure t
@@ -16,7 +17,8 @@
   (require 'eglot-fsharp))
 
 (use-package sharper
-  :demand t
+  :ensure t
+  :defer t
   :bind
   ("C-c n" . sharper-main-transient))
 
