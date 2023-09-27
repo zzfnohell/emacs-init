@@ -135,13 +135,14 @@
   (autoload 'turn-on-css-eldoc "css-eldoc"))
 
 (use-package react-snippets
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package rjsx-mode
   :ensure t
   :mode ("\\.jsx$" . rjsx-mode)
-  :config
-  (add-hook 'rjsx-mode-hook  #'react-snippets))
+  :hook
+  (rjsx-mode . react-snippets))
 
 (use-package pug-mode
   :ensure t
@@ -149,7 +150,8 @@
   ("\\.pug$" . rjsx-mode))
 
 (use-package restclient
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (defun init-web/css-mode-hook-func ()
   (let ((mode-backends (make-local-variable 'company-backends)))
