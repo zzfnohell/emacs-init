@@ -49,10 +49,13 @@
 
 (use-package pretty-mode
   :ensure t
-  :autoload turn-on-pretty-mode)
+  :hook
+  (emacs-lisp-mode .  turn-on-pretty-mode))
 
 (use-package elisp-refs
-  :ensure t)
+  :ensure t
+  :hook
+  (emacs-lisp-mode .  elisp-refs-mode))
 
 (use-package elisp-def
   :ensure t
@@ -71,10 +74,13 @@
   ((elisp-depmap-exec-file "~/graphviz2.dot")))
 
 (use-package elisp-lint
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package elpl
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands elpl)
 
 ;; ----------------------------------------------------------------------------
 ;; Hippie-expand
@@ -138,7 +144,8 @@
           (cmucl ("cmucl" "-quiet"))))
 
   (use-package slime-company
-    :ensure t))
+    :ensure t
+    :demand t))
 
 ;; (use-package ac-slime
 ;;  :after (:all slime cl-lib auto-complete)
