@@ -85,10 +85,12 @@
 
 (use-package emr
   :ensure t
+  :commands emr-show-refactor-menu
+  :bind
+  (:map prog-mode-map
+        ("M-RET" . emr-show-refactor-menu))
   :config
-  (autoload 'emr-show-refactor-menu "emr")
-  (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu)
-  (eval-after-load "emr" '(emr-initialize)))
+  (emr-initialize))
 
 (use-package srefactor
   :ensure t
