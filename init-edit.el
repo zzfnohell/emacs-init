@@ -224,7 +224,9 @@
   (aw-background nil))
 
 (use-package iedit
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands iedit-mode)
 
 (minibuffer-depth-indicate-mode)
 

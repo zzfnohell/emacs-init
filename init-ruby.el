@@ -28,7 +28,9 @@
 
 ;;; Ruby compilation
 (use-package ruby-compilation
-  :ensure t)
+  :ensure t
+  :hook
+  (ruby-mode . ruby-compilation-mode))
 
 ;;; Robe
 (use-package robe
