@@ -54,8 +54,7 @@
 
 (use-package elisp-refs
   :ensure t
-  :hook
-  (emacs-lisp-mode .  elisp-refs-mode))
+  :defer t)
 
 (use-package elisp-def
   :ensure t
