@@ -11,6 +11,10 @@
 ;; go build golang.org/x/tools/cmd/gorename
 ;; go get github.com/rogpeppe/godef
 
+(use-package go-mode
+  :ensure t
+  :mode "\\.go\\'")
+  
 (use-package go-guru
   :ensure t
   :hook

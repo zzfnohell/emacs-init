@@ -18,7 +18,6 @@
 
 (use-package cedet
   :ensure t
-  :after company
   :hook
   (prog-mode . init-cedet/cedet-prog-mode-hook)
   :custom
@@ -37,12 +36,9 @@
      global-semantic-show-parser-state-mode))
   (semanticdb-default-save-directory "~/.emacs.d/semanticdb")
   (semantic-idle-scheduler-idle-time 5)
-  (semantic-symref-tool 'global)
   :config
   (require 'cedet-global)
   (require 'semantic)
-
-  (add-hook 'semantic-init-hook (lambda () (imenu-add-to-menubar "TAGS")))
 
   ;; (when (cedet-gnu-global-version-check t)
   ;;   (semanticdb-enable-gnu-global-databases 'c-mode)
