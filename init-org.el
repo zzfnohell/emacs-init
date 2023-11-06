@@ -89,6 +89,7 @@
      (ein . t)
      (emacs-lisp . t)
 		 (eshell . t)
+     (fsharp . t)
      (gnuplot . t)
      (haskell . t)
      (go . t)
