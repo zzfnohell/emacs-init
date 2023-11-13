@@ -23,6 +23,16 @@
 		:default-license (rx bol "gpl")
 		:substitutions
 		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
+  (skeletor-define-template "conan-meson-app"
+		:title "App Meson Project & Conan Package Manager"
+		:default-license (rx bol "gpl")
+		:substitutions
+		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
+  (skeletor-define-template "conan-meson-lib"
+		:title "Lib Meson Project & Conan Package Manager"
+		:default-license (rx bol "gpl")
+		:substitutions
+		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
 	(skeletor-define-template "conan-swig-app"
 		:title "App CMake Project & Conan Package Manager & Swig"
 		:default-license (rx bol "gpl")

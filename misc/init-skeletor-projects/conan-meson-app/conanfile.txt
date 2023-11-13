@@ -1,0 +1,15 @@
+[requires]
+sqlite3/3.40.1
+spdlog/1.11.0
+doctest/2.4.9
+
+[generators]
+PkgConfigDeps
+MesonToolchain
+
+[options]
+sqlite3/*:shared=True
+
+[imports]
+bin, *.dll -> ./bin # Copies all dll files from packages bin folder to my local "bin" folder
+lib, *.dylib* -> ./bin # Copies all dylib files from packages lib folder to my local "bin" folder

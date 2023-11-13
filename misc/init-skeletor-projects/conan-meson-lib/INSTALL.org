@@ -1,0 +1,75 @@
+Installation Guide -*- mode:org; coding:utf-8; -*-
+
+#+STARTUP: overview
+#+STARTUP: indent
+#+STARTUP: align
+#+STARTUP: inlineimages
+
+* Debug
+
+** Install Conan Deps
+
+*** With Conan Profile
+#+begin_src shell
+  conan install . --output-folder build --build=missing  --profile=debug
+#+end_src
+
+*** With setting
+#+begin_src shell
+  conan install . --output-folder build --build=missing  --settings=build_type=Debug
+#+end_src
+
+** CMake Build
+#+begin_src shell
+  cd build
+  cmake -S ..  -G "Visual Studio 17 2022" -A x64  -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE="conan_toolchain.cmake"
+  cmake --build . --config Debug
+#+end_src
+
+* Release
+** Install Conan Deps
+
+*** With Conan Profile
+#+begin_src shell
+  conan install . --output-folder build --build=missing --profile=default
+#+end_src
+
+*** With Setting flag
+#+begin_src shell
+  conan install . --output-folder build --build=missing
+#+end_src
+
+** CMake Build
+#+begin_src shell
+  cd build
+  cmake -S ..  -G "Visual Studio 17 2022" -A x64  -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="conan_toolchain.cmake"
+  cmake --build . --config Release
+#+end_src
+
+* Profile Example
+** Windows
+*** Default
+#+NAME: default-profile
+#+begin_src int
+  [settings]
+  arch=x86_64
+  build_type=Release
+  compiler=msvc
+  compiler.cppstd=14
+  compiler.runtime=dynamic
+  compiler.version=193
+  os=Windows
+#+end_src
+
+*** Debug
+#+NAME: debug-profile
+#+begin_src int
+  [settings]
+  arch=x86_64
+  build_type=Debug
+  compiler=msvc
+  compiler.cppstd=14
+  compiler.runtime=dynamic
+  compiler.version=193
+  os=Windows
+#+end_src
