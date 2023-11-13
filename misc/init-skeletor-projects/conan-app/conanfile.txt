@@ -4,11 +4,14 @@ spdlog/1.11.0
 doctest/2.4.9
 
 [tool_requires]
-cmake/3.25.3
+cmake/3.27.7
 
 [generators]
 CMakeDeps
 CMakeToolchain
+
+[layout]
+cmake_layout
 
 [options]
 sqlite3/*:shared=True
