@@ -6,7 +6,7 @@
 ;;; Code:
 ;;
 (defconst init-skeletor/projects-dir
-	"~/.emacs.d/init/misc/init-skeletor-projects")
+	"~/.emacs.d/init/misc/skeletor-projects")
 
 (use-package skeletor
   :ensure t

@@ -1,5 +1,5 @@
-project('__PROJECT_NAME__', 'c', 'cpp')
-project_name = '__PROJECT_NAME__'
+project('__PROJECT-NAME__', 'c', 'cpp')
+project_name = '__PROJECT-NAME__'
 test_project_name = project_name + '_tests'
 
 deps = [
