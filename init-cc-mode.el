@@ -53,6 +53,12 @@
   :hook
   (cmake-mode . init-cc-mode/cmake-mode-hook-func))
 
+(use-package meson-mode
+  :ensure t
+  :hook
+  (meson-mode . company-mode))
+
+
 (use-package opencl-mode
   :ensure t
   :mode
