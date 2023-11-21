@@ -1,0 +1,20 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 23,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "VCPkg ",
+	    "displayName": "VCPkg Config",
+	    "generator": "Visual Studio 17 2022",  
+	    "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "HTTP_PROXY": "http://sshost:2001",
+				"HTTPS_PROXY": "http://sshost:2001"
+			}
+		}
+  ]
+}

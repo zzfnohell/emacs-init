@@ -1,0 +1,15 @@
+{
+  "dependencies": [
+    "cxxopts",
+    "fmt",
+    "range-v3",
+    "zlib"
+  ],
+  "overrides": [
+    {
+      "name": "zlib",
+      "version": "1.2.8"
+    }
+  ],
+  "builtin-baseline": "d8079ecd674fe5632277d78d761333467955adb1"
+}

@@ -48,6 +48,12 @@
 		:default-license (rx bol "gpl")
 		:substitutions
 		'(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
+  (skeletor-define-template "vcpkg-app"
+    :title "CMake Vcpkg App"
+    :no-license? t
+    :no-git? t
+    :substitutions
+    '(("__PROJECT-NAME__" . (lambda () (read-string "Project Name: ")))))
 	(skeletor-define-template "skewer-index-html-package"
 		:title "Skewer Index Html"
 		:no-license? t
