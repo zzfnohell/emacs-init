@@ -4,6 +4,11 @@ Installation Guide -*- mode:org; coding:utf-8; -*-
 #+STARTUP: indent
 #+STARTUP: align
 #+STARTUP: inlineimages
+* Build
+** Via Conan
+#+begin_src shell
+  conan build .
+#+end_src
 
 * Debug
 
