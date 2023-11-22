@@ -25,6 +25,7 @@ target_sources(${PROJECT_NAME} PRIVATE ${SOURCE_FILES})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${DEP_LIBS})
 
 ## Test
+include(CTest)
 add_executable("${PROJECT_NAME}-tests" ${TEST_SOURCE_FILES})
 
 target_include_directories(
@@ -35,6 +36,9 @@ target_include_directories(
 
 target_link_libraries("${PROJECT_NAME}-tests" PRIVATE ${DEP_LIBS})
 
+add_test(NAME "${PROJECT_NAME}-Unit-Tests" COMMAND "${PROJECT_NAME}-tests")
+
+## Install
 include(GNUInstallDirs)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES DEBUG_POSTFIX "d")
