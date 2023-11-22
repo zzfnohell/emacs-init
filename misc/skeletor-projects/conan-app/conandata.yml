@@ -1,0 +1,4 @@
+requirements:
+  - sqlite3/3.40.1
+  - spdlog/1.11.0
+  - doctest/2.4.9

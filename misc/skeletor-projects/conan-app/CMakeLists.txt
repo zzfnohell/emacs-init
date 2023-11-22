@@ -11,7 +11,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 find_package(SQLite3 REQUIRED)
 find_package(spdlog REQUIRED)
-find_package(dotest REQUIRED)
+find_package(doctest REQUIRED)
 
 SET(SOURCE_FILES src/main.cpp)
 SET(TEST_SOURCE_FILES tests/main_test.cpp)
