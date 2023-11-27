@@ -1,6 +1,8 @@
-#define DOCTEST_CONFIG_IMPLEMENT
-#include <doctest/doctest.h>
+#include <iostream>
+#include <cstdio>
 #include "lib.h"
+
+using namespace std;
 
 int main(int argc, char **argv) {
 		int x = factorial(66);
