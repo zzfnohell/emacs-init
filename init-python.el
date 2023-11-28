@@ -15,6 +15,7 @@
   (python-shell-interpreter "ipython")
   (python-shell-interpreter-args "--pylab --pdb --nosep --simple-prompt")
   :config
+  (message "config python mode")
   (py-snippets-initialize))
 
 (use-package yapfify

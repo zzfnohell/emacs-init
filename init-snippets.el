@@ -14,6 +14,7 @@
 
 (use-package yasnippet
 	:ensure t
+  :defer t
   :hook
   (c++-ts . (lambda () (yas-active-extra-mode 'c++-mode)))
   (c-ts . (lambda () (yas-active-extra-mode 'c-mode)))
