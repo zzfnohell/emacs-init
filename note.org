@@ -178,6 +178,21 @@ PATH: ~/.emacs.d/custom-company-c-headers.el
   '(imaxima-fg-color "black")
 #+end_src
 
+** Tide
+Create jsconfig.json in the root folder of your project. jsconfig.json is tsconfig.json with allowJs attribute set to true.
+#+name: tide-jsconfig
+#+BEGIN_SRC json
+  {
+    "compilerOptions": {
+      "target": "es2017",
+      "allowSyntheticDefaultImports": true,
+      "noEmit": true,
+      "checkJs": true,
+      "jsx": "react",
+      "lib": [ "dom", "es2017" ]
+    }
+  }
+#+END_SRC
 
 *  Dir Local Variables
  ** cc-mode (.dir-locals.el)

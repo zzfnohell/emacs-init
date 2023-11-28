@@ -4,6 +4,61 @@
 ;;
 
 ;;; Code:
+(use-package js
+  :ensure t
+  :defer t
+  :custom
+  (js-indent-level 2))
+
+(use-package json-mode
+  :ensure t
+  :mode (("\\.json\\'" . json-mode)))
+
+(use-package js-comint
+	:ensure t
+  :commands js-comint-repl
+  :config
+  (setq inferior-js-program-command "node"))
+
+(use-package xref-js2
+  :ensure t
+  :defer t
+  :autoload xref-js2-xref-backend)
+
+(use-package js2-refactor
+	:ensure t
+  :defer t
+  :commands js2-refactor-mode)
+
+(use-package tide
+  :ensure t
+  :after (company flycheck)
+  :hook ((typescript-ts-mode . tide-setup)
+         (tsx-ts-mode . tide-setup)
+         (typescript-ts-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save))
+  :config
+  ;; configure jsx-tide checker to run after your default jsx checker
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
+  (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
+  ;; configure javascript-tide checker to run after your default javascript checker
+  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append))
+
+(use-package js2-mode
+  :after tide
+  :ensure t
+  :mode (("\\.js\\'" . js2-mode))
+  :hook
+  (js2-mode . js2-imenu-extras-mode)
+  (js2-mode . js2-refactor-mode)
+  (js2-mode . setup-tide-mode)
+  (js2-mode . (lambda ()
+                (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
+
+(use-package indium
+	:ensure t
+  :defer t)
+
 (use-package mmm-mode
   :ensure t
   :config
@@ -54,13 +109,15 @@
                   (setq emmet-use-css-transform nil)))))
 
   ;; company-web
-  (define-key web-mode-map (kbd "C-'") 'company-web-html))
+  (define-key web-mode-map (kbd "C-'") 'company-web-html)
+  (when (string-equal "jsx" (file-name-extension buffer-file-name))
+    (setup-tide-mode)))
 
 
 (defun init-web/web-mode-hook-func ()
   (let ((backends (make-local-variable 'company-backends)))
-                  (add-to-list backends '(company-web-html :with company-yasnippet))
-                  (add-to-list backends '(company-files :with company-yasnippet))))
+    (add-to-list backends '(company-web-html :with company-yasnippet))
+    (add-to-list backends '(company-files :with company-yasnippet))))
 
 (use-package company-web
   :ensure t
@@ -88,6 +145,7 @@
   ("\\.djhtml\\'" . web-mode)
   ("\\.html?\\'" . web-mode)
   ("\\.cshtml?\\'" . web-mode)
+  ("\\.jsx\\'" . web-mode)
   :hook
   (web-mode . init-web/custom-web-mode-hook-func)
   :config

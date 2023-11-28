@@ -62,7 +62,6 @@
 (require 'init-php)
 (require 'init-latex)
 (require 'init-lua)
-(require 'init-javascript)
 (require 'init-flutter)
 (require 'init-graphviz)
 (require 'init-powershell)
