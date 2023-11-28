@@ -14,8 +14,8 @@
   :custom
   (python-shell-interpreter "ipython")
   (python-shell-interpreter-args "--pylab --pdb --nosep --simple-prompt")
-  :hook
-  (python-mode . py-snippets))
+  :config
+  (py-snippets-initialize))
 
 (use-package yapfify
 	:ensure t

@@ -14,7 +14,6 @@
 
 (use-package yasnippet
 	:ensure t
-  :defer t
   :hook
   (c++-ts . (lambda () (yas-active-extra-mode 'c++-mode)))
   (c-ts . (lambda () (yas-active-extra-mode 'c-mode)))
@@ -73,9 +72,7 @@
 (use-package py-snippets
   :ensure t
   :requires yasnippet
-  :autoload py-snippets-initialize
-  :hook
-  (python-mode . py-snippets-initialize))
+  :autoload py-snippets-initialize)
 
 (use-package auto-yasnippet
 	:ensure t
