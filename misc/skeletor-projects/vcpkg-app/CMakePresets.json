@@ -9,7 +9,11 @@
     {
       "name": "VCPkg ",
 	    "displayName": "VCPkg Config",
-	    "generator": "Visual Studio 17 2022",  
+	    "generator": "Visual Studio 17 2022",
+			"architecture": {
+				"value": "x64",
+				"strategy": "set"
+			},
 	    "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
 			} ,
@@ -18,5 +22,14 @@
 				"HTTPS_PROXY": "http://sshost:2001"
 			}
 		}
-  ]
+  ],
+	"buildPresets": [
+		{
+			"name": "Debug",
+			"displayName": "Win64 Debug build",
+			"description": "Win64 Debug build",
+			"configurePreset": "VCPkg",
+			"inheritConfigureEnvironment": true
+		}
+	]
 }
