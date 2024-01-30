@@ -15,10 +15,14 @@
 ;; (require 'ewoc)
 ;; (require 'vc-annotate)
 
-
 (use-package magit
   :ensure t
-  :commands magit)
+  :commands magit
+  :config
+  (when (eq system-type 'windows-nt)
+    (setq magit-refresh-status-buffer nil)
+    (setq auto-revert-buffer-list-filter
+          'magit-auto-revert-repository-buffer-p)))
 
 (use-package magit-lfs
   :ensure t

@@ -7,13 +7,14 @@
   },
   "configurePresets": [
     {
-      "name": "VCPkg ",
-	    "displayName": "VCPkg Config",
+      "name": "vcpkg",
+	    "displayName": "vcpkg config",
 	    "generator": "Visual Studio 17 2022",
 			"architecture": {
 				"value": "x64",
 				"strategy": "set"
 			},
+			"binaryDir": "${sourceDir}/build/default",
 	    "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
 			} ,
@@ -28,7 +29,7 @@
 			"name": "Debug",
 			"displayName": "Win64 Debug build",
 			"description": "Win64 Debug build",
-			"configurePreset": "VCPkg",
+			"configurePreset": "vcpkg",
 			"inheritConfigureEnvironment": true
 		}
 	]
