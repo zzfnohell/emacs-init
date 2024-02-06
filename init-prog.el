@@ -14,33 +14,25 @@
   :ensure t
   :defer t)
 
-;; (require 'treesit)
-;; (setq major-mode-remap-alist
-;;       '((c++-mode . c++-ts-mode)
-;;         (c-mode . c-ts-mode)
-;;         (c-or-c++-mode . c-or-c++-ts-mode)
-;;         (clojure-mode . clojure-ts-mode)
-;;         (cmake-mode . cmake-ts-mode)
-;;         (csharp-mode . csharp-ts-mode)
-;;         (css-mode . css-ts-mode)
-;;         (java-mode . java-ts-mode)
-;;         (julia-mode . julia-ts-mode)
-;;         (js-mode . js-ts-mode)
-;;         (json-mode . json-ts-mode)
-;;         (kotlin-mode . kotlin-ts-mode)
-;;         (python-mode . python-ts-mode)
-;;         (rust-mode . rust-ts-mode)
-;;         (sh-mode . bash-ts-mode)
-;;         (tsx-mode . tsx-ts-mode)
-;;         (yaml-mode . yaml-ts-mode)))
-
-
-;; (use-package treesit-auto
-;;   :ensure t
-;;   :demand t
-;;   :config
-;;   (setq treesit-auto-install 'prompt)
-;;   (global-treesit-auto-mode))
+(require 'treesit)
+(setq major-mode-remap-alist
+      '((c++-mode . c++-ts-mode)
+        (c-mode . c-ts-mode)
+        (c-or-c++-mode . c-or-c++-ts-mode)
+        (clojure-mode . clojure-ts-mode)
+        (cmake-mode . cmake-ts-mode)
+        (csharp-mode . csharp-ts-mode)
+        (css-mode . css-ts-mode)
+        (java-mode . java-ts-mode)
+        (julia-mode . julia-ts-mode)
+        (js-mode . js-ts-mode)
+        (json-mode . json-ts-mode)
+        (kotlin-mode . kotlin-ts-mode)
+        (python-mode . python-ts-mode)
+        (rust-mode . rust-ts-mode)
+        (sh-mode . bash-ts-mode)
+        (tsx-mode . tsx-ts-mode)
+        (yaml-mode . yaml-ts-mode)))
 
 (use-package paren
   :config (show-paren-mode)
@@ -52,31 +44,31 @@
 	(prog-mode . rainbow-delimiters-mode))
 
 (use-package hideshow
-  :ensure t
-  :hook
-  (prog-mode . hs-minor-mode)
-  (nxml-mode . hs-minor-mode)
-  :config
-	;; Fix XML folding
-	(add-to-list 'hs-special-modes-alist
-							 (list 'nxml-mode
-										 "<!--\\|<[^/>]*[^/]>"
-										 "-->\\|</[^/>]*[^/]>"
-										 "<!--"
-										 'nxml-forward-element
-										 nil))
+             :ensure t
+             :hook
+             (prog-mode . hs-minor-mode)
+             (nxml-mode . hs-minor-mode)
+             :config
+	           ;; Fix XML folding
+	           (add-to-list 'hs-special-modes-alist
+							            (list 'nxml-mode
+										            "<!--\\|<[^/>]*[^/]>"
+										            "-->\\|</[^/>]*[^/]>"
+										            "<!--"
+										            'nxml-forward-element
+										            nil))
 
-	;; Fix HTML folding
-	(dolist (mode '(sgml-mode
-									html-mode
-									html-erb-mode))
-		(add-to-list 'hs-special-modes-alist
-								 (list mode
-											 "<!--\\|<[^/>]*[^/]>"
-											 "-->\\|</[^/>]*[^/]>"
-											 "<!--"
-											 'sgml-skip-tag-forward
-											 nil))))
+	           ;; Fix HTML folding
+	           (dolist (mode '(sgml-mode
+									           html-mode
+									           html-erb-mode))
+		           (add-to-list 'hs-special-modes-alist
+								            (list mode
+											            "<!--\\|<[^/>]*[^/]>"
+											            "-->\\|</[^/>]*[^/]>"
+											            "<!--"
+											            'sgml-skip-tag-forward
+											            nil))))
 
 (require 'compile)
 (setq compilation-disable-input nil)
