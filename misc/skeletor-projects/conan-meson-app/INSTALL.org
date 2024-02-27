@@ -5,7 +5,25 @@ Installation Guide -*- mode:org; coding:utf-8; -*-
 #+STARTUP: align
 #+STARTUP: inlineimages
 
-* Meson Build
+* Build
+** Via Conan
+#+begin_src shell
+  conan build .
+#+end_src
+
+* Debug
+** Install Conan Deps
+*** With Conan Profile
+#+begin_src shell
+  conan install . --output-folder build --build=missing  --profile=debug
+#+end_src
+
+*** With setting
+#+begin_src shell
+  conan install . --output-folder build --build=missing  --settings=build_type=Debug
+#+end_src
+
+* Release
 ** Install Conan Deps
 
 *** With Conan Profile
@@ -18,6 +36,8 @@ Installation Guide -*- mode:org; coding:utf-8; -*-
   conan install . --output-folder build --build=missing
 #+end_src
 
+
+* Meson Build
 ** Meson Build Script
 #+begin_src shell
   cd build
