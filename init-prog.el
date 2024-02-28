@@ -34,14 +34,6 @@
         (tsx-mode . tsx-ts-mode)
         (yaml-mode . yaml-ts-mode)))
 
-
-(use-package treesit-auto
-  :ensure t
-  :demand t
-  :config
-  (setq treesit-auto-install 'prompt)
-  (global-treesit-auto-mode))
-
 (use-package paren
   :config (show-paren-mode)
   :custom (show-paren-style 'expression))
@@ -52,31 +44,31 @@
 	(prog-mode . rainbow-delimiters-mode))
 
 (use-package hideshow
-  :ensure t
-  :hook
-  (prog-mode . hs-minor-mode)
-  (nxml-mode . hs-minor-mode)
-  :config
-	;; Fix XML folding
-	(add-to-list 'hs-special-modes-alist
-							 (list 'nxml-mode
-										 "<!--\\|<[^/>]*[^/]>"
-										 "-->\\|</[^/>]*[^/]>"
-										 "<!--"
-										 'nxml-forward-element
-										 nil))
+             :ensure t
+             :hook
+             (prog-mode . hs-minor-mode)
+             (nxml-mode . hs-minor-mode)
+             :config
+	           ;; Fix XML folding
+	           (add-to-list 'hs-special-modes-alist
+							            (list 'nxml-mode
+										            "<!--\\|<[^/>]*[^/]>"
+										            "-->\\|</[^/>]*[^/]>"
+										            "<!--"
+										            'nxml-forward-element
+										            nil))
 
-	;; Fix HTML folding
-	(dolist (mode '(sgml-mode
-									html-mode
-									html-erb-mode))
-		(add-to-list 'hs-special-modes-alist
-								 (list mode
-											 "<!--\\|<[^/>]*[^/]>"
-											 "-->\\|</[^/>]*[^/]>"
-											 "<!--"
-											 'sgml-skip-tag-forward
-											 nil))))
+	           ;; Fix HTML folding
+	           (dolist (mode '(sgml-mode
+									           html-mode
+									           html-erb-mode))
+		           (add-to-list 'hs-special-modes-alist
+								            (list mode
+											            "<!--\\|<[^/>]*[^/]>"
+											            "-->\\|</[^/>]*[^/]>"
+											            "<!--"
+											            'sgml-skip-tag-forward
+											            nil))))
 
 (require 'compile)
 (setq compilation-disable-input nil)

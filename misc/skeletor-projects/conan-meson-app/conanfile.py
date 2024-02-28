@@ -1,11 +1,11 @@
 from conan import ConanFile
-from conan.tools.cmake import CMakeDeps, CMakeToolchain, CMake
+from conan.tools.meson import MesonToolchain, Meson
 
 
 class ConanApplication(ConanFile):
     package_type = "application"
     settings = "os", "compiler", "build_type", "arch"
-    generators = "CMakeDeps"
+    generators = "PkgConfigDeps"
     options = {"shared": [True, False], "build_tests": [True, False]}
     default_options = {
         "sqlite3/*:shared": True,
@@ -15,8 +15,7 @@ class ConanApplication(ConanFile):
     }
 
     def generate(self):
-        tc = CMakeToolchain(self)
-        tc.user_presets_path = False
+        tc = MesonToolchain(self)
         tc.generate()
 
     def requirements(self):
@@ -25,8 +24,8 @@ class ConanApplication(ConanFile):
             self.requires(requirement)
 
     def build(self):
-        cmake = CMake(self)
-        cmake.configure()
-        cmake.build()
+        meson = Meson(self)
+        meson.configure()
+        meson.build()
         # here you can run CTest, launch your binaries, etc
-        cmake.test()
+        meson.test()
