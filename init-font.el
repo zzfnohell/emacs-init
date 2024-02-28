@@ -2,7 +2,7 @@
 ;;; base on https://gist.github.com/coldnew/7398835
 
 ;;; Commentary:
-;; 
+;;
 
 ;;; Code:
 
@@ -83,8 +83,7 @@
     :config
     ;; Enable the www ligature in every possible major mode
     (ligature-set-ligatures 't '("www"))
-    
-    ;; Enable ligatures in programming modes                                                           
+    ;; Enable ligatures in programming modes
     (ligature-set-ligatures 'prog-mode '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\" "{-" "::"
                                          ":::" ":=" "!!" "!=" "!==" "-}" "----" "-->" "->" "->>"
                                          "-<" "-<<" "-~" "#{" "#[" "##" "###" "####" "#(" "#?" "#_"
@@ -95,7 +94,7 @@
                                          "<*>" "<|" "<|>" "<$" "<$>" "<!--" "<-" "<--" "<->" "<+"
                                          "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
                                          "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
-  
+
     (global-ligature-mode 't)))
 
 (provide 'init-font)

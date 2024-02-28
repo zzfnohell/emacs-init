@@ -98,6 +98,9 @@
 (setq css-indent-offset 2)
 (setq sh-basic-offset 2)
 
+(setq frame-title-format
+      `((buffer-file-name "%f" "%b")
+        ,(format " - GNU Emacs %s" emacs-version)))
 
 ;; Count 1 space after a period as the end of a sentence, instead of 2
 (setq sentence-end-double-space nil)

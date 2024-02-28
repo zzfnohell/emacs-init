@@ -1,5 +1,5 @@
 from conan import ConanFile
-from conan.tools.cmake import cmake_layout, CMakeToolchain, CMake
+from conan.tools.cmake import CMakeDeps, CMakeToolchain, CMake
 
 
 class ConanApplication(ConanFile):
@@ -13,9 +13,6 @@ class ConanApplication(ConanFile):
         "shared": False,
         "build_tests": False
     }
-
-    def layout(self):
-        cmake_layout(self)
 
     def generate(self):
         tc = CMakeToolchain(self)
