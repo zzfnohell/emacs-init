@@ -24,15 +24,6 @@
     (setq auto-revert-buffer-list-filter
           'magit-auto-revert-repository-buffer-p)))
 
-(use-package magit-lfs
-  :ensure t
-  :pin melpa
-  :hook
-  (magit-mode . magit-lfs))
-
-(use-package magit-imerge
-  :ensure t
-  :defer t)
 
 (use-package vc-fossil
 	:ensure t
