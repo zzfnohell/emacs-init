@@ -178,10 +178,6 @@
   :after (treemacs projectile)
   :ensure t)
 
-(use-package treemacs-magit
-  :after (treemacs magit)
-  :ensure t)
-
 (use-package xref
   :ensure t
   :bind (("s-r" . #'xref-find-references)
