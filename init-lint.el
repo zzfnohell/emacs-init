@@ -6,8 +6,9 @@
 ;;; Code:
 
 (use-package flycheck
+  :ensure t
   :config
-  (global-flycheck-mode))
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (use-package flycheck-flow
 	:ensure t

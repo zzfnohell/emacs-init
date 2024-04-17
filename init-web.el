@@ -212,6 +212,10 @@
   :ensure t
   :defer t)
 
+(use-package impostman
+  :ensure t
+  :defer t)
+
 (defun init-web/css-mode-hook-func ()
   (let ((mode-backends (make-local-variable 'company-backends)))
     (add-to-list mode-backends 'company-css)))
