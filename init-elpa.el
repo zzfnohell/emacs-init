@@ -9,7 +9,6 @@
 (require 'package)
 ;; (setq package-enable-at-startup nil)
 (setq package-native-compile t)
-(setq package-gnupghome-dir "~/.gnupg")
 
 ;; https://www.github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el
 ;; Install into separate package dirs for each Emacs version,
