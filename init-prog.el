@@ -6,15 +6,16 @@
 ;;
 
 ;;; Code:
-(use-package julia-ts-mode
-  :if (>= emacs-major-version 29)
-  :defer t)
-
-(use-package kotlin-ts-mode
-  :if (>= emacs-major-version 29)
-  :defer t)
 
 (when (>= emacs-major-version 29)
+  (use-package julia-ts-mode
+    :ensure t
+    :defer t)
+
+  (use-package kotlin-ts-mode
+    :ensure t
+    :defer t)
+
   (require 'treesit)
 
   (setq major-mode-remap-alist
