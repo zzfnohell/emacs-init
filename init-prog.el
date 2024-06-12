@@ -243,6 +243,7 @@
 
 
 (use-package codeium
+    :ensure nil
     ;; if you use straight
     ;; :straight '(:type git :host github :repo "Exafunction/codeium.el")
     ;; otherwise, make sure that the codeium.el file is on load-path
