@@ -49,17 +49,25 @@
 (setq visible-bell t)
 
 ;; do not create backup files
+(defconst *backup-dir* "~/.emacs.d/.backups/")
+(defconst *autosave-dir* "~/.emacs.d/.auto-saves/")
+(unless (file-directory-p  *backup-dir*)
+  (make-directory *backup-dir* t))
+
+(unless (file-directory-p  *autosave-dir*)
+  (make-directory *autosave-dir* t))
+
 (setq
- backup-by-copying t      ; don't clobber symlinks
+ backup-by-copying t                    ; don't clobber symlinks
  backup-directory-alist
- '(("." . "~/.emacs.d/.backups/"))
+ `(("." . ,*backup-dir*))
  delete-old-versions t
  kept-new-versions 6
  kept-old-versions 2
  ;; use versioned backups
  version-control t
  auto-save-file-name-transforms
- '((".*" "~/.emacs.d/.auto-saves/" t)))
+ `((".*" ,*autosave-dir* t)))
 
 ;; semantic highlight
 (global-font-lock-mode t)
