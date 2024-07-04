@@ -130,8 +130,8 @@
 (global-display-line-numbers-mode 1)
 
 (use-package hl-line
-  :custom-face
-  (hl-line ((t (:background "#aaaaaa"))))
+;;  :custom-face
+;;  (hl-line ((t (:background "#aaaaaa"))))
   :config
   (global-hl-line-mode 1))
 
