@@ -128,8 +128,12 @@
 (setq-default truncate-lines nil)
 (setq-default global-visual-line-mode t)
 (global-display-line-numbers-mode 1)
-(require 'hl-line)
-(global-hl-line-mode 1)
+
+(use-package hl-line
+  :custom-face
+  (hl-line ((t (:background "#aaaaaa"))))
+  :config
+  (global-hl-line-mode 1))
 
 ;;
 (use-package undo-tree
