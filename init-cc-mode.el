@@ -58,8 +58,10 @@
   :hook
   (meson-mode . company-mode))
 
+(use-package cuda-mode
+  :ensure t)
 
-(use-package opencl-mode
+(use-package opencl-c-mode
   :ensure t
   :mode
   (("\\.cl\\'" . opencl-mode)))
