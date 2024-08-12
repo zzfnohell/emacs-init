@@ -16,6 +16,15 @@
     :ensure t
     :defer t)
 
+  (use-package treesit-auto
+    :ensure t
+    :defer t
+    :custom
+    (treesit-auto-install 'prompt)
+    :config
+    (treesit-auto-add-to-auto-mode-alist 'all)
+    (global-treesit-auto-mode))
+
   (require 'treesit)
 
   (setq major-mode-remap-alist
