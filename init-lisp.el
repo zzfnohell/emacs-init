@@ -178,6 +178,12 @@
 (require 'elisp-mode)
 (add-hook 'emacs-lisp-mode-hook  #'init-lisp/elisp-mode-hook-func)
 
+(use-package geiser
+  :ensure t)
+
+(use-package racket-mode
+  :ensure t)
+
 (message "loading init-lisp done.")
 
 (provide 'init-lisp)
