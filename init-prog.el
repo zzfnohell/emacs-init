@@ -16,6 +16,10 @@
     :ensure t
     :defer t)
 
+  (use-package markdown-ts-mode
+    :ensure t
+    :defer t)
+  
   (use-package treesit-auto
     :ensure t
     :defer t

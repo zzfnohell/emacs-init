@@ -51,6 +51,12 @@
    'markdown-preview-javascript
    "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"))
 
+(use-package poly-markdown
+  :ensure t
+  :defer t
+  :hook
+  ((markdown-mode . poly-markdown-mode)))
+
 (use-package plantuml-mode
   :ensure t
   :defer t)
