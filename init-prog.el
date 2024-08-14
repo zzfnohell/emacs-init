@@ -44,6 +44,7 @@
           (js-mode . js-ts-mode)
           (json-mode . json-ts-mode)
           (kotlin-mode . kotlin-ts-mode)
+          (markdown-mode . markdown-ts-mode)
           (python-mode . python-ts-mode)
           (rust-mode . rust-ts-mode)
           (sh-mode . bash-ts-mode)
