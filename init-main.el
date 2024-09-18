@@ -46,7 +46,6 @@
 (require 'init-cc-mode)
 (require 'init-rust)
 (require 'init-lisp)
-(require 'init-racket)
 (require 'init-octave)
 (require 'init-java)
 (require 'init-scala)
