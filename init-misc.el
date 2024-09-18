@@ -214,6 +214,11 @@
     (when (file-exists-p srv-file)
       (load srv-file 'noerror))))
 
+(use-package prescient
+  :ensure t
+  :config
+  (prescient-persist-mode))
+
 (defun set-transparency (alpha-level)
   (interactive "p")
   (message (format "Alpha level passed in: %s" alpha-level))

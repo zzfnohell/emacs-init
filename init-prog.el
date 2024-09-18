@@ -216,6 +216,11 @@
                'company-yasnippet-or-completion
                company-active-map))))
 
+(use-package company-prescient
+  :ensure t
+  :config
+  (company-prescient-mode))
+
 (use-package company-restclient
   :ensure t
   :hook
