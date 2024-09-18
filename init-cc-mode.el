@@ -59,7 +59,8 @@
   (meson-mode . company-mode))
 
 (use-package cuda-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package opencl-c-mode
   :ensure t
