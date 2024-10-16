@@ -19,7 +19,7 @@
   (use-package markdown-ts-mode
     :ensure t
     :defer t)
-  
+
   (use-package treesit-auto
     :ensure t
     :defer t
@@ -55,9 +55,9 @@
   :custom (show-paren-style 'expression))
 
 (use-package rainbow-delimiters
-	:ensure t
-	:hook
-	(prog-mode . rainbow-delimiters-mode))
+  :ensure t
+  :hook
+  (prog-mode . rainbow-delimiters-mode))
 
 (use-package hideshow
              :ensure t
@@ -65,26 +65,26 @@
              (prog-mode . hs-minor-mode)
              (nxml-mode . hs-minor-mode)
              :config
-	           ;; Fix XML folding
-	           (add-to-list 'hs-special-modes-alist
-							            (list 'nxml-mode
-										            "<!--\\|<[^/>]*[^/]>"
-										            "-->\\|</[^/>]*[^/]>"
-										            "<!--"
-										            'nxml-forward-element
-										            nil))
+             ;; Fix XML folding
+             (add-to-list 'hs-special-modes-alist
+                          (list 'nxml-mode
+                                "<!--\\|<[^/>]*[^/]>"
+                                "-->\\|</[^/>]*[^/]>"
+                                "<!--"
+                                'nxml-forward-element
+                                nil))
 
-	           ;; Fix HTML folding
-	           (dolist (mode '(sgml-mode
-									           html-mode
-									           html-erb-mode))
-		           (add-to-list 'hs-special-modes-alist
-								            (list mode
-											            "<!--\\|<[^/>]*[^/]>"
-											            "-->\\|</[^/>]*[^/]>"
-											            "<!--"
-											            'sgml-skip-tag-forward
-											            nil))))
+             ;; Fix HTML folding
+             (dolist (mode '(sgml-mode
+                             html-mode
+                             html-erb-mode))
+               (add-to-list 'hs-special-modes-alist
+                            (list mode
+                                  "<!--\\|<[^/>]*[^/]>"
+                                  "-->\\|</[^/>]*[^/]>"
+                                  "<!--"
+                                  'sgml-skip-tag-forward
+                                  nil))))
 
 (require 'compile)
 (setq compilation-disable-input nil)
@@ -130,7 +130,7 @@
 
 (defun init-prog/enable-display-fill-column ()
   (message "display fill column indicator")
-	(display-fill-column-indicator-mode))
+  (display-fill-column-indicator-mode))
 
 (add-hook 'prog-mode-hook #'init-prog/enable-display-fill-column)
 
@@ -148,13 +148,13 @@
   :ensure t)
 
 (use-package auto-complete
-	:ensure t
+  :ensure t
   :disabled t
   :config
-	(let ((x "~/.emacs.d/auto-complete/ac-dict"))
-		(if (not (file-directory-p x))
-				(make-directory x t))
-		(add-to-list 'ac-dictionary-directories x))
+  (let ((x "~/.emacs.d/auto-complete/ac-dict"))
+    (if (not (file-directory-p x))
+        (make-directory x t))
+    (add-to-list 'ac-dictionary-directories x))
   (ac-config-default)
   )
 
@@ -170,7 +170,7 @@
   "Add yas backends."
   (unless (or (not company-mode/enable-yas)
               (and (listp backends) (member 'company-yasnippet backends)))
-	  (append (if (consp backends) backends (list backends))
+    (append (if (consp backends) backends (list backends))
             '(:with company-yasnippet))))
 
 ;; From here. Dated 2015, tested 2023. API use confirmed by author of yasnippet
@@ -180,12 +180,12 @@
   (interactive)
   (let ((yas-fallback-behavior nil))
     (unless (yas-expand)
-	    (call-interactively #'company-complete-common))))
+      (call-interactively #'company-complete-common))))
 
 (use-package company-coq
   :ensure t
   :commands company-coq-mode
-	:if (featurep 'proof-site)
+  :if (featurep 'proof-site)
   :hook (coq-mode . company-coq-mode))
 
 (use-package company-dict
@@ -202,13 +202,13 @@
   (add-to-list 'company-backends 'company-math-symbols-unicode))
 
 (use-package company-ctags
-	:ensure t
-	:config
-	(with-eval-after-load 'company
-		(company-ctags-auto-setup)))
+  :ensure t
+  :config
+  (with-eval-after-load 'company
+    (company-ctags-auto-setup)))
 
 (use-package company
-	:ensure t
+  :ensure t
   :custom
   (company-dabbrev-downcase nil)
   (company-show-numbers t)
@@ -244,7 +244,7 @@
   (add-to-list (make-local-variable 'company-backends) '(company-flow :with company-yasnippet)))
 
 (use-package company-flow
-	:ensure t
+  :ensure t
   :hook
   (flow-mode . init-prog/flow-mode-hook-func))
 
@@ -255,93 +255,74 @@
     (add-to-list backends '(company-maxima-symbols :with company-yasnippet))))
 
 (use-package company-maxima
-	:ensure t
-	:after (:all maxima)
+  :ensure t
+  :after (:all maxima)
   :hook
   (maxima-mode . init-prog/company-maxima-hook-func))
 
 
 (use-package codeium
-    :ensure nil
-    ;; if you use straight
-    ;; :straight '(:type git :host github :repo "Exafunction/codeium.el")
-    ;; otherwise, make sure that the codeium.el file is on load-path
+  :ensure nil
+  ;; if you use straight
+  ;; :straight '(:type git :host github :repo "Exafunction/codeium.el")
+  ;; otherwise, make sure that the codeium.el file is on load-path
 
-    :init
-    ;; use globally
-    (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
-    ;; or on a hook
-    ;; (add-hook 'python-mode-hook
-    ;;     (lambda ()
-    ;;         (setq-local completion-at-point-functions '(codeium-completion-at-point))))
-
-    ;; if you want multiple completion backends, use cape (https://github.com/minad/cape):
-    ;; (add-hook 'python-mode-hook
-    ;;     (lambda ()
-    ;;         (setq-local completion-at-point-functions
-    ;;             (list (cape-super-capf #'codeium-completion-at-point #'lsp-completion-at-point)))))
-    ;; an async company-backend is coming soon!
-
-    ;; codeium-completion-at-point is autoloaded, but you can
-    ;; optionally set a timer, which might speed up things as the
-    ;; codeium local language server takes ~0.2s to start up
-    ;; (add-hook 'emacs-startup-hook
-    ;;  (lambda () (run-with-timer 0.1 nil #'codeium-init)))
-
-    ;; :defer t ;; lazy loading, if you want
-    :config
-    (setq use-dialog-box nil) ;; do not use popup boxes
-
-    ;; if you don't want to use customize to save the api-key
-    ;; (setq codeium/metadata/api_key "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-
-    ;; get codeium status in the modeline
-    (setq codeium-mode-line-enable
-        (lambda (api) (not (memq api '(CancelRequest Heartbeat AcceptCompletion)))))
-    (add-to-list 'mode-line-format '(:eval (car-safe codeium-mode-line)) t)
-    ;; alternatively for a more extensive mode-line
-    ;; (add-to-list 'mode-line-format '(-50 "" codeium-mode-line) t)
-
-    ;; use M-x codeium-diagnose to see apis/fields that would be sent to the local language server
-    (setq codeium-api-enabled
-        (lambda (api)
-            (memq api '(GetCompletions Heartbeat CancelRequest GetAuthToken RegisterUser auth-redirect AcceptCompletion))))
-    ;; you can also set a config for a single buffer like this:
-    ;; (add-hook 'python-mode-hook
-    ;;     (lambda ()
-    ;;         (setq-local codeium/editor_options/tab_size 4)))
-
-    ;; You can overwrite all the codeium configs!
-    ;; for example, we recommend limiting the string sent to codeium for better performance
-    (defun my-codeium/document/text ()
-        (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (min (+ (point) 1000) (point-max))))
-    ;; if you change the text, you should also change the cursor_offset
-    ;; warning: this is measured by UTF-8 encoded bytes
-    (defun my-codeium/document/cursor_offset ()
-        (codeium-utf8-byte-length
-            (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (point))))
-    (setq codeium/document/text 'my-codeium/document/text)
-    (setq codeium/document/cursor_offset 'my-codeium/document/cursor_offset))
-
-(use-package cape
-  :ensure t
   :init
-  ;; Add to the global default value of `completion-at-point-functions' which is
-  ;; used by `completion-at-point'.  The order of the functions matters, the
-  ;; first function returning a result wins.  Note that the list of buffer-local
-  ;; completion functions takes precedence over the global list.
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-elisp-block)
-  (add-to-list 'completion-at-point-functions #'cape-history)
-  (add-to-list 'completion-at-point-functions #'cape-keyword)
-  (add-to-list 'completion-at-point-functions #'cape-tex)
-  (add-to-list 'completion-at-point-functions #'cape-sgml)
-  (add-to-list 'completion-at-point-functions #'cape-rfc1345)
-  (add-to-list 'completion-at-point-functions #'cape-abbrev)
-  (add-to-list 'completion-at-point-functions #'cape-dict)
-  (add-to-list 'completion-at-point-functions #'cape-symbol)
-  (add-to-list 'completion-at-point-functions #'cape-line))
+  ;; use globally
+  (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
+  ;; or on a hook
+  ;; (add-hook 'python-mode-hook
+  ;;     (lambda ()
+  ;;         (setq-local completion-at-point-functions '(codeium-completion-at-point))))
+
+  ;; if you want multiple completion backends, use cape (https://github.com/minad/cape):
+  ;; (add-hook 'python-mode-hook
+  ;;     (lambda ()
+  ;;         (setq-local completion-at-point-functions
+  ;;             (list (cape-super-capf #'codeium-completion-at-point #'lsp-completion-at-point)))))
+  ;; an async company-backend is coming soon!
+
+  ;; codeium-completion-at-point is autoloaded, but you can
+  ;; optionally set a timer, which might speed up things as the
+  ;; codeium local language server takes ~0.2s to start up
+  ;; (add-hook 'emacs-startup-hook
+  ;;  (lambda () (run-with-timer 0.1 nil #'codeium-init)))
+
+  ;; :defer t ;; lazy loading, if you want
+  :config
+  (setq use-dialog-box nil) ;; do not use popup boxes
+
+  ;; if you don't want to use customize to save the api-key
+  ;; (setq codeium/metadata/api_key "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+
+  ;; get codeium status in the modeline
+  (setq codeium-mode-line-enable
+        (lambda (api) (not (memq api '(CancelRequest Heartbeat AcceptCompletion)))))
+  (add-to-list 'mode-line-format '(:eval (car-safe codeium-mode-line)) t)
+  ;; alternatively for a more extensive mode-line
+  ;; (add-to-list 'mode-line-format '(-50 "" codeium-mode-line) t)
+
+  ;; use M-x codeium-diagnose to see apis/fields that would be sent to the local language server
+  (setq codeium-api-enabled
+        (lambda (api)
+          (memq api '(GetCompletions Heartbeat CancelRequest GetAuthToken RegisterUser auth-redirect AcceptCompletion))))
+  ;; you can also set a config for a single buffer like this:
+  ;; (add-hook 'python-mode-hook
+  ;;     (lambda ()
+  ;;         (setq-local codeium/editor_options/tab_size 4)))
+
+  ;; You can overwrite all the codeium configs!
+  ;; for example, we recommend limiting the string sent to codeium for better performance
+  (defun my-codeium/document/text ()
+    (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (min (+ (point) 1000) (point-max))))
+  ;; if you change the text, you should also change the cursor_offset
+  ;; warning: this is measured by UTF-8 encoded bytes
+  (defun my-codeium/document/cursor_offset ()
+    (codeium-utf8-byte-length
+     (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (point))))
+  (setq codeium/document/text 'my-codeium/document/text)
+  (setq codeium/document/cursor_offset 'my-codeium/document/cursor_offset))
+
 
 (use-package imenu-list
   :ensure t
@@ -352,6 +333,7 @@
 ;; Configure Tempel
 (use-package tempel
   :ensure t
+  :disabled t
   ;; Require trigger prefix before template name when completing.
   ;; :custom
   ;; (tempel-trigger-prefix "<")
@@ -417,7 +399,7 @@
 
 (use-package corfu-prescient
   :ensure t
-  :disabed t
+  :disabled t
   :config
   (corfu-prescient-mode))
 
@@ -426,6 +408,27 @@
   :disabled t
   :config
   (corfu-terminal-mode))
+
+(use-package cape
+  :ensure t
+  :disabled t
+  :init
+  ;; Add to the global default value of `completion-at-point-functions' which is
+  ;; used by `completion-at-point'.  The order of the functions matters, the
+  ;; first function returning a result wins.  Note that the list of buffer-local
+  ;; completion functions takes precedence over the global list.
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-elisp-block)
+  (add-to-list 'completion-at-point-functions #'cape-history)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  (add-to-list 'completion-at-point-functions #'cape-tex)
+  (add-to-list 'completion-at-point-functions #'cape-sgml)
+  (add-to-list 'completion-at-point-functions #'cape-rfc1345)
+  (add-to-list 'completion-at-point-functions #'cape-abbrev)
+  (add-to-list 'completion-at-point-functions #'cape-dict)
+  (add-to-list 'completion-at-point-functions #'cape-symbol)
+  (add-to-list 'completion-at-point-functions #'cape-line))
 
 ;; A few more useful configurations...
 (use-package emacs
