@@ -149,12 +149,13 @@
 
 (use-package auto-complete
 	:ensure t
+  :disabled t
   :config
 	(let ((x "~/.emacs.d/auto-complete/ac-dict"))
 		(if (not (file-directory-p x))
 				(make-directory x t))
 		(add-to-list 'ac-dictionary-directories x))
-  ;; (ac-config-default)
+  (ac-config-default)
   )
 
 ;; https://www.emacswiki.org/emacs/CompanyMode
@@ -390,6 +391,7 @@
 
 (use-package corfu
   :ensure t
+  :disabled t
   ;; Optional customizations
   :custom
   (corfu-cycle t) ;; Enable cycling for `corfu-next/previous'
@@ -415,11 +417,13 @@
 
 (use-package corfu-prescient
   :ensure t
+  :disabed t
   :config
   (corfu-prescient-mode))
 
 (use-package corfu-terminal
   :ensure t
+  :disabled t
   :config
   (corfu-terminal-mode))
 
