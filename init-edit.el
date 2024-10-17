@@ -238,6 +238,12 @@
   (global-set-key [(shift f3)] 'highlight-symbol-prev)
   (global-set-key [(meta f3)] 'highlight-symbol-query-replace))
 
+(use-package highlight-indentation
+	:ensure t
+  :config
+	(set-face-background 'highlight-indentation-face "#e3e3d3")
+  (set-face-background 'highlight-indentation-current-column-face "#c3b3b3"))
+
 (use-package sudo-edit
   :ensure t
   :commands sudo-edit)
