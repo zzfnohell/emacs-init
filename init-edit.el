@@ -220,10 +220,23 @@
 (use-package highlight-thing
   :ensure t)
 
+(use-package highlight-doxygen
+  :ensure t
+  :config
+  (highlight-doxygen-global-mode 1))
+
 (use-package auto-highlight-symbol
   :ensure t
   :config
   (global-auto-highlight-symbol-mode t))
+
+(use-package highlight-symbol
+  :ensure t
+  :config
+  (global-set-key [(control f3)] 'highlight-symbol)
+  (global-set-key [f3] 'highlight-symbol-next)
+  (global-set-key [(shift f3)] 'highlight-symbol-prev)
+  (global-set-key [(meta f3)] 'highlight-symbol-query-replace))
 
 (use-package sudo-edit
   :ensure t

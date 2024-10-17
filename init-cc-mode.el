@@ -137,6 +137,10 @@
   :config
   (fa-config-default))
 
+(when (featurep 'doxymacs)
+  (require 'doxymacs)
+  (add-hook 'c-mode-common-hook 'doxymacs-mode))
+
 (provide 'init-cc-mode)
 
 ;;; init-cc-mode.el ends here
