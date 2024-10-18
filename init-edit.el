@@ -269,6 +269,30 @@
 (show-paren-mode 1)
 (global-highlight-parentheses-mode t)
 
+
+(defun copy-word-under-cursor ()
+  "Copy the word under the cursor."
+  (interactive)
+  (save-excursion
+    (backward-word)
+    (mark-word)
+    (kill-ring-save (region-beginning) (region-end))))
+
+(defun paste-replace-word-under-cursor ()
+  "Replace the word under the cursor with the latest yanked (pasted) text."
+  (interactive)
+  (save-excursion
+    (let (beg end)
+      (backward-word)
+      (setq beg (point))
+      (forward-word)
+      (setq end (point))
+      (delete-region beg end)
+      (yank))))
+
+(global-set-key (kbd "C-c r") 'paste-replace-word-under-cursor)
+(global-set-key (kbd "C-c w") 'copy-word-under-cursor)
+
 (message "loading init-edit done.")
 
 (provide 'init-edit)

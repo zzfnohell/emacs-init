@@ -23,7 +23,6 @@
 (require 'init-edit)
 (require 'init-misc)
 
-(require 'init-global-set-key)
 (require 'init-tags)
 (require 'init-shell)
 (require 'init-docker)
