@@ -214,6 +214,11 @@
     (when (file-exists-p srv-file)
       (load srv-file 'noerror))))
 
+(use-package prescient
+  :ensure t
+  :config
+  (prescient-persist-mode))
+
 (defun set-transparency (alpha-level)
   (interactive "p")
   (message (format "Alpha level passed in: %s" alpha-level))
@@ -226,6 +231,23 @@
 
 ;; (set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;; (add-to-list 'default-frame-alist '(alpha 85 50))
+
+
+;; scroll other window
+(global-set-key (kbd "C-c C-v") 'scroll-other-window)
+(global-set-key (kbd "C-c C-b") 'scroll-other-window-down)
+
+;;; https://superuser.com/questions/132225/how-to-get-back-to-an-active-minibuffer-prompt-in-emacs-without-the-mouse
+(defun switch-to-minibuffer-window ()
+  "Switch to minibuffer window (if active)."
+  (interactive)
+  (when (active-minibuffer-window)
+    (select-frame-set-input-focus (window-frame (active-minibuffer-window)))
+    (select-window (active-minibuffer-window))))
+
+(global-set-key (kbd "<f7>") 'switch-to-minibuffer-window)
+
+
 
 (message "loading init-misc done.")
 (provide 'init-misc)

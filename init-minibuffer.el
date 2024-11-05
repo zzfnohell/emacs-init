@@ -187,6 +187,12 @@
   ;; (setq vertico-cycle t)
   )
 
+(use-package vertico-prescient
+  :after vertico
+  :ensure t
+  :config
+  (vertico-prescient-mode))
+
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
   :init

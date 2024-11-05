@@ -59,7 +59,8 @@
   (meson-mode . company-mode))
 
 (use-package cuda-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package opencl-c-mode
   :ensure t
@@ -135,6 +136,10 @@
   :defer t
   :config
   (fa-config-default))
+
+(when (featurep 'doxymacs)
+  (require 'doxymacs)
+  (add-hook 'c-mode-common-hook 'doxymacs-mode))
 
 (provide 'init-cc-mode)
 

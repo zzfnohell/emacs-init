@@ -220,10 +220,29 @@
 (use-package highlight-thing
   :ensure t)
 
+(use-package highlight-doxygen
+  :ensure t
+  :config
+  (highlight-doxygen-global-mode 1))
+
 (use-package auto-highlight-symbol
   :ensure t
   :config
   (global-auto-highlight-symbol-mode t))
+
+(use-package highlight-symbol
+  :ensure t
+  :config
+  (global-set-key [(control f3)] 'highlight-symbol)
+  (global-set-key [f3] 'highlight-symbol-next)
+  (global-set-key [(shift f3)] 'highlight-symbol-prev)
+  (global-set-key [(meta f3)] 'highlight-symbol-query-replace))
+
+(use-package highlight-indentation
+	:ensure t
+  :config
+	(set-face-background 'highlight-indentation-face "#e3e3d3")
+  (set-face-background 'highlight-indentation-current-column-face "#c3b3b3"))
 
 (use-package sudo-edit
   :ensure t
@@ -249,6 +268,30 @@
 (electric-pair-mode 1)
 (show-paren-mode 1)
 (global-highlight-parentheses-mode t)
+
+
+(defun copy-word-under-cursor ()
+  "Copy the word under the cursor."
+  (interactive)
+  (save-excursion
+    (backward-word)
+    (mark-word)
+    (kill-ring-save (region-beginning) (region-end))))
+
+(defun paste-replace-word-under-cursor ()
+  "Replace the word under the cursor with the latest yanked (pasted) text."
+  (interactive)
+  (save-excursion
+    (let (beg end)
+      (backward-word)
+      (setq beg (point))
+      (forward-word)
+      (setq end (point))
+      (delete-region beg end)
+      (yank))))
+
+(global-set-key (kbd "C-c r") 'paste-replace-word-under-cursor)
+(global-set-key (kbd "C-c w") 'copy-word-under-cursor)
 
 (message "loading init-edit done.")
 
