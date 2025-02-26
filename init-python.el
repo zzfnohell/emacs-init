@@ -54,10 +54,6 @@
 (use-package elpy
   :ensure t
   :defer t
-  ;; :ensure-system-package
-  ;; ((jedi     . "pip install jedi")
-  ;; (black    . "pip install black")
-  ;; (flake8   . "pip install flake8"))
   :config
   (elpy-disable))
 

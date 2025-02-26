@@ -170,8 +170,6 @@
 (use-package rg
   :ensure t
   :commands rg
-  :ensure-system-package
-  (rg . ripgrep)
   :config
   (rg-enable-menu))
 
