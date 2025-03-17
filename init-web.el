@@ -161,13 +161,16 @@
 
 
 ;; CSS
-;;; Colourise CSS colour literals
-(use-package rainbow-mode
-  :ensure t
-  :init
-  (progn
-    (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
-      (add-hook hook 'rainbow-mode))))
+(use-package colorful-mode
+  ;; :diminish
+  ;; :ensure t ; Optional
+  :custom
+  (colorful-use-prefix t)
+  (colorful-only-strings 'only-prog)
+  (css-fontify-colors nil)
+  :config
+  (global-colorful-mode t)
+  (add-to-list 'global-colorful-modes 'helpful-mode))
 
 ;;; SASS and SCSS
 (use-package sass-mode
