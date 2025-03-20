@@ -163,11 +163,22 @@
   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
   (add-hook 'css-mode-hook #'aggressive-indent-mode))
 
-(when (>= emacs-major-version 29)
-  (use-package clojure-ts-mode
-    :ensure t
-    :hook
-    (clojure-ts-mode . paredit-mode)))
+
+(use-package clojure-mode
+  :ensure t
+  :defer t
+  :hook
+  (clojure-mode . paredit-mode))
+
+(use-package cljsbuild-mode
+  :ensure t)
+
+(use-package elein
+  :ensure t)
+
+(use-package cider
+  :ensure t
+  :commands cider)
 
 
 (defun init-lisp/elisp-mode-hook-func ()
