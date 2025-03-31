@@ -172,11 +172,14 @@
 ;;; SASS and SCSS
 (use-package sass-mode
   :ensure t
-  :mode ("\\.sass$" . sass-mode))
+  :mode
+  ("\\.sass$" . sass-mode))
 
 (use-package scss-mode
   :ensure t
   :defer t
+  :mode
+  ("\\.scss$" . scss-mode)
   :config
   (setq-default scss-compile-at-save nil))
 

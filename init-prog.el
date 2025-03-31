@@ -6,42 +6,43 @@
 ;;
 
 ;;; Code:
+(use-package julia-ts-mode
+  :ensure t
+  :defer t)
 
-(when (>= emacs-major-version 29)
-  (use-package julia-ts-mode
-    :ensure t
-    :defer t)
+(use-package kotlin-ts-mode
+  :ensure t
+  :defer t)
 
-  (use-package kotlin-ts-mode
-    :ensure t
-    :defer t)
+(use-package markdown-ts-mode
+  :ensure t
+  :defer t)
 
-  (use-package markdown-ts-mode
-    :ensure t
-    :defer t)
 
-  (use-package treesit-auto
-    :ensure t
-    :defer t
-    :custom
-    (treesit-auto-install 'prompt)
-    :config
-    (treesit-auto-add-to-auto-mode-alist 'all)
-    (global-treesit-auto-mode))
-
-  (require 'treesit)
-
+(use-package treesit
+  :ensure nil
+  :mode (("\\.tsx\\'" . tsx-ts-mode)
+         ("\\.ts\\'"  . typescript-ts-mode)
+         ("\\.js\\'"  . typescript-ts-mode)
+         ("\\.jsx\\'" . tsx-ts-mode))
+  :config
+  (message "config treesit")
   (setq major-mode-remap-alist
-        '((c++-mode . c++-ts-mode)
+        '((bash-mode . bash-ts-mode)
+          (c++-mode . c++-ts-mode)
           (c-mode . c-ts-mode)
           (c-or-c++-mode . c-or-c++-ts-mode)
           (clojure-mode . clojure-ts-mode)
           (cmake-mode . cmake-ts-mode)
+          (conf-toml-mode . toml-ts-mode)
           (csharp-mode . csharp-ts-mode)
           (css-mode . css-ts-mode)
+          (go-mode . go-ts-mode)
           (java-mode . java-ts-mode)
           (julia-mode . julia-ts-mode)
+          (js-json-mode . json-ts-mode)
           (js-mode . js-ts-mode)
+          (js2-mode . js-ts-mode)
           (json-mode . json-ts-mode)
           (kotlin-mode . kotlin-ts-mode)
           (markdown-mode . markdown-ts-mode)
@@ -49,7 +50,13 @@
           (rust-mode . rust-ts-mode)
           (sh-mode . bash-ts-mode)
           (tsx-mode . tsx-ts-mode)
+          (typescript-mode . typescript-ts-mode)
           (yaml-mode . yaml-ts-mode))))
+
+
+
+
+
 
 (use-package paren
   :config (show-paren-mode)
