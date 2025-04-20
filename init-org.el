@@ -1,36 +1,36 @@
 ;;; init-org.el --- ORG
 
 ;;; Commentary:
-;; 
+;;
 
 ;;; Code:
 
 (use-package org-preview-html
-	:ensure t
+  :ensure t
   :defer t)
 
 (use-package ob-ess-julia
-	:ensure t
+  :ensure t
   :defer t)
 
 (use-package ob-fsharp
-	:ensure t
+  :ensure t
   :defer t)
 
 (use-package ob-graphql
-	:ensure t
+  :ensure t
   :defer t)
 
 (use-package ob-rust
-	:ensure t
+  :ensure t
   :defer t)
 
 (use-package ob-go
-	:ensure t
+  :ensure t
   :defer t)
 
 (use-package ob-restclient
-	:ensure t
+  :ensure t
   :defer t)
 
 (use-package ob-powershell
@@ -42,7 +42,7 @@
   :defer t)
 
 (use-package verb
-	:ensure t
+  :ensure t
   :defer t)
 
 (use-package ein
@@ -56,7 +56,7 @@
   ((org-mode . poly-org-mode)))
 
 (use-package org
-	:ensure t
+  :ensure t
   :mode
   ("\\.org$" . org-mode)
   :bind
@@ -82,8 +82,7 @@
 
   (cond ((equal system-type 'windows-nt)
          (setq org-mobile-directory "/plink:zzfnohell@pluto.centaurs.bid:/var/local/dav/"))
-        (t
-         (setq org-mobile-directory "/ssh:zzfnohell@pluto.centaurs.bid:/var/local/dav/")))
+        (t (setq org-mobile-directory "/ssh:zzfnohell@pluto.centaurs.bid:/var/local/dav/")))
 
   ;; active Babel languages
   (org-babel-do-load-languages
@@ -94,7 +93,7 @@
      (dot . t)
      (ein . t)
      (emacs-lisp . t)
-		 (eshell . t)
+     (eshell . t)
      (fsharp . t)
      (gnuplot . t)
      (haskell . t)
@@ -117,7 +116,7 @@
      (shell . t)
      (sql . t)
      (sqlite . t)
-		 (verb . t)))
+     (verb . t)))
 
   (setq org-publish-project-alist
         `(("private-notes"
@@ -141,8 +140,8 @@
 (use-package org-brain
   :ensure t
   :requires org
-	:bind (:map org-mode-map
-							("C-c b" . org-brain-prefix-map))
+  :bind (:map org-mode-map
+              ("C-c b" . org-brain-prefix-map))
   :config
   (setq org-brain-path (concat (file-name-as-directory org-directory) "brain"))
   (require 'org-capture)
@@ -159,7 +158,7 @@
         org-brain-file-entries-use-title nil))
 
 (use-package org-onenote
-	:ensure t
+  :ensure t
   :requires org
   :defer t)
 
@@ -176,12 +175,12 @@
 (use-package deft
   :ensure t
   :bind ("<f8>" . deft)
-	:custom
-	(deft-recursive t)
-	(deft-use-filename-as-title nil)
+  :custom
+  (deft-recursive t)
+  (deft-use-filename-as-title nil)
   :commands (deft)
   :config
-	(setq deft-text-mode 'org-mode)
+  (setq deft-text-mode 'org-mode)
   (setq deft-extensions '("txt" "tex" "org" "md")))
 
 
