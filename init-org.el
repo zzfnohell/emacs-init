@@ -51,9 +51,7 @@
 
 (use-package poly-org
   :ensure t
-  :defer t
-  :hook
-  ((org-mode . poly-org-mode)))
+  :defer t)
 
 (use-package org
   :ensure t
