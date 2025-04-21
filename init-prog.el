@@ -53,11 +53,6 @@
           (typescript-mode . typescript-ts-mode)
           (yaml-mode . yaml-ts-mode))))
 
-
-
-
-
-
 (use-package paren
   :config (show-paren-mode)
   :custom (show-paren-style 'expression))
