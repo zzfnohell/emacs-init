@@ -2,9 +2,12 @@
 
 ;;; Commentary:
 ;;
+
 (defun init-lua/company-lua-hook-func ()
-  (let ((backends (make-local-variable 'company-backends)))
-    (add-to-list backends '(company-lua :with company-yasnippet))))
+  "Setup company backends for lua mode."
+  (setq-local company-backends
+              (append '((company-lua :with company-yasnippet))
+                      company-backends)))
 
 (use-package lua-mode
   :ensure t

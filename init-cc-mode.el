@@ -5,10 +5,12 @@
 ;; CC mode
 
 ;;; Code:
+
 (defun init-cc-mode/company-c-headers-setup ()
-  (let ((mode-backends (make-local-variable 'company-backends)))
-    (add-to-list mode-backends '(company-c-headers :with company-yasnippet))
-    (add-to-list mode-backends '(company-dabbrev-code :with company-yasnippet))))
+  (setq-local company-backends
+              (append '((company-c-headers :with company-yasnippet)
+                        (company-dabbrev-code :with company-yasnippet))
+                      company-backends)))
 
 (defun init-cc-mode/c-mode-edit-hook()
   (subword-mode t)
@@ -29,21 +31,23 @@
         (other . "linux")))
 
 (use-package company-c-headers
+  :ensure t
+  :defer t
   :after company
+  :hook
+  ((c-mode . init-cc-mode/company-c-headers-setup)
+   (c++-mode . init-cc-mode/company-c-headers-setup))
   :config
-  (add-hook 'c-mode-hook #'init-cc-mode/company-c-headers-setup)
-  (add-hook 'c++mode-hook #'init-cc-mode/company-c-headers-setup)
-
 	(let ((el-file
          (expand-file-name "custom-company-c-headers.el"
                            user-emacs-directory)))
 		(when (file-exists-p el-file)
       (load el-file))))
 
-
 (defun init-cc-mode/cmake-mode-hook-func ()
-  (let ((backends (make-local-variable 'company-backends)))
-    (add-to-list backends '(company-cmake :with company-yasnippet))))
+  (setq-local company-backends
+              (append '((company-cmake :with company-yasnippet))
+                      company-backends)))
 
 (use-package cmake-mode
   :ensure t
@@ -94,11 +98,12 @@
 	(require 'rtags)
   (cmake-ide-setup))
 
-
 (defun init-cc-mode/glsl-mode-hook-func ()
   "Hook glsl mode."
   (when (executable-find "glslangValidator")
-    (add-to-list (make-local-variable 'company-backends) 'company-glsl)))
+    (setq-local company-backends
+                (append '((company-glsl))
+                        company-backends))))
 
 (use-package glsl-mode
   :ensure t

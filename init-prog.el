@@ -243,19 +243,23 @@
   :hook
   (restclient-mode . company-restclient))
 
+
 (defun init-prog/flow-mode-hook-func ()
-  (add-to-list (make-local-variable 'company-backends) '(company-flow :with company-yasnippet)))
+  (setq-local company-backends
+              (append '((company-flow :with company-yasnippet))
+                      company-backends)))
 
 (use-package company-flow
   :ensure t
   :hook
   (flow-mode . init-prog/flow-mode-hook-func))
 
-
 (defun init-prog/company-maxima-hook-func ()
-  (let ((backends (make-local-variable 'company-backends)))
-    (add-to-list backends '(company-maxima-libraries :with company-yasnippet))
-    (add-to-list backends '(company-maxima-symbols :with company-yasnippet))))
+  "Set up company backends for Maxima mode."
+  (setq-local company-backends
+              (append '((company-maxima-libraries :with company-yasnippet)
+                        (company-maxima-symbols :with company-yasnippet))
+                      company-backends)))
 
 (use-package company-maxima
   :ensure t

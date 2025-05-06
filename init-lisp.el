@@ -86,9 +86,10 @@
 ;; ----------------------------------------------------------------------------
 (defun set-up-hippie-expand-for-elisp ()
   "Locally set `hippie-expand' completion functions for use with Emacs Lisp."
-  (make-local-variable 'hippie-expand-try-functions-list)
-  (add-to-list 'hippie-expand-try-functions-list 'try-complete-lisp-symbol t)
-  (add-to-list 'hippie-expand-try-functions-list 'try-complete-lisp-symbol-partially t))
+  (setq-local hippie-expand-try-functions-list
+              (append '('try-complete-lisp-symbol
+                        'try-complete-lisp-symbol-partially)
+                      hippie-expand-try-functions-list)))
 
 ;; ----------------------------------------------------------------------------
 ;; Enable desired features for all lisp modes
@@ -180,11 +181,11 @@
   :ensure t
   :commands cider)
 
-
 (defun init-lisp/elisp-mode-hook-func ()
   "Setup company backends for elisp mode."
-  (let ((backends (make-local-variable 'company-backends)))
-    (add-to-list backends 'company-elisp)))
+  (setq-local company-backends
+              (append '((company-elisp))
+                      company-backends)))
 
 (require 'elisp-mode)
 (add-hook 'emacs-lisp-mode-hook  #'init-lisp/elisp-mode-hook-func)

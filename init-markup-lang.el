@@ -4,8 +4,10 @@
 ;;
 
 (defun init-markup-lang/append-company-backends ()
-  (let ((mode-backends (make-local-variable 'company-backends)))
-    (add-to-list mode-backends '(company-nxml :with company-yasnippet))))
+  "Append company-backends for markup languages."
+  (setq-local company-backends
+              (append '((company-nxml :with company-yasnippet))
+                      company-backends)))
 
 (use-package nxml-mode
   :ensure nil

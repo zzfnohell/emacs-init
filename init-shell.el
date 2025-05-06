@@ -25,12 +25,13 @@
   :hook
   (fish-mode . fish-completion-mode))
 
+
 (defun init-prog/add-shell-company-backends ()
   "Add shell company backends."
-  (let ((backends (make-local-variable 'company-backends)))
-    (add-to-list backends 'company-files)
-    (add-to-list backends 'company-shell)))
-
+  (setq-local company-backends
+              (append '((company-files)
+                        (company-shell))
+                      company-backends)))
 
 (use-package company-shell
   :after (:all company)

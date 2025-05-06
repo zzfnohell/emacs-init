@@ -113,11 +113,12 @@
   (when (string-equal "jsx" (file-name-extension buffer-file-name))
     (setup-tide-mode)))
 
-
 (defun init-web/web-mode-hook-func ()
-  (let ((backends (make-local-variable 'company-backends)))
-    (add-to-list backends '(company-web-html :with company-yasnippet))
-    (add-to-list backends '(company-files :with company-yasnippet))))
+  "Set up company backends for web mode."
+  (setq-local company-backends
+              (append '((company-web-html :with company-yasnippet)
+                        (company-files :with company-yasnippet))
+                      company-backends)))
 
 (use-package company-web
   :ensure t
@@ -223,8 +224,10 @@
   :defer t)
 
 (defun init-web/css-mode-hook-func ()
-  (let ((mode-backends (make-local-variable 'company-backends)))
-    (add-to-list mode-backends 'company-css)))
+  "Set up company backends for CSS mode."
+  (setq-local company-backends
+              (append '(company-css)
+                      company-backends)))
 
 (add-hook 'css-mode-hook #'init-web/css-mode-hook-func)
 
