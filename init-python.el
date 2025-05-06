@@ -7,13 +7,14 @@
 
 ;; The package is "python" but the mode is "python-mode":
 (use-package python
+  :defer t
   :mode
   ("\\.py\\'" . python-mode)
   :interpreter
   ("python" . python-mode)
   :custom
   (python-shell-interpreter "ipython")
-  (python-shell-interpreter-args "--pylab --pdb --nosep --simple-prompt")
+  (python-shell-interpreter-args "-i --simple-prompt")
   :config
   (message "config python mode")
   (py-snippets-initialize))

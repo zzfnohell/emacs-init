@@ -7,56 +7,69 @@
 
 (use-package org-preview-html
   :ensure t
-  :defer t)
+  :defer t
+  :after org)
 
 (use-package ob-ess-julia
   :ensure t
-  :defer t)
+  :defer t
+  :after org)
 
 (use-package ob-fsharp
   :ensure t
-  :defer t)
+  :defer t
+  :after org)
 
 (use-package ob-graphql
   :ensure t
-  :defer t)
+  :defer t
+  :after org)
 
 (use-package ob-rust
   :ensure t
-  :defer t)
+  :defer t
+  :after org)
 
 (use-package ob-go
   :ensure t
-  :defer t)
+  :defer t
+  :after org)
 
 (use-package ob-restclient
   :ensure t
-  :defer t)
+  :defer t
+  :after org)
 
 (use-package ob-powershell
   :ensure t
   :defer t
+  :after org
   :config
   (setq org-babel-powerhsell-command "C:/Program Files/PowerShell/7/pwsh.exe"))
 
 (use-package ob-fricas
   :ensure t
-  :defer t)
+  :defer t
+  :after org)
 
 (use-package verb
   :ensure t
-  :defer t)
+  :defer t
+  :after org)
 
 (use-package ein
   :ensure t
-  :defer t)
+  :defer t
+  :after org)
 
 (use-package poly-org
   :ensure t
-  :defer t)
+  :defer t
+  :after org)
 
 (use-package org
   :ensure t
+  :defer t
   :mode
   ("\\.org$" . org-mode)
   :bind
@@ -138,6 +151,7 @@
 
 (use-package org-brain
   :ensure t
+  :defer t
   :requires org
   :bind (:map org-mode-map
               ("C-c b" . org-brain-prefix-map))
@@ -173,6 +187,7 @@
 
 (use-package deft
   :ensure t
+  :defer t
   :bind ("<f8>" . deft)
   :custom
   (deft-recursive t)
