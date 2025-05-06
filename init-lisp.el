@@ -193,7 +193,9 @@
   :ensure t)
 
 (use-package racket-mode
-  :ensure t)
+  :ensure t
+  :mode "\\.rkt\\'"
+  :hook ((racket-mode . racket-xp-mode)))
 
 (message "loading init-lisp done.")
 

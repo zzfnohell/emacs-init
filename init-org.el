@@ -35,7 +35,9 @@
 
 (use-package ob-powershell
   :ensure t
-  :defer t)
+  :defer t
+  :config
+  (setq org-babel-powerhsell-command "C:/Program Files/PowerShell/7/pwsh.exe"))
 
 (use-package ob-fricas
   :ensure t
@@ -58,8 +60,7 @@
   :mode
   ("\\.org$" . org-mode)
   :bind
-  (:map org-mode-map
-        ("C-c C-r" . verb-command-map))
+  (:map org-mode-map ("C-c C-r" . verb-command-map))
   :custom
   (org-agenda-files '("agendas.org"))
   (org-default-notes-file "notes.org")

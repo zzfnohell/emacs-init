@@ -17,7 +17,9 @@
 
 (use-package magit
   :ensure t
-  :commands magit
+  :defer t
+  :commands
+  (magit-status magit-log)
   :custom
   (magit-auto-revert-mode nil)
   (magit-diff-arguments (quote ("--no-ext-diff" "-M" "-C")))
@@ -53,11 +55,13 @@
 
 (use-package git-timemachine
   :ensure t
+  :defer t
   :bind
   (("s-t" . git-timemachine-toggle)))
 
 (use-package difftastic
   :demand t
+  :defer t
   :bind (:map magit-blame-read-only-mode-map
               ("D" . difftastic-magit-show)
               ("S" . difftastic-magit-show))

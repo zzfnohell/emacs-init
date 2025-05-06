@@ -12,14 +12,10 @@
 ;;     (load-file (concat cedet-root-path "cedet-devel-load.el"))
 ;; 	(load-file (concat cedet-root-path "contrib/cedet-contrib-load.el")))
 
-(defun init-cedet/cedet-prog-mode-hook ()
-  (let ((backends (make-local-variable 'company-backends)))
-    (add-to-list backends '(company-semantic :with company-yasnippet))))
 
-(use-package cedet
-  :ensure t
-  :hook
-  (prog-mode . init-cedet/cedet-prog-mode-hook)
+(use-package semantic
+  :defer t
+  :hook (prog-mode . semantic-mode)
   :custom
   (semantic-default-submodes
    '(global-semantic-highlight-func-mode
@@ -38,30 +34,21 @@
   (semantic-idle-scheduler-idle-time 5)
   :config
   (require 'cedet-global)
-  (require 'semantic)
-
-  ;; (when (cedet-gnu-global-version-check t)
-  ;;   (semanticdb-enable-gnu-global-databases 'c-mode)
-  ;;   (semanticdb-enable-gnu-global-databases 'c++-mode)
-  ;;   (semanticdb-enable-gnu-global-databases 'c-ts-mode)
-  ;;   (semanticdb-enable-gnu-global-databases 'c++-ts-mode))
-
   (semantic-mode 1)
-
-  (global-ede-mode 1)
-  ;; (global-srecode-minor-mode 1)
-
-;;;; System header files
   (let ((inc-cnf-file
          (expand-file-name "semantic-system-include.el"
                            user-emacs-directory)))
 	  (when (file-exists-p inc-cnf-file)
-		  (load inc-cnf-file)))
+		  (load inc-cnf-file))))
 
-	(let ((ede-custom-file
-				 (expand-file-name "cedet-projects.el" user-emacs-directory)))
-		(when (file-exists-p ede-custom-file)
-			(load ede-custom-file))))
+(use-package ede
+  :defer t
+  :hook (prog-mode . global-ede-mode)
+  :config
+  (global-ede-mode 1)
+  (let ((ede-custom-file (expand-file-name "cedet-projects.el" user-emacs-directory)))
+    (when (file-exists-p ede-custom-file)
+      (load ede-custom-file))))
 
 (provide 'init-cedet)
 
