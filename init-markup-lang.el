@@ -11,6 +11,7 @@
 
 (use-package nxml-mode
   :ensure nil
+  :defer t
   :mode
   ("\\.xml\\'" . nxml-mode)
   ("\\.xsd\\'" . nxml-mode)
@@ -24,21 +25,25 @@
 
 (use-package ini-mode
   :ensure t
+  :defer t
   :mode
   (("\\.ini\\'" . ini-mode)))
 
 (use-package haml-mode
   :ensure t
-  :defer t)
+  :defer t
+  :mode ("\\.haml\\'" . haml-mode))
 
 ;;; YAML
 (use-package yaml-mode
   :ensure t
+  :defer t
   :mode
   ("\\.yml$" . yaml-mode))
 
 (use-package markdown-mode
   :ensure t
+  :defer t
   :mode
   (("\\.text\\'" . markdown-mode)
    ("\\.markdown\\'" . markdown-mode)

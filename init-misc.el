@@ -106,8 +106,9 @@
   (global-auto-revert-mode -1))
 
 
-(defun init-misc/dired-rainbow-define ()
-    (progn
+(defun init-misc/dired-rainbow-setup ()
+  (require 'dired-rainbow)
+  (progn
     (dired-rainbow-define-chmod directory "#6cb2eb" "d.*")
     (dired-rainbow-define html "#eb5286" ("css" "less" "sass" "scss" "htm" "html" "jhtm" "mht" "eml" "mustache" "xhtml"))
     (dired-rainbow-define xml "#f2d024" ("xml" "xsd" "xsl" "xslt" "wsdl" "bib" "json" "msg" "pgn" "rss" "yaml" "yml" "rdata"))
@@ -133,8 +134,7 @@
   :ensure t
   :defer t
   :after dired
-  :hook (dired-mode . init-misc/dired-rainbow-define)
-  )
+  :hook (dired-mode . init-misc/dired-rainbow-setup))
 
 (use-package dired-rsync
   :ensure t
@@ -261,7 +261,22 @@
 
 (global-set-key (kbd "<f7>") 'switch-to-minibuffer-window)
 
+(use-package jq
+  :ensure t
+  :defer t
+  :mode
+  (("\\.jq$" . jq-mode)))
 
+
+(use-package jq-format
+  :ensure t
+  :after json-mode
+  :defer t
+  :commands
+  (jq-format-json-buffer
+   jq-format-json-region
+   jq-format-jsonlines-buffer
+   jq-format-jsonlines-region))
 
 (message "loading init-misc done.")
 (provide 'init-misc)

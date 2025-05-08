@@ -6,6 +6,8 @@
 
 (use-package esup
   :ensure t
+  :defer t
+  :commands esup
   ;; To use MELPA Stable use ":pin melpa-stable",
   :pin melpa)
 

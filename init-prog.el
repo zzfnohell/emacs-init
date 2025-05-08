@@ -393,7 +393,8 @@
 ;; Optional: Add tempel-collection.
 ;; The package is young and doesn't have comprehensive coverage.
 (use-package tempel-collection
-  :ensure t)
+  :ensure t
+  :disabled t)
 
 (use-package corfu
   :ensure t

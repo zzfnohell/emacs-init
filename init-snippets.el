@@ -101,7 +101,6 @@
   :defer t
   :after yasnippet
   :hook
-  :hook
   ((rjsx-mode . react-snippets-initialize)
    (tsx-ts-mode . react-snippets-initialize)))
 
