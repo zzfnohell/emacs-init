@@ -10,6 +10,8 @@
 
 ;; recentf
 (use-package recentf
+  :defer t
+  :commands find-file
   :config
   (setq-default recentf-max-saved-items 1000)
   (add-to-list 'recentf-exclude "\\elpa")
@@ -43,7 +45,8 @@
 
 ;;; ICONS
 (use-package all-the-icons
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;; Slow Rendering
 ;; If you experience a slow down in performance when rendering multiple
@@ -69,6 +72,8 @@
 
 
 (use-package ssh-config-mode
+  :ensure t
+  :defer t
   :config
   (autoload 'ssh-config-mode "ssh-config-mode" t)
   (add-to-list 'auto-mode-alist '("/\\.ssh/config\\'"     . ssh-config-mode))
@@ -82,6 +87,7 @@
 
 (use-package ellocate
   :ensure t
+  :defer t
   ;; :custom
   ;; ((ellocate-scan-dirs
   ;;  '(("~/" "~/.emacs.d/.ellocate-db/home-db")
@@ -89,8 +95,8 @@
   )
 
 
-(require 'dired)
 (setq dired-listing-switches "-alh")
+(autoload 'dired "dired" nil t)
 
 (when (eq system-type 'darwin)
   (setq dired-use-ls-dired nil))
@@ -99,9 +105,9 @@
   (setq w32-get-true-file-attributes nil)
   (global-auto-revert-mode -1))
 
-(use-package dired-rainbow
-  :config
-  (progn
+
+(defun init-misc/dired-rainbow-define ()
+    (progn
     (dired-rainbow-define-chmod directory "#6cb2eb" "d.*")
     (dired-rainbow-define html "#eb5286" ("css" "less" "sass" "scss" "htm" "html" "jhtm" "mht" "eml" "mustache" "xhtml"))
     (dired-rainbow-define xml "#f2d024" ("xml" "xsd" "xsl" "xslt" "wsdl" "bib" "json" "msg" "pgn" "rss" "yaml" "yml" "rdata"))
@@ -123,8 +129,16 @@
     (dired-rainbow-define vc "#0074d9" ("git" "gitignore" "gitattributes" "gitmodules"))
     (dired-rainbow-define-chmod executable-unix "#38c172" "-.*x.*")))
 
+(use-package dired-rainbow
+  :ensure t
+  :defer t
+  :after dired
+  :hook (dired-mode . init-misc/dired-rainbow-define)
+  )
+
 (use-package dired-rsync
   :ensure t
+  :defer t
   :bind
   (:map dired-mode-map
         ( "C-c C-r" . dired-rsync))
@@ -202,6 +216,7 @@
   (dabbrev-case-replace nil))
 
 (use-package prodigy
+  :defer t
   :bind
   (("C-c 8" . #'prodigy)
    :map prodigy-view-mode-map
@@ -214,6 +229,7 @@
 
 (use-package prescient
   :ensure t
+  :defer t
   :config
   (prescient-persist-mode))
 

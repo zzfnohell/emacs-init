@@ -49,6 +49,7 @@
 
 (use-package vc-fossil
 	:ensure t
+  :defer t
 	:init
 	(add-to-list 'vc-handled-backends 'Fossil t))
 

@@ -15,7 +15,8 @@
 
 (use-package semantic
   :defer t
-  :hook (prog-mode . semantic-mode)
+  :hook (prog-mode . (lambda () (unless (string= (buffer-name) "*scratch*")
+                             (semantic-mode))))
   :custom
   (semantic-default-submodes
    '(global-semantic-highlight-func-mode
@@ -43,7 +44,8 @@
 
 (use-package ede
   :defer t
-  :hook (prog-mode . global-ede-mode)
+  :hook (prog-mode . (lambda () (unless (string= (buffer-name) "*scratch*")
+                             (global-ede-mode))))
   :config
   (global-ede-mode 1)
   (let ((ede-custom-file (expand-file-name "cedet-projects.el" user-emacs-directory)))

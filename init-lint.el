@@ -19,6 +19,7 @@
 
 (use-package flycheck-plantuml
   :ensure t
+  :defer t
   :hook
   (plantuml-mode . flycheck-plantuml-setup))
 

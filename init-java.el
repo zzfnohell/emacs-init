@@ -5,14 +5,8 @@
 ;;
 
 ;;; Code:
-(use-package java-snippets
-  :ensure t
-  :defer t)
 
-(defun init-java/java-mode-hook-func ()
-  (require 'java-snippets))
 
-(add-hook 'java-mode-hook #'init-java/java-mode-hook-func)
 
 (use-package flycheck-gradle
   :commands (flycheck-gradle-setup)
@@ -22,8 +16,16 @@
      (add-hook x #'flycheck-gradle-setup))
    '(java-mode-hook kotlin-mode-hook)))
 
-(use-package ant :ensure t)
-(use-package mvn :ensure t)
+(use-package ant
+  :ensure t
+  :defer t
+  :commands
+  (ant ant-clean ant-compile))
+(use-package mvn
+  :ensure t
+  :defer t
+  :commands
+  (mvn mvn-clean mvn-compile))
 
 ;; mvn -Dmaven.test.skip=true package
 

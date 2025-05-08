@@ -158,10 +158,14 @@
           ("blade"  . "\\.blade\\."))))
 
 (use-package web-beautify
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands (web-beautify-js web-beautify-html web-beautify-css))
 
 (use-package impatient-mode
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands (impatient-mode))
 
 
 ;; CSS
@@ -199,13 +203,9 @@
 ;;; Use eldoc for syntax hints
 (use-package css-eldoc
   :ensure t
-  :config
-  (add-hook 'css-mode-hook #'turn-on-css-eldoc)
-  (autoload 'turn-on-css-eldoc "css-eldoc"))
-
-(use-package react-snippets
-  :ensure t
-  :defer t)
+  :defer t
+  :commands (turn-on-css-eldoc)
+  :hook (css-mode . turn-on-css-eldoc))
 
 (use-package rjsx-mode
   :ensure t

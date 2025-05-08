@@ -16,7 +16,9 @@
   (flycheck-mode . flycheck-rust-setup))
 
 (use-package toml-mode
-  :ensure t)
+  :ensure t
+  :defer t
+  :mode ("\\.toml\\'" . toml-mode))
 
 ;; (use-package racer
 ;;   :after rust-mode company
@@ -30,7 +32,10 @@
 ;;   (add-hook 'racer-mode-hook #'eldoc-mode))
 
 (use-package rust-auto-use
-  :ensure t)
+  :ensure t
+  :defer t
+  :hook
+  (rust-mode . rust-auto-use-mode))
 
 (use-package rust-playground
   :ensure t

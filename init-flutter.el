@@ -16,11 +16,16 @@
 
 (use-package dart-mode
   :ensure t
+  :defer t
+  :mode "\\.dart\\'"
   :custom
   (dart-format-on-save t))
 
 (use-package flutter
   :ensure t
+  :defer t
+  :after dart-mode
+  :hook (dart-mode . flutter-mode)
   :bind (:map dart-mode-map
               ("C-M-x" . #'flutter-run-or-hot-reload)))
 
@@ -28,8 +33,7 @@
 (use-package flutter-l10n-flycheck
   :ensure t
   :requires flutter
-  :config
-  (flutter-l10n-flycheck-setup))
+  :hook (dart-mode . flutter-l10n-flycheck-setup))
 
 (provide 'init-flutter)
 

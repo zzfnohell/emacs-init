@@ -6,6 +6,10 @@
 ;;; Code:
 (use-package shell-switcher
   :ensure t
+  :defer t
+  :commands (shell-switcher-new-shell
+             shell-switcher-switch-buffer
+             shell-switcher-select-shell)
   :config
 	(setq shell-switcher-mode t))
 
@@ -36,6 +40,7 @@
 (use-package company-shell
   :after (:all company)
   :ensure t
+  :defer t
   :hook
   (shell-mode . init-prog/add-shell-company-backends)
   (sh-mode . init-prog/add-shell-company-backends)

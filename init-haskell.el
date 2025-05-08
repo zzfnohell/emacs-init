@@ -7,7 +7,8 @@
 
 (use-package haskell-mode
   :ensure t
-  :defer t)
+  :defer t
+  :mode ("\\.hs\\'" "\\.lhs\\'" "\\.cabal\\'"))
 
 (use-package flycheck-haskell
   :ensure t
@@ -21,8 +22,10 @@
 
 (use-package dante
   :ensure t
+  :defer t
   :after haskell-mode
   :commands dante-mode
+  :hook (haskell-mode . dante-mode)
   :init
   (add-hook 'haskell-mode-hook 'flycheck-mode)
   ;; OR for flymake support:
@@ -34,7 +37,9 @@
   (flycheck-add-next-checker 'haskell-dante '(info . haskell-hlint)))
 
 (use-package ormolu
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands (ormolu ormolu-format-buffer ormolu-format-region) )
 
 (provide 'init-haskell)
 

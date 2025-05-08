@@ -17,18 +17,21 @@
   (abbrev-mode t)
   (function-args-mode))
 
-(require 'cc-mode)
-(add-hook 'c-mode-common-hook #'init-cc-mode/c-mode-edit-hook)
+(use-package cc-mode
+  :defer t
+  :hook (c-mode-common . init-cc-mode/c-mode-edit-hook)
+  :config
+  (c-set-offset 'inline-open 0)
+  (c-set-offset 'friend '-)
+  (c-set-offset 'substatement-open 0)
+  (setq c-default-style
+        '(('c-mode . "bsd")
+          ('c++-mode . "bsd")
+          ('java-mode . "java")
+          ('awk-mode . "awk")
+          (other . "linux"))))
 
-(c-set-offset 'inline-open 0)
-(c-set-offset 'friend '-)
-(c-set-offset 'substatement-open 0)
-(setq c-default-style
-      '(('c-mode . "bsd")
-        ('c++-mode . "bsd")
-        ('java-mode . "java")
-        ('awk-mode . "awk")
-        (other . "linux")))
+
 
 (use-package company-c-headers
   :ensure t
@@ -51,6 +54,7 @@
 
 (use-package cmake-mode
   :ensure t
+  :defer t
 	:mode
   (("CMakeLists\\.txt\\'" . cmake-mode)
 	 ("\\.cmake\\'" . cmake-mode))
@@ -59,20 +63,26 @@
 
 (use-package meson-mode
   :ensure t
+  :defer t
+  :mode ("\\.meson\\'" . meson-mode)
   :hook
   (meson-mode . company-mode))
 
 (use-package cuda-mode
   :ensure t
-  :defer t)
+  :defer t
+  :mode ("\\.cu\\'" . cuda-mode))
 
 (use-package opencl-c-mode
   :ensure t
+  :defer t
   :mode
   (("\\.cl\\'" . opencl-mode)))
 
 (use-package shader-mode
-  :ensure t)
+  :ensure t
+  :defer t
+  :mode ("\\.glsl\\'" . shader-mode))
 
 (use-package rtags
   :ensure t
@@ -107,6 +117,7 @@
 
 (use-package glsl-mode
   :ensure t
+  :defer t
   :mode
   (("\\.glsl\\'" . glsl-mode)
    ("\\.vert\\'" . glsl-mode)
@@ -128,17 +139,24 @@
 
 (use-package qt-pro-mode
   :ensure t
+  :defer t
   :mode
   ("\\.pro\\'" "\\.pri\\'"))
 
 (use-package qml-mode
 	:ensure t
+  :defer t
 	:mode
   (("\\.qml\\'" . qml-mode)))
 
 (use-package function-args
   :ensure t
   :defer t
+  :hook
+  ((c-mode . function-args-mode)
+   (c++-mode . function-args-mode)
+   (c-ts-mode . function-args-mode)
+   (c++-ts-mode . function-args-mode))
   :config
   (fa-config-default))
 

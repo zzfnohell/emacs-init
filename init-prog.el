@@ -145,10 +145,12 @@
    ("\\.y\\'" . bison-mode)))
 
 (use-package lex
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package peg
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package auto-complete
   :ensure t
@@ -187,31 +189,41 @@
 
 (use-package company-coq
   :ensure t
+  :defer t
   :commands company-coq-mode
   :if (featurep 'proof-site)
   :hook (coq-mode . company-coq-mode))
 
 (use-package company-dict
-  :ensure t)
+  :ensure t
+  :defer t
+  :after company)
 
 (use-package company-quickhelp
   :ensure t
+  :defer t
+  :after company
   :config
   (company-quickhelp-mode))
 
 (use-package company-math
   :ensure t
+  :defer t
+  :after company
   :config
   (add-to-list 'company-backends 'company-math-symbols-unicode))
 
 (use-package company-ctags
   :ensure t
+  :defer t
+  :after company
+  :hook (company-mode . company-ctags-auto-setup)
   :config
-  (with-eval-after-load 'company
-    (company-ctags-auto-setup)))
+  (message "config company ctags"))
 
 (use-package company
   :ensure t
+  :defer t
   :custom
   (company-dabbrev-downcase nil)
   (company-show-numbers t)
@@ -235,11 +247,14 @@
 
 (use-package company-prescient
   :ensure t
+  :defer t
+  :after company
   :config
   (company-prescient-mode))
 
 (use-package company-restclient
   :ensure t
+  :defer t
   :hook
   (restclient-mode . company-restclient))
 
@@ -251,6 +266,7 @@
 
 (use-package company-flow
   :ensure t
+  :defer t
   :hook
   (flow-mode . init-prog/flow-mode-hook-func))
 
@@ -263,13 +279,14 @@
 
 (use-package company-maxima
   :ensure t
-  :after (:all maxima)
+  :after (:all maxima company)
   :hook
   (maxima-mode . init-prog/company-maxima-hook-func))
 
 
 (use-package codeium
   :ensure nil
+  :defer t
   ;; if you use straight
   ;; :straight '(:type git :host github :repo "Exafunction/codeium.el")
   ;; otherwise, make sure that the codeium.el file is on load-path

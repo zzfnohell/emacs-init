@@ -90,6 +90,9 @@
 
 (use-package xref
   :ensure t
+  :defer t
+  :commands (xref-find-definitions
+             xref-find-references)
   :bind (("s-r" . #'xref-find-references)
          ("s-[" . #'xref-go-back)
          ("C-<down-mouse-2>" . #'xref-go-back)

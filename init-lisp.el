@@ -31,7 +31,10 @@
   :ensure t
   :defer t
   :hook
-  (emacs-lisp-mode . (lambda () (lispy-mode 1))))
+  (emacs-lisp-mode . (lambda () (unless (string= (buffer-name) "*scratch*")
+                             (lispy-mode 1))))
+  :config
+  (message "config lispy"))
 
 (use-package diminish
   :ensure t
@@ -180,15 +183,6 @@
 (use-package cider
   :ensure t
   :commands cider)
-
-(defun init-lisp/elisp-mode-hook-func ()
-  "Setup company backends for elisp mode."
-  (setq-local company-backends
-              (append '((company-elisp))
-                      company-backends)))
-
-(require 'elisp-mode)
-(add-hook 'emacs-lisp-mode-hook  #'init-lisp/elisp-mode-hook-func)
 
 (use-package geiser
   :ensure t)

@@ -15,6 +15,8 @@
 (use-package yasnippet
 	:ensure t
   :defer t
+  :commands
+  (yas/insert-snippet yas/expand)
   :hook
   (c++-ts . (lambda () (yas-active-extra-mode 'c++-mode)))
   (c-ts . (lambda () (yas-active-extra-mode 'c-mode)))
@@ -83,9 +85,25 @@
 (use-package haskell-snippets
   :after (haskell yasnippet)
   :ensure t
-  :defer t)
+  :defer t
+  :hook
+  (haskell-mode . haskell-snippets-initialize))
+
+(use-package java-snippets
+  :ensure t
+  :after yasnippet
+  :hook
+  (java-mode . java-snippets-initialize))
 
 
+(use-package react-snippets
+  :ensure t
+  :defer t
+  :after yasnippet
+  :hook
+  :hook
+  ((rjsx-mode . react-snippets-initialize)
+   (tsx-ts-mode . react-snippets-initialize)))
 
 (provide 'init-snippets)
 

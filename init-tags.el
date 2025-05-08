@@ -56,6 +56,7 @@
 
 (use-package xcscope
   :ensure t
+  :defer t
 	:config
 	(cscope-setup))
 

@@ -188,7 +188,7 @@
   )
 
 (use-package vertico-prescient
-  :after vertico
+  :after (vertico prescient)
   :ensure t
   :config
   (vertico-prescient-mode))

@@ -156,10 +156,14 @@
   :ensure t)
 
 (use-package popup-kill-ring
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands (popup-kill-ring))
 
 (use-package kill-ring-search
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands (kill-ring-search kill-ring-search-prev))
 
 (use-package backward-forward
   :config
@@ -204,17 +208,20 @@
 
 (use-package su
   :ensure t
+  :defer t
+  :commands su
   :config
   (su-mode +1))
 
 (use-package regex-tool
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands regex-tool)
 
 (use-package visual-regexp
-  :ensure t)
-
-(use-package regex-tool
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands (vr/replace vr/mc-mark vr/query-replace))
 
 ;; (use-package hl-anything  :ensure t)
 
@@ -226,6 +233,9 @@
 
 (use-package highlight-doxygen
   :ensure t
+  :defer t
+  :hook
+  ((c-mode c++-mode) . highlight-doxygen-mode)
   :config
   (highlight-doxygen-global-mode 1))
 
@@ -236,11 +246,11 @@
 
 (use-package highlight-symbol
   :ensure t
-  :config
-  (global-set-key [(control f3)] 'highlight-symbol)
-  (global-set-key [f3] 'highlight-symbol-next)
-  (global-set-key [(shift f3)] 'highlight-symbol-prev)
-  (global-set-key [(meta f3)] 'highlight-symbol-query-replace))
+  :defer t
+  :bind (([f3] . highlight-symbol-next)
+         ([C-f3] . highlight-symbol)
+         ([M-f3] . highlight-symbol-query-replace)
+         ([S-f3] . highlight-symbol-prev)))
 
 (use-package highlight-indentation
 	:ensure t
