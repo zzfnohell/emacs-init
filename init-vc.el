@@ -54,7 +54,12 @@
 	(add-to-list 'vc-handled-backends 'Fossil t))
 
 (use-package git-modes
-	:ensure t)
+	:ensure t
+  :defer t
+  :mode
+  (("\\.gitignore\\'" . gitignore-mode)
+   ("\\.gitattributes\\'" . gitattributes-mode)
+   ("\\.gitconfig\\'" . gitconfig-mode)))
 
 (use-package git-timemachine
   :ensure t

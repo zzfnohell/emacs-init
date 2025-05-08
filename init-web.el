@@ -55,6 +55,12 @@
   (js2-mode . (lambda ()
                 (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
 
+(use-package flow-minor-mode
+  :ensure t
+  :defer t
+  :hook
+  (js2-mode . flow-minor-enable-automatically))
+
 (use-package indium
 	:ensure t
   :defer t)

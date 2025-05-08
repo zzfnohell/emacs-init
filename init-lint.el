@@ -12,6 +12,7 @@
 
 (use-package flycheck-flow
 	:ensure t
+  :after flycheck
   :config
   (flycheck-add-mode 'javascript-flow 'flow-minor-mode)
   (flycheck-add-mode 'javascript-eslint 'flow-minor-mode)
