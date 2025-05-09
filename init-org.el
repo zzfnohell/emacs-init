@@ -67,14 +67,11 @@
   :defer t
   :after org)
 
-(use-package ob-jq
-  :ensure t
-  :defer t
-  :after org)
-
 (use-package org
   :ensure t
   :defer t
+  :requires
+  (jq-mode)
   :mode
   ("\\.org$" . org-mode)
   :bind
