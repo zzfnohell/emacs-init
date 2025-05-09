@@ -261,7 +261,7 @@
 
 (global-set-key (kbd "<f7>") 'switch-to-minibuffer-window)
 
-(use-package jq
+(use-package jq-mode
   :ensure t
   :defer t
   :mode
