@@ -41,17 +41,6 @@
   ;;  (add-hook 'erc-mode-hook #'init-erc/erc-mode-hook-func)
   )
 
-(use-package telega
-  :ensure t
-  :if (not (eq system-type 'windows-nt))
-  :init
-  (setq telega-proxies
-	      (list
-	       '(:server "sshost"
-		               :port 2003
-		               :enable :false
-		               :type (:@type "proxyTypeSocks5")))))
-
 (message "loading init-erc done")
 (provide 'init-erc)
 
