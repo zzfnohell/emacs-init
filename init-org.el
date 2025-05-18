@@ -57,11 +57,6 @@
   :defer t
   :after org)
 
-(use-package ein
-  :ensure t
-  :defer t
-  :after org)
-
 (use-package poly-org
   :ensure t
   :defer t
@@ -105,7 +100,6 @@
      (calc . t)
      (css . t)
      (dot . t)
-     (ein . t)
      (emacs-lisp . t)
      (eshell . t)
      (fsharp . t)

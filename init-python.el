@@ -12,9 +12,6 @@
   ("\\.py\\'" . python-mode)
   :interpreter
   ("python" . python-mode)
-  :custom
-  (python-shell-interpreter "ipython")
-  (python-shell-interpreter-args "-i --simple-prompt")
   :config
   (py-snippets-initialize))
 
@@ -53,16 +50,11 @@
 	:config
 	(pyenv-mode))
 
-(use-package jupyter
-	:ensure t
-  :defer t
-  :commands (jupyter-run-repl jupyter-run-server-repl jupyter-org-interaction-mode))
-
 (use-package elpy
   :ensure t
   :defer t
-  :config
-  (elpy-disable))
+  :init
+  (advice-add 'python-mode :before 'elpy-enable))
 
 (use-package conda
   :ensure t
