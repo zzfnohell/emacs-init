@@ -1,15 +1,15 @@
 {
   "dependencies": [
+    "doctest",
     "cxxopts",
     "fmt",
-    "range-v3",
-    "zlib"
+    "range-v3"
   ],
   "overrides": [
     {
-      "name": "zlib",
-      "version": "1.2.8"
+		"name": "doctest",
+        "version": "v2.4.12#0"
     }
   ],
-  "builtin-baseline": "d8079ecd674fe5632277d78d761333467955adb1"
+  "builtin-baseline": "d43918b9143e24ffb56917daacd9126ad03014d6"
 }

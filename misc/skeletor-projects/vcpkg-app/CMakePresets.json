@@ -7,30 +7,87 @@
   },
   "configurePresets": [
     {
-      "name": "vcpkg",
-	    "displayName": "vcpkg config",
-	    "generator": "Visual Studio 17 2022",
-			"architecture": {
-				"value": "x64",
-				"strategy": "set"
-			},
-			"binaryDir": "${sourceDir}/build/default",
-	    "cacheVariables": {
+      "name":"windows-x64",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
-			} ,
-			"environment": {
-				"HTTP_PROXY": "http://sshost:2001",
-				"HTTPS_PROXY": "http://sshost:2001"
-			}
-		}
+      },
+      "environment": {
+        "HTTP_PROXY": "http://sshost:2001",
+        "HTTPS_PROXY": "http://sshost:2001"
+      }
+    },
+    {
+      "name": "windows-x64-vs",
+      "inherits": ["windows-x64"],
+      "generator": "Visual Studio 17 2022",
+      "architecture": {
+        "value": "x64",
+        "strategy": "set"
+      }
+    },
+    {
+      "name": "windows-x64-ninja",
+      "inherits": ["windows-x64"],
+      "generator": "Ninja"
+    },
+    {
+      "name": "windows-x64-vs-msvc",
+      "inherits": ["windows-x64-vs"],
+      "displayName": "Windows x64 Debug",
+      "binaryDir": "${sourceDir}/build/vs-msvc"
+    },
+    {
+      "name": "windows-x64-vs-clang",
+      "inherits": ["windows-x64-vs"],
+      "toolset": "ClangCL",
+      "binaryDir": "${sourceDir}/build/vs-clang"
+    },
+    {
+      "name": "windows-x64-ninja-clang-debug",
+      "inherits": ["windows-x64-ninja"],
+      "binaryDir": "${sourceDir}/build/ninja-clang-debug",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "windows-x64-ninja-clang-release",
+      "inherits": ["windows-x64-ninja"],
+      "binaryDir": "${sourceDir}/build/ninja-clang-release",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++",
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
   ],
-	"buildPresets": [
-		{
-			"name": "Debug",
-			"displayName": "Win64 Debug build",
-			"description": "Win64 Debug build",
-			"configurePreset": "vcpkg",
-			"inheritConfigureEnvironment": true
-		}
-	]
+  "buildPresets": [
+    {
+      "name": "windows-x64-vs-msvc",
+      "displayName": "Win64 Debug build",
+      "configurePreset": "windows-x64-vs-msvc",
+      "inheritConfigureEnvironment": true
+    },
+    {
+      "name": "windows-x64-vs-clang",
+      "displayName": "Win64 Debug build",
+      "description": "Win64 Debug build",
+      "configurePreset": "windows-x64-vs-clang",
+      "inheritConfigureEnvironment": true
+    },
+    {
+      "name": "windows-x64-ninja-clang-debug",
+      "configurePreset": "windows-x64-ninja-clang-debug",
+      "inheritConfigureEnvironment": true
+    },
+    {
+      "name": "windows-x64-ninja-clang-release",
+      "configurePreset": "windows-x64-ninja-clang-release",
+      "inheritConfigureEnvironment": true
+    }
+  ]
 }
+
