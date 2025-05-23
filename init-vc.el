@@ -79,5 +79,23 @@
        [("D" "Difftastic diff (dwim)" difftastic-magit-diff)
         ("S" "Difftastic show" difftastic-magit-show)])))
 
+;; (use-package diff-hl
+;;   :ensure t
+;;   :defer t
+;;   :hook ((prog-mode . diff-hl-mode)
+;;          (magit-post-refresh . diff-hl-magit-post-refresh))
+;;   :config
+;;   (global-diff-hl-model))
+
+(use-package git-gutter
+  :ensure t
+  :defer t
+  :commands git-gutter
+  :hook
+  ((prog-mode . git-gutter-mode))
+  :config
+  (global-git-gutter-mode +1)
+  (git-gutter:linum-setup))
+
 (provide 'init-vc)
 ;;; init-vc.el ends here

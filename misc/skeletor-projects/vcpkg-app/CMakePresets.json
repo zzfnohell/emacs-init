@@ -9,7 +9,11 @@
     {
       "name":"windows-x64",
       "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "x64-windows",
+        "VCPKG_MANIFEST_MODE": "ON",
+        "VCPKG_MANIFEST_INSTALL": "OFF",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
+        "CMAKE_VERBOSE_MAKEFILE": "ON",
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
       },
       "environment": {
@@ -69,7 +73,14 @@
       "name": "windows-x64-vs-msvc",
       "displayName": "Win64 Debug build",
       "configurePreset": "windows-x64-vs-msvc",
-      "inheritConfigureEnvironment": true
+      "inheritConfigureEnvironment": true,
+      "nativeToolOptions": [
+        "/maxcpucount",
+        "/nodeReuse:true",
+        "/p:TrackFileAccess=false",
+        "/p:VcpkgEnableManifest=true",
+        "/bl"
+      ]
     },
     {
       "name": "windows-x64-vs-clang",
