@@ -41,6 +41,38 @@
   :commands lsp-ivy-workspace-symbol)
 
 
+
+(defun init-lsp/dap-stop-hook-func (arg)
+  (call-interactively #'dap-hydra))
+
+(use-package dap-mode
+  :ensure t
+  :defer t
+  :after lsp-mode
+  :commands dap-debug
+  :hook
+  ((python-mode . dap-ui-mode)
+   (python-mode . dap-mode))
+  :config
+	(dap-auto-configure-mode)
+  (require 'dap-gdb)
+
+  (require 'dap-go)
+  (require 'dap-chrome)
+
+  (require 'dap-python)
+  (setq dap-python-debugger 'debugpy)
+  (defun dap-python--pyenv-executable-find (command)
+    (executable-find "python"))
+
+  (add-hook 'dap-stopped-hook #'init-lsp/dap-stop-hook-func)
+
+
+  (require 'dap-pwsh)
+  (require 'dap-node))
+
+
+
 ;; https://github.com/emacs-lsp/lsp-docker
 ;; (use-package lsp-docker :ensure t)
 
@@ -53,10 +85,11 @@
   (add-hook 'haskell-literate-mode-hook #'lsp))
 
 (use-package lsp-java
-  :disabled
   :ensure t
-  :after lsp-mode
+  :defer t
+  :after (lsp-mode dap-mode java-mode)
 	:config
+  (require 'dap-java)
 	(require 'lsp-java-boot)
 
 	;; to enable the lenses
