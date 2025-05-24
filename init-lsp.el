@@ -8,19 +8,26 @@
   :disabled
   :ensure t
   :commands lsp
-  :hook ((java-mode . lsp)
-         (python-mode . lsp)
-         (haskell-mode . lsp)
-         (haskell-literate-mode . lsp)
-         (latex-mode . lsp)
-         (tex-mode . lsp)
-         (yatex-mode . lsp)
-         (bibtex-mode . lsp)
+  :hook ((java-mode . lsp-deferred)
+         (python-mode . lsp-deferred)
+         (haskell-mode . lsp-deferred)
+         (haskell-literate-mode . lsp-deferred)
+         (latex-mode . lsp-deferred)
+         (tex-mode . lsp-deferred)
+         (yatex-mode . lsp-deferred)
+         (bibtex-mode . lsp-deferred)
+         (js-mode . lsp-deferred)
+         (js2-mode . lsp-deferred)
+         (rjsx-mode .lsp-deferred)
+         (typescript-mode . lsp-deferred)
          (lsp-mode . lsp-enable-which-key-integration))
   :custom
   (lsp-completion-enable t)
 	(lsp-completion-provider :capf)
-  (lsp-enable-snippet))
+  (lsp-enable-snippet)
+  :config
+  (require 'lsp-flow))
+
 
 ;; LSP UI tools
 (use-package lsp-ui
@@ -70,23 +77,20 @@
 
 (use-package eglot
   :ensure t
-  :hook ((go-mode . eglot-ensure)
-         (haskell-mode . eglot-ensure)
-         (csharp-mode . eglot-ensure)
-         (rust-mode . eglot-ensure))
+  :defer t
+  :commands eglot
   :bind (:map eglot-mode-map
               ("C-c a r" . #'eglot-rename)
               ("C-c C-c" . #'eglot-code-actions))
   :custom
-  (eglot-autoshutdown t))
-
-(use-package eglot-fsharp
-  :requires eglot
-  :ensure t)
-
-(use-package eglot-java
-  :requires eglot
-  :ensure t)
+  (eglot-autoshutdown t)
+  :config
+  (add-to-list 'eglot-server-programs
+               '((js-mode
+                  rjsx-mode
+                  js-ts-mode
+                  tsx-ts-mode)
+                 . ("flow" "lsp"))))
 
 (use-package xref
   :ensure t
