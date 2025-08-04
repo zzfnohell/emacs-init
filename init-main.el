@@ -38,6 +38,7 @@
 (require 'init-lint)
 (require 'init-lsp)
 (require 'init-dap)
+(require 'init-ai)
 
 ;; langs
 (require 'init-ess)

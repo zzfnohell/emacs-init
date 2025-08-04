@@ -65,6 +65,12 @@
   ;; if you want eshell support, include:
   (conda-env-initialize-eshell))
 
+(use-package uv-mode
+  :ensure t
+  :defer t
+  :hook
+  (python-mode . uv-mode-auto-activate-hook))
+
 (message "loading init-python done.")
 
 (provide 'init-python)

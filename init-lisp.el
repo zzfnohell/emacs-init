@@ -177,9 +177,6 @@
 (use-package cljsbuild-mode
   :ensure t)
 
-(use-package elein
-  :ensure t)
-
 (use-package cider
   :ensure t
   :commands cider)

@@ -13,7 +13,7 @@
   :defer t
   :commands find-file
   :config
-  (setq-default recentf-max-saved-items 1000)
+  (setq-default recentf-max-saved-items 100)
   (add-to-list 'recentf-exclude "\\elpa")
   (add-to-list 'recentf-exclude "/tmp")
   (add-to-list 'recentf-exclude "/ssh:")
