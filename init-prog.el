@@ -53,11 +53,6 @@
           (typescript-mode . typescript-ts-mode)
           (yaml-mode . yaml-ts-mode))))
 
-(use-package tree-sitter-langs
-  :ensure t
-  :defer t
-  :commands tree-sitter-langs-install-grammars)
-
 (use-package paren
   :config (show-paren-mode)
   :custom (show-paren-style 'expression))
