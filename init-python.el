@@ -28,6 +28,10 @@
   :hook
   (python-mode . python-cell-mode))
 
+(use-package uv-mode
+  :ensure t
+  :defer t
+  :hook (python-mode . uv-mode-auto-activate-hook))
 
 (use-package pyvenv
 	:ensure t
