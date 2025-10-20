@@ -30,7 +30,7 @@
 
 (require 'init-vc)
 (require 'init-prog)
-(require 'init-cedet)
+;; (require 'init-cedet)
 (require 'init-org)
 
 (require 'init-minibuffer)
