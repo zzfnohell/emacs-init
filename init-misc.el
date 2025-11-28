@@ -30,11 +30,11 @@
   :custom
   (projectile-require-project-root t)
   (projectile-enable-caching t)
-  (projectile-indexing-method 'native)
+  (projectile-indexing-method 'alien)
   (projectile-globally-ignored-file-suffixes
    '("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar"))
   (projectile-globally-ignored-directories
-   '(".git" "node_modules" "__pycache__" ".vs"))
+   '(".git" "node_modules" "__pycache__" ".vs" "bin" "obj" "build" "dist" "target"))
   (projectile-globally-ignored-files '("TAGS" "tags" ".DS_Store"))
   :config
   (projectile-mode +1)

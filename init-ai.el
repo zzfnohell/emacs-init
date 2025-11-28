@@ -3,16 +3,19 @@
 ;;; Commentary:
 ;; 
 
-(use-package gptai
-  :ensure t
-  :defer t
-  :bind (("C-c o" . gptai-send-query))
+(use-package gptel-agent
+  :vc ( :url "https://github.com/karthink/gptel-agent"
+        :rev :newest)
   :config
-  ;; set configurations
-  (setq gptai-model "qwen3-coder-plus")
-  (setq gptai-api-key (getenv "DASHSCOPE_API_KEY"))
-  ;; if required, specify an alternative base url
-  (setq gptai-base-url "https://dashscope.aliyuncs.com/compatible-mode/v1"))
+  (gptel-agent-update))
+
+(use-package agent-shell
+  :ensure t
+  :ensure-system-package
+  ;; Add agent installation configs here
+  ((claude . "brew install claude-code")
+   (qwen . "npm install -g @qwen-code/qwen-code@latest")
+   (claude-code-acp . "npm install -g @zed-industries/claude-code-acp")))
 
 
 (provide 'init-ai)
