@@ -7,14 +7,7 @@
   :vc ( :url "https://github.com/karthink/gptel-agent"
         :rev :newest)
   :config
-  (gptel-agent-update)
-  (setq
-   gptel-use-curl "D:/msys64/mingw64/bin/curl.exe"
-   gptel-proxy "http://sshost:2001"
-   gptel-model 'gemini-pro-latest
-   gptel-backend (gptel-make-gemini "Gemini"
-                   :key "AIzaSyAbPUzjP1erOZF3sc_fIlEpTl-Y312SpWw"
-                   :stream t)))
+  (gptel-agent-update))
 
 (use-package agent-shell
   :ensure t
