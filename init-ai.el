@@ -11,11 +11,12 @@
 
 (use-package agent-shell
   :ensure t
-  :ensure-system-package
-  ;; Add agent installation configs here
-  ((claude . "brew install claude-code")
-   (qwen . "npm install -g @qwen-code/qwen-code@latest")
-   (claude-code-acp . "npm install -g @zed-industries/claude-code-acp")))
+  ;; :ensure-system-package
+  ;; ;; Add agent installation configs here
+  ;; ((claude . "brew install claude-code")
+  ;;  (qwen . "npm install -g @qwen-code/qwen-code@latest")
+  ;;  (claude-code-acp . "npm install -g @zed-industries/claude-code-acp"))
+  )
 
 
 (provide 'init-ai)
