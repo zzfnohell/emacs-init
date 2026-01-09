@@ -88,12 +88,15 @@
 
 (size-indication-mode 1)
 
-(when (window-system)
-  (setq-default mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-  (setq-default mouse-wheel-progressive-speed nil)
-  (setq-default scroll-step 1)
-  (setq-default scroll-margin 0)
-  (setq-default scroll-conservatively 100000))
+(use-package ultra-scroll
+  :ensure t
+  :init
+  (setq scroll-conservatively 3 ; or whatever value you prefer, since v0.4
+        scroll-margin 0) ; important: scroll-margin>0 not yet supported
+  :config
+  (ultra-scroll-mode 1))
+
+(add-to-list 'default-frame-alist '(scroll-bar-width . 8))
 
 ;; display buffer name on the caption.
 (setq frame-title-format
