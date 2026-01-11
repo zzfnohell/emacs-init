@@ -33,47 +33,16 @@
   :defer t
   :hook (python-mode . uv-mode-auto-activate-hook))
 
-(use-package pyvenv
-	:ensure t
-  :defer t
-  :commands
-  (pyvenv-workon pyvenv-activate)
-  :config
-  (pyvenv-mode 1)
-  (pyvenv-tracking-mode 1))
-
 (use-package cython-mode
 	:ensure t
   :defer t
   :mode ("\\.pyx\\'" "\\.pxd\\'" "\\.pxi\\'"))
-
-(use-package pyenv-mode
-	:ensure t
-  :defer t
-  :commands (pyenv-set)
-	:config
-	(pyenv-mode))
 
 (use-package elpy
   :ensure t
   :defer t
   :init
   (advice-add 'python-mode :before 'elpy-enable))
-
-(use-package conda
-  :ensure t
-  :defer t
-  :config
-  ;; if you want interactive shell support, include:
-  (conda-env-initialize-interactive-shells)
-  ;; if you want eshell support, include:
-  (conda-env-initialize-eshell))
-
-(use-package uv-mode
-  :ensure t
-  :defer t
-  :hook
-  (python-mode . uv-mode-auto-activate-hook))
 
 (message "loading init-python done.")
 
