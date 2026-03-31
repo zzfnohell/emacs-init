@@ -45,7 +45,7 @@
   :defer t
   :after org
   :config
-  (setq org-babel-powerhsell-command "C:/Program Files/PowerShell/7/pwsh.exe"))
+  (setq org-babel-powershell-os-command "C:/Program Files/PowerShell/7/pwsh.exe"))
 
 (use-package ob-fricas
   :ensure t

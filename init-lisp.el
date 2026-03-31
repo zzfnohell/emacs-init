@@ -25,7 +25,7 @@
   (inferior-lisp-mode . enable-paredit-mode)
   (lisp-interaction-mode . enable-paredit-mode)
   (emacs-lisp-mode . enable-paredit-mode)
-  (ielm-mode .enable-paredit-mode))
+  (ielm-mode . enable-paredit-mode))
 
 (use-package lispy
   :ensure t

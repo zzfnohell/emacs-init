@@ -18,7 +18,7 @@
          (bibtex-mode . lsp-deferred)
          (js-mode . lsp-deferred)
          (js2-mode . lsp-deferred)
-         (rjsx-mode .lsp-deferred)
+         (rjsx-mode . lsp-deferred)
          (typescript-mode . lsp-deferred)
          (lsp-mode . lsp-enable-which-key-integration))
   :custom
