@@ -242,11 +242,6 @@
   :config
   (highlight-doxygen-global-mode 1))
 
-(use-package auto-highlight-symbol
-  :ensure t
-  :config
-  (global-auto-highlight-symbol-mode t))
-
 (use-package highlight-symbol
   :ensure t
   :defer t
