@@ -35,10 +35,7 @@
 
 (use-package agent-shell
   :ensure t
-  :ensure-system-package
-  ;; Add agent installation configs here
-  ((qwen . "npm install -g @qwen-code/qwen-code@latest")
-   (claude-code-acp . "npm install -g @zed-industries/claude-code-acp")))
+  :defer t)
 
 (use-package ai-code
   ;; :straight (:host github :repo "tninja/ai-code-interface.el") ;; if you want to use straight to install, no need to have MELPA setting above
