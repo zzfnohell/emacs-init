@@ -60,15 +60,6 @@
   :hook
   (js2-mode . flow-minor-enable-automatically))
 
-(use-package mmm-mode
-  :ensure t
-  :defer t
-  :init
-  (setq mmm-global-mode 'buffers-with-submode-classes)
-  :config
-  (require 'mmm-auto)
-  (mmm-mode 1))
-
 (defun init-web/custom-web-mode-hook-func ()
   "Hooks for Web mode."
   ;; Indentation
