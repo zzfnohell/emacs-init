@@ -47,11 +47,6 @@
   :hook
   (julia-mode . julia-snail-mode))
 
-(use-package julia-repl
-  :ensure t
-  :hook
-  (julia-mode . julia-repl-mode))
-
 (message "loading init-ess done.")
 
 (provide 'init-ess)

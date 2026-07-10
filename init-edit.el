@@ -209,13 +209,6 @@
   :config
   (global-so-long-mode 1))
 
-(use-package su
-  :ensure t
-  :defer t
-  :commands su
-  :config
-  (su-mode +1))
-
 (use-package regex-tool
   :ensure t
   :defer t
