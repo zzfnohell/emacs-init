@@ -231,9 +231,6 @@
 (use-package highlight-parentheses
   :ensure t)
 
-(use-package highlight-thing
-  :ensure t)
-
 (use-package highlight-doxygen
   :ensure t
   :defer t
@@ -242,13 +239,14 @@
   :config
   (highlight-doxygen-global-mode 1))
 
-(use-package highlight-symbol
+(use-package symbol-overlay
   :ensure t
   :defer t
-  :bind (([f3] . highlight-symbol-next)
-         ([C-f3] . highlight-symbol)
-         ([M-f3] . highlight-symbol-query-replace)
-         ([S-f3] . highlight-symbol-prev)))
+  :hook (prog-mode . symbol-overlay-mode)
+  :bind (([f3] . symbol-overlay-jump-next)
+         ([C-f3] . symbol-overlay-put)
+         ([M-f3] . symbol-overlay-rename)
+         ([S-f3] . symbol-overlay-jump-prev)))
 
 (use-package highlight-indentation
 	:ensure t

@@ -55,12 +55,6 @@
 
 (message "loading init-misc/ICONS done.")
 
-;;; FUZZY
-(use-package fuzzy
-  :ensure t)
-
-(message "loading init-misc/FUZZY done.")
-
 ;;; ABBREV
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
 (setq-default abbrev-mode t)
@@ -208,7 +202,9 @@
 
 (use-package format-all
   :ensure t
-  :commands format-all-buffer)
+  :commands (format-all-buffer format-all-region format-all-mode)
+  :hook (prog-mode . format-all-ensure-formatter)
+  :bind ("C-c C-f" . format-all-buffer))
 
 (use-package dabbrev
   :bind (("C-/" . #'dabbrev-completion))

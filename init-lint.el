@@ -24,12 +24,6 @@
   :hook
   (plantuml-mode . flycheck-plantuml-setup))
 
-
-(use-package prettier
-  :ensure t
-  :defer t
-  :commands prettier-prettify)
-
 (provide 'init-lint)
 
 ;;; init-lint.el ends here

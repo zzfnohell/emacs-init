@@ -15,12 +15,6 @@
   :config
   (py-snippets-initialize))
 
-(use-package yapfify
-	:ensure t
-  :defer t
-  :hook
-  (python-mode . yapf-mode))
-
 (use-package python-cell
   :after python-mode
   :ensure t

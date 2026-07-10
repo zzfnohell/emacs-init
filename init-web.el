@@ -35,8 +35,7 @@
   :after (company flycheck)
   :hook ((typescript-ts-mode . tide-setup)
          (tsx-ts-mode . tide-setup)
-         (typescript-ts-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save))
+         (typescript-ts-mode . tide-hl-identifier-mode))
   :config
   ;; configure jsx-tide checker to run after your default jsx checker
   (flycheck-add-mode 'javascript-eslint 'web-mode)
@@ -60,10 +59,6 @@
   :defer t
   :hook
   (js2-mode . flow-minor-enable-automatically))
-
-(use-package indium
-	:ensure t
-  :defer t)
 
 (use-package mmm-mode
   :ensure t
@@ -162,11 +157,6 @@
   (setq web-mode-engines-alist
         '(("php"    . "\\.phtml\\'")
           ("blade"  . "\\.blade\\."))))
-
-(use-package web-beautify
-  :ensure t
-  :defer t
-  :commands (web-beautify-js web-beautify-html web-beautify-css))
 
 (use-package impatient-mode
   :ensure t

@@ -27,15 +27,6 @@
   (emacs-lisp-mode . enable-paredit-mode)
   (ielm-mode . enable-paredit-mode))
 
-(use-package lispy
-  :ensure t
-  :defer t
-  :hook
-  (emacs-lisp-mode . (lambda () (unless (string= (buffer-name) "*scratch*")
-                             (lispy-mode 1))))
-  :config
-  (message "config lispy"))
-
 (use-package diminish
   :ensure t
   :config

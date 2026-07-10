@@ -157,12 +157,13 @@
   :ensure t
   :disabled t
   :config
+  (use-package fuzzy
+    :ensure t)
   (let ((x "~/.emacs.d/auto-complete/ac-dict"))
     (if (not (file-directory-p x))
         (make-directory x t))
     (add-to-list 'ac-dictionary-directories x))
-  (ac-config-default)
-  )
+  (ac-config-default))
 
 ;; https://www.emacswiki.org/emacs/CompanyMode
 ;; From here. Dated 2015, tested 2023. Based on PR accepted into spacemacs
