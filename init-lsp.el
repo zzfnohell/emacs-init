@@ -104,12 +104,12 @@
          (julia-mode-hook . lsp)))
 
 (use-package which-key
-  :ensure t
+  :ensure (< emacs-major-version 30)
   :config
   (which-key-mode))
 
 (use-package eglot
-  :ensure t
+  :ensure nil
   :defer t
   :commands eglot
   :bind (:map eglot-mode-map
@@ -126,7 +126,7 @@
                  . ("flow" "lsp"))))
 
 (use-package xref
-  :ensure t
+  :ensure nil
   :defer t
   :commands (xref-find-definitions
              xref-find-references)
@@ -136,6 +136,7 @@
          ("s-]" . #'xref-go-forward)))
 
 (use-package eldoc
+  :ensure nil
   :bind ("s-d" . #'eldoc)
   :custom (eldoc-echo-area-prefer-doc-buffer t))
 

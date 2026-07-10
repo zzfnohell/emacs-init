@@ -4,12 +4,16 @@
 ;;
 
 ;;; Code:
-(use-package session
+(use-package desktop
+  :ensure nil
   :config
-  (add-hook 'after-init-hook 'session-initialize))
+  (setq desktop-restore-eager 10
+        desktop-load-locked-desktop t)
+  (desktop-save-mode 1))
 
 ;; recentf
 (use-package recentf
+  :ensure nil
   :defer t
   :commands find-file
   :config

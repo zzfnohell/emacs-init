@@ -24,7 +24,9 @@
 
 (package-initialize)
 
-(unless (package-installed-p 'use-package)
+;; use-package is built into Emacs 29+
+(when (and (< emacs-major-version 29)
+           (not (package-installed-p 'use-package)))
   (package-refresh-contents)
   (package-install 'use-package))
 

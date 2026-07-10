@@ -9,9 +9,7 @@
 
 (require 'init-elpa)
 
-;; if session is install as an ELPA package,
-;; it means that package-initialize must be called
-;; before the customization file is loaded.
+;; package-initialize (via init-elpa) must run before loading custom-file.
 (load custom-file)
 
 (require 'init-benchmarking)

@@ -64,7 +64,7 @@
   (prog-mode . rainbow-delimiters-mode))
 
 (use-package hideshow
-             :ensure t
+             :ensure nil
              :hook
              (prog-mode . hs-minor-mode)
              (nxml-mode . hs-minor-mode)

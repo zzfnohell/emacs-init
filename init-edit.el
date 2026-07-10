@@ -142,16 +142,9 @@
   :config
   (global-hl-line-mode 1))
 
-;;
-(use-package undo-tree
-  :ensure t
-  :diminish
-  :config
-  (global-undo-tree-mode 1)
-  (setq undo-tree-visualizer-diff t)
-  (setq undo-tree-visualizer-timestamps t)
-  (setq undo-tree-auto-save-history nil)
-  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
+;; Built-in undo/redo (Emacs 28+)
+(global-set-key (kbd "C-/") #'undo-only)
+(global-set-key (kbd "C-?") #'undo-redo)
 
 (add-hook 'texinfo-mode-hook (lambda () (require 'sb-texinfo)))
 
@@ -205,7 +198,7 @@
    ("C-S-<mouse-1>" . mc/add-cursor-on-click)))
 
 (use-package so-long
-  :ensure t
+  :ensure nil
   :config
   (global-so-long-mode 1))
 
