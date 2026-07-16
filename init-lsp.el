@@ -103,10 +103,10 @@
   :hook ((julia-mode-hook . lsp-mode)
          (julia-mode-hook . lsp)))
 
-(use-package which-key
-  :ensure (< emacs-major-version 30)
+(when (< emacs-major-version 30)
+  (use-package which-key
   :config
-  (which-key-mode))
+  (which-key-mode)))
 
 (use-package eglot
   :ensure nil
