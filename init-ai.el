@@ -17,21 +17,10 @@
   (setq-default
    gptel-default-mode 'org-mode
    gptel-post-response-functions #'gptel-end-of-response
-   gptel-model 'qwen-max
-   gptel-backend (gptel-make-openai "QWen-Max"
-                   :host "dashscope.aliyuncs.com"
-                   :endpoint "/compatible-mode/v1/chat/completions"
-                   :key (getenv "QWEN_API_KEY")
-                   :models
-                   '((qwen-max
-                      :capabilities (media tool json url)
-                      :mime-types
-                      ("image/jpeg" "image/png" "image/gif" "image/webp"))
-                     (qwen-plus
-                      :capabilities (media tool json url)
-                      :mime-types
-                      ("image/jpeg" "image/png" "image/gif" "image/webp")))
-                   :stream t)))
+   gptel-model   'deepseek-reasoner
+   gptel-backend (gptel-make-deepseek "DeepSeek"
+                   :stream t
+                   :key (getenv "DEEPSEEK_API_KEY"))))
 
 (use-package agent-shell
   :ensure t
