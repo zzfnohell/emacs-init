@@ -265,6 +265,10 @@
 (show-paren-mode 1)
 (global-highlight-parentheses-mode t)
 
+(setq xterm-extra-capabilities
+      '(getSelection setSelection modifyOtherKeys))
+
+(setq select-enable-clipboard t)
 
 (defun copy-word-under-cursor ()
   "Copy the word under the cursor."
