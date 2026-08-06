@@ -206,7 +206,9 @@
 ;; (use-package hl-anything  :ensure t)
 
 (use-package highlight-parentheses
-  :ensure t)
+  :ensure t
+  :config
+  (global-highlight-parentheses-mode t))
 
 (use-package highlight-doxygen
   :ensure t
@@ -249,7 +251,6 @@
 (minibuffer-depth-indicate-mode)
 
 (electric-pair-mode 1)
-(global-highlight-parentheses-mode t)
 
 (setq xterm-extra-capabilities
       '(getSelection setSelection modifyOtherKeys))

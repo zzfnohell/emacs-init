@@ -10,9 +10,11 @@
   :ensure t
   :defer t)
 
-(use-package kotlin-ts-mode
-  :ensure t
-  :defer t)
+;; kotlin-ts-mode requires Emacs >= 30.1; skip ensure/load on older builds.
+(when (version<= "30.1" emacs-version)
+  (use-package kotlin-ts-mode
+    :ensure t
+    :defer t))
 
 (use-package markdown-ts-mode
   :ensure t
@@ -65,32 +67,38 @@
   :hook
   (prog-mode . rainbow-delimiters-mode))
 
-(use-package hideshow
-             :ensure nil
-             :hook
-             (prog-mode . hs-minor-mode)
-             (nxml-mode . hs-minor-mode)
-             :config
-             ;; Fix XML folding
-             (add-to-list 'hs-special-modes-alist
-                          (list 'nxml-mode
-                                "<!--\\|<[^/>]*[^/]>"
-                                "-->\\|</[^/>]*[^/]>"
-                                "<!--"
-                                'nxml-forward-element
-                                nil))
+(defun init-prog/enable-hideshow ()
+  "Enable hideshow when the major mode is supported.
+Many treesit modes are not in `hs-special-modes-alist' yet; avoid
+aborting buffer setup."
+  (ignore-errors (hs-minor-mode 1)))
 
-             ;; Fix HTML folding
-             (dolist (mode '(sgml-mode
-                             html-mode
-                             html-erb-mode))
-               (add-to-list 'hs-special-modes-alist
-                            (list mode
-                                  "<!--\\|<[^/>]*[^/]>"
-                                  "-->\\|</[^/>]*[^/]>"
-                                  "<!--"
-                                  'sgml-skip-tag-forward
-                                  nil))))
+(use-package hideshow
+  :ensure nil
+  :hook
+  ((prog-mode . init-prog/enable-hideshow)
+   (nxml-mode . init-prog/enable-hideshow))
+  :config
+  ;; Fix XML folding
+  (add-to-list 'hs-special-modes-alist
+               (list 'nxml-mode
+                     "<!--\\|<[^/>]*[^/]>"
+                     "-->\\|</[^/>]*[^/]>"
+                     "<!--"
+                     'nxml-forward-element
+                     nil))
+
+  ;; Fix HTML folding
+  (dolist (mode '(sgml-mode
+                  html-mode
+                  html-erb-mode))
+    (add-to-list 'hs-special-modes-alist
+                 (list mode
+                       "<!--\\|<[^/>]*[^/]>"
+                       "-->\\|</[^/>]*[^/]>"
+                       "<!--"
+                       'sgml-skip-tag-forward
+                       nil))))
 
 (require 'compile)
 (setq compilation-disable-input nil)
