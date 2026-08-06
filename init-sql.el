@@ -5,7 +5,7 @@
 (use-package sql-indent
   :ensure t
   :hook
-  (sql-mode . sql-indent))
+  (sql-mode . sqlind-minor-mode))
 
 (use-package sql
   :ensure t
