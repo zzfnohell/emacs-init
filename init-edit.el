@@ -76,8 +76,8 @@
 ;; open picture display.
 (auto-image-file-mode t)
 
-;; use y/n replace yes/no
-(fset 'yes-or-no-p 'y-or-n-p)
+;; use y/n replace yes/no (Emacs 28+: prefer use-short-answers over fset)
+(setopt use-short-answers t)
 
 ;; display column number
 (column-number-mode t)
@@ -212,9 +212,7 @@
   :ensure t
   :defer t
   :hook
-  ((c-mode c++-mode) . highlight-doxygen-mode)
-  :config
-  (highlight-doxygen-global-mode 1))
+  ((c-mode c++-mode c-ts-mode c++-ts-mode c-or-c++-ts-mode) . highlight-doxygen-mode))
 
 (use-package symbol-overlay
   :ensure t
@@ -276,7 +274,7 @@
 
 
 (global-set-key (kbd "C-c r") 'paste-replace-word-under-cursor)
-(global-set-key (kbd "C-c w") 'copy-word-under-cursor)
+(global-set-key (kbd "C-c W") 'copy-word-under-cursor)
 
 (message "[init] init-edit loaded")
 

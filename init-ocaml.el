@@ -36,8 +36,11 @@
   (tuareg-mode . merlin-mode)
   (caml-mode . merlin-mode)
   :config
-  (setq merlin-use-auto-complete-mode t)
-  (setq merlin-error-after-save nil))
+  ;; Prefer company (auto-complete is disabled in init-prog.el).
+  (setq merlin-completion-with-point nil)
+  (setq merlin-error-after-save nil)
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'merlin-company-backend)))
 
 (use-package reason-mode
   :ensure t

@@ -23,8 +23,8 @@
          (lsp-mode . lsp-enable-which-key-integration))
   :custom
   (lsp-completion-enable t)
-	(lsp-completion-provider :capf)
-  (lsp-enable-snippet)
+  (lsp-completion-provider :capf)
+  (lsp-enable-snippet t)
   :config
   (require 'lsp-flow))
 
@@ -45,33 +45,29 @@
 (defun init-lsp/dap-stop-hook-func (arg)
   (call-interactively #'dap-hydra))
 
+;; dap-mode depends on the lsp-mode *library* but does not require the
+;; lsp-mode client to be enabled (this config prefers eglot for editing).
 (use-package dap-mode
   :ensure t
   :defer t
-  :after lsp-mode
   :commands dap-debug
   :hook
   ((python-mode . dap-ui-mode)
-   (python-mode . dap-mode))
+   (python-mode . dap-mode)
+   (python-ts-mode . dap-ui-mode)
+   (python-ts-mode . dap-mode))
   :config
-	(dap-auto-configure-mode)
+  (dap-auto-configure-mode)
   (require 'dap-gdb)
-
   (require 'dap-go)
   (require 'dap-chrome)
-
   (require 'dap-python)
   (setq dap-python-debugger 'debugpy)
   (defun dap-python--pyenv-executable-find (command)
     (executable-find "python"))
-
   (add-hook 'dap-stopped-hook #'init-lsp/dap-stop-hook-func)
-
-
   (require 'dap-pwsh)
   (require 'dap-node))
-
-
 
 ;; https://github.com/emacs-lsp/lsp-docker
 ;; (use-package lsp-docker :ensure t)
@@ -84,24 +80,27 @@
   (add-hook 'haskell-mode-hook #'lsp)
   (add-hook 'haskell-literate-mode-hook #'lsp))
 
+;; Keep disabled with lsp-mode; enable together when using the lsp-mode stack.
 (use-package lsp-java
+  :disabled
   :ensure t
   :defer t
-  :after (lsp-mode dap-mode java-mode)
-	:config
+  :after (lsp-mode dap-mode)
+  :hook ((java-mode . lsp)
+         (java-ts-mode . lsp))
+  :config
   (require 'dap-java)
-	(require 'lsp-java-boot)
-
-	;; to enable the lenses
-	(add-hook 'lsp-mode-hook #'lsp-lens-mode)
-	(add-hook 'java-mode-hook #'lsp-java-lens-mode))
+  (require 'lsp-java-boot)
+  (add-hook 'lsp-mode-hook #'lsp-lens-mode)
+  (add-hook 'java-mode-hook #'lsp-java-lens-mode)
+  (add-hook 'java-ts-mode-hook #'lsp-java-lens-mode))
 
 (use-package lsp-julia
   :disabled
-	:ensure t
+  :ensure t
   :after (:all julia-mode lsp-mode)
-  :hook ((julia-mode-hook . lsp-mode)
-         (julia-mode-hook . lsp)))
+  :hook ((julia-mode . lsp)
+         (julia-ts-mode . lsp)))
 
 (when (< emacs-major-version 30)
   (use-package which-key

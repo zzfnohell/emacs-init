@@ -5,7 +5,7 @@
 
 ;;; Code:
 (use-package js
-  :ensure t
+  :ensure nil
   :defer t
   :custom
   (js-indent-level 2))
@@ -35,7 +35,9 @@
   :after (company flycheck)
   :hook ((typescript-ts-mode . tide-setup)
          (tsx-ts-mode . tide-setup)
-         (typescript-ts-mode . tide-hl-identifier-mode))
+         (js-ts-mode . tide-setup)
+         (typescript-ts-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save))
   :config
   ;; configure jsx-tide checker to run after your default jsx checker
   (flycheck-add-mode 'javascript-eslint 'web-mode)
@@ -46,13 +48,17 @@
 (use-package js2-mode
   :after tide
   :ensure t
+  ;; Remapped to js-ts-mode via major-mode-remap-alist; keep for
+  ;; projects that disable the remap. Prefer js-ts-mode + tide above.
   :mode (("\\.js\\'" . js2-mode))
   :hook
   (js2-mode . js2-imenu-extras-mode)
   (js2-mode . js2-refactor-mode)
   (js2-mode . tide-setup)
   (js2-mode . (lambda ()
-                (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
+                (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+  (js-ts-mode . (lambda ()
+                  (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
 
 (use-package flow-minor-mode
   :ensure t
@@ -127,7 +133,8 @@
   :hook
   (sgml-mode . emmet-mode)
   (html-mode . emmet-mode)
-  (css-mode .  emmet-mode))
+  (css-mode . emmet-mode)
+  (css-ts-mode . emmet-mode))
 
 (use-package web-mode
   :ensure t
@@ -192,7 +199,8 @@
   :ensure t
   :defer t
   :commands (turn-on-css-eldoc)
-  :hook (css-mode . turn-on-css-eldoc))
+  :hook ((css-mode . turn-on-css-eldoc)
+         (css-ts-mode . turn-on-css-eldoc)))
 
 (use-package rjsx-mode
   :ensure t
@@ -203,7 +211,8 @@
 (use-package pug-mode
   :ensure t
   :mode
-  ("\\.pug$" . rjsx-mode))
+  ("\\.pug\\'" . pug-mode)
+  ("\\.jade\\'" . pug-mode))
 
 (use-package restclient
   :ensure t
@@ -213,13 +222,14 @@
   :ensure t
   :defer t)
 
+;; company-css is obsolete since Emacs 26; css-mode / css-ts-mode provide CAPF.
 (defun init-web/css-mode-hook-func ()
-  "Set up company backends for CSS mode."
+  "Prefer company-capf for CSS (built-in completion)."
   (setq-local company-backends
-              (append '(company-css)
-                      company-backends)))
+              (cons 'company-capf company-backends)))
 
 (add-hook 'css-mode-hook #'init-web/css-mode-hook-func)
+(add-hook 'css-ts-mode-hook #'init-web/css-mode-hook-func)
 
 (message "[init] init-web loaded")
 (provide 'init-web)
