@@ -12,7 +12,9 @@
 
 (use-package kotlin-ts-mode
   :ensure t
-  :defer t)
+  :defer t
+  ;; Package requires Emacs >= 30.1
+  :if (version<= "30.1" emacs-version))
 
 (use-package markdown-ts-mode
   :ensure t
