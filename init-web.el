@@ -50,7 +50,7 @@
   :hook
   (js2-mode . js2-imenu-extras-mode)
   (js2-mode . js2-refactor-mode)
-  (js2-mode . setup-tide-mode)
+  (js2-mode . tide-setup)
   (js2-mode . (lambda ()
                 (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
 
@@ -106,7 +106,7 @@
   ;; company-web
   (define-key web-mode-map (kbd "C-'") 'company-web-html)
   (when (string-equal "jsx" (file-name-extension buffer-file-name))
-    (setup-tide-mode)))
+    (tide-setup)))
 
 (defun init-web/web-mode-hook-func ()
   "Set up company backends for web mode."
@@ -198,7 +198,7 @@
   :ensure t
   :mode ("\\.jsx$" . rjsx-mode)
   :hook
-  (rjsx-mode . react-snippets))
+  (rjsx-mode . react-snippets-initialize))
 
 (use-package pug-mode
   :ensure t
