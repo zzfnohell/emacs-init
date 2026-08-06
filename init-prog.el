@@ -21,9 +21,11 @@
 
 (use-package treesit
   :ensure nil
+  ;; Prefer js-ts-mode for JS (matches major-mode-remap-alist). Do not map
+  ;; .js to typescript-ts-mode — that fights js2-mode / tide / js-ts remaps.
   :mode (("\\.tsx\\'" . tsx-ts-mode)
          ("\\.ts\\'"  . typescript-ts-mode)
-         ("\\.js\\'"  . typescript-ts-mode)
+         ("\\.js\\'"  . js-ts-mode)
          ("\\.jsx\\'" . tsx-ts-mode))
   :custom
   (major-mode-remap-alist
@@ -114,20 +116,14 @@
    :map c-mode-map
    ("M-RET" . srefactor-refactor-at-point)
    :map c++-mode-map
+   ("M-RET" . srefactor-refactor-at-point)
+   :map c-ts-mode-map
+   ("M-RET" . srefactor-refactor-at-point)
+   :map c++-ts-mode-map
    ("M-RET" . srefactor-refactor-at-point))
   :config
   (require 'srefactor)
-  (require 'srefactor-lisp)
-
-  ;; OPTIONAL: ADD IT ONLY IF YOU USE C/C++.
-  ;; (semantic-mode 1) ;; -> this is optional for Lisp
-  ;; (define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
-  ;; (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
-  ;; (global-set-key (kbd "M-RET o") 'srefactor-lisp-one-line)
-  ;; (global-set-key (kbd "M-RET m") 'srefactor-lisp-format-sexp)
-  ;; (global-set-key (kbd "M-RET d") 'srefactor-lisp-format-defun)
-  ;; (global-set-key (kbd "M-RET b") 'srefactor-lisp-format-buffer)
-  )
+  (require 'srefactor-lisp))
 
 (require 'display-fill-column-indicator)
 (setq display-fill-column-indicator-column 120)
@@ -228,8 +224,9 @@
   :custom
   (company-dabbrev-downcase nil)
   (company-show-numbers t)
+  ;; Enable after init so :defer backends / tide :after company can load.
+  :hook (after-init . global-company-mode)
   :config
-  (global-company-mode t)
   (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
   (setq-default company-idle-delay nil
                 company-require-match nil
@@ -253,11 +250,17 @@
   :config
   (company-prescient-mode))
 
+(defun init-prog/company-restclient-setup ()
+  "Add company-restclient backend (it is not a minor mode)."
+  (setq-local company-backends
+              (cons 'company-restclient company-backends)))
+
 (use-package company-restclient
   :ensure t
   :defer t
+  :after company
   :hook
-  (restclient-mode . company-restclient))
+  (restclient-mode . init-prog/company-restclient-setup))
 
 
 (defun init-prog/flow-mode-hook-func ()

@@ -44,6 +44,7 @@
   :hook
   (shell-mode . init-prog/add-shell-company-backends)
   (sh-mode . init-prog/add-shell-company-backends)
+  (bash-ts-mode . init-prog/add-shell-company-backends)
   (fish-mode . init-prog/add-shell-company-backends)
   (eshell-mode . init-prog/add-shell-company-backends))
 

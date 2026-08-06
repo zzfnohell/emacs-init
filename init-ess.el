@@ -42,10 +42,11 @@
 
 (use-package julia-snail
   :ensure t
-  :requires vterm
+  :after vterm
   :when (eq system-type 'gnu/linux)
   :hook
-  (julia-mode . julia-snail-mode))
+  ((julia-mode . julia-snail-mode)
+   (julia-ts-mode . julia-snail-mode)))
 
 (message "[init] init-ess loaded")
 

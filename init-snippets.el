@@ -6,45 +6,42 @@
 ;;; Code:
 
 (use-package gitignore-snippets
-	:ensure t
-  :requires yasnippet
+  :ensure t
+  :after yasnippet
   :autoload gitignore-snippets-init
   :hook
   (gitignore-mode . gitignore-snippets-init))
 
 (use-package yasnippet
-	:ensure t
-  :demand t
-  :commands
-  (yas/insert-snippet yas/expand)
+  :ensure t
+  :commands (yas-insert-snippet yas-expand)
+  ;; Load and enable globally after init (package README: yas-global-mode 1).
   :hook
-  (c++-ts-mode . (lambda () (yas-activate-extra-mode 'c++-mode)))
-  (c-ts-mode . (lambda () (yas-activate-extra-mode 'c-mode)))
-  (c-or-c++-ts-mode . (lambda () (yas-activate-extra-mode 'c-or-c++-mode)))
-  (clojure-ts-mode . (lambda () (yas-activate-extra-mode 'clojure-mode)))
-  (csharp-ts-mode . (lambda () (yas-activate-extra-mode 'csharp-mode)))
-  (css-ts-mode . (lambda () (yas-activate-extra-mode 'css-mode)))
-  (java-ts-mode . (lambda () (yas-activate-extra-mode 'java-mode)))
-  (julia-ts-mode .  (lambda () (yas-activate-extra-mode 'julia-mode)))
-  (js-ts-mode . (lambda () (yas-activate-extra-mode 'js-mode)))
-  (kotlin-ts-mode . (lambda () (yas-activate-extra-mode 'kotlin-mode)))
-  (python-ts-mode . (lambda () (yas-activate-extra-mode 'python-mode)))
-  (rust-ts-mode . (lambda () (yas-activate-extra-mode 'rust-mode)))
-  (bash-ts-mode . (lambda () (yas-activate-extra-mode 'sh-mode)))
-  (tsx-ts-mode . (lambda () (yas-activate-extra-mode 'tsx-mode)))
-  (yaml-ts-mode . (lambda () (yas-activate-extra-mode 'yaml-mode)))
+  ((after-init . yas-global-mode)
+   (c++-ts-mode . (lambda () (yas-activate-extra-mode 'c++-mode)))
+   (c-ts-mode . (lambda () (yas-activate-extra-mode 'c-mode)))
+   (c-or-c++-ts-mode . (lambda () (yas-activate-extra-mode 'c-or-c++-mode)))
+   (clojure-ts-mode . (lambda () (yas-activate-extra-mode 'clojure-mode)))
+   (csharp-ts-mode . (lambda () (yas-activate-extra-mode 'csharp-mode)))
+   (css-ts-mode . (lambda () (yas-activate-extra-mode 'css-mode)))
+   (java-ts-mode . (lambda () (yas-activate-extra-mode 'java-mode)))
+   (julia-ts-mode . (lambda () (yas-activate-extra-mode 'julia-mode)))
+   (js-ts-mode . (lambda () (yas-activate-extra-mode 'js-mode)))
+   (kotlin-ts-mode . (lambda () (yas-activate-extra-mode 'kotlin-mode)))
+   (python-ts-mode . (lambda () (yas-activate-extra-mode 'python-mode)))
+   (rust-ts-mode . (lambda () (yas-activate-extra-mode 'rust-mode)))
+   (bash-ts-mode . (lambda () (yas-activate-extra-mode 'sh-mode)))
+   (tsx-ts-mode . (lambda () (yas-activate-extra-mode 'tsx-mode)))
+   (yaml-ts-mode . (lambda () (yas-activate-extra-mode 'yaml-mode))))
   :config
   (let ((dirs (list
                "~/.emacs.d/snippets"
                "~/.emacs.d/snippets/yasmate/snippets")))
-	  (dolist (dir dirs)
-		  (let ((fullpath (expand-file-name dir)))
-			  (if (not (file-directory-p fullpath))
+    (dolist (dir dirs)
+      (let ((fullpath (expand-file-name dir)))
+        (if (not (file-directory-p fullpath))
             (make-directory fullpath t))
         (add-to-list 'yas-snippet-dirs fullpath))))
-  ;; (yas-reload-all)
-  (yas-global-mode 1)
-
   ;;; use popup menu for yas-choose-value
   (require 'popup)
 
@@ -69,18 +66,18 @@
           yas-no-prompt))
 
   (use-package yasnippet-snippets
-	  :ensure t))
+    :ensure t))
 
 
 (use-package py-snippets
   :ensure t
-  :requires yasnippet
+  :after yasnippet
   :autoload py-snippets-initialize)
 
 (use-package auto-yasnippet
-	:ensure t
-	:bind (("C-c w" . aya-create)
-				 ("C-c y" . aya-expand)))
+  :ensure t
+  :bind (("C-c w" . aya-create)
+         ("C-c y" . aya-expand)))
 
 (use-package haskell-snippets
   :after (haskell yasnippet)
@@ -93,7 +90,8 @@
   :ensure t
   :after yasnippet
   :hook
-  (java-mode . java-snippets-initialize))
+  ((java-mode . java-snippets-initialize)
+   (java-ts-mode . java-snippets-initialize)))
 
 
 (use-package react-snippets

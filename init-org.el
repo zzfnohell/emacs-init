@@ -63,14 +63,10 @@
   :after org)
 
 (use-package org
-  :ensure t
+  :ensure nil
   :defer t
-  :requires
-  (jq-mode)
   :mode
   ("\\.org$" . org-mode)
-  :bind
-  (:map org-mode-map ("C-c C-r" . verb-command-map))
   :custom
   (org-agenda-files '("agendas.org"))
   (org-default-notes-file "notes.org")
@@ -79,7 +75,9 @@
   (org-mobile-inbox-for-pull "from-mobile.org")
   :config
   (require 'org-capture)
-  (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
+  ;; verb-command-map is a keymap; bind after verb loads (not via :bind).
+  (with-eval-after-load 'verb
+    (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
   (let ((gtd-file-path (expand-file-name "gtd.org" org-directory))
         (journal-file-path (expand-file-name "journal.org" org-directory)))
     (setq org-capture-templates
@@ -143,19 +141,18 @@
 
 (use-package org-web-tools
   :ensure t
-  :requires org
+  :after org
   :defer t)
 
 (use-package org-brain
   :ensure t
   :defer t
-  :requires org
+  :after org
   :bind (:map org-mode-map
               ("C-c b" . org-brain-prefix-map))
   :config
   (setq org-brain-path (concat (file-name-as-directory org-directory) "brain"))
   (require 'org-capture)
-  ;; (bind-key "C-c b" 'org-brain-prefix-map org-mode-map)
   (setq org-id-track-globally t)
   (setq org-id-locations-file "~/.emacs.d/.org-id-locations")
   (add-hook 'before-save-hook #'org-brain-ensure-ids-in-buffer)
@@ -169,13 +166,13 @@
 
 (use-package org-onenote
   :ensure t
-  :requires org
+  :after org
   :defer t)
 
 (use-package ob-cypher
   :ensure t
   :defer t
-  :requires org
+  :after org
   :config
   (add-to-list 'org-babel-load-languages '(cypher . t))
   (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
