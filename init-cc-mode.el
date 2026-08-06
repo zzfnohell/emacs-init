@@ -19,19 +19,20 @@
 
 (use-package cc-mode
   :defer t
-  :hook (c-mode-common . init-cc-mode/c-mode-edit-hook)
+  :hook ((c-mode-common . init-cc-mode/c-mode-edit-hook)
+         (c-ts-mode . init-cc-mode/c-mode-edit-hook)
+         (c++-ts-mode . init-cc-mode/c-mode-edit-hook)
+         (c-or-c++-ts-mode . init-cc-mode/c-mode-edit-hook))
   :config
   (c-set-offset 'inline-open 0)
   (c-set-offset 'friend '-)
   (c-set-offset 'substatement-open 0)
   (setq c-default-style
-        '(('c-mode . "bsd")
-          ('c++-mode . "bsd")
-          ('java-mode . "java")
-          ('awk-mode . "awk")
+        '((c-mode . "bsd")
+          (c++-mode . "bsd")
+          (java-mode . "java")
+          (awk-mode . "awk")
           (other . "linux"))))
-
-
 
 (use-package company-c-headers
   :ensure t
@@ -39,7 +40,10 @@
   :after company
   :hook
   ((c-mode . init-cc-mode/company-c-headers-setup)
-   (c++-mode . init-cc-mode/company-c-headers-setup))
+   (c++-mode . init-cc-mode/company-c-headers-setup)
+   (c-ts-mode . init-cc-mode/company-c-headers-setup)
+   (c++-ts-mode . init-cc-mode/company-c-headers-setup)
+   (c-or-c++-ts-mode . init-cc-mode/company-c-headers-setup))
   :config
 	(let ((el-file
          (expand-file-name "custom-company-c-headers.el"
@@ -59,7 +63,8 @@
   (("CMakeLists\\.txt\\'" . cmake-mode)
 	 ("\\.cmake\\'" . cmake-mode))
   :hook
-  (cmake-mode . init-cc-mode/cmake-mode-hook-func))
+  ((cmake-mode . init-cc-mode/cmake-mode-hook-func)
+   (cmake-ts-mode . init-cc-mode/cmake-mode-hook-func)))
 
 (use-package meson-mode
   :ensure t
@@ -98,7 +103,11 @@
   :if (featurep 'rtags)
   :after rtags
   :config
-  (add-hook 'c-mode-common-hook #'rtags-xref-enable))
+  (dolist (hook '(c-mode-common-hook
+                  c-ts-mode-hook
+                  c++-ts-mode-hook
+                  c-or-c++-ts-mode-hook))
+    (add-hook hook #'rtags-xref-enable)))
 
 (use-package cmake-ide
   :ensure t
@@ -162,7 +171,11 @@
 
 (when (featurep 'doxymacs)
   (require 'doxymacs)
-  (add-hook 'c-mode-common-hook 'doxymacs-mode))
+  (dolist (hook '(c-mode-common-hook
+                  c-ts-mode-hook
+                  c++-ts-mode-hook
+                  c-or-c++-ts-mode-hook))
+    (add-hook hook #'doxymacs-mode)))
 
 (provide 'init-cc-mode)
 
