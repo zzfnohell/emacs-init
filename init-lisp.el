@@ -64,7 +64,7 @@
    ("C-c M-g" . elisp-depmap-graphviz)
    ("C-c M-s" . elisp-depmap-makesummarytable))
   :config
-  ((elisp-depmap-exec-file "~/graphviz2.dot")))
+  (setq elisp-depmap-exec-file "~/graphviz2.dot"))
 
 (use-package elisp-lint
   :ensure t
