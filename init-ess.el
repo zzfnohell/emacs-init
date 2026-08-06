@@ -38,6 +38,8 @@
 
 (use-package vterm
   :ensure t
+  :defer t
+  :commands (vterm vterm-other-window)
   :when (eq system-type 'gnu/linux))
 
 (use-package julia-snail
