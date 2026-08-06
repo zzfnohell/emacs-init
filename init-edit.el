@@ -12,7 +12,6 @@
 (prefer-coding-system 'utf-8)
 
 (when (eq system-type 'windows-nt)
-  (setenv "LC_TIME" "zh_CN.UTF-8")
   (setq system-time-locale "C")
   (set-language-environment "UTF-8")) 
 
@@ -39,9 +38,6 @@
 ;; Access via Web
 ;; (use-package take-off )
 
-;; emacs shell font confusion
-(defvar ansi-color-for-comint-mode t)
-
 ;; close startup slash
 ;; (setq inhibit-startup-message t)
 
@@ -49,28 +45,33 @@
 (setq visible-bell t)
 
 ;; do not create backup files
-(defconst *backup-dir* "~/.emacs.d/.backups/")
-(defconst *autosave-dir* "~/.emacs.d/.auto-saves/")
-(unless (file-directory-p  *backup-dir*)
-  (make-directory *backup-dir* t))
+(defconst backup-dir
+  (expand-file-name "backups/" user-emacs-directory))
 
-(unless (file-directory-p  *autosave-dir*)
-  (make-directory *autosave-dir* t))
+(defconst autosave-dir
+  (expand-file-name "auto-saves/" user-emacs-directory))
+
+(dolist (dir (list backup-dir autosave-dir))
+  (unless (file-directory-p dir)
+    (make-directory dir t)))
 
 (setq
- backup-by-copying t                    ; don't clobber symlinks
- backup-directory-alist
- `(("." . ,*backup-dir*))
+ backup-directory-alist `(("." . ,backup-dir))
+ auto-save-file-name-transforms `((".*" ,autosave-dir t))
+ backup-by-copying t
+ version-control t
  delete-old-versions t
  kept-new-versions 6
  kept-old-versions 2
- ;; use versioned backups
- version-control t
- auto-save-file-name-transforms
- `((".*" ,*autosave-dir* t)))
+ auto-save-default nil
+ create-lockfiles nil)
+
+(when (eq system-type 'windows-nt)
+  ;; 避免网络文件锁
+  (setq create-lockfiles nil))
 
 ;; semantic highlight
-(global-font-lock-mode t)
+(global-font-lock-mode 1)
 
 ;; open picture display.
 (auto-image-file-mode t)
@@ -81,10 +82,7 @@
 ;; display column number
 (column-number-mode t)
 
-;; match parentheses.
-(show-paren-mode t)
-
-(blink-cursor-mode t)
+(blink-cursor-mode -1)
 
 (size-indication-mode 1)
 
@@ -97,11 +95,6 @@
   (ultra-scroll-mode 1))
 
 (add-to-list 'default-frame-alist '(scroll-bar-width . 8))
-
-;; display buffer name on the caption.
-(setq frame-title-format
-      (list
-       '(:eval (buffer-name (current-buffer)))))
 
 ;;; Indent & Spacing & Tabs
 (setq-default tab-width 2)
@@ -133,7 +126,7 @@
 
 ;; Line
 (setq-default truncate-lines nil)
-(setq-default global-visual-line-mode t)
+(global-visual-line-mode 1)
 (global-display-line-numbers-mode 1)
 
 (use-package hl-line
@@ -173,16 +166,14 @@
 
 ;;; UI transparency
 (defun ui-set-transparency (alpha-level)
-  "Set transparency as ALPHA-LEVEL."
+  "Set frame transparency."
   (interactive "p")
-  (message (format "Alpha level passed in: %s" alpha-level))
-  (let ((alpha-level
-         (if (< alpha-level 2)
-             (read-number "Opacity percentage: " 85)
-           alpha-level))
-        (myalpha (frame-parameter nil 'alpha)))
-    (set-frame-parameter nil 'alpha alpha-level))
-  (message (format "Alpha level is %d" (frame-parameter nil 'alpha))))
+  (setq alpha-level
+        (if (< alpha-level 2)
+            (read-number "Opacity: " 85)
+          alpha-level))
+  (set-frame-parameter nil 'alpha alpha-level)
+  (message "Opacity: %d%%" alpha-level))
 
 ;;(set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;;(add-to-list 'default-frame-alist '(alpha 85 50))
@@ -234,11 +225,9 @@
          ([M-f3] . symbol-overlay-rename)
          ([S-f3] . symbol-overlay-jump-prev)))
 
-(use-package highlight-indentation
-	:ensure t
-  :config
-	(set-face-background 'highlight-indentation-face "#e3e3d3")
-  (set-face-background 'highlight-indentation-current-column-face "#c3b3b3"))
+(use-package highlight-indent-guides
+  :ensure t
+  :defer t)
 
 (use-package sudo-edit
   :ensure t
@@ -262,7 +251,6 @@
 (minibuffer-depth-indicate-mode)
 
 (electric-pair-mode 1)
-(show-paren-mode 1)
 (global-highlight-parentheses-mode t)
 
 (setq xterm-extra-capabilities
@@ -271,29 +259,26 @@
 (setq select-enable-clipboard t)
 
 (defun copy-word-under-cursor ()
-  "Copy the word under the cursor."
+  "Copy the word at point."
   (interactive)
-  (save-excursion
-    (backward-word)
-    (mark-word)
-    (kill-ring-save (region-beginning) (region-end))))
+  (when-let ((word (thing-at-point 'word t)))
+    (kill-new word)
+    (message "Copied: %s" word)))
 
 (defun paste-replace-word-under-cursor ()
-  "Replace the word under the cursor with the latest yanked (pasted) text."
+  "Replace the word at point with the latest kill."
   (interactive)
-  (save-excursion
-    (let (beg end)
-      (backward-word)
-      (setq beg (point))
-      (forward-word)
-      (setq end (point))
-      (delete-region beg end)
-      (yank))))
+  (when-let ((bounds (bounds-of-thing-at-point 'word)))
+    (delete-region (car bounds) (cdr bounds))
+    (goto-char (car bounds))
+    (yank)))
+
+
 
 (global-set-key (kbd "C-c r") 'paste-replace-word-under-cursor)
 (global-set-key (kbd "C-c w") 'copy-word-under-cursor)
 
-(message "loading init-edit done.")
+(message "[init] init-edit loaded")
 
 (provide 'init-edit)
 ;;; init-edit.el ends here
