@@ -225,7 +225,6 @@
 
 (use-package company
   :ensure t
-  :defer t
   :custom
   (company-dabbrev-downcase nil)
   (company-show-numbers t)
