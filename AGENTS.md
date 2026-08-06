@@ -38,6 +38,17 @@ Key facts / gotchas:
   `emacs --batch` keep these packages deferred, so they load cleanly.
 - `init.el` sets `debug-on-error t`; any startup error opens a `*Backtrace*`
   buffer (GUI) or aborts with a backtrace (batch).
+- Tree-sitter: `init-prog.el` remaps many major modes to their `*-ts-mode`
+  variants (e.g. `python-ts-mode`) but does not define
+  `treesit-language-source-alist`, so it expects the grammar libraries to be
+  present in `~/.emacs.d/tree-sitter/`. They are pre-installed in this
+  environment. Emacs 30.2 only supports grammar ABI 13–14 — grammars built from
+  the latest upstream `master` are ABI 15 and fail to load with a
+  "version-mismatch" / "Cannot activate tree-sitter" warning; install them from
+  an ABI-≤14 tag instead (e.g. `tree-sitter-python` `v0.23.6`) via
+  `treesit-install-language-grammar`. Without a grammar, the corresponding
+  `*-ts-mode` still opens but shows that warning and falls back to basic
+  fontification.
 
 Run / verify / lint:
 
