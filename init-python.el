@@ -38,7 +38,7 @@
   :init
   (advice-add 'python-mode :before 'elpy-enable))
 
-(message "loading init-python done.")
+(message "[init] init-python loaded")
 
 (provide 'init-python)
 ;;; init-python.el ends here

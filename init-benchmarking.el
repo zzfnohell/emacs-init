@@ -20,7 +20,7 @@
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
 
-(message "loading init-benchmarking done.")
+(message "[init] init-benchmarking loaded")
 
 (provide 'init-benchmarking)
 

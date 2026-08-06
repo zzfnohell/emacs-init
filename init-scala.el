@@ -22,7 +22,7 @@
    (setq sbt:program-options '("-Dsbt.supershell=false")))
 
 
-(message "loading init-scala done.")
+(message "[init] init-scala loaded")
 
 (provide 'init-scala)
 

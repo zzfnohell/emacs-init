@@ -140,7 +140,7 @@
   :bind ("s-d" . #'eldoc)
   :custom (eldoc-echo-area-prefer-doc-buffer t))
 
-(message "loading init-lsp done.")
+(message "[init] init-lsp loaded")
 
 (provide 'init-lsp)
 

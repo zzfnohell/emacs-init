@@ -16,7 +16,7 @@
                 )
               auto-mode-alist))
 			  
-(message "loading init-prolog done.")
+(message "[init] init-prolog loaded")
 
 (provide 'init-prolog)
 

@@ -221,7 +221,7 @@
 
 (add-hook 'css-mode-hook #'init-web/css-mode-hook-func)
 
-(message "loading init-web done.")
+(message "[init] init-web loaded")
 (provide 'init-web)
 
 ;;; init-web.el ends here

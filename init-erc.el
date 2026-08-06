@@ -41,7 +41,7 @@
   ;;  (add-hook 'erc-mode-hook #'init-erc/erc-mode-hook-func)
   )
 
-(message "loading init-erc done")
+(message "[init] init-erc loaded")
 (provide 'init-erc)
 
 ;;; init-erc.el ends here

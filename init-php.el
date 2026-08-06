@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(message "loading init-php done.")
+(message "[init] init-php loaded")
 
 (provide 'init-php)
 

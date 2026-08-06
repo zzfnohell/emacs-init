@@ -14,7 +14,7 @@
   (when (eq system-type 'windows-nt)
     (setq sql-mysql-options '("-C" "-t" "-f" "-n"))))
 
-(message "loading init-sql done.")
+(message "[init] init-sql loaded")
 
 (provide 'init-sql)
 

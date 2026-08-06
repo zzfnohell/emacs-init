@@ -180,7 +180,7 @@
   :mode "\\.rkt\\'"
   :hook ((racket-mode . racket-xp-mode)))
 
-(message "loading init-lisp done.")
+(message "[init] init-lisp loaded")
 
 (provide 'init-lisp)
 

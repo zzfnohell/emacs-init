@@ -58,7 +58,7 @@
 ;;; XTERM
 (xterm-mouse-mode 1)
 
-(message "loading init-shell done.")
+(message "[init] init-shell loaded")
 
 (provide 'init-shell)
 

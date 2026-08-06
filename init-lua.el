@@ -21,7 +21,7 @@
   :hook
   (lua-mode . init-lua/company-lua-hook-func))
 
-(message "loading init-lua done.")
+(message "[init] init-lua loaded")
 
 (provide 'init-lua)
 

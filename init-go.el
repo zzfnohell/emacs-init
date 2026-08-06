@@ -15,7 +15,7 @@
   :defer t
   :commands go-playground)
 
-(message "loading init-go done.")
+(message "[init] init-go loaded")
 
 (provide 'init-go)
 

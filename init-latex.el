@@ -10,7 +10,7 @@
 (use-package tikz
 	:ensure t)
 
-(message "loading init-latex done.")
+(message "[init] init-latex loaded")
 (provide 'init-latex)
 
 ;;; init-latex.el ends here

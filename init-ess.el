@@ -47,7 +47,7 @@
   :hook
   (julia-mode . julia-snail-mode))
 
-(message "loading init-ess done.")
+(message "[init] init-ess loaded")
 
 (provide 'init-ess)
 

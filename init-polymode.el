@@ -18,7 +18,7 @@
   (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
   (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode)))
 
-(message "loading init-polymode done.")
+(message "[init] init-polymode loaded")
 
 (provide 'init-polymode)
 

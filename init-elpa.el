@@ -46,7 +46,7 @@
 
 (require 'bind-key)
 
-(message "loading init-elpa done.")
+(message "[init] init-elpa loaded")
 
 (provide 'init-elpa)
 

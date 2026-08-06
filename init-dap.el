@@ -11,7 +11,7 @@
   :init
   (setq gdb-many-windows t))
 
-(message "loading init-dap done.")
+(message "[init] init-dap loaded")
 
 (provide 'init-dap)
 

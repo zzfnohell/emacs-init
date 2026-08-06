@@ -411,7 +411,7 @@
   ;; useful beyond Corfu.
   (read-extended-command-predicate #'command-completion-default-include-p))
 
-(message "loading init-prog done.")
+(message "[init] init-prog loaded")
 
 (provide 'init-prog)
 

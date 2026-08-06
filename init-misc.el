@@ -45,7 +45,7 @@
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
-(message "loading init-misc/projectile done.")
+(message "[init] init-misc/projectile loaded")
 
 ;;; ICONS
 (use-package all-the-icons
@@ -57,7 +57,7 @@
 ;; icons simultaneously, you can try setting the following variable
 (setq inhibit-compacting-font-caches t)
 
-(message "loading init-misc/ICONS done.")
+(message "[init] init-misc/ICONS loaded")
 
 ;;; ABBREV
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
@@ -66,7 +66,7 @@
     (quietly-read-abbrev-file))
 (setq save-abbrevs t)
 
-(message "loading init-misc/ABBREV done.")
+(message "[init] init-misc/ABBREV loaded")
 
 
 (use-package ssh-config-mode
@@ -80,7 +80,7 @@
   (add-to-list 'auto-mode-alist '("/knownhosts\\'"       . ssh-known-hosts-mode))
   (add-to-list 'auto-mode-alist '("/authorized_keys2?\\'" . ssh-authorized-keys-mode))
   (add-hook 'ssh-config-mode-hook 'turn-on-font-lock))
-(message "loading init-misc/ssh-config mode done.")
+(message "[init] init-misc/ssh-config mode loaded")
 
 
 (use-package ellocate
@@ -278,7 +278,7 @@
    jq-format-jsonlines-buffer
    jq-format-jsonlines-region))
 
-(message "loading init-misc done.")
+(message "[init] init-misc loaded")
 (provide 'init-misc)
 
 ;;; init-misc.el ends here

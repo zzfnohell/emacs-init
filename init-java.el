@@ -34,7 +34,7 @@
 
 
 
-(message "loading init-java done.")
+(message "[init] init-java loaded")
 
 (provide 'init-java)
 ;;; init-java.el ends here

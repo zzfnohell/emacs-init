@@ -6,7 +6,7 @@
 ;;; Code:
 (transient-mark-mode t)
 
-(message "loading init-bookmark done.")
+(message "[init] init-bookmark loaded")
 (provide 'init-bookmark)
 
 ;;; init-bookmark.el ends here

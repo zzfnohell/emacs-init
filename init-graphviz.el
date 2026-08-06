@@ -9,7 +9,7 @@
 (use-package graphviz-dot-mode
   :ensure t)
 
-(message "loading init-graphviz done.")
+(message "[init] init-graphviz loaded")
 (provide 'init-graphviz)
 
 ;;; init-graphviz.el ends here

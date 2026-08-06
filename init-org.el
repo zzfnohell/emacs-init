@@ -195,7 +195,7 @@
   (setq deft-extensions '("txt" "tex" "org" "md")))
 
 
-(message "loading init-org done.")
+(message "[init] init-org loaded")
 
 (provide 'init-org)
 
