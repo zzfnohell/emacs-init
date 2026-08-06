@@ -9,10 +9,18 @@
   :defer t
   :commands esup
   ;; To use MELPA Stable use ":pin melpa-stable",
-  :pin melpa)
+  :pin melpa
+  :bind ("C-c B e" . esup))
 
 (use-package benchmark-init
   :ensure t
+  ;; Must load (and activate) eagerly so it can measure the rest of init;
+  ;; `:demand t' keeps it from being deferred by the `:bind' keys below.
+  :demand t
+  ;; `C-c B' is the benchmark prefix: t = require-time tree, T = tabulated
+  ;; list, e = esup startup profiler (see the esup binding above).
+  :bind (("C-c B t" . benchmark-init/show-durations-tree)
+         ("C-c B T" . benchmark-init/show-durations-tabulated))
   :config
   (benchmark-init/activate)
 
