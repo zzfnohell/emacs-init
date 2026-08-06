@@ -14,7 +14,7 @@
 
 (use-package yasnippet
 	:ensure t
-  :defer t
+  :demand t
   :commands
   (yas/insert-snippet yas/expand)
   :hook
