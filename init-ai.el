@@ -28,12 +28,19 @@
 
 (use-package ai-code
   ;; :straight (:host github :repo "tninja/ai-code-interface.el") ;; if you want to use straight to install, no need to have MELPA setting above
+  ;; Deferred: loading ai-code eagerly pulls in magit, org and eshell and cost
+  ;; ~1.7s of startup. It now loads on first use via the C-c a entry point.
+  :defer t
+  :bind ("C-c a" . ai-code-menu)
+  :init
+  ;; Auto-revert is a general editing preference, so keep it enabled at startup
+  ;; (it does not require ai-code to be loaded).
+  (setq auto-revert-interval 1) ;; set to 1 second for faster update
+  (global-auto-revert-mode 1)
   :config
   ;; use codex as backend, other options are 'claude-code, 'gemini, 'github-copilot-cli, 'opencode, 'grok, 'cursor, 'kiro, 'codebuddy, 'aider, 'agent-shell, 'claude-code-ide, 'claude-code-el
   ;; (ai-code-set-backend 'codex)
   (ai-code-set-backend 'gemini)
-  ;; Enable global keybinding for the main menu
-  (global-set-key (kbd "C-c a") #'ai-code-menu)
   ;; Optional: Use eat if you prefer, by default it is vterm
   ;; (setq ai-code-backends-infra-terminal-backend 'eat) ;; config for native CLI backends. for external backends such as agent-shell, claude-code-ide.el and claude-code.el, please check their own config
   ;; Optional: Enable @ file completion in comments and AI sessions
@@ -42,9 +49,6 @@
   (setq ai-code-auto-test-type 'ask-me)
   ;; Optional: In AI session buffers, SPC in Evil normal state triggers the prompt-enter UI
   (with-eval-after-load 'evil (ai-code-backends-infra-evil-setup))
-  ;; Optional: Turn on auto-revert buffer, so that the AI code change automatically appears in the buffer
-  (global-auto-revert-mode 1)
-  (setq auto-revert-interval 1) ;; set to 1 second for faster update
   ;; Optional: Set up Magit integration for AI commands in Magit popups
   (with-eval-after-load 'magit
     (ai-code-magit-setup-transients)))
