@@ -5,6 +5,24 @@
 
 ;;; Code:
 
+;;; Startup performance
+;; Suppress garbage collection and the file-name-handler machinery for the
+;; duration of startup, then restore sane steady-state values afterwards.
+;; This is the single cheapest, behaviour-preserving way to speed up init.
+(defvar init/--file-name-handler-alist file-name-handler-alist)
+(setq gc-cons-threshold most-positive-fixnum
+      gc-cons-percentage 0.6
+      file-name-handler-alist nil)
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 64 1024 1024) ; steady-state (see init-system.el)
+                  gc-cons-percentage 0.1
+                  file-name-handler-alist
+                  (delete-dups (append file-name-handler-alist
+                                        init/--file-name-handler-alist)))
+            (garbage-collect))
+          t)
+
 ;;; Debug flags
 (setq debug-on-error t)
 ;; (toggle-debug-on-quit)
