@@ -12,10 +12,9 @@
                         (company-dabbrev-code :with company-yasnippet))
                       company-backends)))
 
-(defun init-cc-mode/c-mode-edit-hook()
-  (subword-mode t)
-  (abbrev-mode t)
-  (function-args-mode))
+(defun init-cc-mode/c-mode-edit-hook ()
+  (subword-mode 1)
+  (abbrev-mode 1))
 
 (use-package cc-mode
   :defer t
@@ -45,10 +44,10 @@
    (c++-ts-mode . init-cc-mode/company-c-headers-setup)
    (c-or-c++-ts-mode . init-cc-mode/company-c-headers-setup))
   :config
-	(let ((el-file
+  (let ((el-file
          (expand-file-name "custom-company-c-headers.el"
                            user-emacs-directory)))
-		(when (file-exists-p el-file)
+    (when (file-exists-p el-file)
       (load el-file))))
 
 (defun init-cc-mode/cmake-mode-hook-func ()
@@ -59,9 +58,9 @@
 (use-package cmake-mode
   :ensure t
   :defer t
-	:mode
+  :mode
   (("CMakeLists\\.txt\\'" . cmake-mode)
-	 ("\\.cmake\\'" . cmake-mode))
+   ("\\.cmake\\'" . cmake-mode))
   :hook
   ((cmake-mode . init-cc-mode/cmake-mode-hook-func)
    (cmake-ts-mode . init-cc-mode/cmake-mode-hook-func)))
@@ -81,17 +80,18 @@
 (use-package opencl-c-mode
   :ensure t
   :defer t
-  :mode
-  (("\\.cl\\'" . opencl-mode)))
+  :mode ("\\.cl\\'" . opencl-c-mode))
 
 (use-package shader-mode
   :ensure t
   :defer t
-  :mode ("\\.glsl\\'" . shader-mode))
+  :mode ("\\.shader\\'" . shader-mode))
 
 (use-package rtags
   :ensure t
-	:if (and (not (eq system-type 'windows-nt)) (executable-find "rdm") (executable-find "rc"))
+  :if (and (not (eq system-type 'windows-nt))
+           (executable-find "rdm")
+           (executable-find "rc"))
   :config
   (rtags-enable-standard-keybindings)
   ;; (setq rtags-autostart-diagnostics t)
@@ -114,7 +114,7 @@
   :if (featurep 'rtags)
   :after rtags
   :config
-	(require 'rtags)
+  (require 'rtags)
   (cmake-ide-setup))
 
 (defun init-cc-mode/glsl-mode-hook-func ()
@@ -131,32 +131,27 @@
   (("\\.glsl\\'" . glsl-mode)
    ("\\.vert\\'" . glsl-mode)
    ("\\.frag\\'" . glsl-mode)
-   ("\\.geom\\'" . glsl-mode)
-   ("\\.fx\\'" . hlsl-mode)
-   ("\\.hlsl\\'" . hlsl-mode)))
+   ("\\.geom\\'" . glsl-mode)))
 
 (use-package company-glsl
   :ensure t
-  :requires (glsl-mode company)
-  :config
-  (add-hook 'glsl-mode-hook #'init-cc-mode/glsl-mode-hook-func))
+  :after (glsl-mode company)
+  :hook (glsl-mode . init-cc-mode/glsl-mode-hook-func))
 
 (use-package call-graph
-	:ensure t
+  :ensure t
   :defer t
   :commands call-graph)
 
 (use-package qt-pro-mode
   :ensure t
   :defer t
-  :mode
-  ("\\.pro\\'" "\\.pri\\'"))
+  :mode ("\\.pro\\'" "\\.pri\\'"))
 
 (use-package qml-mode
-	:ensure t
+  :ensure t
   :defer t
-	:mode
-  (("\\.qml\\'" . qml-mode)))
+  :mode ("\\.qml\\'" . qml-mode))
 
 (use-package function-args
   :ensure t
@@ -165,7 +160,8 @@
   ((c-mode . function-args-mode)
    (c++-mode . function-args-mode)
    (c-ts-mode . function-args-mode)
-   (c++-ts-mode . function-args-mode))
+   (c++-ts-mode . function-args-mode)
+   (c-or-c++-ts-mode . function-args-mode))
   :config
   (fa-config-default))
 
@@ -176,6 +172,8 @@
                   c++-ts-mode-hook
                   c-or-c++-ts-mode-hook))
     (add-hook hook #'doxymacs-mode)))
+
+(message "[init] init-cc-mode loaded")
 
 (provide 'init-cc-mode)
 
