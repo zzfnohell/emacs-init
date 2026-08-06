@@ -28,9 +28,10 @@
   :ensure t)
 
 ;;; projectile
+;; Per projectile docs: enable after init and expose command map via
+;; :bind-keymap (avoids :defer + enable-only-in-:config never loading).
 (use-package projectile
   :ensure t
-  :defer t
   :custom
   (projectile-require-project-root t)
   (projectile-enable-caching t)
@@ -40,10 +41,10 @@
   (projectile-globally-ignored-directories
    '(".git" "node_modules" "__pycache__" ".vs" "bin" "obj" "build" "dist" "target"))
   (projectile-globally-ignored-files '("TAGS" "tags" ".DS_Store"))
-  :config
-  (projectile-mode +1)
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+  :bind-keymap
+  (("s-p" . projectile-command-map)
+   ("C-c p" . projectile-command-map))
+  :hook (after-init . projectile-mode))
 
 (message "[init] init-misc/projectile loaded")
 
@@ -72,14 +73,13 @@
 (use-package ssh-config-mode
   :ensure t
   :defer t
-  :config
-  (autoload 'ssh-config-mode "ssh-config-mode" t)
-  (add-to-list 'auto-mode-alist '("/\\.ssh/config\\'"     . ssh-config-mode))
-  (add-to-list 'auto-mode-alist '("/sshd?_config\\'"      . ssh-config-mode))
-
-  (add-to-list 'auto-mode-alist '("/knownhosts\\'"       . ssh-known-hosts-mode))
-  (add-to-list 'auto-mode-alist '("/authorized_keys2?\\'" . ssh-authorized-keys-mode))
-  (add-hook 'ssh-config-mode-hook 'turn-on-font-lock))
+  ;; Package already registers autoloads for these patterns; only add
+  ;; the extras that match its README (known_hosts, not knownhosts).
+  :mode (("/\\.ssh/config\\'" . ssh-config-mode)
+         ("/sshd?_config\\'" . ssh-config-mode)
+         ("/known_hosts\\'" . ssh-known-hosts-mode)
+         ("/authorized_keys2?\\'" . ssh-authorized-keys-mode))
+  :hook (ssh-config-mode . turn-on-font-lock))
 (message "[init] init-misc/ssh-config mode loaded")
 
 
@@ -201,17 +201,20 @@
 
 (use-package syntree
   :ensure t
-  :requires org
+  :after org
   :commands syntree-new)
 
 (use-package format-all
   :ensure t
-  :commands (format-all-buffer format-all-region format-all-mode)
-  :hook (prog-mode . format-all-ensure-formatter)
+  :commands (format-all-mode format-all-buffer format-all-region)
+  ;; Docs: enable format-all-mode on prog-mode; ensure a formatter when
+  ;; the minor mode turns on (not format-all-ensure-formatter on prog-mode).
+  :hook ((prog-mode . format-all-mode)
+         (format-all-mode . format-all-ensure-formatter))
   :bind ("C-c C-f" . format-all-buffer))
 
 (use-package dabbrev
-  :bind (("C-/" . #'dabbrev-completion))
+  :bind (("M-/" . #'dabbrev-completion))
   :custom
   (dabbrev-case-replace nil))
 

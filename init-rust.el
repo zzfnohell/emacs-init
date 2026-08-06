@@ -35,7 +35,8 @@
   :ensure t
   :defer t
   :hook
-  (rust-mode . rust-auto-use-mode))
+  ((rust-mode . rust-auto-use-mode)
+   (rust-ts-mode . rust-auto-use-mode)))
 
 (use-package rust-playground
   :ensure t

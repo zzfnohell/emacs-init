@@ -26,22 +26,13 @@
      magit-auto-revert-mode nil
      magit-diff-arguments '("--no-ext-diff" "-M" "-C")
      magit-diff-refine-hunk t
-     magit-expand-staged-on-commit 'full
      magit-fetch-arguments '("--prune")
      magit-log-auto-more t
-     magit-log-cutoff-length 20
      magit-no-confirm '(stage-all-changes unstage-all-changes)
      magit-process-connection-type nil
-     magit-push-always-verify nil
      magit-push-arguments '("--set-upstream")
-     magit-refresh-file-buffer-hook nil
      magit-save-some-buffers nil
-     magit-set-upstream-on-push 'askifnotset
-     magit-stage-all-confirm nil
-     magit-status-verbose-untracked nil
-     magit-unstage-all-confirm nil
-     magithub-message-confirm-cancellation nil
-     magithub-use-ssl t))
+     magit-status-verbose-untracked nil))
   :config
   (delete 'Git vc-handled-backends)
   (when (eq system-type 'windows-nt)
@@ -94,8 +85,9 @@
   :hook
   ((prog-mode . git-gutter-mode))
   :config
-  (global-git-gutter-mode +1)
-  (git-gutter:linum-setup))
+  ;; Do not call git-gutter:linum-setup — linum is obsolete (Emacs 29+)
+  ;; and this config uses display-line-numbers-mode.
+  (global-git-gutter-mode +1))
 
 (provide 'init-vc)
 ;;; init-vc.el ends here

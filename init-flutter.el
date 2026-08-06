@@ -32,7 +32,7 @@
 ;; Optional
 (use-package flutter-l10n-flycheck
   :ensure t
-  :requires flutter
+  :after flutter
   :hook (dart-mode . flutter-l10n-flycheck-setup))
 
 (provide 'init-flutter)

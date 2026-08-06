@@ -10,11 +10,10 @@
 
 (use-package flycheck-gradle
   :commands (flycheck-gradle-setup)
-  :init
-  (mapc
-   (lambda (x)
-     (add-hook x #'flycheck-gradle-setup))
-   '(java-mode-hook kotlin-mode-hook)))
+  :hook ((java-mode . flycheck-gradle-setup)
+         (java-ts-mode . flycheck-gradle-setup)
+         (kotlin-mode . flycheck-gradle-setup)
+         (kotlin-ts-mode . flycheck-gradle-setup)))
 
 (use-package ant
   :ensure t
