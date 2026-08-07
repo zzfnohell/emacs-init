@@ -2,12 +2,14 @@
 
 
 ;;; Commentary:
-;; 
+;;
 
 ;;; Code:
 
 (use-package graphviz-dot-mode
-  :ensure t)
+  :ensure t
+  :defer t
+  :mode ("\\.dot\\'" "\\.gv\\'"))
 
 (message "[init] init-graphviz loaded")
 (provide 'init-graphviz)

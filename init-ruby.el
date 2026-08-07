@@ -24,7 +24,10 @@
   (add-hook 'ruby-mode-hook 'subword-mode))
 
 (use-package ruby-hash-syntax
-  :ensure t)
+  :ensure t
+  :defer t
+  :after ruby-mode
+  :commands (ruby-toggle-hash-syntax))
 
 ;;; Ruby compilation
 ;; `ruby-compilation-mode' is a `compilation-mode' derivative, not a minor
@@ -51,6 +54,8 @@
 ;;; ri support
 (use-package yari
   :ensure t
+  :defer t
+  :commands (yari yari-helm)
   :config (defalias 'ri 'yari))
 
 (provide 'init-ruby)

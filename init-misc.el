@@ -6,10 +6,12 @@
 ;;; Code:
 (use-package desktop
   :ensure nil
-  :config
+  :defer t
+  :init
   (setq desktop-restore-eager 10
         desktop-load-locked-desktop t)
-  (desktop-save-mode 1))
+  ;; Load/restore at end of init (not while requiring init-misc).
+  :hook (after-init . desktop-save-mode))
 
 ;; recentf
 (use-package recentf
@@ -25,7 +27,9 @@
   (recentf-mode))
 
 (use-package memory-usage
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands memory-usage)
 
 ;;; projectile
 ;; Per projectile docs: enable after init and expose command map via
@@ -150,11 +154,16 @@
   :commands elgrep)
 
 ;; Nicer naming of buffers for files with identical names
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'reverse)
-(setq uniquify-separator " • ")
-(setq uniquify-after-kill-buffer-p t)
-(setq uniquify-ignore-buffers-re "^\\*")
+(use-package uniquify
+  :ensure nil
+  :defer t
+  :init
+  (setq uniquify-buffer-name-style 'reverse
+        uniquify-separator " • "
+        uniquify-after-kill-buffer-p t
+        uniquify-ignore-buffers-re "^\\*")
+  ;; uniquify advises find-file-noselect; load once after init.
+  :hook (after-init . (lambda () (require 'uniquify))))
 
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)

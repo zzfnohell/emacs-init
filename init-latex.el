@@ -4,11 +4,13 @@
 ;;
 
 (use-package tex
-	:ensure auctex
+  :ensure auctex
   :defer t)
 
 (use-package tikz
-	:ensure t)
+  :ensure t
+  :defer t
+  :commands tikz-mode)
 
 (message "[init] init-latex loaded")
 (provide 'init-latex)

@@ -11,13 +11,15 @@
 
 (use-package lua-mode
   :ensure t
+  :defer t
+  :mode "\\.lua\\'"
   :config
-	(setq lua-default-application "luajit")
-  (with-eval-after-load 'lua-mode
-    (setq lua-indent-level 4)))
+  (setq lua-default-application "luajit"
+        lua-indent-level 4))
 
 (use-package company-lua
-	:ensure t
+  :ensure t
+  :defer t
   :hook
   (lua-mode . init-lua/company-lua-hook-func))
 

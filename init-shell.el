@@ -21,7 +21,9 @@
 
 
 (use-package fish-mode
-	:ensure t)
+  :ensure t
+  :defer t
+  :mode "\\.fish\\'")
 
 (use-package fish-completion
 	:ensure t

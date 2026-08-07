@@ -40,7 +40,6 @@
       (unless (or (not (file-directory-p subdir))
                   (equal name ".")
                   (equal name ".."))
-        (message (format "add to load path: %s" subdir))
         (add-to-list 'load-path (directory-file-name subdir))))))
 
 
