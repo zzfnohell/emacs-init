@@ -39,7 +39,7 @@
 ;; Interactive command only — there is no rust-auto-use-mode.
 (use-package rust-auto-use
   :ensure t
-  :defer t
+  :after rust-mode
   :commands rust-auto-use
   :bind (:map rust-mode-map
               ("C-c C-a" . rust-auto-use)))

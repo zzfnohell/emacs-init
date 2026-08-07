@@ -5,6 +5,14 @@
 
 ;;; Code:
 
+(defun init-snippets/rust-ts-yas ()
+  "Activate rust-mode snippets under plain `rust-ts-mode'.
+No-op when `rust-mode' treesitter-derive is active (major-mode is
+already `rust-mode', so rust snippets apply directly)."
+  (when (and (eq major-mode 'rust-ts-mode)
+             (fboundp 'yas-activate-extra-mode))
+    (yas-activate-extra-mode 'rust-mode)))
+
 (use-package gitignore-snippets
   :ensure t
   :after yasnippet
@@ -29,7 +37,10 @@
    (js-ts-mode . (lambda () (yas-activate-extra-mode 'js-mode)))
    (kotlin-ts-mode . (lambda () (yas-activate-extra-mode 'kotlin-mode)))
    (python-ts-mode . (lambda () (yas-activate-extra-mode 'python-mode)))
-   (rust-ts-mode . (lambda () (yas-activate-extra-mode 'rust-mode)))
+   ;; rust-mode uses treesitter-derive (init-rust.el), so major-mode is
+   ;; rust-mode and rust snippets apply directly; keep a soft fallback for
+   ;; plain rust-ts-mode when derive is disabled.
+   (rust-ts-mode . init-snippets/rust-ts-yas)
    (bash-ts-mode . (lambda () (yas-activate-extra-mode 'sh-mode)))
    (tsx-ts-mode . (lambda () (yas-activate-extra-mode 'tsx-mode)))
    (yaml-ts-mode . (lambda () (yas-activate-extra-mode 'yaml-mode))))
