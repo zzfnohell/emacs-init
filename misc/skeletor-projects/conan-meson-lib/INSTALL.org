@@ -5,11 +5,6 @@ Installation Guide -*- mode:org; coding:utf-8; -*-
 #+STARTUP: align
 #+STARTUP: inlineimages
 
-* Build with Conan
-#+begin_src shell
-  conan build . --build=missing
-#+end_src
-
 * Debug
 ** Install deps
 #+begin_src shell
