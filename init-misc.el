@@ -38,7 +38,8 @@
   :ensure t
   :custom
   (projectile-require-project-root t)
-  (projectile-enable-caching t)
+  ;; t = transient (memory-only); 'persistent survives Emacs restarts
+  (projectile-enable-caching 'persistent)
   (projectile-indexing-method 'alien)
   (projectile-globally-ignored-file-suffixes
    '("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar"))
