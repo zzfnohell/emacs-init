@@ -1,14 +1,13 @@
 #pragma once
- 
-#include "samplelib_export.h"
+
+#include "lib_export.h"
 
 #ifdef __cplusplus
-extern "C"
-{
-#endif // __cplusplus
+extern "C" {
+#endif
 
-    SAMPLELIB_EXPORT int score(const char* needle, const char *hayjack);
+LIB_EXPORT int score(const char *needle, const char *haystack);
+
 #ifdef __cplusplus
 }
-#endif // __cplusplus
- 
+#endif

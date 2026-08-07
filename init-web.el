@@ -167,12 +167,17 @@
 (use-package colorful-mode
   ;; :diminish
   ;; :ensure t ; Optional
+  :defer t
+  :commands global-colorful-mode
   :custom
   (colorful-use-prefix t)
   (colorful-only-strings 'only-prog)
   (css-fontify-colors nil)
+  :init
+  (add-hook 'emacs-startup-hook
+            (lambda ()
+              (run-with-idle-timer 0.05 nil #'global-colorful-mode)))
   :config
-  (global-colorful-mode t)
   (add-to-list 'global-colorful-modes 'helpful-mode))
 
 ;;; SASS and SCSS

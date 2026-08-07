@@ -88,11 +88,14 @@
 
 (use-package ultra-scroll
   :ensure t
+  :defer t
+  :commands ultra-scroll-mode
   :init
   (setq scroll-conservatively 3 ; or whatever value you prefer, since v0.4
         scroll-margin 0) ; important: scroll-margin>0 not yet supported
-  :config
-  (ultra-scroll-mode 1))
+  (add-hook 'emacs-startup-hook
+            (lambda ()
+              (run-with-idle-timer 0 nil #'ultra-scroll-mode))))
 
 (add-to-list 'default-frame-alist '(scroll-bar-width . 8))
 
@@ -142,7 +145,9 @@
 (add-hook 'texinfo-mode-hook (lambda () (require 'sb-texinfo)))
 
 (use-package anyins
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands (anyins-mode))
 
 (use-package popup-kill-ring
   :ensure t
@@ -190,8 +195,8 @@
 
 (use-package so-long
   :ensure nil
-  :config
-  (global-so-long-mode 1))
+  :defer t
+  :hook (after-init . global-so-long-mode))
 
 (use-package regex-tool
   :ensure t
@@ -207,8 +212,8 @@
 
 (use-package highlight-parentheses
   :ensure t
-  :config
-  (global-highlight-parentheses-mode t))
+  :defer t
+  :hook (after-init . global-highlight-parentheses-mode))
 
 (use-package highlight-doxygen
   :ensure t

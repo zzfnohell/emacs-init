@@ -35,7 +35,9 @@
 ;; mvn -Dmaven.test.skip=true package
 
 (use-package groovy-mode
-  :ensure t)
+  :ensure t
+  :defer t
+  :mode ("\\.groovy\\'" "\\.gradle\\'"))
 
 
 

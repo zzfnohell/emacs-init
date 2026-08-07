@@ -34,7 +34,7 @@ Note -*- mode:org; -*-
     '(select-enable-clipboard t)
     '(semantic-idle-scheduler-idle-time 5)
     '(semantic-symref-tool (quote global))
-    '(skeletor-user-directory "~/.emacs.d/init/init-skeletor-projects")
+    '(skeletor-user-directory "~/.emacs.d/init/misc/skeletor-projects")
     '(size-indication-mode t)
     '(speedbar-show-unknown-files t)
     '(ellocate-scan-dirs (quote
@@ -78,14 +78,42 @@ Note -*- mode:org; -*-
    (setenv "WORKON_HOME" "/home/zzfnohell/dev/pyenvs")
 #+END_SRC
 ** Windows
-$+name: windows-extra
+#+name: windows-extra
 #+begin_src elisp
+  ;; Prefer init-tags.el's Scoop auto-detect; keep these for custom.el overrides.
   (custom-set-variables
    '(citre-readtags-program "c:/Scoop/apps/universal-ctags/current/readtags.exe")
    '(citre-ctags-program "c:/Scoop/apps/universal-ctags/current/ctags.exe")
+   '(citre-gtags-program "c:/Scoop/apps/global/current/bin/gtags.exe")
+   '(citre-global-program "c:/Scoop/apps/global/current/bin/global.exe")
    '(citre-gtags-args '("--compact")))
-
 #+end_src
+
+** Windows GNU Global (GTAGS) setup
+
+1. Install tools (Scoop):
+   #+begin_src powershell
+     scoop install global universal-ctags
+   #+end_src
+2. Install this repo's config (sets ~GTAGSCONF~, ~GTAGSLABEL=new-ctags~,
+   ~GTAGSOBJDIRPREFIX~):
+   #+begin_src powershell
+     powershell -ExecutionPolicy Bypass -File ~/.emacs.d/init/misc/windows-gtags-env.ps1
+   #+end_src
+   Or copy ~misc/gtags.conf~ to ~%USERPROFILE%\.globalrc~ manually.
+3. Index a project:
+   #+begin_src powershell
+     cd C:\src\your-app
+     gtags
+     global -x main
+   #+end_src
+4. Emacs: ~init-tags.el~ enables ~ggtags-mode~ when ~global~ is on PATH, and
+   Citre Global commands on ~C-x c R/P/U~. Restart Emacs after the env script.
+
+Labels (via ~GTAGSLABEL~ or dir-locals ~ggtags-process-environment~):
+- ~new-ctags~ — recommended with Scoop + universal-ctags (repo default)
+- ~pygments~ — needs Pygments + Global pygments-parser plug-in
+- ~native-pygments~ — built-in parsers first, else Pygments
 
 * Cedet Project
 ** Windows Cpp Root Project
@@ -194,42 +222,73 @@ Create jsconfig.json in the root folder of your project. jsconfig.json is tsconf
   }
 #+END_SRC
 
-*  Dir Local Variables
- ** cc-mode (.dir-locals.el)
- #+NAME: cc-mode-local-variables
- #+begin_src emacs-lisp :file 
-   ((nil . ((ggtags-process-environment . ("GTAGSLABEL=pygments"
-                                           "GTAGSDBPATH=C:\\sdk"
-                                           "GTAGSROOT=C:\\sdk"
-                                           "GTAGSLIBPATH=C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22000.0\\um"
-                                           "GTAGSOBJDIRPREFIX=C:\\cache\\gtagsdb"))
-       (ggtags-extra-args . ("--verbose" "--statistics"))
-       (ggtags-use-idutils . t)
-       (buffer-read-only . nil)
-       (eval . (message "hello sdk"))))
+* Dir Local Variables
 
-    (c++-mode . ((c-basic-offset . 4)
-                 (tab-width . 4)
-                 (indent-tabs-mode . t)
-                 (compile-command . "build.bat")
-                 (cd-compile-directory . "C:\\src\\sampleapp")
-                 (cc-search-directories . ("C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\shared"
-                                           "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\ucrt"
-                                           "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um"
-                                           "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\winrt"))
-                 (flycheck-clang-include-path . ("c:/sdk/include"
-                                                 "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um"))))
+** cc-mode (.dir-locals.el)
 
-    (c-mode . ((c-basic-offset . 4)
-               (tab-width . 4)
-               (indent-tabs-mode . t)
-               (compile-command . "build.bat")
-               (cd-compile-directory . "C:\\src\\sampleapp")
-               (cc-search-directories . ("C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\shared"
-                                         "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\ucrt"
-                                         "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um"
-                                         "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\winrt"))
-               (flycheck-clang-include-path . ("c:/sdk/include"
-                                              "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um")))))
+Sample for a Windows SDK / application tree. Copy to the project root as
+~.dir-locals.el~. Includes ~c-ts-mode~ / ~c++-ts-mode~ because this Emacs
+config remaps C/C++ to treesit modes (see ~init-prog.el~).
 
- #+end_src
+#+NAME: cc-mode-local-variables
+#+begin_src emacs-lisp
+((nil . ((ggtags-process-environment . ("GTAGSLABEL=new-ctags"
+                                        "GTAGSDBPATH=C:/sdk"
+                                        "GTAGSROOT=C:/sdk"
+                                        "GTAGSLIBPATH=C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um"
+                                        "GTAGSOBJDIRPREFIX=C:/cache/gtagsdb"))
+         (ggtags-extra-args . ("--verbose" "--statistics"))
+         (ggtags-use-idutils . t)))
+
+ ((c-mode c++-mode c-ts-mode c++-ts-mode c-or-c++-mode c-or-c++-ts-mode) .
+  ((c-basic-offset . 4)
+   (tab-width . 4)
+   (indent-tabs-mode . t)
+   (compile-command . "build.bat")
+   (cc-search-directories . ("C:/Program Files (x86)/Windows Kits/10/include/10.0.22000.0/shared"
+                             "C:/Program Files (x86)/Windows Kits/10/include/10.0.22000.0/ucrt"
+                             "C:/Program Files (x86)/Windows Kits/10/include/10.0.22000.0/um"
+                             "C:/Program Files (x86)/Windows Kits/10/include/10.0.22000.0/winrt"))
+   (flycheck-clang-include-path . ("C:/sdk/include"
+                                   "C:/Program Files (x86)/Windows Kits/10/include/10.0.22000.0/um")))))
+#+end_src
+
+* Package conflicts (audit)
+
+Run against Emacs 30.2 + ~elpa-30.2~ (batch ~package-refresh-contents~ +
+~package-desc-status~ / dep walk). Re-check after big package updates.
+
+**package.el status**
+- No installed multi-version packages, no dep transaction errors, no
+  ~provide~ feature clashes among installed packages.
+- Archive ~incompat~ (not installed; need Emacs 31): ~dwim-coder-mode~,
+  ~immaterial-theme~.
+- Built-in shadows (expected newer ELPA copies): ~compat~, ~transient~.
+
+**Chosen stacks (intentional; keep only one side enabled)**
+
+| Area | Active | Disabled / omitted | Notes |
+|------+--------+---------------------+-------|
+| Completion | company (+ backends) | auto-complete, corfu (+ cape/tempel) | ~init-prog.el~ |
+| Minibuffer | vertico / consult / embark | helm, counsel/swiper | |
+| LSP client | eglot (~init-lsp.el~) | lsp-mode / lsp-ui / lsp-java / … | ~dap-mode~ still installs ~lsp-mode~ as a *library* (~init-dap.el~) |
+| Python IDE | eglot + dap-python | elpy | elpy fights eglot/dap |
+| JS/TS IDE | Tide (~init-web.el~) | blanket Flow-via-eglot | Eglot Flow only when ~.flowconfig~; TS/TSX stay on tsserver |
+| VCS gutter | git-gutter | diff-hl (commented) | ~init-vc.el~ |
+
+**Live tensions**
+- *Flycheck ↔ Eglot/Flymake*: ~global-flycheck-mode~ vs Eglot’s Flymake.
+  Prefer disabling Flycheck in ~eglot-managed~ buffers (see open PR
+  “Refine flycheck / flymake lint setup”). ~M-g f~ is ~consult-flymake~.
+- *Ivy ↔ Vertico*: ~function-args~ and ~call-graph~ ~Package-Requires~ ivy
+  and call ~ivy-read~ (they do *not* turn on ~ivy-mode~). Leave ivy
+  installed as a dependency; do not enable ~ivy-mode~ / counsel.
+- *lsp-* leftovers* in ~elpa-*: ~lsp-java~, ~lsp-treemacs~, ~lsp-docker~
+  may remain from earlier ~:ensure~ while those ~use-package~ forms are
+  now ~:disabled~. Safe to ~package-delete~ manually; ~dap-mode~ still
+  needs ~lsp-mode~.
+
+**Not conflicts**
+- Many packages exist on both MELPA and GNU/NonGNU; this config installs
+  MELPA snapshots (archives listed MELPA-last in ~init-elpa.el~, no
+  ~package-archive-priorities~). Prefer pinning only if a snapshot breaks.

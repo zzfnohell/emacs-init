@@ -1,11 +1,11 @@
 [requires]
-sqlite3/3.40.1
-spdlog/1.11.0
-doctest/2.4.9
-lua/5.4.4
+sqlite3/3.45.3
+spdlog/1.14.1
+doctest/2.4.11
+lua/5.4.6
 
 [tool_requires]
-cmake/3.25.3
+cmake/[>=3.15]
 
 [generators]
 CMakeDeps
@@ -13,7 +13,4 @@ CMakeToolchain
 
 [options]
 sqlite3/*:shared=True
-
-[imports]
-bin, *.dll -> ./bin # Copies all dll files from packages bin folder to my local "bin" folder
-lib, *.dylib* -> ./bin # Copies all dylib files from packages lib folder to my local "bin" folder
+lua/*:shared=True

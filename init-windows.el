@@ -22,12 +22,15 @@
 (use-package perspective
   :ensure t
   :defer t
+  :commands (persp-mode persp-list-buffers)
   :bind
   ("C-x C-b" . persp-list-buffers) ; or use a nicer switcher, see below
   :custom
   (persp-mode-prefix-key (kbd "C-c M-p")) ; pick your own prefix key here
   :init
-  (persp-mode))
+  (add-hook 'emacs-startup-hook
+            (lambda ()
+              (run-with-idle-timer 0 nil #'persp-mode))))
 
 (provide 'init-windows)
 

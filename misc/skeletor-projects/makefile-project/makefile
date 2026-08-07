@@ -1,67 +1,39 @@
 include makefile.inc
 
-all:Debug Release
+all: debug release
 
-PRJ=oanda
-EXPORTS=$(PRJ).def
-LIB_NAME=$(PRJ)
-STATIC_LIB_NAME=lib$(LIB_NAME).a
-DYNAMIC_LIB_NAME=lib$(LIB_NAME).so
-LIB_TARGET_NAME=$(DYNAMIC_LIB_NAME)
+PRJ=__PROJECT-NAME__
 
-.PHONY:clean
-Debug:OUT_DIR=./build/Debug
-Release:OUT_DIR=./build/Release
+.PHONY: clean debug release
 
-# add debug flags
-Debug:ASFLAGS += -g -F stabs 
+debug: OUT_DIR=./build/Debug
+release: OUT_DIR=./build/Release
 
-Debug:CFLAGS += -g
-Release:CFLAGS += -O2
+debug: CFLAGS += -g
+release: CFLAGS += -O2
 
-CFLAGS+= $(shell pkg-config --cflags lua5.3)
+CFLAGS += -I./include
 
-CFLAGS+= -I./include
+debug: LIBPATH += -L$(OUT_DIR)
+release: LIBPATH += -L$(OUT_DIR)
+LDFLAGS += $(LIBPATH) $(LDLIBS)
 
-# ldconfig -p
-LDLIBS+= $(shell pkg-config --libs lua5.3)
+SRCS = $(wildcard *.c)
+OBJS = $(patsubst %.c,%.o,$(SRCS))
 
-Debug:LIBPATH+= -L$(OUT_DIR)
-Release:LIBPATH+= -L$(OUT_DIR)
-LDFLAGS+= $(LIBPATH) $(LDLIBS)
+debug: BIN_NAME=$(PRJ)d
+release: BIN_NAME=$(PRJ)
 
-
-SRCS=$(wildcard *.c)
-OBJS=$(patsubst %.c,%.o,$(SRCS))
-
-Debug:BIN_NAME=oandad
-Release:BIN_NAME=oanda
-
-DEBUG_OUT_DIR:
+debug: $(OBJS)
 	$(MKDIR) $(OUT_DIR)
-
-Debug: $(OBJS) | DEBUG_OUT_DIR
 	$(LD) $(OBJS) $(LDFLAGS) -o $(OUT_DIR)/$(BIN_NAME)
 
-RELEASE_OUT_DIR:
+release: $(OBJS)
 	$(MKDIR) $(OUT_DIR)
-
-Release: $(OBJS) | RELEASE_OUT_DIR
 	$(LD) $(OBJS) $(LDFLAGS) -o $(OUT_DIR)/$(BIN_NAME)
 
 %.o: %.c
 	$(CC) -c -fPIC $(CFLAGS) -o $@ $<
-
-
-# $(TARGET_DIR)/%.o:%.i
-# 	$(SWIG) -lua -o $(basename $<).c $<
-# 	$(CC) -o $@ -c $(CFLAGS) $(basename $<).c
-
-# $(TARGET_DIR)/%.o:%.c
-# 	$(CC) -o $@ -c $(CFLAGS) $<
-
-# $(TARGET_DIR)%.o:%.asm
-# 	$(AS) $(ASFLAGS) -o $@ $<
 
 clean:
 	$(RM) *.o
@@ -72,4 +44,3 @@ clean:
 	$(RM) *.so
 	$(RM) *.log
 	$(RM) build
-

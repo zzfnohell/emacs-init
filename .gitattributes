@@ -25,7 +25,8 @@
 *.bat    text eol=crlf
 *.cs     text eol=crlf
 *.cshtml text eol=crlf
-*.ps1    text working-tree-encoding=UTF-16LE eol=CRLF
+# UTF-8 is fine for modern PowerShell and avoids broken round-trips in this repo.
+*.ps1    text eol=crlf
 
 *.png binary
 *.jpg binary

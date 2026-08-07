@@ -22,7 +22,14 @@
 (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
+;; Combine package autoloads into one file for faster startup.  After
+;; installing/removing packages, run `M-x package-quickstart-refresh'.
+(setq package-quickstart t)
 (package-initialize)
+(when (and package-quickstart
+           (not (file-readable-p package-quickstart-file)))
+  (message "[init] generating package-quickstart.el (one-time)…")
+  (package-quickstart-refresh))
 
 ;; use-package is built into Emacs 29+
 (when (and (< emacs-major-version 29)
@@ -36,6 +43,8 @@
 (setq use-package-always-demand (daemonp))
 
 (use-package auto-package-update
+  :defer t
+  :commands (auto-package-update-now auto-package-update-maybe)
   :config
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-hide-results t)

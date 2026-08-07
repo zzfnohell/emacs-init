@@ -21,7 +21,9 @@
 
 
 (use-package fish-mode
-	:ensure t)
+  :ensure t
+  :defer t
+  :mode "\\.fish\\'")
 
 (use-package fish-completion
 	:ensure t
@@ -55,6 +57,10 @@
   :commands multi-term
   :config
 	(setq multi-term-program "/bin/bash"))
+
+(use-package ghostel
+  :ensure t
+  :defer t)
 
 ;;; XTERM
 (xterm-mouse-mode 1)

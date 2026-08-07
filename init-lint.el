@@ -13,50 +13,24 @@
 
 (use-package flycheck
   :ensure t
-  :hook (after-init . global-flycheck-mode)
-  :custom
-  (flycheck-emacs-lisp-load-path 'inherit)
-  (flycheck-display-errors-delay 0.3)
-  (flycheck-idle-change-delay 1.0)
-  (flycheck-indication-mode 'left-fringe)
-  (flycheck-check-syntax-automatically '(save idle-change mode-enabled)))
-
-(use-package flymake
-  :ensure nil
   :defer t
-  :custom
-  (flymake-no-changes-timeout 1.0)
-  ;; Keep Flymake fringe markers on the right so they do not collide with
-  ;; Flycheck's left-fringe indicators when both briefly coexist.
-  (flymake-fringe-indicator-position 'right-fringe)
-  :bind (:map flymake-mode-map
-              ("C-c ! n" . flymake-goto-next-error)
-              ("C-c ! p" . flymake-goto-prev-error)
-              ("C-c ! l" . flymake-show-buffer-diagnostics)))
-
-(declare-function eglot-managed-p "eglot" ())
-
-(defun init-lint/eglot-prefer-flymake ()
-  "Prefer Flymake while Eglot manages the buffer; restore Flycheck after.
-`eglot-managed-mode-hook' runs on both start and stop — use
-`eglot-managed-p' to distinguish (see eglot.el)."
-  (if (eglot-managed-p)
-      (when (bound-and-true-p flycheck-mode)
-        (flycheck-mode -1))
-    (when (and (bound-and-true-p global-flycheck-mode)
-               (not (bound-and-true-p flycheck-mode)))
-      (flycheck-mode 1))))
-
-(with-eval-after-load 'eglot
-  (add-hook 'eglot-managed-mode-hook #'init-lint/eglot-prefer-flymake))
+  :commands (flycheck-mode global-flycheck-mode)
+  ;; Idle so flycheck is off the critical init path; still enables almost
+  ;; immediately once Emacs is interactive (batch benchmarks skip idle).
+  :init
+  (add-hook 'emacs-startup-hook
+            (lambda ()
+              (run-with-idle-timer 0.05 nil #'global-flycheck-mode))))
 
 (use-package flycheck-flow
   :ensure t
-  :after (flycheck flow-minor-mode)
+  :defer t
+  :after flycheck
   :config
   ;; next-checker chain (flow → eslint) is registered by flycheck-flow.el.
   (flycheck-add-mode 'javascript-flow 'flow-minor-mode)
-  (flycheck-add-mode 'javascript-eslint 'flow-minor-mode))
+  (flycheck-add-mode 'javascript-eslint 'flow-minor-mode)
+  (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
 
 (use-package flycheck-plantuml
   :ensure t

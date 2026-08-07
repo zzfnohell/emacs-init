@@ -1,6 +1,6 @@
 ;;; init-benchmarking.el --- Measure startup and require times -*- lexical-binding: t -*-
 ;;; Commentary:
-;; 
+;;
 
 ;;; Code:
 
@@ -26,6 +26,14 @@
 
   ;; To disable collection of benchmark data after init is done.
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
+
+;; Always print init duration; useful for CLI batch benchmarks and *Messages*.
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "[init] Emacs ready in %s (gc: %d)"
+                     (emacs-init-time)
+                     gcs-done))
+          t)
 
 
 (message "[init] init-benchmarking loaded")
