@@ -9,11 +9,17 @@
 
 
 (use-package flycheck-gradle
-  :commands (flycheck-gradle-setup)
-  :hook ((java-mode . flycheck-gradle-setup)
-         (java-ts-mode . flycheck-gradle-setup)
-         (kotlin-mode . flycheck-gradle-setup)
-         (kotlin-ts-mode . flycheck-gradle-setup)))
+  :ensure t
+  :after flycheck
+  ;; Package docs: call setup once after flycheck loads (not per major-mode).
+  ;; Upstream checkers only list java-mode / kotlin-mode; extend to treesit
+  ;; remaps from init-prog.el.
+  :config
+  (dolist (mode '(java-ts-mode kotlin-ts-mode))
+    (add-to-list 'flycheck-gradle-modes mode))
+  (flycheck-add-mode 'gradle-java 'java-ts-mode)
+  (flycheck-add-mode 'gradle-kotlin 'kotlin-ts-mode)
+  (flycheck-gradle-setup))
 
 (use-package ant
   :ensure t

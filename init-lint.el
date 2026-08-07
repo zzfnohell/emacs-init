@@ -1,7 +1,13 @@
-;;; init-lint.el --- Static Syntax Analysis
+;;; init-lint.el --- Static Syntax Analysis -*- lexical-binding: t; -*-
 
 ;;; Commentary:
+;; On-the-fly linting.
 ;;
+;; - Flycheck is the default checker (`global-flycheck-mode`).
+;; - Flymake remains available for Eglot (see `init-lsp.el`) and for
+;;   `consult-flymake' (`M-g f` in `init-minibuffer.el`).  When Eglot
+;;   manages a buffer it drives Flymake, so Flycheck is turned off there
+;;   to avoid duplicate diagnostics.
 
 ;;; Code:
 
@@ -21,6 +27,7 @@
   :defer t
   :after flycheck
   :config
+  ;; next-checker chain (flow → eslint) is registered by flycheck-flow.el.
   (flycheck-add-mode 'javascript-flow 'flow-minor-mode)
   (flycheck-add-mode 'javascript-eslint 'flow-minor-mode)
   (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
@@ -28,8 +35,10 @@
 (use-package flycheck-plantuml
   :ensure t
   :defer t
-  :hook
-  (plantuml-mode . flycheck-plantuml-setup))
+  :commands flycheck-plantuml-setup
+  :hook (plantuml-mode . flycheck-plantuml-setup))
+
+(message "[init] init-lint loaded")
 
 (provide 'init-lint)
 
