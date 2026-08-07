@@ -1,7 +1,11 @@
 ;;; init-lsp.el --- LSP
 
 ;;; Commentary:
-;;
+;; Prefer eglot (built-in) as the LSP *client*. lsp-mode and its UI/lang
+;; packages stay :disabled so they do not fight eglot. dap-mode still
+;; pulls lsp-mode as a library — that is OK and intentional.
+;; Do not re-add lsp-ivy: minibuffer stack is vertico/consult (see
+;; init-minibuffer.el). Workspace symbols: consult / eglot APIs.
 
 ;;; Code:
 (use-package lsp-mode
@@ -29,18 +33,11 @@
   (require 'lsp-flow))
 
 
-;; LSP UI tools
+;; LSP UI tools (lsp-mode stack only; keep disabled with lsp-mode)
 (use-package lsp-ui
   :disabled
   :ensure t
   :commands lsp-ui-mode)
-
-(use-package lsp-ivy
-  :disabled
-  :ensure t
-  :commands lsp-ivy-workspace-symbol)
-
-
 
 (defun init-lsp/dap-stop-hook-func (arg)
   (call-interactively #'dap-hydra))

@@ -1,7 +1,10 @@
 ;;; init-lint.el --- Static Syntax Analysis
 
 ;;; Commentary:
-;;
+;; Flycheck is the default on-the-fly checker. Eglot uses Flymake; running
+;; both in the same buffer duplicates diagnostics. Prefer turning Flycheck
+;; off while `eglot-managed-p' (see note.org "Package conflicts" and the
+;; flycheck/flymake lint PR). `consult-flymake' remains on `M-g f'.
 
 ;;; Code:
 
