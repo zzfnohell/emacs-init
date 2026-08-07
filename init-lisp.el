@@ -16,7 +16,8 @@
 
 
 (use-package ansi
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package paredit
   :ensure t
@@ -29,22 +30,31 @@
 
 (use-package diminish
   :ensure t
-  :config
+  :defer t
+  :commands diminish)
+
+(with-eval-after-load 'diminish
   (diminish 'visual-line-mode))
 
 (use-package dimmer
   :ensure t
+  :defer t
+  :commands dimmer-mode
   :custom (dimmer-fraction 0.3)
-  :config (dimmer-mode))
+  :init
+  (add-hook 'emacs-startup-hook
+            (lambda ()
+              (run-with-idle-timer 0.05 nil #'dimmer-mode))))
 
-(use-package lively :ensure t)
-
-(require 'derived)
+(use-package lively
+  :ensure t
+  :defer t
+  :commands (lively lively-region lively-update lively-stop))
 
 (use-package pretty-mode
   :ensure t
   :hook
-  (emacs-lisp-mode .  turn-on-pretty-mode))
+  (emacs-lisp-mode . turn-on-pretty-mode))
 
 (use-package elisp-refs
   :ensure t
@@ -103,7 +113,7 @@
 
 (use-package redshank
   :ensure t
-  :after (:all diminish)
+  :defer t
   :hook
   (lisp-mode . init-lisp/lisp-setup)
   (inferior-lisp-mode . init-lisp/lisp-setup)
@@ -111,13 +121,20 @@
   (emacs-lisp-mode . init-lisp/emacs-lisp-setup)
   (ielm-mode . init-lisp/emacs-lisp-setup)
   :config
-  (diminish 'redshank-mode))
+  (when (fboundp 'diminish)
+    (diminish 'redshank-mode)))
 
 (use-package eldoc-eval
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands (eldoc-in-minibuffer-mode))
 
 (use-package macrostep
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands (macrostep-expand macrostep-mode)
+  :bind (:map emacs-lisp-mode-map
+              ("C-c e" . macrostep-expand)))
 
 (setq auto-mode-alist (cons '("\\.el" . emacs-lisp-mode) auto-mode-alist))
 
@@ -154,9 +171,9 @@
 
 (use-package aggressive-indent
   :ensure t
-  :config
-  (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
-  (add-hook 'css-mode-hook #'aggressive-indent-mode))
+  :defer t
+  :hook
+  ((emacs-lisp-mode css-mode) . aggressive-indent-mode))
 
 
 (use-package clojure-mode
@@ -166,14 +183,18 @@
   (clojure-mode . paredit-mode))
 
 (use-package cljsbuild-mode
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands cljsbuild-mode)
 
 (use-package cider
   :ensure t
   :commands cider)
 
 (use-package geiser
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands (run-geiser geiser-mode))
 
 (use-package racket-mode
   :ensure t

@@ -101,10 +101,10 @@ aborting buffer setup."
                        'sgml-skip-tag-forward
                        nil))))
 
-(require 'compile)
-(setq compilation-disable-input nil)
-(setq compilation-scroll-output t)
-(setq mode-compile-always-save-buffer-p t)
+;; Variables on `compile' / compilation buffers; no need to load compile.el yet.
+(setq compilation-disable-input nil
+      compilation-scroll-output t
+      mode-compile-always-save-buffer-p t)
 
 (use-package emr
   :ensure t
@@ -134,7 +134,8 @@ aborting buffer setup."
   (require 'srefactor)
   (require 'srefactor-lisp))
 
-(require 'display-fill-column-indicator)
+(autoload 'display-fill-column-indicator-mode "display-fill-column-indicator"
+  "Toggle display of the fill-column indicator." t)
 (setq display-fill-column-indicator-column 120)
 
 (defun init-prog/enable-display-fill-column ()
@@ -231,11 +232,16 @@ aborting buffer setup."
 
 (use-package company
   :ensure t
+  :defer t
+  :commands (company-mode global-company-mode)
   :custom
   (company-dabbrev-downcase nil)
   (company-show-numbers t)
-  ;; Enable after init so :defer backends / tide :after company can load.
-  :hook (after-init . global-company-mode)
+  ;; Idle-enable so company is off the critical init path.
+  :init
+  (add-hook 'emacs-startup-hook
+            (lambda ()
+              (run-with-idle-timer 0.05 nil #'global-company-mode)))
   :config
   (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
   (setq-default company-idle-delay nil
