@@ -271,8 +271,9 @@ Run against Emacs 30.2 + ~elpa-30.2~ (batch ~package-refresh-contents~ +
 |------+--------+---------------------+-------|
 | Completion | company (+ backends) | auto-complete, corfu (+ cape/tempel) | ~init-prog.el~ |
 | Minibuffer | vertico / consult / embark | helm, counsel/swiper | |
-| LSP client | eglot | lsp-mode / lsp-ui / lsp-java / … | ~dap-mode~ still installs ~lsp-mode~ as a *library* |
+| LSP client | eglot (~init-lsp.el~) | lsp-mode / lsp-ui / lsp-java / … | ~dap-mode~ still installs ~lsp-mode~ as a *library* (~init-dap.el~) |
 | Python IDE | eglot + dap-python | elpy | elpy fights eglot/dap |
+| JS/TS IDE | Tide (~init-web.el~) | blanket Flow-via-eglot | Eglot Flow only when ~.flowconfig~; TS/TSX stay on tsserver |
 | VCS gutter | git-gutter | diff-hl (commented) | ~init-vc.el~ |
 
 **Live tensions**
