@@ -50,7 +50,8 @@
      (kotlin-mode     . kotlin-ts-mode)
      (markdown-mode   . markdown-ts-mode)
      (python-mode     . python-ts-mode)
-     (rust-mode       . rust-ts-mode)
+     ;; rust-mode: use rust-mode-treesitter-derive in init-rust.el instead
+     ;; of remapping to rust-ts-mode (keeps Cargo/rustfmt on rust-mode-map).
      (sh-mode         . bash-ts-mode)
      (tsx-mode        . tsx-ts-mode)
      (typescript-mode . typescript-ts-mode)
