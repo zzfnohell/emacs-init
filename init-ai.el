@@ -22,14 +22,9 @@
                    :stream t
                    :key (getenv "DEEPSEEK_API_KEY"))))
 
-(require 'use-package-ensure-system-package)
-
 (use-package agent-shell
   :ensure t
-  :ensure-system-package
-  ;; Add agent installation configs here
-  ((claude . "brew install claude-code")
-   (claude-agent-acp . "npm install -g @agentclientprotocol/claude-agent-acp")))
+  :defer t)
 
 (use-package ai-code
   ;; :straight (:host github :repo "tninja/ai-code-interface.el")
