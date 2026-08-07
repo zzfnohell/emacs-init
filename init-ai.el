@@ -26,6 +26,7 @@
 
 (use-package agent-shell
   :ensure t
+  :defer t
   :ensure-system-package
   ;; Add agent installation configs here
   ((claude . "brew install claude-code")
