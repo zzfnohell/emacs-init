@@ -58,6 +58,9 @@
   :config
 	(setq multi-term-program "/bin/bash"))
 
+(use-package ghostel
+  :ensure t)
+
 ;;; XTERM
 (xterm-mouse-mode 1)
 
