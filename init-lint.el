@@ -34,10 +34,18 @@
               ("C-c ! p" . flymake-goto-prev-error)
               ("C-c ! l" . flymake-show-buffer-diagnostics)))
 
+(declare-function eglot-managed-p "eglot" ())
+
 (defun init-lint/eglot-prefer-flymake ()
-  "Disable Flycheck while Eglot manages the buffer (Eglot uses Flymake)."
-  (when (bound-and-true-p flycheck-mode)
-    (flycheck-mode -1)))
+  "Prefer Flymake while Eglot manages the buffer; restore Flycheck after.
+`eglot-managed-mode-hook' runs on both start and stop — use
+`eglot-managed-p' to distinguish (see eglot.el)."
+  (if (eglot-managed-p)
+      (when (bound-and-true-p flycheck-mode)
+        (flycheck-mode -1))
+    (when (and (bound-and-true-p global-flycheck-mode)
+               (not (bound-and-true-p flycheck-mode)))
+      (flycheck-mode 1))))
 
 (with-eval-after-load 'eglot
   (add-hook 'eglot-managed-mode-hook #'init-lint/eglot-prefer-flymake))
@@ -46,15 +54,13 @@
   :ensure t
   :after (flycheck flow-minor-mode)
   :config
+  ;; next-checker chain (flow → eslint) is registered by flycheck-flow.el.
   (flycheck-add-mode 'javascript-flow 'flow-minor-mode)
-  (flycheck-add-mode 'javascript-eslint 'flow-minor-mode)
-  ;; Checker chain is also registered by flycheck-flow.el itself; keep an
-  ;; explicit link so eslint still runs after flow when this loads first.
-  (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
+  (flycheck-add-mode 'javascript-eslint 'flow-minor-mode))
 
 (use-package flycheck-plantuml
   :ensure t
-  :after flycheck
+  :defer t
   :commands flycheck-plantuml-setup
   :hook (plantuml-mode . flycheck-plantuml-setup))
 
