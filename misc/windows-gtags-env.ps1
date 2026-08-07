@@ -1,1 +1,68 @@
-‣楗摮睯⁳乇⁕䱇䉏䱁攠癮物湯敭瑮戠潯獴牴灡⠠捓潯⥰ਮ‣畒⁮湯散椠⁮潐敷卲敨汬⠠獵牥氭癥汥‬潮愠浤湩爠煥極敲⥤਺‣†潰敷獲敨汬ⴠ硅捥瑵潩偮汯捩⁹祂慰獳ⴠ楆敬洠獩⽣楷摮睯⵳瑧条⵳湥⹶獰਱ਣ‣桗瑡椠⁴潤獥਺‣†‭潌慣整⁳捓潯⁰湩瑳污獬漠⁦汧扯污⬠甠楮敶獲污挭慴獧⌊†ⴠ倠楯瑮⁳呇䝁䍓乏⁆瑡琠楨⁳敲潰猧洠獩⽣瑧条⹳潣普⠠牯挠灯敩⁳潴縠ⸯ汧扯污捲਩‣†‭敓獴䜠䅔升䅌䕂㵌敮⵷瑣条ੳ‣†‭牃慥整⁳呇䝁体䩂䥄偒䕒䥆⁘慣档⁥楤敲瑣牯੹␊牅潲䅲瑣潩偮敲敦敲据⁥‽匧潴❰ਊ畦据楴湯䘠湩ⵤ捓潯剰潯⁴੻††潦敲捡⁨␨潲瑯椠⁮⡀䌧尺捓潯❰‬䐧尺捓潯❰‬␢湥㩶单剅剐䙏䱉居捳潯≰⤩笠 †††椠⁦吨獥⵴慐桴␠潲瑯 ⁻敲畴湲␠潲瑯素 †素 †琠牨睯✠捓潯⁰潲瑯渠瑯映畯摮⠠牴敩⁤㩃卜潣灯‬㩄卜潣灯‬唥䕓偒佒䥆䕌尥捳潯⥰✮紊ਊ猤潣灯㴠䘠湩ⵤ捓潯剰潯ੴ朤潬慢䉬湩㴠䨠楯⵮慐桴␠捳潯⁰愧灰屳汧扯污捜牵敲瑮ਧ挤慴獧楂⁮‽潊湩倭瑡⁨猤潣灯✠灡獰畜楮敶獲污挭慴獧捜牵敲瑮捜慴獧攮數ਧ椊⁦⴨潮⁴吨獥⵴慐桴⠠潊湩倭瑡⁨朤潬慢䉬湩✠楢屮汧扯污攮數⤧ 愭摮 †ⴠ潮⁴吨獥⵴慐桴⠠潊湩倭瑡⁨朤潬慢䉬湩✠汧扯污攮數⤧⤩笠 †圠楲整圭牡楮杮∠乇⁕汇扯污渠瑯映畯摮甠摮牥␠汧扯污楂⁮胢ₔ畲㩮猠潣灯椠獮慴汬朠潬慢≬紊ਊ晩⠠渭瑯⠠敔瑳倭瑡⁨挤慴獧楂⥮ ੻††牗瑩ⵥ慗湲湩⁧產楮敶獲污挭慴獧渠瑯映畯摮钀爠湵›捳潯⁰湩瑳污⁬湵癩牥慳⵬瑣条≳紊ਊ‣桔獩猠牣灩⁴楬敶⁳湩㰠敲潰⼾業捳ਯ爤灥䵯獩⁣‽値卓牣灩剴潯ੴ朤慴獧潃普㴠䨠楯⵮慐桴␠敲潰楍捳✠瑧条⹳潣普ਧ晩⠠渭瑯⠠敔瑳倭瑡⁨朤慴獧潃普⤩笠 †琠牨睯∠楍獳湩⁧朤慴獧潃普ਢ੽␊汧扯污捲㴠䨠楯⵮慐桴␠湥㩶单剅剐䙏䱉⁅⸧汧扯污捲ਧ潃祰䤭整⁭䘭牯散␠瑧条䍳湯⁦朤潬慢牬੣牗瑩ⵥ潈瑳∠湉瑳污敬⁤獵牥挠湯楦㩧␠汧扯污捲ਢ␊慣档⁥‽䌧尺慣档履瑧条摳❢上睥䤭整⁭䤭整呭灹⁥楄敲瑣牯⁹䘭牯散ⴠ慐桴␠慣档⁥⁼畏⵴畎汬ਊ䕛癮物湯敭瑮㩝区瑥湅楶潲浮湥噴牡慩汢⡥䜧䅔升佃䙎Ⱗ␠汧扯污捲‬唧敳❲਩䕛癮物湯敭瑮㩝区瑥湅楶潲浮湥噴牡慩汢⡥䜧䅔升䅌䕂❌‬渧睥挭慴獧Ⱗ✠獕牥⤧嬊湅楶潲浮湥嵴㨺敓䕴癮物湯敭瑮慖楲扡敬✨呇䝁体䩂䥄偒䕒䥆❘‬挤捡敨‬唧敳❲਩⌊䌠牵敲瑮猠獥楳湯琠潯␊湥㩶呇䝁䍓乏⁆‽朤潬慢牬੣攤癮䜺䅔升䅌䕂⁌‽渧睥挭慴獧ਧ攤癮䜺䅔升䉏䑊剉剐䙅塉㴠␠慣档੥圊楲整䠭獯⁴≀䐊湯⹥ 䜠䅔升佃䙎␽汧扯污捲 䜠䅔升䅌䕂㵌敮⵷瑣条ੳ†呇䝁体䩂䥄偒䕒䥆㵘挤捡敨ਊ灏湥愠渠睥琠牥業慮⁬漨⁲敲瑳牡⁴浅捡⥳猠⁯獵牥攠癮瘠牡⁳牡⁥楶楳汢⹥䤊摮硥愠瀠潲敪瑣਺†摣䌠尺牳屣潹牵愭灰 朠慴獧儊敵祲਺†汧扯污ⴠ⁸慭湩∊ੀ
+# Windows GNU GLOBAL environment bootstrap (Scoop).
+# Run once in PowerShell (user-level, no admin required):
+#   powershell -ExecutionPolicy Bypass -File misc/windows-gtags-env.ps1
+#
+# What it does:
+#   - Locates Scoop installs of global + universal-ctags
+#   - Copies this repo's misc/gtags.conf to %USERPROFILE%\.globalrc
+#   - Sets GTAGSLABEL=new-ctags
+#   - Creates GTAGSOBJDIRPREFIX cache directory
+
+$ErrorActionPreference = 'Stop'
+
+function Find-ScoopRoot {
+    foreach ($root in @('C:\Scoop', 'D:\Scoop', "$env:USERPROFILE\scoop")) {
+        if (Test-Path $root) { return $root }
+    }
+    throw 'Scoop root not found (tried C:\Scoop, D:\Scoop, %USERPROFILE%\scoop).'
+}
+
+$scoop = Find-ScoopRoot
+$globalBin = Join-Path $scoop 'apps\global\current'
+$ctagsBin = Join-Path $scoop 'apps\universal-ctags\current\ctags.exe'
+
+if (-not (Test-Path (Join-Path $globalBin 'bin\global.exe')) -and
+    -not (Test-Path (Join-Path $globalBin 'global.exe'))) {
+    Write-Warning "GNU Global not found under $globalBin — run: scoop install global"
+}
+
+if (-not (Test-Path $ctagsBin)) {
+    Write-Warning "universal-ctags not found — run: scoop install universal-ctags"
+}
+
+# This script lives in <repo>/misc/
+$repoMisc = $PSScriptRoot
+$gtagsConf = Join-Path $repoMisc 'gtags.conf'
+if (-not (Test-Path $gtagsConf)) {
+    throw "Missing $gtagsConf"
+}
+
+$globalrc = Join-Path $env:USERPROFILE '.globalrc'
+Copy-Item -Force $gtagsConf $globalrc
+Write-Host "Installed user config: $globalrc"
+
+$cache = 'C:\cache\gtagsdb'
+New-Item -ItemType Directory -Force -Path $cache | Out-Null
+
+[Environment]::SetEnvironmentVariable('GTAGSCONF', $globalrc, 'User')
+[Environment]::SetEnvironmentVariable('GTAGSLABEL', 'new-ctags', 'User')
+[Environment]::SetEnvironmentVariable('GTAGSOBJDIRPREFIX', $cache, 'User')
+
+# Current session too
+$env:GTAGSCONF = $globalrc
+$env:GTAGSLABEL = 'new-ctags'
+$env:GTAGSOBJDIRPREFIX = $cache
+
+Write-Host @"
+Done.
+  GTAGSCONF=$globalrc
+  GTAGSLABEL=new-ctags
+  GTAGSOBJDIRPREFIX=$cache
+
+Open a new terminal (or restart Emacs) so user env vars are visible.
+Index a project:
+  cd C:\src\your-app
+  gtags
+Query:
+  global -x main
+"@
