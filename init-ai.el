@@ -42,8 +42,8 @@
   (global-auto-revert-mode 1)
   (setq auto-revert-interval 1)
   :config
-  ;; use gemini as backend; other options: codex, claude-code, aider, ...
-  (ai-code-set-backend 'gemini)
+  ;; use claude-code as backend; other options: gemini, codex, agent-shell, aider, ...
+  (ai-code-set-backend 'claude-code)
   (ai-code-prompt-filepath-completion-mode 1)
   (setq ai-code-auto-test-type 'ask-me)
   (setq ai-code-backends-infra-terminal-backend 'ghostel)
