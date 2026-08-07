@@ -8,8 +8,75 @@
 ;;
 ;; Note: colorful-mode also uses the `C-x c' prefix (`C-x c x/c/r'); Citre
 ;; reference commands therefore use `C-x c R/P/U' instead of `C-x c r'.
+;;
+;; Windows + Scoop: see `misc/gtags.conf' and `misc/windows-gtags-env.ps1'.
+;; `init-tags/maybe-setup-windows-global' points Citre/gtags at Scoop tools
+;; and sets GTAGSCONF / GTAGSLABEL when unset.
 
 ;;; Code:
+
+(require 'cl-lib)
+
+(defun init-tags/scoop-roots ()
+  "Candidate Scoop root directories on Windows."
+  (delq nil
+        (list (let ((home (getenv "USERPROFILE")))
+                (and home (expand-file-name "scoop" home)))
+              "c:/Scoop"
+              "d:/Scoop")))
+
+(defun init-tags/scoop-file (&rest parts)
+  "Return the first existing Scoop path built from PARTS, or nil."
+  (cl-loop for root in (init-tags/scoop-roots)
+           for path = (apply #'expand-file-name (append parts (list root)))
+           when (file-exists-p path) return path))
+
+(defun init-tags/gtags-conf-file ()
+  "Path to this repo's Windows-oriented gtags.conf, if present."
+  (let* ((here (file-name-directory (or load-file-name
+                                        (locate-library "init-tags")
+                                        "")))
+         (conf (expand-file-name "misc/gtags.conf" here)))
+    (when (file-readable-p conf) conf)))
+
+(defvar citre-ctags-program)
+(defvar citre-readtags-program)
+(defvar citre-gtags-program)
+(defvar citre-global-program)
+
+(defun init-tags/maybe-setup-windows-global ()
+  "Configure GNU Global / Citre paths for Windows Scoop installs.
+No-op on non-Windows.  Does not override variables or env vars the user
+already set (e.g. in custom.el / system env)."
+  (when (eq system-type 'windows-nt)
+    (when-let ((ctags (init-tags/scoop-file
+                       "apps/universal-ctags/current/ctags.exe")))
+      (unless (and (boundp 'citre-ctags-program) citre-ctags-program)
+        (setq citre-ctags-program ctags))
+      (unless (and (boundp 'citre-readtags-program) citre-readtags-program)
+        (let ((readtags (expand-file-name
+                         "readtags.exe" (file-name-directory ctags))))
+          (when (file-exists-p readtags)
+            (setq citre-readtags-program readtags)))))
+    (when-let ((gtags (or (init-tags/scoop-file "apps/global/current/bin/gtags.exe")
+                          (init-tags/scoop-file "apps/global/current/gtags.exe"))))
+      (unless (and (boundp 'citre-gtags-program) citre-gtags-program)
+        (setq citre-gtags-program gtags))
+      (let ((global (expand-file-name "global.exe" (file-name-directory gtags))))
+        (when (and (file-exists-p global)
+                   (not (and (boundp 'citre-global-program) citre-global-program)))
+          (setq citre-global-program global))))
+    (when-let ((conf (init-tags/gtags-conf-file)))
+      (unless (getenv "GTAGSCONF")
+        (setenv "GTAGSCONF" conf))
+      (unless (getenv "GTAGSLABEL")
+        (setenv "GTAGSLABEL" "new-ctags")))
+    (unless (getenv "GTAGSOBJDIRPREFIX")
+      (let ((cache "c:/cache/gtagsdb"))
+        (make-directory cache t)
+        (setenv "GTAGSOBJDIRPREFIX" cache)))))
+
+(init-tags/maybe-setup-windows-global)
 
 (defun init-tags/enable-ggtags ()
   "Enable ggtags when GNU Global is available.
@@ -67,7 +134,8 @@ classic imenu / hippie-expand extras from the ggtags recipe."
   (citre-project-root-function #'init-tags/project-root)
   (citre-default-create-tags-file-location 'global-cache)
   (citre-edit-ctags-options-manually nil)
-  (citre-auto-enable-citre-mode-modes '(prog-mode)))
+  (citre-auto-enable-citre-mode-modes '(prog-mode))
+  (citre-gtags-args '("--compact")))
 
 (use-package xcscope
   :ensure t
