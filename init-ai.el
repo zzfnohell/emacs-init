@@ -22,9 +22,14 @@
                    :stream t
                    :key (getenv "DEEPSEEK_API_KEY"))))
 
+(require 'use-package-ensure-system-package)
+
 (use-package agent-shell
   :ensure t
-  :defer t)
+  :ensure-system-package
+  ;; Add agent installation configs here
+  ((claude . "brew install claude-code")
+   (claude-agent-acp . "npm install -g @agentclientprotocol/claude-agent-acp")))
 
 (use-package ai-code
   ;; :straight (:host github :repo "tninja/ai-code-interface.el")
@@ -37,8 +42,8 @@
   (global-auto-revert-mode 1)
   (setq auto-revert-interval 1)
   :config
-  ;; use gemini as backend; other options: codex, claude-code, aider, ...
-  (ai-code-set-backend 'gemini)
+  ;; use claude-code as backend; other options: gemini, codex, agent-shell, aider, ...
+  (ai-code-set-backend 'claude-code)
   (ai-code-prompt-filepath-completion-mode 1)
   (setq ai-code-auto-test-type 'ask-me)
   (setq ai-code-backends-infra-terminal-backend 'ghostel)
