@@ -1,0 +1,80 @@
+# .cursorignore — Emacs init layer (~/.emacs.d/init)
+# Syntax matches .gitignore. Cursor also honors .gitignore + its defaults;
+# this file makes Emacs-specific noise explicit for Agent / Tab / @ mentions.
+
+# --- Emacs bytecode & native-compile artifacts ---
+*.elc
+*.eln
+eln-cache/
+**/eln-cache/
+
+# --- Emacs autosave / backup / lock / flycheck temps ---
+*~
+\#*\#
+.\#*
+flycheck_*.el
+auto-save-list/
+auto-saves/
+backups/
+
+# --- Secrets / machine-local (keep out of AI context) ---
+.env
+.env.*
+!.env.example
+custom.el
+**/custom-semantic.el
+**/custom-company-c-headers.el
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+credentials.json
+secrets.json
+
+# --- OS / editor junk ---
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+*.sublime-*
+
+# --- Skeletor / C++ template build trees (under misc/) ---
+**/bin/
+**/obj/
+**/build/
+**/Debug/
+**/DebugPS/
+**/Release/
+**/TestResults/
+**/_UpgradeReport_Files/
+**/Backup/
+**/CMakeFiles/
+**/CMakeCache.txt
+**/cmake-build-*/
+**/.cache/
+**/.ccls-cache/
+**/compile_commands.json
+**/GTAGS
+**/GRTAGS
+**/GPATH
+**/TAGS
+**/tags
+**/*.o
+**/*.a
+**/*.pdb
+**/*.suo
+**/*.ncb
+**/*.user
+**/*.vspscc
+**/*.vssscc
+**/*.scc
+**/*.layout
+
+# --- DBs / logs (also covered by defaults; listed for clarity) ---
+*.db3
+*.[Ll][Oo][Gg]
+*.mdf
+*.ldf
+*.MDF
+*.LDF
