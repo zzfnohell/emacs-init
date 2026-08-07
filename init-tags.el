@@ -16,6 +16,7 @@
 `ggtags-mode' already wires xref, eldoc and CAPF; keep only the
 classic imenu / hippie-expand extras from the ggtags recipe."
   (when (executable-find "global")
+    (require 'ggtags)
     (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
     (setq-local hippie-expand-try-functions-list
                 (cons #'ggtags-try-complete-tag
