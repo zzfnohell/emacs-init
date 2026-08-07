@@ -252,3 +252,42 @@ config remaps C/C++ to treesit modes (see ~init-prog.el~).
    (flycheck-clang-include-path . ("C:/sdk/include"
                                    "C:/Program Files (x86)/Windows Kits/10/include/10.0.22000.0/um")))))
 #+end_src
+
+* Package conflicts (audit)
+
+Run against Emacs 30.2 + ~elpa-30.2~ (batch ~package-refresh-contents~ +
+~package-desc-status~ / dep walk). Re-check after big package updates.
+
+**package.el status**
+- No installed multi-version packages, no dep transaction errors, no
+  ~provide~ feature clashes among installed packages.
+- Archive ~incompat~ (not installed; need Emacs 31): ~dwim-coder-mode~,
+  ~immaterial-theme~.
+- Built-in shadows (expected newer ELPA copies): ~compat~, ~transient~.
+
+**Chosen stacks (intentional; keep only one side enabled)**
+
+| Area | Active | Disabled / omitted | Notes |
+|------+--------+---------------------+-------|
+| Completion | company (+ backends) | auto-complete, corfu (+ cape/tempel) | ~init-prog.el~ |
+| Minibuffer | vertico / consult / embark | helm, counsel/swiper | |
+| LSP client | eglot | lsp-mode / lsp-ui / lsp-java / … | ~dap-mode~ still installs ~lsp-mode~ as a *library* |
+| Python IDE | eglot + dap-python | elpy | elpy fights eglot/dap |
+| VCS gutter | git-gutter | diff-hl (commented) | ~init-vc.el~ |
+
+**Live tensions**
+- *Flycheck ↔ Eglot/Flymake*: ~global-flycheck-mode~ vs Eglot’s Flymake.
+  Prefer disabling Flycheck in ~eglot-managed~ buffers (see open PR
+  “Refine flycheck / flymake lint setup”). ~M-g f~ is ~consult-flymake~.
+- *Ivy ↔ Vertico*: ~function-args~ and ~call-graph~ ~Package-Requires~ ivy
+  and call ~ivy-read~ (they do *not* turn on ~ivy-mode~). Leave ivy
+  installed as a dependency; do not enable ~ivy-mode~ / counsel.
+- *lsp-* leftovers* in ~elpa-*: ~lsp-java~, ~lsp-treemacs~, ~lsp-docker~
+  may remain from earlier ~:ensure~ while those ~use-package~ forms are
+  now ~:disabled~. Safe to ~package-delete~ manually; ~dap-mode~ still
+  needs ~lsp-mode~.
+
+**Not conflicts**
+- Many packages exist on both MELPA and GNU/NonGNU; this config installs
+  MELPA snapshots (archives listed MELPA-last in ~init-elpa.el~, no
+  ~package-archive-priorities~). Prefer pinning only if a snapshot breaks.

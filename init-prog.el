@@ -158,6 +158,7 @@ aborting buffer setup."
   :ensure t
   :defer t)
 
+;; Kept disabled: conflicts with company (active completion stack below).
 (use-package auto-complete
   :ensure t
   :disabled t
@@ -344,6 +345,7 @@ aborting buffer setup."
   :ensure t
   :disabled t)
 
+;; Kept disabled: alternative to company; enabling both fights for CAPF UI.
 (use-package corfu
   :ensure t
   :disabled t

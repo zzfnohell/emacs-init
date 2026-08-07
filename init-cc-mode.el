@@ -138,6 +138,8 @@
   :after (glsl-mode company)
   :hook (glsl-mode . init-cc-mode/glsl-mode-hook-func))
 
+;; Package-Requires ivy (ivy-read only). Minibuffer UI stays vertico —
+;; do not enable ivy-mode. See note.org "Package conflicts".
 (use-package call-graph
   :ensure t
   :defer t
@@ -153,6 +155,8 @@
   :defer t
   :mode ("\\.qml\\'" . qml-mode))
 
+;; Package-Requires ivy; uses ivy-read / moo-select-method 'ivy.
+;; Compatible with vertico as long as ivy-mode stays off.
 (use-package function-args
   :ensure t
   :defer t
@@ -163,7 +167,9 @@
    (c++-ts-mode . function-args-mode)
    (c-or-c++-ts-mode . function-args-mode))
   :config
-  (fa-config-default))
+  (fa-config-default)
+  (when (bound-and-true-p ivy-mode)
+    (ivy-mode -1)))
 
 (when (featurep 'doxymacs)
   (require 'doxymacs)
