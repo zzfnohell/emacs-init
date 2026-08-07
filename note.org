@@ -194,42 +194,33 @@ Create jsconfig.json in the root folder of your project. jsconfig.json is tsconf
   }
 #+END_SRC
 
-*  Dir Local Variables
- ** cc-mode (.dir-locals.el)
- #+NAME: cc-mode-local-variables
- #+begin_src emacs-lisp :file 
-   ((nil . ((ggtags-process-environment . ("GTAGSLABEL=pygments"
-                                           "GTAGSDBPATH=C:\\sdk"
-                                           "GTAGSROOT=C:\\sdk"
-                                           "GTAGSLIBPATH=C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22000.0\\um"
-                                           "GTAGSOBJDIRPREFIX=C:\\cache\\gtagsdb"))
-       (ggtags-extra-args . ("--verbose" "--statistics"))
-       (ggtags-use-idutils . t)
-       (buffer-read-only . nil)
-       (eval . (message "hello sdk"))))
+* Dir Local Variables
 
-    (c++-mode . ((c-basic-offset . 4)
-                 (tab-width . 4)
-                 (indent-tabs-mode . t)
-                 (compile-command . "build.bat")
-                 (cd-compile-directory . "C:\\src\\sampleapp")
-                 (cc-search-directories . ("C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\shared"
-                                           "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\ucrt"
-                                           "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um"
-                                           "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\winrt"))
-                 (flycheck-clang-include-path . ("c:/sdk/include"
-                                                 "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um"))))
+** cc-mode (.dir-locals.el)
 
-    (c-mode . ((c-basic-offset . 4)
-               (tab-width . 4)
-               (indent-tabs-mode . t)
-               (compile-command . "build.bat")
-               (cd-compile-directory . "C:\\src\\sampleapp")
-               (cc-search-directories . ("C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\shared"
-                                         "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\ucrt"
-                                         "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um"
-                                         "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\winrt"))
-               (flycheck-clang-include-path . ("c:/sdk/include"
-                                              "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22000.0\\um")))))
+Sample for a Windows SDK / application tree. Copy to the project root as
+~.dir-locals.el~. Includes ~c-ts-mode~ / ~c++-ts-mode~ because this Emacs
+config remaps C/C++ to treesit modes (see ~init-prog.el~).
 
- #+end_src
+#+NAME: cc-mode-local-variables
+#+begin_src emacs-lisp
+((nil . ((ggtags-process-environment . ("GTAGSLABEL=pygments"
+                                        "GTAGSDBPATH=C:/sdk"
+                                        "GTAGSROOT=C:/sdk"
+                                        "GTAGSLIBPATH=C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um"
+                                        "GTAGSOBJDIRPREFIX=C:/cache/gtagsdb"))
+         (ggtags-extra-args . ("--verbose" "--statistics"))
+         (ggtags-use-idutils . t)))
+
+ ((c-mode c++-mode c-ts-mode c++-ts-mode c-or-c++-mode c-or-c++-ts-mode) .
+  ((c-basic-offset . 4)
+   (tab-width . 4)
+   (indent-tabs-mode . t)
+   (compile-command . "build.bat")
+   (cc-search-directories . ("C:/Program Files (x86)/Windows Kits/10/include/10.0.22000.0/shared"
+                             "C:/Program Files (x86)/Windows Kits/10/include/10.0.22000.0/ucrt"
+                             "C:/Program Files (x86)/Windows Kits/10/include/10.0.22000.0/um"
+                             "C:/Program Files (x86)/Windows Kits/10/include/10.0.22000.0/winrt"))
+   (flycheck-clang-include-path . ("C:/sdk/include"
+                                   "C:/Program Files (x86)/Windows Kits/10/include/10.0.22000.0/um")))))
+#+end_src
