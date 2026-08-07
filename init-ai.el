@@ -41,6 +41,7 @@
   (ai-code-set-backend 'gemini)
   (ai-code-prompt-filepath-completion-mode 1)
   (setq ai-code-auto-test-type 'ask-me)
+  (setq ai-code-backends-infra-terminal-backend 'ghostel)
   (with-eval-after-load 'evil (ai-code-backends-infra-evil-setup))
   (with-eval-after-load 'magit
     (ai-code-magit-setup-transients)))
