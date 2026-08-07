@@ -1,15 +1,9 @@
 {
+  "name": "__PROJECT-NAME__",
+  "version-string": "0.0.1",
   "dependencies": [
-    "doctest",
     "cxxopts",
     "fmt",
     "range-v3"
-  ],
-  "overrides": [
-    {
-		"name": "doctest",
-        "version": "v2.4.12#0"
-    }
-  ],
-  "builtin-baseline": "d43918b9143e24ffb56917daacd9126ad03014d6"
+  ]
 }

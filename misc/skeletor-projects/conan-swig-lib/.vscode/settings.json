@@ -1,7 +1,6 @@
 {
     "files.associations": {
-        "impl.h": "c",
         "lib.h": "c",
-        "samplelib_export.h": "c"
+        "lib_export.h": "c"
     }
 }

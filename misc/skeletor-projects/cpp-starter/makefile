@@ -2,36 +2,29 @@ include makefile.inc
 
 .DEFAULT_GOAL := debug
 
-all:debug release
+all: debug release
 
-.PHONY:clean
-debug:OUT_DIR=.
-release:OUT_DIR=.
+.PHONY: clean debug release
 
-PRJ=app
-debug:BIN_NAME=$(PRJ)d
-release:BIN_NAME=$(PRJ)
+PRJ=__PROJECT-NAME__
+debug: OUT_DIR=.
+release: OUT_DIR=.
 
-# add debug flags
-debug:ASFLAGS += -g -F stabs 
+debug: BIN_NAME=$(PRJ)d
+release: BIN_NAME=$(PRJ)
 
-debug:CFLAGS += -g
-release:CFLAGS += -O2
+debug: CFLAGS += -g
+release: CFLAGS += -O2
 
-# CFLAGS+= $(shell pkg-config --cflags lua5.3)
+CFLAGS += -I./include
 
-CFLAGS+= -I./include
+debug: LIBPATH += -L$(OUT_DIR)
+release: LIBPATH += -L$(OUT_DIR)
 
-# ldconfig -p
-# LDLIBS+= $(shell pkg-config --libs lua5.3)
+LDFLAGS += $(LIBPATH) $(LDLIBS)
 
-debug:LIBPATH+= -L$(OUT_DIR)
-release:LIBPATH+= -L$(OUT_DIR)
-
-LDFLAGS+= $(LIBPATH) $(LDLIBS)
-
-SRCS=$(wildcard *.cpp)
-OBJS=$(patsubst %.cpp,%.o,$(SRCS))
+SRCS = $(wildcard *.cpp)
+OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 
 debug: $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(OUT_DIR)/$(BIN_NAME)
@@ -51,4 +44,3 @@ clean:
 	$(RM) *.so
 	$(RM) *.log
 	$(RM) build
-

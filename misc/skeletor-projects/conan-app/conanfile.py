@@ -5,28 +5,29 @@ from conan.tools.cmake import CMakeDeps, CMakeToolchain, CMake
 class ConanApplication(ConanFile):
     package_type = "application"
     settings = "os", "compiler", "build_type", "arch"
-    generators = "CMakeDeps"
-    options = {"shared": [True, False], "build_tests": [True, False]}
+    options = {"shared": [True, False]}
     default_options = {
         "sqlite3/*:shared": True,
-        "lua/*:shared": True,
         "shared": False,
-        "build_tests": False
     }
 
+    def layout(self):
+        self.folders.build = "build"
+        self.folders.generators = "build"
+
     def generate(self):
+        deps = CMakeDeps(self)
+        deps.generate()
         tc = CMakeToolchain(self)
         tc.user_presets_path = False
         tc.generate()
 
     def requirements(self):
-        requirements = self.conan_data.get('requirements', [])
-        for requirement in requirements:
+        for requirement in self.conan_data.get("requirements", []):
             self.requires(requirement)
 
     def build(self):
         cmake = CMake(self)
         cmake.configure()
         cmake.build()
-        # here you can run CTest, launch your binaries, etc
         cmake.test()

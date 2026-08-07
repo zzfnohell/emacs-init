@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
+
 #include "main.h"
 
-int main(int argc, char * argv[])
+int main(void)
 {
-        printf("Hello World!");
-        return 0;
+  printf("Hello, __PROJECT-NAME__!\n");
+  return 0;
 }
