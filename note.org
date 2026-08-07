@@ -78,14 +78,42 @@ Note -*- mode:org; -*-
    (setenv "WORKON_HOME" "/home/zzfnohell/dev/pyenvs")
 #+END_SRC
 ** Windows
-$+name: windows-extra
+#+name: windows-extra
 #+begin_src elisp
+  ;; Prefer init-tags.el's Scoop auto-detect; keep these for custom.el overrides.
   (custom-set-variables
    '(citre-readtags-program "c:/Scoop/apps/universal-ctags/current/readtags.exe")
    '(citre-ctags-program "c:/Scoop/apps/universal-ctags/current/ctags.exe")
+   '(citre-gtags-program "c:/Scoop/apps/global/current/bin/gtags.exe")
+   '(citre-global-program "c:/Scoop/apps/global/current/bin/global.exe")
    '(citre-gtags-args '("--compact")))
-
 #+end_src
+
+** Windows GNU Global (GTAGS) setup
+
+1. Install tools (Scoop):
+   #+begin_src powershell
+     scoop install global universal-ctags
+   #+end_src
+2. Install this repo's config (sets ~GTAGSCONF~, ~GTAGSLABEL=new-ctags~,
+   ~GTAGSOBJDIRPREFIX~):
+   #+begin_src powershell
+     powershell -ExecutionPolicy Bypass -File ~/.emacs.d/init/misc/windows-gtags-env.ps1
+   #+end_src
+   Or copy ~misc/gtags.conf~ to ~%USERPROFILE%\.globalrc~ manually.
+3. Index a project:
+   #+begin_src powershell
+     cd C:\src\your-app
+     gtags
+     global -x main
+   #+end_src
+4. Emacs: ~init-tags.el~ enables ~ggtags-mode~ when ~global~ is on PATH, and
+   Citre Global commands on ~C-x c R/P/U~. Restart Emacs after the env script.
+
+Labels (via ~GTAGSLABEL~ or dir-locals ~ggtags-process-environment~):
+- ~new-ctags~ — recommended with Scoop + universal-ctags (repo default)
+- ~pygments~ — needs Pygments + Global pygments-parser plug-in
+- ~native-pygments~ — built-in parsers first, else Pygments
 
 * Cedet Project
 ** Windows Cpp Root Project
@@ -204,7 +232,7 @@ config remaps C/C++ to treesit modes (see ~init-prog.el~).
 
 #+NAME: cc-mode-local-variables
 #+begin_src emacs-lisp
-((nil . ((ggtags-process-environment . ("GTAGSLABEL=pygments"
+((nil . ((ggtags-process-environment . ("GTAGSLABEL=new-ctags"
                                         "GTAGSDBPATH=C:/sdk"
                                         "GTAGSROOT=C:/sdk"
                                         "GTAGSLIBPATH=C:/Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um"
