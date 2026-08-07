@@ -4,10 +4,9 @@
 ;;; Commentary:
 ;; 
 
-;; A sample .dir-locals.el to go in your project root:
-;; ((dart-mode
-;;   (flutter-l10n-classname . "AppLocalizations")
-;;   (flutter-l10n-file . "lib/app_l10n.dart")))
+;; Sample .dir-locals.el for the project root:
+;; ((dart-mode . ((flutter-l10n-classname . "AppLocalizations")
+;;                (flutter-l10n-file . "lib/app_l10n.dart"))))
 
 ;; The propline for your L10N file:
 ;; // -*- flycheck-checker: intl_translation; -*-
