@@ -12,8 +12,10 @@
 
 (use-package flycheck-haskell
   :ensure t
-  :hook
-  (haskell-mode . flycheck-haskell-setup))
+  :after flycheck
+  ;; Per flycheck-haskell README: configure on flycheck-mode-hook so Cabal /
+  ;; Stack settings apply whenever Flycheck enables in a Haskell buffer.
+  :hook (flycheck-mode . flycheck-haskell-setup))
 
 (provide 'init-haskell)
 

@@ -64,7 +64,8 @@
   :ensure t
   :defer t
   :hook
-  (js2-mode . flow-minor-enable-automatically))
+  ((js2-mode . flow-minor-enable-automatically)
+   (js-ts-mode . flow-minor-enable-automatically)))
 
 (defun init-web/custom-web-mode-hook-func ()
   "Hooks for Web mode."
