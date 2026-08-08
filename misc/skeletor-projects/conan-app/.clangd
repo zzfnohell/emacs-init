@@ -1,0 +1,6 @@
+# clangd config — points at the CMake-generated compile_commands.json.
+# `cmake -S . -B build` writes build/compile_commands.json when
+# CMAKE_EXPORT_COMPILE_COMMANDS is ON (Makefile/Ninja generators only;
+# the Visual Studio generator does not emit it).
+CompileFlags:
+  CompilationDatabase: build

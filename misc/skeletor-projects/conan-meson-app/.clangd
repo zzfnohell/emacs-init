@@ -1,0 +1,4 @@
+# clangd config — points at the Meson-generated compile_commands.json.
+# `meson setup build` writes build/compile_commands.json automatically.
+CompileFlags:
+  CompilationDatabase: build

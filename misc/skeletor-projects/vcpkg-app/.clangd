@@ -1,0 +1,8 @@
+# clangd config — points at a CMake/Ninja-generated compile_commands.json.
+# Only the Ninja generator (not the Visual Studio generator) emits
+# compile_commands.json. Configure one of the ninja presets, e.g.:
+#   cmake --preset windows-x64-ninja-clang-debug
+# then build/compile_commands.json lands in build/ninja-clang-debug/.
+# Switch this path if you use a different preset.
+CompileFlags:
+  CompilationDatabase: build/ninja-clang-debug

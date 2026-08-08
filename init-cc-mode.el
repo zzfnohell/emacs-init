@@ -171,6 +171,25 @@
   (when (bound-and-true-p ivy-mode)
     (ivy-mode -1)))
 
+(use-package disaster
+  :ensure t
+  :defer t
+  :commands disaster
+  :config
+  ;; Prefer clang when available; fall back to gcc, then cc.
+  (setq disaster-compiler
+        (cond ((executable-find "clang") "clang")
+              ((executable-find "gcc") "gcc")
+              ((executable-find "cc") "cc")
+              (t disaster-compiler))))
+
+(use-package clang-format
+  :ensure t
+  :defer t
+  :after (cc-mode)
+  :bind (:map c-mode-base-map
+              ("C-c f" . clang-format-buffer)))
+
 (when (featurep 'doxymacs)
   (require 'doxymacs)
   (dolist (hook '(c-mode-common-hook

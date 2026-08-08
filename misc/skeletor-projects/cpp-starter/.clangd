@@ -1,0 +1,7 @@
+# clangd config — no build system generates compile_commands.json here,
+# so fall back to flags mirroring makefile.inc. For accurate per-file
+# flags, generate a DB with:
+#   bear -- make debug
+# then clangd picks up ./compile_commands.json automatically.
+CompileFlags:
+  Add: [-std=c++20, -Wall, -D_GNU_SOURCE, -fPIC, -I./include]
