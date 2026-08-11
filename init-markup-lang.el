@@ -49,10 +49,15 @@
    ("\\.markdown\\'" . markdown-mode)
    ("\\.md\\'" . markdown-mode)))
 
+(use-package websocket
+  :ensure t
+  :defer t)
+
 (use-package markdown-preview-mode
   :ensure t
   :defer t
   :commands markdown-preview
+  :after websocket
   :config
   (add-to-list
    'markdown-preview-javascript
