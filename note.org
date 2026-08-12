@@ -292,3 +292,25 @@ Run against Emacs 30.2 + ~elpa-30.2~ (batch ~package-refresh-contents~ +
 - Many packages exist on both MELPA and GNU/NonGNU; this config installs
   MELPA snapshots (archives listed MELPA-last in ~init-elpa.el~, no
   ~package-archive-priorities~). Prefer pinning only if a snapshot breaks.
+
+* Recompile *.el (byte + native)
+
+There is a ~Makefile~ at the repo root. Run from ~~/.emacs.d/init~~:
+
+#+name: recompile-makefile-usage
+#+begin_src sh
+  cd ~/.emacs.d/init
+  make            # byte-compile all *.el -> .elc (default)
+  make native     # native-compile all *.el -> .eln
+  make both       # byte + native compile all *.el
+  make clean      # remove .elc / .eln artifacts
+  make check      # headless load check of init.el
+  make EMACS=/path/to/emacs both   # use a specific Emacs
+#+end_src
+
+Notes:
+- ~make~ uses ~$(CURDIR)~ for the tree path (forward slashes, msys2-safe).
+- Native output lands in ~native-comp-eln-load-path~ (~eln-cache~). For a
+  forced full rebuild, ~make clean~ then ~make both~.
+- Startup sanity check: ~emacs --batch --load ~/.emacs.d/init.el~ (~make
+  check~).
