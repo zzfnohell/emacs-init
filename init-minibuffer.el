@@ -30,7 +30,7 @@
    ;; M-g bindings in `goto-map'
    ("M-g e" . consult-compile-error)
    ("M-g r" . consult-grep-match)
-   ;; Flymake: eglot-managed buffers (and any buffer with flymake-mode).
+   ;; Flymake: lsp-mode-managed buffers (and any buffer with flymake-mode).
    ;; Flycheck diagnostics: M-x consult-flycheck (optional package).
    ("M-g f" . consult-flymake)
    ("M-g g" . consult-goto-line)         ;; orig. goto-line

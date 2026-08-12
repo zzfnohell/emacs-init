@@ -1,27 +1,26 @@
 ;;; init-lsp.el --- LSP / Eglot -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; Prefer Eglot (built-in) as the LSP *client*. Start with `M-x eglot'
-;; (no automatic `eglot-ensure' hooks — language layers stay free to
-;; use Tide / Merlin / etc. without fighting a global LSP client).
+;; lsp-mode is the default LSP *client* (auto via `lsp-deferred' hooks on
+;; a set of major modes). Eglot (built-in) stays `:disabled' so the two
+;; clients do not fight.
 ;;
-;; lsp-mode and its UI/lang packages stay `:disabled' so they do not
-;; fight Eglot. Debugging lives in `init-dap.el'; dap-mode still pulls
-;; lsp-mode as a *library* — that is OK and intentional.
+;; Debugging lives in `init-dap.el'; dap-mode still pulls lsp-mode as a
+;; library — that is OK and intentional.
 ;;
 ;; Do not re-add lsp-ivy: minibuffer stack is vertico/consult (see
-;; init-minibuffer.el). Workspace symbols: consult / eglot APIs.
+;; init-minibuffer.el). Workspace symbols: consult / lsp APIs.
 ;;
-;; Keymap note: `C-c a' is `ai-code-menu' (init-ai.el). Eglot keys use
-;; the `C-c e' prefix. Avoid `C-c C-c' (claimed by many major modes).
+;; Keymap note: `C-c a' is `ai-code-menu' (init-ai.el). lsp-mode keys use
+;; its default bindings (C-c l ...). Avoid `C-c C-c' (claimed by many
+;; major modes).
 
 ;;; Code:
 
-
-;;; Disabled lsp-mode stack (enable together if switching off Eglot)
+
+;;; lsp-mode stack (default LSP client)
 
 (use-package lsp-mode
-  :disabled
   :ensure t
   :commands (lsp lsp-deferred)
   :hook ((java-mode . lsp-deferred)
@@ -49,22 +48,19 @@
   :config
   (require 'lsp-flow))
 
-;; LSP UI tools (lsp-mode stack only; keep disabled with lsp-mode)
+;; LSP UI tools (lsp-mode stack)
 (use-package lsp-ui
-  :disabled
   :ensure t
   :commands lsp-ui-mode)
 
 (use-package lsp-haskell
-  :disabled
   :after haskell-mode
   :ensure t
   :hook ((haskell-mode . lsp)
          (haskell-literate-mode . lsp)))
 
-;; Keep disabled with lsp-mode; enable together when using the lsp-mode stack.
+;; Enable with the lsp-mode stack.
 (use-package lsp-java
-  :disabled
   :ensure t
   :defer t
   :after (lsp-mode dap-mode)
@@ -78,7 +74,6 @@
   (add-hook 'java-ts-mode-hook #'lsp-java-lens-mode))
 
 (use-package lsp-julia
-  :disabled
   :ensure t
   :after (:all julia-mode lsp-mode)
   :hook ((julia-mode . lsp)
@@ -98,13 +93,11 @@
   (which-key-mode 1))
 
 
-;;; Eglot (active LSP client)
+;;; Eglot (disabled; lsp-mode is the default client)
 
 (defun init-lsp/js-server-contact (_interactive)
   "LSP contact for JS buffers: Flow when `.flowconfig' exists, else tsserver.
-_INTERACTIVE is non-nil when `eglot' was called interactively.
-Does not cover TS/TSX — leave those on Eglot's typescript-language-server
-default (and Tide in `init-web.el')."
+Only relevant for the (disabled) Eglot client."
   (if (and (executable-find "flow")
            (locate-dominating-file default-directory ".flowconfig"))
       '("flow" "lsp")
@@ -112,6 +105,7 @@ default (and Tide in `init-web.el')."
 
 (use-package eglot
   :ensure nil
+  :disabled
   :defer t
   :commands (eglot eglot-ensure)
   :bind (:map eglot-mode-map

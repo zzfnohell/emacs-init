@@ -6,8 +6,8 @@
 ;; `rust-ts-mode'.  Do not also remap `rust-mode' → `rust-ts-mode' in
 ;; `init-prog.el' — that would drop those bindings.
 ;;
-;; IDE features (completion, goto-def): use Eglot (`M-x eglot'); racer is
-;; obsolete and intentionally omitted.
+;; IDE features (completion, goto-def): use lsp-mode (`lsp-deferred') with
+;; rust-analyzer; racer is obsolete and intentionally omitted.
 
 ;;; Code:
 

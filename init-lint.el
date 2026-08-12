@@ -4,8 +4,8 @@
 ;; On-the-fly linting.
 ;;
 ;; - Flycheck is the default checker (`global-flycheck-mode`).
-;; - Flymake remains available for Eglot (see `init-lsp.el`) and for
-;;   `consult-flymake' (`M-g f` in `init-minibuffer.el`).  When Eglot
+;; - Flymake remains available for lsp-mode (see `init-lsp.el`) and for
+;;   `consult-flymake' (`M-g f` in `init-minibuffer.el`).  When lsp-mode
 ;;   manages a buffer it drives Flymake, so Flycheck is turned off there
 ;;   to avoid duplicate diagnostics.
 

@@ -14,7 +14,7 @@
   :mode
   "\\.fs\\'"
   :config
-  (require 'eglot-fsharp))
+  (require 'lsp-fsharp))
 
 (use-package sharper
   :ensure t

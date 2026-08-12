@@ -34,8 +34,8 @@
   :defer t
   :mode ("\\.pyx\\'" "\\.pxd\\'" "\\.pxi\\'"))
 
-;; elpy omitted: conflicts with eglot/dap (see init-lsp.el /
-;; init-dap.el). Prefer `M-x eglot' + dap-python for IDE features.
+;; elpy omitted: conflicts with lsp-mode/dap (see init-lsp.el /
+;; init-dap.el). Prefer lsp-mode + dap-python for IDE features.
 
 (message "[init] init-python loaded")
 
