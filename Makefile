@@ -5,13 +5,14 @@
 #   make both       - byte + native compile all *.el
 #   make clean      - remove .elc and .eln artifacts
 #   make check      - headless load check of the full config
+#   make packages   - refresh package archives and install missing packages
 
 EMACS   ?= emacs
 DIR     := $(CURDIR)
 ELCASES := $(strip $(EMACS) --batch -l bytecomp)
 NATCASES:= $(strip $(EMACS) --batch -l comp)
 
-.PHONY: all native both clean check
+.PHONY: all native both clean check packages
 
 all:
 	$(ELCASES) \
@@ -33,3 +34,8 @@ clean:
 
 check:
 	$(EMACS) --batch --load "$(DIR)/init.el"
+
+packages:
+	$(EMACS) --batch \
+	  --eval '(progn (require (quote package)) (package-refresh-contents))' \
+	  --load "$(DIR)/init.el"
