@@ -10,6 +10,8 @@
 #   make bootstrap  - refresh package archives, install missing packages,
 #                     and regenerate package-quickstart.el
 #   make quickstart - regenerate package-quickstart.el
+#   make upgrade    - refresh package archives, upgrade all installed
+#                     packages, and regenerate package-quickstart.el
 
 EMACS    ?= emacs
 DIR      := $(CURDIR)
@@ -28,7 +30,15 @@ bootstrap:
 	  --eval '(package-refresh-contents)' \
 	  --load "$(INIT)" \
 	  --eval '(package-quickstart-refresh)'
-
+ Refresh package archives and upgrade all installed packages.
+ 
+upgrade:
+	$(EMACS) --batch \
+	  --load "$(DIR)/init-elpa.el" \
+	  --eval '(package-refresh-contents)' \
+	  --eval '(package-upgrade-all)' \
+	  --eval '(package-quickstart-refresh)'
+	  
 all: bootstrap
 	$(ELCASES) \
 	  --eval '(byte-recompile-directory "$(DIR)" 0 t)'
