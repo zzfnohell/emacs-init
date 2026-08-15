@@ -26,20 +26,9 @@
 ;; installing/removing packages, run `M-x package-quickstart-refresh'.
 (setq package-quickstart t)
 (package-initialize)
-(when (and package-quickstart
-           (not (file-readable-p package-quickstart-file)))
-  (message "[init] generating package-quickstart.el (one-time)…")
-  (package-quickstart-refresh))
 
-;; use-package is built into Emacs 29+
-(when (and (< emacs-major-version 29)
-           (not (package-installed-p 'use-package)))
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(eval-when-compile (require 'use-package))
-
-(setq use-package-always-ensure t)
+(require 'use-package)
+(setq use-package-always-ensure nil)
 (setq use-package-always-demand (daemonp))
 
 (use-package auto-package-update

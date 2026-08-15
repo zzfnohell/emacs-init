@@ -1,18 +1,19 @@
 # Makefile for recompiling the Emacs init/*.el configuration.
 # Targets:
-#   make            - byte-compile all *.el (default)
-#   make native     - native-compile all *.el (.eln)
-#   make both       - byte + native compile all *.el
-#   make clean      - remove .elc and .eln artifacts
-#   make check      - headless load check of the full config
-#   make packages   - refresh package archives and install missing packages
+#   make             - byte-compile all *.el (default)
+#   make native      - native-compile all *.el (.eln)
+#   make both        - byte + native compile all *.el
+#   make clean       - remove .elc and .eln artifacts
+#   make check       - headless load check of the full config
+#   make packages    - refresh package archives and install missing packages
+#   make quickstart  - regenerate package-quickstart.el
 
 EMACS   ?= emacs
 DIR     := $(CURDIR)
 ELCASES := $(strip $(EMACS) --batch -l bytecomp)
 NATCASES:= $(strip $(EMACS) --batch -l comp)
 
-.PHONY: all native both clean check packages
+.PHONY: all native both clean check packages quickstart
 
 all:
 	$(ELCASES) \
@@ -37,5 +38,12 @@ check:
 
 packages:
 	$(EMACS) --batch \
-	  --eval '(progn (require (quote package)) (package-refresh-contents))' \
-	  --load "$(DIR)/init.el"
+	  --load "$(DIR)/init.el" \
+	  --eval '(progn \
+	            (package-refresh-contents) \
+	            (message "Package archives refreshed."))'
+
+quickstart:
+	$(EMACS) --batch \
+	  --load "$(DIR)/init.el" \
+	  --eval '(package-quickstart-refresh)'
