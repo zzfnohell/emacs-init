@@ -75,4 +75,5 @@
 ;;  (server-start))
 
 
+(provide 'init-main)
 ;;; init-main.el ends here
