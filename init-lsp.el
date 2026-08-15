@@ -44,9 +44,7 @@
   :custom
   (lsp-completion-enable t)
   (lsp-completion-provider :capf)
-  (lsp-enable-snippet t)
-  :config
-  (require 'lsp-flow))
+  (lsp-enable-snippet t))
 
 ;; LSP UI tools (lsp-mode stack)
 (use-package lsp-ui
