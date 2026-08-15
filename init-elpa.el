@@ -25,6 +25,7 @@
 ;; Combine package autoloads into one file for faster startup.  After
 ;; installing/removing packages, run `M-x package-quickstart-refresh'.
 (setq package-quickstart t)
+(package-initialize)
 (when (and package-quickstart
            (not (file-readable-p package-quickstart-file)))
   (message "[init] generating package-quickstart.el (one-time)…")
