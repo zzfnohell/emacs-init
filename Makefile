@@ -1,5 +1,5 @@
 # Makefile for recompiling the Emacs init/*.el configuration.
-# Targets:
+#
 # Targets:
 #   make            - bootstrap packages, then byte-compile all *.el (default)
 #   make native     - bootstrap packages, then native-compile all *.el (.eln)
@@ -7,23 +7,26 @@
 #   make clean      - remove .elc and .eln artifacts
 #   make check      - headless load check of the full config
 #   make packages   - refresh package archives
-#   make bootstrap  - refresh package archives, install missing packages via
-#                     use-package, and regenerate package-quickstart.el
+#   make bootstrap  - refresh package archives, install missing packages,
+#                     and regenerate package-quickstart.el
 #   make quickstart - regenerate package-quickstart.el
 
 EMACS    ?= emacs
 DIR      := $(CURDIR)
-
+INIT     := $(DIR)/../init.el
 ELCASES  := $(EMACS) --batch -l bytecomp
 NATCASES := $(EMACS) --batch -l comp
 
-.PHONY: all native both clean check packages quickstart bootstrap
+.PHONY: all native both clean check packages bootstrap quickstart
 
+# Refresh package archives first, then load the full configuration.
+# use-package :ensure t installs missing packages.
+# Finally regenerate package-quickstart.el.
 bootstrap:
 	$(EMACS) --batch \
 	  --load "$(DIR)/init-elpa.el" \
 	  --eval '(package-refresh-contents)' \
-	  --load "$(DIR)/../init.el" \
+	  --load "$(INIT)" \
 	  --eval '(package-quickstart-refresh)'
 
 all: bootstrap
@@ -44,14 +47,14 @@ clean:
 
 check:
 	$(EMACS) --batch \
-	  --load "$(DIR)/../init.el"
+	  --load "$(INIT)"
 
 packages:
 	$(EMACS) --batch \
-	  --load "$(DIR)/../init.el" \
+	  --load "$(DIR)/init-elpa.el" \
 	  --eval '(package-refresh-contents)'
 
 quickstart:
 	$(EMACS) --batch \
-	  --load "$(DIR)/../init.el" \
+	  --load "$(DIR)/init-elpa.el" \
 	  --eval '(package-quickstart-refresh)'
