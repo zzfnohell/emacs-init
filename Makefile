@@ -1,12 +1,15 @@
 # Makefile for recompiling the Emacs init/*.el configuration.
 # Targets:
-#   make             - byte-compile all *.el (default)
-#   make native      - native-compile all *.el (.eln)
-#   make both        - byte + native compile all *.el
-#   make clean       - remove .elc and .eln artifacts
-#   make check       - headless load check of the full config
-#   make packages    - refresh package archives and install missing packages
-#   make quickstart  - regenerate package-quickstart.el
+# Targets:
+#   make            - bootstrap packages, then byte-compile all *.el (default)
+#   make native     - bootstrap packages, then native-compile all *.el (.eln)
+#   make both       - bootstrap packages, then byte + native compile all *.el
+#   make clean      - remove .elc and .eln artifacts
+#   make check      - headless load check of the full config
+#   make packages   - refresh package archives
+#   make bootstrap  - refresh package archives, install missing packages via
+#                     use-package, and regenerate package-quickstart.el
+#   make quickstart - regenerate package-quickstart.el
 
 EMACS    ?= emacs
 DIR      := $(CURDIR)
@@ -18,8 +21,10 @@ NATCASES := $(EMACS) --batch -l comp
 
 bootstrap:
 	$(EMACS) --batch \
+	  --load "$(DIR)/init-elpa.el" \
+	  --eval '(package-refresh-contents)' \
 	  --load "$(DIR)/../init.el" \
-	  --eval '(message "Package bootstrap complete.")'
+	  --eval '(package-quickstart-refresh)'
 
 all: bootstrap
 	$(ELCASES) \
