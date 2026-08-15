@@ -28,7 +28,7 @@
 (package-initialize)
 
 (require 'use-package)
-(setq use-package-always-ensure nil)
+(setq use-package-always-ensure t)
 (setq use-package-always-demand (daemonp))
 
 (use-package auto-package-update

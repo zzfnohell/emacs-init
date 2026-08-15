@@ -8,24 +8,28 @@
 #   make packages    - refresh package archives and install missing packages
 #   make quickstart  - regenerate package-quickstart.el
 
-EMACS   ?= emacs
-DIR     := $(CURDIR)
-ELCASES := $(strip $(EMACS) --batch -l bytecomp)
-NATCASES:= $(strip $(EMACS) --batch -l comp)
+EMACS    ?= emacs
+DIR      := $(CURDIR)
 
-.PHONY: all native both clean check packages quickstart
+ELCASES  := $(EMACS) --batch -l bytecomp
+NATCASES := $(EMACS) --batch -l comp
 
-all:
+.PHONY: all native both clean check packages quickstart bootstrap
+
+bootstrap:
+	$(EMACS) --batch \
+	  --load "$(DIR)/../init.el" \
+	  --eval '(message "Package bootstrap complete.")'
+
+all: bootstrap
 	$(ELCASES) \
 	  --eval '(byte-recompile-directory "$(DIR)" 0 t)'
 
-native:
+native: bootstrap
 	$(NATCASES) \
 	  --eval '(native-compile-async "$(DIR)" t)'
 
-both: all
-	$(NATCASES) \
-	  --eval '(native-compile-async "$(DIR)" t)'
+both: all native
 
 clean:
 	$(EMACS) --batch \
@@ -34,16 +38,15 @@ clean:
 	  '(delete-file f)))'
 
 check:
-	$(EMACS) --batch --load "$(DIR)/init.el"
+	$(EMACS) --batch \
+	  --load "$(DIR)/../init.el"
 
 packages:
 	$(EMACS) --batch \
-	  --load "$(DIR)/init.el" \
-	  --eval '(progn \
-	            (package-refresh-contents) \
-	            (message "Package archives refreshed."))'
+	  --load "$(DIR)/../init.el" \
+	  --eval '(package-refresh-contents)'
 
 quickstart:
 	$(EMACS) --batch \
-	  --load "$(DIR)/init.el" \
+	  --load "$(DIR)/../init.el" \
 	  --eval '(package-quickstart-refresh)'
