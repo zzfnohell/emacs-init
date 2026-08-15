@@ -7,7 +7,6 @@
 (require 'init-system)
 (require 'init-proxy)
 
-(require 'init-elpa)
 
 ;; package-initialize (via init-elpa) must run before loading custom-file.
 (load custom-file)
