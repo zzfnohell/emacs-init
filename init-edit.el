@@ -13,7 +13,7 @@
 
 (when (eq system-type 'windows-nt)
   (setq system-time-locale "C")
-  (set-language-environment "UTF-8")) 
+  (set-language-environment "UTF-8"))
 
 ;; (set-default-coding-systems 'utf-8)
 ;; (set-terminal-coding-system 'utf-8)
@@ -67,6 +67,10 @@
  create-lockfiles nil)
 
 (when (eq system-type 'windows-nt)
+  (setq file-precious-flag nil)
+  ;; Don't preserve Windows ACLs when creating backup files.
+  (setq backup-inhibited nil)
+  (setq file-extended-attributes nil)
   ;; 避免网络文件锁
   (setq create-lockfiles nil))
 
@@ -133,8 +137,8 @@
 (global-display-line-numbers-mode 1)
 
 (use-package hl-line
-;;  :custom-face
-;;  (hl-line ((t (:background "#aaaaaa"))))
+  ;;  :custom-face
+  ;;  (hl-line ((t (:background "#aaaaaa"))))
   :config
   (global-hl-line-mode 1))
 
